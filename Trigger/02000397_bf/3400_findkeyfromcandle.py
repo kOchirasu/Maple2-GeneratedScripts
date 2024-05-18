@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3400], visible=False, start_delay=0, interval=0, fade=0) # FindKeyFromCandle
-        self.set_mesh(trigger_ids=[3401], visible=True, start_delay=0, interval=0, fade=0) # Candle
+        self.set_mesh(trigger_ids=[3400]) # FindKeyFromCandle
+        self.set_mesh(trigger_ids=[3401], visible=True) # Candle
         self.set_interact_object(trigger_ids=[10001143], state=0) # Candle
         self.set_user_value(key='FindKey', value=0)
 
@@ -18,7 +18,7 @@ class Wait(trigger_api.Trigger):
 
 class StateTrue(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3401], visible=False, start_delay=100, interval=0, fade=2) # Candle
+        self.set_mesh(trigger_ids=[3401], start_delay=100, fade=2.0) # Candle
         self.set_interact_object(trigger_ids=[10001143], state=1) # Candle
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class StateTrue(trigger_api.Trigger):
 
 class KeyFound(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3400], visible=True, start_delay=0, interval=0, fade=2) # FindKeyFromCandle
+        self.set_mesh(trigger_ids=[3400], visible=True, fade=2.0) # FindKeyFromCandle
         self.set_user_value(trigger_id=1, key='PortalOn', value=1)
 
 
@@ -43,7 +43,7 @@ class StateFalse(trigger_api.Trigger):
 
 class NothingHappened(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3401], visible=True, start_delay=0, interval=0, fade=0) # Fabricbox
+        self.set_mesh(trigger_ids=[3401], visible=True) # Fabricbox
 
 
 initial_state = Wait

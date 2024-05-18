@@ -148,8 +148,8 @@ class pc소환_2(trigger_api.Trigger):
 
 class 카메라리셋(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=16, visible=True, enable=True, minimap_visible=False)
-        self.reset_camera(arg1='interpolationTime', interpolation_time=0.8)
+        self.set_portal(portal_id=16, visible=True, enable=True)
+        self.reset_camera(interpolation_time=0.8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -161,11 +161,11 @@ class 실패(trigger_api.Trigger):
         self.set_effect(trigger_ids=[10090], visible=True)
         self.set_effect(trigger_ids=[10091], visible=True)
         self.set_effect(trigger_ids=[10092], visible=True)
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
         self.destroy_monster(spawn_ids=[-1])
         self.set_event_ui(type=1, arg2='미션에 실패하였습니다. 다시 재도전 해보세요.', arg3='4000')
         self.move_user(map_id=52020001, portal_id=99)
-        self.set_portal(portal_id=14, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=14, visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

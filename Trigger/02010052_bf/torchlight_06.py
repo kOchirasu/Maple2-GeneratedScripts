@@ -4,9 +4,9 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[6100,6101,6102,6103,6104,6105,6106,6107,6108,6109,6110,6111,6112,6113,6114,6115,6116,6117,6118,6119,6120,6121,6122], visible=False, start_delay=0, interval=0, fade=0) # 벽 해제
-        self.set_effect(trigger_ids=[7006], visible=False) # 횃불에 불이 붙는 이펙트
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[6100,6101,6102,6103,6104,6105,6106,6107,6108,6109,6110,6111,6112,6113,6114,6115,6116,6117,6118,6119,6120,6121,6122]) # 벽 해제
+        self.set_effect(trigger_ids=[7006]) # 횃불에 불이 붙는 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=709) >= 1:
@@ -16,7 +16,7 @@ class idle(trigger_api.Trigger):
 class Event_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7543], visible=True) # 얼음이 어는 소리
-        self.set_mesh(trigger_ids=[6100,6101,6102,6103,6104,6105,6106,6107,6108,6109,6110,6111,6112,6113,6114,6115,6116,6117,6118,6119,6120,6121,6122], visible=True, start_delay=80, interval=70, fade=8) # 얼음!
+        self.set_mesh(trigger_ids=[6100,6101,6102,6103,6104,6105,6106,6107,6108,6109,6110,6111,6112,6113,6114,6115,6116,6117,6118,6119,6120,6121,6122], visible=True, start_delay=80, interval=70, fade=8.0) # 얼음!
         self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,11 +40,11 @@ class burn_state(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=200)
         self.set_effect(trigger_ids=[7506], visible=True) # 얼음 녹는 소리
-        self.set_mesh(trigger_ids=[6100,6101,6102,6103,6104,6105,6106,6107,6108,6109,6110,6111,6112,6113,6114,6115,6116,6117,6118,6119,6120,6121,6122], visible=False, start_delay=800, interval=100, fade=0) # 벽 해제
-        self.set_mesh(trigger_ids=[600002], visible=False, start_delay=0, interval=0, fade=0) # 벽 해제 (투명 벽)
+        self.set_mesh(trigger_ids=[6100,6101,6102,6103,6104,6105,6106,6107,6108,6109,6110,6111,6112,6113,6114,6115,6116,6117,6118,6119,6120,6121,6122], start_delay=800, interval=100) # 벽 해제
+        self.set_mesh(trigger_ids=[600002]) # 벽 해제 (투명 벽)
         self.set_event_ui(type=1, arg2='$02010052_BF__TORCHLIGHT_06__0$', arg3='3000')
         self.set_effect(trigger_ids=[7006], visible=True) # 횃불에 불이 붙는 이펙트
-        self.set_timer(timer_id='1', seconds=1, interval=0)
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):

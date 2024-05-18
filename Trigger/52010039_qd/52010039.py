@@ -1,5 +1,6 @@
 """ trigger/52010039_qd/52010039.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Wait(trigger_api.Trigger):
@@ -35,7 +36,7 @@ class start(trigger_api.Trigger):
 """
 class 대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003536, illust_id='Neirin_surprise', msg='$52010039_QD__52010039__0$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003536, illust_id='Neirin_surprise', msg='$52010039_QD__52010039__0$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -45,7 +46,7 @@ class 대사01(trigger_api.Trigger):
 """
 class 대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003536, illust_id='Neirin_surprise', msg='$52010039_QD__52010039__1$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003536, illust_id='Neirin_surprise', msg='$52010039_QD__52010039__1$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -55,7 +56,7 @@ class 대사02(trigger_api.Trigger):
 """
 class 대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003536, illust_id='Neirin_surprise', msg='$52010039_QD__52010039__2$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003536, illust_id='Neirin_surprise', msg='$52010039_QD__52010039__2$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -65,7 +66,7 @@ class 대사03(trigger_api.Trigger):
 """
 class 대사04_B(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010039_QD__52010039__3$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010039_QD__52010039__3$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -75,7 +76,7 @@ class 대사04_B(trigger_api.Trigger):
 """
 class 대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010039_QD__52010039__4$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010039_QD__52010039__4$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -85,7 +86,7 @@ class 대사04(trigger_api.Trigger):
 """
 class 대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010039_QD__52010039__5$', duration=3000, align='center')
+        self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010039_QD__52010039__5$', duration=3000, align=Align.Center)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -95,7 +96,7 @@ class 대사05(trigger_api.Trigger):
 """
 class 대사06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003536, illust_id='Neirin_surprise', msg='$52010039_QD__52010039__6$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003536, illust_id='Neirin_surprise', msg='$52010039_QD__52010039__6$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -105,7 +106,7 @@ class 대사06(trigger_api.Trigger):
 """
 class 대사07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010039_QD__52010039__7$', duration=3000, align='center')
+        self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010039_QD__52010039__7$', duration=3000, align=Align.Center)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -120,7 +121,7 @@ class 연출종료01(trigger_api.Trigger):
 
 class 연출종료02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -138,8 +139,8 @@ class 연출종료03(trigger_api.Trigger):
 
 class 스카이포트리스전경씬03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.show_caption(type='VerticalCaption', title='$52010039_QD__52010039__8$', desc='$52010039_QD__52010039__9$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=7000, scale=2.5)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.show_caption(type='VerticalCaption', title='$52010039_QD__52010039__8$', desc='$52010039_QD__52010039__9$', align=Align.Bottom | Align.Left, duration=7000, scale=2.5)
         self.select_camera_path(path_ids=[1002,1003], return_view=False)
         self.set_scene_skip(state=Skip_1, action='exit')
 
@@ -178,11 +179,11 @@ class Skip_1(trigger_api.Trigger):
 
 class Quit01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
-        self.add_balloon_talk(spawn_id=0, msg='$52010039_QD__52010039__10$', duration=6000, delay_tick=1000)
+        self.reset_camera()
+        self.add_balloon_talk(msg='$52010039_QD__52010039__10$', duration=6000, delay_tick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9002]):

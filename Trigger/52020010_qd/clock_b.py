@@ -4,10 +4,10 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_effect(trigger_ids=[5004], visible=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
-        self.set_effect(trigger_ids=[5006], visible=False)
+        self.set_effect(trigger_ids=[5003])
+        self.set_effect(trigger_ids=[5004])
+        self.set_effect(trigger_ids=[5005])
+        self.set_effect(trigger_ids=[5006])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[2003]):
@@ -23,9 +23,9 @@ class Ready(trigger_api.Trigger):
 class Event_Start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5003], visible=True)
-        self.spawn_monster(spawn_ids=[201], auto_target=True) # 아빠 유령
-        self.spawn_monster(spawn_ids=[202], auto_target=True) # 엄마 유령
-        self.spawn_monster(spawn_ids=[203], auto_target=True) # 애기 유령
+        self.spawn_monster(spawn_ids=[201]) # 아빠 유령
+        self.spawn_monster(spawn_ids=[202]) # 엄마 유령
+        self.spawn_monster(spawn_ids=[203]) # 애기 유령
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -36,7 +36,7 @@ class Event_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5004], visible=True)
         self.move_npc(spawn_id=203, patrol_name='MS2PatrolData_3001')
-        self.add_balloon_talk(spawn_id=203, msg='와! 쾅쾅한다!', duration=2500, delay_tick=0)
+        self.add_balloon_talk(spawn_id=203, msg='와! 쾅쾅한다!', duration=2500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -45,7 +45,7 @@ class Event_01(trigger_api.Trigger):
 
 class Event_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=202, msg='여보... 우리 어쩌면 좋아요?', duration=2800, delay_tick=0)
+        self.add_balloon_talk(spawn_id=202, msg='여보... 우리 어쩌면 좋아요?', duration=2800)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -54,7 +54,7 @@ class Event_02(trigger_api.Trigger):
 
 class Event_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=201, msg='일이 이렇게 되어버릴 줄은...', duration=2800, delay_tick=0)
+        self.add_balloon_talk(spawn_id=201, msg='일이 이렇게 되어버릴 줄은...', duration=2800)
         self.add_balloon_talk(spawn_id=202, msg='우리 도망 못가는거죠?', duration=2800, delay_tick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,8 +65,8 @@ class Event_03(trigger_api.Trigger):
 class Event_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5005], visible=True)
-        self.add_balloon_talk(spawn_id=203, msg='쾅쾅! 쾅쾅!', duration=2000, delay_tick=0)
-        self.add_balloon_talk(spawn_id=201, msg='난 대체 무얼 위해...', duration=2800, delay_tick=0)
+        self.add_balloon_talk(spawn_id=203, msg='쾅쾅! 쾅쾅!', duration=2000)
+        self.add_balloon_talk(spawn_id=201, msg='난 대체 무얼 위해...', duration=2800)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -75,7 +75,7 @@ class Event_04(trigger_api.Trigger):
 
 class Event_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=202, msg='여보!', duration=2800, delay_tick=0)
+        self.add_balloon_talk(spawn_id=202, msg='여보!', duration=2800)
         self.add_balloon_talk(spawn_id=201, msg='!!!', duration=2000, delay_tick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,10 +104,10 @@ class Event_07(trigger_api.Trigger):
 
 class Event_End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_effect(trigger_ids=[5004], visible=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
-        self.set_effect(trigger_ids=[5006], visible=False)
+        self.set_effect(trigger_ids=[5003])
+        self.set_effect(trigger_ids=[5004])
+        self.set_effect(trigger_ids=[5005])
+        self.set_effect(trigger_ids=[5006])
         self.destroy_monster(spawn_ids=[201])
         self.destroy_monster(spawn_ids=[202])
         self.destroy_monster(spawn_ids=[203])

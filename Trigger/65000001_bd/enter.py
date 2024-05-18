@@ -4,9 +4,9 @@ import trigger_api
 
 class 시간표확인(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_timer(timer_id='60', seconds=60, start_delay=0, interval=1)
-        self.set_effect(trigger_ids=[601], visible=False) # 공지 효과음
+        self.set_portal(portal_id=1)
+        self.set_timer(timer_id='60', seconds=60, interval=1)
+        self.set_effect(trigger_ids=[601]) # 공지 효과음
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=101) >= 10:
@@ -28,7 +28,7 @@ class 대기(trigger_api.Trigger):
 
 class 어나운스0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='6', seconds=6, start_delay=0)
+        self.set_timer(timer_id='6', seconds=6)
         self.play_system_sound_in_box(sound='BD_Enter_00')
         self.set_event_ui(type=1, arg2='$65000001_BD__ENTER__0$', arg3='6000', arg4='101')
 
@@ -39,7 +39,7 @@ class 어나운스0(trigger_api.Trigger):
 
 class 어나운스1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='3', seconds=3, start_delay=0)
+        self.set_timer(timer_id='3', seconds=3)
         self.play_system_sound_in_box(sound='BD_Enter_01')
         self.set_event_ui(type=1, arg2='$65000001_BD__ENTER__1$', arg3='3000', arg4='101')
 
@@ -50,13 +50,13 @@ class 어나운스1(trigger_api.Trigger):
 
 class PvP(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='3', seconds=3, start_delay=0)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
             # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
             self.set_achievement(trigger_id=105, type='trigger', achieve='dailyquest_start')
-            self.give_guild_exp(box_id=0, type=2)
+            self.give_guild_exp(type=2)
             self.set_pvp_zone(box_id=102, prepare_time=1, match_time=120, additional_effect_id=90001002, type=1)
             return PvP종료(self.ctx)
 
@@ -69,7 +69,7 @@ class PvP종료(trigger_api.Trigger):
 
 class 비김(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='3', seconds=3, start_delay=0)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -111,7 +111,7 @@ class 완료(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
-            self.move_user(map_id=0, portal_id=0)
+            self.move_user()
             return 종료(self.ctx)
 
 

@@ -7,20 +7,20 @@ from dungeon_common.checkusercount import *
 
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3005,3006,3007,3008,3009,3010], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Barrier
-        self.set_ladder(trigger_ids=[510], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[511], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[512], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[513], visible=False, enable=False) # LadderEnterance
-        self.set_mesh(trigger_ids=[3002,3003,3004], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Barrier
-        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108], visible=True, start_delay=0, interval=0, fade=0) # 덩굴
-        self.set_mesh(trigger_ids=[1110,1111,1112,1113,1114,1115,1116,1117,1118,1119], visible=True, start_delay=0, interval=0, fade=0) # 덩굴
-        self.set_mesh(trigger_ids=[1120,1121,1122,1123,1124,1125,1126], visible=True, start_delay=0, interval=0, fade=0) # 덩굴
-        self.set_mesh(trigger_ids=[1130,1131,1132,1133,1134,1135,1136,1137], visible=True, start_delay=0, interval=0, fade=0) # 덩굴
-        self.set_mesh(trigger_ids=[1140], visible=True, start_delay=0, interval=0, fade=0) # 씨앗
-        self.set_mesh_animation(trigger_ids=[1140], visible=True, start_delay=0, interval=0) # 씨앗
-        self.set_effect(trigger_ids=[5000], visible=False) # UI
-        self.set_effect(trigger_ids=[5001], visible=False) # Vine
+        self.set_mesh(trigger_ids=[3005,3006,3007,3008,3009,3010], visible=True) # Invisible_Barrier
+        self.set_ladder(trigger_ids=[510]) # LadderEnterance
+        self.set_ladder(trigger_ids=[511]) # LadderEnterance
+        self.set_ladder(trigger_ids=[512]) # LadderEnterance
+        self.set_ladder(trigger_ids=[513]) # LadderEnterance
+        self.set_mesh(trigger_ids=[3002,3003,3004], visible=True) # Invisible_Barrier
+        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108], visible=True) # 덩굴
+        self.set_mesh(trigger_ids=[1110,1111,1112,1113,1114,1115,1116,1117,1118,1119], visible=True) # 덩굴
+        self.set_mesh(trigger_ids=[1120,1121,1122,1123,1124,1125,1126], visible=True) # 덩굴
+        self.set_mesh(trigger_ids=[1130,1131,1132,1133,1134,1135,1136,1137], visible=True) # 덩굴
+        self.set_mesh(trigger_ids=[1140], visible=True) # 씨앗
+        self.set_mesh_animation(trigger_ids=[1140], visible=True) # 씨앗
+        self.set_effect(trigger_ids=[5000]) # UI
+        self.set_effect(trigger_ids=[5001]) # Vine
         self.set_user_value(key='MobWaveStop', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +39,7 @@ class DungeonStart(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5000], visible=True) # GuideUI
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_skip(state=CameraWalk01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +61,7 @@ class CameraWalk01(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[511], visible=True, enable=True) # LadderEnterance
         self.set_ladder(trigger_ids=[512], visible=True, enable=True) # LadderEnterance
         self.set_ladder(trigger_ids=[513], visible=True, enable=True) # LadderEnterance
-        self.set_mesh(trigger_ids=[3005,3006,3007,3008,3009,3010], visible=False, start_delay=0, interval=0, fade=0) # Invisible_Barrier
+        self.set_mesh(trigger_ids=[3005,3006,3007,3008,3009,3010]) # Invisible_Barrier
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -111,13 +111,13 @@ class VineRemove01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=20031202)
         self.set_effect(trigger_ids=[5001], visible=True) # Vine
-        self.set_mesh(trigger_ids=[3002,3003,3004], visible=False, start_delay=500, interval=0, fade=0) # Invisible_Barrier
-        self.set_random_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108], visible=False, start_delay=9, interval=0, fade=50) # 덩굴
-        self.set_random_mesh(trigger_ids=[1110,1111,1112,1113,1114,1115,1116,1117,1118,1119], visible=False, start_delay=10, interval=300, fade=50) # 덩굴
-        self.set_random_mesh(trigger_ids=[1120,1121,1122,1123,1124,1125,1126], visible=False, start_delay=7, interval=200, fade=50) # 덩굴
-        self.set_random_mesh(trigger_ids=[1130,1131,1132,1133,1134,1135,1136,1137], visible=False, start_delay=8, interval=100, fade=50) # 덩굴
-        self.set_mesh(trigger_ids=[1140], visible=False, start_delay=200, interval=0, fade=10) # 씨앗
-        self.set_mesh_animation(trigger_ids=[1140], visible=False, start_delay=0, interval=0) # 씨앗
+        self.set_mesh(trigger_ids=[3002,3003,3004], start_delay=500) # Invisible_Barrier
+        self.set_random_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108], start_delay=9, fade=50) # 덩굴
+        self.set_random_mesh(trigger_ids=[1110,1111,1112,1113,1114,1115,1116,1117,1118,1119], start_delay=10, interval=300, fade=50) # 덩굴
+        self.set_random_mesh(trigger_ids=[1120,1121,1122,1123,1124,1125,1126], start_delay=7, interval=200, fade=50) # 덩굴
+        self.set_random_mesh(trigger_ids=[1130,1131,1132,1133,1134,1135,1136,1137], start_delay=8, interval=100, fade=50) # 덩굴
+        self.set_mesh(trigger_ids=[1140], start_delay=200, fade=10.0) # 씨앗
+        self.set_mesh_animation(trigger_ids=[1140]) # 씨앗
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[102]):
@@ -142,13 +142,13 @@ class MobWaveStart(trigger_api.Trigger):
 
 class MobWaveDelayRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=60):
+        if self.random_condition(weight=60.0):
             # 기본 12초
             return MobWaveDelay01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             # 17초
             return MobWaveDelay02(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             # 7초
             return MobWaveDelay03(self.ctx)
         if self.user_value(key='MobWaveStop') >= 1:

@@ -5,9 +5,9 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=99990001, key='RandomBombEnd', value=0)
-        self.start_combine_spawn(group_id=[522], is_start=False)
-        self.start_combine_spawn(group_id=[523], is_start=False)
-        self.start_combine_spawn(group_id=[524], is_start=False)
+        self.start_combine_spawn(group_id=[522])
+        self.start_combine_spawn(group_id=[523])
+        self.start_combine_spawn(group_id=[524])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RandomBomb') >= 1:
@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
 
 class 포탑생성_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[152], auto_target=True) # 몬스터 등장
+        self.spawn_monster(spawn_ids=[152]) # 몬스터 등장
         self.start_combine_spawn(group_id=[524], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,9 +45,9 @@ class 포탑생성_3(trigger_api.Trigger):
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=99990001, key='RandomBombEnd', value=1)
-        self.start_combine_spawn(group_id=[522], is_start=False)
-        self.start_combine_spawn(group_id=[523], is_start=False)
-        self.start_combine_spawn(group_id=[524], is_start=False)
+        self.start_combine_spawn(group_id=[522])
+        self.start_combine_spawn(group_id=[523])
+        self.start_combine_spawn(group_id=[524])
 
 
 initial_state = 대기

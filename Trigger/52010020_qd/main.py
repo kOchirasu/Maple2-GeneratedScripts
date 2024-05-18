@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False)
+        self.set_effect(trigger_ids=[7001])
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=4)
         self.spawn_monster(spawn_ids=[101,102])
@@ -53,11 +53,11 @@ class Event_03(trigger_api.Trigger):
         self.move_user(map_id=52010020, portal_id=1, box_id=701)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
         self.spawn_monster(spawn_ids=[103])
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_2003')
         self.select_camera_path(path_ids=[8001,8002], return_view=False) # 사이드뷰 카메라
-        # self.select_camera(trigger_id=8001, enable=True)
+        # self.select_camera(trigger_id=8001)
         self.set_timer(timer_id='4', seconds=4)
 
     def on_tick(self) -> trigger_api.Trigger:

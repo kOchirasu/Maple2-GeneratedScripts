@@ -1,5 +1,6 @@
 """ trigger/02020111_bf/light_on.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 시작(trigger_api.Trigger):
@@ -18,8 +19,8 @@ class 대기(trigger_api.Trigger):
 
 class 라이트_변경(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[183,189,201])
-        self.set_directional_light(diffuse_color=[192,210,211], specular_color=[170,170,170])
+        self.set_ambient_light(primary=Vector3(183,189,201))
+        self.set_directional_light(diffuse_color=Vector3(192,210,211), specular_color=Vector3(170,170,170))
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Light_On_1') >= 1 and self.user_value(key='Light_On_2') >= 1 and self.user_value(key='Light_On_3') >= 1 and self.user_value(key='Light_On_4') >= 1:

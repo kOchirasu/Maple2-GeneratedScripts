@@ -15,63 +15,63 @@ class 대기(trigger_api.Trigger):
         self.set_agent(trigger_ids=[10007], visible=True) # 다리 길막기
         self.set_agent(trigger_ids=[10008], visible=True) # 다리 길막기
         self.set_agent(trigger_ids=[10009], visible=True) # 다리 길막기
-        self.set_effect(trigger_ids=[6000], visible=False) # 가이드 서머리 알림 사운드
-        self.set_effect(trigger_ids=[7000], visible=False) # 먼지
-        self.set_effect(trigger_ids=[7001], visible=False) # 먼지
-        self.set_effect(trigger_ids=[7002], visible=False) # 먼지
-        self.set_effect(trigger_ids=[7003], visible=False) # 먼지
-        self.set_effect(trigger_ids=[7004], visible=False) # 먼지
-        self.set_effect(trigger_ids=[7005], visible=False) # 먼지
-        self.set_effect(trigger_ids=[7006], visible=False) # 먼지
-        self.set_effect(trigger_ids=[7007], visible=False) # 먼지
-        self.set_effect(trigger_ids=[7010], visible=False) # 동굴 입구 흔들림
-        self.set_effect(trigger_ids=[7020], visible=False) # 동굴 입구 무너지는 소리
-        self.set_effect(trigger_ids=[7011], visible=False) # 다리 생길 때 흔들림
-        self.set_effect(trigger_ids=[7021], visible=False) # 다리 나타날 때 효과음
-        self.set_effect(trigger_ids=[7030], visible=False) # 레버 장치에서 들리는 소리
-        self.set_effect(trigger_ids=[7040], visible=False) # 전투 연출에서 룬 쉴드 이펙트 소리
-        self.set_effect(trigger_ids=[7050], visible=False) # 전투 연출에서 공격 스킬 이펙트 소리 NEW
-        self.set_skill(trigger_ids=[910], enable=False) # 입구 큐브 부수기 스킬
-        self.set_skill(trigger_ids=[911], enable=False) # 입구 큐브 부수기 스킬
-        self.set_skill(trigger_ids=[912], enable=False) # 입구 큐브 부수기 스킬
-        self.set_skill(trigger_ids=[913], enable=False) # 입구 큐브 부수기 스킬
-        self.set_skill(trigger_ids=[914], enable=False) # 입구 큐브 부수기 스킬
-        self.set_mesh(trigger_ids=[2000], visible=True, start_delay=0, interval=0, fade=0) # PCProtect barrier ON
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0) # invisible barrier ON
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # bridge barrier ON
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015], visible=False, start_delay=0, interval=0, fade=0) # Rock  Visible OFF
-        self.set_mesh(trigger_ids=[4020,4021,4022,4023,4024,4025,4026,4027], visible=False, start_delay=0, interval=0, fade=0) # Bridge  Visible OFF
+        self.set_effect(trigger_ids=[6000]) # 가이드 서머리 알림 사운드
+        self.set_effect(trigger_ids=[7000]) # 먼지
+        self.set_effect(trigger_ids=[7001]) # 먼지
+        self.set_effect(trigger_ids=[7002]) # 먼지
+        self.set_effect(trigger_ids=[7003]) # 먼지
+        self.set_effect(trigger_ids=[7004]) # 먼지
+        self.set_effect(trigger_ids=[7005]) # 먼지
+        self.set_effect(trigger_ids=[7006]) # 먼지
+        self.set_effect(trigger_ids=[7007]) # 먼지
+        self.set_effect(trigger_ids=[7010]) # 동굴 입구 흔들림
+        self.set_effect(trigger_ids=[7020]) # 동굴 입구 무너지는 소리
+        self.set_effect(trigger_ids=[7011]) # 다리 생길 때 흔들림
+        self.set_effect(trigger_ids=[7021]) # 다리 나타날 때 효과음
+        self.set_effect(trigger_ids=[7030]) # 레버 장치에서 들리는 소리
+        self.set_effect(trigger_ids=[7040]) # 전투 연출에서 룬 쉴드 이펙트 소리
+        self.set_effect(trigger_ids=[7050]) # 전투 연출에서 공격 스킬 이펙트 소리 NEW
+        self.set_skill(trigger_ids=[910]) # 입구 큐브 부수기 스킬
+        self.set_skill(trigger_ids=[911]) # 입구 큐브 부수기 스킬
+        self.set_skill(trigger_ids=[912]) # 입구 큐브 부수기 스킬
+        self.set_skill(trigger_ids=[913]) # 입구 큐브 부수기 스킬
+        self.set_skill(trigger_ids=[914]) # 입구 큐브 부수기 스킬
+        self.set_mesh(trigger_ids=[2000], visible=True) # PCProtect barrier ON
+        self.set_mesh(trigger_ids=[3000], visible=True) # invisible barrier ON
+        self.set_mesh(trigger_ids=[3001], visible=True) # bridge barrier ON
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015]) # Rock  Visible OFF
+        self.set_mesh(trigger_ids=[4020,4021,4022,4023,4024,4025,4026,4027]) # Bridge  Visible OFF
         self.set_interact_object(trigger_ids=[10000825], state=0) # 기관 작동 레버
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[8200], visible=False) # 이슈라 플레임 쉴드 이펙트
-        self.set_effect(trigger_ids=[8300], visible=False) # 홀슈타트 아이스 쉴드 이펙트
-        self.set_effect(trigger_ids=[8201], visible=False) # 이슈라 플레임 임팩트 이펙트
-        self.set_effect(trigger_ids=[8301], visible=False) # 홀슈타트 아이스 임팩트 이펙트
-        self.set_effect(trigger_ids=[8202], visible=False) # 이슈라 플레임 그라운드 이펙트
-        self.set_effect(trigger_ids=[8302], visible=False) # 홀슈타트 아이스 그라운드 이펙트
-        self.set_effect(trigger_ids=[8203], visible=False) # 이슈라 플레임 인피니티 이펙트
-        self.set_effect(trigger_ids=[8303], visible=False) # 홀슈타트 아이스 인피니티 이펙트
-        self.set_effect(trigger_ids=[8000], visible=False) # 싸울 때 흔들림
-        self.set_effect(trigger_ids=[6100], visible=False) # 척후병 시네마틱 음성 01 사운드
-        self.set_effect(trigger_ids=[6101], visible=False) # 척후병 시네마틱 음성 02 사운드
-        self.set_effect(trigger_ids=[6102], visible=False) # 척후병 시네마틱 음성 03 사운드
-        self.set_effect(trigger_ids=[6103], visible=False) # 척후병 시네마틱 음성 04 사운드
-        self.set_effect(trigger_ids=[6104], visible=False) # 척후병 시네마틱 음성 05 사운드
-        self.set_effect(trigger_ids=[6105], visible=False) # 척후병 시네마틱 음성 06 사운드
-        self.set_effect(trigger_ids=[6106], visible=False) # 척후병 시네마틱 음성 06 사운드
-        self.set_effect(trigger_ids=[6200], visible=False) # 이슈라 시네마틱 음성 01 사운드
-        self.set_effect(trigger_ids=[6201], visible=False) # 이슈라 시네마틱 음성 02 사운드
-        self.set_effect(trigger_ids=[6202], visible=False) # 이슈라 시네마틱 음성 03 사운드
-        self.set_effect(trigger_ids=[6203], visible=False) # 이슈라 시네마틱 음성 04 사운드
-        self.set_effect(trigger_ids=[6210], visible=False) # 홀슈타트 시네마틱 음성 01 사운드
-        self.set_effect(trigger_ids=[6211], visible=False) # 홀슈타트 시네마틱 음성 02 사운드
-        self.set_effect(trigger_ids=[6212], visible=False) # 홀슈타트 시네마틱 음성 03 사운드
-        self.set_effect(trigger_ids=[6300], visible=False) # 렌듀비앙 시네마틱 음성 01 사운드
-        self.set_effect(trigger_ids=[6301], visible=False) # 렌듀비앙 시네마틱 음성 02 사운드
-        self.set_effect(trigger_ids=[6302], visible=False) # 렌듀비앙 시네마틱 음성 03 사운드
-        self.set_effect(trigger_ids=[6400], visible=False) # 이슈라 시네마틱 음성 05 사운드
-        self.set_effect(trigger_ids=[6401], visible=False) # 이슈라 시네마틱 음성 06 사운드
-        self.set_effect(trigger_ids=[6402], visible=False) # 이슈라 시네마틱 음성 07 사운드
+        self.set_portal(portal_id=2)
+        self.set_effect(trigger_ids=[8200]) # 이슈라 플레임 쉴드 이펙트
+        self.set_effect(trigger_ids=[8300]) # 홀슈타트 아이스 쉴드 이펙트
+        self.set_effect(trigger_ids=[8201]) # 이슈라 플레임 임팩트 이펙트
+        self.set_effect(trigger_ids=[8301]) # 홀슈타트 아이스 임팩트 이펙트
+        self.set_effect(trigger_ids=[8202]) # 이슈라 플레임 그라운드 이펙트
+        self.set_effect(trigger_ids=[8302]) # 홀슈타트 아이스 그라운드 이펙트
+        self.set_effect(trigger_ids=[8203]) # 이슈라 플레임 인피니티 이펙트
+        self.set_effect(trigger_ids=[8303]) # 홀슈타트 아이스 인피니티 이펙트
+        self.set_effect(trigger_ids=[8000]) # 싸울 때 흔들림
+        self.set_effect(trigger_ids=[6100]) # 척후병 시네마틱 음성 01 사운드
+        self.set_effect(trigger_ids=[6101]) # 척후병 시네마틱 음성 02 사운드
+        self.set_effect(trigger_ids=[6102]) # 척후병 시네마틱 음성 03 사운드
+        self.set_effect(trigger_ids=[6103]) # 척후병 시네마틱 음성 04 사운드
+        self.set_effect(trigger_ids=[6104]) # 척후병 시네마틱 음성 05 사운드
+        self.set_effect(trigger_ids=[6105]) # 척후병 시네마틱 음성 06 사운드
+        self.set_effect(trigger_ids=[6106]) # 척후병 시네마틱 음성 06 사운드
+        self.set_effect(trigger_ids=[6200]) # 이슈라 시네마틱 음성 01 사운드
+        self.set_effect(trigger_ids=[6201]) # 이슈라 시네마틱 음성 02 사운드
+        self.set_effect(trigger_ids=[6202]) # 이슈라 시네마틱 음성 03 사운드
+        self.set_effect(trigger_ids=[6203]) # 이슈라 시네마틱 음성 04 사운드
+        self.set_effect(trigger_ids=[6210]) # 홀슈타트 시네마틱 음성 01 사운드
+        self.set_effect(trigger_ids=[6211]) # 홀슈타트 시네마틱 음성 02 사운드
+        self.set_effect(trigger_ids=[6212]) # 홀슈타트 시네마틱 음성 03 사운드
+        self.set_effect(trigger_ids=[6300]) # 렌듀비앙 시네마틱 음성 01 사운드
+        self.set_effect(trigger_ids=[6301]) # 렌듀비앙 시네마틱 음성 02 사운드
+        self.set_effect(trigger_ids=[6302]) # 렌듀비앙 시네마틱 음성 03 사운드
+        self.set_effect(trigger_ids=[6400]) # 이슈라 시네마틱 음성 05 사운드
+        self.set_effect(trigger_ids=[6401]) # 이슈라 시네마틱 음성 06 사운드
+        self.set_effect(trigger_ids=[6402]) # 이슈라 시네마틱 음성 07 사운드
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[90000417], quest_states=[1]):
@@ -90,7 +90,7 @@ class 딜레이01(trigger_api.Trigger):
 
 class 막힌길발견01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 딜레이02(self.ctx)
@@ -129,13 +129,13 @@ class 막힌길발견02(trigger_api.Trigger):
             return 척후병입장(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[2000], visible=False, start_delay=0, interval=0, fade=0) # PCProtect barrier ON
+        self.set_mesh(trigger_ids=[2000]) # PCProtect barrier ON
 
 
 class 척후병입장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=3)
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_1000')
         self.set_effect(trigger_ids=[6100], visible=True) # 척후병 시네마틱 음성 01 사운드
         self.set_dialogue(type=2, spawn_id=11001249, script='$52000016_QD__TUTORIAL04__0$', time=3)
@@ -159,13 +159,13 @@ class 돌치우기안내01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.remove_cinematic_talk()
-        self.set_effect(trigger_ids=[7010], visible=False) # 동굴 입구 흔들림
-        self.set_effect(trigger_ids=[7020], visible=False) # 동굴 입구 무너지는 소리
-        self.set_skill(trigger_ids=[910], enable=False) # 입구 큐브 부수기 스킬
-        self.set_skill(trigger_ids=[911], enable=False) # 입구 큐브 부수기 스킬
-        self.set_skill(trigger_ids=[912], enable=False) # 입구 큐브 부수기 스킬
-        self.set_skill(trigger_ids=[913], enable=False) # 입구 큐브 부수기 스킬
-        self.set_skill(trigger_ids=[914], enable=False) # 입구 큐브 부수기 스킬
+        self.set_effect(trigger_ids=[7010]) # 동굴 입구 흔들림
+        self.set_effect(trigger_ids=[7020]) # 동굴 입구 무너지는 소리
+        self.set_skill(trigger_ids=[910]) # 입구 큐브 부수기 스킬
+        self.set_skill(trigger_ids=[911]) # 입구 큐브 부수기 스킬
+        self.set_skill(trigger_ids=[912]) # 입구 큐브 부수기 스킬
+        self.set_skill(trigger_ids=[913]) # 입구 큐브 부수기 스킬
+        self.set_skill(trigger_ids=[914]) # 입구 큐브 부수기 스킬
 
 
 class 돌치우기안내03(trigger_api.Trigger):
@@ -208,8 +208,8 @@ class 척후병이동01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=10014020)
         self.spawn_monster(spawn_ids=[901,902,903,904,905,906,907], auto_target=False)
-        self.set_random_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015], visible=False, start_delay=16, interval=100, fade=80) # Rock Visible  OFF
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=0) # invisible barrier OFF
+        self.set_random_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015], start_delay=16, interval=100, fade=80) # Rock Visible  OFF
+        self.set_mesh(trigger_ids=[3000]) # invisible barrier OFF
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -229,13 +229,13 @@ class 척후병이동02(trigger_api.Trigger):
 class 척후병전투시작01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='9', seconds=1)
-        self.set_agent(trigger_ids=[10000], visible=False) # 입구 길막기
-        self.set_agent(trigger_ids=[10001], visible=False) # 입구 길막기
-        self.set_agent(trigger_ids=[10002], visible=False) # 입구 길막기
-        self.set_agent(trigger_ids=[10003], visible=False) # 입구 길막기
-        self.set_agent(trigger_ids=[10004], visible=False) # 입구 길막기
-        self.set_agent(trigger_ids=[10005], visible=False) # 입구 길막기
-        self.set_agent(trigger_ids=[10010], visible=False) # 입구 길막기
+        self.set_agent(trigger_ids=[10000]) # 입구 길막기
+        self.set_agent(trigger_ids=[10001]) # 입구 길막기
+        self.set_agent(trigger_ids=[10002]) # 입구 길막기
+        self.set_agent(trigger_ids=[10003]) # 입구 길막기
+        self.set_agent(trigger_ids=[10004]) # 입구 길막기
+        self.set_agent(trigger_ids=[10005]) # 입구 길막기
+        self.set_agent(trigger_ids=[10010]) # 입구 길막기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='9'):
@@ -300,7 +300,7 @@ class 연출준비01(trigger_api.Trigger):
         self.set_timer(timer_id='13', seconds=3)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
         self.set_dialogue(type=2, spawn_id=11001249, script='$52000016_QD__TUTORIAL04__7$', time=3)
         self.set_effect(trigger_ids=[6104], visible=True) # 척후병 시네마틱 음성 05 사운드
 
@@ -314,10 +314,10 @@ class 연출준비02(trigger_api.Trigger):
         self.set_timer(timer_id='14', seconds=2)
         self.set_dialogue(type=2, spawn_id=11001249, script='$52000016_QD__TUTORIAL04__8$', time=2)
         self.set_effect(trigger_ids=[6105], visible=True) # 척후병 시네마틱 음성 06 사운드
-        self.spawn_monster(spawn_ids=[201], auto_target=True) # 연출용 이슈라
-        self.spawn_monster(spawn_ids=[301], auto_target=True) # 연출용 홀슈타트
-        self.spawn_monster(spawn_ids=[210,211,212,213,214,215,216,217], auto_target=True) # 연출용 아군8
-        self.spawn_monster(spawn_ids=[310,311,312,313], auto_target=True) # 연출용 아군4
+        self.spawn_monster(spawn_ids=[201]) # 연출용 이슈라
+        self.spawn_monster(spawn_ids=[301]) # 연출용 홀슈타트
+        self.spawn_monster(spawn_ids=[210,211,212,213,214,215,216,217]) # 연출용 아군8
+        self.spawn_monster(spawn_ids=[310,311,312,313]) # 연출용 아군4
         # self.set_skip(state=연출시작01대기)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -350,7 +350,7 @@ class 대결연출01(trigger_api.Trigger):
         self.set_dialogue(type=2, spawn_id=11001244, script='$52000016_QD__TUTORIAL04__9$', time=3)
         self.set_effect(trigger_ids=[6200], visible=True) # 이슈라 시네마틱 음성 01 사운드
         self.destroy_monster(spawn_ids=[101]) # 전투용 척후병 삭제
-        self.spawn_monster(spawn_ids=[102], auto_target=True) # 연출용 척후병 생성
+        self.spawn_monster(spawn_ids=[102]) # 연출용 척후병 생성
         self.set_skip(state=대결연출02대기)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -370,7 +370,7 @@ class 대결연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='19', seconds=7)
         self.set_dialogue(type=2, spawn_id=11001231, script='$52000016_QD__TUTORIAL04__10$', time=6)
-        self.set_effect(trigger_ids=[6200], visible=False) # 이슈라 시네마틱 음성 01 사운드
+        self.set_effect(trigger_ids=[6200]) # 이슈라 시네마틱 음성 01 사운드
         self.set_effect(trigger_ids=[6210], visible=True) # 홀슈타트 시네마틱 음성 01 사운드
         self.set_skip(state=대결연출03대기)
 
@@ -391,7 +391,7 @@ class 대결연출03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='20', seconds=5)
         self.set_dialogue(type=2, spawn_id=11001244, script='$52000016_QD__TUTORIAL04__11$', time=4)
-        self.set_effect(trigger_ids=[6210], visible=False) # 홀슈타트 시네마틱 음성 01 사운드
+        self.set_effect(trigger_ids=[6210]) # 홀슈타트 시네마틱 음성 01 사운드
         self.set_effect(trigger_ids=[6201], visible=True) # 이슈라 시네마틱 음성 02 사운드
         self.set_skip(state=대결연출04대기)
 
@@ -412,7 +412,7 @@ class 대결연출04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='21', seconds=5)
         self.set_dialogue(type=2, spawn_id=11001231, script='$52000016_QD__TUTORIAL04__12$', time=5)
-        self.set_effect(trigger_ids=[6201], visible=False) # 이슈라 시네마틱 음성 02 사운드
+        self.set_effect(trigger_ids=[6201]) # 이슈라 시네마틱 음성 02 사운드
         self.set_effect(trigger_ids=[6211], visible=True) # 홀슈타트 시네마틱 음성 02 사운드
         self.set_skip(state=대결연출05대기)
 
@@ -433,7 +433,7 @@ class 대결연출05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='22', seconds=4)
         self.set_dialogue(type=2, spawn_id=11001244, script='$52000016_QD__TUTORIAL04__13$', time=3)
-        self.set_effect(trigger_ids=[6211], visible=False) # 홀슈타트 시네마틱 음성 02 사운드
+        self.set_effect(trigger_ids=[6211]) # 홀슈타트 시네마틱 음성 02 사운드
         self.set_effect(trigger_ids=[6202], visible=True) # 이슈라 시네마틱 음성 03 사운드
         self.set_skip(state=대결연출06대기)
 
@@ -454,7 +454,7 @@ class 대결연출06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='23', seconds=4)
         self.set_dialogue(type=2, spawn_id=11001231, script='$52000016_QD__TUTORIAL04__14$', time=3)
-        self.set_effect(trigger_ids=[6202], visible=False) # 이슈라 시네마틱 음성 03 사운드
+        self.set_effect(trigger_ids=[6202]) # 이슈라 시네마틱 음성 03 사운드
         self.set_effect(trigger_ids=[6212], visible=True) # 홀슈타트 시네마틱 음성 03 사운드
         self.set_skip(state=대결연출07대기)
 
@@ -475,7 +475,7 @@ class 대결연출07대기(trigger_api.Trigger):
 class 대결연출07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='24', seconds=1)
-        self.select_camera(trigger_id=606, enable=True)
+        self.select_camera(trigger_id=606)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='24'):
@@ -487,7 +487,7 @@ class 대결연출08(trigger_api.Trigger):
         self.set_timer(timer_id='25', seconds=1)
         self.set_effect(trigger_ids=[7050], visible=True) # 전투 연출에서 공격 스킬 이펙트 소리 NEW
         self.set_dialogue(type=2, spawn_id=11001244, script='$52000016_QD__TUTORIAL04__15$', time=2)
-        self.set_effect(trigger_ids=[6212], visible=False) # 홀슈타트 시네마틱 음성 03 사운드
+        self.set_effect(trigger_ids=[6212]) # 홀슈타트 시네마틱 음성 03 사운드
         self.set_effect(trigger_ids=[6203], visible=True) # 이슈라 시네마틱 음성 04 사운드
         self.set_effect(trigger_ids=[8200], visible=True) # 이슈라 플레임 쉴드 이펙트
         self.set_effect(trigger_ids=[8300], visible=True) # 홀슈타트 아이스 쉴드 이펙트
@@ -509,15 +509,15 @@ class 이펙트연출01(trigger_api.Trigger):
             return 이펙트연출02(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[8200], visible=False) # 이슈라 플레임 쉴드 이펙트
-        self.set_effect(trigger_ids=[8300], visible=False) # 홀슈타트 아이스 쉴드 이펙트
+        self.set_effect(trigger_ids=[8200]) # 이슈라 플레임 쉴드 이펙트
+        self.set_effect(trigger_ids=[8300]) # 홀슈타트 아이스 쉴드 이펙트
 
 
 class 이펙트연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='27', seconds=1)
-        self.set_effect(trigger_ids=[8201], visible=False) # 이슈라 플레임 임팩트 이펙트
-        self.set_effect(trigger_ids=[8301], visible=False) # 홀슈타트 아이스 임팩트 이펙트
+        self.set_effect(trigger_ids=[8201]) # 이슈라 플레임 임팩트 이펙트
+        self.set_effect(trigger_ids=[8301]) # 홀슈타트 아이스 임팩트 이펙트
         self.set_effect(trigger_ids=[8000], visible=True) # 싸울 때 흔들림
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_2100')
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_3100')
@@ -548,19 +548,19 @@ class 연출종료01(trigger_api.Trigger):
         self.select_camera(trigger_id=606, enable=False)
         self.select_camera(trigger_id=602, enable=False)
         self.select_camera(trigger_id=603, enable=False)
-        self.set_effect(trigger_ids=[8203], visible=False) # 이슈라 플레임 인피니티 이펙트
-        self.set_effect(trigger_ids=[8303], visible=False) # 홀슈타트 아이스 인피니티 이펙트
-        self.set_effect(trigger_ids=[8202], visible=False) # 이슈라 플레임 그라운드 이펙트
-        self.set_effect(trigger_ids=[8302], visible=False) # 홀슈타트 아이스 그라운드 이펙트
+        self.set_effect(trigger_ids=[8203]) # 이슈라 플레임 인피니티 이펙트
+        self.set_effect(trigger_ids=[8303]) # 홀슈타트 아이스 인피니티 이펙트
+        self.set_effect(trigger_ids=[8202]) # 이슈라 플레임 그라운드 이펙트
+        self.set_effect(trigger_ids=[8302]) # 홀슈타트 아이스 그라운드 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='30'):
             return 레버당기기01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[7040], visible=False) # 전투 연출에서 룬 쉴드 이펙트 소리
-        self.set_effect(trigger_ids=[7050], visible=False) # 전투 연출에서 공격 스킬 이펙트 소리 NEW
-        self.set_effect(trigger_ids=[8000], visible=False) # 싸울 때 흔들림
+        self.set_effect(trigger_ids=[7040]) # 전투 연출에서 룬 쉴드 이펙트 소리
+        self.set_effect(trigger_ids=[7050]) # 전투 연출에서 공격 스킬 이펙트 소리 NEW
+        self.set_effect(trigger_ids=[8000]) # 싸울 때 흔들림
 
 
 class 연출종료01_skip(trigger_api.Trigger):
@@ -569,24 +569,24 @@ class 연출종료01_skip(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[102]) # 연출용 척후병 삭제
         self.remove_cinematic_talk()
         self.set_timer(timer_id='30', seconds=1)
-        self.spawn_monster(spawn_ids=[102], auto_target=True) # 연출용 척후병 생성
+        self.spawn_monster(spawn_ids=[102]) # 연출용 척후병 생성
         self.set_cinematic_ui(type=4)
         self.select_camera(trigger_id=606, enable=False)
         self.select_camera(trigger_id=602, enable=False)
         self.select_camera(trigger_id=603, enable=False)
-        self.set_effect(trigger_ids=[8203], visible=False) # 이슈라 플레임 인피니티 이펙트
-        self.set_effect(trigger_ids=[8303], visible=False) # 홀슈타트 아이스 인피니티 이펙트
-        self.set_effect(trigger_ids=[8202], visible=False) # 이슈라 플레임 그라운드 이펙트
-        self.set_effect(trigger_ids=[8302], visible=False) # 홀슈타트 아이스 그라운드 이펙트
+        self.set_effect(trigger_ids=[8203]) # 이슈라 플레임 인피니티 이펙트
+        self.set_effect(trigger_ids=[8303]) # 홀슈타트 아이스 인피니티 이펙트
+        self.set_effect(trigger_ids=[8202]) # 이슈라 플레임 그라운드 이펙트
+        self.set_effect(trigger_ids=[8302]) # 홀슈타트 아이스 그라운드 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='30'):
             return 레버당기기01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[7040], visible=False) # 전투 연출에서 룬 쉴드 이펙트 소리
-        self.set_effect(trigger_ids=[7050], visible=False) # 전투 연출에서 공격 스킬 이펙트 소리 NEW
-        self.set_effect(trigger_ids=[8000], visible=False) # 싸울 때 흔들림
+        self.set_effect(trigger_ids=[7040]) # 전투 연출에서 룬 쉴드 이펙트 소리
+        self.set_effect(trigger_ids=[7050]) # 전투 연출에서 공격 스킬 이펙트 소리 NEW
+        self.set_effect(trigger_ids=[8000]) # 싸울 때 흔들림
 
 
 class 레버당기기01(trigger_api.Trigger):
@@ -595,7 +595,7 @@ class 레버당기기01(trigger_api.Trigger):
         self.set_cinematic_ui(type=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=605, enable=True)
+        self.select_camera(trigger_id=605)
         self.set_interact_object(trigger_ids=[10000825], state=1) # 기관 작동 레버
         self.set_effect(trigger_ids=[7030], visible=True) # 레버 장치에서 들리는 소리
 
@@ -627,8 +627,8 @@ class 다리만들기01(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[301]) # 연출용 홀슈타트
         self.destroy_monster(spawn_ids=[210,211,212,213,214,215,216,217]) # 연출용 아군8
         self.destroy_monster(spawn_ids=[310,311,312,313]) # 연출용 아군4
-        self.spawn_monster(spawn_ids=[220,221,222,223,224,225,226,227], auto_target=True) # 쓰러진 연출용 아군4
-        self.set_effect(trigger_ids=[7030], visible=False) # 레버 장치에서 들리는 소리
+        self.spawn_monster(spawn_ids=[220,221,222,223,224,225,226,227]) # 쓰러진 연출용 아군4
+        self.set_effect(trigger_ids=[7030]) # 레버 장치에서 들리는 소리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000825], state=0):
@@ -645,14 +645,14 @@ class 다리만들기02(trigger_api.Trigger):
         self.set_random_mesh(trigger_ids=[4020,4021,4022,4023,4024,4025,4026,4027], visible=True, start_delay=8, interval=120, fade=120) # Bridge Visible  ON
         self.set_effect(trigger_ids=[7011], visible=True) # 다리 생길 때 흔들림
         self.set_effect(trigger_ids=[7021], visible=True) # 다리 나타날 때 효과음
-        self.set_agent(trigger_ids=[10006], visible=False) # 다리 길막기
-        self.set_agent(trigger_ids=[10007], visible=False) # 다리 길막기
-        self.set_agent(trigger_ids=[10008], visible=False) # 다리 길막기
-        self.set_agent(trigger_ids=[10009], visible=False) # 다리 길막기
+        self.set_agent(trigger_ids=[10006]) # 다리 길막기
+        self.set_agent(trigger_ids=[10007]) # 다리 길막기
+        self.set_agent(trigger_ids=[10008]) # 다리 길막기
+        self.set_agent(trigger_ids=[10009]) # 다리 길막기
         self.set_effect(trigger_ids=[6000], visible=True) # 가이드 서머리 알림 사운드
         self.show_guide_summary(entity_id=10014032, text_id=10014032) # 가이드 : 다리 건너가기
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_2000')
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # bridge barrier OFF
+        self.set_mesh(trigger_ids=[3001]) # bridge barrier OFF
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='40'):
@@ -692,9 +692,9 @@ class 마무리연출01(trigger_api.Trigger):
         self.set_timer(timer_id='42', seconds=1)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=604, enable=True)
+        self.select_camera(trigger_id=604)
         self.set_scene_skip(state=마무리연출08, action='nextState')
-        self.spawn_monster(spawn_ids=[401], auto_target=True)
+        self.spawn_monster(spawn_ids=[401])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='42'):
@@ -734,7 +734,7 @@ class 마무리연출04대기(trigger_api.Trigger):
 class 마무리연출04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='45', seconds=5)
-        self.set_effect(trigger_ids=[6300], visible=False) # 렌듀비앙 시네마틱 음성 01 사운드
+        self.set_effect(trigger_ids=[6300]) # 렌듀비앙 시네마틱 음성 01 사운드
         self.set_dialogue(type=2, spawn_id=11001244, script='$52000016_QD__TUTORIAL04__18$', time=4)
         self.set_effect(trigger_ids=[6400], visible=True) # 이슈라 시네마틱 음성 05 사운드
         self.set_skip(state=마무리연출05대기)
@@ -755,7 +755,7 @@ class 마무리연출05대기(trigger_api.Trigger):
 class 마무리연출05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='46', seconds=5)
-        self.set_effect(trigger_ids=[6400], visible=False) # 이슈라 시네마틱 음성 05 사운드
+        self.set_effect(trigger_ids=[6400]) # 이슈라 시네마틱 음성 05 사운드
         self.set_dialogue(type=2, spawn_id=11001230, script='$52000016_QD__TUTORIAL04__19$', time=4)
         self.set_effect(trigger_ids=[6301], visible=True) # 렌듀비앙 시네마틱 음성 02 사운드
         self.set_skip(state=마무리연출06대기)
@@ -776,7 +776,7 @@ class 마무리연출06대기(trigger_api.Trigger):
 class 마무리연출06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='47', seconds=5)
-        self.set_effect(trigger_ids=[6301], visible=False) # 렌듀비앙 시네마틱 음성 02 사운드
+        self.set_effect(trigger_ids=[6301]) # 렌듀비앙 시네마틱 음성 02 사운드
         self.set_dialogue(type=2, spawn_id=11001244, script='$52000016_QD__TUTORIAL04__20$', time=4)
         self.set_effect(trigger_ids=[6401], visible=True) # 이슈라 시네마틱 음성 06 사운드
         self.set_scene_skip() # Missing State: State
@@ -797,7 +797,7 @@ class 마무리연출07대기(trigger_api.Trigger):
 class 마무리연출07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='48', seconds=5)
-        self.set_effect(trigger_ids=[6401], visible=False) # 이슈라 시네마틱 음성 06 사운드
+        self.set_effect(trigger_ids=[6401]) # 이슈라 시네마틱 음성 06 사운드
         self.set_dialogue(type=2, spawn_id=11001230, script='$52000016_QD__TUTORIAL04__21$', time=4)
         self.set_effect(trigger_ids=[6302], visible=True) # 렌듀비앙 시네마틱 음성 03 사운드
         self.set_skip(state=마무리연출08대기)
@@ -830,7 +830,7 @@ class 마무리연출09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='49', seconds=5)
         self.destroy_monster(spawn_ids=[102,401])
-        self.set_effect(trigger_ids=[6302], visible=False) # 렌듀비앙 시네마틱 음성 03 사운드
+        self.set_effect(trigger_ids=[6302]) # 렌듀비앙 시네마틱 음성 03 사운드
         self.set_dialogue(type=2, spawn_id=11001244, script='$52000016_QD__TUTORIAL04__22$', time=3)
         self.set_effect(trigger_ids=[6402], visible=True) # 이슈라 시네마틱 음성 07 사운드
         self.set_skip(state=퇴장준비01대기)
@@ -860,7 +860,7 @@ class 퇴장준비01(trigger_api.Trigger):
             return 퇴장준비02(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[6402], visible=False) # 이슈라 시네마틱 음성 07 사운드
+        self.set_effect(trigger_ids=[6402]) # 이슈라 시네마틱 음성 07 사운드
         self.set_achievement(trigger_id=9040, type='trigger', achieve='complete_tombmission')
 
 

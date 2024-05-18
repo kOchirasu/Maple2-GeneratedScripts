@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4000], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[4000], visible=False)
+        self.set_breakable(trigger_ids=[4000])
+        self.set_visible_breakable_object(trigger_ids=[4000])
         self.spawn_monster(spawn_ids=[1101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

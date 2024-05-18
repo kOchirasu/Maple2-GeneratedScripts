@@ -11,19 +11,19 @@ class 대기(trigger_api.Trigger):
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='0,0')
-        self.select_camera(trigger_id=344, enable=True)
+        self.select_camera(trigger_id=344)
         # self.set_event_ui(type=5, arg2='게임 오버', arg3='2000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
             self.play_system_sound_in_box(sound='System_Ending_Popup_01')
-            self.arcade_spring_farm(type='EndGame')
+            self.arcade_spring_farm_end_game()
             return 진짜끝(self.ctx)
 
 
 class 진짜끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='10', seconds=10, start_delay=0, interval=1, v_offset=-30, type='TR')
+        self.set_timer(timer_id='10', seconds=10, interval=1, v_offset=-30, type='TR')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):
@@ -32,7 +32,7 @@ class 진짜끝(trigger_api.Trigger):
 
 class 퇴장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=0)
+        self.move_user()
 
 
 initial_state = 대기

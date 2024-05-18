@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[604])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000413], state=0):

@@ -4,9 +4,9 @@ import trigger_api
 
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False) # DoorOpen
-        self.set_effect(trigger_ids=[5002], visible=False) # DoorOpen
-        self.set_effect(trigger_ids=[5003], visible=False) # DoorOpen
+        self.set_effect(trigger_ids=[5001]) # DoorOpen
+        self.set_effect(trigger_ids=[5002]) # DoorOpen
+        self.set_effect(trigger_ids=[5003]) # DoorOpen
         self.set_actor(trigger_id=4001, visible=True, initial_sequence='Closed')
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='Closed')
         self.set_actor(trigger_id=4003, visible=True, initial_sequence='Closed')
@@ -41,7 +41,7 @@ class MobAttackDelay(trigger_api.Trigger):
 
 class MobAttack01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000,8001], visible=False)
+        self.set_agent(trigger_ids=[8000,8001])
         self.set_actor(trigger_id=4001, visible=True, initial_sequence='Opened')
         self.set_effect(trigger_ids=[5001], visible=True) # DoorOpen
 
@@ -52,7 +52,7 @@ class MobAttack01(trigger_api.Trigger):
 
 class MobAttack02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8002,8003], visible=False)
+        self.set_agent(trigger_ids=[8002,8003])
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='Opened')
         self.set_effect(trigger_ids=[5002], visible=True) # DoorOpen
 
@@ -63,7 +63,7 @@ class MobAttack02(trigger_api.Trigger):
 
 class MobAttack03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8004,8005], visible=False)
+        self.set_agent(trigger_ids=[8004,8005])
         self.set_actor(trigger_id=4003, visible=True, initial_sequence='Opened')
         self.set_effect(trigger_ids=[5003], visible=True) # DoorOpen
 

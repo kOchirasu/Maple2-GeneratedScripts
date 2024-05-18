@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[6000], enable=False)
+        self.set_breakable(trigger_ids=[6000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9600]):

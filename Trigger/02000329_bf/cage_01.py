@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6801], visible=False)
+        self.set_effect(trigger_ids=[6801])
         self.set_actor(trigger_id=201, visible=True, initial_sequence='Closed')
         self.spawn_monster(spawn_ids=[1001,1101], auto_target=False)
 
@@ -17,8 +17,8 @@ class 닭생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=201, visible=True, initial_sequence='Opened')
         self.set_timer(timer_id='1', seconds=1)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[6601], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[6601])
         self.set_effect(trigger_ids=[6801], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -1,5 +1,6 @@
 """ trigger/52000124_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class idle(trigger_api.Trigger):
@@ -17,7 +18,7 @@ class ready(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
         self.destroy_monster(spawn_ids=[201])
-        self.spawn_monster(spawn_ids=[202], auto_target=True) # 연출용 카트반 (11003195)
+        self.spawn_monster(spawn_ids=[202]) # 연출용 카트반 (11003195)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -48,7 +49,7 @@ class scene_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4001,4002], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=202, sequence_name='Talk_A')
-        self.add_cinematic_talk(npc_id=11003195, msg='$52000124_QD__MAIN__0$', duration=2000, align='right')
+        self.add_cinematic_talk(npc_id=11003195, msg='$52000124_QD__MAIN__0$', duration=2000, align=Align.Right)
         self.set_scene_skip(state=scene_07, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +60,7 @@ class scene_01(trigger_api.Trigger):
 class scene_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=202, sequence_name='Talk_A')
-        self.add_cinematic_talk(npc_id=11003195, msg='$52000124_QD__MAIN__1$', duration=2000, align='right')
+        self.add_cinematic_talk(npc_id=11003195, msg='$52000124_QD__MAIN__1$', duration=2000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -69,7 +70,7 @@ class scene_02(trigger_api.Trigger):
 class scene_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4003], return_view=False)
-        self.add_cinematic_talk(npc_id=11000069, msg='$52000124_QD__MAIN__2$', duration=2000, align='left')
+        self.add_cinematic_talk(npc_id=11000069, msg='$52000124_QD__MAIN__2$', duration=2000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -80,7 +81,7 @@ class scene_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4004], return_view=False)
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_3001')
-        self.add_cinematic_talk(npc_id=11003195, msg='$52000124_QD__MAIN__3$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003195, msg='$52000124_QD__MAIN__3$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -90,8 +91,8 @@ class scene_04(trigger_api.Trigger):
 class scene_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4005], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_down_A', duration=1E+12)
-        self.add_cinematic_talk(npc_id=11000069, msg='$52000124_QD__MAIN__4$', duration=3000, align='right')
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_down_A', duration=1000000000000.0)
+        self.add_cinematic_talk(npc_id=11000069, msg='$52000124_QD__MAIN__4$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -101,7 +102,7 @@ class scene_05(trigger_api.Trigger):
 class scene_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4003], return_view=False)
-        self.add_cinematic_talk(npc_id=11003195, msg='$52000124_QD__MAIN__5$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003195, msg='$52000124_QD__MAIN__5$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -120,10 +121,10 @@ class scene_07(trigger_api.Trigger):
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True) # 카트반(11003196)
+        self.spawn_monster(spawn_ids=[201]) # 카트반(11003196)
         self.destroy_monster(spawn_ids=[202]) # 연출용 카트반(11003195)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=1)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera(interpolation_time=1.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -134,7 +135,7 @@ class end(trigger_api.Trigger):
 
 class warptalk(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=201, msg='$52000124_QD__MAIN__6$', duration=2000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=201, msg='$52000124_QD__MAIN__6$', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

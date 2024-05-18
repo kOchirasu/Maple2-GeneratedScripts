@@ -12,7 +12,7 @@ class 초기화(trigger_api.Trigger):
 
 class 시작_타이머설정(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='4000', seconds=2100, start_delay=1, interval=0) # 시간 내 입장 안 하면 취소
+        self.set_timer(timer_id='4000', seconds=2100, start_delay=1) # 시간 내 입장 안 하면 취소
 
     def on_tick(self) -> trigger_api.Trigger:
         return 위치세팅(self.ctx)
@@ -117,7 +117,7 @@ class 강퇴안내(trigger_api.Trigger):
 class 강퇴(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=28400132)
-        self.move_user(map_id=0, portal_id=0)
+        self.move_user()
 
 
 class 결혼식연출진행중(trigger_api.Trigger):

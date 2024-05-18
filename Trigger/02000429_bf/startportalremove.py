@@ -45,7 +45,7 @@ class 시작지점포탈_제거알림메시지생성(trigger_api.Trigger):
 class 시작지점포탈제거_실행(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 최초 스타팅 포인트 지점에 배치된 메인 전투판으로 들어서기 위한 포탈을 비활성화 상태로 만들기,   arg1="3" 은 포탈ID
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

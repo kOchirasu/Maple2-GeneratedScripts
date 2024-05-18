@@ -7,7 +7,7 @@ class 입장(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198], visible=True) # 뒷문준비 / 막힌 상태
         # 101-4: 용병 우르자들 / 105:연출용 핑크빈
         self.spawn_monster(spawn_ids=[101,102,103,104,105], auto_target=False)
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False) # 출구포털준비 / 꺼놓은 상태
+        self.set_portal(portal_id=1) # 출구포털준비 / 꺼놓은 상태
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -50,7 +50,7 @@ class 문열기00(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 가이드 텍스트 ON : 문이 열렸어요. 출구에 있는 초록 코인을 주운 후 이동하세요.
         self.show_guide_summary(entity_id=2, text_id=26300735, duration=10000)
-        self.set_mesh(trigger_ids=[198], visible=False) # 뒷문 / 열기
+        self.set_mesh(trigger_ids=[198]) # 뒷문 / 열기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=800):
@@ -59,7 +59,7 @@ class 문열기00(trigger_api.Trigger):
 
 class 문열기01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[180,182,184], visible=False) # 뒷문 / 열기
+        self.set_mesh(trigger_ids=[180,182,184]) # 뒷문 / 열기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=800):
@@ -68,7 +68,7 @@ class 문열기01(trigger_api.Trigger):
 
 class 문열기02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[181,183,185], visible=False) # 뒷문 / 열기
+        self.set_mesh(trigger_ids=[181,183,185]) # 뒷문 / 열기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=800):
@@ -77,7 +77,7 @@ class 문열기02(trigger_api.Trigger):
 
 class 문열기03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[186,188,190], visible=False) # 뒷문 / 열기
+        self.set_mesh(trigger_ids=[186,188,190]) # 뒷문 / 열기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=800):
@@ -86,7 +86,7 @@ class 문열기03(trigger_api.Trigger):
 
 class 문열기04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[187,189,191], visible=False) # 뒷문 / 열기
+        self.set_mesh(trigger_ids=[187,189,191]) # 뒷문 / 열기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=800):
@@ -95,7 +95,7 @@ class 문열기04(trigger_api.Trigger):
 
 class 문열기05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[192,194,196], visible=False) # 뒷문 / 열기
+        self.set_mesh(trigger_ids=[192,194,196]) # 뒷문 / 열기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=800):
@@ -104,7 +104,7 @@ class 문열기05(trigger_api.Trigger):
 
 class 문열기06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[193,195,197], visible=False) # 뒷문 / 열기
+        self.set_mesh(trigger_ids=[193,195,197]) # 뒷문 / 열기
         self.destroy_monster(spawn_ids=[105]) # 핑크빈 소멸
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8903], visible=False) # 가이드 화살표
+        self.set_effect(trigger_ids=[8903]) # 가이드 화살표
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=909) >= 1:
@@ -25,7 +25,7 @@ class start(trigger_api.Trigger):
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=20002526)
-        self.set_effect(trigger_ids=[8903], visible=False) # 가이드 화살표
+        self.set_effect(trigger_ids=[8903]) # 가이드 화살표
 
 
 initial_state = idle

@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 class CheckUser04_GuildRaid(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=30, start_delay=1, interval=0, v_offset=0) # 최대 30초 대기
+        self.set_timer(timer_id='1', seconds=30, start_delay=1) # 최대 30초 대기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=701) >= 4:
@@ -47,7 +47,7 @@ class MaxCount04_Start(trigger_api.Trigger):
 
 class DungeonStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=904, enable=True)
+        self.select_camera(trigger_id=904)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -57,10 +57,10 @@ class DungeonStart(trigger_api.Trigger):
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=2038801, key='start', value=1)
-        self.set_effect(trigger_ids=[70001], visible=False)
-        self.set_effect(trigger_ids=[70002], visible=False)
-        self.set_effect(trigger_ids=[70003], visible=False)
-        self.set_mesh(trigger_ids=[80000], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[70001])
+        self.set_effect(trigger_ids=[70002])
+        self.set_effect(trigger_ids=[70003])
+        self.set_mesh(trigger_ids=[80000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -84,7 +84,7 @@ class 카운트(trigger_api.Trigger):
 
 class 차단(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
         self.set_effect(trigger_ids=[70001], visible=True)
         self.set_effect(trigger_ids=[70002], visible=True)
         self.set_effect(trigger_ids=[70003], visible=True)

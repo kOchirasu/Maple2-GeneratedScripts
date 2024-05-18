@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032])
         # 1셋트 전투 끝나야 나오는 순간이동 맵 내부 포탈 최초에 감추기
-        self.set_portal(portal_id=8, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=8)
         # 1셋트 전투 끝나야 나오는 순간이동 맵 내부 포탈 최초에 감추기
-        self.set_portal(portal_id=9, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=9)
         # 1셋트 전투 끝나서 2셋트 전투판으로 이동하는 순간이동 맵 내부 포탈 최초에 감추기
-        self.set_portal(portal_id=12, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=12)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[600]):

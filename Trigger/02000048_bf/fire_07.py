@@ -5,8 +5,8 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000312], state=1)
-        self.set_mesh(trigger_ids=[207], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[307], visible=False)
+        self.set_mesh(trigger_ids=[207])
+        self.set_effect(trigger_ids=[307])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000312], state=0):
@@ -18,7 +18,7 @@ class 오브젝트반응(trigger_api.Trigger):
         return NPC이동(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[207], visible=True, start_delay=0, interval=0, fade=1)
+        self.set_mesh(trigger_ids=[207], visible=True, fade=1.0)
         self.set_effect(trigger_ids=[307], visible=True)
         self.spawn_monster(spawn_ids=[407], auto_target=False)
 

@@ -16,11 +16,11 @@ class 시작(trigger_api.Trigger):
         self.set_actor(trigger_id=206, visible=True, initial_sequence='Closed')
         self.set_actor(trigger_id=207, visible=True, initial_sequence='Closed')
         self.set_actor(trigger_id=208, visible=True, initial_sequence='Closed')
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3002], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3003], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3004], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3001], visible=True)
+        self.set_mesh(trigger_ids=[3002], visible=True)
+        self.set_mesh(trigger_ids=[3003], visible=True)
+        self.set_mesh(trigger_ids=[3004], visible=True)
+        self.set_portal(portal_id=2)
         self.set_agent(trigger_ids=[9001], visible=True)
         self.set_agent(trigger_ids=[9002], visible=True)
         self.set_agent(trigger_ids=[9003], visible=True)
@@ -48,7 +48,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 연출시작(trigger_api.Trigger):
 
 class 오스칼01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[302], return_view=True)
+        self.select_camera_path(path_ids=[302])
         self.set_timer(timer_id='5', seconds=5)
         self.set_dialogue(type=2, spawn_id=11000015, script='$52000011_QD__MAIN__0$', time=4)
 
@@ -101,7 +101,7 @@ class NPC교체(trigger_api.Trigger):
 class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=201, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3001])
         self.move_npc(spawn_id=2002, patrol_name='MS2PatrolData_2001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -136,11 +136,11 @@ class 몬스터생성02(trigger_api.Trigger):
 
 class 문열림02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[9001], visible=False)
-        self.set_agent(trigger_ids=[9002], visible=False)
-        self.set_breakable(trigger_ids=[7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023,7024,7025,7026,7027,7028,7029,7030,7031,7032,7033,7034,7035,7036,7037,7038,7039,7040,7041], enable=False)
+        self.set_agent(trigger_ids=[9001])
+        self.set_agent(trigger_ids=[9002])
+        self.set_breakable(trigger_ids=[7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023,7024,7025,7026,7027,7028,7029,7030,7031,7032,7033,7034,7035,7036,7037,7038,7039,7040,7041])
         self.set_actor(trigger_id=203, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3002])
         self.move_npc(spawn_id=2002, patrol_name='MS2PatrolData_2002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -175,11 +175,11 @@ class 몬스터생성04(trigger_api.Trigger):
 
 class 문열림03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[9003], visible=False)
-        self.set_agent(trigger_ids=[9004], visible=False)
-        self.set_breakable(trigger_ids=[7101,7102,7103,7104,7105,7106,7107,7108,7109,7110,7111,7112,7113,7114,7115,7116,7117,7118,7119,7120,7121,7122,7123,7124,7125,7126,7127,7128,7129,7130,7131,7132,7133,7134,7135,7136,7137,7138,7139,7140,7141,7142,7143,7144,7145,7146,7147,7148,7149,7150,7151,7152,7153,7154,7155,7156,7157,7158,7159,7160,7161,7162,7163,7164,7165,7166,7167,7168,7169,7170], enable=False)
+        self.set_agent(trigger_ids=[9003])
+        self.set_agent(trigger_ids=[9004])
+        self.set_breakable(trigger_ids=[7101,7102,7103,7104,7105,7106,7107,7108,7109,7110,7111,7112,7113,7114,7115,7116,7117,7118,7119,7120,7121,7122,7123,7124,7125,7126,7127,7128,7129,7130,7131,7132,7133,7134,7135,7136,7137,7138,7139,7140,7141,7142,7143,7144,7145,7146,7147,7148,7149,7150,7151,7152,7153,7154,7155,7156,7157,7158,7159,7160,7161,7162,7163,7164,7165,7166,7167,7168,7169,7170])
         self.set_actor(trigger_id=205, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3003])
         self.move_npc(spawn_id=2002, patrol_name='MS2PatrolData_2003')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -214,11 +214,11 @@ class 몬스터생성06(trigger_api.Trigger):
 
 class 문열림04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[9005], visible=False)
-        self.set_agent(trigger_ids=[9006], visible=False)
-        self.set_breakable(trigger_ids=[7201,7202,7203,7204,7205,7206,7207,7208,7209,7210,7211,7212,7213,7214,7215,7216,7217,7218,7219,7220,7221,7222,7223,7224,7225,7226,7227,7228,7229,7230,7231,7232,7233,7234,7235,7236,7237,7238,7239,7240,7241,7242,7243,7244,7245,7246,7247,7248,7249,7250,7251,7252,7253,7254,7255,7256,7257,7258,7259,7260,7261,7262,7263,7264,7265,7266,7267,7268,7269,7270], enable=False)
+        self.set_agent(trigger_ids=[9005])
+        self.set_agent(trigger_ids=[9006])
+        self.set_breakable(trigger_ids=[7201,7202,7203,7204,7205,7206,7207,7208,7209,7210,7211,7212,7213,7214,7215,7216,7217,7218,7219,7220,7221,7222,7223,7224,7225,7226,7227,7228,7229,7230,7231,7232,7233,7234,7235,7236,7237,7238,7239,7240,7241,7242,7243,7244,7245,7246,7247,7248,7249,7250,7251,7252,7253,7254,7255,7256,7257,7258,7259,7260,7261,7262,7263,7264,7265,7266,7267,7268,7269,7270])
         self.set_actor(trigger_id=207, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3004], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3004])
         self.move_npc(spawn_id=2002, patrol_name='MS2PatrolData_2004')
 
     def on_tick(self) -> trigger_api.Trigger:

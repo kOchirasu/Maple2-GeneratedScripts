@@ -4,12 +4,12 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[900001], visible=False) # Sound EFfect Off
-        self.set_effect(trigger_ids=[900002], visible=False) # Sound EFfect Off
-        self.set_effect(trigger_ids=[900003], visible=False) # Sound EFfect Off
-        self.set_effect(trigger_ids=[900004], visible=False) # Sound EFfect Off
-        self.set_effect(trigger_ids=[900005], visible=False) # Sound EFfect Off
+        self.set_portal(portal_id=11)
+        self.set_effect(trigger_ids=[900001]) # Sound EFfect Off
+        self.set_effect(trigger_ids=[900002]) # Sound EFfect Off
+        self.set_effect(trigger_ids=[900003]) # Sound EFfect Off
+        self.set_effect(trigger_ids=[900004]) # Sound EFfect Off
+        self.set_effect(trigger_ids=[900005]) # Sound EFfect Off
         self.set_interact_object(trigger_ids=[10000822], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,8 +82,8 @@ class 관문_03_시작(trigger_api.Trigger):
 
 class 관문_03_개방(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6004], visible=False, interval=0, fade=10) # 벽 해제
-        self.set_mesh(trigger_ids=[6007], visible=True, interval=0, fade=10) # 화살표 표시
+        self.set_mesh(trigger_ids=[6004], fade=10.0) # 벽 해제
+        self.set_mesh(trigger_ids=[6007], visible=True, fade=10.0) # 화살표 표시
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entity_id=112, text_id=40009) # 포탈을 타세요
         self.set_portal(portal_id=11, visible=True, enable=True, minimap_visible=True)

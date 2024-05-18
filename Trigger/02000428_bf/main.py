@@ -7,11 +7,11 @@ class Ready(trigger_api.Trigger):
         # 맨 오른쪽 지점에서 대포 배치하기 위한 오프젝트 생성하기 , TriggerObjectID: 6010, 6011
         self.set_mesh(trigger_ids=[6010,6011], visible=True, start_delay=1, interval=1)
         # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기
-        self.set_mesh(trigger_ids=[6000,6001,6002,6003], visible=False)
+        self.set_mesh(trigger_ids=[6000,6001,6002,6003])
         # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기
-        self.set_mesh(trigger_ids=[6004,6005], visible=False)
+        self.set_mesh(trigger_ids=[6004,6005])
         # 던전 나가기 위한 포탈 초기화 설정,   arg1="1" 은 포탈ID, 메인 전투판에 있는 포탈, 참고로 스타팅 포인트에 있는 나가가 포탈인 arg1="1" 은 활성화 상태로 배치함
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=750) >= 1:
@@ -22,7 +22,7 @@ class Ready(trigger_api.Trigger):
 class 전투시작_인페르녹전함(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 인페르녹 전함 스폰하기, 스폰ID : 101
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -45,7 +45,7 @@ class 첫번째페이즈_인페르녹전함(trigger_api.Trigger):
 class 두번째페이즈_인페르녹전함(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 맨 오른쪽 건너편 막힌 벽 제거하기 ,    오른쪽 지점 대포 배치하기 위한 오프젝트는 TriggerObjectID: 6010, 6011  이거 제거해야 전투가 쾌적함
-        self.set_mesh(trigger_ids=[6010,6011,6012,6013,6014,6015,6016], visible=False, start_delay=0, interval=0, fade=0.5)
+        self.set_mesh(trigger_ids=[6010,6011,6012,6013,6014,6015,6016], fade=0.5)
         # <action feature="DungeonRankBalance_01" name="DungeonMissionComplete" missionID="24090007"/> ## 한국용 던전랭크 코드: 인페르녹의 전함 측면파괴 던전랭크 달성을 위한 신호
         # <action feature="DungeonRankBalance_02" name="DungeonMissionComplete" missionID="24090017"/> ## 중국용 던전랭크 코드: 인페르녹의 전함 측면파괴 던전랭크 달성을 위한 신호
 
@@ -64,7 +64,7 @@ class 두번째페이즈_인페르녹전함(trigger_api.Trigger):
 class 세번째페이즈_인페르녹등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 인페르녹 보스 스폰하기, 스폰ID : 102
-        self.spawn_monster(spawn_ids=[102], auto_target=True)
+        self.spawn_monster(spawn_ids=[102])
         self.set_sound(trigger_id=8410, enable=True) # 보스 등장하면 보스용 BGM으로 교체하기
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -162,7 +162,7 @@ class 성공연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 다섯번째팝업영상출력
         # duration="0" 은 영상 끝날때까지 계속 출력
-        self.side_npc_talk(type='movie', usm='Common/WorldInvasionScene5.usm', duration=0)
+        self.side_npc_movie(usm='Common/WorldInvasionScene5.usm', duration=0)
         self.side_npc_talk(npc_id=11003536, illust='Bliche_nomal', duration=8000, script='$02000410_BF__ClearCheck__3$', voice='ko/Npc/00002177')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -197,7 +197,7 @@ class 최종성공처리(trigger_api.Trigger):
         # 던전성공처리
         # 대포하고 12시 방향의 파괴 직전의 인페르녹 전함 제거함
         self.destroy_monster(spawn_ids=[-1])
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         # arg3="ClearBalrogMagicBurster" 는 achieve.xlsx 의 코드 21230095 던전 클리어 조건 트로피 설정에 넣는 데이터임
         self.set_achievement(trigger_id=750, type='trigger', achieve='ClearBalrogMagicBurster')
         # arg1="750"는 MS2TriggerBox   TriggerObjectID = 750  이것으로 02000410 맵에 트리거 박스가 2개 있는데(700, 750)  750이 안전부활 장소까지 포함되는 범위라서 이거 사용함
@@ -212,7 +212,7 @@ class 최종성공처리(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 initial_state = Ready

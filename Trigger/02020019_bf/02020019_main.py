@@ -1,11 +1,12 @@
 """ trigger/02020019_bf/02020019_main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 입장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
         self.move_user(map_id=2020019, portal_id=1)
         self.set_user_value(trigger_id=99990002, key='battlesetting', value=0)
         self.set_user_value(trigger_id=99990004, key='Timer', value=0)
@@ -33,7 +34,7 @@ class 카메라_시작(trigger_api.Trigger):
 class 카메라_캡션(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[501,502], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$02020019_BF__02020019_main__3$', desc='$02020019_BF__02020019_main__4$', align='centerLeft', offset_rate_x=0, offset_rate_y=0, duration=4000, scale=2)
+        self.show_caption(type='VerticalCaption', title='$02020019_BF__02020019_main__3$', desc='$02020019_BF__02020019_main__4$', align=Align.Center | Align.Left, duration=4000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -42,9 +43,9 @@ class 카메라_캡션(trigger_api.Trigger):
 
 class 카메라_네이린설명1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=503, enable=True)
-        self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__0$', duration=4000, align='left')
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=6300)
+        self.select_camera(trigger_id=503)
+        self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__0$', duration=4000, align=Align.Left)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=6300.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -53,8 +54,8 @@ class 카메라_네이린설명1(trigger_api.Trigger):
 
 class 카메라_네이린설명2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__1$', duration=4000, align='left')
-        # self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__2$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__1$', duration=4000, align=Align.Left)
+        # self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__2$', duration=4000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -63,7 +64,7 @@ class 카메라_네이린설명2(trigger_api.Trigger):
 
 class 카메라_네이린설명3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__5$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__5$', duration=4000, align=Align.Left)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:

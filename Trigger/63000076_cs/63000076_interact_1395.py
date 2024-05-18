@@ -16,8 +16,8 @@ class 화난요정_01_1395(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[116])
         self.destroy_monster(spawn_ids=[117])
-        self.spawn_monster(spawn_ids=[216], auto_target=True)
-        self.spawn_monster(spawn_ids=[217], auto_target=True)
+        self.spawn_monster(spawn_ids=[216])
+        self.spawn_monster(spawn_ids=[217])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[216,217]):

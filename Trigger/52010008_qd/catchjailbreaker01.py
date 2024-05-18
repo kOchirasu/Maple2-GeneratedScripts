@@ -6,7 +6,7 @@ class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[901,902,903,904,905,906], auto_target=False)
         self.set_interact_object(trigger_ids=[10000851], state=0)
-        self.set_mesh(trigger_ids=[6000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[6000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -44,7 +44,7 @@ class 죄수찾기01(trigger_api.Trigger):
 
 class 죄수등장01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6000], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[6000])
         self.set_timer(timer_id='11', seconds=1)
         self.spawn_monster(spawn_ids=[101], auto_target=False)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_1010')
@@ -69,7 +69,7 @@ class 벨마등장01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='20', seconds=1)
         self.spawn_monster(spawn_ids=[301], auto_target=False)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 

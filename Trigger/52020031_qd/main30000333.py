@@ -10,7 +10,7 @@ import trigger_api
 """
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
+        self.set_effect(trigger_ids=[5001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[30000333], quest_states=[1]):
@@ -50,7 +50,7 @@ class 두번째연출준비_02(trigger_api.Trigger):
 
 class 두번째연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=0, msg='천공의 심장을 돌려줘.', duration=3000)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_3003')
 
@@ -100,7 +100,7 @@ class 두번째연출전투준비_01(trigger_api.Trigger):
 class 두번째연출전투준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[101])
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=2) # UI 숨기기 초기화
         self.set_cinematic_ui(type=0) # 유저 이동 가능하게
 
@@ -111,7 +111,7 @@ class 두번째연출전투준비(trigger_api.Trigger):
 
 class 두번째연출전투준비1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.spawn_monster(spawn_ids=[601], auto_target=False) # 몬스터 하렌
         self.set_event_ui(type=1, arg2='하렌을 처치하세요!', arg3='2000', arg4='0')
         self.add_balloon_talk(spawn_id=601, msg='숨통을 끊어주마.', duration=3000, delay_tick=3000)
@@ -135,7 +135,7 @@ class 두번째연출전투종료1(trigger_api.Trigger):
 
 class 두번째연출전투종료2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=6, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=6, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

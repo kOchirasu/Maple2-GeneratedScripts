@@ -25,7 +25,7 @@ class wait_01_02(trigger_api.Trigger):
 
 class 동굴도착_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -65,8 +65,8 @@ class 정리_01(trigger_api.Trigger):
 
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -75,7 +75,7 @@ class Skip_1(trigger_api.Trigger):
 
 class 정리_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -86,7 +86,7 @@ class 정리_02(trigger_api.Trigger):
 
 class 밝아짐(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[40002793], quest_states=[2]):
@@ -264,7 +264,7 @@ class 소바컷씬(trigger_api.Trigger):
 
 class 영상재생_end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
+        self.set_onetime_effect(id=30, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

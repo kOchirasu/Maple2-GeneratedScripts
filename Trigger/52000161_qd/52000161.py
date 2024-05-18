@@ -1,5 +1,6 @@
 """ trigger/52000161_qd/52000161.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class wait_01(trigger_api.Trigger):
@@ -23,7 +24,7 @@ class wait_01_02(trigger_api.Trigger):
 
 class 리엔전경_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +35,7 @@ class 리엔전경_01(trigger_api.Trigger):
 class 리엔전경_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4001,4002], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$52000161_QD__52000161__0$', desc='$52000161_QD__52000161__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000161_QD__52000161__0$', desc='$52000161_QD__52000161__1$', align=Align.Bottom | Align.Left, duration=3000, scale=2.5)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_3001')
         self.move_user_path(patrol_name='MS2PatrolData_3002')
 
@@ -54,7 +55,7 @@ class 정리_01(trigger_api.Trigger):
 
 class 정리_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,8 +66,8 @@ class 정리_02(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -75,7 +76,7 @@ class Skip_1(trigger_api.Trigger):
 
 class 정리_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.destroy_monster(spawn_ids=[101], arg2=False)

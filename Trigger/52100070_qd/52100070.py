@@ -1,21 +1,22 @@
 """ trigger/52100070_qd/52100070.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=400, enable=True)
-        self.set_effect(trigger_ids=[5000], visible=False)
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_effect(trigger_ids=[5004], visible=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
-        self.set_effect(trigger_ids=[5006], visible=False)
-        self.set_effect(trigger_ids=[5007], visible=False)
+        self.select_camera(trigger_id=400)
+        self.set_effect(trigger_ids=[5000])
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
+        self.set_effect(trigger_ids=[5003])
+        self.set_effect(trigger_ids=[5004])
+        self.set_effect(trigger_ids=[5005])
+        self.set_effect(trigger_ids=[5006])
+        self.set_effect(trigger_ids=[5007])
         self.visible_my_pc(is_visible=False) # 유저 투명 처리
         self.set_cinematic_ui(type=1)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[1000]):
@@ -37,7 +38,7 @@ class 암전1(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -47,7 +48,7 @@ class 암전1(trigger_api.Trigger):
 class Camera_Move_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[400,401], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$52100070_QD__52100070__1$', desc='$52100070_QD__52100070__2$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52100070_QD__52100070__1$', desc='$52100070_QD__52100070__2$', align=Align.Bottom | Align.Left, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -66,7 +67,7 @@ class 몬스터생성(trigger_api.Trigger):
 
 class 전경카메라1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.select_camera_path(path_ids=[600,601], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,7 +98,7 @@ class 이슈라카메라1(trigger_api.Trigger):
 
 class 이슈라카메라2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.select_camera_path(path_ids=[500,501], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -127,7 +128,7 @@ class 이슈라카메라4(trigger_api.Trigger):
 
 class 렌듀비앙이동1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=True, start_scale=0.5, end_scale=0.5, duration=50, interpolator=1)
+        self.set_time_scale(enable=True, start_scale=0.5, end_scale=0.5, duration=50.0, interpolator=1)
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_11003867')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -149,7 +150,7 @@ class 이슈라이동1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5005], visible=True)
         self.set_effect(trigger_ids=[5006], visible=True)
-        self.set_time_scale(enable=True, start_scale=0.3, end_scale=0.3, duration=50, interpolator=1)
+        self.set_time_scale(enable=True, start_scale=0.3, end_scale=0.3, duration=50.0, interpolator=1)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_11003866')
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -160,22 +161,22 @@ class 이슈라이동1(trigger_api.Trigger):
 
 class 연출끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False)
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_effect(trigger_ids=[5004], visible=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
-        self.set_effect(trigger_ids=[5006], visible=False)
-        self.set_effect(trigger_ids=[5007], visible=False)
-        self.set_time_scale(enable=False, start_scale=0.5, end_scale=0.5, duration=50, interpolator=1)
+        self.set_effect(trigger_ids=[5000])
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
+        self.set_effect(trigger_ids=[5003])
+        self.set_effect(trigger_ids=[5004])
+        self.set_effect(trigger_ids=[5005])
+        self.set_effect(trigger_ids=[5006])
+        self.set_effect(trigger_ids=[5007])
+        self.set_time_scale(start_scale=0.5, end_scale=0.5, duration=50.0, interpolator=1)
         self.destroy_monster(spawn_ids=[101,102,103], arg2=False)
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.visible_my_pc(is_visible=True)
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(map_id=52010068, portal_id=6001)
 
     def on_tick(self) -> trigger_api.Trigger:

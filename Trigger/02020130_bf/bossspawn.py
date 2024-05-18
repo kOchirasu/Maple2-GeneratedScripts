@@ -5,15 +5,15 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기, 공중에서 등장하는 소환몹이 밟는  트리거박스임
-        self.set_mesh(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022], visible=False)
+        self.set_mesh(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022])
         # 던전 클리어 되면 나가는 포탈 최초에는 감추기, 2셋트 전투판에 배치된 포탈
-        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=20)
         # 던전 클리어 되면 나가는 포탈 최초에는 감추기, 1셋트 12시 전투판에 배치된 포탈
-        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=21)
         # 던전 클리어 되면 나가는 포탈 최초에는 감추기, 1셋트 8시 전투판에 배치된 포탈
-        self.set_portal(portal_id=22, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=22)
         # 던전 클리어 되면 나가는 포탈 최초에는 감추기, 1셋트 4시 전투판에 배치된 포탈
-        self.set_portal(portal_id=23, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=23)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[600]):
@@ -72,7 +72,7 @@ class 종료(trigger_api.Trigger):
         self.set_portal(portal_id=22, visible=True, enable=True, minimap_visible=True)
         # 던전 클리어 되면 나가는 포탈 등장 시키기
         self.set_portal(portal_id=23, visible=True, enable=True, minimap_visible=True)
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 initial_state = 시작대기중

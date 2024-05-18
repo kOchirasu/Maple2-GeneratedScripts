@@ -4,12 +4,12 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4025], visible=True, start_delay=0, interval=0, fade=0) # RoundBarrier
-        self.set_mesh(trigger_ids=[3005], visible=True, start_delay=0, interval=0, fade=0) # CrystalOff
-        self.set_mesh(trigger_ids=[3105], visible=False, start_delay=0, interval=0, fade=0) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3005], visible=True, start_delay=0, interval=0) # CrystalOff
-        self.set_mesh_animation(trigger_ids=[3105], visible=False, start_delay=0, interval=0) # CrystalOn
-        self.set_effect(trigger_ids=[5205], visible=False) # Sound_CrystalOn
+        self.set_mesh(trigger_ids=[4025], visible=True) # RoundBarrier
+        self.set_mesh(trigger_ids=[3005], visible=True) # CrystalOff
+        self.set_mesh(trigger_ids=[3105]) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3005], visible=True) # CrystalOff
+        self.set_mesh_animation(trigger_ids=[3105]) # CrystalOn
+        self.set_effect(trigger_ids=[5205]) # Sound_CrystalOn
         self.set_user_value(key='FindWay', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,10 +25,10 @@ class Wait(trigger_api.Trigger):
 """
 class ReadyToWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4025], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4025])
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_105')
         self.move_npc(spawn_id=204, patrol_name='MS2PatrolData_205')
-        self.set_dialogue(type=1, spawn_id=204, script='$02000378_BF__05_FINDWAY__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=204, script='$02000378_BF__05_FINDWAY__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -63,7 +63,7 @@ class ReadyToWalkIn03(trigger_api.Trigger):
 
 class ReadyToWalkIn_FromPortal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4025], visible=False, start_delay=0, interval=0, fade=0) # RoundBarrier
+        self.set_mesh(trigger_ids=[4025]) # RoundBarrier
         self.set_user_value(trigger_id=1305, key='RouteSelected', value=1)
         self.set_user_value(trigger_id=2305, key='RouteSelected', value=1)
 
@@ -78,7 +78,7 @@ class ReadyToWalkIn_FromPortal(trigger_api.Trigger):
 
 class ReadyToWalkIn_FromPortal02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=105, script='$02000378_BF__05_FINDWAY__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=105, script='$02000378_BF__05_FINDWAY__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -104,10 +104,10 @@ class Round05_Sucess(trigger_api.Trigger):
         self.move_npc(spawn_id=2005, patrol_name='MS2PatrolData_2005')
         self.destroy_monster(spawn_ids=[1005])
         self.spawn_monster(spawn_ids=[105], auto_target=False) # 연출용 틴차이
-        self.set_mesh(trigger_ids=[3005], visible=False, start_delay=100, interval=0, fade=0) # CrystalOff
-        self.set_mesh(trigger_ids=[3105], visible=True, start_delay=0, interval=0, fade=0) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3005], visible=False, start_delay=0, interval=0) # CrystalOff
-        self.set_mesh_animation(trigger_ids=[3105], visible=True, start_delay=0, interval=0) # CrystalOn
+        self.set_mesh(trigger_ids=[3005], start_delay=100) # CrystalOff
+        self.set_mesh(trigger_ids=[3105], visible=True) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3005]) # CrystalOff
+        self.set_mesh_animation(trigger_ids=[3105], visible=True) # CrystalOn
         self.set_effect(trigger_ids=[5205], visible=True) # Sound_CrystalOn
         self.set_dialogue(type=1, spawn_id=105, script='$02000378_BF__05_FINDWAY__3$', time=2, arg5=1) # 틴차이
 
@@ -122,9 +122,9 @@ class Round05_RouteSelect(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[205], auto_target=False) # 연출용 준타
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round05_PickRoute_Left(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round05_PickRoute_Right(self.ctx)
 
 

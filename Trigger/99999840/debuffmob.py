@@ -39,11 +39,11 @@ class 랜덤확률(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.dungeon_variable(var_id=3) == 1:
             return 종료(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return A지역(self.ctx)
-        if self.random_condition(weight=34):
+        if self.random_condition(weight=34.0):
             return B지역(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return C지역(self.ctx)
 
 

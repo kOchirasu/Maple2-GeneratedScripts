@@ -21,7 +21,7 @@ class Ready(trigger_api.Trigger):
 # [10001393 커닝시티 시가전 ] 완료 시
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=6002, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=6002)
         self.set_onetime_effect(id=11100101, enable=True, path='BG/Common/Sound/Eff_Object_CityWar_ComputerRoom_01.xml')
         self.move_user(map_id=52000055, portal_id=1)
 
@@ -48,8 +48,8 @@ class CameraEffect02(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.select_camera(trigger_id=101, enable=True)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.select_camera(trigger_id=101)
         self.move_user_path(patrol_name='MS2PatrolData_PC')
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_Katvan') # 카트반 이동
         self.set_scene_skip(state=Quit, action='exit')
@@ -61,7 +61,7 @@ class CameraEffect03(trigger_api.Trigger):
 
 class CameraEffect4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=102, enable=True)
+        self.select_camera(trigger_id=102)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
@@ -79,8 +79,8 @@ class CameraEffect5(trigger_api.Trigger):
 
 class CameraEffect6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 페이드 인
-        self.select_camera(trigger_id=103, enable=True)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 페이드 인
+        self.select_camera(trigger_id=103)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -89,7 +89,7 @@ class CameraEffect6(trigger_api.Trigger):
 
 class CameraEffect7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=104, enable=True)
+        self.select_camera(trigger_id=104)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7500):
@@ -99,7 +99,7 @@ class CameraEffect7(trigger_api.Trigger):
 class CameraEffect8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.select_camera_path(path_ids=[119,120], return_view=True)
+        self.select_camera_path(path_ids=[119,120])
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -111,7 +111,7 @@ class CameraEffect9(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=11100102, enable=True, path='BG/Common/Sound/Eff_Object_CityWar_SystemWarningAlarm_01.xml')
         self.set_onetime_effect(id=2100267, enable=True, path='BG/Common/Sound/Eff_Object_CityWar_ComputerSignal_01.xml')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=100, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_AI_00001876.xml')
         self.set_dialogue(type=2, spawn_id=11001896, script='$52000055_QD__DARKWINDMOVIE__0$', time=7)
 
@@ -123,8 +123,8 @@ class CameraEffect9(trigger_api.Trigger):
 class CityWarfareTalk2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.set_onetime_effect(id=11100102, enable=False, path='BG/Common/Sound/Eff_Object_CityWar_SystemWarningAlarm_01.xml')
-        self.select_camera_path(path_ids=[106,128], return_view=True) # 카트반 캠
+        self.set_onetime_effect(id=11100102, path='BG/Common/Sound/Eff_Object_CityWar_SystemWarningAlarm_01.xml')
+        self.select_camera_path(path_ids=[106,128]) # 카트반 캠
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk3(self.ctx)
@@ -143,7 +143,7 @@ class CityWarfareTalk3(trigger_api.Trigger):
 class CityWarfareTalk4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.select_camera_path(path_ids=[105,127], return_view=True) # 대원 캠
+        self.select_camera_path(path_ids=[105,127]) # 대원 캠
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk5(self.ctx)
@@ -162,7 +162,7 @@ class CityWarfareTalk5(trigger_api.Trigger):
 class CityWarfareTalk6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.select_camera_path(path_ids=[107,129], return_view=True) # 대원 캠
+        self.select_camera_path(path_ids=[107,129]) # 대원 캠
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk7(self.ctx)
@@ -180,7 +180,7 @@ class CityWarfareTalk7(trigger_api.Trigger):
 class CityWarfareTalk8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.select_camera_path(path_ids=[109,110,111], return_view=True)
+        self.select_camera_path(path_ids=[109,110,111])
 
     def on_tick(self) -> trigger_api.Trigger:
         return CameraEffect109(self.ctx)
@@ -200,7 +200,7 @@ class CameraEffect109(trigger_api.Trigger):
 class CityWarfareTalk10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.set_onetime_effect(id=11100103, enable=False, path='BG/Common/Sound/Eff_Object_CityWar_SystemErrorAlarm_01.xml')
+        self.set_onetime_effect(id=11100103, path='BG/Common/Sound/Eff_Object_CityWar_SystemErrorAlarm_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk11(self.ctx)
@@ -208,7 +208,7 @@ class CityWarfareTalk10(trigger_api.Trigger):
 
 class CityWarfareTalk11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=105, enable=True) # 대원 캠
+        self.select_camera(trigger_id=105) # 대원 캠
         self.set_dialogue(type=2, spawn_id=11000259, script='$52000055_QD__DARKWINDMOVIE__5$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,8 +226,8 @@ class CityWarfareTalk12(trigger_api.Trigger):
 
 class CameraEffect13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=112, enable=True)
-        self.select_camera_path(path_ids=[112,113], return_view=True) # 카트반 캠
+        self.select_camera(trigger_id=112)
+        self.select_camera_path(path_ids=[112,113]) # 카트반 캠
         self.set_onetime_effect(id=103, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001879.xml')
         self.set_dialogue(type=2, spawn_id=11001897, script='$52000055_QD__DARKWINDMOVIE__6$', time=5)
 
@@ -246,8 +246,8 @@ class CityWarfareTalk14(trigger_api.Trigger):
 
 class CityWarfareTalk15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=114, enable=True)
-        self.select_camera_path(path_ids=[114,115], return_view=True)
+        self.select_camera(trigger_id=114)
+        self.select_camera_path(path_ids=[114,115])
         self.set_dialogue(type=2, spawn_id=11000259, script='$52000055_QD__DARKWINDMOVIE__7$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -275,7 +275,7 @@ class CityWarfareTalk17(trigger_api.Trigger):
 class CityWarfareTalk18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.select_camera_path(path_ids=[117,118], return_view=True)
+        self.select_camera_path(path_ids=[117,118])
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk19(self.ctx)
@@ -311,8 +311,8 @@ class CityWarfareTalk20b(trigger_api.Trigger):
 
 class CityWarfareTalk21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=118, enable=True)
-        self.select_camera_path(path_ids=[121,122], return_view=True) # 카트반 캠
+        self.select_camera(trigger_id=118)
+        self.select_camera_path(path_ids=[121,122]) # 카트반 캠
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -330,7 +330,7 @@ class CityWarfareTalk22(trigger_api.Trigger):
 class CityWarfareTalk23(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=105, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001881.xml')
-        self.select_camera(trigger_id=122, enable=True) # 카트반 캠
+        self.select_camera(trigger_id=122) # 카트반 캠
         self.set_dialogue(type=2, spawn_id=11001897, script='$52000055_QD__DARKWINDMOVIE__11$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -348,7 +348,7 @@ class CityWarfareTalk24(trigger_api.Trigger):
 
 class CityWarfareTalk25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[125,126], return_view=True) # 대원 캠
+        self.select_camera_path(path_ids=[125,126]) # 대원 캠
         self.set_dialogue(type=2, spawn_id=11000215, script='$52000055_QD__DARKWINDMOVIE__12$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -367,7 +367,7 @@ class CityWarfareTalk26(trigger_api.Trigger):
 class CityWarfareTalk27(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=106, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001882.xml')
-        self.select_camera_path(path_ids=[123,124], return_view=True) # 카트반 캠
+        self.select_camera_path(path_ids=[123,124]) # 카트반 캠
         self.set_dialogue(type=2, spawn_id=11001897, script='$52000055_QD__DARKWINDMOVIE__13$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -399,7 +399,7 @@ class Quit(trigger_api.Trigger):
         self.set_portal(portal_id=6002, visible=True, enable=True, minimap_visible=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.move_user(map_id=52000067, portal_id=1)
 
 

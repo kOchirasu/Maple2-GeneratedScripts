@@ -4,7 +4,7 @@ import trigger_api
 
 class wait_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001,5002], visible=False)
+        self.set_effect(trigger_ids=[5001,5002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[40002731], quest_states=[2]):
@@ -45,7 +45,7 @@ class 전직이펙트_01(trigger_api.Trigger):
 
 class 전직이펙트_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
+        self.set_onetime_effect(id=30, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -85,7 +85,7 @@ class 이별준비_01(trigger_api.Trigger):
 
 class 이별준비_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

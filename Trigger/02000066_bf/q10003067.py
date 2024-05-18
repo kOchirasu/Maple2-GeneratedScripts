@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[103], quest_ids=[50001642], quest_states=[2]):

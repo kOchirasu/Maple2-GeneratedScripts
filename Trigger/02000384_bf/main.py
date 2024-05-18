@@ -4,10 +4,10 @@ import trigger_api
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6001], visible=False)
-        self.set_mesh(trigger_ids=[6002], visible=False)
-        self.set_mesh(trigger_ids=[6003], visible=False)
-        self.set_mesh(trigger_ids=[6004], visible=False)
+        self.set_mesh(trigger_ids=[6001])
+        self.set_mesh(trigger_ids=[6002])
+        self.set_mesh(trigger_ids=[6003])
+        self.set_mesh(trigger_ids=[6004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[701]):
@@ -191,7 +191,7 @@ class end(trigger_api.Trigger):
 class quest_end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=7, arg2='$02000384_BF__MAIN__0$', arg3='5000', arg4='0')
-        self.set_dialogue(type=1, spawn_id=510, script='$02000384_BF__MAIN__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=510, script='$02000384_BF__MAIN__1$', time=2)
         self.set_dialogue(type=1, spawn_id=510, script='$02000384_BF__MAIN__2$', time=2, arg5=2)
         self.set_achievement(trigger_id=90000, type='trigger', achieve='Madracan_Q03')
         self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True)

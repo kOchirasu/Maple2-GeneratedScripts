@@ -1,5 +1,6 @@
 """ trigger/52100060_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class QuestDungeonStart(trigger_api.Trigger):
@@ -17,12 +18,12 @@ class QuestDungeonStart(trigger_api.Trigger):
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=1, enable=True)
+        self.select_camera(trigger_id=1)
         self.visible_my_pc(is_visible=False) # 유저 투명 처리
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_effect(trigger_ids=[600], visible=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_effect(trigger_ids=[600])
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[1000]):
@@ -44,7 +45,7 @@ class Camera_Move_01(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_effect(trigger_ids=[600], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,8 +57,8 @@ class NPC_Show(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=teleport02000487)
         self.spawn_monster(spawn_ids=[1,2], auto_target=False)
-        self.set_npc_rotation(spawn_id=1, rotation=180)
-        self.set_npc_rotation(spawn_id=2, rotation=180)
+        self.set_npc_rotation(spawn_id=1, rotation=180.0)
+        self.set_npc_rotation(spawn_id=2, rotation=180.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -68,7 +69,7 @@ class NPC_Change_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1,2], arg2=False)
         self.spawn_monster(spawn_ids=[101,102], auto_target=False)
-        self.select_camera_path(path_ids=[2,3], return_view=True)
+        self.select_camera_path(path_ids=[2,3])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -77,10 +78,10 @@ class NPC_Change_1(trigger_api.Trigger):
 
 class Talk_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[600], visible=False)
-        self.select_camera(trigger_id=4, enable=True)
+        self.set_effect(trigger_ids=[600])
+        self.select_camera(trigger_id=4)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Attack_01_A')
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52100060_QD__MAIN__0$', duration=2000, align='left')
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52100060_QD__MAIN__0$', duration=2000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -89,10 +90,10 @@ class Talk_1(trigger_api.Trigger):
 
 class Talk_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=5, enable=True)
+        self.select_camera(trigger_id=5)
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Bore_B')
-        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__1$', duration=3000, align='Right')
-        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__2$', duration=3000, align='Right')
+        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__1$', duration=3000, align=Align.Right)
+        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__2$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -103,7 +104,7 @@ class Talk_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[10,11,12], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Bore_A')
-        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__3$', duration=3000, align='Right')
+        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__3$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -112,8 +113,8 @@ class Talk_3(trigger_api.Trigger):
 
 class Talk_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=4, enable=True)
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52100060_QD__MAIN__4$', duration=3000, align='left')
+        self.select_camera(trigger_id=4)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52100060_QD__MAIN__4$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -123,7 +124,7 @@ class Talk_4(trigger_api.Trigger):
 class Talk_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[6,7], return_view=False)
-        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__5$', duration=3000, align='Right')
+        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__5$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -134,7 +135,7 @@ class Talk_6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[77,78], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Bore_B')
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52100060_QD__MAIN__6$', duration=2000, align='left')
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52100060_QD__MAIN__6$', duration=2000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -143,7 +144,7 @@ class Talk_6(trigger_api.Trigger):
 
 class Talk_7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52100060_QD__MAIN__7$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52100060_QD__MAIN__7$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -152,10 +153,10 @@ class Talk_7(trigger_api.Trigger):
 
 class Talk_8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=44, enable=True)
+        self.select_camera(trigger_id=44)
         self.destroy_monster(spawn_ids=[101])
         self.spawn_monster(spawn_ids=[200])
-        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__8$', duration=4000, align='Right')
+        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__8$', duration=4000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -165,8 +166,8 @@ class Talk_8(trigger_api.Trigger):
 class Talk_9(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[13,14,15], return_view=False)
-        self.set_effect(trigger_ids=[600], visible=False)
-        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__9$', duration=3000, align='Right')
+        self.set_effect(trigger_ids=[600])
+        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__9$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -176,7 +177,7 @@ class Talk_9(trigger_api.Trigger):
 class Talk_10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=200, sequence_name='Bore_A')
-        self.add_cinematic_talk(npc_id=11001593, illust_id='11001593', msg='$52100060_QD__MAIN__10$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=11001593, illust_id='11001593', msg='$52100060_QD__MAIN__10$', duration=4000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -185,10 +186,10 @@ class Talk_10(trigger_api.Trigger):
 
 class Talk_11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=16, enable=True)
+        self.select_camera(trigger_id=16)
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Bore_B')
-        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__11$', duration=2000, align='Right')
-        self.select_camera(trigger_id=8, enable=True)
+        self.add_cinematic_talk(npc_id=11001813, illust_id='11001813', msg='$52100060_QD__MAIN__11$', duration=2000, align=Align.Right)
+        self.select_camera(trigger_id=8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -197,7 +198,7 @@ class Talk_11(trigger_api.Trigger):
 
 class NPC_Attack_Move(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=True, start_scale=0.5, end_scale=0.3, duration=3, interpolator=1)
+        self.set_time_scale(enable=True, start_scale=0.5, end_scale=0.3, duration=3.0, interpolator=1)
         self.select_camera_path(path_ids=[8,9], return_view=False)
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData2')
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData3')

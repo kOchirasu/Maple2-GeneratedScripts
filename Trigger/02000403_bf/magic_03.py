@@ -10,9 +10,9 @@ class idle(trigger_api.Trigger):
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_mesh(trigger_ids=[1103], visible=False, start_delay=0, interval=200, fade=15)
-        self.set_mesh(trigger_ids=[1203], visible=True, start_delay=0, interval=200, fade=15)
+        self.set_effect(trigger_ids=[7003])
+        self.set_mesh(trigger_ids=[1103], interval=200, fade=15.0)
+        self.set_mesh(trigger_ids=[1203], visible=True, interval=200, fade=15.0)
         self.spawn_monster(spawn_ids=[203], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class Event_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=713, type='trigger', achieve='Hauntedmansion')
         self.spawn_monster(spawn_ids=[165,166,167,168,169], auto_target=False)
-        self.set_npc_emotion_loop(spawn_id=165, sequence_name='Down_Idle_A', duration=600000)
+        self.set_npc_emotion_loop(spawn_id=165, sequence_name='Down_Idle_A', duration=600000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -34,8 +34,8 @@ class Event_03(trigger_api.Trigger):
 class Event_03_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=168, patrol_name='MS2PatrolData_2138')
-        self.set_npc_emotion_loop(spawn_id=165, sequence_name='Down_Idle_A', duration=600000)
-        self.set_dialogue(type=1, spawn_id=165, script='$02000403_BF__MAGIC_03__0$', time=3, arg5=0)
+        self.set_npc_emotion_loop(spawn_id=165, sequence_name='Down_Idle_A', duration=600000.0)
+        self.set_dialogue(type=1, spawn_id=165, script='$02000403_BF__MAGIC_03__0$', time=3)
         self.set_dialogue(type=1, spawn_id=169, script='$02000403_BF__MAGIC_03__1$', time=3, arg5=2)
         self.set_dialogue(type=1, spawn_id=168, script='$02000403_BF__MAGIC_03__2$', time=3, arg5=1)
         self.set_dialogue(type=1, spawn_id=168, script='$02000403_BF__MAGIC_03__3$', time=3, arg5=6)

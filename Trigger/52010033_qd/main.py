@@ -11,10 +11,10 @@ class idle(trigger_api.Trigger):
 
 class NpcSpawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[105], auto_target=True) # 상처입은 추격대원
-        self.spawn_monster(spawn_ids=[106], auto_target=True) # 상처입은 추격대원
-        self.spawn_monster(spawn_ids=[107], auto_target=True) # 상처입은 추격대원
-        self.spawn_monster(spawn_ids=[108], auto_target=True) # 상처입은 추격대원
+        self.spawn_monster(spawn_ids=[105]) # 상처입은 추격대원
+        self.spawn_monster(spawn_ids=[106]) # 상처입은 추격대원
+        self.spawn_monster(spawn_ids=[107]) # 상처입은 추격대원
+        self.spawn_monster(spawn_ids=[108]) # 상처입은 추격대원
 
 
 initial_state = idle

@@ -5,8 +5,8 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000390], state=0)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
         self.spawn_monster(spawn_ids=[1001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +32,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.destroy_monster(spawn_ids=[1001])
         self.spawn_monster(spawn_ids=[1002], auto_target=False)
         self.set_effect(trigger_ids=[602], visible=True)
@@ -57,7 +57,7 @@ class 연출시작02(trigger_api.Trigger):
 
 class 말풍선대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=2001, script='$52000044_QD__10003040__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=2001, script='$52000044_QD__10003040__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -71,7 +71,7 @@ class 말풍선대사02(trigger_api.Trigger):
         self.move_npc(spawn_id=2003, patrol_name='MS2PatrolData_2003')
         self.move_npc(spawn_id=2004, patrol_name='MS2PatrolData_2004')
         self.move_npc(spawn_id=2005, patrol_name='MS2PatrolData_2005')
-        self.set_dialogue(type=1, spawn_id=2003, script='$52000044_QD__10003040__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=2003, script='$52000044_QD__10003040__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -99,7 +99,7 @@ class 제이시대사01스킵(trigger_api.Trigger):
 
 class 제이시대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_dialogue(type=2, spawn_id=11000515, script='$52000044_QD__10003040__3$', time=4)
         self.set_skip(state=제이시대사02스킵)
@@ -123,7 +123,7 @@ class 연출종료(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=302, enable=False)
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.move_npc(spawn_id=1002, patrol_name='MS2PatrolData_1002A')
 
     def on_tick(self) -> trigger_api.Trigger:

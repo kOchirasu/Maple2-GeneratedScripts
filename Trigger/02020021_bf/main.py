@@ -1,5 +1,6 @@
 """ trigger/02020021_bf/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 입장(trigger_api.Trigger):
@@ -16,8 +17,8 @@ class 입장(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990003, key='Timer', value=0)
         self.set_user_value(trigger_id=99990004, key='SpecialTimer', value=0)
         self.set_user_value(trigger_id=99990002, key='SpecialTimer', value=0)
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[901]):
@@ -39,7 +40,7 @@ class 카메라_시작(trigger_api.Trigger):
 class 카메라_캡션(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[501,502], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$02020021_BF__main__3$', desc='$02020021_BF__main__4$', align='centerLeft', offset_rate_x=0, offset_rate_y=0, duration=4000, scale=2)
+        self.show_caption(type='VerticalCaption', title='$02020021_BF__main__3$', desc='$02020021_BF__main__4$', align=Align.Center | Align.Left, duration=4000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -49,7 +50,7 @@ class 카메라_캡션(trigger_api.Trigger):
 class 카메라_샤텐대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[503,504], return_view=False)
-        self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__0$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__0$', duration=4000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -58,7 +59,7 @@ class 카메라_샤텐대사1(trigger_api.Trigger):
 
 class 카메라_샤텐대사2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__1$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__1$', duration=4000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -68,7 +69,7 @@ class 카메라_샤텐대사2(trigger_api.Trigger):
 class 카메라_샤텐대사3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[505,506], return_view=False)
-        self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__2$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__2$', duration=4000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -78,7 +79,7 @@ class 카메라_샤텐대사3(trigger_api.Trigger):
 class 카메라_샤텐대사4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[507,508], return_view=False)
-        self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__5$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__5$', duration=4000, align=Align.Left)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -101,14 +102,14 @@ class 카메라_종료(trigger_api.Trigger):
 
 class 전투시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[9001], visible=False)
-        self.set_agent(trigger_ids=[9002], visible=False)
-        self.set_agent(trigger_ids=[9003], visible=False)
-        self.set_agent(trigger_ids=[9004], visible=False)
-        self.set_agent(trigger_ids=[9005], visible=False)
-        self.set_agent(trigger_ids=[9006], visible=False)
-        self.set_agent(trigger_ids=[9007], visible=False)
-        self.set_agent(trigger_ids=[9008], visible=False)
+        self.set_agent(trigger_ids=[9001])
+        self.set_agent(trigger_ids=[9002])
+        self.set_agent(trigger_ids=[9003])
+        self.set_agent(trigger_ids=[9004])
+        self.set_agent(trigger_ids=[9005])
+        self.set_agent(trigger_ids=[9006])
+        self.set_agent(trigger_ids=[9007])
+        self.set_agent(trigger_ids=[9008])
         self.set_ai_extra_data(key='Start', value=1)
         self.side_npc_talk(npc_id=23200085, illust='Schatten_smile', duration=5000, script='$02020021_BF__main__6$', voice='ko/Npc/00002248')
         self.set_user_value(trigger_id=99990002, key='battlesetting', value=1)

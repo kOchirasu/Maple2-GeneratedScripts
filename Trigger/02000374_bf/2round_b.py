@@ -26,7 +26,7 @@ class Spawn_Start(trigger_api.Trigger):
 class Round_Spawn_B_01_Ready2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7203], visible=True)
-        self.set_effect(trigger_ids=[7003], visible=False)
+        self.set_effect(trigger_ids=[7003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2300):

@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5001]) # DownArrow
         self.set_interact_object(trigger_ids=[10001072], state=1) # TrainLever
         self.set_user_value(key='TrainMove', value=0)
 
@@ -29,7 +29,7 @@ class FourthPhaseChase01(trigger_api.Trigger):
 class FourthPhaseChase02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=25200663)
-        self.set_effect(trigger_ids=[5001], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5001]) # DownArrow
         self.spawn_monster(spawn_ids=[201], auto_target=False)
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_200')
 
@@ -72,7 +72,7 @@ class GetInTheTrain03(trigger_api.Trigger):
 
 class GetInTheTrain04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_local_camera(camera_id=700, enable=False) # LocalTargetCamera
+        self.set_local_camera(camera_id=700) # LocalTargetCamera
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

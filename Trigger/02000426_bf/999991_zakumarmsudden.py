@@ -34,9 +34,9 @@ class 자쿰몸통무적버프로직_작동(trigger_api.Trigger):
         # 자쿰 몸통에 일단 무적 버프 부여함
         # 어려운 난이도 일반 난이도 어떤 곳에서 실행되는지 알지 못하니 2개 다 부여함 , 무적 애디셔널 50000265(레벨1)
         # 어려움 난이도 자쿰몸 스폰 ID가  arg1 = 2011    arg3="1" 은 애디셔널의 레벨, arg4="1" 은 대상이 몬스터라는 뜻 참고로 arg4="0"은 플레이어
-        self.add_buff(box_ids=[2011], skill_id=50000265, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[2011], skill_id=50000265, level=1, is_skill_set=False)
         # 일반  난이도 자쿰몸 스폰 ID가  arg1 = 2012
-        self.add_buff(box_ids=[2012], skill_id=50000265, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[2012], skill_id=50000265, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SummonZakumArmMany') >= 0:

@@ -26,7 +26,7 @@ class NoticeExtraEvent01(trigger_api.Trigger):
 class NoticeExtraEvent02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Mokum_Completion_01')
-        self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__17_NoticeExtraEvent__0$')
+        self.side_npc_talk_bottom(npc_id=21001019, illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__17_NoticeExtraEvent__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

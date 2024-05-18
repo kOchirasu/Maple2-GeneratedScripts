@@ -47,7 +47,7 @@ class 전투_2라운드세팅(trigger_api.Trigger):
 
 class 전투_2라운드시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[103], auto_target=True)
+        self.spawn_monster(spawn_ids=[103])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[103]):

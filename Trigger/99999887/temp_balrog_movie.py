@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=200, visible=False, initial_sequence='Idle_A') # 인비저블 상태
+        self.set_actor(trigger_id=200, initial_sequence='Idle_A') # 인비저블 상태
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[100]):

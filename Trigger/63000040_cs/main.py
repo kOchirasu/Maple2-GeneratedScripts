@@ -28,7 +28,7 @@ class start(trigger_api.Trigger):
 class start_02_ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=25200474)
-        self.set_effect(trigger_ids=[7001], visible=False)
+        self.set_effect(trigger_ids=[7001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[40002652], quest_states=[3]):
@@ -51,7 +51,7 @@ class start_02(trigger_api.Trigger):
 
 class start_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=3000.0)
         self.set_dialogue(type=2, spawn_id=11001708, script='$63000040_CS__MAIN__1$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +95,7 @@ class start_07(trigger_api.Trigger):
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[8003], return_view=True)
+        self.select_camera_path(path_ids=[8003])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

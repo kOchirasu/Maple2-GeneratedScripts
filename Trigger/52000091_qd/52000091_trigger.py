@@ -4,7 +4,7 @@ import trigger_api
 
 class 분기검사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_gravity(gravity=-39)
+        self.set_gravity(gravity=-39.0)
         # self.add_buff(box_ids=[9002], skill_id=70000107, level=1, is_player=False, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -126,11 +126,11 @@ class 로이동52000091(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(map_id=52000091, portal_id=99)
-        self.spawn_monster(spawn_ids=[200], auto_target=True)
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
-        self.spawn_monster(spawn_ids=[203], auto_target=True)
-        self.spawn_npc_range(range_ids=[210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237], is_auto_targeting=False)
+        self.spawn_monster(spawn_ids=[200])
+        self.spawn_monster(spawn_ids=[201])
+        self.spawn_monster(spawn_ids=[202])
+        self.spawn_monster(spawn_ids=[203])
+        self.spawn_npc_range(range_ids=[210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -144,11 +144,11 @@ class 완료가능할때20002282(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(map_id=52000091, portal_id=99)
-        self.spawn_monster(spawn_ids=[200], auto_target=True)
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
-        self.spawn_monster(spawn_ids=[203], auto_target=True)
-        self.spawn_npc_range(range_ids=[210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237], is_auto_targeting=False)
+        self.spawn_monster(spawn_ids=[200])
+        self.spawn_monster(spawn_ids=[201])
+        self.spawn_monster(spawn_ids=[202])
+        self.spawn_monster(spawn_ids=[203])
+        self.spawn_npc_range(range_ids=[210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -159,7 +159,7 @@ class 완료가능할때02_20002282(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9001], quest_ids=[50100580], quest_states=[3]):
@@ -246,8 +246,8 @@ class 완료가능할때20002277(trigger_api.Trigger):
         # self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(map_id=52000091, portal_id=99)
-        self.spawn_monster(spawn_ids=[200], auto_target=True)
-        self.set_npc_emotion_loop(spawn_id=200, sequence_name='Stun_A', duration=18000)
+        self.spawn_monster(spawn_ids=[200])
+        self.set_npc_emotion_loop(spawn_id=200, sequence_name='Stun_A', duration=18000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -262,7 +262,7 @@ class 사운드이펙트(trigger_api.Trigger):
 
 class 마드라칸연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[1000,1001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -300,15 +300,15 @@ class 마드라칸연출04(trigger_api.Trigger):
 
 class 마드라칸연출05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=0)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[200], auto_target=True)
+        self.spawn_monster(spawn_ids=[200])
 
 
 initial_state = 분기검사01

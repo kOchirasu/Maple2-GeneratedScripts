@@ -27,8 +27,8 @@ class Round_check(trigger_api.Trigger):
 
 class Round_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[113], auto_target=True, delay=600)
-        self.spawn_monster(spawn_ids=[118], auto_target=True, delay=1500)
+        self.spawn_monster(spawn_ids=[113], delay=600)
+        self.spawn_monster(spawn_ids=[118], delay=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round_02') >= 1:
@@ -39,8 +39,8 @@ class Round_01(trigger_api.Trigger):
 
 class Round_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[114], auto_target=True, delay=700)
-        self.spawn_monster(spawn_ids=[117], auto_target=True, delay=1100)
+        self.spawn_monster(spawn_ids=[114], delay=700)
+        self.spawn_monster(spawn_ids=[117], delay=1100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round_03') >= 1:
@@ -51,8 +51,8 @@ class Round_02(trigger_api.Trigger):
 
 class Round_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[112], auto_target=True, delay=800)
-        self.spawn_monster(spawn_ids=[116], auto_target=True, delay=1300)
+        self.spawn_monster(spawn_ids=[112], delay=800)
+        self.spawn_monster(spawn_ids=[116], delay=1300)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round_04') >= 1:
@@ -63,8 +63,8 @@ class Round_03(trigger_api.Trigger):
 
 class Round_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[111], auto_target=True, delay=300)
-        self.spawn_monster(spawn_ids=[115], auto_target=True, delay=900)
+        self.spawn_monster(spawn_ids=[111], delay=300)
+        self.spawn_monster(spawn_ids=[115], delay=900)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round_05') >= 1:
@@ -76,14 +76,14 @@ class Round_04(trigger_api.Trigger):
 class Round_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[111,112,113,114,115,116,117,118])
-        self.spawn_monster(spawn_ids=[101], auto_target=True, delay=1000)
-        self.spawn_monster(spawn_ids=[102], auto_target=True, delay=2000)
-        self.spawn_monster(spawn_ids=[103], auto_target=True, delay=3000)
-        self.spawn_monster(spawn_ids=[104], auto_target=True, delay=4000)
-        self.spawn_monster(spawn_ids=[105], auto_target=True, delay=5000)
-        self.spawn_monster(spawn_ids=[106], auto_target=True, delay=6000)
-        self.spawn_monster(spawn_ids=[107], auto_target=True, delay=7000)
-        self.spawn_monster(spawn_ids=[108], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[101], delay=1000)
+        self.spawn_monster(spawn_ids=[102], delay=2000)
+        self.spawn_monster(spawn_ids=[103], delay=3000)
+        self.spawn_monster(spawn_ids=[104], delay=4000)
+        self.spawn_monster(spawn_ids=[105], delay=5000)
+        self.spawn_monster(spawn_ids=[106], delay=6000)
+        self.spawn_monster(spawn_ids=[107], delay=7000)
+        self.spawn_monster(spawn_ids=[108])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round_06') >= 1:
@@ -94,9 +94,9 @@ class Round_05(trigger_api.Trigger):
 
 class Round_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[121], auto_target=True, delay=1000)
-        self.spawn_monster(spawn_ids=[122], auto_target=True, delay=3000)
-        self.spawn_monster(spawn_ids=[123], auto_target=True, delay=5000)
+        self.spawn_monster(spawn_ids=[121], delay=1000)
+        self.spawn_monster(spawn_ids=[122], delay=3000)
+        self.spawn_monster(spawn_ids=[123], delay=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):

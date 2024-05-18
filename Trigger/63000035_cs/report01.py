@@ -4,17 +4,17 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # Beep_Loop
-        self.set_effect(trigger_ids=[5001], visible=False) # MonitorOn_Pop
+        self.set_effect(trigger_ids=[5000]) # Beep_Loop
+        self.set_effect(trigger_ids=[5001]) # MonitorOn_Pop
         # Voice_Kandura_Satisfied_00001866
-        self.set_effect(trigger_ids=[6000], visible=False)
+        self.set_effect(trigger_ids=[6000])
         # Voice_Kandura_Think_00001867
-        self.set_effect(trigger_ids=[6001], visible=False)
-        self.set_sound(trigger_id=10000, enable=False) # BGM
-        self.set_sound(trigger_id=10001, enable=False) # AMB_BrokenTV
-        self.set_sound(trigger_id=10002, enable=False) # AMB_AbandonedFacility
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0) # MonitorOff
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # MonitorOn
+        self.set_effect(trigger_ids=[6001])
+        self.set_sound(trigger_id=10000) # BGM
+        self.set_sound(trigger_id=10001) # AMB_BrokenTV
+        self.set_sound(trigger_id=10002) # AMB_AbandonedFacility
+        self.set_mesh(trigger_ids=[3000], visible=True) # MonitorOff
+        self.set_mesh(trigger_ids=[3001]) # MonitorOn
         self.spawn_monster(spawn_ids=[101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -74,7 +74,7 @@ class LodingDelay01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -89,7 +89,7 @@ class CameraWalk01(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5000], visible=True) # Beep_Loop
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -137,7 +137,7 @@ class MonitorOn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -146,10 +146,10 @@ class MonitorOn01(trigger_api.Trigger):
 
 class MonitorOn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # Beep_Loop
+        self.set_effect(trigger_ids=[5000]) # Beep_Loop
         self.set_effect(trigger_ids=[5001], visible=True) # MonitorOn_Pop
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # MonitorOn
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=100, interval=0, fade=0) # MonitorOff
+        self.set_mesh(trigger_ids=[3001], visible=True) # MonitorOn
+        self.set_mesh(trigger_ids=[3000], start_delay=100) # MonitorOff
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -158,7 +158,7 @@ class MonitorOn02(trigger_api.Trigger):
 
 class MonitorOn03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=503, enable=True)
+        self.select_camera(trigger_id=503)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_101')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -187,7 +187,7 @@ class KahnTalk02(trigger_api.Trigger):
 
 class KahnTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=504, enable=True)
+        self.select_camera(trigger_id=504)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Bore_A') # 칸두라
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -238,9 +238,9 @@ class PCTeleport01(trigger_api.Trigger):
 
 class PCTeleport02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=10000, enable=False) # BGM
-        self.set_sound(trigger_id=10001, enable=False) # AMB_BrokenTV
-        self.set_sound(trigger_id=10002, enable=False) # AMB_AbandonedFacility
+        self.set_sound(trigger_id=10000) # BGM
+        self.set_sound(trigger_id=10001) # AMB_BrokenTV
+        self.set_sound(trigger_id=10002) # AMB_AbandonedFacility
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

@@ -1,5 +1,6 @@
 """ trigger/52100302_qd/move_3.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 대기(trigger_api.Trigger):
@@ -13,7 +14,7 @@ class Archeon_Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_any_user_additional_effect(box_id=10001, additional_effect_id=73000007, level=1):
             # self.move_user_path(patrol_name='MS2PatrolData_02')
-            self.move_user_to_pos(pos=[8700,-4800,2750], rot=[0,0,0])
+            self.move_user_to_pos(pos=Vector3(8700,-4800,2750))
             return Archeon_On(self.ctx)
 
 

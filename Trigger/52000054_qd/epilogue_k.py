@@ -51,7 +51,7 @@ class CameraEffect0(trigger_api.Trigger):
 
 class CameraEffect1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[100,101], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,7 +71,7 @@ class CameraEffect2(trigger_api.Trigger):
 class CityWarfareTalk1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=11100105, enable=True, path='BG/Common/Sound/Eff_AMB_BlackMoon_Abyss_01.xml') # 어둠의 회랑 환경음
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml') # 페이드 끈다
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml') # 페이드 끈다
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[200], return_view=False)

@@ -34,7 +34,7 @@ class Ending(trigger_api.Trigger):
         self.remove_buff(box_id=701, skill_id=99910120)
         self.set_effect(trigger_ids=[7001], visible=True)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.spawn_monster(spawn_ids=[202,103,104], auto_target=True)
+        self.spawn_monster(spawn_ids=[202,103,104])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -47,11 +47,11 @@ class Ending_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=Ending_04)
         self.select_camera_path(path_ids=[8101,8102,8103], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Stun_A', duration=9000000)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Stun_A', duration=9000000.0)
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_2008')
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_2007')
-        self.set_dialogue(type=1, spawn_id=103, script='$02000443_BF__AI__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=103, script='$02000443_BF__AI__0$', time=2)
         self.set_dialogue(type=1, spawn_id=104, script='$02000443_BF__AI__1$', time=2, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +61,7 @@ class Ending_02(trigger_api.Trigger):
 
 class Ending_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=202, script='$02000443_BF__AI__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=202, script='$02000443_BF__AI__2$', time=2)
         self.set_dialogue(type=1, spawn_id=104, script='$02000443_BF__AI__3$', time=2, arg5=2)
         self.set_dialogue(type=1, spawn_id=103, script='$02000443_BF__AI__4$', time=2, arg5=3)
         self.set_dialogue(type=1, spawn_id=202, script='$02000443_BF__AI__5$', time=2, arg5=6)
@@ -82,7 +82,7 @@ class Ending_04(trigger_api.Trigger):
 
 class Ending_04_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -91,11 +91,11 @@ class Ending_04_b(trigger_api.Trigger):
 
 class Ending_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_local_camera(camera_id=8001, enable=False) # LocalTargetCamera
-        self.set_local_camera(camera_id=8002, enable=False) # LocalTargetCamera
+        self.set_local_camera(camera_id=8001) # LocalTargetCamera
+        self.set_local_camera(camera_id=8002) # LocalTargetCamera
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -110,8 +110,8 @@ class IsDungeonRoom(trigger_api.Trigger):
 
 class dungeonEnd(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False)
-        self.set_mesh(trigger_ids=[1001,1002], visible=False)
+        self.set_effect(trigger_ids=[7001])
+        self.set_mesh(trigger_ids=[1001,1002])
         self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
         self.set_achievement(trigger_id=701, type='trigger', achieve='clearalbanos')
         self.set_achievement(trigger_id=701, type='trigger', achieve='ClearOceanKing')

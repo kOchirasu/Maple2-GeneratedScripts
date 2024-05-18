@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 class StartDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[901], auto_target=True)
+        self.spawn_monster(spawn_ids=[901])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):

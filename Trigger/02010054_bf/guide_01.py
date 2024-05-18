@@ -30,7 +30,7 @@ class 가이드02(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=가이드02스킵)
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -39,7 +39,7 @@ class 가이드02(trigger_api.Trigger):
 
 class 카메라이동02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -50,7 +50,7 @@ class 카메라이동02(trigger_api.Trigger):
 class 가이드02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip() # Missing State: State
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

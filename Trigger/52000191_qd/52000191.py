@@ -1,14 +1,15 @@
 """ trigger/52000191_qd/52000191.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6001], visible=False) # 마법진
-        self.set_effect(trigger_ids=[6008], visible=False) # 마법진
-        self.set_effect(trigger_ids=[6015], visible=False) # 마법진
-        self.set_effect(trigger_ids=[6022], visible=False) # 마법진
-        self.set_effect(trigger_ids=[6033], visible=False) # 마법진
+        self.set_effect(trigger_ids=[6001]) # 마법진
+        self.set_effect(trigger_ids=[6008]) # 마법진
+        self.set_effect(trigger_ids=[6015]) # 마법진
+        self.set_effect(trigger_ids=[6022]) # 마법진
+        self.set_effect(trigger_ids=[6033]) # 마법진
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[10003412], quest_states=[1]):
@@ -38,7 +39,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=1)
@@ -53,7 +54,7 @@ class CameraEffect03_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4002,4003], return_view=False)
         self.move_user_path(patrol_name='MS2PatrolData_3001')
-        self.show_caption(type='VerticalCaption', title='$52000191_QD__52000191__0$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000191_QD__52000191__0$', align=Align.Bottom | Align.Left, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -65,7 +66,7 @@ class 바론과첫만남_01(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4004], return_view=False)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npc_id=0, msg='$52000191_QD__52000191__1$', duration=5000)
-        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__2$', align='left', illust_id='Baron_normal', duration=4000)
+        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__2$', align=Align.Left, illust_id='Baron_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
@@ -75,9 +76,9 @@ class 바론과첫만남_01(trigger_api.Trigger):
 class 바론과첫만남_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4005,4006], return_view=False)
-        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=5000)
+        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=5000.0)
         self.add_cinematic_talk(npc_id=0, msg='$52000191_QD__52000191__3$', duration=5000)
-        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__4$', align='left', illust_id='Baron_normal', duration=4000)
+        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__4$', align=Align.Left, illust_id='Baron_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
@@ -86,10 +87,10 @@ class 바론과첫만남_02(trigger_api.Trigger):
 
 class 바론과첫만남_02_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=5000)
+        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=5000.0)
         self.add_cinematic_talk(npc_id=0, msg='$52000191_QD__52000191__5$', duration=5000)
-        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__6$', align='left', illust_id='Baron_normal', duration=4000)
-        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__7$', align='left', illust_id='Baron_normal', duration=4000)
+        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__6$', align=Align.Left, illust_id='Baron_normal', duration=4000)
+        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__7$', align=Align.Left, illust_id='Baron_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=13000):
@@ -100,7 +101,7 @@ class 바론과첫만남_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Emotion_Angry_A'])
         self.add_cinematic_talk(npc_id=0, msg='$52000191_QD__52000191__8$', duration=4000)
-        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__9$', align='left', illust_id='Baron_normal', duration=4000)
+        self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__9$', align=Align.Left, illust_id='Baron_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -159,7 +160,7 @@ class 전투준비_03(trigger_api.Trigger):
 
 class 페이즈1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_effect(trigger_ids=[6001], visible=True) # 마법진
         self.set_effect(trigger_ids=[6002], visible=True) # 리젠 이펙트
         self.set_effect(trigger_ids=[6003], visible=True) # 리젠 이펙트
@@ -173,7 +174,7 @@ class 페이즈1(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[204]) # 수하 생성
         self.spawn_monster(spawn_ids=[205]) # 수하 생성
         self.spawn_monster(spawn_ids=[206]) # 수하 생성
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -184,8 +185,8 @@ class 페이즈1(trigger_api.Trigger):
 
 class 페이즈2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11004787, illust='Baron_normal', script='$52000191_QD__52000191__11$', duration=3000)
-        self.set_effect(trigger_ids=[6001], visible=False) # 마법진
+        self.side_npc_talk(npc_id=11004787, illust='Baron_normal', script='$52000191_QD__52000191__11$', duration=3000)
+        self.set_effect(trigger_ids=[6001]) # 마법진
         self.set_effect(trigger_ids=[6015], visible=True) # 마법진
         self.set_effect(trigger_ids=[6016], visible=True) # 리젠 이펙트
         self.set_effect(trigger_ids=[6017], visible=True) # 리젠 이펙트
@@ -207,8 +208,8 @@ class 페이즈2(trigger_api.Trigger):
 
 class 페이즈3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11004787, illust='Baron_normal', script='$52000191_QD__52000191__12$', duration=3000)
-        self.set_effect(trigger_ids=[6015], visible=False) # 마법진
+        self.side_npc_talk(npc_id=11004787, illust='Baron_normal', script='$52000191_QD__52000191__12$', duration=3000)
+        self.set_effect(trigger_ids=[6015]) # 마법진
         self.set_effect(trigger_ids=[6008], visible=True) # 마법진
         self.set_effect(trigger_ids=[6009], visible=True) # 리젠 이펙트
         self.set_effect(trigger_ids=[6010], visible=True) # 리젠 이펙트
@@ -230,8 +231,8 @@ class 페이즈3(trigger_api.Trigger):
 
 class 페이즈4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11004787, illust='Baron_normal', script='$52000191_QD__52000191__13$', duration=3000)
-        self.set_effect(trigger_ids=[6008], visible=False) # 마법진
+        self.side_npc_talk(npc_id=11004787, illust='Baron_normal', script='$52000191_QD__52000191__13$', duration=3000)
+        self.set_effect(trigger_ids=[6008]) # 마법진
         self.set_effect(trigger_ids=[6022], visible=True) # 마법진
         self.set_effect(trigger_ids=[6023], visible=True) # 리젠 이펙트
         self.set_effect(trigger_ids=[6024], visible=True) # 리젠 이펙트
@@ -253,8 +254,8 @@ class 페이즈4(trigger_api.Trigger):
 
 class 페이즈5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11004787, illust='Baron_normal', script='$52000191_QD__52000191__14$', duration=3000)
-        self.set_effect(trigger_ids=[6022], visible=False) # 마법진
+        self.side_npc_talk(npc_id=11004787, illust='Baron_normal', script='$52000191_QD__52000191__14$', duration=3000)
+        self.set_effect(trigger_ids=[6022]) # 마법진
         self.set_effect(trigger_ids=[6033], visible=True) # 마법진
         self.set_effect(trigger_ids=[6032], visible=True) # 리젠 이펙트
         self.set_effect(trigger_ids=[6034], visible=True) # 리젠 이펙트
@@ -286,7 +287,7 @@ class 고마해(trigger_api.Trigger):
 
 class 고마해_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6033], visible=False) # 마법진
+        self.set_effect(trigger_ids=[6033]) # 마법진
         self.select_camera_path(path_ids=[4009], return_view=False)
         self.move_user(map_id=52000191, portal_id=5002)
 
@@ -297,7 +298,7 @@ class 고마해_02(trigger_api.Trigger):
 
 class 고마해_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_2, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -309,7 +310,7 @@ class 고마해_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[4004], return_view=False)
-        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=5000)
+        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=5000.0)
         self.add_cinematic_talk(npc_id=0, msg='$52000191_QD__52000191__15$', duration=3000)
         self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__16$', duration=3000)
 
@@ -359,8 +360,8 @@ class 고마해_07(trigger_api.Trigger):
 
 class 그만싸워(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=0)
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

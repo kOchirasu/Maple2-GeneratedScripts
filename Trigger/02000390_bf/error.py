@@ -58,7 +58,7 @@ class quest_error(trigger_api.Trigger):
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1001,1002], visible=False)
+        self.set_mesh(trigger_ids=[1001,1002])
 
 
 initial_state = ready

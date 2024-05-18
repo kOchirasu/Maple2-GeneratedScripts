@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class Off_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -19,7 +19,7 @@ class Off_1(trigger_api.Trigger):
 
 class On_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -28,7 +28,7 @@ class On_1(trigger_api.Trigger):
 
 class Off_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -37,7 +37,7 @@ class Off_2(trigger_api.Trigger):
 
 class On_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -46,7 +46,7 @@ class On_2(trigger_api.Trigger):
 
 class Off_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -55,7 +55,7 @@ class Off_3(trigger_api.Trigger):
 
 class On_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -64,7 +64,7 @@ class On_3(trigger_api.Trigger):
 
 class Off_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=150):
@@ -73,7 +73,7 @@ class Off_4(trigger_api.Trigger):
 
 class On_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=150):
@@ -82,7 +82,7 @@ class On_4(trigger_api.Trigger):
 
 class Off_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=150):
@@ -91,7 +91,7 @@ class Off_5(trigger_api.Trigger):
 
 class On_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=150):
@@ -100,7 +100,7 @@ class On_5(trigger_api.Trigger):
 
 class Off_6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=150):
@@ -109,7 +109,7 @@ class Off_6(trigger_api.Trigger):
 
 class On_6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=150):
@@ -118,7 +118,7 @@ class On_6(trigger_api.Trigger):
 
 class Off_7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[5035,5036,5037], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5035,5036,5037])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=200):

@@ -8,10 +8,10 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='MissionStart', value=0)
         self.set_user_value(key='MissionComplete', value=0)
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Closed') # Cage
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0) # Cage Door
-        self.set_mesh(trigger_ids=[3101,3102,3103], visible=True, start_delay=0, interval=0, fade=0) # Cage Mesh
-        self.set_effect(trigger_ids=[5001], visible=False) # MetalDoorOpen 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # MetalDoorClose 사운드 이펙트
+        self.set_mesh(trigger_ids=[3100], visible=True) # Cage Door
+        self.set_mesh(trigger_ids=[3101,3102,3103], visible=True) # Cage Mesh
+        self.set_effect(trigger_ids=[5001]) # MetalDoorOpen 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # MetalDoorClose 사운드 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CageDoorOpen') >= 1:
@@ -28,7 +28,7 @@ class CageDoorOpen(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5001], visible=True) # MetalDoorOpen 사운드 이펙트
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Open') # Cage
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=300, interval=0, fade=0) # Cage Door
+        self.set_mesh(trigger_ids=[3100], start_delay=300) # Cage Door
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MissionStart') >= 1:
@@ -50,7 +50,7 @@ class ShutDown(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5002], visible=True) # MetalDoorClose 사운드 이펙트
         self.set_user_value(trigger_id=5, key='GiveBuffSlowly', value=1)
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Closed') # Cage
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0) # Cage Door
+        self.set_mesh(trigger_ids=[3100], visible=True) # Cage Door
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MissionComplete') >= 1:
@@ -61,7 +61,7 @@ class Release(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5001], visible=True) # MetalDoorOpen 사운드 이펙트
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Open') # Cage
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=300, interval=0, fade=0) # Cage Door
+        self.set_mesh(trigger_ids=[3100], start_delay=300) # Cage Door
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

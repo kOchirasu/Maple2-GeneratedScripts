@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_effect(trigger_ids=[604])
         self.spawn_monster(spawn_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014], auto_target=False)
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3001], visible=True)
+        self.set_mesh(trigger_ids=[3002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[101], quest_ids=[20002250], quest_states=[1], job_code=90):
@@ -25,7 +25,7 @@ class 대기(trigger_api.Trigger):
 
 class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -45,8 +45,8 @@ class 아시모프이동(trigger_api.Trigger):
 
 class 책장변경(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3002], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3001])
+        self.set_mesh(trigger_ids=[3002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -66,9 +66,9 @@ class 동영상재상(trigger_api.Trigger):
 
 class 이슈라대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.set_effect(trigger_ids=[601], visible=True)
-        self.set_dialogue(type=2, spawn_id=11001244, script='$52000028_QD__MAIN__0$', time=5, arg5=0) # 음성 코드 00001294
+        self.set_dialogue(type=2, spawn_id=11001244, script='$52000028_QD__MAIN__0$', time=5) # 음성 코드 00001294
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5500):
@@ -78,7 +78,7 @@ class 이슈라대사01(trigger_api.Trigger):
 class 이슈라대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[602], visible=True)
-        self.set_dialogue(type=2, spawn_id=11001244, script='$52000028_QD__MAIN__1$', time=6, arg5=0) # 음성 코드 00001295
+        self.set_dialogue(type=2, spawn_id=11001244, script='$52000028_QD__MAIN__1$', time=6) # 음성 코드 00001295
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -89,7 +89,7 @@ class 아시모프대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1001_B')
         self.set_effect(trigger_ids=[603], visible=True)
-        self.set_dialogue(type=2, spawn_id=11000031, script='$52000028_QD__MAIN__2$', time=3, arg5=0) # 음성 코드 00001343
+        self.set_dialogue(type=2, spawn_id=11000031, script='$52000028_QD__MAIN__2$', time=3) # 음성 코드 00001343
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -99,7 +99,7 @@ class 아시모프대사01(trigger_api.Trigger):
 class 아시모프대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[604], visible=True)
-        self.set_dialogue(type=2, spawn_id=11000031, script='$52000028_QD__MAIN__3$', time=6, arg5=0) # 음성 코드 00001344
+        self.set_dialogue(type=2, spawn_id=11000031, script='$52000028_QD__MAIN__3$', time=6) # 음성 코드 00001344
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):

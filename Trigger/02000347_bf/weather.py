@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[600], visible=False)
+        self.set_effect(trigger_ids=[600])
         self.set_interact_object(trigger_ids=[10000804], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000804], state=1)
-        self.set_effect(trigger_ids=[600], visible=False)
+        self.set_effect(trigger_ids=[600])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000804], state=0):
@@ -33,7 +33,7 @@ class 비내림(trigger_api.Trigger):
             self.set_event_ui(type=1, arg2='$02000347_BF__MAIN1__3$', arg3='2000', arg4='0')
             return 시작(self.ctx)
         if self.monster_dead(spawn_ids=[101]):
-            self.set_effect(trigger_ids=[600], visible=False)
+            self.set_effect(trigger_ids=[600])
             return 종료(self.ctx)
 
 

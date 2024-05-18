@@ -14,7 +14,7 @@ class 시작대기중(trigger_api.Trigger):
 
 class 오브젝트반응(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=203, visible=False, initial_sequence='Dead_A')
+        self.set_actor(trigger_id=203, initial_sequence='Dead_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         return NPC이동(self.ctx)

@@ -27,10 +27,10 @@ class Round_check(trigger_api.Trigger):
 
 class Round_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[354], auto_target=True, delay=700)
-        self.spawn_monster(spawn_ids=[355], auto_target=True, delay=1400)
-        self.spawn_monster(spawn_ids=[362], auto_target=True, delay=2100)
-        self.spawn_monster(spawn_ids=[361], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[354], delay=700)
+        self.spawn_monster(spawn_ids=[355], delay=1400)
+        self.spawn_monster(spawn_ids=[362], delay=2100)
+        self.spawn_monster(spawn_ids=[361])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round_02') >= 1:
@@ -41,8 +41,8 @@ class Round_01(trigger_api.Trigger):
 
 class Round_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[352], auto_target=True, delay=2000)
-        self.spawn_monster(spawn_ids=[360], auto_target=True, delay=1000)
+        self.spawn_monster(spawn_ids=[352], delay=2000)
+        self.spawn_monster(spawn_ids=[360], delay=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round_03') >= 1:
@@ -53,8 +53,8 @@ class Round_02(trigger_api.Trigger):
 
 class Round_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[359], auto_target=True, delay=0)
-        self.spawn_monster(spawn_ids=[351], auto_target=True, delay=1500)
+        self.spawn_monster(spawn_ids=[359])
+        self.spawn_monster(spawn_ids=[351], delay=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round_04') >= 1:
@@ -65,8 +65,8 @@ class Round_03(trigger_api.Trigger):
 
 class Round_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[353], auto_target=True, delay=1000)
-        self.spawn_monster(spawn_ids=[358], auto_target=True, delay=2000)
+        self.spawn_monster(spawn_ids=[353], delay=1000)
+        self.spawn_monster(spawn_ids=[358], delay=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Reset') >= 1:

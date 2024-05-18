@@ -1,5 +1,6 @@
 """ trigger/52000195_qd/52000195.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
@@ -36,7 +37,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=1)
@@ -50,7 +51,7 @@ class CameraEffect03(trigger_api.Trigger):
 class CameraEffect03_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4004], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$52000195_QD__52000195__0$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000195_QD__52000195__0$', align=Align.Bottom | Align.Left, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -68,11 +69,11 @@ class CameraEffect03_4(trigger_api.Trigger):
 
 class CameraEffect03_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[204])
         self.visible_my_pc(is_visible=True) # 유저 투명 처리 품
-        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False, is_skill_set=True) # 에레브 변신
+        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'])
+        self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False) # 에레브 변신
         self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False, is_skill_set=False) # 에레브 변신
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +83,7 @@ class CameraEffect03_5(trigger_api.Trigger):
 
 class CameraEffect03_6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -92,9 +93,9 @@ class CameraEffect03_6(trigger_api.Trigger):
 class CameraEffect03_7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
-        self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__1$', align='left', illust_id='Ereb_surprise', duration=3000)
-        self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__2$', align='left', illust_id='Ereb_serious', duration=3000)
-        self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__3$', align='left', illust_id='Ereb_serious', duration=3000)
+        self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__1$', align=Align.Left, illust_id='Ereb_surprise', duration=3000)
+        self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__2$', align=Align.Left, illust_id='Ereb_serious', duration=3000)
+        self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__3$', align=Align.Left, illust_id='Ereb_serious', duration=3000)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,13 +105,13 @@ class CameraEffect03_7(trigger_api.Trigger):
 
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=0)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[204])
         self.visible_my_pc(is_visible=True) # 유저 투명 처리 품
-        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False, is_skill_set=True) # 에레브 변신
+        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'])
+        self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False) # 에레브 변신
         self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False, is_skill_set=False) # 에레브 변신
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -154,7 +155,7 @@ class 과거장면_02(trigger_api.Trigger):
 
 class 과거장면_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_2, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -166,7 +167,7 @@ class 과거장면_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4006], return_view=False)
         self.set_cinematic_ui(type=3)
-        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Talk_A', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Talk_A', duration=4000.0)
         self.add_cinematic_talk(npc_id=11004787, msg='$52000195_QD__52000195__4$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -177,9 +178,9 @@ class 과거장면_05(trigger_api.Trigger):
 class 과거장면_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4007], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Talk_A', duration=8000)
-        self.add_cinematic_talk(npc_id=11004778, msg='$52000195_QD__52000195__5$', align='right', illust_id='Karl_normal', duration=4000)
-        self.add_cinematic_talk(npc_id=11004778, msg='$52000195_QD__52000195__6$', align='right', illust_id='Karl_normal', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Talk_A', duration=8000.0)
+        self.add_cinematic_talk(npc_id=11004778, msg='$52000195_QD__52000195__5$', align=Align.Right, illust_id='Karl_normal', duration=4000)
+        self.add_cinematic_talk(npc_id=11004778, msg='$52000195_QD__52000195__6$', align=Align.Right, illust_id='Karl_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -189,8 +190,8 @@ class 과거장면_06(trigger_api.Trigger):
 class 과거장면_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4008], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Talk_A', duration=4000)
-        self.add_cinematic_talk(npc_id=11004787, msg='$52000195_QD__52000195__7$', align='right', illust_id='Baron_normal', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Talk_A', duration=4000.0)
+        self.add_cinematic_talk(npc_id=11004787, msg='$52000195_QD__52000195__7$', align=Align.Right, illust_id='Baron_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -209,8 +210,8 @@ class 과거장면_08(trigger_api.Trigger):
 
 class 과거장면_08_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Talk_A', duration=4000)
-        self.add_cinematic_talk(npc_id=11004778, msg='$52000195_QD__52000195__8$', align='right', illust_id='Karl_normal', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Talk_A', duration=4000.0)
+        self.add_cinematic_talk(npc_id=11004778, msg='$52000195_QD__52000195__8$', align=Align.Right, illust_id='Karl_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

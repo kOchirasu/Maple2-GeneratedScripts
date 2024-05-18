@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
 class 몬스터와전투(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=12, visible=True, initial_sequence='Opened')
-        self.spawn_monster(spawn_ids=[103], auto_target=True)
+        self.spawn_monster(spawn_ids=[103])
         self.set_effect(trigger_ids=[203], visible=True)
         self.set_timer(timer_id='1', seconds=1)
 

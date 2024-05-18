@@ -14,10 +14,10 @@ class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000079], state=0):
             self.destroy_monster(spawn_ids=[101])
-            self.set_effect(trigger_ids=[201], visible=False)
-            self.set_effect(trigger_ids=[202], visible=False)
-            self.set_effect(trigger_ids=[203], visible=False)
-            self.set_effect(trigger_ids=[204], visible=False)
+            self.set_effect(trigger_ids=[201])
+            self.set_effect(trigger_ids=[202])
+            self.set_effect(trigger_ids=[203])
+            self.set_effect(trigger_ids=[204])
             return 매킨생성(self.ctx)
 
 
@@ -43,7 +43,7 @@ class 매킨대사(trigger_api.Trigger):
 
 class 매킨이동302(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_item(spawn_ids=[201], trigger_id=0, item_id=10000079)
+        self.create_item(spawn_ids=[201], item_id=10000079)
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:

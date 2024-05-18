@@ -9,8 +9,8 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='CorrectFirstPiece', value=0)
         self.set_user_value(key='ResetFirstPiece', value=0)
         self.set_user_value(key='LockFirstPiece', value=0)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109], visible=False, start_delay=0, interval=0, fade=0) # Pattern_Ground
-        self.set_mesh(trigger_ids=[3110,3111,3112,3113,3114,3115,3116,3117,3118,3119], visible=False, start_delay=0, interval=0, fade=0) # Pattern_LightOn
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109]) # Pattern_Ground
+        self.set_mesh(trigger_ids=[3110,3111,3112,3113,3114,3115,3116,3117,3118,3119]) # Pattern_LightOn
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PickFirstPiece') >= 1:
@@ -19,32 +19,32 @@ class Wait(trigger_api.Trigger):
 
 class RandomPick(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern01_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern02_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern03_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern04_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern05_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern06_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern07_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern08_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern09_Pick(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Pattern10_Pick(self.ctx)
 
 
 # 첫 번째 패턴 뽑힘
 class Pattern01_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_A01
+        self.set_mesh(trigger_ids=[3100], visible=True) # Pattern_Ground_A01
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptA01', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class Pattern01_Check(trigger_api.Trigger):
 class Pattern01_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3110], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_A01
+        self.set_mesh(trigger_ids=[3110], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_A01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -101,7 +101,7 @@ class Pattern01_Reset01(trigger_api.Trigger):
 # 첫 번째 패턴 다시체크
 class Pattern01_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3110], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_A01
+        self.set_mesh(trigger_ids=[3110], start_delay=100, fade=5.0) # Pattern_LightOn_A01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -111,7 +111,7 @@ class Pattern01_Reset02(trigger_api.Trigger):
 # 두 번째 패턴 뽑힘
 class Pattern02_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_A02
+        self.set_mesh(trigger_ids=[3101], visible=True) # Pattern_Ground_A02
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptA02', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +134,7 @@ class Pattern02_Check(trigger_api.Trigger):
 class Pattern02_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3111], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_A02
+        self.set_mesh(trigger_ids=[3111], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_A02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -168,7 +168,7 @@ class Pattern02_Reset01(trigger_api.Trigger):
 # 두 번째 패턴 다시체크
 class Pattern02_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3111], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_A02
+        self.set_mesh(trigger_ids=[3111], start_delay=100, fade=5.0) # Pattern_LightOn_A02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -178,7 +178,7 @@ class Pattern02_Reset02(trigger_api.Trigger):
 # 세 번째 패턴 뽑힘
 class Pattern03_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3102], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_A03
+        self.set_mesh(trigger_ids=[3102], visible=True) # Pattern_Ground_A03
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptA03', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -201,7 +201,7 @@ class Pattern03_Check(trigger_api.Trigger):
 class Pattern03_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3112], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_A03
+        self.set_mesh(trigger_ids=[3112], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_A03
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -235,7 +235,7 @@ class Pattern03_Reset01(trigger_api.Trigger):
 # 세 번째 패턴 다시체크
 class Pattern03_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3112], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_A03
+        self.set_mesh(trigger_ids=[3112], start_delay=100, fade=5.0) # Pattern_LightOn_A03
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -245,7 +245,7 @@ class Pattern03_Reset02(trigger_api.Trigger):
 # 네 번째 패턴 뽑힘
 class Pattern04_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3103], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_B01
+        self.set_mesh(trigger_ids=[3103], visible=True) # Pattern_Ground_B01
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptB01', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -268,7 +268,7 @@ class Pattern04_Check(trigger_api.Trigger):
 class Pattern04_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3113], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_B01
+        self.set_mesh(trigger_ids=[3113], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_B01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -302,7 +302,7 @@ class Pattern04_Reset01(trigger_api.Trigger):
 # 네 번째 패턴 다시체크
 class Pattern04_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3113], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_B01
+        self.set_mesh(trigger_ids=[3113], start_delay=100, fade=5.0) # Pattern_LightOn_B01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -312,7 +312,7 @@ class Pattern04_Reset02(trigger_api.Trigger):
 # 다섯 번째 패턴 뽑힘
 class Pattern05_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3104], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_B02
+        self.set_mesh(trigger_ids=[3104], visible=True) # Pattern_Ground_B02
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptB02', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -335,7 +335,7 @@ class Pattern05_Check(trigger_api.Trigger):
 class Pattern05_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3114], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_B02
+        self.set_mesh(trigger_ids=[3114], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_B02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -369,7 +369,7 @@ class Pattern05_Reset01(trigger_api.Trigger):
 # 다섯 번째 패턴 다시체크
 class Pattern05_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3114], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_B02
+        self.set_mesh(trigger_ids=[3114], start_delay=100, fade=5.0) # Pattern_LightOn_B02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -379,7 +379,7 @@ class Pattern05_Reset02(trigger_api.Trigger):
 # 여섯 번째 패턴 뽑힘
 class Pattern06_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3105], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_C01
+        self.set_mesh(trigger_ids=[3105], visible=True) # Pattern_Ground_C01
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptC01', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -402,7 +402,7 @@ class Pattern06_Check(trigger_api.Trigger):
 class Pattern06_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3115], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_C01
+        self.set_mesh(trigger_ids=[3115], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_C01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -436,7 +436,7 @@ class Pattern06_Reset01(trigger_api.Trigger):
 # 여섯 번째 패턴 다시체크
 class Pattern06_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3115], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_C01
+        self.set_mesh(trigger_ids=[3115], start_delay=100, fade=5.0) # Pattern_LightOn_C01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -446,7 +446,7 @@ class Pattern06_Reset02(trigger_api.Trigger):
 # 일곱 번째 패턴 뽑힘
 class Pattern07_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3106], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_D01
+        self.set_mesh(trigger_ids=[3106], visible=True) # Pattern_Ground_D01
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptD01', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -469,7 +469,7 @@ class Pattern07_Check(trigger_api.Trigger):
 class Pattern07_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3116], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_D01
+        self.set_mesh(trigger_ids=[3116], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_D01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -503,7 +503,7 @@ class Pattern07_Reset01(trigger_api.Trigger):
 # 일곱 번째 패턴 다시체크
 class Pattern07_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3116], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_D01
+        self.set_mesh(trigger_ids=[3116], start_delay=100, fade=5.0) # Pattern_LightOn_D01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -513,7 +513,7 @@ class Pattern07_Reset02(trigger_api.Trigger):
 # 여덟 번째 패턴 뽑힘
 class Pattern08_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3107], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_D02
+        self.set_mesh(trigger_ids=[3107], visible=True) # Pattern_Ground_D02
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptD02', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -536,7 +536,7 @@ class Pattern08_Check(trigger_api.Trigger):
 class Pattern08_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3117], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_D02
+        self.set_mesh(trigger_ids=[3117], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_D02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -570,7 +570,7 @@ class Pattern08_Reset01(trigger_api.Trigger):
 # 여덟 번째 패턴 다시체크
 class Pattern08_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3117], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_D02
+        self.set_mesh(trigger_ids=[3117], start_delay=100, fade=5.0) # Pattern_LightOn_D02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -580,7 +580,7 @@ class Pattern08_Reset02(trigger_api.Trigger):
 # 아홉 번째 패턴 뽑힘
 class Pattern09_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3108], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_E01
+        self.set_mesh(trigger_ids=[3108], visible=True) # Pattern_Ground_E01
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptE01', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -603,7 +603,7 @@ class Pattern09_Check(trigger_api.Trigger):
 class Pattern09_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3118], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_E01
+        self.set_mesh(trigger_ids=[3118], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_E01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -637,7 +637,7 @@ class Pattern09_Reset01(trigger_api.Trigger):
 # 아홉 번째 패턴 다시체크
 class Pattern09_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3118], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_E01
+        self.set_mesh(trigger_ids=[3118], start_delay=100, fade=5.0) # Pattern_LightOn_E01
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:
@@ -647,7 +647,7 @@ class Pattern09_Reset02(trigger_api.Trigger):
 # 열 번째 패턴 뽑힘
 class Pattern10_Pick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3109], visible=True, start_delay=0, interval=0, fade=0) # Pattern_Ground_E02
+        self.set_mesh(trigger_ids=[3109], visible=True) # Pattern_Ground_E02
         self.set_user_value(trigger_id=6, key='PickSecondPieceExceptE02', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -670,7 +670,7 @@ class Pattern10_Check(trigger_api.Trigger):
 class Pattern10_CorrectAnswer(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='CorrectFirstPiece', value=1) # 정답
-        self.set_mesh(trigger_ids=[3119], visible=True, start_delay=100, interval=0, fade=5) # Pattern_LightOn_E02
+        self.set_mesh(trigger_ids=[3119], visible=True, start_delay=100, fade=5.0) # Pattern_LightOn_E02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ResetFirstPiece') >= 1:
@@ -704,7 +704,7 @@ class Pattern10_Reset01(trigger_api.Trigger):
 # 열 번째 패턴 다시체크
 class Pattern10_Reset02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3119], visible=False, start_delay=100, interval=0, fade=5) # Pattern_LightOn_E02
+        self.set_mesh(trigger_ids=[3119], start_delay=100, fade=5.0) # Pattern_LightOn_E02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckFirstPiece') >= 1:

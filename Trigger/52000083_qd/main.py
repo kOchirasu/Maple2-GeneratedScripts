@@ -1,5 +1,6 @@
 """ trigger/52000083_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 """
@@ -133,8 +134,8 @@ class 경로이동02(trigger_api.Trigger):
 
 class PC말풍선01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000083_QD__MAIN__0$', time=3, arg5=0)
-        # self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Idle_A', duration=30000)
+        self.set_dialogue(type=1, script='$52000083_QD__MAIN__0$', time=3)
+        # self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Idle_A', duration=30000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -143,7 +144,7 @@ class PC말풍선01(trigger_api.Trigger):
 
 class 검사시네마틱대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__1$', align='left', duration=3000)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__1$', align=Align.Left, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -152,7 +153,7 @@ class 검사시네마틱대사(trigger_api.Trigger):
 
 class PC말풍선02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000083_QD__MAIN__2$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000083_QD__MAIN__2$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -161,7 +162,7 @@ class PC말풍선02(trigger_api.Trigger):
 
 class PC말풍선03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000083_QD__MAIN__3$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000083_QD__MAIN__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -170,7 +171,7 @@ class PC말풍선03(trigger_api.Trigger):
 
 class 디나말풍선01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1001, script='$52000083_QD__MAIN__4$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1001, script='$52000083_QD__MAIN__4$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -179,7 +180,7 @@ class 디나말풍선01(trigger_api.Trigger):
 
 class 디나기상(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=1001, sequence_name='Idle_A', duration=69000)
+        self.set_npc_emotion_loop(spawn_id=1001, sequence_name='Idle_A', duration=69000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -189,8 +190,8 @@ class 디나기상(trigger_api.Trigger):
 class 검사대화01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8001,8002], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Talk_A', duration=3000)
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__5$', align='left', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Talk_A', duration=3000.0)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__5$', align=Align.Left, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -199,7 +200,7 @@ class 검사대화01(trigger_api.Trigger):
 
 class 디나대화01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__6$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__6$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -208,8 +209,8 @@ class 디나대화01(trigger_api.Trigger):
 
 class 검사대화02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__7$', align='left', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Talk_A', duration=3000)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__7$', align=Align.Left, duration=3000)
+        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -218,7 +219,7 @@ class 검사대화02(trigger_api.Trigger):
 
 class 디나대화02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__8$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__8$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -227,8 +228,8 @@ class 디나대화02(trigger_api.Trigger):
 
 class 검사대화03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__9$', align='left', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Talk_A', duration=3000)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__9$', align=Align.Left, duration=3000)
+        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -237,7 +238,7 @@ class 검사대화03(trigger_api.Trigger):
 
 class 디나대화03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__10$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__10$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -246,7 +247,7 @@ class 디나대화03(trigger_api.Trigger):
 
 class 디나대화04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__11$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__11$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -255,7 +256,7 @@ class 디나대화04(trigger_api.Trigger):
 
 class 디나대화05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__12$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__12$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -264,7 +265,7 @@ class 디나대화05(trigger_api.Trigger):
 
 class 디나대화05To1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__13$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__13$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -273,8 +274,8 @@ class 디나대화05To1(trigger_api.Trigger):
 
 class 검사대화04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__14$', align='left', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Talk_A', duration=3000)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__14$', align=Align.Left, duration=3000)
+        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -283,7 +284,7 @@ class 검사대화04(trigger_api.Trigger):
 
 class 디나대화06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__15$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003065, script='$52000083_QD__MAIN__15$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -292,7 +293,7 @@ class 디나대화06(trigger_api.Trigger):
 
 class 검사대화06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__16$', align='left', duration=3000)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__16$', align=Align.Left, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -302,7 +303,7 @@ class 검사대화06(trigger_api.Trigger):
 class 시점이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8003], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Bore_B', duration=2000)
+        self.set_npc_emotion_loop(spawn_id=1012, sequence_name='Bore_B', duration=2000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -329,8 +330,8 @@ class PC따라감(trigger_api.Trigger):
 
 class PC말풍선04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000083_QD__MAIN__17$', time=3, arg5=0)
-        self.set_pc_emotion_loop(sequence_name='Talk_B', duration=2500)
+        self.set_dialogue(type=1, script='$52000083_QD__MAIN__17$', time=3)
+        self.set_pc_emotion_loop(sequence_name='Talk_B', duration=2500.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -339,8 +340,8 @@ class PC말풍선04(trigger_api.Trigger):
 
 class PC말풍선05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000083_QD__MAIN__18$', time=3, arg5=0)
-        self.set_pc_emotion_loop(sequence_name='Talk_B', duration=3000)
+        self.set_dialogue(type=1, script='$52000083_QD__MAIN__18$', time=3)
+        self.set_pc_emotion_loop(sequence_name='Talk_B', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -349,7 +350,7 @@ class PC말풍선05(trigger_api.Trigger):
 
 class 검사시네마틱대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__19$', align='left', duration=3000)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__19$', align=Align.Left, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -358,7 +359,7 @@ class 검사시네마틱대사02(trigger_api.Trigger):
 
 class 검사말풍선03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__20$', align='left', duration=3000)
+        self.add_cinematic_talk(npc_id=11004022, illust_id='11004022', msg='$52000083_QD__MAIN__20$', align=Align.Left, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -367,7 +368,7 @@ class 검사말풍선03(trigger_api.Trigger):
 
 class 검사퇴장02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=3)
+        self.reset_camera(interpolation_time=3.0)
         self.move_npc(spawn_id=1012, patrol_name='MS2PatrolData_blader_03')
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -4,9 +4,9 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2101], visible=False, start_delay=0, interval=10)
-        self.set_effect(trigger_ids=[8001], visible=False)
-        self.set_actor(trigger_id=2201, visible=False, initial_sequence='Sit_Ground_Idle_A')
+        self.set_mesh(trigger_ids=[2101], interval=10)
+        self.set_effect(trigger_ids=[8001])
+        self.set_actor(trigger_id=2201, initial_sequence='Sit_Ground_Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='cage_01') >= 1:
@@ -15,7 +15,7 @@ class idle(trigger_api.Trigger):
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2101], visible=True, start_delay=0, interval=0)
+        self.set_mesh(trigger_ids=[2101], visible=True)
         self.set_effect(trigger_ids=[8001], visible=True)
         self.set_actor(trigger_id=2201, visible=True, initial_sequence='Sit_Ground_Idle_A')
 
@@ -26,10 +26,10 @@ class ready(trigger_api.Trigger):
 
 class npc(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8001], visible=False)
-        self.set_mesh(trigger_ids=[2101], visible=False, start_delay=0, interval=10)
-        self.set_actor(trigger_id=2201, visible=False, initial_sequence='Dead_A')
-        self.spawn_monster(spawn_ids=[221], auto_target=True)
+        self.set_effect(trigger_ids=[8001])
+        self.set_mesh(trigger_ids=[2101], interval=10)
+        self.set_actor(trigger_id=2201, initial_sequence='Dead_A')
+        self.spawn_monster(spawn_ids=[221])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

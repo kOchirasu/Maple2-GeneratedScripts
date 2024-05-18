@@ -7,34 +7,34 @@ from dungeon_common.checkusercount import *
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[11000], visible=False) # 입구로 되돌아 가는 길 막기
-        self.set_agent(trigger_ids=[11001], visible=False) # 입구로 되돌아 가는 길 막기
+        self.set_agent(trigger_ids=[11000]) # 입구로 되돌아 가는 길 막기
+        self.set_agent(trigger_ids=[11001]) # 입구로 되돌아 가는 길 막기
         self.set_agent(trigger_ids=[13001], visible=True) # 두번째 전투 전에 몬스터 길  막기
         self.set_agent(trigger_ids=[13002], visible=True) # 두번째 전투 전에 몬스터 길  막기
         self.set_agent(trigger_ids=[13003], visible=True) # 두번째 전투 전에 몬스터 길  막기
         self.set_agent(trigger_ids=[13004], visible=True) # 두번째 전투 전에 몬스터 길  막기
         self.set_agent(trigger_ids=[13005], visible=True) # 두번째 전투 전에 몬스터 길  막기
         self.set_agent(trigger_ids=[13006], visible=True) # 두번째 전투 전에 몬스터 길  막기
-        self.set_agent(trigger_ids=[15000], visible=False) # 끊어진 다리 길 막기
-        self.set_agent(trigger_ids=[15001], visible=False) # 끊어진 다리 길 막기
-        self.set_agent(trigger_ids=[15002], visible=False) # 끊어진 다리 길 막기
-        self.set_agent(trigger_ids=[16000], visible=False) # 새로운 다리 길 막기
-        self.set_agent(trigger_ids=[16001], visible=False) # 새로운 다리 길 막기
-        self.set_agent(trigger_ids=[16002], visible=False) # 새로운 다리 길 막기
-        self.set_agent(trigger_ids=[16003], visible=False) # 새로운 다리 길 막기
-        self.set_agent(trigger_ids=[16004], visible=False) # 새로운 다리 길 막기
-        self.set_mesh(trigger_ids=[90000], visible=False, start_delay=0, interval=0, fade=0) # 1st barrier ON
-        self.set_mesh(trigger_ids=[90001], visible=False, start_delay=0, interval=0, fade=0) # 2st barrier OFF
-        self.set_mesh(trigger_ids=[90002], visible=True, start_delay=0, interval=0, fade=0) # 3rd barrier ON
-        self.set_mesh(trigger_ids=[90003], visible=True, start_delay=0, interval=0, fade=0) # 4th barrier ON
-        self.set_mesh(trigger_ids=[90004], visible=True, start_delay=0, interval=0, fade=0) # 5th barrier ON
-        self.set_mesh(trigger_ids=[90005], visible=True, start_delay=0, interval=0, fade=0) # 6th barrier ON
-        self.set_mesh(trigger_ids=[90006], visible=True, start_delay=0, interval=0, fade=0) # 7th barrier ON
-        self.set_mesh(trigger_ids=[90007], visible=True, start_delay=0, interval=0, fade=0) # 8th barrier ON
-        self.set_mesh(trigger_ids=[90008], visible=True, start_delay=0, interval=0, fade=0) # 9th barrier ON
-        self.set_mesh(trigger_ids=[98880], visible=True, start_delay=0, interval=0, fade=0) # 마지막꼬마 CAGE 메시 켜기
+        self.set_agent(trigger_ids=[15000]) # 끊어진 다리 길 막기
+        self.set_agent(trigger_ids=[15001]) # 끊어진 다리 길 막기
+        self.set_agent(trigger_ids=[15002]) # 끊어진 다리 길 막기
+        self.set_agent(trigger_ids=[16000]) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[16001]) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[16002]) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[16003]) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[16004]) # 새로운 다리 길 막기
+        self.set_mesh(trigger_ids=[90000]) # 1st barrier ON
+        self.set_mesh(trigger_ids=[90001]) # 2st barrier OFF
+        self.set_mesh(trigger_ids=[90002], visible=True) # 3rd barrier ON
+        self.set_mesh(trigger_ids=[90003], visible=True) # 4th barrier ON
+        self.set_mesh(trigger_ids=[90004], visible=True) # 5th barrier ON
+        self.set_mesh(trigger_ids=[90005], visible=True) # 6th barrier ON
+        self.set_mesh(trigger_ids=[90006], visible=True) # 7th barrier ON
+        self.set_mesh(trigger_ids=[90007], visible=True) # 8th barrier ON
+        self.set_mesh(trigger_ids=[90008], visible=True) # 9th barrier ON
+        self.set_mesh(trigger_ids=[98880], visible=True) # 마지막꼬마 CAGE 메시 켜기
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Closed') # EnterDoor
-        self.set_mesh(trigger_ids=[89999], visible=True, start_delay=0, interval=0, fade=0) # EnterDoorInvisibleBlock
+        self.set_mesh(trigger_ids=[89999], visible=True) # EnterDoorInvisibleBlock
         self.set_actor(trigger_id=92220, visible=True, initial_sequence='Idle_A') # 첫번째장벽 덤불
         self.set_actor(trigger_id=92221, visible=True, initial_sequence='Idle_A') # 첫번째장벽 덤불
         self.set_actor(trigger_id=92222, visible=True, initial_sequence='Idle_A') # 첫번째장벽 덤불
@@ -66,20 +66,20 @@ class 대기(trigger_api.Trigger):
         self.set_actor(trigger_id=96663, visible=True, initial_sequence='Idle_A') # 네번째장벽 덤불
         self.set_actor(trigger_id=96664, visible=True, initial_sequence='Idle_A') # 네번째장벽 덤불
         self.set_actor(trigger_id=97770, visible=True, initial_sequence='Closed') # 마지막꼬마 CAGE 액터 보여주기
-        self.set_mesh(trigger_ids=[10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016], visible=True, start_delay=0, interval=0, fade=0) # 1st bridge ON
-        self.set_mesh(trigger_ids=[10020,10021,10022,10023,10024,10025,10026,10027,10028,10029,10030,10031,10032,10033], visible=True, start_delay=0, interval=0, fade=0) # 2nd bridge ON
-        self.set_mesh(trigger_ids=[10040,10041,10042,10043,10044], visible=False, start_delay=0, interval=0, fade=0) # 3rd bridge OFF
-        self.set_mesh(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=False, start_delay=0, interval=0, fade=0) # 1st 꼬마01 Hint OFF
-        self.set_mesh(trigger_ids=[2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117], visible=False, start_delay=0, interval=0, fade=0) # 1st 꼬마02 Hint OFF
-        self.set_mesh(trigger_ids=[2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220], visible=False, start_delay=0, interval=0, fade=0) # 1st 꼬마03 Hint OFF
-        self.set_mesh(trigger_ids=[2301,2302,2303,2304,2305,2306,2307,2308,2309,2310,2311,2312,2313,2314,2315], visible=False, start_delay=0, interval=0, fade=0) # 1st 꼬마04 Hint OFF
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018], visible=False, start_delay=0, interval=0, fade=0) # 2nd Hint OFF
-        self.set_mesh(trigger_ids=[3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116], visible=False, start_delay=0, interval=0, fade=0) # 2nd Hint OFF
-        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221], visible=False, start_delay=0, interval=0, fade=0) # 2nd Hint OFF
-        self.set_mesh(trigger_ids=[3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318], visible=False, start_delay=0, interval=0, fade=0) # 2nd Hint OFF
-        self.set_mesh(trigger_ids=[3401,3402,3403,3404,3405,3406,3407,3408,3409,3410,3411,3412,3413,3414,3415,3416,3417,3418,3419], visible=False, start_delay=0, interval=0, fade=0) # 2nd Hint OFF
-        self.set_mesh(trigger_ids=[4001,4002,4003,4004,4005,4006,4007,4008], visible=False, start_delay=0, interval=0, fade=0) # 3rd Hint OFF
-        self.set_mesh(trigger_ids=[90090,90091,90092,90093,90094,90095,90096,90097,90098,90099], visible=True, start_delay=0, interval=0, fade=0) # 클리어포털감춤
+        self.set_mesh(trigger_ids=[10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016], visible=True) # 1st bridge ON
+        self.set_mesh(trigger_ids=[10020,10021,10022,10023,10024,10025,10026,10027,10028,10029,10030,10031,10032,10033], visible=True) # 2nd bridge ON
+        self.set_mesh(trigger_ids=[10040,10041,10042,10043,10044]) # 3rd bridge OFF
+        self.set_mesh(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016]) # 1st 꼬마01 Hint OFF
+        self.set_mesh(trigger_ids=[2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117]) # 1st 꼬마02 Hint OFF
+        self.set_mesh(trigger_ids=[2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220]) # 1st 꼬마03 Hint OFF
+        self.set_mesh(trigger_ids=[2301,2302,2303,2304,2305,2306,2307,2308,2309,2310,2311,2312,2313,2314,2315]) # 1st 꼬마04 Hint OFF
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018]) # 2nd Hint OFF
+        self.set_mesh(trigger_ids=[3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116]) # 2nd Hint OFF
+        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221]) # 2nd Hint OFF
+        self.set_mesh(trigger_ids=[3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318]) # 2nd Hint OFF
+        self.set_mesh(trigger_ids=[3401,3402,3403,3404,3405,3406,3407,3408,3409,3410,3411,3412,3413,3414,3415,3416,3417,3418,3419]) # 2nd Hint OFF
+        self.set_mesh(trigger_ids=[4001,4002,4003,4004,4005,4006,4007,4008]) # 3rd Hint OFF
+        self.set_mesh(trigger_ids=[90090,90091,90092,90093,90094,90095,90096,90097,90098,90099], visible=True) # 클리어포털감춤
         self.set_interact_object(trigger_ids=[10000766], state=2) # 1st 꼬마 랜덤
         self.set_interact_object(trigger_ids=[10000767], state=2) # 1st 꼬마 랜덤
         self.set_interact_object(trigger_ids=[10000768], state=2) # 1st 꼬마 랜덤
@@ -102,27 +102,27 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000776], state=2) # 열 수 있는 철창 감춤
         self.spawn_monster(spawn_ids=[401], auto_target=False)
         self.spawn_monster(spawn_ids=[610], auto_target=False)
-        self.set_effect(trigger_ids=[99999], visible=False) # 치유 이펙트
-        self.set_effect(trigger_ids=[7771], visible=False) # UI  메시지 알림 사운드
-        self.set_effect(trigger_ids=[7772], visible=False) # 치유 스킬 이펙트 사운드
-        self.set_effect(trigger_ids=[777401], visible=False) # 덤불 제거01 사운드
-        self.set_effect(trigger_ids=[777402], visible=False) # 덤불 제거02 사운드
-        self.set_effect(trigger_ids=[777403], visible=False) # 덤불 제거03 사운드
-        self.set_effect(trigger_ids=[777404], visible=False) # 덤불 제거04 사운드
-        self.set_effect(trigger_ids=[777405], visible=False) # 덤불 제거05 사운드
-        self.set_effect(trigger_ids=[777501], visible=False) # 발자국 나타남01 사운드
-        self.set_effect(trigger_ids=[777502], visible=False) # 발자국 나타남02 사운드
-        self.set_effect(trigger_ids=[7776], visible=False) # 추격 소음01 사운드
-        self.set_effect(trigger_ids=[777701], visible=False) # 길 나타남01 사운드 / 첫 번째 다리
-        self.set_effect(trigger_ids=[777702], visible=False) # 길 나타남02 사운드 / 외다리
-        self.set_effect(trigger_ids=[777801], visible=False) # 길 없어짐01 사운드  / 첫 번째 다리
-        self.set_effect(trigger_ids=[777802], visible=False) # 길 없어짐02 사운드 /  외다리
-        self.set_effect(trigger_ids=[777803], visible=False) # 길 없어짐02 사운드 / 막힌 길
-        self.set_effect(trigger_ids=[777901], visible=False) # KaseMu Voice01
-        self.set_effect(trigger_ids=[777902], visible=False) # KaseMu Voice02
-        self.set_effect(trigger_ids=[777903], visible=False) # KaseMu Voice03
-        self.set_effect(trigger_ids=[777904], visible=False) # KaseMu Voice04
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_effect(trigger_ids=[99999]) # 치유 이펙트
+        self.set_effect(trigger_ids=[7771]) # UI  메시지 알림 사운드
+        self.set_effect(trigger_ids=[7772]) # 치유 스킬 이펙트 사운드
+        self.set_effect(trigger_ids=[777401]) # 덤불 제거01 사운드
+        self.set_effect(trigger_ids=[777402]) # 덤불 제거02 사운드
+        self.set_effect(trigger_ids=[777403]) # 덤불 제거03 사운드
+        self.set_effect(trigger_ids=[777404]) # 덤불 제거04 사운드
+        self.set_effect(trigger_ids=[777405]) # 덤불 제거05 사운드
+        self.set_effect(trigger_ids=[777501]) # 발자국 나타남01 사운드
+        self.set_effect(trigger_ids=[777502]) # 발자국 나타남02 사운드
+        self.set_effect(trigger_ids=[7776]) # 추격 소음01 사운드
+        self.set_effect(trigger_ids=[777701]) # 길 나타남01 사운드 / 첫 번째 다리
+        self.set_effect(trigger_ids=[777702]) # 길 나타남02 사운드 / 외다리
+        self.set_effect(trigger_ids=[777801]) # 길 없어짐01 사운드  / 첫 번째 다리
+        self.set_effect(trigger_ids=[777802]) # 길 없어짐02 사운드 /  외다리
+        self.set_effect(trigger_ids=[777803]) # 길 없어짐02 사운드 / 막힌 길
+        self.set_effect(trigger_ids=[777901]) # KaseMu Voice01
+        self.set_effect(trigger_ids=[777902]) # KaseMu Voice02
+        self.set_effect(trigger_ids=[777903]) # KaseMu Voice03
+        self.set_effect(trigger_ids=[777904]) # KaseMu Voice04
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -147,7 +147,7 @@ class DungeonStart(trigger_api.Trigger):
 class GateOpen01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Opened') # EnterDoor
-        self.set_mesh(trigger_ids=[89999], visible=False, start_delay=0, interval=0, fade=0) # EnterDoorInvisibleBlock
+        self.set_mesh(trigger_ids=[89999]) # EnterDoorInvisibleBlock
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -156,8 +156,8 @@ class GateOpen01(trigger_api.Trigger):
 
 class 술래말풍선01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__0$', time=2, arg5=0)
-        self.set_mesh(trigger_ids=[90000], visible=False, start_delay=0, interval=0, fade=0) # 1st barrier OFF
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__0$', time=2)
+        self.set_mesh(trigger_ids=[90000]) # 1st barrier OFF
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -176,7 +176,7 @@ class 술래패트롤01(trigger_api.Trigger):
 
 class 몬스터출현01_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4000, visible=False, initial_sequence='Opened') # EnterDoor
+        self.set_actor(trigger_id=4000, initial_sequence='Opened') # EnterDoor
         self.hide_guide_summary(entity_id=20003311)
         self.spawn_monster(spawn_ids=[900], auto_target=False)
 
@@ -187,7 +187,7 @@ class 몬스터출현01_시작(trigger_api.Trigger):
 
 class 몬스터출현01_연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[900]):
@@ -202,13 +202,13 @@ class 몬스터출현01_연출02(trigger_api.Trigger):
 
 class 몬스터출현01_생성랜덤01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_1번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_2번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_3번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_4번생성(self.ctx)
 
 
@@ -258,13 +258,13 @@ class 몬스터출현01_4번생성(trigger_api.Trigger):
 
 class 몬스터출현01_생성랜덤02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_5번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_6번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_7번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_8번생성(self.ctx)
 
 
@@ -306,13 +306,13 @@ class 몬스터출현01_8번생성(trigger_api.Trigger):
 
 class 몬스터출현01_생성랜덤03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_9번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_10번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_11번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현01_12번생성(self.ctx)
 
 
@@ -354,7 +354,7 @@ class 몬스터출현01_12번생성(trigger_api.Trigger):
 
 class 몬스터출현01_종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__2$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -375,7 +375,7 @@ class 첫번째무너짐연출시작01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__900$')
-        self.select_camera(trigger_id=802, enable=True)
+        self.select_camera(trigger_id=802)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_999')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -385,10 +385,10 @@ class 첫번째무너짐연출시작01(trigger_api.Trigger):
 
 class 첫번째다리붕괴02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_random_mesh(trigger_ids=[10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016], visible=False, start_delay=16, interval=100, fade=100)
+        self.set_random_mesh(trigger_ids=[10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016], start_delay=16, interval=100, fade=100)
         self.set_effect(trigger_ids=[777801], visible=True) # 길 없어짐01 사운드  / 첫 번째 다리
-        self.set_mesh(trigger_ids=[90001], visible=True, start_delay=0, interval=0, fade=0) # 2st barrier ON
-        self.set_mesh(trigger_ids=[90000], visible=True, start_delay=0, interval=0, fade=0) # 1st barrier ON
+        self.set_mesh(trigger_ids=[90001], visible=True) # 2st barrier ON
+        self.set_mesh(trigger_ids=[90000], visible=True) # 1st barrier ON
         self.set_skip(state=첫번째무너짐연출종료01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -401,7 +401,7 @@ class 첫번째다리붕괴02(trigger_api.Trigger):
 
 class 첫번째무너짐연출종료01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[777801], visible=False) # 길 없어짐01 사운드  / 첫 번째 다리
+        self.set_effect(trigger_ids=[777801]) # 길 없어짐01 사운드  / 첫 번째 다리
         self.select_camera(trigger_id=802, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -415,7 +415,7 @@ class 첫번째무너짐연출종료01(trigger_api.Trigger):
 class 술래말풍선02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=16, key='FirstBridgeOff', value=1)
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__3$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__3$', time=2)
         self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__4$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -426,7 +426,7 @@ class 술래말풍선02(trigger_api.Trigger):
 class 술래패트롤02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1001')
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__5$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__5$', time=2)
         self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__24$', time=2, arg5=2)
         self.spawn_monster(spawn_ids=[91002], auto_target=False) # 첫 번째 꽃덤불 생성
 
@@ -454,8 +454,8 @@ class 첫번째덤불등장01(trigger_api.Trigger):
 class 첫번째덤불제거01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=92220, visible=True, initial_sequence='Dead_A') # 첫번째장벽 덤불
-        self.set_mesh(trigger_ids=[90002], visible=False, start_delay=0, interval=0, fade=0) # 1st barrier OFF
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__6$', time=2, arg5=0)
+        self.set_mesh(trigger_ids=[90002]) # 1st barrier OFF
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__6$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -464,7 +464,7 @@ class 첫번째덤불제거01(trigger_api.Trigger):
 
 class 첫번째꼬마찾기시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=92000, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불
+        self.set_actor(trigger_id=92000, initial_sequence='Dead_A') # 첫번째장벽 덤불
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -472,19 +472,19 @@ class 첫번째꼬마찾기시작(trigger_api.Trigger):
             return 첫번째꼬마랜덤(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=92220, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불 제거
-        self.set_effect(trigger_ids=[777401], visible=False) # 덤불 제거01 사운드
+        self.set_actor(trigger_id=92220, initial_sequence='Dead_A') # 첫번째장벽 덤불 제거
+        self.set_effect(trigger_ids=[777401]) # 덤불 제거01 사운드
 
 
 class 첫번째꼬마랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 첫번째힌트발견01(self.ctx) # 10000766, 201
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 첫번째힌트발견02(self.ctx) # 10000767, 202
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 첫번째힌트발견03(self.ctx) # 10000768, 203
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 첫번째힌트발견04(self.ctx) # 10000769, 204
 
 
@@ -508,7 +508,7 @@ class 첫번째힌트발견01(trigger_api.Trigger):
 
 class 첫번째힌트수색01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__10$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__10$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000766], state=0):
@@ -522,7 +522,7 @@ class 첫번째힌트수색01(trigger_api.Trigger):
 class 첫번째꼬마발견01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[201], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=201, script='$02000331_BF__Seeker01__11$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$02000331_BF__Seeker01__11$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -549,7 +549,7 @@ class 첫번째꼬마교체01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(from_spawn_id=201, to_spawn_id=200)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_998')
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__13$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__13$', time=2)
         self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__14$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -577,7 +577,7 @@ class 첫번째힌트발견02(trigger_api.Trigger):
 
 class 첫번째힌트수색02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__10$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__10$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000767], state=0):
@@ -591,7 +591,7 @@ class 첫번째힌트수색02(trigger_api.Trigger):
 class 첫번째꼬마발견02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[202], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=202, script='$02000331_BF__Seeker01__15$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=202, script='$02000331_BF__Seeker01__15$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -618,7 +618,7 @@ class 첫번째꼬마교체02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(from_spawn_id=202, to_spawn_id=200)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_998')
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__18$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__18$', time=2)
         self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__19$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -646,7 +646,7 @@ class 첫번째힌트발견03(trigger_api.Trigger):
 
 class 첫번째힌트수색03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__10$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__10$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000768], state=0):
@@ -660,7 +660,7 @@ class 첫번째힌트수색03(trigger_api.Trigger):
 class 첫번째꼬마발견03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[203], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=203, script='$02000331_BF__Seeker01__16$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=203, script='$02000331_BF__Seeker01__16$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -687,7 +687,7 @@ class 첫번째꼬마교체03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(from_spawn_id=203, to_spawn_id=200)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_998')
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__20$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__20$', time=2)
         self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__21$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -715,7 +715,7 @@ class 첫번째힌트발견04(trigger_api.Trigger):
 
 class 첫번째힌트수색04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__10$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__10$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000769], state=0):
@@ -729,7 +729,7 @@ class 첫번째힌트수색04(trigger_api.Trigger):
 class 첫번째꼬마발견04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[204], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=204, script='$02000331_BF__Seeker01__17$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=204, script='$02000331_BF__Seeker01__17$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -756,7 +756,7 @@ class 첫번째꼬마교체04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(from_spawn_id=204, to_spawn_id=200)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_998')
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__22$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__22$', time=2)
         self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__23$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -770,13 +770,13 @@ class 첫번째꼬마교체04(trigger_api.Trigger):
 """
 class 몬스터출현02_생성랜덤01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현02_1번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현02_2번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현02_3번생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현02_4번생성(self.ctx)
 
 
@@ -826,7 +826,7 @@ class 두번째덤불등장01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 가이드 : 스킬을 사용해서 덤불을 없애 주세요.
         self.show_guide_summary(entity_id=20003312, text_id=20003312)
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__24$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__24$', time=3)
         self.spawn_monster(spawn_ids=[91003], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -842,7 +842,7 @@ class 두번째덤불등장01(trigger_api.Trigger):
 class 두번째덤불제거01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=93330, visible=True, initial_sequence='Dead_A') # 첫번째장벽 덤불
-        self.set_mesh(trigger_ids=[90003], visible=False, start_delay=0, interval=0, fade=0) # 4th barrier OFF
+        self.set_mesh(trigger_ids=[90003]) # 4th barrier OFF
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -851,8 +851,8 @@ class 두번째덤불제거01(trigger_api.Trigger):
 
 class 두번째꼬마찾기시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__25$', time=3, arg5=0)
-        self.set_effect(trigger_ids=[777402], visible=False) # 덤불 제거02 사운드
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__25$', time=3)
+        self.set_effect(trigger_ids=[777402]) # 덤불 제거02 사운드
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1004')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2003')
 
@@ -861,18 +861,18 @@ class 두번째꼬마찾기시작(trigger_api.Trigger):
             return 두번째몬스터발견01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=93330, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불
+        self.set_actor(trigger_id=93330, initial_sequence='Dead_A') # 첫번째장벽 덤불
 
 
 class 두번째몬스터발견01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__30$', time=2, arg5=0)
-        self.set_agent(trigger_ids=[13001], visible=False) # 두번째 전투 전에 몬스터 길  막기 해제
-        self.set_agent(trigger_ids=[13002], visible=False) # 두번째 전투 전에 몬스터 길  막기 해제
-        self.set_agent(trigger_ids=[13003], visible=False) # 두번째 전투 전에 몬스터 길  막기 해제
-        self.set_agent(trigger_ids=[13004], visible=False) # 두번째 전투 전에 몬스터 길  막기 해제
-        self.set_agent(trigger_ids=[13005], visible=False) # 두번째 전투 전에 몬스터 길  막기 해제
-        self.set_agent(trigger_ids=[13006], visible=False) # 두번째 전투 전에 몬스터 길  막기 해제
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__30$', time=2)
+        self.set_agent(trigger_ids=[13001]) # 두번째 전투 전에 몬스터 길  막기 해제
+        self.set_agent(trigger_ids=[13002]) # 두번째 전투 전에 몬스터 길  막기 해제
+        self.set_agent(trigger_ids=[13003]) # 두번째 전투 전에 몬스터 길  막기 해제
+        self.set_agent(trigger_ids=[13004]) # 두번째 전투 전에 몬스터 길  막기 해제
+        self.set_agent(trigger_ids=[13005]) # 두번째 전투 전에 몬스터 길  막기 해제
+        self.set_agent(trigger_ids=[13006]) # 두번째 전투 전에 몬스터 길  막기 해제
         self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__31$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -882,15 +882,15 @@ class 두번째몬스터발견01(trigger_api.Trigger):
 
 class 두번째꼬마랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 두번째힌트발견01(self.ctx) # 10000771, 301, 311
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 두번째힌트발견02(self.ctx) # 10000772, 302, 312
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 두번째힌트발견03(self.ctx) # 10000773, 303, 313
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 두번째힌트발견04(self.ctx) # 10000774, 304, 314
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 두번째힌트발견05(self.ctx) # 100007775, 305, 315
 
 
@@ -916,7 +916,7 @@ class 두번째힌트발견01(trigger_api.Trigger):
 class 두번째힌트수색01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[311], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9301]):
@@ -925,7 +925,7 @@ class 두번째힌트수색01(trigger_api.Trigger):
 
 class 두번째꼬마도움01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=311, script='$02000331_BF__Seeker01__33$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=311, script='$02000331_BF__Seeker01__33$', time=2)
         self.set_interact_object(trigger_ids=[10000771], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -946,7 +946,7 @@ class 두번째꼬마발견01(trigger_api.Trigger):
 class 두번째꼬마구출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(from_spawn_id=311, to_spawn_id=301)
-        self.set_dialogue(type=1, spawn_id=301, script='$02000331_BF__Seeker01__38$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=301, script='$02000331_BF__Seeker01__38$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -964,7 +964,7 @@ class 두번째꼬마이동01(trigger_api.Trigger):
 
 class 두번째꼬마만남01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=301, script='$02000331_BF__Seeker01__39$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=301, script='$02000331_BF__Seeker01__39$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -973,7 +973,7 @@ class 두번째꼬마만남01(trigger_api.Trigger):
 
 class 두번째꼬마대화01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__40$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__40$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9006, spawn_ids=[301]):
@@ -1022,7 +1022,7 @@ class 두번째힌트발견02(trigger_api.Trigger):
 class 두번째힌트수색02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[312], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9302]):
@@ -1031,7 +1031,7 @@ class 두번째힌트수색02(trigger_api.Trigger):
 
 class 두번째꼬마도움02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=312, script='$02000331_BF__Seeker01__34$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=312, script='$02000331_BF__Seeker01__34$', time=2)
         self.set_interact_object(trigger_ids=[10000772], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1052,7 +1052,7 @@ class 두번째꼬마발견02(trigger_api.Trigger):
 class 두번째꼬마구출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(from_spawn_id=312, to_spawn_id=302)
-        self.set_dialogue(type=1, spawn_id=302, script='$02000331_BF__Seeker01__43$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=302, script='$02000331_BF__Seeker01__43$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -1070,7 +1070,7 @@ class 두번째꼬마이동02(trigger_api.Trigger):
 
 class 두번째꼬마만남02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=302, script='$02000331_BF__Seeker01__44$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=302, script='$02000331_BF__Seeker01__44$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1079,7 +1079,7 @@ class 두번째꼬마만남02(trigger_api.Trigger):
 
 class 두번째꼬마대화02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__45$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__45$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9006, spawn_ids=[302]):
@@ -1128,7 +1128,7 @@ class 두번째힌트발견03(trigger_api.Trigger):
 class 두번째힌트수색03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[313], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9303]):
@@ -1137,7 +1137,7 @@ class 두번째힌트수색03(trigger_api.Trigger):
 
 class 두번째꼬마도움03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=313, script='$02000331_BF__Seeker01__35$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=313, script='$02000331_BF__Seeker01__35$', time=2)
         self.set_interact_object(trigger_ids=[10000773], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1158,7 +1158,7 @@ class 두번째꼬마발견03(trigger_api.Trigger):
 class 두번째꼬마구출03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(from_spawn_id=313, to_spawn_id=303)
-        self.set_dialogue(type=1, spawn_id=303, script='$02000331_BF__Seeker01__48$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=303, script='$02000331_BF__Seeker01__48$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -1176,7 +1176,7 @@ class 두번째꼬마이동03(trigger_api.Trigger):
 
 class 두번째꼬마만남03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=303, script='$02000331_BF__Seeker01__49$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=303, script='$02000331_BF__Seeker01__49$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1185,7 +1185,7 @@ class 두번째꼬마만남03(trigger_api.Trigger):
 
 class 두번째꼬마대화03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__50$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__50$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9006, spawn_ids=[303]):
@@ -1234,7 +1234,7 @@ class 두번째힌트발견04(trigger_api.Trigger):
 class 두번째힌트수색04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[314], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9304]):
@@ -1244,7 +1244,7 @@ class 두번째힌트수색04(trigger_api.Trigger):
 class 두번째꼬마도움04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000774], state=1)
-        self.set_dialogue(type=1, spawn_id=314, script='$02000331_BF__Seeker01__36$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=314, script='$02000331_BF__Seeker01__36$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1281,7 +1281,7 @@ class 두번째꼬마이동04(trigger_api.Trigger):
 
 class 두번째꼬마만남04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=304, script='$02000331_BF__Seeker01__54$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=304, script='$02000331_BF__Seeker01__54$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1290,7 +1290,7 @@ class 두번째꼬마만남04(trigger_api.Trigger):
 
 class 두번째꼬마대화04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__55$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__55$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9006, spawn_ids=[304]):
@@ -1339,7 +1339,7 @@ class 두번째힌트발견05(trigger_api.Trigger):
 class 두번째힌트수색05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[315], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__32$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9305]):
@@ -1349,7 +1349,7 @@ class 두번째힌트수색05(trigger_api.Trigger):
 class 두번째꼬마도움05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000775], state=1)
-        self.set_dialogue(type=1, spawn_id=315, script='$02000331_BF__Seeker01__37$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=315, script='$02000331_BF__Seeker01__37$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 두번째꼬마발견05(self.ctx)
@@ -1368,7 +1368,7 @@ class 두번째꼬마발견05(trigger_api.Trigger):
 class 두번째꼬마구출05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(from_spawn_id=315, to_spawn_id=305)
-        self.set_dialogue(type=1, spawn_id=305, script='$02000331_BF__Seeker01__58$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=305, script='$02000331_BF__Seeker01__58$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1386,7 +1386,7 @@ class 두번째꼬마이동05(trigger_api.Trigger):
 
 class 두번째꼬마만남05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=305, script='$02000331_BF__Seeker01__59$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=305, script='$02000331_BF__Seeker01__59$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1395,7 +1395,7 @@ class 두번째꼬마만남05(trigger_api.Trigger):
 
 class 두번째꼬마대화05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__60$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__60$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9006, spawn_ids=[305]):
@@ -1436,7 +1436,7 @@ class 세명패트롤01(trigger_api.Trigger):
 
 class 세명패트롤02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__70$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__70$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1464,9 +1464,9 @@ class 세번째덤불등장02(trigger_api.Trigger):
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1006')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2005')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3003')
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__71$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__71$', time=2)
         self.spawn_monster(spawn_ids=[91005], auto_target=False) # 3다시2 꽃덤불
-        self.set_mesh(trigger_ids=[90004], visible=False, start_delay=0, interval=0, fade=0) # 4th barrier OFF
+        self.set_mesh(trigger_ids=[90004]) # 4th barrier OFF
         self.set_actor(trigger_id=94440, visible=True, initial_sequence='Dead_A') # 첫번째장벽 덤불
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1481,8 +1481,8 @@ class 세번째덤불등장02(trigger_api.Trigger):
 
 class 세번째덤불등장03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__72$', time=2, arg5=0)
-        self.set_mesh(trigger_ids=[90005], visible=False, start_delay=0, interval=0, fade=0) # 5th barrier OFF
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__72$', time=2)
+        self.set_mesh(trigger_ids=[90005]) # 5th barrier OFF
         self.set_actor(trigger_id=94450, visible=True, initial_sequence='Dead_A') # 첫번째장벽 덤불
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1492,25 +1492,25 @@ class 세번째덤불등장03(trigger_api.Trigger):
 
 class 세번째꼬마찾기시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[777403], visible=False) # 덤불 제거03 사운드
-        self.set_effect(trigger_ids=[777404], visible=False) # 덤불 제거04 사운드
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__73$', time=2, arg5=0)
+        self.set_effect(trigger_ids=[777403]) # 덤불 제거03 사운드
+        self.set_effect(trigger_ids=[777404]) # 덤불 제거04 사운드
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__73$', time=2)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1016')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2015')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3013')
-        self.set_actor(trigger_id=94440, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불
+        self.set_actor(trigger_id=94440, initial_sequence='Dead_A') # 첫번째장벽 덤불
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
             return 꼬마셋대화연출01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=94450, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불
+        self.set_actor(trigger_id=94450, initial_sequence='Dead_A') # 첫번째장벽 덤불
 
 
 class 꼬마셋대화연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__74$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__74$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1526,15 +1526,15 @@ class 세명패트롤03(trigger_api.Trigger):
 # 고립된 세번째 꼬마 발견, 세번째스위치 랜덤
 class 세번째스위치랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 세번째스위치출현01(self.ctx) # 세번째스위치01 - 10000784
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 세번째스위치출현02(self.ctx) # 세번째스위치02 - 10000792
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 세번째스위치출현03(self.ctx) # 세번째스위치03 - 10000793
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 세번째스위치출현04(self.ctx) # 세번째스위치04 - 10000794
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 세번째스위치출현05(self.ctx) # 세번째스위치05 - 10000795
 
 
@@ -1551,7 +1551,7 @@ class 고립연출시작01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__901$')
-        self.select_camera(trigger_id=804, enable=True)
+        self.select_camera(trigger_id=804)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1007')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2006')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3004')
@@ -1590,7 +1590,7 @@ class 구출안내01_01(trigger_api.Trigger):
 
 class 구출안내01_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1599,7 +1599,7 @@ class 구출안내01_02(trigger_api.Trigger):
 
 class 구출안내01_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1608,7 +1608,7 @@ class 구출안내01_03(trigger_api.Trigger):
 
 class 구출안내01_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000784], state=0):
@@ -1631,7 +1631,7 @@ class 고립연출시작02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__901$')
-        self.select_camera(trigger_id=804, enable=True)
+        self.select_camera(trigger_id=804)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1007')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2006')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3004')
@@ -1670,7 +1670,7 @@ class 구출안내02_01(trigger_api.Trigger):
 
 class 구출안내02_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1679,7 +1679,7 @@ class 구출안내02_02(trigger_api.Trigger):
 
 class 구출안내02_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1688,7 +1688,7 @@ class 구출안내02_03(trigger_api.Trigger):
 
 class 구출안내02_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000792], state=0):
@@ -1711,7 +1711,7 @@ class 고립연출시작03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__901$')
-        self.select_camera(trigger_id=804, enable=True)
+        self.select_camera(trigger_id=804)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1007')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2006')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3004')
@@ -1750,7 +1750,7 @@ class 구출안내03_01(trigger_api.Trigger):
 
 class 구출안내03_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1759,7 +1759,7 @@ class 구출안내03_02(trigger_api.Trigger):
 
 class 구출안내03_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1768,7 +1768,7 @@ class 구출안내03_03(trigger_api.Trigger):
 
 class 구출안내03_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000793], state=0):
@@ -1791,7 +1791,7 @@ class 고립연출시작04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__901$')
-        self.select_camera(trigger_id=804, enable=True)
+        self.select_camera(trigger_id=804)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1007')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2006')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3004')
@@ -1830,7 +1830,7 @@ class 구출안내04_01(trigger_api.Trigger):
 
 class 구출안내04_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1839,7 +1839,7 @@ class 구출안내04_02(trigger_api.Trigger):
 
 class 구출안내04_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1848,7 +1848,7 @@ class 구출안내04_03(trigger_api.Trigger):
 
 class 구출안내04_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000794], state=0):
@@ -1871,7 +1871,7 @@ class 고립연출시작05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__901$')
-        self.select_camera(trigger_id=804, enable=True)
+        self.select_camera(trigger_id=804)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1007')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2006')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3004')
@@ -1910,7 +1910,7 @@ class 구출안내05_01(trigger_api.Trigger):
 
 class 구출안내05_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__80$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1919,7 +1919,7 @@ class 구출안내05_02(trigger_api.Trigger):
 
 class 구출안내05_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__81$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1928,7 +1928,7 @@ class 구출안내05_03(trigger_api.Trigger):
 
 class 구출안내05_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__82$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000795], state=0):
@@ -1949,7 +1949,7 @@ class 딜레이(trigger_api.Trigger):
 
 class 세번째꼬마탈출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=400, script='$02000331_BF__Seeker01__83$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=400, script='$02000331_BF__Seeker01__83$', time=2)
         self.move_npc(spawn_id=400, patrol_name='MS2PatrolData_4001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1962,7 +1962,7 @@ class 세번째꼬마만남01(trigger_api.Trigger):
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1008')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2007')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3005')
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__84$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__84$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -1971,7 +1971,7 @@ class 세번째꼬마만남01(trigger_api.Trigger):
 
 class 세번째꼬마만남02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=400, script='$02000331_BF__Seeker01__85$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=400, script='$02000331_BF__Seeker01__85$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1980,7 +1980,7 @@ class 세번째꼬마만남02(trigger_api.Trigger):
 
 class 세번째꼬마만남03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__86$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__86$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1990,7 +1990,7 @@ class 세번째꼬마만남03(trigger_api.Trigger):
 # 고립된 세번째 꼬마 구출 완료
 class 네명패트롤01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__87$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__87$', time=2)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1009')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -2003,7 +2003,7 @@ class 네명패트롤02(trigger_api.Trigger):
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2008')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3006')
         self.move_npc(spawn_id=400, patrol_name='MS2PatrolData_4002')
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__88$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__88$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9017, spawn_ids=[100]):
@@ -2030,7 +2030,7 @@ class 네번째덤불등장01(trigger_api.Trigger):
 class 네번째덤불제거01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=96660, visible=True, initial_sequence='Dead_A') # 첫번째장벽 덤불
-        self.set_mesh(trigger_ids=[90006], visible=False, start_delay=0, interval=0, fade=0) # 7th barrier OFF
+        self.set_mesh(trigger_ids=[90006]) # 7th barrier OFF
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -2040,13 +2040,13 @@ class 네번째덤불제거01(trigger_api.Trigger):
 class 네번째꼬마찾기시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='401', seconds=2)
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__89$', time=2, arg5=0)
-        self.set_effect(trigger_ids=[777405], visible=False) # 덤불 제거05 사운드
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__89$', time=2)
+        self.set_effect(trigger_ids=[777405]) # 덤불 제거05 사운드
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1010')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2009')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3007')
         self.move_npc(spawn_id=400, patrol_name='MS2PatrolData_4003')
-        self.set_actor(trigger_id=96660, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불
+        self.set_actor(trigger_id=96660, initial_sequence='Dead_A') # 첫번째장벽 덤불
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9013, spawn_ids=[100]):
@@ -2066,13 +2066,13 @@ class 몬스터출현05_꼬마생성(trigger_api.Trigger):
 
 class 몬스터출현05_생성랜덤01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_1번대장생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_2번대장생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_3번대장생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_4번대장생성(self.ctx)
 
 
@@ -2114,13 +2114,13 @@ class 몬스터출현05_4번대장생성(trigger_api.Trigger):
 
 class 몬스터출현05_생성랜덤02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_1번자코생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_2번자코생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_3번자코생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_4번자코생성(self.ctx)
 
 
@@ -2186,13 +2186,13 @@ class 몬스터출현05_4번자코생성(trigger_api.Trigger):
 
 class 몬스터출현05_생성랜덤03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_5번대장생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_6번대장생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_7번대장생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_8번대장생성(self.ctx)
 
 
@@ -2238,13 +2238,13 @@ class 몬스터출현05_8번대장생성(trigger_api.Trigger):
 
 class 몬스터출현05_생성랜덤04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_5번자코생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_6번자코생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_7번자코생성(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 몬스터출현05_8번자코생성(self.ctx)
 
 
@@ -2305,7 +2305,7 @@ class 추격연출시작01(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7776], visible=True) # 추격 소음01 사운드
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__902$')
-        self.select_camera(trigger_id=800, enable=True)
+        self.select_camera(trigger_id=800)
         self.set_skip(state=추격연출종료01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -2331,8 +2331,8 @@ class 추격연출종료01(trigger_api.Trigger):
 
 class 네번째꼬마만남01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7776], visible=False) # 추격 소음01 사운드
-        self.set_dialogue(type=1, spawn_id=500, script='$02000331_BF__Seeker01__93$', time=2, arg5=0)
+        self.set_effect(trigger_ids=[7776]) # 추격 소음01 사운드
+        self.set_dialogue(type=1, spawn_id=500, script='$02000331_BF__Seeker01__93$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -2341,7 +2341,7 @@ class 네번째꼬마만남01(trigger_api.Trigger):
 
 class 네번째꼬마만남02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__94$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__94$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -2350,7 +2350,7 @@ class 네번째꼬마만남02(trigger_api.Trigger):
 
 class 네번째꼬마만남03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__95$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__95$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -2359,7 +2359,7 @@ class 네번째꼬마만남03(trigger_api.Trigger):
 
 class 네번째꼬마만남04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=400, script='$02000331_BF__Seeker01__96$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=400, script='$02000331_BF__Seeker01__96$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -2368,7 +2368,7 @@ class 네번째꼬마만남04(trigger_api.Trigger):
 
 class 다섯명패트롤01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__97$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__97$', time=2)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1011')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -2392,7 +2392,7 @@ class 두번째무너짐연출시작01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__903$')
-        self.select_camera(trigger_id=806, enable=True)
+        self.select_camera(trigger_id=806)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -2401,7 +2401,7 @@ class 두번째무너짐연출시작01(trigger_api.Trigger):
 
 class 두번째다리붕괴02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_random_mesh(trigger_ids=[10020,10021,10022,10023,10024,10025,10026,10027,10028,10029,10030,10031,10032,10033], visible=False, start_delay=14, interval=100, fade=100)
+        self.set_random_mesh(trigger_ids=[10020,10021,10022,10023,10024,10025,10026,10027,10028,10029,10030,10031,10032,10033], start_delay=14, interval=100, fade=100)
         self.set_effect(trigger_ids=[777803], visible=True) # 길 없어짐02 사운드 / 막힌 길
         self.set_agent(trigger_ids=[15000], visible=True) # 끊어진 다리 길 막기
         self.set_agent(trigger_ids=[15001], visible=True) # 끊어진 다리 길 막기
@@ -2427,7 +2427,7 @@ class 두번째무너짐연출종료01(trigger_api.Trigger):
 
 class 술래말풍선06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[777803], visible=False) # 길 없어짐02 사운드 / 막힌 길
+        self.set_effect(trigger_ids=[777803]) # 길 없어짐02 사운드 / 막힌 길
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_1012')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_2011')
 
@@ -2438,7 +2438,7 @@ class 술래말풍선06(trigger_api.Trigger):
 
 class 술래말풍선07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__100$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__100$', time=2)
         self.set_dialogue(type=1, spawn_id=200, script='$02000331_BF__Seeker01__101$', time=2, arg5=1)
         self.move_npc(spawn_id=500, patrol_name='MS2PatrolData_5003')
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3009')
@@ -2451,7 +2451,7 @@ class 술래말풍선07(trigger_api.Trigger):
 
 class 술래말풍선08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=500, script='$02000331_BF__Seeker01__102$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=500, script='$02000331_BF__Seeker01__102$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -2460,7 +2460,7 @@ class 술래말풍선08(trigger_api.Trigger):
 
 class 술래말풍선09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__103$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__103$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -2469,7 +2469,7 @@ class 술래말풍선09(trigger_api.Trigger):
 
 class 술래말풍선10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=400, script='$02000331_BF__Seeker01__104$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=400, script='$02000331_BF__Seeker01__104$', time=2)
         self.set_dialogue(type=1, spawn_id=300, script='$02000331_BF__Seeker01__105$', time=2, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -2480,15 +2480,15 @@ class 술래말풍선10(trigger_api.Trigger):
 # 다섯번째  외다리 생성 스위치 랜덤
 class 외다리생성랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 외다리스위치출현01(self.ctx) # 외다리스위치01 - 10000785
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 외다리스위치출현02(self.ctx) # 외다리스위치02 - 10000796
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 외다리스위치출현03(self.ctx) # 외다리스위치03 - 10000797
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 외다리스위치출현04(self.ctx) # 외다리스위치04 - 10000798
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 외다리스위치출현05(self.ctx) # 외다리스위치05 - 10000799
 
 
@@ -2624,7 +2624,7 @@ class 외다리스위치반응05(trigger_api.Trigger):
 
 class 외다리생성시작01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[90008], visible=False, start_delay=0, interval=0, fade=0) # 9th barrier OFF
+        self.set_mesh(trigger_ids=[90008]) # 9th barrier OFF
         self.set_effect(trigger_ids=[777702], visible=True) # 길 나타남02 사운드 / 외다리
         self.set_random_mesh(trigger_ids=[10040,10041,10042,10043,10044], visible=True, start_delay=5, interval=150, fade=150) # 3rd bridge ON
 
@@ -2646,7 +2646,7 @@ class 다리건너갈준비01(trigger_api.Trigger):
 
 class 다리건너갈준비02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__110$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__110$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[99992]):
@@ -2662,7 +2662,7 @@ class 다리건너가기01(trigger_api.Trigger):
         self.move_npc(spawn_id=300, patrol_name='MS2PatrolData_3010')
         self.move_npc(spawn_id=400, patrol_name='MS2PatrolData_4006')
         self.move_npc(spawn_id=500, patrol_name='MS2PatrolData_5004')
-        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__111$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=100, script='$02000331_BF__Seeker01__111$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -2677,8 +2677,8 @@ class 다리건너가기02(trigger_api.Trigger):
 
 class 다리건너가기03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=610, script='$02000331_BF__Seeker01__112$', time=3, arg5=0)
-        self.set_mesh(trigger_ids=[90008], visible=True, start_delay=0, interval=0, fade=0) # 9th barrier ON
+        self.set_dialogue(type=1, spawn_id=610, script='$02000331_BF__Seeker01__112$', time=3)
+        self.set_mesh(trigger_ids=[90008], visible=True) # 9th barrier ON
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -2697,7 +2697,7 @@ class 보스등장연출시작01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__904$')
         self.set_effect(trigger_ids=[777901], visible=True) # KaseMu Voice01
-        self.select_camera(trigger_id=808, enable=True)
+        self.select_camera(trigger_id=808)
         self.set_skip(state=보스등장연출중01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -2731,7 +2731,7 @@ class 보스등장연출중02(trigger_api.Trigger):
         self.change_monster(from_spawn_id=300, to_spawn_id=603) # 디펜스용 NPC로 교체 플린
         self.change_monster(from_spawn_id=400, to_spawn_id=604) # 디펜스용 NPC로 교체 스틴
         self.change_monster(from_spawn_id=500, to_spawn_id=605) # 디펜스용 NPC로 교체 토리
-        self.select_camera(trigger_id=809, enable=True)
+        self.select_camera(trigger_id=809)
         self.set_skip(state=보스등장연출중02Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -2749,7 +2749,7 @@ class 보스등장연출중02Skip(trigger_api.Trigger):
 
 class 보스등장연출중03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_random_mesh(trigger_ids=[10040,10041,10042,10043,10044], visible=False, start_delay=5, interval=150, fade=150) # 3rd bridge OFF
+        self.set_random_mesh(trigger_ids=[10040,10041,10042,10043,10044], start_delay=5, interval=150, fade=150) # 3rd bridge OFF
         self.set_effect(trigger_ids=[777802], visible=True) # 길 없어짐02 사운드 /  외다리
         self.set_agent(trigger_ids=[16000], visible=True) # 새로운 다리 길 막기
         self.set_agent(trigger_ids=[16001], visible=True) # 새로운 다리 길 막기
@@ -2775,7 +2775,7 @@ class 보스등장연출중04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(trigger_id=809, enable=False)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__907$')
-        self.set_effect(trigger_ids=[777901], visible=False) # KaseMu Voice01
+        self.set_effect(trigger_ids=[777901]) # KaseMu Voice01
         self.set_effect(trigger_ids=[777902], visible=True) # KaseMu Voice02
         self.set_skip(state=보스등장연출끝01)
 
@@ -2790,7 +2790,7 @@ class 보스등장연출끝01(trigger_api.Trigger):
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_effect(trigger_ids=[777802], visible=False) # 길 없어짐02 사운드 /  외다리
+        self.set_effect(trigger_ids=[777802]) # 길 없어짐02 사운드 /  외다리
         self.set_user_value(trigger_id=15, key='SecondBridgeOff', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -2811,15 +2811,15 @@ class 마지막웨이브알림01(trigger_api.Trigger):
 # 마지막 웨이브 : 첫 번째 소환 : 근거리4/근거리4
 class 몬스터출현06_생성랜덤01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_1번생성(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_2번생성(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_3번생성(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_4번생성(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_5번생성(self.ctx)
 
 
@@ -2872,15 +2872,15 @@ class 몬스터출현06_5번생성(trigger_api.Trigger):
 # 마지막 웨이브 : 두 번째 소환
 class 몬스터출현06_생성랜덤02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_6번생성(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_7번생성(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_8번생성(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_9번생성(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_10번생성(self.ctx)
 
 
@@ -2938,15 +2938,15 @@ class 두번째웨이브대기(trigger_api.Trigger):
 # 마지막 웨이브 : 2방향 순차적 소환 : 원거리4 근거리12
 class 몬스터출현06_생성랜덤03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_11번생성_01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_12번생성_01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_13번생성_01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_14번생성_01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_15번생성_01(self.ctx)
 
 
@@ -3229,13 +3229,13 @@ class 몬스터출현06_15번생성_06(trigger_api.Trigger):
 class 몬스터출현06_생성랜덤04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         return 몬스터출현06_16번생성_01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_17번생성_01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_18번생성_01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_19번생성_01(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 몬스터출현06_20번생성_01(self.ctx)
 
 
@@ -3614,7 +3614,7 @@ class 보스전투_준비02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=811, enable=True)
+        self.select_camera(trigger_id=811)
         self.set_skip(state=보스전투_준비04)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -3625,7 +3625,7 @@ class 보스전투_준비02(trigger_api.Trigger):
 class 보스전투_준비03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__908$')
-        self.set_effect(trigger_ids=[777902], visible=False) # KaseMu Voice02
+        self.set_effect(trigger_ids=[777902]) # KaseMu Voice02
         self.set_effect(trigger_ids=[777903], visible=True) # KaseMu Voice03
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -3667,10 +3667,10 @@ class 보스도망연출01(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[1000], auto_target=False)
         self.set_interact_object(trigger_ids=[10000776], state=0) # 마지막꼬마 CAGE 열수있는 철창 켜기
         self.set_interact_object(trigger_ids=[10000776], state=1) # 마지막꼬마 CAGE 열수있는 철창 켜기
-        self.set_actor(trigger_id=97770, visible=False, initial_sequence='Closed') # 마지막꼬마 CAGE 액터 감추기
+        self.set_actor(trigger_id=97770, initial_sequence='Closed') # 마지막꼬마 CAGE 액터 감추기
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__909$')
-        self.select_camera(trigger_id=812, enable=True)
+        self.select_camera(trigger_id=812)
         self.set_skip(state=보스도망연출03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -3681,7 +3681,7 @@ class 보스도망연출01(trigger_api.Trigger):
 class 보스도망연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3, script='$02000331_BF__Seeker01__910$')
-        self.set_effect(trigger_ids=[777903], visible=False) # KaseMu Voice03
+        self.set_effect(trigger_ids=[777903]) # KaseMu Voice03
         self.set_effect(trigger_ids=[777904], visible=True) # KaseMu Voice04
         self.set_skip(state=보스도망연출03)
 
@@ -3739,7 +3739,7 @@ class 마지막연출_포털출현01(trigger_api.Trigger):
 class 마지막연출_포털출현02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=600, patrol_name='MS2PatrolData_6001')
-        self.set_effect(trigger_ids=[777904], visible=False) # KaseMu Voice04
+        self.set_effect(trigger_ids=[777904]) # KaseMu Voice04
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -3748,7 +3748,7 @@ class 마지막연출_포털출현02(trigger_api.Trigger):
 
 class 마지막연출_포털출현03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=600, script='$02000331_BF__Seeker01__130$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=600, script='$02000331_BF__Seeker01__130$', time=2)
         self.set_effect(trigger_ids=[99999], visible=True) # 치유 이펙트
         self.set_effect(trigger_ids=[7772], visible=True) # 치유 사운드
 
@@ -3759,7 +3759,7 @@ class 마지막연출_포털출현03(trigger_api.Trigger):
 
 class 마지막연출_포털출현04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[99999], visible=False) # 치유 이펙트
+        self.set_effect(trigger_ids=[99999]) # 치유 이펙트
         self.change_monster(from_spawn_id=601, to_spawn_id=110)
         self.change_monster(from_spawn_id=602, to_spawn_id=210)
         self.change_monster(from_spawn_id=603, to_spawn_id=310)
@@ -3787,7 +3787,7 @@ class 마지막연출_시작01(trigger_api.Trigger):
 
 class 마지막연출_시작02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=110, script='$02000331_BF__Seeker01__131$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000331_BF__Seeker01__131$', time=2)
         self.set_dialogue(type=1, spawn_id=310, script='$02000331_BF__Seeker01__132$', time=2, arg5=2)
         self.set_dialogue(type=1, spawn_id=410, script='$02000331_BF__Seeker01__133$', time=2, arg5=4)
         self.set_dialogue(type=1, spawn_id=600, script='$02000331_BF__Seeker01__136$', time=2, arg5=6)
@@ -3799,7 +3799,7 @@ class 마지막연출_시작02(trigger_api.Trigger):
 
 class 던전클리어01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_random_mesh(trigger_ids=[90090,90091,90092,90093,90094,90095,90096,90097,90098,90099], visible=False, start_delay=10, interval=100, fade=100) # 클리어포털 나타남
+        self.set_random_mesh(trigger_ids=[90090,90091,90092,90093,90094,90095,90096,90097,90098,90099], start_delay=10, interval=100, fade=100) # 클리어포털 나타남
         self.change_monster(from_spawn_id=110, to_spawn_id=111) # Quest Npc 교체
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -3820,7 +3820,7 @@ class 퇴장시작01(trigger_api.Trigger):
         # self.move_npc(spawn_id=210, patrol_name='MS2PatrolData_2016')
         # self.move_npc(spawn_id=310, patrol_name='MS2PatrolData_3012')
         # self.move_npc(spawn_id=600, patrol_name='MS2PatrolData_6003')
-        self.set_dialogue(type=1, spawn_id=210, script='$02000331_BF__Seeker01__134$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=210, script='$02000331_BF__Seeker01__134$', time=2)
         self.set_dialogue(type=1, spawn_id=510, script='$02000331_BF__Seeker01__135$', time=2, arg5=2)
         self.set_dialogue(type=1, spawn_id=111, script='$02000331_BF__Seeker01__137$', time=2, arg5=3)
 
@@ -3831,16 +3831,16 @@ class 퇴장시작01(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[11000], visible=False) # 입구로 되돌아 가는 길 막기
-        self.set_agent(trigger_ids=[11001], visible=False) # 입구로 되돌아 가는 길 막기
-        self.set_agent(trigger_ids=[15000], visible=False) # 끊어진 다리 길 막기
-        self.set_agent(trigger_ids=[15001], visible=False) # 끊어진 다리 길 막기
-        self.set_agent(trigger_ids=[15002], visible=False) # 끊어진 다리 길 막기
-        self.set_agent(trigger_ids=[16000], visible=False) # 새로운 다리 길 막기
-        self.set_agent(trigger_ids=[16001], visible=False) # 새로운 다리 길 막기
-        self.set_agent(trigger_ids=[16002], visible=False) # 새로운 다리 길 막기
-        self.set_agent(trigger_ids=[16003], visible=False) # 새로운 다리 길 막기
-        self.set_agent(trigger_ids=[16004], visible=False) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[11000]) # 입구로 되돌아 가는 길 막기
+        self.set_agent(trigger_ids=[11001]) # 입구로 되돌아 가는 길 막기
+        self.set_agent(trigger_ids=[15000]) # 끊어진 다리 길 막기
+        self.set_agent(trigger_ids=[15001]) # 끊어진 다리 길 막기
+        self.set_agent(trigger_ids=[15002]) # 끊어진 다리 길 막기
+        self.set_agent(trigger_ids=[16000]) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[16001]) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[16002]) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[16003]) # 새로운 다리 길 막기
+        self.set_agent(trigger_ids=[16004]) # 새로운 다리 길 막기
 
 
 initial_state = 대기

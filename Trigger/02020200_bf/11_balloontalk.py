@@ -10,8 +10,8 @@ class 대기(trigger_api.Trigger):
 
 class 대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020200_BF__11_BALLOONTALK__0$')
-        self.add_balloon_talk(spawn_id=0, msg='$02020200_BF__11_BALLOONTALK__1$', duration=5000, delay_tick=1000)
+        self.side_npc_talk(npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020200_BF__11_BALLOONTALK__0$')
+        self.add_balloon_talk(msg='$02020200_BF__11_BALLOONTALK__1$', duration=5000, delay_tick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[921]) and not self.monster_dead(spawn_ids=[205]):
@@ -26,7 +26,7 @@ class 대사1(trigger_api.Trigger):
 
 class 대사2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=0, msg='$02020200_BF__11_BALLOONTALK__2$', duration=5000, delay_tick=0)
+        self.add_balloon_talk(msg='$02020200_BF__11_BALLOONTALK__2$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_npc_additional_effect(spawn_id=205, additional_effect_id=42030261, level=1):
@@ -35,8 +35,8 @@ class 대사2(trigger_api.Trigger):
 
 class 대사3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020200_BF__11_BALLOONTALK__3$')
-        self.add_balloon_talk(spawn_id=0, msg='$02020200_BF__11_BALLOONTALK__4$', duration=5000, delay_tick=0)
+        self.side_npc_talk(npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020200_BF__11_BALLOONTALK__3$')
+        self.add_balloon_talk(msg='$02020200_BF__11_BALLOONTALK__4$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 종료(self.ctx)

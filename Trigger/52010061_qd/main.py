@@ -1,5 +1,6 @@
 """ trigger/52010061_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 """
@@ -32,7 +33,7 @@ class 칼리브해안전경(trigger_api.Trigger):
 class 칼리브해안전경_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=종료_02, action='exit')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4001,4002], return_view=False) # 전경비추는카메라
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +43,7 @@ class 칼리브해안전경_02(trigger_api.Trigger):
 
 class 칼리브해안전경_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52010061_QD__main__0$', align='centerLeft', offset_rate_x=0, offset_rate_y=0, duration=2800, scale=2)
+        self.show_caption(type='VerticalCaption', title='$52010061_QD__main__0$', align=Align.Center | Align.Left, duration=2800, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1800):
@@ -60,9 +61,9 @@ class 교역선비추기(trigger_api.Trigger):
 
 class 스폰조절(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=False, delay=0) # 렌듀비앙
-        self.spawn_monster(spawn_ids=[102], auto_target=False, delay=0) # 유페리아
-        self.spawn_monster(spawn_ids=[103], auto_target=False, delay=0) # 레잔
+        self.spawn_monster(spawn_ids=[101], auto_target=False) # 렌듀비앙
+        self.spawn_monster(spawn_ids=[102], auto_target=False) # 유페리아
+        self.spawn_monster(spawn_ids=[103], auto_target=False) # 레잔
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -71,7 +72,7 @@ class 스폰조절(trigger_api.Trigger):
 
 class 교역선비추기_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4003,4005], return_view=False) # 교역선비추는카메라
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +83,7 @@ class 교역선비추기_02(trigger_api.Trigger):
 class 레잔대사_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4008], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=4000.0)
         self.add_cinematic_talk(npc_id=11003846, msg='$52010061_QD__main__1$', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,8 +104,8 @@ class 레잔대사_02(trigger_api.Trigger):
 class 유페리아대사_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4009], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=6000)
-        self.add_cinematic_talk(npc_id=11003844, illust_id='Yuperia_normal', msg='$52010061_QD__main__3$', duration=4800, align='left')
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=6000.0)
+        self.add_cinematic_talk(npc_id=11003844, illust_id='Yuperia_normal', msg='$52010061_QD__main__3$', duration=4800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -113,9 +114,9 @@ class 유페리아대사_01(trigger_api.Trigger):
 
 class 랜듀비앙대사_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000.0)
         self.select_camera_path(path_ids=[4005], return_view=False)
-        self.add_cinematic_talk(npc_id=11001567, illust_id='Renduebian_normal', msg='$52010061_QD__main__4$', duration=4800, align='left')
+        self.add_cinematic_talk(npc_id=11001567, illust_id='Renduebian_normal', msg='$52010061_QD__main__4$', duration=4800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -124,9 +125,9 @@ class 랜듀비앙대사_01(trigger_api.Trigger):
 
 class 랜듀비앙대사_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000.0)
         self.select_camera_path(path_ids=[4005], return_view=False)
-        self.add_cinematic_talk(npc_id=11001567, illust_id='Renduebian_normal', msg='$52010061_QD__main__5$', duration=3800, align='left')
+        self.add_cinematic_talk(npc_id=11001567, illust_id='Renduebian_normal', msg='$52010061_QD__main__5$', duration=3800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -136,8 +137,8 @@ class 랜듀비앙대사_02(trigger_api.Trigger):
 class 유페리아대사_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4009], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=4000)
-        self.add_cinematic_talk(npc_id=11003844, illust_id='Yuperia_normal', msg='$52010061_QD__main__6$', duration=3800, align='left')
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=4000.0)
+        self.add_cinematic_talk(npc_id=11003844, illust_id='Yuperia_normal', msg='$52010061_QD__main__6$', duration=3800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -146,9 +147,9 @@ class 유페리아대사_02(trigger_api.Trigger):
 
 class 랜듀비앙대사_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000.0)
         self.select_camera_path(path_ids=[4010], return_view=False)
-        self.add_cinematic_talk(npc_id=11001567, illust_id='Renduebian_normal', msg='$52010061_QD__main__7$', duration=3800, align='left')
+        self.add_cinematic_talk(npc_id=11001567, illust_id='Renduebian_normal', msg='$52010061_QD__main__7$', duration=3800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -167,7 +168,7 @@ class 이슈라등장(trigger_api.Trigger):
 class 이슈라등장_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11001975, msg='$52010061_QD__main__8$', duration=4000)
-        self.spawn_monster(spawn_ids=[104], auto_target=False, delay=0) # 이슈라
+        self.spawn_monster(spawn_ids=[104], auto_target=False) # 이슈라
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -177,7 +178,7 @@ class 이슈라등장_02(trigger_api.Trigger):
 class 이슈라등장_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4006,4007], return_view=False)
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -186,8 +187,8 @@ class 이슈라등장_03(trigger_api.Trigger):
 
 class 이슈라대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=4000)
-        self.add_cinematic_talk(npc_id=11003845, illust_id='Ishura_normal', msg='$52010061_QD__main__9$', duration=3000, align='left')
+        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=4000.0)
+        self.add_cinematic_talk(npc_id=11003845, illust_id='Ishura_normal', msg='$52010061_QD__main__9$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -228,7 +229,7 @@ class UI초기화(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[102])
         self.destroy_monster(spawn_ids=[103])
         self.destroy_monster(spawn_ids=[104])
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

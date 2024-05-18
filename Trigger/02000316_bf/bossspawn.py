@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=11)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[10]):
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 class 몹생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):

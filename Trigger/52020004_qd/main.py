@@ -1,5 +1,6 @@
 """ trigger/52020004_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 대기(trigger_api.Trigger):
@@ -55,7 +56,7 @@ class 라딘에게돌아가_대기(trigger_api.Trigger):
 class 라딘에게돌아가(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52020002, portal_id=1)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -134,7 +135,7 @@ class 트럭으로가세요_대기(trigger_api.Trigger):
 class 트럭으로가세요(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52020005, portal_id=1)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -180,7 +181,7 @@ class 공주님과기사연출_시작(trigger_api.Trigger):
 class 공주와기사00(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8000], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11003675, illust_id='Krantz_normal', msg='이곳은… 꽤나 오랜만에 오는 것 같군요. ', duration=3000)
         self.move_npc(spawn_id=102, patrol_name='krantz_walkin')
 
@@ -235,7 +236,7 @@ class 마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8002], return_view=False)
         self.add_cinematic_talk(npc_id=11003674, illust_id='Eone_normal', msg='연출을 보강할 예정이니 기다려 달라.\\n이 연출엔 대사가 추가될 것이다.', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000.0)
         # Missing State: State,  setsceneskip 1 close
         self.set_scene_skip()
         # setsceneskip 1 close
@@ -259,7 +260,7 @@ class 공주님과기사연출_스킵완료(trigger_api.Trigger):
 
 class 공주님과기사연출_종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_achievement(trigger_id=9000, type='trigger', achieve='PrincessMeetsHerKnight')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -271,7 +272,7 @@ class 공주님과기사연출_종료(trigger_api.Trigger):
 class 제이든만_대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[101,102,110,111,112,121,122,131,132,133])
-        self.spawn_monster(spawn_ids=[110], arg='0')
+        self.spawn_monster(spawn_ids=[110], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -280,8 +281,8 @@ class 제이든만_대기(trigger_api.Trigger):
 
 class 제이든호출_연출준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[110], arg='0')
-        self.spawn_monster(spawn_ids=[105,106,107,108,109], arg='0')
+        self.spawn_monster(spawn_ids=[110], auto_target=False)
+        self.spawn_monster(spawn_ids=[105,106,107,108,109], auto_target=False)
         self.destroy_monster(spawn_ids=[101,102,111,112,121,122,131,132,133])
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -306,7 +307,7 @@ class 제이든호출_연출시작(trigger_api.Trigger):
 class PC진입_놀람(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8007,8008,8009], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=0, msg='이건 대체… 무슨 상황이지?', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -318,7 +319,7 @@ class 제이든짜증01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8010], return_view=False)
         self.add_cinematic_talk(npc_id=11003541, illust_id='Jaiden_normal', msg='…몰라서 물어?', duration=3000)
-        # self.set_npc_emotion_loop(spawn_id=110, sequence_name='Talk_A', duration=3000)
+        # self.set_npc_emotion_loop(spawn_id=110, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -329,7 +330,7 @@ class 제이든짜증02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8011], return_view=False)
         self.add_cinematic_talk(npc_id=11003541, illust_id='Jaiden_normal', msg='부주의한 누구 덕에 난리가 난 상황이다.', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=110, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=110, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -340,7 +341,7 @@ class 제이든짜증03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8012], return_view=False)
         self.add_cinematic_talk(npc_id=11003541, illust_id='Jaiden_normal', msg='빨리 이쪽으로 넘어와! 어서!', duration=2000)
-        self.set_npc_emotion_loop(spawn_id=110, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=110, sequence_name='Talk_A', duration=3000.0)
         # Missing State: State,  setsceneskip 2 close
         self.set_scene_skip()
         # setsceneskip 2 close
@@ -364,7 +365,7 @@ class 제이든호출_스킵완료(trigger_api.Trigger):
 
 class 제이든호출_연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -393,7 +394,7 @@ class 몬스터체크(trigger_api.Trigger):
 
 class 몬스터추가스폰01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[105,106,107,108,109], auto_target=True)
+        self.spawn_monster(spawn_ids=[105,106,107,108,109])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[105,106,107,108,109]):
@@ -404,7 +405,7 @@ class 몬스터추가스폰01(trigger_api.Trigger):
 
 class 몬스터추가스폰105(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[105], auto_target=True)
+        self.spawn_monster(spawn_ids=[105])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[105]):
@@ -415,7 +416,7 @@ class 몬스터추가스폰105(trigger_api.Trigger):
 
 class 몬스터추가스폰106(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[106], auto_target=True)
+        self.spawn_monster(spawn_ids=[106])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[106]):
@@ -426,7 +427,7 @@ class 몬스터추가스폰106(trigger_api.Trigger):
 
 class 몬스터추가스폰107(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[107], auto_target=True)
+        self.spawn_monster(spawn_ids=[107])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[107]):
@@ -437,7 +438,7 @@ class 몬스터추가스폰107(trigger_api.Trigger):
 
 class 몬스터추가스폰108(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[108], auto_target=True)
+        self.spawn_monster(spawn_ids=[108])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[108]):
@@ -448,7 +449,7 @@ class 몬스터추가스폰108(trigger_api.Trigger):
 
 class 몬스터추가스폰109(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[109], auto_target=True)
+        self.spawn_monster(spawn_ids=[109])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[109]):
@@ -460,7 +461,7 @@ class 몬스터추가스폰109(trigger_api.Trigger):
 class 세리하첫등장연출_대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.spawn_monster(spawn_ids=[111], arg='0')
+        self.spawn_monster(spawn_ids=[111], auto_target=False)
         self.destroy_monster(spawn_ids=[101,102,105,106,107,108,109,110,112,121,122,131,132,133])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -494,8 +495,8 @@ class 세리하첫등장연출_시작(trigger_api.Trigger):
 class 탐색실패01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8015], return_view=False)
-        self.add_balloon_talk(spawn_id=0, msg='흐음….', duration=2000, delay_tick=0)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.add_balloon_talk(msg='흐음….', duration=2000)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -514,7 +515,7 @@ class 탐색실패02(trigger_api.Trigger):
 
 class 흑성회등장01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[121,122], arg='0')
+        self.spawn_monster(spawn_ids=[121,122], auto_target=False)
         self.add_cinematic_talk(npc_id=11003659, illust_id='WeiHong_normal', msg='그럼, 답답한 사람들끼리 이야기를 좀 해보면 어떨까?', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -565,7 +566,7 @@ class 흑성회등장05(trigger_api.Trigger):
 
 class PC독백01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[131,132,133], arg='0')
+        self.spawn_monster(spawn_ids=[131,132,133], auto_target=False)
         self.select_camera_path(path_ids=[8015], return_view=False)
         self.add_cinematic_talk(npc_id=0, msg='(흑성회라니… 일이 생각보다 복잡하게 돌아가는 것 같다.)', duration=3000)
 
@@ -633,7 +634,7 @@ class 세리하등장02(trigger_api.Trigger):
 class 세리하등장03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=122, patrol_name='Seriha_walkinto')
-        self.show_caption(type='NameCaption', title='$npc:11003660$', desc='흑성회 특수부대장, $npc:11003659$의 측근', align='centerLeft', offset_rate_x=0.5, offset_rate_y=0.15, duration=5000, scale=2)
+        self.show_caption(type='NameCaption', title='$npc:11003660$', desc='흑성회 특수부대장, $npc:11003659$의 측근', align=Align.Center | Align.Left, offset_rate_x=0.5, offset_rate_y=0.15, duration=5000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -663,7 +664,7 @@ class 제이든경고01(trigger_api.Trigger):
 
 class 제이든경고02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=0, msg='갑자기 그게 무슨 소리…', duration=2000, delay_tick=0)
+        self.add_balloon_talk(msg='갑자기 그게 무슨 소리…', duration=2000)
         self.add_cinematic_talk(npc_id=11003541, illust_id='Jaiden_normal', msg='$npcName:11003660$$pp:가,이$ 나선 이상, 이제 여긴 불지옥이 될거야.\\n시간 없어. 빨리.', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -674,7 +675,7 @@ class 제이든경고02(trigger_api.Trigger):
 class PC제이든과도망(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8000], return_view=False)
-        self.add_balloon_talk(spawn_id=111, msg='저쪽으로. 서둘러…!', duration=2000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=111, msg='저쪽으로. 서둘러…!', duration=2000)
         self.move_npc(spawn_id=111, patrol_name='Jaiden_run')
         self.move_user_path(patrol_name='PC_run')
 
@@ -751,7 +752,7 @@ class 세리하첫등장연출_스킵완료(trigger_api.Trigger):
 
 class 세리하첫등장연출_종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
@@ -767,7 +768,7 @@ class 최종맵이동(trigger_api.Trigger):
         self.move_user(map_id=52020005, portal_id=10) # 버려진 트럭으로 자동 이동
         self.visible_my_pc(is_visible=False) # PC안보이게
         self.visible_my_pc(is_visible=True) # PC보이게
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

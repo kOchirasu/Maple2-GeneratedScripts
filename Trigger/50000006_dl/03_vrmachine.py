@@ -7,7 +7,7 @@ class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='machineon', value=0)
         self.set_interact_object(trigger_ids=[10001246], state=2)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='machineon') >= 1:
@@ -26,7 +26,7 @@ class MachineOn(trigger_api.Trigger):
 class PortalOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=1, key='DungeonRoomOpened', value=1)
-        self.set_portal(portal_id=3, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=3, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -41,7 +41,7 @@ class ResetDelay(trigger_api.Trigger):
 
 class Reset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=3)
         self.set_interact_object(trigger_ids=[10001246], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:

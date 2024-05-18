@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8051], visible=False)
+        self.set_effect(trigger_ids=[8051])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_max_user_count() == 1:
@@ -28,7 +28,7 @@ class monster_spawn_ready(trigger_api.Trigger):
 
 class monster_spawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[3003], auto_target=True)
+        self.spawn_monster(spawn_ids=[3003])
         self.set_effect(trigger_ids=[8051], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,7 +38,7 @@ class monster_spawn(trigger_api.Trigger):
 
 class vehicle_spawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8051], visible=False)
+        self.set_effect(trigger_ids=[8051])
         self.set_interact_object(trigger_ids=[10001050], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:

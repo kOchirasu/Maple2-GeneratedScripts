@@ -46,8 +46,8 @@ class 몬스터체력50(trigger_api.Trigger):
 
 class 생성_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(box_ids=[6000018], skill_id=49286001, level=1, is_player=True)
-        self.add_buff(box_ids=[6000019], skill_id=49286001, level=1, is_player=True)
+        self.add_buff(box_ids=[6000018], skill_id=49286001, level=1)
+        self.add_buff(box_ids=[6000019], skill_id=49286001, level=1)
         self.reset_timer(timer_id='102')
         self.set_interact_object(trigger_ids=[10002003], state=1)
         self.set_event_ui(type=1, arg2='아크레온이 거대해지며 모든공격을 튕겨내기 시작했습니다.', arg3='4000')
@@ -144,8 +144,8 @@ class 맵폭발연출_2(trigger_api.Trigger):
 
 class 카메라리셋(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=17, visible=True, enable=True, minimap_visible=False)
-        self.reset_camera(arg1='interpolationTime', interpolation_time=0.8)
+        self.set_portal(portal_id=17, visible=True, enable=True)
+        self.reset_camera(interpolation_time=0.8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -157,11 +157,11 @@ class 실패(trigger_api.Trigger):
         self.set_effect(trigger_ids=[10090], visible=True)
         self.set_effect(trigger_ids=[10091], visible=True)
         self.set_effect(trigger_ids=[10092], visible=True)
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
         self.destroy_monster(spawn_ids=[-1])
         self.set_event_ui(type=1, arg2='미션에 실패하였습니다. 다시 재도전 해보세요.', arg3='4000')
         self.move_user(map_id=52020001, portal_id=99)
-        self.set_portal(portal_id=14, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=14, visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

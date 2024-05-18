@@ -5,7 +5,7 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_visible_breakable_object(trigger_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023], visible=True)
-        self.set_breakable(trigger_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023], enable=False)
+        self.set_breakable(trigger_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023])
         self.set_interact_object(trigger_ids=[10001024], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,8 +25,8 @@ class 이동(trigger_api.Trigger):
 
 class 레버삭제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_visible_breakable_object(trigger_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023], visible=False)
-        self.set_breakable(trigger_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023], enable=False)
+        self.set_visible_breakable_object(trigger_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023])
+        self.set_breakable(trigger_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023])
         self.set_interact_object(trigger_ids=[10001024], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:

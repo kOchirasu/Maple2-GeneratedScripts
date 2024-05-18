@@ -13,7 +13,7 @@ class idle(trigger_api.Trigger):
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='Timer', seconds=420, start_delay=1, interval=1, v_offset=0)
+        self.set_timer(timer_id='Timer', seconds=420, start_delay=1, interval=1)
         self.set_event_ui(type=1, arg2='$02000471_BF__TIMER__0$', arg3='5000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:

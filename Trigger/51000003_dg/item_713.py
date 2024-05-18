@@ -5,7 +5,7 @@ import trigger_api
 # 포그 이펙트
 class Spawn_check(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7713], visible=False)
+        self.set_effect(trigger_ids=[7713])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='item_713_spawn') >= 1:
@@ -15,7 +15,7 @@ class Spawn_check(trigger_api.Trigger):
 class SpawnItem(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7713], visible=True)
-        self.set_effect(trigger_ids=[7723], visible=False)
+        self.set_effect(trigger_ids=[7723])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[723]):
@@ -37,19 +37,19 @@ class Disable(trigger_api.Trigger):
 class GetItem_Random(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=701, type='trigger', achieve='random_buff_box') # 큐브 안에 뭐가 들었을까? (트로피)
-        self.set_effect(trigger_ids=[7713], visible=False)
+        self.set_effect(trigger_ids=[7713])
         self.set_effect(trigger_ids=[7723], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Buff_01(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Buff_02(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Buff_03(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Buff_04(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Buff_05(self.ctx)
 
 

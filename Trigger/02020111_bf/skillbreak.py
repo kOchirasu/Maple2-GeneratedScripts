@@ -1,5 +1,6 @@
 """ trigger/02020111_bf/skillbreak.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 대기(trigger_api.Trigger):
@@ -27,10 +28,10 @@ class 대기(trigger_api.Trigger):
 
 class 스킬브레이크_실패(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(box_ids=[101], skill_id=62100026, level=1, is_player=True)
-        self.add_buff(box_ids=[101], skill_id=70002185, level=1, is_player=True) # 스킬브레이크 체크를 제거한다.
-        self.set_ambient_light(primary=[183,189,201])
-        self.set_directional_light(diffuse_color=[192,210,211], specular_color=[170,170,170])
+        self.add_buff(box_ids=[101], skill_id=62100026, level=1)
+        self.add_buff(box_ids=[101], skill_id=70002185, level=1) # 스킬브레이크 체크를 제거한다.
+        self.set_ambient_light(primary=Vector3(183,189,201))
+        self.set_directional_light(diffuse_color=Vector3(192,210,211), specular_color=Vector3(170,170,170))
         self.add_buff(box_ids=[1006], skill_id=70002151, level=1, is_skill_set=False)
         self.set_user_value(trigger_id=900001, key='SkillBreakFail', value=1)
         # self.set_user_value(trigger_id=900002, key='SkillBreakFail', value=1)
@@ -58,10 +59,10 @@ class 스킬브레이크_실패(trigger_api.Trigger):
         self.set_user_value(trigger_id=900105, key='SkillBreakSuccess_7', value=0)
         self.set_user_value(trigger_id=900105, key='SkillBreakSuccess_8', value=0)
         self.set_user_value(trigger_id=900102, key='Phase', value=1)
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=8, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=5)
+        self.set_portal(portal_id=6)
+        self.set_portal(portal_id=7)
+        self.set_portal(portal_id=8)
         self.set_user_value(trigger_id=900301, key='Light_On_1', value=1)
         self.set_user_value(trigger_id=900301, key='Light_On_2', value=1)
         self.set_user_value(trigger_id=900301, key='Light_On_3', value=1)

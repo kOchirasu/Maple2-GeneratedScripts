@@ -4,11 +4,11 @@ import trigger_api
 
 class 시작대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3100], visible=True)
+        self.set_mesh(trigger_ids=[3101])
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004])
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
         self.spawn_monster(spawn_ids=[1001,1002], auto_target=False)
         self.spawn_monster(spawn_ids=[1101,1102,1103,1104,1105], auto_target=False)
 
@@ -38,10 +38,10 @@ class 완료가능90000640(trigger_api.Trigger):
 
 class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.set_dialogue(type=2, spawn_id=11000168, script='$52000063_QD__90000640__0$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,7 +104,7 @@ class 차연출시작2(trigger_api.Trigger):
         # self.move_user_path(patrol_name='MS2PatrolData_PC01')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
         self.set_dialogue(type=2, spawn_id=11000168, script='$52000063_QD__90000640__4$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,7 +114,7 @@ class 차연출시작2(trigger_api.Trigger):
 
 class K대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=304, enable=True)
+        self.select_camera(trigger_id=304)
         self.set_dialogue(type=2, spawn_id=11000168, script='$52000063_QD__90000640__5$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -124,8 +124,8 @@ class K대사03(trigger_api.Trigger):
 
 class 카운트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3101], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3100])
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3101], visible=True)
         self.destroy_monster(spawn_ids=[1001,1002])
         self.select_camera(trigger_id=304, enable=False)
         self.set_cinematic_ui(type=0)
@@ -166,7 +166,7 @@ class NPC2차이동(trigger_api.Trigger):
 class 완료대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawn_ids=[9026,9027,9028,9029])
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3101], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3101])
         self.spawn_monster(spawn_ids=[1003,1004], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

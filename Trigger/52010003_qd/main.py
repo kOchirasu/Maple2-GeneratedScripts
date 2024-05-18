@@ -5,7 +5,7 @@ import trigger_api
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[101])
-        self.set_actor(trigger_id=2001, visible=False, initial_sequence='Sit_Down_A')
+        self.set_actor(trigger_id=2001, initial_sequence='Sit_Down_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[10002802], quest_states=[1]):
@@ -17,7 +17,7 @@ class idle(trigger_api.Trigger):
 class B_Event_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=2001, visible=True, initial_sequence='Sit_Down_A')
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawn_ids=[101])
@@ -161,7 +161,7 @@ class B_Event_08_IDLE(trigger_api.Trigger):
 
 class Event_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.spawn_monster(spawn_ids=[102])

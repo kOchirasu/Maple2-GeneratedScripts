@@ -5,7 +5,7 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dungeon_variable(var_id=903, value=0)
-        self.set_interact_object(trigger_ids=[10002177], state=0, arg3=False)
+        self.set_interact_object(trigger_ids=[10002177], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(var_id=911) == 1:
@@ -20,10 +20,10 @@ class 대기(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(trigger_ids=[10002175], state=1, arg3=False)
-        self.set_interact_object(trigger_ids=[10002176], state=1, arg3=False)
-        self.set_interact_object(trigger_ids=[10002177], state=1, arg3=False)
-        self.set_interact_object(trigger_ids=[10002178], state=1, arg3=False)
+        self.set_interact_object(trigger_ids=[10002175], state=1)
+        self.set_interact_object(trigger_ids=[10002176], state=1)
+        self.set_interact_object(trigger_ids=[10002177], state=1)
+        self.set_interact_object(trigger_ids=[10002178], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(var_id=911) == 1:
@@ -174,7 +174,7 @@ class 애디셔널_중첩9(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(trigger_ids=[10002177], state=0, arg3=False)
+        self.set_interact_object(trigger_ids=[10002177], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BadMob') >= 1:

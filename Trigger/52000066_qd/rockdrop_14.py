@@ -4,12 +4,12 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[8008], enable=False)
-        self.set_skill(trigger_ids=[8009], enable=False)
-        self.set_skill(trigger_ids=[8010], enable=False)
-        self.set_effect(trigger_ids=[7008], visible=False) # RockDrop
-        self.set_effect(trigger_ids=[7009], visible=False) # RockDrop
-        self.set_effect(trigger_ids=[7010], visible=False) # RockDrop
+        self.set_skill(trigger_ids=[8008])
+        self.set_skill(trigger_ids=[8009])
+        self.set_skill(trigger_ids=[8010])
+        self.set_effect(trigger_ids=[7008]) # RockDrop
+        self.set_effect(trigger_ids=[7009]) # RockDrop
+        self.set_effect(trigger_ids=[7010]) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -84,12 +84,12 @@ class RockDrop22(trigger_api.Trigger):
 
 class Reset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[8008], enable=False)
-        self.set_skill(trigger_ids=[8009], enable=False)
-        self.set_skill(trigger_ids=[8010], enable=False)
-        self.set_effect(trigger_ids=[7008], visible=False) # RockDrop
-        self.set_effect(trigger_ids=[7009], visible=False) # RockDrop
-        self.set_effect(trigger_ids=[7010], visible=False) # RockDrop
+        self.set_skill(trigger_ids=[8008])
+        self.set_skill(trigger_ids=[8009])
+        self.set_skill(trigger_ids=[8010])
+        self.set_effect(trigger_ids=[7008]) # RockDrop
+        self.set_effect(trigger_ids=[7009]) # RockDrop
+        self.set_effect(trigger_ids=[7010]) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4500):

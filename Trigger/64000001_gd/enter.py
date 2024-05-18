@@ -5,8 +5,8 @@ import trigger_api
 class PvP(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 이펙트 ID 하드코딩임으로 바꾸지 말것
-        self.set_effect(trigger_ids=[701], visible=False)
-        self.set_effect(trigger_ids=[702], visible=False)
+        self.set_effect(trigger_ids=[701])
+        self.set_effect(trigger_ids=[702])
 
     def on_tick(self) -> trigger_api.Trigger:
         # arg6="A길드트리거박스, B길드트리거박스, A길드선수선발박스, B길드선수선발박스, A길드이동포털, B길드이동포털, 경기장포털, 필요승수"
@@ -23,7 +23,7 @@ class PvP종료(trigger_api.Trigger):
 
 class 게임종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='999', seconds=4, start_delay=0)
+        self.set_timer(timer_id='999', seconds=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='999'):
@@ -42,7 +42,7 @@ class 완료(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
-            self.move_user(map_id=0, portal_id=0)
+            self.move_user()
 
 
 initial_state = PvP

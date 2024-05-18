@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3005], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3005])
         self.set_interact_object(trigger_ids=[13000008], state=2)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
         self.set_interact_object(trigger_ids=[10000585], state=0)
         self.set_interact_object(trigger_ids=[10000575,10000576,10000577,10000578], state=1)
         self.spawn_monster(spawn_ids=[2001], auto_target=False)
@@ -53,7 +53,7 @@ class 또다른연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_skip(state=또다른연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class 또다른연출시작(trigger_api.Trigger):
 
 class 연출이펙트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3005], visible=True, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[3005], visible=True, fade=2.0)
         self.set_effect(trigger_ids=[602], visible=True)
         self.set_skip(state=또다른연출종료)
 
@@ -74,7 +74,7 @@ class 연출이펙트(trigger_api.Trigger):
 
 class 카메라이동2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.set_skip(state=또다른연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,7 +97,7 @@ class 또다른연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[2001])
         self.select_camera(trigger_id=302, enable=False)
-        self.set_mesh(trigger_ids=[3005], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3005], visible=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

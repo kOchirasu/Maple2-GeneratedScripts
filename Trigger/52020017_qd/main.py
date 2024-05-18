@@ -1,12 +1,14 @@
 """ trigger/52020017_qd/main.xml """
 import trigger_api
+from System.Numerics import Vector3
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[60200115], quest_states=[1]):
@@ -15,28 +17,28 @@ class Idle(trigger_api.Trigger):
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
-        self.spawn_monster(spawn_ids=[203], auto_target=True)
-        self.spawn_monster(spawn_ids=[204], auto_target=True)
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
-        self.spawn_monster(spawn_ids=[206], auto_target=True)
-        self.spawn_monster(spawn_ids=[207], auto_target=True)
-        self.spawn_monster(spawn_ids=[208], auto_target=True)
-        self.spawn_monster(spawn_ids=[209], auto_target=True)
-        self.spawn_monster(spawn_ids=[210], auto_target=True)
-        self.spawn_monster(spawn_ids=[211], auto_target=True)
-        self.spawn_monster(spawn_ids=[212], auto_target=True)
-        self.spawn_monster(spawn_ids=[213], auto_target=True)
-        self.spawn_monster(spawn_ids=[214], auto_target=True)
-        self.spawn_monster(spawn_ids=[215], auto_target=True)
-        self.spawn_monster(spawn_ids=[216], auto_target=True)
-        self.spawn_monster(spawn_ids=[217], auto_target=True)
-        self.spawn_monster(spawn_ids=[218], auto_target=True)
-        self.spawn_monster(spawn_ids=[219], auto_target=True)
-        self.spawn_monster(spawn_ids=[220], auto_target=True)
-        self.spawn_monster(spawn_ids=[301], auto_target=True)
-        self.spawn_monster(spawn_ids=[302], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
+        self.spawn_monster(spawn_ids=[202])
+        self.spawn_monster(spawn_ids=[203])
+        self.spawn_monster(spawn_ids=[204])
+        self.spawn_monster(spawn_ids=[205])
+        self.spawn_monster(spawn_ids=[206])
+        self.spawn_monster(spawn_ids=[207])
+        self.spawn_monster(spawn_ids=[208])
+        self.spawn_monster(spawn_ids=[209])
+        self.spawn_monster(spawn_ids=[210])
+        self.spawn_monster(spawn_ids=[211])
+        self.spawn_monster(spawn_ids=[212])
+        self.spawn_monster(spawn_ids=[213])
+        self.spawn_monster(spawn_ids=[214])
+        self.spawn_monster(spawn_ids=[215])
+        self.spawn_monster(spawn_ids=[216])
+        self.spawn_monster(spawn_ids=[217])
+        self.spawn_monster(spawn_ids=[218])
+        self.spawn_monster(spawn_ids=[219])
+        self.spawn_monster(spawn_ids=[220])
+        self.spawn_monster(spawn_ids=[301])
+        self.spawn_monster(spawn_ids=[302])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[60200115], quest_states=[1]):
@@ -45,11 +47,11 @@ class Ready(trigger_api.Trigger):
 
 class Object_Off(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[0,0,0])
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 엘레나
+        self.set_ambient_light(primary=Vector3(0,0,0))
+        self.spawn_monster(spawn_ids=[101]) # 엘레나
         self.set_effect(trigger_ids=[5001], visible=True)
         self.set_interact_object(trigger_ids=[10001282], state=0)
-        self.add_balloon_talk(spawn_id=0, msg='!', duration=2000, delay_tick=0)
+        self.add_balloon_talk(msg='!', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -60,7 +62,7 @@ class Event_Start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.add_cinematic_talk(npc_id=11003624, msg='아아…. 드디어 극의 주인공을 찾은 것 같네.', duration=2800, align='left')
+        self.add_cinematic_talk(npc_id=11003624, msg='아아…. 드디어 극의 주인공을 찾은 것 같네.', duration=2800, align=Align.Left)
         self.set_scene_skip(action='nextState') # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,7 +73,7 @@ class Event_Start(trigger_api.Trigger):
 class Event_A_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4001], return_view=False)
-        self.add_cinematic_talk(npc_id=0, msg='!?', duration=1800, illust_id='0', align='left')
+        self.add_cinematic_talk(npc_id=0, msg='!?', duration=1800, illust_id='0', align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -81,7 +83,7 @@ class Event_A_01(trigger_api.Trigger):
 class Event_A_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4002,4003], return_view=False)
-        self.add_cinematic_talk(npc_id=11003624, msg='그래. 바로 너. 네가 주인공이야.', duration=2800, align='left')
+        self.add_cinematic_talk(npc_id=11003624, msg='그래. 바로 너. 네가 주인공이야.', duration=2800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -91,7 +93,7 @@ class Event_A_02(trigger_api.Trigger):
 class Event_A_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_3001')
-        self.add_cinematic_talk(npc_id=11003624, msg='참, 주인공 역할을 말해주지 않았구나.', duration=2800, align='left')
+        self.add_cinematic_talk(npc_id=11003624, msg='참, 주인공 역할을 말해주지 않았구나.', duration=2800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -100,7 +102,7 @@ class Event_A_03(trigger_api.Trigger):
 
 class Event_A_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003624, msg='이 극의 주인공 역할은 말이야.', duration=1800, align='left')
+        self.add_cinematic_talk(npc_id=11003624, msg='이 극의 주인공 역할은 말이야.', duration=1800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -111,7 +113,7 @@ class Event_A_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5002], visible=True)
         self.select_camera_path(path_ids=[4004], return_view=False)
-        self.add_cinematic_talk(npc_id=11003624, msg='여기서 죽는 거야.', duration=2800, align='left')
+        self.add_cinematic_talk(npc_id=11003624, msg='여기서 죽는 거야.', duration=2800, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -120,9 +122,9 @@ class Event_A_05(trigger_api.Trigger):
 
 class Event_A_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.add_cinematic_talk(npc_id=11003624, msg='자, 그럼 극을 시작해볼까?', duration=2800, illust_id='RobotMaidBrownHair_normal', align='Center')
+        self.add_cinematic_talk(npc_id=11003624, msg='자, 그럼 극을 시작해볼까?', duration=2800, illust_id='RobotMaidBrownHair_normal', align=Align.Center)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -131,7 +133,7 @@ class Event_A_06(trigger_api.Trigger):
 
 class Event_A_Skip_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 엘레나
+        self.spawn_monster(spawn_ids=[101]) # 엘레나
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -152,9 +154,9 @@ class Event_A_End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_ambient_light(primary=[1,1,1])
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.add_balloon_talk(spawn_id=0, msg='!', duration=2000, delay_tick=0)
+        self.set_ambient_light(primary=Vector3(1,1,1))
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.add_balloon_talk(msg='!', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -213,9 +215,9 @@ class Battle_B(trigger_api.Trigger):
 
 class Battle_End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[1,1,1])
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
+        self.set_ambient_light(primary=Vector3(1,1,1))
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
         self.destroy_monster(spawn_ids=[101])
         self.set_interact_object(trigger_ids=[10001282], state=1)
 

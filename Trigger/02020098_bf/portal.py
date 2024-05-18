@@ -5,17 +5,17 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 졸구간 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         # 1페이지 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=3)
         # 2페이지 7시 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=4)
         # 2페이지 5시 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=5)
         # 2페이지 12시 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=6)
         # 3페이지 마지막 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=7)
         # 변수 초기화, 보스AI로 부터 이 변수 1 신호를 받으면 이 트리거 작동시켜 1페이지 순간이동 포탈 Off 상태로 만들기
         self.set_user_value(key='BossOnePhaseEnd', value=0)
         # 1페이지의 왼쪽 순간이동 포탈 최초에 On 설정 하기
@@ -52,9 +52,9 @@ class 포탈체크대기중(trigger_api.Trigger):
 class 순간이동포탈OFF(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 1페이지의 왼쪽 순간이동 포탈 Off 설정 하기
-        self.set_portal(portal_id=40, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=40)
         # 1페이지의 오른쪽 순간이동 포탈 Off 설정 하기
-        self.set_portal(portal_id=50, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=50)
         self.set_user_value(key='BossOnePhaseEnd', value=0) # 변수 초기화, 이거 안하면 무한루프에 빠짐
 
     def on_tick(self) -> trigger_api.Trigger:

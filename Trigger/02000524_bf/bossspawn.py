@@ -23,7 +23,7 @@ class 난이도별보스등장(trigger_api.Trigger):
 
 class 일반난이도_보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
         self.spawn_monster(spawn_ids=[98], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 일반난이도_보스등장(trigger_api.Trigger):
 
 class 어려움난이도_보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
         self.spawn_monster(spawn_ids=[99], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

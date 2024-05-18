@@ -16,7 +16,7 @@ class 게이지시작(trigger_api.Trigger):
         self.set_user_value(trigger_id=991002, key='GaugeStart', value=1)
         self.set_user_value(trigger_id=991003, key='GaugeStart', value=1)
         self.set_user_value(trigger_id=991004, key='GaugeStart', value=1)
-        self.shadow_expedition(type='OpenBossGauge', title='$52010038_QD__gauge__2$', max_gauge_point=1000)
+        self.shadow_expedition_open_boss_gauge(title='$52010038_QD__gauge__2$', max_gauge_point=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.shadow_expedition_points() >= 1000:
@@ -27,7 +27,7 @@ class 게이지시작(trigger_api.Trigger):
             return 실패(self.ctx)
 
     def on_exit(self) -> None:
-        self.shadow_expedition(type='CloseBossGauge')
+        self.shadow_expedition_close_boss_gauge()
         self.set_user_value(trigger_id=991001, key='GaugeClosed', value=1)
         self.set_user_value(trigger_id=991002, key='GaugeClosed', value=1)
         self.set_user_value(trigger_id=991003, key='GaugeClosed', value=1)

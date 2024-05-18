@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_skill(trigger_ids=[7201], enable=False)
+        self.set_mesh(trigger_ids=[3002])
+        self.set_skill(trigger_ids=[7201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[1001]):
@@ -25,7 +25,7 @@ class 전투01(trigger_api.Trigger):
 
 class 전투02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3002], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3002], visible=True)
         self.set_skill(trigger_ids=[7201], enable=True)
         self.spawn_monster(spawn_ids=[202], auto_target=False)
 

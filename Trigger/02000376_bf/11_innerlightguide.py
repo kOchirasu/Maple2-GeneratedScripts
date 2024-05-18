@@ -5,11 +5,11 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='DungeonStart', value=0)
-        self.set_effect(trigger_ids=[5100], visible=False) # 화살표
-        self.set_effect(trigger_ids=[5101], visible=False) # 화살표
-        self.set_effect(trigger_ids=[5102], visible=False) # 화살표
-        self.set_effect(trigger_ids=[5103], visible=False) # 화살표
-        self.set_effect(trigger_ids=[5104], visible=False) # 화살표
+        self.set_effect(trigger_ids=[5100]) # 화살표
+        self.set_effect(trigger_ids=[5101]) # 화살표
+        self.set_effect(trigger_ids=[5102]) # 화살표
+        self.set_effect(trigger_ids=[5103]) # 화살표
+        self.set_effect(trigger_ids=[5104]) # 화살표
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='DungeonStart') >= 1:
@@ -39,11 +39,11 @@ class GuideOn(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5100], visible=False) # 화살표
-        self.set_effect(trigger_ids=[5101], visible=False) # 화살표
-        self.set_effect(trigger_ids=[5102], visible=False) # 화살표
-        self.set_effect(trigger_ids=[5103], visible=False) # 화살표
-        self.set_effect(trigger_ids=[5104], visible=False) # 화살표
+        self.set_effect(trigger_ids=[5100]) # 화살표
+        self.set_effect(trigger_ids=[5101]) # 화살표
+        self.set_effect(trigger_ids=[5102]) # 화살표
+        self.set_effect(trigger_ids=[5103]) # 화살표
+        self.set_effect(trigger_ids=[5104]) # 화살표
 
 
 initial_state = Wait

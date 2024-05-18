@@ -8,9 +8,9 @@ class 대기(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[1101,1102,1103,1104,1105,1106,1107,1108,1109,1110], auto_target=False)
         self.spawn_monster(spawn_ids=[1201,1202,1203,1204,1205,1206,1207,1208,1209,1210], auto_target=False)
         self.spawn_monster(spawn_ids=[2001])
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[600], visible=False)
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_mesh(trigger_ids=[3000], visible=True)
+        self.set_effect(trigger_ids=[600])
+        self.set_effect(trigger_ids=[601])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -22,7 +22,7 @@ class 연출시작(trigger_api.Trigger):
         self.set_effect(trigger_ids=[600], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.move_npc(spawn_id=1101, patrol_name='MS2PatrolData_A')
         self.move_npc(spawn_id=1102, patrol_name='MS2PatrolData_A')
         self.move_npc(spawn_id=1103, patrol_name='MS2PatrolData_A')
@@ -61,7 +61,7 @@ class 연출시작(trigger_api.Trigger):
 
 class 카메라이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -80,7 +80,7 @@ class 칸두라이동(trigger_api.Trigger):
 
 class 칸두라이동2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=5)
+        self.set_mesh(trigger_ids=[3000], fade=5.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -96,7 +96,7 @@ class 카메라이동대기(trigger_api.Trigger):
 
 class 카메라이동2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=800):
@@ -116,7 +116,7 @@ class 라오즈등장(trigger_api.Trigger):
 class PC말풍선(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_PC')
-        self.set_dialogue(type=1, spawn_id=0, script='$52000048_QD__MAIN__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000048_QD__MAIN__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -163,7 +163,7 @@ class 라오즈대사02스킵(trigger_api.Trigger):
 
 class 라오즈대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=304, enable=True)
+        self.select_camera(trigger_id=304)
         self.set_dialogue(type=2, spawn_id=11001768, script='$52000048_QD__MAIN__3$', time=6)
         self.set_skip(state=라오즈대사03스킵)
 

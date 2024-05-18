@@ -165,21 +165,21 @@ class 차타이머12(trigger_api.Trigger):
 
 class 생성랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return 번생성1(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 번생성2(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return 번생성3(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 번생성4(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return 번생성5(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 번생성6(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return 번생성7(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 번생성8(self.ctx)
 
 

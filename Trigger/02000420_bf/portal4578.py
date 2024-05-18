@@ -5,13 +5,13 @@ import trigger_api
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 4시방향 태엽폭탄 있는 곳의 순간이동 포탈 초기화 하기, 최초에는 모습을 안보임
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=4)
         # 4시방향 태엽폭탄 있는 곳의 순간이동 포탈 초기화 하기, 최초에는 모습을 안보임
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=5)
         # 7시방향 태엽폭탄 있는 곳의 순간이동 포탈 초기화 하기, 최초에는 모습을 안보임
-        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=7)
         # 8시방향 태엽폭탄 있는 곳의 순간이동 포탈 초기화 하기, 최초에는 모습을 안보임
-        self.set_portal(portal_id=8, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ThirdPhase') >= 1:

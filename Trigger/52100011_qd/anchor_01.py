@@ -5,7 +5,7 @@ import trigger_api
 # 플레이어 감지
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1500,1501,1502,1503,1504], visible=True, start_delay=0, interval=0, fade=10)
+        self.set_mesh(trigger_ids=[1500,1501,1502,1503,1504], visible=True, fade=10.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10002055], state=0):
@@ -14,7 +14,7 @@ class idle(trigger_api.Trigger):
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1500,1501,1502,1503,1504], visible=False, start_delay=0, interval=0, fade=10)
+        self.set_mesh(trigger_ids=[1500,1501,1502,1503,1504], fade=10.0)
 
 
 initial_state = idle

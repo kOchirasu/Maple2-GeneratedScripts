@@ -6,10 +6,10 @@ class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001337], state=1)
         self.set_interact_object(trigger_ids=[10001338], state=2)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3000,3001], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3002,3003,3004], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3101,3102,3201,3202,3301,3302,3401,3402,3601,3602,3603,3604], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3000,3001], visible=True)
+        self.set_mesh(trigger_ids=[3002,3003,3004])
+        self.set_mesh(trigger_ids=[3101,3102,3201,3202,3301,3302,3401,3402,3601,3602,3603,3604])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -19,58 +19,58 @@ class 대기(trigger_api.Trigger):
 
 class 랜덤A(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3101], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3101], visible=True)
             return 랜덤B(self.ctx)
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3102], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3102], visible=True)
             return 랜덤B(self.ctx)
 
 
 class 랜덤B(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3201], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3201], visible=True)
             return 랜덤C(self.ctx)
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3202], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3202], visible=True)
             return 랜덤C(self.ctx)
 
 
 class 랜덤C(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3301], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3301], visible=True)
             return 랜덤D(self.ctx)
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3302], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3302], visible=True)
             return 랜덤D(self.ctx)
 
 
 class 랜덤D(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3401], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3401], visible=True)
             return 랜덤E(self.ctx)
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3402], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3402], visible=True)
             return 랜덤E(self.ctx)
 
 
 class 랜덤E(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3601,3602], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3601,3602], visible=True)
             return 시작(self.ctx)
-        if self.random_condition(weight=50):
-            self.set_mesh(trigger_ids=[3603,3604], visible=True, start_delay=0, interval=0, fade=0)
+        if self.random_condition(weight=50.0):
+            self.set_mesh(trigger_ids=[3603,3604], visible=True)
             return 시작(self.ctx)
 
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$80000014_bonus__main__0$', arg3='5000')
-        self.score_board_create(type='ScoreBoardTopCenter', max_score=0)
+        self.score_board_create(type='ScoreBoardTopCenter')
         self.score_board_set_score(score=0)
         self.spawn_item_range(range_ids=[9001,9002,9003,9004,9005,9006,9007,9008,9009,9010,9011,9012,9013,9014,9015,9016,9017,9018,9019], random_pick_count=10)
 
@@ -81,7 +81,7 @@ class 시작(trigger_api.Trigger):
 
 class 보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_npc_range(range_ids=[2001], is_auto_targeting=False, score=1500)
+        self.spawn_npc_range(range_ids=[2001], score=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2001]):
@@ -94,8 +94,8 @@ class 딜레이(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
-            self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0)
-            self.set_mesh(trigger_ids=[3002,3003,3004], visible=True, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[3000,3001])
+            self.set_mesh(trigger_ids=[3002,3003,3004], visible=True)
             return 정산(self.ctx)
 
 

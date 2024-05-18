@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=1007, visible=False, initial_sequence='Closed')
+        self.set_actor(trigger_id=1007, initial_sequence='Closed')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[999997]):
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 class 준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=1007, visible=False, initial_sequence='Closed')
+        self.set_actor(trigger_id=1007, initial_sequence='Closed')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000529,10000520], state=0):
@@ -23,7 +23,7 @@ class 준비(trigger_api.Trigger):
 class 트리거02시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=1007, visible=True, initial_sequence='Opened')
-        self.spawn_monster(spawn_ids=[2034], auto_target=True)
+        self.spawn_monster(spawn_ids=[2034])
         self.set_timer(timer_id='1', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class 트리거03시작(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[25006])
         self.destroy_monster(spawn_ids=[25007])
         self.destroy_monster(spawn_ids=[25008])
-        self.set_actor(trigger_id=1007, visible=False, initial_sequence='Closed')
+        self.set_actor(trigger_id=1007, initial_sequence='Closed')
 
 
 initial_state = 대기

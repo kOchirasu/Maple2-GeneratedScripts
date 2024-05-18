@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # UI
+        self.set_effect(trigger_ids=[5000]) # UI
         self.set_user_value(key='CameraWalkEnd', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -6,7 +6,7 @@ class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000384], state=1)
         self.destroy_monster(spawn_ids=[201])
-        self.set_mesh(trigger_ids=[101,102,103,104], visible=False)
+        self.set_mesh(trigger_ids=[101,102,103,104])
         self.set_actor(trigger_id=501, visible=True, initial_sequence='Opened')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 닫히기(trigger_api.Trigger):
 
 class 토무등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
+        self.spawn_monster(spawn_ids=[202])
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_202')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,9 +68,9 @@ class 토무대사3(trigger_api.Trigger):
 class 변신(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[202])
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
         self.set_actor(trigger_id=501, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[101,102,103,104], visible=False)
+        self.set_mesh(trigger_ids=[101,102,103,104])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 몬스터와전투(self.ctx)

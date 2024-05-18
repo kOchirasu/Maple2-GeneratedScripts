@@ -4,45 +4,45 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0) # monitor off
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # monitor on
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5206], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5207], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5208], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5209], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5210], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5211], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5212], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5213], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5214], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5215], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5216], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5217], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[7000], visible=False) # Voice Jabeth 00001545
-        self.set_effect(trigger_ids=[7001], visible=False) # Voice Jabeth 00001546
-        self.set_effect(trigger_ids=[7002], visible=False) # Voice Jabeth 00001547
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3000], visible=True) # monitor off
+        self.set_mesh(trigger_ids=[3001]) # monitor on
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5200]) # 경로 안내
+        self.set_effect(trigger_ids=[5201]) # 경로 안내
+        self.set_effect(trigger_ids=[5202]) # 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 경로 안내
+        self.set_effect(trigger_ids=[5204]) # 경로 안내
+        self.set_effect(trigger_ids=[5205]) # 경로 안내
+        self.set_effect(trigger_ids=[5206]) # 경로 안내
+        self.set_effect(trigger_ids=[5207]) # 경로 안내
+        self.set_effect(trigger_ids=[5208]) # 경로 안내
+        self.set_effect(trigger_ids=[5209]) # 경로 안내
+        self.set_effect(trigger_ids=[5210]) # 경로 안내
+        self.set_effect(trigger_ids=[5211]) # 경로 안내
+        self.set_effect(trigger_ids=[5212]) # 경로 안내
+        self.set_effect(trigger_ids=[5213]) # 경로 안내
+        self.set_effect(trigger_ids=[5214]) # 경로 안내
+        self.set_effect(trigger_ids=[5215]) # 경로 안내
+        self.set_effect(trigger_ids=[5216]) # 경로 안내
+        self.set_effect(trigger_ids=[5217]) # 경로 안내
+        self.set_effect(trigger_ids=[7000]) # Voice Jabeth 00001545
+        self.set_effect(trigger_ids=[7001]) # Voice Jabeth 00001546
+        self.set_effect(trigger_ids=[7002]) # Voice Jabeth 00001547
         # Voice Jabeth 00001596 monologue
-        self.set_effect(trigger_ids=[7003], visible=False)
+        self.set_effect(trigger_ids=[7003])
         # Voice Jabeth 00001597 monologue
-        self.set_effect(trigger_ids=[7004], visible=False)
-        self.set_effect(trigger_ids=[7100], visible=False) # Voice Bravo 00001457
-        self.set_effect(trigger_ids=[7101], visible=False) # Voice Bravo 00001458
-        self.set_effect(trigger_ids=[7102], visible=False) # Voice Bravo 00001459
+        self.set_effect(trigger_ids=[7004])
+        self.set_effect(trigger_ids=[7100]) # Voice Bravo 00001457
+        self.set_effect(trigger_ids=[7101]) # Voice Bravo 00001458
+        self.set_effect(trigger_ids=[7102]) # Voice Bravo 00001459
         # Voice Bravo 00001525 monologue
-        self.set_effect(trigger_ids=[7103], visible=False)
+        self.set_effect(trigger_ids=[7103])
         # Voice Bravo 00001526 monologue
-        self.set_effect(trigger_ids=[7104], visible=False)
-        self.set_effect(trigger_ids=[6000], visible=False) # RadioInterference
+        self.set_effect(trigger_ids=[7104])
+        self.set_effect(trigger_ids=[6000]) # RadioInterference
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -54,7 +54,7 @@ class LodingDelay01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -63,7 +63,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 class LodingDelay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_D', duration=6600)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_D', duration=6600.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[90000439], quest_states=[1]):
@@ -89,7 +89,7 @@ class QuestOngoing02(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(map_id=63000021, portal_id=10, box_id=9002)
-        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=2000)
+        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=2000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -120,7 +120,7 @@ class WakeUp02(trigger_api.Trigger):
 
 class WakeUp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=60000)
+        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=60000.0)
         self.spawn_monster(spawn_ids=[101,201,301], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -130,7 +130,7 @@ class WakeUp03(trigger_api.Trigger):
 
 class WakeUp04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=599, enable=True)
+        self.select_camera(trigger_id=599)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -141,7 +141,7 @@ class WakeUp05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -164,7 +164,7 @@ class Dialogue01(trigger_api.Trigger):
 class Dialogue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
-        self.set_effect(trigger_ids=[7000], visible=False) # Voice Jabeth 00001545
+        self.set_effect(trigger_ids=[7000]) # Voice Jabeth 00001545
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -196,7 +196,7 @@ class Dialogue04(trigger_api.Trigger):
 
 class Dialogue05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7100], visible=False) # Voice Bravo 00001457
+        self.set_effect(trigger_ids=[7100]) # Voice Bravo 00001457
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -219,7 +219,7 @@ class Dialogue06(trigger_api.Trigger):
 
 class Dialogue07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False) # Voice Jabeth 00001546
+        self.set_effect(trigger_ids=[7001]) # Voice Jabeth 00001546
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -231,7 +231,7 @@ class JaceyWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_101')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -260,7 +260,7 @@ class Trialogue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_201')
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_301')
 
@@ -284,7 +284,7 @@ class Trialogue03(trigger_api.Trigger):
 
 class Trialogue04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7101], visible=False) # Voice Bravo 00001458
+        self.set_effect(trigger_ids=[7101]) # Voice Bravo 00001458
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -308,7 +308,7 @@ class Trialogue05(trigger_api.Trigger):
 
 class Trialogue06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7002], visible=False) # Voice Jabeth 00001547
+        self.set_effect(trigger_ids=[7002]) # Voice Jabeth 00001547
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -332,7 +332,7 @@ class Trialogue07(trigger_api.Trigger):
 
 class Trialogue08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7102], visible=False) # Voice Bravo 00001459
+        self.set_effect(trigger_ids=[7102]) # Voice Bravo 00001459
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -365,7 +365,7 @@ class TwoMenWalkOut01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -374,7 +374,7 @@ class TwoMenWalkOut01(trigger_api.Trigger):
 
 class TwoMenWalkOut02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=201, script='$63000021_CS__WAKUP01__8$', time=3, arg5=0) # Voice 00001525
+        self.set_dialogue(type=1, spawn_id=201, script='$63000021_CS__WAKUP01__8$', time=3) # Voice 00001525
         # Voice Bravo 00001525 monologue
         self.set_effect(trigger_ids=[7103], visible=True)
 
@@ -404,10 +404,10 @@ class TwoMenWalkOut04(trigger_api.Trigger):
 class TwoMenWalkOut05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice Bravo 00001525 monologue
-        self.set_effect(trigger_ids=[7103], visible=False)
+        self.set_effect(trigger_ids=[7103])
         # Voice Jabeth 00001596 monologue
         self.set_effect(trigger_ids=[7003], visible=True)
-        self.set_dialogue(type=1, spawn_id=301, script='$63000021_CS__WAKUP01__9$', time=3, arg5=0) # Voice 00001596
+        self.set_dialogue(type=1, spawn_id=301, script='$63000021_CS__WAKUP01__9$', time=3) # Voice 00001596
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -417,7 +417,7 @@ class TwoMenWalkOut05(trigger_api.Trigger):
 class TwoMenWalkOut06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice Jabeth 00001596 monologue
-        self.set_effect(trigger_ids=[7003], visible=False)
+        self.set_effect(trigger_ids=[7003])
         self.select_camera_path(path_ids=[701,702], return_view=False)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_102')
 
@@ -430,7 +430,7 @@ class TwoMenWalkOut07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice Bravo 00001526 monologue
         self.set_effect(trigger_ids=[7104], visible=True)
-        self.set_dialogue(type=1, spawn_id=201, script='$63000021_CS__WAKUP01__10$', time=4, arg5=0) # Voice 00001526
+        self.set_dialogue(type=1, spawn_id=201, script='$63000021_CS__WAKUP01__10$', time=4) # Voice 00001526
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -440,10 +440,10 @@ class TwoMenWalkOut07(trigger_api.Trigger):
 class TwoMenWalkOut08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice Bravo 00001526 monologue
-        self.set_effect(trigger_ids=[7104], visible=False)
+        self.set_effect(trigger_ids=[7104])
         # Voice Jabeth 00001597 monologue
         self.set_effect(trigger_ids=[7004], visible=True)
-        self.set_dialogue(type=1, spawn_id=301, script='$63000021_CS__WAKUP01__11$', time=4, arg5=0) # Voice 00001597
+        self.set_dialogue(type=1, spawn_id=301, script='$63000021_CS__WAKUP01__11$', time=4) # Voice 00001597
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -453,12 +453,12 @@ class TwoMenWalkOut08(trigger_api.Trigger):
 class StandUp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=63000021, portal_id=10, box_id=9900)
-        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=2000)
+        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=2000.0)
         self.destroy_monster(spawn_ids=[101])
         self.spawn_monster(spawn_ids=[102], auto_target=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=703, enable=True)
+        self.select_camera(trigger_id=703)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -468,7 +468,7 @@ class StandUp01(trigger_api.Trigger):
 class JaceyTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice Jabeth 00001597 monologue
-        self.set_effect(trigger_ids=[7004], visible=False)
+        self.set_effect(trigger_ids=[7004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -555,8 +555,8 @@ class CallNextRoom01(trigger_api.Trigger):
 
 class CallNextRoom02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=100, interval=0, fade=0) # MonitorOff
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # MonitorOn
+        self.set_mesh(trigger_ids=[3000], start_delay=100) # MonitorOff
+        self.set_mesh(trigger_ids=[3001], visible=True) # MonitorOn
         self.set_effect(trigger_ids=[6000], visible=True) # RadioInterference
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -609,7 +609,7 @@ class SayGoodBye01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_104')
-        self.set_effect(trigger_ids=[6000], visible=False) # RadioInterference
+        self.set_effect(trigger_ids=[6000]) # RadioInterference
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -683,26 +683,26 @@ class GuideNextMap02(trigger_api.Trigger):
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=10026010)
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5206], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5207], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5208], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5209], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5210], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5211], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5212], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5213], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5214], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5215], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5216], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5217], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5200]) # 경로 안내
+        self.set_effect(trigger_ids=[5201]) # 경로 안내
+        self.set_effect(trigger_ids=[5202]) # 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 경로 안내
+        self.set_effect(trigger_ids=[5204]) # 경로 안내
+        self.set_effect(trigger_ids=[5205]) # 경로 안내
+        self.set_effect(trigger_ids=[5206]) # 경로 안내
+        self.set_effect(trigger_ids=[5207]) # 경로 안내
+        self.set_effect(trigger_ids=[5208]) # 경로 안내
+        self.set_effect(trigger_ids=[5209]) # 경로 안내
+        self.set_effect(trigger_ids=[5210]) # 경로 안내
+        self.set_effect(trigger_ids=[5211]) # 경로 안내
+        self.set_effect(trigger_ids=[5212]) # 경로 안내
+        self.set_effect(trigger_ids=[5213]) # 경로 안내
+        self.set_effect(trigger_ids=[5214]) # 경로 안내
+        self.set_effect(trigger_ids=[5215]) # 경로 안내
+        self.set_effect(trigger_ids=[5216]) # 경로 안내
+        self.set_effect(trigger_ids=[5217]) # 경로 안내
 
 
 initial_state = Wait

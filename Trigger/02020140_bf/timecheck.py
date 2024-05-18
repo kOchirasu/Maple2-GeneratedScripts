@@ -11,15 +11,15 @@ class 시작대기중(trigger_api.Trigger):
 class 던전시간체크(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 던전 Fail 처리용, 던전 나가기 포탈 처음에 감추기
-        self.set_portal(portal_id=41, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=42, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=43, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=44, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=45, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=46, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=47, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=48, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=49, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=41)
+        self.set_portal(portal_id=42)
+        self.set_portal(portal_id=43)
+        self.set_portal(portal_id=44)
+        self.set_portal(portal_id=45)
+        self.set_portal(portal_id=46)
+        self.set_portal(portal_id=47)
+        self.set_portal(portal_id=48)
+        self.set_portal(portal_id=49)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_timeout():
@@ -57,7 +57,7 @@ class 던전실패(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 initial_state = 시작대기중

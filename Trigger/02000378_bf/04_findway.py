@@ -4,13 +4,13 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_mesh(trigger_ids=[4024], visible=True, start_delay=0, interval=0, fade=0) # RoundBarrier
-        self.set_mesh(trigger_ids=[3004], visible=True, start_delay=0, interval=0, fade=0) # CrystalOff
-        self.set_mesh(trigger_ids=[3104], visible=False, start_delay=0, interval=0, fade=0) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3004], visible=True, start_delay=0, interval=0) # CrystalOff
-        self.set_mesh_animation(trigger_ids=[3104], visible=False, start_delay=0, interval=0) # CrystalOn
-        self.set_effect(trigger_ids=[5204], visible=False) # Sound_CrystalOn
+        self.set_portal(portal_id=21) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[4024], visible=True) # RoundBarrier
+        self.set_mesh(trigger_ids=[3004], visible=True) # CrystalOff
+        self.set_mesh(trigger_ids=[3104]) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3004], visible=True) # CrystalOff
+        self.set_mesh_animation(trigger_ids=[3104]) # CrystalOn
+        self.set_effect(trigger_ids=[5204]) # Sound_CrystalOn
         # self.set_user_value(key='FindWayLeft', value=0)
         # self.set_user_value(key='FindWayRight', value=0)
         self.set_user_value(key='FindWay', value=0)
@@ -28,10 +28,10 @@ class Wait(trigger_api.Trigger):
 """
 class ReadyToWalkIn_FromLeft01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4024], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4024])
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_104L')
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_204L')
-        self.set_dialogue(type=1, spawn_id=202, script='$02000378_BF__04_FINDWAY__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=202, script='$02000378_BF__04_FINDWAY__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -67,10 +67,10 @@ class ReadyToWalkIn_FromLeft03(trigger_api.Trigger):
 """
 class ReadyToWalkIn_FromRight01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4024], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4024])
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_104R')
         self.move_npc(spawn_id=203, patrol_name='MS2PatrolData_204R')
-        self.set_dialogue(type=1, spawn_id=203, script='$02000378_BF__04_FINDWAY__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=203, script='$02000378_BF__04_FINDWAY__2$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -105,7 +105,7 @@ class ReadyToWalkIn_FromRight03(trigger_api.Trigger):
 
 class ReadyToWalkIn_FromPortal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4024], visible=False, start_delay=0, interval=0, fade=0) # RoundBarrier
+        self.set_mesh(trigger_ids=[4024]) # RoundBarrier
         self.set_user_value(trigger_id=1304, key='RouteSelected', value=1)
         self.set_user_value(trigger_id=2304, key='RouteSelected', value=1)
 
@@ -120,7 +120,7 @@ class ReadyToWalkIn_FromPortal(trigger_api.Trigger):
 
 class ReadyToWalkIn_FromPortal02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=104, script='$02000378_BF__04_FINDWAY__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=104, script='$02000378_BF__04_FINDWAY__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -156,12 +156,12 @@ class Round04_Sucess02(trigger_api.Trigger):
         self.move_npc(spawn_id=2004, patrol_name='MS2PatrolData_2004')
         self.destroy_monster(spawn_ids=[1004])
         self.spawn_monster(spawn_ids=[104], auto_target=False) # 연출용 틴차이
-        self.set_mesh(trigger_ids=[3004], visible=False, start_delay=100, interval=0, fade=0) # CrystalOff
-        # self.set_mesh(trigger_ids=[3104], visible=True, start_delay=0, interval=0, fade=0) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3004], visible=False, start_delay=0, interval=0) # CrystalOff
-        # self.set_mesh_animation(trigger_ids=[3104], visible=True, start_delay=0, interval=0) # CrystalOn
+        self.set_mesh(trigger_ids=[3004], start_delay=100) # CrystalOff
+        # self.set_mesh(trigger_ids=[3104], visible=True) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3004]) # CrystalOff
+        # self.set_mesh_animation(trigger_ids=[3104], visible=True) # CrystalOn
         self.set_effect(trigger_ids=[5204], visible=True) # Sound_CrystalOn
-        self.set_portal(portal_id=21, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=21, visible=True, enable=True)
         self.set_dialogue(type=1, spawn_id=104, script='$02000378_BF__04_FINDWAY__5$', time=2, arg5=1) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -178,11 +178,11 @@ class Round04_RouteSelect(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         """
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round04_PickRoute_Left(self.ctx)
         """
         """
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round04_PickRoute_Right(self.ctx)
         """
         if self.wait_tick(wait_tick=500):

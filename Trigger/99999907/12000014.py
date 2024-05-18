@@ -7,9 +7,9 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000014], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return 반응대기(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return 종료(self.ctx)
 
 
@@ -24,13 +24,13 @@ class 반응대기(trigger_api.Trigger):
 
 class 랜덤버프(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             self.add_buff(box_ids=[199], skill_id=70000008, level=1, is_player=False, is_skill_set=False) # 무적 /  임시 데이터
             return 종료(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             self.add_buff(box_ids=[199], skill_id=70000008, level=1, is_player=False, is_skill_set=False) # 공격 /  임시 데이터
             return 종료(self.ctx)
-        if self.random_condition(weight=40):
+        if self.random_condition(weight=40.0):
             self.add_buff(box_ids=[199], skill_id=70000008, level=1, is_player=False, is_skill_set=False) # 속도 /  임시 데이터
             return 종료(self.ctx)
 

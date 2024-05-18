@@ -12,10 +12,10 @@ import trigger_api
 """
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[8099], enable=False)
+        self.set_skill(trigger_ids=[8099])
         self.spawn_monster(spawn_ids=[301,302,303,304,305,306], auto_target=False) # 연출용 라오즈리젠
-        self.set_mesh(trigger_ids=[2116], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[2201,2202,2203,2204,2205,2206], visible=False, start_delay=0, interval=0, fade=0) # 투명 발판
+        self.set_mesh(trigger_ids=[2116])
+        self.set_mesh(trigger_ids=[2201,2202,2203,2204,2205,2206]) # 투명 발판
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[10003053], quest_states=[1]):
@@ -41,8 +41,8 @@ class start(trigger_api.Trigger):
 class start_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7012], visible=True)
-        self.set_mesh(trigger_ids=[2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115], visible=False, start_delay=0, interval=100, fade=8) # 모니터 켜짐
-        self.set_mesh(trigger_ids=[2116], visible=True, start_delay=0, interval=100, fade=3)
+        self.set_mesh(trigger_ids=[2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115], interval=100, fade=8.0) # 모니터 켜짐
+        self.set_mesh(trigger_ids=[2116], visible=True, interval=100, fade=3.0)
         self.spawn_monster(spawn_ids=[101], auto_target=False) # 연출용 리젠 칸두라
         self.move_user_path(patrol_name='MS2PatrolData_2002') # 유저를 이동시킨다
         self.set_dialogue(type=2, spawn_id=11001761, script='$52000049_QD__MAIN_01__0$', time=4)
@@ -54,8 +54,8 @@ class start_02(trigger_api.Trigger):
 
 class start_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7012], visible=False)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000049_QD__MAIN_01__1$', time=3, arg5=0)
+        self.set_effect(trigger_ids=[7012])
+        self.set_dialogue(type=1, script='$52000049_QD__MAIN_01__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -112,7 +112,7 @@ class start_08(trigger_api.Trigger):
 
 class start_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000049_QD__MAIN_01__5$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000049_QD__MAIN_01__5$', time=3)
         self.set_pc_emotion_sequence(sequence_names=['Emotion_Failure_A','Emotion_Failure_Idle_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -122,8 +122,8 @@ class start_09(trigger_api.Trigger):
 
 class start_10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000049_QD__MAIN_01__6$', time=3, arg5=0)
-        self.set_pc_emotion_loop(sequence_name='Emotion_Failure_Idle_A', duration=6000)
+        self.set_dialogue(type=1, script='$52000049_QD__MAIN_01__6$', time=3)
+        self.set_pc_emotion_loop(sequence_name='Emotion_Failure_Idle_A', duration=6000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -180,7 +180,7 @@ class start_14(trigger_api.Trigger):
 
 class start_15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Emotion_Failure_Idle_A', duration=18000)
+        self.set_pc_emotion_loop(sequence_name='Emotion_Failure_Idle_A', duration=18000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -219,7 +219,7 @@ class start_17(trigger_api.Trigger):
 class start_18(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.set_effect(trigger_ids=[7010], visible=False)
+            self.set_effect(trigger_ids=[7010])
             self.destroy_monster(spawn_ids=[201,202,203,204,205,206]) # 퀘스트용 소멸
             return start_19(self.ctx)
 
@@ -227,11 +227,11 @@ class start_18(trigger_api.Trigger):
 class start_19(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=501, patrol_name='MS2PatrolData_2030') # 준타 이동
-        self.set_dialogue(type=1, spawn_id=501, script='$52000049_QD__MAIN_01__9$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=501, script='$52000049_QD__MAIN_01__9$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            self.set_dialogue(type=1, spawn_id=101, script='$52000049_QD__MAIN_01__10$', time=3, arg5=0)
+            self.set_dialogue(type=1, spawn_id=101, script='$52000049_QD__MAIN_01__10$', time=3)
             self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_2099') # 칸두라 이동
             return start_20(self.ctx)
 
@@ -240,9 +240,9 @@ class start_20(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
             self.set_achievement(trigger_id=701, type='trigger', achieve='HeroJunta') # 퀘스트 목표 체크용 업적이벤트 발생
-            self.set_mesh(trigger_ids=[2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115], visible=True, start_delay=0, interval=100, fade=8) # 모니터 꺼짐
+            self.set_mesh(trigger_ids=[2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115], visible=True, interval=100, fade=8.0) # 모니터 꺼짐
             self.destroy_monster(spawn_ids=[101]) # 퀘스트용 소멸
-            self.select_camera_path(path_ids=[8013], return_view=True)
+            self.select_camera_path(path_ids=[8013])
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
             return start_21(self.ctx)

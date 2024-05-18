@@ -4,7 +4,7 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[98011], visible=False)
+        self.set_effect(trigger_ids=[98011])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='cannon_02') >= 1:
@@ -13,7 +13,7 @@ class Idle(trigger_api.Trigger):
 
 class 마킹비표시(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[98011], visible=False)
+        self.set_effect(trigger_ids=[98011])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=90012, spawn_ids=[190]):

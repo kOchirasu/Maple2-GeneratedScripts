@@ -4,19 +4,19 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[999], visible=True, start_delay=0, interval=0, fade=0) # mark
-        self.set_mesh(trigger_ids=[1000], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1100], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1001,1002,1003], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1100,1101,1102,1103], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[999], visible=True) # mark
+        self.set_mesh(trigger_ids=[1000], visible=True)
+        self.set_mesh(trigger_ids=[1100], visible=True)
+        self.set_mesh(trigger_ids=[1001,1002,1003])
+        self.set_mesh(trigger_ids=[1100,1101,1102,1103])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return Enter(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[1000], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1100], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1000])
+        self.set_mesh(trigger_ids=[1100])
 
 
 class Enter(trigger_api.Trigger):

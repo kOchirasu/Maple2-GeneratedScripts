@@ -10,7 +10,7 @@ class Ready(trigger_api.Trigger):
 
 class NpcSpawn_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[502], auto_target=True)
+        self.spawn_monster(spawn_ids=[502])
         self.set_npc_emotion_sequence(spawn_id=502, sequence_name='Idle_A')
 
 

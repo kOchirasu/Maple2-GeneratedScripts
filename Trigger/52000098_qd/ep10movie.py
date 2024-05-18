@@ -25,7 +25,7 @@ class LoadingDelayB0(trigger_api.Trigger):
 
 class CameraEffect1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawn_id=2001, patrol_name='MS2PatrolData_madria') # 마드리아 이동
         self.select_camera_path(path_ids=[3000,3001], return_view=False)
 
@@ -45,7 +45,7 @@ class CameraEffect2(trigger_api.Trigger):
 
 class Epilogue10Talk1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[3004,3005], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -190,7 +190,7 @@ class Epilogue10Talk16(trigger_api.Trigger):
 class Epilogue10Talk17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.set_onetime_effect(id=2100275, enable=False, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
+        self.set_onetime_effect(id=2100275, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
         self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:

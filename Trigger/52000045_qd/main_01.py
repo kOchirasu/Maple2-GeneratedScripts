@@ -55,12 +55,12 @@ class start_03(trigger_api.Trigger):
         if self.wait_tick(wait_tick=10000):
             self.spawn_monster(spawn_ids=[101], auto_target=False) # 비전
             self.remove_buff(box_id=701, skill_id=70000105)
-            self.select_camera_path(path_ids=[8004], return_view=True)
+            self.select_camera_path(path_ids=[8004])
             self.destroy_monster(spawn_ids=[101]) # 비전 사라짐
             self.destroy_monster(spawn_ids=[401,402,403,404,405])
-            self.set_actor(trigger_id=5001, visible=False, initial_sequence='Idle_A')
-            self.set_actor(trigger_id=5002, visible=False, initial_sequence='Idle_A')
-            self.set_actor(trigger_id=5003, visible=False, initial_sequence='Idle_A')
+            self.set_actor(trigger_id=5001, initial_sequence='Idle_A')
+            self.set_actor(trigger_id=5002, initial_sequence='Idle_A')
+            self.set_actor(trigger_id=5003, initial_sequence='Idle_A')
             self.set_cinematic_ui(type=4)
             return start_04(self.ctx)
 
@@ -68,9 +68,9 @@ class start_03(trigger_api.Trigger):
 class start_04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            self.set_effect(trigger_ids=[7001], visible=False)
+            self.set_effect(trigger_ids=[7001])
             self.add_buff(box_ids=[701], skill_id=70000094, level=1) # 어질어질한 이펙트
-            self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=4000)
+            self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=4000.0)
             self.set_cinematic_ui(type=1)
             self.set_cinematic_ui(type=3)
             return start_05(self.ctx)
@@ -111,7 +111,7 @@ class start_08(trigger_api.Trigger):
 
 class start_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=901, script='$52000045_QD__MAIN_01__2$', time=4, arg5=0)
+        self.set_dialogue(type=1, spawn_id=901, script='$52000045_QD__MAIN_01__2$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -121,7 +121,7 @@ class start_09(trigger_api.Trigger):
 class start_A_10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=1, spawn_id=901, script='$52000045_QD__MAIN_01__11$', time=3)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000045_QD__MAIN_01__12$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000045_QD__MAIN_01__12$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -130,7 +130,7 @@ class start_A_10(trigger_api.Trigger):
 
 class start_10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000045_QD__MAIN_01__3$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000045_QD__MAIN_01__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -160,9 +160,9 @@ class start_12(trigger_api.Trigger):
 class start_13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7004], visible=True)
-        self.select_camera_path(path_ids=[8004], return_view=True)
+        self.select_camera_path(path_ids=[8004])
         self.spawn_monster(spawn_ids=[809], auto_target=False)
-        self.set_npc_emotion_loop(spawn_id=901, sequence_name='Down_Idle_A', duration=300000)
+        self.set_npc_emotion_loop(spawn_id=901, sequence_name='Down_Idle_A', duration=300000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -203,7 +203,7 @@ class start_16(trigger_api.Trigger):
 
 class start_17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=7702, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=7702, sequence_name='Talk_A', duration=3000.0)
         self.set_dialogue(type=2, spawn_id=11001545, script='$52000045_QD__MAIN_01__4$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -213,7 +213,7 @@ class start_17(trigger_api.Trigger):
 
 class start_18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=7701, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=7701, sequence_name='Talk_A', duration=3000.0)
         self.set_dialogue(type=2, spawn_id=11001546, script='$52000045_QD__MAIN_01__5$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -233,7 +233,7 @@ class start_19(trigger_api.Trigger):
 
 class start_20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=7701, script='$52000045_QD__MAIN_01__6$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=7701, script='$52000045_QD__MAIN_01__6$', time=3)
         self.set_dialogue(type=1, spawn_id=7702, script='$52000045_QD__MAIN_01__7$', time=3, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -243,9 +243,9 @@ class start_20(trigger_api.Trigger):
 
 class start_21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000045_QD__MAIN_01__8$', time=2, arg5=0)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000045_QD__MAIN_01__9$', time=3, arg5=2)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000045_QD__MAIN_01__10$', time=3, arg5=6)
+        self.set_dialogue(type=1, script='$52000045_QD__MAIN_01__8$', time=2)
+        self.set_dialogue(type=1, script='$52000045_QD__MAIN_01__9$', time=3, arg5=2)
+        self.set_dialogue(type=1, script='$52000045_QD__MAIN_01__10$', time=3, arg5=6)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):

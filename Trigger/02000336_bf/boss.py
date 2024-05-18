@@ -5,8 +5,8 @@ import trigger_api
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[90,92,93])
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False) # 보상으로 연결되는 포탈 제어 (끔)
-        self.set_effect(trigger_ids=[7001], visible=False)
+        self.set_portal(portal_id=1) # 보상으로 연결되는 포탈 제어 (끔)
+        self.set_effect(trigger_ids=[7001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=701) >= 1:
@@ -26,10 +26,10 @@ class 시작_01(trigger_api.Trigger):
 class 조직원등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7001], visible=True)
-        self.set_mesh(trigger_ids=[8041,8042,8043,8044], visible=False, interval=0, fade=10) # 벽 해제
+        self.set_mesh(trigger_ids=[8041,8042,8043,8044], fade=10.0) # 벽 해제
         self.set_skill(trigger_ids=[5801], enable=True) # 벽 날리는 스킬
         self.spawn_monster(spawn_ids=[181,182,183])
-        self.set_timer(timer_id='2', seconds=2, interval=0)
+        self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -42,10 +42,10 @@ class 웨이홍_대사01(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[90])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_dialogue(type=2, spawn_id=11003124, script='$02000336_BF__BOSS__0$', time=3) # 웨이홍 대사
         self.set_skip(state=웨이홍_대사02)
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -59,7 +59,7 @@ class 웨이홍_대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11003124, script='$02000336_BF__BOSS__1$', time=3) # 웨이홍 대사
         self.set_skip(state=종료)
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):

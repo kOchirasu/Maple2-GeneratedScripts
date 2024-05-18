@@ -22,7 +22,7 @@ class camera_01(trigger_api.Trigger):
 class monster_spawn_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=110, text_id=40010) # 적을 모두 처치하세요
-        self.spawn_monster(spawn_ids=[111,112,113,114], auto_target=True) # 1차 스폰
+        self.spawn_monster(spawn_ids=[111,112,113,114]) # 1차 스폰
         self.set_dialogue(type=1, spawn_id=111, script='$52000020_QD__MAIN__2$', time=5)
         self.set_dialogue(type=1, spawn_id=112, script='$52000020_QD__MAIN__3$', time=5)
         self.set_timer(timer_id='1', seconds=1)
@@ -54,7 +54,7 @@ class camera_02(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timer_id='1', seconds=1)
-        self.select_camera_path(path_ids=[8003,8004], return_view=True)
+        self.select_camera_path(path_ids=[8003,8004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -64,7 +64,7 @@ class camera_02(trigger_api.Trigger):
 class monster_spawn_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=110, text_id=40010) # 적을 모두 처치하세요
-        self.spawn_monster(spawn_ids=[121,122,123,124,125,126], auto_target=True) # 2차 스폰
+        self.spawn_monster(spawn_ids=[121,122,123,124,125,126]) # 2차 스폰
         self.set_dialogue(type=1, spawn_id=121, script='$52000020_QD__MAIN__4$', time=5)
         self.set_dialogue(type=1, spawn_id=124, script='$52000020_QD__MAIN__5$', time=5)
         self.set_timer(timer_id='1', seconds=1)
@@ -96,7 +96,7 @@ class camera_03(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timer_id='1', seconds=1)
-        self.select_camera_path(path_ids=[8005,8006], return_view=True)
+        self.select_camera_path(path_ids=[8005,8006])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -106,7 +106,7 @@ class camera_03(trigger_api.Trigger):
 class monster_spawn_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=110, text_id=40010) # 적을 모두 처치하세요
-        self.spawn_monster(spawn_ids=[131,132,133,134,135,136], auto_target=True) # 3차 스폰
+        self.spawn_monster(spawn_ids=[131,132,133,134,135,136]) # 3차 스폰
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:

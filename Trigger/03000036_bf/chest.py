@@ -7,10 +7,10 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[11000023], state=1)
         self.set_interact_object(trigger_ids=[11000008], state=2)
         self.set_interact_object(trigger_ids=[11000009], state=2)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_effect(trigger_ids=[604])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -77,10 +77,10 @@ class 차웨이브시작3(trigger_api.Trigger):
 
 class 상자확률(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=90):
+        if self.random_condition(weight=90.0):
             self.set_interact_object(trigger_ids=[11000008], state=1)
             return 종료(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             self.set_interact_object(trigger_ids=[11000009], state=1)
             return 종료(self.ctx)
 

@@ -19,8 +19,8 @@ class 전투시작(trigger_api.Trigger):
 
 class 버프(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(box_ids=[100000002], skill_id=50000198, level=1, is_player=True, is_skill_set=False)
-        self.add_buff(box_ids=[100000002], skill_id=50000202, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000198, level=1, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000202, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -33,9 +33,9 @@ class 체력조건달성(trigger_api.Trigger):
             return 몬스터기절_2(self.ctx)
 
     def on_exit(self) -> None:
-        self.add_buff(box_ids=[100000002], skill_id=50000229, level=1, is_player=True, is_skill_set=False)
-        self.add_buff(box_ids=[100000002], skill_id=50000207, level=1, is_player=True, is_skill_set=False)
-        self.add_buff(box_ids=[100000002], skill_id=50000216, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000229, level=1, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000207, level=1, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000216, level=1, is_skill_set=False)
 
 
 class 몬스터기절_2(trigger_api.Trigger):
@@ -49,9 +49,9 @@ class 몬스터기절_2(trigger_api.Trigger):
 
 class 몬스터부활(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(box_ids=[100000002], skill_id=50000204, level=1, is_player=True, is_skill_set=False)
-        self.add_buff(box_ids=[100000002], skill_id=50000198, level=1, is_player=True, is_skill_set=False)
-        self.add_buff(box_ids=[100000002], skill_id=50000202, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000204, level=1, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000198, level=1, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000202, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -64,7 +64,7 @@ class 체력조건미달(trigger_api.Trigger):
             return 몬스터부활_2(self.ctx)
 
     def on_exit(self) -> None:
-        self.add_buff(box_ids=[100000002], skill_id=50000228, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[100000002], skill_id=50000228, level=1, is_skill_set=False)
 
 
 class 몬스터부활_2(trigger_api.Trigger):

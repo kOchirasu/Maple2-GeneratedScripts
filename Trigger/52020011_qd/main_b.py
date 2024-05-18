@@ -4,12 +4,12 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
-        self.set_actor(trigger_id=8001, visible=False, initial_sequence='Attack_Idle_A')
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_effect(trigger_ids=[5004], visible=False)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.set_actor(trigger_id=8001, initial_sequence='Attack_Idle_A')
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
+        self.set_effect(trigger_ids=[5003])
+        self.set_effect(trigger_ids=[5004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[60200130], quest_states=[2]):
@@ -73,7 +73,7 @@ class Scene_03(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5003], visible=True)
         self.set_effect(trigger_ids=[5004], visible=True)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
-        self.add_balloon_talk(spawn_id=0, msg='!', duration=2000, delay_tick=0)
+        self.add_balloon_talk(msg='!', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=700):

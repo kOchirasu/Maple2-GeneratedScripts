@@ -1,11 +1,12 @@
 """ trigger/61000025_me/61000025_main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import FieldGame, Locale
 
 
 # None
 class StateNone(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_field_game(type='HideAndSeek', reset=True) # TriggerID 시작
+        self.create_field_game(type=FieldGame.HideAndSeek, reset=True) # TriggerID 시작
         self.field_game_constant(key='BeginTriggerID', value='1') # TriggerID 끝
         self.field_game_constant(key='EndTriggerID', value='36') # 숨바꼭질 플레이를 위한 최소 유저수
         self.field_game_constant(key='RequireUserCount', value='2') # 숨바꼭질 플레이어 입장 대기 시간
@@ -31,29 +32,29 @@ class StateNone(trigger_api.Trigger):
         self.field_game_constant(key='HideTeamExp', value='0') # 술래팀 경험치
         # KR 승리팀 보상 id, rank, count
         self.field_game_constant(key='SeekTeamExp', value='0')
-        self.field_game_constant(key='WinnerRewardItemID', value='30001442', feature='MassiveHideAndSeek', locale='KR')
-        self.field_game_constant(key='WinnerRewardItemRank', value='1', feature='MassiveHideAndSeek', locale='KR')
+        self.field_game_constant(key='WinnerRewardItemID', value='30001442', feature='MassiveHideAndSeek', locale=Locale.KR)
+        self.field_game_constant(key='WinnerRewardItemRank', value='1', feature='MassiveHideAndSeek', locale=Locale.KR)
         # KR 패배팀 보상 id, rank, count
-        self.field_game_constant(key='WinnerRewardItemCount', value='3', feature='MassiveHideAndSeek', locale='KR')
-        self.field_game_constant(key='LoserRewardItemID', value='30001442', feature='MassiveHideAndSeek', locale='KR')
-        self.field_game_constant(key='LoserRewardItemRank', value='1', feature='MassiveHideAndSeek', locale='KR')
+        self.field_game_constant(key='WinnerRewardItemCount', value='3', feature='MassiveHideAndSeek', locale=Locale.KR)
+        self.field_game_constant(key='LoserRewardItemID', value='30001442', feature='MassiveHideAndSeek', locale=Locale.KR)
+        self.field_game_constant(key='LoserRewardItemRank', value='1', feature='MassiveHideAndSeek', locale=Locale.KR)
         # CN 승리팀 보상 id, rank, count
-        self.field_game_constant(key='LoserRewardItemCount', value='1', feature='MassiveHideAndSeek', locale='KR')
-        self.field_game_constant(key='WinnerRewardItemID', value='30001446', feature='MassiveHideAndSeek', locale='CN')
-        self.field_game_constant(key='WinnerRewardItemRank', value='1', feature='MassiveHideAndSeek', locale='CN')
+        self.field_game_constant(key='LoserRewardItemCount', value='1', feature='MassiveHideAndSeek', locale=Locale.KR)
+        self.field_game_constant(key='WinnerRewardItemID', value='30001446', feature='MassiveHideAndSeek', locale=Locale.CN)
+        self.field_game_constant(key='WinnerRewardItemRank', value='1', feature='MassiveHideAndSeek', locale=Locale.CN)
         # CN 패배팀 보상 id, rank, count
-        self.field_game_constant(key='WinnerRewardItemCount', value='3', feature='MassiveHideAndSeek', locale='CN')
-        self.field_game_constant(key='LoserRewardItemID', value='30001446', feature='MassiveHideAndSeek', locale='CN')
-        self.field_game_constant(key='LoserRewardItemRank', value='1', feature='MassiveHideAndSeek', locale='CN')
+        self.field_game_constant(key='WinnerRewardItemCount', value='3', feature='MassiveHideAndSeek', locale=Locale.CN)
+        self.field_game_constant(key='LoserRewardItemID', value='30001446', feature='MassiveHideAndSeek', locale=Locale.CN)
+        self.field_game_constant(key='LoserRewardItemRank', value='1', feature='MassiveHideAndSeek', locale=Locale.CN)
         # NA 승리팀 보상 id, rank, count
-        self.field_game_constant(key='LoserRewardItemCount', value='1', feature='MassiveHideAndSeek', locale='CN')
-        self.field_game_constant(key='WinnerRewardItemID', value='30000610', feature='MassiveHideAndSeek', locale='NA')
-        self.field_game_constant(key='WinnerRewardItemRank', value='1', feature='MassiveHideAndSeek', locale='NA')
+        self.field_game_constant(key='LoserRewardItemCount', value='1', feature='MassiveHideAndSeek', locale=Locale.CN)
+        self.field_game_constant(key='WinnerRewardItemID', value='30000610', feature='MassiveHideAndSeek', locale=Locale.NA)
+        self.field_game_constant(key='WinnerRewardItemRank', value='1', feature='MassiveHideAndSeek', locale=Locale.NA)
         # NA 패배팀 보상 id, rank, count
-        self.field_game_constant(key='WinnerRewardItemCount', value='2', feature='MassiveHideAndSeek', locale='NA')
-        self.field_game_constant(key='LoserRewardItemID', value='30000610', feature='MassiveHideAndSeek', locale='NA')
-        self.field_game_constant(key='LoserRewardItemRank', value='1', feature='MassiveHideAndSeek', locale='NA')
-        self.field_game_constant(key='LoserRewardItemCount', value='1', feature='MassiveHideAndSeek', locale='NA') # 관전 CameraID
+        self.field_game_constant(key='WinnerRewardItemCount', value='2', feature='MassiveHideAndSeek', locale=Locale.NA)
+        self.field_game_constant(key='LoserRewardItemID', value='30000610', feature='MassiveHideAndSeek', locale=Locale.NA)
+        self.field_game_constant(key='LoserRewardItemRank', value='1', feature='MassiveHideAndSeek', locale=Locale.NA)
+        self.field_game_constant(key='LoserRewardItemCount', value='1', feature='MassiveHideAndSeek', locale=Locale.NA) # 관전 CameraID
         self.field_game_constant(key='WatchCameraID', value='101') # 데일리 이벤트
         self.field_game_constant(key='EventDailyQuestStart', value='dailyquest_start') # 숨바꼭질 참여 이벤트
         self.field_game_constant(key='EventHideAndSeekStart', value='hideandseek_start') # 숨바꼭질 승리 이벤트
@@ -98,7 +99,7 @@ class GameRuleNotice(trigger_api.Trigger):
 class DivideIntoTeams(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 편 나누기 시간
-        self.show_count_ui(text='$61000023_ME__61000023_MAIN__0$', stage=0, count=5)
+        self.show_count_ui(text='$61000023_ME__61000023_MAIN__0$', count=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MoveGameArea') >= 1:
@@ -121,8 +122,8 @@ class BeInHidingTeams(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 사물팀 숨는 소요 시간
         self.set_timer(timer_id='1', seconds=30, start_delay=1, interval=1)
-        self.field_game_message(custom=1, type='SetEventUI', arg1='1', script='$61000023_ME__61000023_MAIN__2$', duration=30000)
-        self.field_game_message(custom=2, type='SetEventUI', arg1='1', script='$61000023_ME__61000023_MAIN__3$', duration=30000)
+        self.field_game_message(custom=1, type='SetEventUI', arg1=True, script='$61000023_ME__61000023_MAIN__2$', duration=30000)
+        self.field_game_message(custom=2, type='SetEventUI', arg1=True, script='$61000023_ME__61000023_MAIN__3$', duration=30000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LookingForATeams') >= 1:
@@ -180,7 +181,7 @@ class ShortOfUser(trigger_api.Trigger):
 # 게임종료
 class End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=0)
+        self.move_user()
 
 
 initial_state = StateNone

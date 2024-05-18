@@ -1,5 +1,6 @@
 """ trigger/52010069_qd/52010069.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class wait_01(trigger_api.Trigger):
@@ -27,7 +28,7 @@ class 전경씬(trigger_api.Trigger):
 
 class 전경씬_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[4000,4001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,7 +38,7 @@ class 전경씬_02(trigger_api.Trigger):
 
 class 전경씬_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52010069_QD__52010069__0$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52010069_QD__52010069__0$', align=Align.Bottom | Align.Left, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -57,7 +58,7 @@ class 전경씬_03_01(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -66,10 +67,10 @@ class Skip_1(trigger_api.Trigger):
 
 class 전경씬_03_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=20, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=20, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[50100680], quest_states=[1]):
@@ -104,10 +105,10 @@ class 전경씬_04_01(trigger_api.Trigger):
 
 class Quit02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=Skip_2, action='nextState')
         self.select_camera_path(path_ids=[4002], return_view=False)
-        self.set_pc_emotion_loop(sequence_name='Object_React_H', duration=12000)
+        self.set_pc_emotion_loop(sequence_name='Object_React_H', duration=12000.0)
         self.add_cinematic_talk(npc_id=0, msg='$52010069_QD__52010069__1$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -146,7 +147,7 @@ class 조사중_03(trigger_api.Trigger):
 
 class 재회_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4005], return_view=False)
         self.add_cinematic_talk(npc_id=0, msg='$52010069_QD__52010069__5$', duration=3000)
 
@@ -179,7 +180,7 @@ class 재회_04(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4008], return_view=False)
         self.move_user_path(patrol_name='MS2PatrolData1')
         self.add_cinematic_talk(npc_id=0, msg='$52010069_QD__52010069__7$', duration=3000)
-        self.add_cinematic_talk(npc_id=11001229, align='left', illust_id='Ishura_Dark_Idle', msg='$52010069_QD__52010069__8$', duration=3000)
+        self.add_cinematic_talk(npc_id=11001229, align=Align.Left, illust_id='Ishura_Dark_Idle', msg='$52010069_QD__52010069__8$', duration=3000)
         self.add_cinematic_talk(npc_id=0, msg='$52010069_QD__52010069__9$', duration=3000)
         self.add_cinematic_talk(npc_id=0, msg='$52010069_QD__52010069__10$', duration=3000)
 
@@ -209,7 +210,7 @@ class 재회정리(trigger_api.Trigger):
 
 class 재회정리_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -220,8 +221,8 @@ class 재회정리_02(trigger_api.Trigger):
 class Skip_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(map_id=52010069, portal_id=6002)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -231,7 +232,7 @@ class Skip_2(trigger_api.Trigger):
 
 class 재회정리_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

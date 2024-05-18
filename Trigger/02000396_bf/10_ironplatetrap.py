@@ -4,13 +4,13 @@ import trigger_api
 
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3410,3411,3412,3413], visible=True, start_delay=0, interval=0, fade=0) # IronPlateHold
-        self.set_effect(trigger_ids=[5100], visible=False) # CubeSkillNotice
-        self.set_effect(trigger_ids=[5101], visible=False) # CubeSkillNotice
-        self.set_effect(trigger_ids=[5102], visible=False) # CubeSkillNotice
-        self.set_effect(trigger_ids=[5103], visible=False) # CubeSkillNotice
+        self.set_mesh(trigger_ids=[3410,3411,3412,3413], visible=True) # IronPlateHold
+        self.set_effect(trigger_ids=[5100]) # CubeSkillNotice
+        self.set_effect(trigger_ids=[5101]) # CubeSkillNotice
+        self.set_effect(trigger_ids=[5102]) # CubeSkillNotice
+        self.set_effect(trigger_ids=[5103]) # CubeSkillNotice
         self.destroy_monster(spawn_ids=[201,301])
-        self.set_interact_object(trigger_ids=[10001129], state=0, arg4=False) # LeverForTrap
+        self.set_interact_object(trigger_ids=[10001129], state=0) # LeverForTrap
         self.set_user_value(key='TrapOn', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,11 +40,11 @@ class LeverOn(trigger_api.Trigger):
 class TrapOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[201,301], auto_target=False)
-        self.set_mesh(trigger_ids=[3410,3411,3412,3413], visible=False, start_delay=500, interval=0, fade=2) # IronPlateHold
-        self.set_effect(trigger_ids=[5100], visible=False) # CubeSkillNotice
-        self.set_effect(trigger_ids=[5101], visible=False) # CubeSkillNotice
-        self.set_effect(trigger_ids=[5102], visible=False) # CubeSkillNotice
-        self.set_effect(trigger_ids=[5103], visible=False) # CubeSkillNotice
+        self.set_mesh(trigger_ids=[3410,3411,3412,3413], start_delay=500, fade=2.0) # IronPlateHold
+        self.set_effect(trigger_ids=[5100]) # CubeSkillNotice
+        self.set_effect(trigger_ids=[5101]) # CubeSkillNotice
+        self.set_effect(trigger_ids=[5102]) # CubeSkillNotice
+        self.set_effect(trigger_ids=[5103]) # CubeSkillNotice
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

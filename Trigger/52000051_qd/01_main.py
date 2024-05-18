@@ -4,17 +4,17 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3500,3501], visible=True, start_delay=0, interval=0, fade=0) # Invisible_IronDoor
-        self.set_mesh(trigger_ids=[3010,3011,3012,3013], visible=True, start_delay=0, interval=0, fade=0) # Barrier
-        self.set_mesh(trigger_ids=[3014], visible=True, start_delay=0, interval=0, fade=0) # FrontBarrier
-        self.set_mesh(trigger_ids=[3030], visible=True, start_delay=0, interval=0, fade=0) # GatePortal
+        self.set_mesh(trigger_ids=[3500,3501], visible=True) # Invisible_IronDoor
+        self.set_mesh(trigger_ids=[3010,3011,3012,3013], visible=True) # Barrier
+        self.set_mesh(trigger_ids=[3014], visible=True) # FrontBarrier
+        self.set_mesh(trigger_ids=[3030], visible=True) # GatePortal
         self.set_actor(trigger_id=4001, visible=True, initial_sequence='Closed') # IronDoor
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='Closed') # IronDoor
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='or_fi_struc_stonegate_A01_off') # StoneGate
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # StoneGate 사운드 이펙트
-        self.set_effect(trigger_ids=[5004], visible=False) # MetalDoorOpen 사운드 이펙트
+        self.set_portal(portal_id=2)
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # StoneGate 사운드 이펙트
+        self.set_effect(trigger_ids=[5004]) # MetalDoorOpen 사운드 이펙트
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -42,7 +42,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 class SetDarkness01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.spawn_monster(spawn_ids=[800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826], auto_target=False) # 연출용 검은 그림자
         # 미혹의 령 일부 제거 954,960,961,965,966,968,969,971,972,973,979
         self.spawn_monster(spawn_ids=[950,951,952,953,955,956,957,958,959,962,963,964,967,970,974,975,976,977,978,980,981,982], auto_target=False)
@@ -104,7 +104,7 @@ class NpcCinematic02Skip(trigger_api.Trigger):
 
 class NpcCinematic03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_110')
         self.move_user_path(patrol_name='MS2PatrolData_1001')
         self.set_dialogue(type=2, spawn_id=11001708, script='$52000051_QD__01_MAIN__2$', time=3) # 틴차이
@@ -157,7 +157,7 @@ class NpcMonologue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_200')
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_100')
-        self.set_dialogue(type=1, spawn_id=200, script='$52000051_QD__01_MAIN__4$', time=2, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=200, script='$52000051_QD__01_MAIN__4$', time=2) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -166,7 +166,7 @@ class NpcMonologue02(trigger_api.Trigger):
 
 class NpcPatrol01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3014], visible=False, start_delay=0, interval=0, fade=0) # FrontBarrier
+        self.set_mesh(trigger_ids=[3014]) # FrontBarrier
         self.set_user_value(trigger_id=10, key='PatrolStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -235,7 +235,7 @@ class FoundTotem01(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[101,201])
         self.destroy_monster(spawn_ids=[102,202])
         self.spawn_monster(spawn_ids=[103,203], auto_target=False) # 전투
-        self.set_dialogue(type=1, spawn_id=203, script='$02000376_BF__01_MAIN__3$', time=3, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=203, script='$02000376_BF__01_MAIN__3$', time=3) # 준타
         self.set_dialogue(type=1, spawn_id=103, script='$02000376_BF__01_MAIN__4$', time=3, arg5=2) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -340,7 +340,7 @@ class RemoveTotem03(trigger_api.Trigger):
         self.change_monster(from_spawn_id=980, to_spawn_id=880)
         self.change_monster(from_spawn_id=981, to_spawn_id=881)
         self.change_monster(from_spawn_id=982, to_spawn_id=882)
-        self.set_dialogue(type=1, spawn_id=105, script='$52000051_QD__01_MAIN__8$', time=3, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=105, script='$52000051_QD__01_MAIN__8$', time=3) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -352,14 +352,14 @@ class RemoveTotem04(trigger_api.Trigger):
         self.set_dialogue(type=1, spawn_id=205, script='$52000051_QD__01_MAIN__9$', time=3, arg5=1) # 준타
         self.move_npc(spawn_id=105, patrol_name='MS2PatrolData_106')
         self.move_npc(spawn_id=205, patrol_name='MS2PatrolData_206')
-        self.set_mesh(trigger_ids=[3500,3501], visible=False, start_delay=0, interval=0, fade=0) # Invisible_IronDoor
+        self.set_mesh(trigger_ids=[3500,3501]) # Invisible_IronDoor
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='Opened') # IronDoor
         self.set_actor(trigger_id=4001, visible=True, initial_sequence='Opened') # IronDoor
         self.set_effect(trigger_ids=[5004], visible=True) # MetalDoorOpen 사운드 이펙트
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -368,7 +368,7 @@ class RemoveTotem04(trigger_api.Trigger):
 
 class FoundGate01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=205, script='$52000051_QD__01_MAIN__10$', time=3, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=205, script='$52000051_QD__01_MAIN__10$', time=3) # 준타
         self.move_npc(spawn_id=105, patrol_name='MS2PatrolData_107')
         self.move_npc(spawn_id=205, patrol_name='MS2PatrolData_207')
 
@@ -379,7 +379,7 @@ class FoundGate01(trigger_api.Trigger):
 
 class FoundGate02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=105, script='$52000051_QD__01_MAIN__11$', time=2, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=105, script='$52000051_QD__01_MAIN__11$', time=2) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9501, spawn_ids=[105]):
@@ -388,7 +388,7 @@ class FoundGate02(trigger_api.Trigger):
 
 class ShadowApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=205, script='$52000051_QD__01_MAIN__12$', time=2, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=205, script='$52000051_QD__01_MAIN__12$', time=2) # 준타
         self.spawn_monster(spawn_ids=[901,903,905], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -431,7 +431,7 @@ class ShadowApp04(trigger_api.Trigger):
 class StartPuzzle01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='PuzzleStart', value=1)
-        self.set_dialogue(type=1, spawn_id=104, script='$52000051_QD__01_MAIN__14$', time=2, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=104, script='$52000051_QD__01_MAIN__14$', time=2) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -468,10 +468,10 @@ class GateOpen02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_108')
         self.move_npc(spawn_id=204, patrol_name='MS2PatrolData_208')
-        self.set_dialogue(type=1, spawn_id=104, script='$52000051_QD__01_MAIN__16$', time=2, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=104, script='$52000051_QD__01_MAIN__16$', time=2) # 틴차이
         self.set_dialogue(type=1, spawn_id=204, script='$52000051_QD__01_MAIN__17$', time=2, arg5=2) # 준타
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='or_fi_struc_stonegate_A01_on') # StoneGate
-        self.set_mesh(trigger_ids=[3030], visible=False, start_delay=0, interval=0, fade=0) # GatePortal
+        self.set_mesh(trigger_ids=[3030]) # GatePortal
         self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

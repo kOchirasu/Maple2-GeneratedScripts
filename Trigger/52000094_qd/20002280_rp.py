@@ -12,14 +12,14 @@ class 대기(trigger_api.Trigger):
 
 class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3003,3004], visible=False)
-        self.set_local_camera(camera_id=302, enable=False)
+        self.set_mesh(trigger_ids=[3003,3004])
+        self.set_local_camera(camera_id=302)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=300, enable=True)
+        self.select_camera(trigger_id=300)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.spawn_npc_range(range_ids=[1001,1002,1003,1004,1005], is_auto_targeting=False)
-        self.spawn_npc_range(range_ids=[2101,2102,2103,2104,2105,2106,2107], is_auto_targeting=False)
+        self.spawn_npc_range(range_ids=[1001,1002,1003,1004,1005])
+        self.spawn_npc_range(range_ids=[2101,2102,2103,2104,2105,2106,2107])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -42,8 +42,8 @@ class 블랙아이대사01(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3003,3004], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_dialogue(type=2, spawn_id=11000006, script='$52000094_QD__20002280_RP__1$', time=3, arg5=0)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_dialogue(type=2, spawn_id=11000006, script='$52000094_QD__20002280_RP__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -69,7 +69,7 @@ class 데블린소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[2199], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -98,7 +98,7 @@ class 미션완료(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
-            self.set_local_camera(camera_id=302, enable=False)
+            self.set_local_camera(camera_id=302)
             return 미션완료02(self.ctx)
 
 
@@ -117,11 +117,11 @@ class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.spawn_monster(spawn_ids=[2200], auto_target=True)
-        self.spawn_monster(spawn_ids=[2201], auto_target=True)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.spawn_monster(spawn_ids=[2200])
+        self.spawn_monster(spawn_ids=[2201])
         self.remove_buff(box_id=9100, skill_id=99910170)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_achievement(trigger_id=9100, type='trigger', achieve='BlackEyeRpClear')
         self.move_user(map_id=52000094, portal_id=99)
 

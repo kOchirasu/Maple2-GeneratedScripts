@@ -106,7 +106,7 @@ class 레지스탕스_준비(trigger_api.Trigger):
 
 class 레지스탕스_연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=레지스탕스_스킵완료, action='exit') # setsceneskip 1 set
         # setsceneskip 1 set
         # setsceneskip 1 set
@@ -189,10 +189,10 @@ class 레지스탕스_스킵완료(trigger_api.Trigger):
 
 class 레지스탕스_연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -254,7 +254,7 @@ class 아르망_준비(trigger_api.Trigger):
 
 class 아르망_연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=아르망_스킵완료, action='exit') # setsceneskip 2 set
         # setsceneskip 2 set
         # setsceneskip 2 set
@@ -330,7 +330,7 @@ class 세리하_준비(trigger_api.Trigger):
 
 class 세리하_연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=세리하_스킵완료, action='exit') # setsceneskip 3 set
         # setsceneskip 3 set
         # setsceneskip 3 set
@@ -399,10 +399,10 @@ class 빈방(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

@@ -4,26 +4,26 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_gravity(gravity=0)
+        self.set_gravity(gravity=0.0)
         self.set_user_value(trigger_id=99990002, key='JumpFloor', value=0)
         self.set_user_value(trigger_id=99990017, key='JumpFloor', value=0)
         self.set_actor(trigger_id=9901, visible=True, initial_sequence='Interaction_Lapentafoothold_A01_Off')
-        self.set_actor(trigger_id=9902, visible=False, initial_sequence='Interaction_Lapentafoothold_A01_Off')
-        self.set_actor(trigger_id=9903, visible=False, initial_sequence='Interaction_Lapentafoothold_A01_Off')
-        self.set_actor(trigger_id=9904, visible=False, initial_sequence='Interaction_Lapentafoothold_A01_Off')
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=8, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=9, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=14, visible=False, enable=False, minimap_visible=False)
+        self.set_actor(trigger_id=9902, initial_sequence='Interaction_Lapentafoothold_A01_Off')
+        self.set_actor(trigger_id=9903, initial_sequence='Interaction_Lapentafoothold_A01_Off')
+        self.set_actor(trigger_id=9904, initial_sequence='Interaction_Lapentafoothold_A01_Off')
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
+        self.set_portal(portal_id=3)
+        self.set_portal(portal_id=4)
+        self.set_portal(portal_id=5)
+        self.set_portal(portal_id=6)
+        self.set_portal(portal_id=7)
+        self.set_portal(portal_id=8)
+        self.set_portal(portal_id=9)
+        self.set_portal(portal_id=10)
+        self.set_portal(portal_id=11)
+        self.set_portal(portal_id=13)
+        self.set_portal(portal_id=14)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[901], job_code=0):
@@ -70,7 +70,7 @@ class 카메라_발판점프대(trigger_api.Trigger):
 class 카메라_종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip() # Missing State: State
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.spawn_monster(spawn_ids=[120,121,122,123,124,125,126,127,128,129,130], auto_target=False)
@@ -78,7 +78,7 @@ class 카메라_종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[120,121,122,123,124,125,126,127,128,129,130]):
             self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
-            self.set_portal(portal_id=13, visible=True, enable=True, minimap_visible=False)
+            self.set_portal(portal_id=13, visible=True, enable=True)
             return 격리방_지하(self.ctx)
 
 

@@ -5,7 +5,7 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000802], state=2) # 첫번째 다리 재생성레버 감춤
-        self.set_effect(trigger_ids=[4100], visible=False) # 아랫방향 화살표
+        self.set_effect(trigger_ids=[4100]) # 아랫방향 화살표
         self.set_user_value(key='FirstBridgeOff', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,9 +62,9 @@ class 다리재생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_random_mesh(trigger_ids=[10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016], visible=True, start_delay=16, interval=100, fade=100) # 없어졌던 다리 재생성
         self.set_effect(trigger_ids=[777701], visible=True) # 길 나타남01 사운드 / 첫 번째 다리
-        self.set_mesh(trigger_ids=[90000], visible=False, start_delay=0, interval=0, fade=0) # 1st barrier OFF
-        self.set_mesh(trigger_ids=[90001], visible=False, start_delay=0, interval=0, fade=0) # 2nd barrier OFF
-        self.set_effect(trigger_ids=[4100], visible=False) # 아랫방향 화살표
+        self.set_mesh(trigger_ids=[90000]) # 1st barrier OFF
+        self.set_mesh(trigger_ids=[90001]) # 2nd barrier OFF
+        self.set_effect(trigger_ids=[4100]) # 아랫방향 화살표
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

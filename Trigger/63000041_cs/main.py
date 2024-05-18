@@ -1,5 +1,6 @@
 """ trigger/63000041_cs/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 """
@@ -12,32 +13,32 @@ class idle(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
         self.select_camera_path(path_ids=[8001], return_view=False) # 디폴트 카메라
-        self.set_effect(trigger_ids=[7001], visible=False)
-        self.set_effect(trigger_ids=[7002], visible=False)
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_effect(trigger_ids=[7004], visible=False)
+        self.set_effect(trigger_ids=[7001])
+        self.set_effect(trigger_ids=[7002])
+        self.set_effect(trigger_ids=[7003])
+        self.set_effect(trigger_ids=[7004])
         self.set_effect(trigger_ids=[7005], visible=True) # mask_black
-        self.set_effect(trigger_ids=[7006], visible=False)
+        self.set_effect(trigger_ids=[7006])
         # Eff_Object_WoodenCart_01
-        self.set_effect(trigger_ids=[7301], visible=False)
+        self.set_effect(trigger_ids=[7301])
         # Eff_Object_Intro_Zoomin_01
-        self.set_effect(trigger_ids=[7302], visible=False)
+        self.set_effect(trigger_ids=[7302])
         # Eff_Object_Quest_Footsteps_01
-        self.set_effect(trigger_ids=[7303], visible=False)
+        self.set_effect(trigger_ids=[7303])
         # Eff_Object_Madria_Regen_01
-        self.set_effect(trigger_ids=[7304], visible=False)
+        self.set_effect(trigger_ids=[7304])
         # Eff_Object_Bella_Regen_01
-        self.set_effect(trigger_ids=[7305], visible=False)
+        self.set_effect(trigger_ids=[7305])
         # Eff_Object_ExplosionRumble_01
-        self.set_effect(trigger_ids=[7306], visible=False)
+        self.set_effect(trigger_ids=[7306])
         # Eff_Object_Fireburning_01
-        self.set_effect(trigger_ids=[7307], visible=False)
+        self.set_effect(trigger_ids=[7307])
         # Eff_Object_Madria_Magic_Regen_01
-        self.set_effect(trigger_ids=[7309], visible=False)
-        self.set_npc_emotion_loop(spawn_id=505, sequence_name='Down_Idle_A', duration=600000)
-        self.set_npc_emotion_loop(spawn_id=506, sequence_name='Down_Idle_A', duration=600000)
-        self.set_npc_emotion_loop(spawn_id=507, sequence_name='Down_Idle_A', duration=600000)
-        self.set_npc_emotion_loop(spawn_id=508, sequence_name='Down_Idle_A', duration=600000)
+        self.set_effect(trigger_ids=[7309])
+        self.set_npc_emotion_loop(spawn_id=505, sequence_name='Down_Idle_A', duration=600000.0)
+        self.set_npc_emotion_loop(spawn_id=506, sequence_name='Down_Idle_A', duration=600000.0)
+        self.set_npc_emotion_loop(spawn_id=507, sequence_name='Down_Idle_A', duration=600000.0)
+        self.set_npc_emotion_loop(spawn_id=508, sequence_name='Down_Idle_A', duration=600000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[702]):
@@ -48,11 +49,11 @@ class scene_ready1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.spawn_monster(spawn_ids=[101,102], auto_target=True) # 수레, 조디
-        self.spawn_monster(spawn_ids=[201,202,203], auto_target=True) # 짐꾼
-        self.spawn_monster(spawn_ids=[301,302,303], auto_target=True) # 짐꾼
-        self.spawn_monster(spawn_ids=[501,502,503,504,505,506,507,508], auto_target=True) # 짐꾼
-        self.spawn_monster(spawn_ids=[666], auto_target=True) # 마드리아
+        self.spawn_monster(spawn_ids=[101,102]) # 수레, 조디
+        self.spawn_monster(spawn_ids=[201,202,203]) # 짐꾼
+        self.spawn_monster(spawn_ids=[301,302,303]) # 짐꾼
+        self.spawn_monster(spawn_ids=[501,502,503,504,505,506,507,508]) # 짐꾼
+        self.spawn_monster(spawn_ids=[666]) # 마드리아
         self.move_user(map_id=63000041, portal_id=1)
         self.set_scene_skip(state=skip_01, action='nextState')
 
@@ -61,7 +62,7 @@ class scene_ready1(trigger_api.Trigger):
             return scene_set1(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[7005], visible=False)
+        self.set_effect(trigger_ids=[7005])
 
 
 class scene_set1(trigger_api.Trigger):
@@ -91,7 +92,7 @@ class scene_01_b1(trigger_api.Trigger):
 
 class scene_01_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__0$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__0$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2300):
@@ -109,7 +110,7 @@ class scene_01_c1(trigger_api.Trigger):
 
 class scene_02_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=0, msg='$63000041_CS__MAIN__1$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(msg='$63000041_CS__MAIN__1$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -118,7 +119,7 @@ class scene_02_1(trigger_api.Trigger):
 
 class scene_03_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__2$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__2$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -127,7 +128,7 @@ class scene_03_1(trigger_api.Trigger):
 
 class scene_04_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__3$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__3$', duration=3000)
         self.add_balloon_talk(spawn_id=201, msg='$63000041_CS__MAIN__4$', duration=3000, delay_tick=1000)
         self.add_balloon_talk(spawn_id=203, msg='$63000041_CS__MAIN__5$', duration=3000, delay_tick=2000)
 
@@ -139,7 +140,7 @@ class scene_04_1(trigger_api.Trigger):
 class scene_01_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7303], visible=True)
-        self.spawn_monster(spawn_ids=[401,402,403], auto_target=True) # 근위병
+        self.spawn_monster(spawn_ids=[401,402,403]) # 근위병
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_4001')
         self.move_npc(spawn_id=402, patrol_name='MS2PatrolData_4002')
         self.move_npc(spawn_id=403, patrol_name='MS2PatrolData_4003')
@@ -151,7 +152,7 @@ class scene_01_2(trigger_api.Trigger):
 
 class scene_02_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=402, msg='$63000041_CS__MAIN__6$', duration=2000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=402, msg='$63000041_CS__MAIN__6$', duration=2000)
         self.add_balloon_talk(spawn_id=403, msg='$63000041_CS__MAIN__7$', duration=2000, delay_tick=1000)
         self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__8$', duration=3000, delay_tick=2000)
         self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__9$', duration=3000, delay_tick=4000)
@@ -166,7 +167,7 @@ class scene_03_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=402, patrol_name='MS2PatrolData_4013')
         self.move_npc(spawn_id=403, patrol_name='MS2PatrolData_4012')
-        self.add_balloon_talk(spawn_id=402, msg='$63000041_CS__MAIN__11$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=402, msg='$63000041_CS__MAIN__11$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2300):
@@ -193,7 +194,7 @@ class scene_05_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8007], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=401, sequence_name='Talk_A')
-        self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__12$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__12$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -203,7 +204,7 @@ class scene_05_2(trigger_api.Trigger):
 class scene_talk_01_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Talk_A')
-        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__13$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__13$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -213,7 +214,7 @@ class scene_talk_01_2(trigger_api.Trigger):
 class scene_talk_02_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=401, sequence_name='Talk_A')
-        self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__14$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__14$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -223,7 +224,7 @@ class scene_talk_02_2(trigger_api.Trigger):
 class scene_talk_03_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Talk_A')
-        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__15$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__15$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -232,7 +233,7 @@ class scene_talk_03_2(trigger_api.Trigger):
 
 class scene_talk_04_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__16$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__16$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -242,7 +243,7 @@ class scene_talk_04_2(trigger_api.Trigger):
 class scene_talk_05_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Talk_A'])
-        self.add_balloon_talk(spawn_id=0, msg='$63000041_CS__MAIN__17$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(msg='$63000041_CS__MAIN__17$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -252,7 +253,7 @@ class scene_talk_05_2(trigger_api.Trigger):
 class scene_talk_06_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_4021')
-        self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__18$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__18$', duration=3000)
         self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__19$', duration=3000, delay_tick=3000)
         self.add_balloon_talk(spawn_id=401, msg='$63000041_CS__MAIN__20$', duration=3000, delay_tick=6000)
 
@@ -296,8 +297,8 @@ class scene_08_2(trigger_api.Trigger):
 class scene_09_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[401])
-        self.add_balloon_talk(spawn_id=0, msg='$63000041_CS__MAIN__55$', duration=3000, delay_tick=0)
-        self.add_balloon_talk(spawn_id=0, msg='$63000041_CS__MAIN__21$', duration=3000, delay_tick=1000)
+        self.add_balloon_talk(msg='$63000041_CS__MAIN__55$', duration=3000)
+        self.add_balloon_talk(msg='$63000041_CS__MAIN__21$', duration=3000, delay_tick=1000)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -333,9 +334,9 @@ class scene_01_3(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8011,8012], return_view=False)
         # Eff_Object_Fireburning_01
         self.set_effect(trigger_ids=[7307], visible=True)
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__23$', duration=4000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__23$', duration=4000, align=Align.Center)
         self.set_onetime_effect(id=1966, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_01_00001966.xml')
-        self.show_caption(scale=2.3, type='NameCaption', title='$63000041_CS__MAIN__56$', desc='$63000041_CS__MAIN__57$', align='centerLeft', offset_rate_x=-0.15, duration=4000)
+        self.show_caption(scale=2.3, type='NameCaption', title='$63000041_CS__MAIN__56$', desc='$63000041_CS__MAIN__57$', align=Align.Center | Align.Left, offset_rate_x=-0.15, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -344,10 +345,10 @@ class scene_01_3(trigger_api.Trigger):
 
 class scene_02_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__24$', duration=8000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__24$', duration=8000, align=Align.Center)
         self.set_onetime_effect(id=1967, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_02_00001967.xml')
-        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=10000)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Attack_Idle_A', duration=10000)
+        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=10000.0)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Attack_Idle_A', duration=10000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -359,7 +360,7 @@ class scene_03_3(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8013], return_view=False)
         # Eff_Object_Madria_Magic_Regen_01
         self.set_effect(trigger_ids=[7309], visible=True)
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__25$', duration=3000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__25$', duration=3000, align=Align.Center)
         self.set_onetime_effect(id=1968, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_03_00001968.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -371,10 +372,10 @@ class scene_03_3(trigger_api.Trigger):
 class scene_04_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7004], visible=True)
-        self.set_pc_emotion_loop(sequence_name='Push_A', duration=4000)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Dead_A', duration=2000000)
-        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__26$', duration=3000, delay_tick=0)
-        self.spawn_monster(spawn_ids=[701,702,703,704], auto_target=True, delay=500) # 스티치
+        self.set_pc_emotion_loop(sequence_name='Push_A', duration=4000.0)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Dead_A', duration=2000000.0)
+        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__26$', duration=3000)
+        self.spawn_monster(spawn_ids=[701,702,703,704], delay=500) # 스티치
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -385,13 +386,13 @@ class scene_05_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[1901,1902], visible=True)
         self.reset_camera(interpolation_time=0.5)
-        # self.select_camera_path(path_ids=[8014], return_view=True)
+        # self.select_camera_path(path_ids=[8014])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entity_id=20063041, text_id=20063041, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.move_user(map_id=63000041, portal_id=2)
-        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__27$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__27$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         """
@@ -404,7 +405,7 @@ class scene_05_3(trigger_api.Trigger):
 
 class fadeout(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7004], visible=False)
+        self.set_effect(trigger_ids=[7004])
         self.destroy_monster(spawn_ids=[701,702,703,704])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -419,8 +420,8 @@ class fadeout(trigger_api.Trigger):
 
 class fadein(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=6000)
-        self.set_effect(trigger_ids=[7005], visible=False) # mask_black
+        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=6000.0)
+        self.set_effect(trigger_ids=[7005]) # mask_black
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -431,9 +432,9 @@ class scene_06_a3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8016,8021], return_view=False)
         # self.select_camera_path(path_ids=[8024], return_view=False)
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__28$', duration=8000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__28$', duration=8000, align=Align.Center)
         self.set_onetime_effect(id=1969, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_04_00001969.xml')
-        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__29$', duration=8000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__29$', duration=8000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -446,8 +447,8 @@ class scene_06_b3(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7003], visible=True)
         # Eff_Object_Madria_Pc_Magic_On_01
         self.set_effect(trigger_ids=[7310], visible=True)
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__30$', duration=5000, align='center')
-        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__31$', duration=5000, delay_tick=0)
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__30$', duration=5000, align=Align.Center)
+        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__31$', duration=5000)
         self.set_onetime_effect(id=1970, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_05_00001970.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -461,8 +462,8 @@ class scene_06_b3(trigger_api.Trigger):
 
 class scene_06_c3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Push_A', duration=200000)
-        self.face_emotion(spawn_id=0, emotion_name='PC_Pain_86000')
+        self.set_pc_emotion_loop(sequence_name='Push_A', duration=200000.0)
+        self.face_emotion(emotion_name='PC_Pain_86000')
         self.set_effect(trigger_ids=[7004], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -472,7 +473,7 @@ class scene_06_c3(trigger_api.Trigger):
 
 class scene_06_d3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7004], visible=False)
+        self.set_effect(trigger_ids=[7004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -481,11 +482,11 @@ class scene_06_d3(trigger_api.Trigger):
 
 class scene_06_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_effect(trigger_ids=[7004], visible=False)
-        self.set_effect(trigger_ids=[7309], visible=False)
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__32$', duration=5000, align='center')
-        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__33$', duration=5000, delay_tick=0)
+        self.set_effect(trigger_ids=[7003])
+        self.set_effect(trigger_ids=[7004])
+        self.set_effect(trigger_ids=[7309])
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__32$', duration=5000, align=Align.Center)
+        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__33$', duration=5000)
         self.set_onetime_effect(id=1971, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_06_00001971.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -502,7 +503,7 @@ class scene_07_3(trigger_api.Trigger):
 class scene_08_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8017], return_view=False)
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__34$', duration=7500, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__34$', duration=7500, align=Align.Center)
         self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__35$', duration=7500, delay_tick=500)
         self.set_onetime_effect(id=1972, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_07_00001972.xml')
 
@@ -525,7 +526,7 @@ class scene_10_3(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8018,8019], return_view=False)
         # Eff_Object_Bella_Regen_01
         self.set_effect(trigger_ids=[7305], visible=True)
-        self.spawn_monster(spawn_ids=[888], auto_target=True) # 벨라
+        self.spawn_monster(spawn_ids=[888]) # 벨라
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -535,7 +536,7 @@ class scene_10_3(trigger_api.Trigger):
 class scene_11_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8025], return_view=False)
-        self.add_cinematic_talk(npc_id=11001852, msg='$63000041_CS__MAIN__36$', duration=5000, align='center')
+        self.add_cinematic_talk(npc_id=11001852, msg='$63000041_CS__MAIN__36$', duration=5000, align=Align.Center)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -544,7 +545,7 @@ class scene_11_3(trigger_api.Trigger):
 
 class scene_12_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__37$', duration=8000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__37$', duration=8000, align=Align.Center)
         self.set_onetime_effect(id=1973, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_08_00001973.xml')
         self.move_npc(spawn_id=666, patrol_name='MS2PatrolData_6663')
 
@@ -555,7 +556,7 @@ class scene_12_3(trigger_api.Trigger):
 
 class scene_13_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11001852, msg='$63000041_CS__MAIN__38$', duration=5000, align='center')
+        self.add_cinematic_talk(npc_id=11001852, msg='$63000041_CS__MAIN__38$', duration=5000, align=Align.Center)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -564,7 +565,7 @@ class scene_13_3(trigger_api.Trigger):
 
 class scene_14_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__39$', duration=4000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__39$', duration=4000, align=Align.Center)
         self.set_onetime_effect(id=1974, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_09_00001974.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -575,7 +576,7 @@ class scene_14_3(trigger_api.Trigger):
 class scene_15_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=888, sequence_name='Talk_A')
-        self.add_cinematic_talk(npc_id=11001852, msg='$63000041_CS__MAIN__40$', duration=8000, align='center')
+        self.add_cinematic_talk(npc_id=11001852, msg='$63000041_CS__MAIN__40$', duration=8000, align=Align.Center)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -584,7 +585,7 @@ class scene_15_3(trigger_api.Trigger):
 
 class scene_16_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__41$', duration=6000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__41$', duration=6000, align=Align.Center)
         self.set_onetime_effect(id=1975, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_10_00001975.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -595,7 +596,7 @@ class scene_16_3(trigger_api.Trigger):
 class scene_17_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8020], return_view=False)
-        self.add_cinematic_talk(npc_id=11001852, msg='$63000041_CS__MAIN__42$', duration=5000, align='center')
+        self.add_cinematic_talk(npc_id=11001852, msg='$63000041_CS__MAIN__42$', duration=5000, align=Align.Center)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -605,7 +606,7 @@ class scene_17_3(trigger_api.Trigger):
 class scene_18_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=666, patrol_name='MS2PatrolData_6664')
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__43$', duration=6000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__43$', duration=6000, align=Align.Center)
         self.set_onetime_effect(id=1976, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_11_00001976.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -625,7 +626,7 @@ class scene_19_3(trigger_api.Trigger):
 
 class scene_20_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__44$', duration=5000, align='center')
+        self.add_cinematic_talk(npc_id=11001851, msg='$63000041_CS__MAIN__44$', duration=5000, align=Align.Center)
         self.set_onetime_effect(id=1977, enable=True, path='BG/Common/Sound/Eff_Madria_Tutorial_12_00001977.xml')
         self.move_npc(spawn_id=888, patrol_name='MS2PatrolData_8801')
         self.select_camera_path(path_ids=[8022], return_view=False)
@@ -658,10 +659,10 @@ class scene_22_3(trigger_api.Trigger):
 
 class scene_1_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7006], visible=False)
+        self.set_effect(trigger_ids=[7006])
         self.set_effect(trigger_ids=[7306], visible=True)
         self.set_effect(trigger_ids=[7002], visible=True)
-        self.spawn_monster(spawn_ids=[705], auto_target=True) # 연출용 루카락스
+        self.spawn_monster(spawn_ids=[705]) # 연출용 루카락스
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -741,7 +742,7 @@ class scene_7_4(trigger_api.Trigger):
 
 class scene_8_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.face_emotion(spawn_id=0, emotion_name='PC_Shy_Pain_3000')
+        self.face_emotion(emotion_name='PC_Shy_Pain_3000')
         self.add_cinematic_talk(npc_id=0, msg='$63000041_CS__MAIN__47$', duration=3000)
         self.set_onetime_effect(id=1981, enable=True, path='BG/Common/Sound/Eff_Object_Explosion_Debris_01.xml')
 
@@ -751,10 +752,10 @@ class scene_8_4(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         # Eff_Object_PC_Regen_01_off
-        self.set_effect(trigger_ids=[7310], visible=False)
+        self.set_effect(trigger_ids=[7310])
         # Eff_Object_ButterFly_01_off
-        self.set_effect(trigger_ids=[7311], visible=False)
-        self.set_effect(trigger_ids=[7312], visible=False) # Eff_Object_Light_01_off
+        self.set_effect(trigger_ids=[7311])
+        self.set_effect(trigger_ids=[7312]) # Eff_Object_Light_01_off
 
 
 class scene_9_4(trigger_api.Trigger):
@@ -771,7 +772,7 @@ class scene_9_4(trigger_api.Trigger):
 
 class scene_10_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.move_user(map_id=63000041, portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -781,12 +782,12 @@ class scene_10_4(trigger_api.Trigger):
 
 class scene_11_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[706], auto_target=True) # 전투용 루카락스
+        self.spawn_monster(spawn_ids=[706]) # 전투용 루카락스
         # Eff_Object_PC_Regen_01_off
-        self.set_effect(trigger_ids=[7310], visible=False)
+        self.set_effect(trigger_ids=[7310])
         # Eff_Object_ButterFly_01_off
-        self.set_effect(trigger_ids=[7311], visible=False)
-        self.set_effect(trigger_ids=[7312], visible=False) # Eff_Object_Light_01_off
+        self.set_effect(trigger_ids=[7311])
+        self.set_effect(trigger_ids=[7312]) # Eff_Object_Light_01_off
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -837,7 +838,7 @@ class scene_14_4(trigger_api.Trigger):
 
 class scene_15_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__49$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__49$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -846,7 +847,7 @@ class scene_15_4(trigger_api.Trigger):
 
 class scene_16_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__50$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__50$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -855,7 +856,7 @@ class scene_16_4(trigger_api.Trigger):
 
 class scene_17_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__51$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__51$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -864,7 +865,7 @@ class scene_17_4(trigger_api.Trigger):
 
 class scene_18_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__52$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__52$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -873,7 +874,7 @@ class scene_18_4(trigger_api.Trigger):
 
 class scene_19_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__53$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__53$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -882,7 +883,7 @@ class scene_19_4(trigger_api.Trigger):
 
 class scene_20_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__54$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$63000041_CS__MAIN__54$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -934,8 +935,8 @@ class skip_03(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(trigger_ids=[7004], visible=True)
-        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__26$', duration=3000, delay_tick=0)
-        self.spawn_monster(spawn_ids=[701,702,703,704], auto_target=True, delay=500) # 스티치
+        self.add_balloon_talk(spawn_id=102, msg='$63000041_CS__MAIN__26$', duration=3000)
+        self.spawn_monster(spawn_ids=[701,702,703,704], delay=500) # 스티치
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -946,13 +947,13 @@ class skip_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[1901,1902], visible=True)
         self.reset_camera(interpolation_time=0.5)
-        # self.select_camera_path(path_ids=[8014], return_view=True)
+        # self.select_camera_path(path_ids=[8014])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entity_id=20063041, text_id=20063041, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.move_user(map_id=63000041, portal_id=2)
-        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__27$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=666, msg='$63000041_CS__MAIN__27$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         """
@@ -966,11 +967,11 @@ class skip_04(trigger_api.Trigger):
 class skip_a_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=100)
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_effect(trigger_ids=[7004], visible=False)
-        self.set_effect(trigger_ids=[7309], visible=False)
-        self.set_effect(trigger_ids=[7006], visible=False)
+        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=100.0)
+        self.set_effect(trigger_ids=[7003])
+        self.set_effect(trigger_ids=[7004])
+        self.set_effect(trigger_ids=[7309])
+        self.set_effect(trigger_ids=[7006])
         self.destroy_monster(spawn_ids=[888])
         self.destroy_monster(spawn_ids=[666])
 

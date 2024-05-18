@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6920], visible=False) # Train_bomb_03
-        self.set_mesh(trigger_ids=[6091,6092,6093], visible=False) # 안보이는 상태
+        self.set_effect(trigger_ids=[6920]) # Train_bomb_03
+        self.set_mesh(trigger_ids=[6091,6092,6093]) # 안보이는 상태
         self.set_interact_object(trigger_ids=[10000786], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,8 +30,8 @@ class 시작(trigger_api.Trigger):
 class 작동_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6922], visible=True) # Train_bomb_03
-        self.set_mesh(trigger_ids=[6081,6082,6083], visible=False, interval=300, fade=10) # 빨간 선이
-        self.set_mesh(trigger_ids=[6091,6092,6093], visible=True, interval=300, fade=10) # 파란 선으로
+        self.set_mesh(trigger_ids=[6081,6082,6083], interval=300, fade=10.0) # 빨간 선이
+        self.set_mesh(trigger_ids=[6091,6092,6093], visible=True, interval=300, fade=10.0) # 파란 선으로
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,9 +41,9 @@ class 작동_01(trigger_api.Trigger):
 
 class 작동_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6099,6076], visible=False, interval=30, fade=0) # 드럼통 폭발
-        self.set_mesh(trigger_ids=[6091,6092,6093], visible=False, interval=0, fade=10) # 파란 선도 마저 삭제
-        self.set_mesh(trigger_ids=[6000], visible=False, interval=50, fade=1) # 유리창 해제
+        self.set_mesh(trigger_ids=[6099,6076], interval=30) # 드럼통 폭발
+        self.set_mesh(trigger_ids=[6091,6092,6093], fade=10.0) # 파란 선도 마저 삭제
+        self.set_mesh(trigger_ids=[6000], interval=50, fade=1.0) # 유리창 해제
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,7 +57,7 @@ class 벽제거(trigger_api.Trigger):
         self.set_skill(trigger_ids=[5807], enable=True) # 벽 날리는 스킬
         self.set_skill(trigger_ids=[5808], enable=True) # 벽 날리는 스킬
         self.set_skill(trigger_ids=[5809], enable=True) # 벽 날리는 스킬
-        self.set_mesh(trigger_ids=[7071,7072,7073,7074], visible=False, interval=15, fade=8) # 벽 해제
+        self.set_mesh(trigger_ids=[7071,7072,7073,7074], interval=15, fade=8.0) # 벽 해제
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 벽제거(trigger_api.Trigger):
 
 class 몬스터등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[113], auto_target=True) # 추가 이벤트 스폰 몬스터
+        self.spawn_monster(spawn_ids=[113]) # 추가 이벤트 스폰 몬스터
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class 관문_01_조건(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=105, text_id=20003361) # 키 몬스터를 처치하세요.
-        self.spawn_monster(spawn_ids=[115,116,137,139], auto_target=True) # 추가 이벤트 스폰 몬스터
+        self.spawn_monster(spawn_ids=[115,116,137,139]) # 추가 이벤트 스폰 몬스터
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[113]):
@@ -93,7 +93,7 @@ class 관문_01_개방(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=106, text_id=20003362) # 다음 구역으로 이동할 수 있습니다.
-        self.set_mesh(trigger_ids=[6211,6212,6213,6214,6215,6216,6217,6218], visible=False, interval=0, fade=10) # 벽 해제
+        self.set_mesh(trigger_ids=[6211,6212,6213,6214,6215,6216,6217,6218], fade=10.0) # 벽 해제
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -11,7 +11,7 @@ class 전투체크(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[600], visible=False)
+        self.set_effect(trigger_ids=[600])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LavaflowRight') >= 1:

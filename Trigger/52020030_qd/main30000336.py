@@ -36,7 +36,7 @@ class 세번째연출대화진행_01(trigger_api.Trigger):
 class 세번째연출대화진행(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4017], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11003753, msg='... 왔나.\\n바보같은 행동을 했더군.', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,8 +97,8 @@ class 세번째연출대화진행05(trigger_api.Trigger):
 
 class 세번째연출대화진행06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=0)
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera()
         self.visible_my_pc(is_visible=True)
         self.move_user(map_id=2020017, portal_id=4)
 

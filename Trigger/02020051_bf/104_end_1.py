@@ -20,7 +20,7 @@ class 준비(trigger_api.Trigger):
 
 class 준비_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11003536, illust='Neirin_surprise', script='$02020051_BF__104_END_1__0$', duration=5684, voice='ko/Npc/00002201')
+        self.side_npc_talk(npc_id=11003536, illust='Neirin_surprise', script='$02020051_BF__104_END_1__0$', duration=5684, voice='ko/Npc/00002201')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

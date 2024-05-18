@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[4500], enable=False)
+        self.set_skill(trigger_ids=[4500])
         self.set_effect(trigger_ids=[450], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 발동(trigger_api.Trigger):
 class 초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=1)
-        self.set_skill(trigger_ids=[4500], enable=False)
+        self.set_skill(trigger_ids=[4500])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):

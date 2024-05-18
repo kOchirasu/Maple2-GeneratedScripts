@@ -21,7 +21,7 @@ class 전투_1라운드세팅(trigger_api.Trigger):
         self.dungeon_reset_time(seconds=300)
         self.show_round_ui(round=1, duration=3000)
         self.set_event_ui(type=0, arg2='1,5')
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800.0)
         self.side_npc_talk(npc_id=24100001, illust='Neirin_normal', duration=5000, script='$02020019_BF__02020019_battle__0$', voice='ko/Npc/00002116')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -60,7 +60,7 @@ class 전투_2라운드세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_round_ui(round=2, duration=3000)
         self.set_event_ui(type=0, arg2='2,5')
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800.0)
         self.side_npc_talk(npc_id=24100001, illust='Neirin_normal', duration=5000, script='$02020019_BF__02020019_battle__1$', voice='ko/Npc/00002121')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -74,7 +74,7 @@ class 전투_2라운드세팅(trigger_api.Trigger):
 
 class 전투_2라운드시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[211], auto_target=True)
+        self.spawn_monster(spawn_ids=[211])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[211]):
@@ -103,7 +103,7 @@ class 전투_3라운드세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_round_ui(round=3, duration=3000)
         self.set_event_ui(type=0, arg2='3,5')
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800.0)
         self.side_npc_talk(npc_id=24100001, illust='Neirin_normal', duration=5000, script='$02020019_BF__02020019_battle__2$', voice='ko/Npc/00002241')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -117,7 +117,7 @@ class 전투_3라운드세팅(trigger_api.Trigger):
 
 class 전투_3라운드시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[221,222,223,224,225,226,227], auto_target=True)
+        self.spawn_monster(spawn_ids=[221,222,223,224,225,226,227])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_hp(spawn_id=221, is_relative=True) <= 50:
@@ -131,7 +131,7 @@ class 전투_3라운드시작(trigger_api.Trigger):
 class 전투_3라운드버프(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=24100001, illust='Neirin_serious', duration=5000, script='$02020019_BF__02020019_battle__3$', voice='ko/Npc/00002117')
-        self.add_buff(box_ids=[221], skill_id=49219001, level=1, is_player=True)
+        self.add_buff(box_ids=[221], skill_id=49219001, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[221,222,223,224,225,226,227]):
@@ -159,7 +159,7 @@ class 전투_4라운드세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_round_ui(round=4, duration=3000)
         self.set_event_ui(type=0, arg2='4,5')
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800.0)
         self.side_npc_talk(npc_id=24100001, illust='Neirin_normal', duration=5000, script='$02020019_BF__02020019_battle__4$', voice='ko/Npc/00002242')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -173,7 +173,7 @@ class 전투_4라운드세팅(trigger_api.Trigger):
 
 class 전투_4라운드시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[231,232,233,234,235,236,237], auto_target=True)
+        self.spawn_monster(spawn_ids=[231,232,233,234,235,236,237])
         self.side_npc_talk(npc_id=24100001, illust='Neirin_normal', duration=5000, script='$02020019_BF__02020019_battle__5$', voice='ko/Npc/00002243')
         self.set_ai_extra_data(key='Autofire', value=1) # <대포 쏘기 시작 AI에 신호쏴주기>
 
@@ -189,7 +189,7 @@ class 전투_4라운드시작(trigger_api.Trigger):
 class 전투_4라운드버프(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=24100001, illust='Neirin_serious', duration=5000, script='$02020019_BF__02020019_battle__6$', voice='ko/Npc/00002118')
-        self.add_buff(box_ids=[231], skill_id=49219001, level=1, is_player=True)
+        self.add_buff(box_ids=[231], skill_id=49219001, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[231,232,233,234,235,236,237]):
@@ -218,7 +218,7 @@ class 전투_5라운드세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_round_ui(round=5, duration=3000)
         self.set_event_ui(type=0, arg2='5,5')
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_B', duration=4800.0)
         self.side_npc_talk(npc_id=24100001, illust='Neirin_normal', duration=5000, script='$02020019_BF__02020019_battle__7$', voice='ko/Npc/00002122')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -233,7 +233,7 @@ class 전투_5라운드세팅(trigger_api.Trigger):
 
 class 전투_5라운드시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[241,242,243,244,245,246,247,248], auto_target=True)
+        self.spawn_monster(spawn_ids=[241,242,243,244,245,246,247,248])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_hp(spawn_id=241, is_relative=True) <= 50:
@@ -249,8 +249,8 @@ class 전투_5라운드시작(trigger_api.Trigger):
 class 전투_5라운드버프(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=24100001, illust='Neirin_serious', duration=5000, script='$02020019_BF__02020019_battle__8$', voice='ko/Npc/00002119')
-        self.add_buff(box_ids=[241], skill_id=49219001, level=1, is_player=True)
-        self.add_buff(box_ids=[242], skill_id=49219001, level=1, is_player=True)
+        self.add_buff(box_ids=[241], skill_id=49219001, level=1)
+        self.add_buff(box_ids=[242], skill_id=49219001, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_play_time() <= 180 and self.monster_dead(spawn_ids=[241,242,243,244,245,246,247,248]):

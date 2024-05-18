@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 동굴전환시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6701], visible=False)
+        self.set_effect(trigger_ids=[6701])
 
 
 initial_state = 대기

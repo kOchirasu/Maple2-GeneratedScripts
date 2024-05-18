@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 결승점(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.end_mini_game_round(winner_box_id=102, is_only_winner=True, exp_rate=1)
+        self.end_mini_game_round(winner_box_id=102, is_only_winner=True, exp_rate=1.0)
         self.mini_game_give_reward(winner_box_id=102, content_type='UserOpenMiniGameExtraReward', game_name='UserMassive_Escape') # 1일 5회 추가 보너스
         self.end_mini_game(winner_box_id=102, is_only_winner='true', game_name='UserMassive_Escape')
         self.add_buff(box_ids=[102], skill_id=70000132, level=1)

@@ -4,7 +4,7 @@ import trigger_api
 
 class 벽재생(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225], visible=True, start_delay=0, interval=10, fade=3)
+        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225], visible=True, interval=10, fade=3.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[120]):
@@ -13,7 +13,7 @@ class 벽재생(trigger_api.Trigger):
 
 class 벽삭제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225], visible=False, start_delay=0, interval=10, fade=3)
+        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225], interval=10, fade=3.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[120]):

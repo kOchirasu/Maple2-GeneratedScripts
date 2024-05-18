@@ -4,10 +4,10 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7100,7200,7300,7400,7500,7600,7700,7800], visible=False) # MushBalloon Regen Sound
-        self.set_effect(trigger_ids=[5100,5200,5300,5400,5500,5600,5700,5800], visible=False) # MushBalloon Rise Sound
+        self.set_effect(trigger_ids=[7100,7200,7300,7400,7500,7600,7700,7800]) # MushBalloon Regen Sound
+        self.set_effect(trigger_ids=[5100,5200,5300,5400,5500,5600,5700,5800]) # MushBalloon Rise Sound
         # MushBalloon Disappear Sound
-        self.set_effect(trigger_ids=[6100,6200,6300,6400,6500,6600,6700,6800], visible=False)
+        self.set_effect(trigger_ids=[6100,6200,6300,6400,6500,6600,6700,6800])
         self.set_user_value(key='SetRide', value=0)
         self.set_user_value(key='StartPatrol', value=0)
 
@@ -63,7 +63,7 @@ class Ride01_StartPatrolDelay(trigger_api.Trigger):
 class Ride01_StartPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # MushBalloon Flying Loop Sound
-        self.add_buff(box_ids=[110], skill_id=70001081, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[110], skill_id=70001081, level=1, is_skill_set=False)
         self.move_npc(spawn_id=110, patrol_name='MS2PatrolData_110') # North_To_South
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -101,7 +101,7 @@ class Ride02_StartPatrolDelay(trigger_api.Trigger):
 class Ride02_StartPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # MushBalloon Flying Loop Sound
-        self.add_buff(box_ids=[120], skill_id=70001081, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[120], skill_id=70001081, level=1, is_skill_set=False)
         self.move_npc(spawn_id=120, patrol_name='MS2PatrolData_120') # South_To_North
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -139,7 +139,7 @@ class Ride03_StartPatrolDelay(trigger_api.Trigger):
 class Ride03_StartPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # MushBalloon Flying Loop Sound
-        self.add_buff(box_ids=[130], skill_id=70001081, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[130], skill_id=70001081, level=1, is_skill_set=False)
         self.move_npc(spawn_id=130, patrol_name='MS2PatrolData_130') # East_To_West
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -177,7 +177,7 @@ class Ride04_StartPatrolDelay(trigger_api.Trigger):
 class Ride04_StartPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # MushBalloon Flying Loop Sound
-        self.add_buff(box_ids=[140], skill_id=70001081, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[140], skill_id=70001081, level=1, is_skill_set=False)
         self.move_npc(spawn_id=140, patrol_name='MS2PatrolData_140') # North_To_South
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -215,7 +215,7 @@ class Ride05_StartPatrolDelay(trigger_api.Trigger):
 class Ride05_StartPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # MushBalloon Flying Loop Sound
-        self.add_buff(box_ids=[150], skill_id=70001081, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[150], skill_id=70001081, level=1, is_skill_set=False)
         self.move_npc(spawn_id=150, patrol_name='MS2PatrolData_150') # NorthWest_To_SouthEast
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -253,7 +253,7 @@ class Ride06_StartPatrolDelay(trigger_api.Trigger):
 class Ride06_StartPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # MushBalloon Flying Loop Sound
-        self.add_buff(box_ids=[160], skill_id=70001081, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[160], skill_id=70001081, level=1, is_skill_set=False)
         self.move_npc(spawn_id=160, patrol_name='MS2PatrolData_160') # NorthEast_To_SouthWest
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -291,7 +291,7 @@ class Ride07_StartPatrolDelay(trigger_api.Trigger):
 class Ride07_StartPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # MushBalloon Flying Loop Sound
-        self.add_buff(box_ids=[170], skill_id=70001081, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[170], skill_id=70001081, level=1, is_skill_set=False)
         self.move_npc(spawn_id=170, patrol_name='MS2PatrolData_170') # SouthWest_To_NorthEast
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -329,7 +329,7 @@ class Ride08_StartPatrolDelay(trigger_api.Trigger):
 class Ride08_StartPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # MushBalloon Flying Loop Sound
-        self.add_buff(box_ids=[180], skill_id=70001081, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[180], skill_id=70001081, level=1, is_skill_set=False)
         self.move_npc(spawn_id=180, patrol_name='MS2PatrolData_180') # SouthEast_To_NorthWest
 
     def on_tick(self) -> trigger_api.Trigger:

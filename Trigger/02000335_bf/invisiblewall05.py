@@ -10,7 +10,7 @@ class 시작(trigger_api.Trigger):
 
 class 벽면처리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[7061,7062,7063,7064,7065,7066,7067,7068,7069,7070], visible=False, interval=0, fade=10) # 벽 해제
+        self.set_mesh(trigger_ids=[7061,7062,7063,7064,7065,7066,7067,7068,7069,7070], fade=10.0) # 벽 해제
 
 
 initial_state = 시작

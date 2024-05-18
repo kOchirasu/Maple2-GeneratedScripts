@@ -1,5 +1,6 @@
 """ trigger/52010054_qd/52010054_qd.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
@@ -28,7 +29,7 @@ class CameraEffect01(trigger_api.Trigger):
 class CameraEffect02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=quit02, action='nextState')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[4000,4001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,8 +48,8 @@ class CameraEffect03(trigger_api.Trigger):
 
 class CameraEffect04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.add_cinematic_talk(npc_id=11003793, msg='$52010054_QD__52010054_QD__0$', duration=7000, align='right')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.add_cinematic_talk(npc_id=11003793, msg='$52010054_QD__52010054_QD__0$', duration=7000, align=Align.Right)
         self.select_camera_path(path_ids=[4002,4003], return_view=False)
         self.set_cinematic_ui(type=3)
 
@@ -59,7 +60,7 @@ class CameraEffect04(trigger_api.Trigger):
 
 class CameraEffect05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003793, msg='$52010054_QD__52010054_QD__1$', duration=5000, align='right')
+        self.add_cinematic_talk(npc_id=11003793, msg='$52010054_QD__52010054_QD__1$', duration=5000, align=Align.Right)
         self.select_camera_path(path_ids=[4004,4005], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=2001, sequence_name='Attack_01_C,Attack_Idle_A')
 
@@ -70,7 +71,7 @@ class CameraEffect05(trigger_api.Trigger):
 
 class CameraEffect06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003793, msg='$52010054_QD__52010054_QD__2$', duration=4000, align='right')
+        self.add_cinematic_talk(npc_id=11003793, msg='$52010054_QD__52010054_QD__2$', duration=4000, align=Align.Right)
         self.select_camera_path(path_ids=[4006,4007], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=2002, sequence_name='Attack_01_B,Attack_Idle_A')
 
@@ -81,7 +82,7 @@ class CameraEffect06(trigger_api.Trigger):
 
 class CameraEffect07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003793, msg='$52010054_QD__52010054_QD__3$', duration=4000, align='right')
+        self.add_cinematic_talk(npc_id=11003793, msg='$52010054_QD__52010054_QD__3$', duration=4000, align=Align.Right)
         self.select_camera_path(path_ids=[4008,4009,4013,4014], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,10 +113,10 @@ class CameraEffect09(trigger_api.Trigger):
 
 class CameraEffect10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.select_camera_path(path_ids=[4010,4011], return_view=False)
-        self.set_time_scale(enable=True, start_scale=1, end_scale=0.1, duration=12, interpolator=1) # 10초간 느려지기 시작
+        self.set_time_scale(enable=True, start_scale=1.0, end_scale=0.1, duration=12.0, interpolator=1) # 10초간 느려지기 시작
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=12000):
@@ -133,7 +134,7 @@ class CameraEffect11(trigger_api.Trigger):
 
 class CameraEffect12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=200):
@@ -143,7 +144,7 @@ class CameraEffect12(trigger_api.Trigger):
 class CameraEffect13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=2000, sequence_name='Attack_01_B,Attack_01_B')
-        self.set_time_scale(enable=True, start_scale=0.5, end_scale=0.1, duration=12, interpolator=1) # 10초간 느려지기 시작
+        self.set_time_scale(enable=True, start_scale=0.5, end_scale=0.1, duration=12.0, interpolator=1) # 10초간 느려지기 시작
         self.select_camera_path(path_ids=[4012,4015], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -162,7 +163,7 @@ class quit01(trigger_api.Trigger):
 
 class quit02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_user(map_id=2000422, portal_id=5)
 
 

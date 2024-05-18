@@ -8,24 +8,24 @@ class 대기(trigger_api.Trigger):
         self.set_agent(trigger_ids=[906], visible=True)
         self.set_agent(trigger_ids=[907], visible=True)
         self.set_agent(trigger_ids=[908], visible=True)
-        self.set_ladder(trigger_ids=[531], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[532], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[533], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[534], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[535], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[536], visible=False, enable=False)
-        self.set_mesh(trigger_ids=[3089], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3108], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_ladder(trigger_ids=[531])
+        self.set_ladder(trigger_ids=[532])
+        self.set_ladder(trigger_ids=[533])
+        self.set_ladder(trigger_ids=[534])
+        self.set_ladder(trigger_ids=[535])
+        self.set_ladder(trigger_ids=[536])
+        self.set_mesh(trigger_ids=[3089], visible=True)
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107])
+        self.set_mesh(trigger_ids=[3108], visible=True)
         self.set_actor(trigger_id=3110, visible=True, initial_sequence='Closed')
-        self.set_mesh(trigger_ids=[3111], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3112,3113,3114,3115,3116,3117], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3111], visible=True)
+        self.set_mesh(trigger_ids=[3112,3113,3114,3115,3116,3117], visible=True)
         self.set_actor(trigger_id=3120, visible=True, initial_sequence='Closed')
-        self.set_mesh(trigger_ids=[3121], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[5101], visible=False) # LadderAppear
+        self.set_mesh(trigger_ids=[3121], visible=True)
+        self.set_mesh(trigger_ids=[3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132], visible=True)
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209])
+        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504], visible=True)
+        self.set_effect(trigger_ids=[5101]) # LadderAppear
         self.destroy_monster(spawn_ids=[1011])
         self.destroy_monster(spawn_ids=[1012])
         self.destroy_monster(spawn_ids=[1013])
@@ -35,11 +35,11 @@ class 대기(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1017])
         self.destroy_monster(spawn_ids=[1018])
         self.destroy_monster(spawn_ids=[1019])
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[6003], visible=False)
-        self.set_effect(trigger_ids=[6004], visible=False)
-        self.set_effect(trigger_ids=[6005], visible=False)
-        self.set_effect(trigger_ids=[6006], visible=False)
+        self.set_portal(portal_id=2)
+        self.set_effect(trigger_ids=[6003])
+        self.set_effect(trigger_ids=[6004])
+        self.set_effect(trigger_ids=[6005])
+        self.set_effect(trigger_ids=[6006])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -67,9 +67,9 @@ class 사다리생성(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[534], visible=True, enable=True)
         self.set_ladder(trigger_ids=[535], visible=True, enable=True)
         self.set_ladder(trigger_ids=[536], visible=True, enable=True)
-        self.enable_spawn_point_pc(spawn_id=0, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=0)
         self.enable_spawn_point_pc(spawn_id=9991, is_enable=True)
-        self.enable_spawn_point_pc(spawn_id=9992, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=9992)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -90,10 +90,10 @@ class 트리거09시작(trigger_api.Trigger):
 
 class 트리거10시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[905], visible=False)
-        self.set_agent(trigger_ids=[906], visible=False)
-        self.set_mesh(trigger_ids=[3089], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=True, start_delay=0, interval=200, fade=2)
+        self.set_agent(trigger_ids=[905])
+        self.set_agent(trigger_ids=[906])
+        self.set_mesh(trigger_ids=[3089])
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=True, interval=200, fade=2.0)
         self.spawn_monster(spawn_ids=[1012], auto_target=False)
         self.spawn_monster(spawn_ids=[1013], auto_target=False)
 
@@ -106,10 +106,10 @@ class 트리거10시작(trigger_api.Trigger):
 
 class 트리거11시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[907], visible=False)
-        self.set_agent(trigger_ids=[908], visible=False)
-        self.set_mesh(trigger_ids=[3108], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=True, start_delay=0, interval=200, fade=2)
+        self.set_agent(trigger_ids=[907])
+        self.set_agent(trigger_ids=[908])
+        self.set_mesh(trigger_ids=[3108])
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=True, interval=200, fade=2.0)
         self.spawn_monster(spawn_ids=[1014], auto_target=False)
         self.spawn_monster(spawn_ids=[1015], auto_target=False)
         self.spawn_monster(spawn_ids=[1016], auto_target=False)
@@ -124,7 +124,7 @@ class 트리거11시작(trigger_api.Trigger):
 class 트리거12시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=3110, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3111], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3111])
         self.spawn_monster(spawn_ids=[1017], auto_target=False)
         self.spawn_monster(spawn_ids=[1018], auto_target=False)
         self.spawn_monster(spawn_ids=[1019], auto_target=False)
@@ -136,8 +136,8 @@ class 트리거12시작(trigger_api.Trigger):
 
 class 트리거12진행(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=3110, visible=False, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3112,3113,3114,3115,3116,3117], visible=False, start_delay=0, interval=200, fade=2)
+        self.set_actor(trigger_id=3110, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[3112,3113,3114,3115,3116,3117], interval=200, fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1017,1018,1019]):
@@ -149,7 +149,7 @@ class 트리거12진행(trigger_api.Trigger):
 class 트리거13시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=3120, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3121], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3121])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -158,10 +158,10 @@ class 트리거13시작(trigger_api.Trigger):
 
 class 트리거13진행(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=3120, visible=False, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132], visible=False, start_delay=0, interval=200, fade=2)
-        self.enable_spawn_point_pc(spawn_id=0, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=9991, is_enable=False)
+        self.set_actor(trigger_id=3120, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132], interval=200, fade=2.0)
+        self.enable_spawn_point_pc(spawn_id=0)
+        self.enable_spawn_point_pc(spawn_id=9991)
         self.enable_spawn_point_pc(spawn_id=9992, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -182,9 +182,9 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=801, enable=True)
+        self.select_camera(trigger_id=801)
         self.set_timer(timer_id='3', seconds=3)
-        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504], visible=False, start_delay=0, interval=300, fade=3)
+        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504], interval=300, fade=3.0)
         self.set_skip(state=연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -194,7 +194,7 @@ class 연출시작(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[801], return_view=True)
+        self.select_camera_path(path_ids=[801])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

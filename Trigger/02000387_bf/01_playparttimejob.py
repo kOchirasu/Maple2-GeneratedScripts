@@ -7,23 +7,23 @@ from dungeon_common.checkusercount import *
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[2000,2001,2002,2003,2004], visible=True, start_delay=0, interval=0, fade=0) # Barrier
-        self.set_mesh(trigger_ids=[2005], visible=True, start_delay=0, interval=0, fade=0) # Barrier
+        self.set_portal(portal_id=1)
+        self.set_mesh(trigger_ids=[2000,2001,2002,2003,2004], visible=True) # Barrier
+        self.set_mesh(trigger_ids=[2005], visible=True) # Barrier
         # 테스트용 임시
-        self.set_mesh(trigger_ids=[2006], visible=True, start_delay=0, interval=0, fade=0) # Barrier
-        self.set_mesh(trigger_ids=[2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031], visible=True, start_delay=0, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[2006], visible=True) # Barrier
+        self.set_mesh(trigger_ids=[2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031], visible=True) # Barrier
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='ry_functobj_door_E01_off') # RevolvingDoor
         self.set_actor(trigger_id=4001, visible=True, initial_sequence='ry_functobj_door_E01_off') # RevolvingDoor
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='ry_functobj_door_E01_off') # RevolvingDoor
         self.set_actor(trigger_id=4003, visible=True, initial_sequence='ry_functobj_door_E01_off') # RevolvingDoor
-        self.set_effect(trigger_ids=[5000], visible=False) # GuideUI
-        self.set_effect(trigger_ids=[5101], visible=False) # DownArrow
-        self.set_effect(trigger_ids=[5102], visible=False) # DownArrow
-        self.set_effect(trigger_ids=[5103], visible=False) # DownArrow
-        self.set_effect(trigger_ids=[5104], visible=False) # DownArrow
-        self.set_effect(trigger_ids=[5105], visible=False) # DownArrow
-        self.set_effect(trigger_ids=[5106], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5000]) # GuideUI
+        self.set_effect(trigger_ids=[5101]) # DownArrow
+        self.set_effect(trigger_ids=[5102]) # DownArrow
+        self.set_effect(trigger_ids=[5103]) # DownArrow
+        self.set_effect(trigger_ids=[5104]) # DownArrow
+        self.set_effect(trigger_ids=[5105]) # DownArrow
+        self.set_effect(trigger_ids=[5106]) # DownArrow
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -183,11 +183,11 @@ class R01Customer01Row03Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=10103)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup3003(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup3007(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup3011(self.ctx)
 
 
@@ -197,11 +197,11 @@ class R01Customer02Row02Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=10202)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup2002(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup2006(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup2010(self.ctx)
 
 
@@ -211,19 +211,19 @@ class R01Customer03Row04Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=10304)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return None # Missing State: NpcGroup4205
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4208(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4212(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4216(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4220(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4224(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup4228(self.ctx)
 
 
@@ -233,17 +233,17 @@ class R01Customer04Row01Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=10401)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup1101(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup1105(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup1109(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup1113(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup1117(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup1121(self.ctx)
 
 
@@ -277,17 +277,17 @@ class R02Customer01Row02Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=20102)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup2102(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup2106(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup2110(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup2114(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup2118(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup2122(self.ctx)
 
 
@@ -297,19 +297,19 @@ class R02Customer02Row03Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=20203)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup3203(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3207(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3211(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3215(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3219(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3223(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup3227(self.ctx)
 
 
@@ -319,11 +319,11 @@ class R02Customer03Row01Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=20301)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup1001(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup1005(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup1009(self.ctx)
 
 
@@ -333,17 +333,17 @@ class R02Customer04Row04Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=20404)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup4104(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup4108(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup4112(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup4116(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup4120(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup4124(self.ctx)
 
 
@@ -353,19 +353,19 @@ class R02Customer05Row02Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=20502)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup2202(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2206(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2210(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2214(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2218(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2222(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup2226(self.ctx)
 
 
@@ -375,17 +375,17 @@ class R02Customer06Row03Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=20603)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup3103(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup3107(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup3111(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup3115(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup3119(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup3123(self.ctx)
 
 
@@ -395,19 +395,19 @@ class R02Customer07Row01Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=20701)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup1201(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1205(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1209(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1213(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1217(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1221(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup1225(self.ctx)
 
 
@@ -417,11 +417,11 @@ class R02Customer08Row04Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=20804)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup4004(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup4008(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup4012(self.ctx)
 
 
@@ -455,17 +455,17 @@ class R03Customer01Row04Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30104)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup4104(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup4108(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup4112(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup4116(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup4120(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup4124(self.ctx)
 
 
@@ -475,19 +475,19 @@ class R03Customer02Row02Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30202)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup2202(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2206(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2210(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2214(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2218(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup2222(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup2226(self.ctx)
 
 
@@ -497,11 +497,11 @@ class R03Customer03Row03Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30303)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup3003(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup3007(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup3011(self.ctx)
 
 
@@ -511,11 +511,11 @@ class R03Customer04Row01Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30401)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup1001(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup1005(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup1009(self.ctx)
 
 
@@ -525,11 +525,11 @@ class R03Customer05Row02Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30502)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup2002(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup2006(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup2010(self.ctx)
 
 
@@ -539,19 +539,19 @@ class R03Customer06Row04Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30604)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup4204(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4208(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4212(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4216(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4220(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup4224(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup4228(self.ctx)
 
 
@@ -561,17 +561,17 @@ class R03Customer07Row03Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30703)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup3103(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup3107(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup3111(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup3115(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup3119(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup3123(self.ctx)
 
 
@@ -581,17 +581,17 @@ class R03Customer08Row01Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30801)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup1101(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup1105(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup1109(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup1113(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup1117(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup1121(self.ctx)
 
 
@@ -601,19 +601,19 @@ class R03Customer09Row01Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=30901)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup1201(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1205(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1209(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1213(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1217(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup1221(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup1225(self.ctx)
 
 
@@ -623,11 +623,11 @@ class R03Customer10Row04Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=31004)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup4004(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup4008(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return NpcGroup4012(self.ctx)
 
 
@@ -637,17 +637,17 @@ class R03Customer11Row02Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=31102)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup2102(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup2106(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup2110(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return NpcGroup2114(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup2118(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return NpcGroup2122(self.ctx)
 
 
@@ -657,19 +657,19 @@ class R03Customer12Row03Random(trigger_api.Trigger):
         self.set_user_value(key='RoundCustomerRow', value=31203)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup3203(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3207(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3211(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3215(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3219(self.ctx)
-        if self.random_condition(weight=14):
+        if self.random_condition(weight=14.0):
             return NpcGroup3223(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             return NpcGroup3227(self.ctx)
 
 
@@ -736,7 +736,7 @@ class PCLeave01(trigger_api.Trigger):
 
 class PCLeave02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=0)
+        self.move_user()
 
 
 # NPC 그룹 랜덤

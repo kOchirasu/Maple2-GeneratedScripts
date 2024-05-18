@@ -13,8 +13,8 @@ class 대기(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11004205, illust='ArcaneBlader_unfair', script='$02020301_BF__3000031_PHASE_2_INTERECT_01__0$', duration=3176)
-        self.side_npc_talk(type='talk', npc_id=11004205, illust='ArcaneBlader_unfair', script='$02020301_BF__3000031_PHASE_2_INTERECT_01__1$', duration=3176)
+        self.side_npc_talk(npc_id=11004205, illust='ArcaneBlader_unfair', script='$02020301_BF__3000031_PHASE_2_INTERECT_01__0$', duration=3176)
+        self.side_npc_talk(npc_id=11004205, illust='ArcaneBlader_unfair', script='$02020301_BF__3000031_PHASE_2_INTERECT_01__1$', duration=3176)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):

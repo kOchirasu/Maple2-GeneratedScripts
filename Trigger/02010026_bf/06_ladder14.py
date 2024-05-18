@@ -5,13 +5,13 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000909], state=1)
-        self.set_ladder(trigger_ids=[201], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[202], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[203], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[204], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[205], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[206], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[207], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[201])
+        self.set_ladder(trigger_ids=[202])
+        self.set_ladder(trigger_ids=[203])
+        self.set_ladder(trigger_ids=[204])
+        self.set_ladder(trigger_ids=[205])
+        self.set_ladder(trigger_ids=[206])
+        self.set_ladder(trigger_ids=[207])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000909], state=0):
@@ -75,7 +75,7 @@ class 사다리생성06(trigger_api.Trigger):
 class 사다리생성07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(trigger_ids=[207], visible=True, enable=True, fade=5)
-        self.set_timer(timer_id='1', seconds=10, start_delay=0)
+        self.set_timer(timer_id='1', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):

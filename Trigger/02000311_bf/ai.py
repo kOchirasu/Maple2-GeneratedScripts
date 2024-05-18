@@ -24,7 +24,7 @@ class Phase_02(trigger_api.Trigger):
 class Phase_02_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=1, spawn_id=201, script='$02000311_BF__AI__0$', time=2, arg5=2)
-        self.set_dialogue(type=1, spawn_id=202, script='$02000311_BF__AI__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=202, script='$02000311_BF__AI__1$', time=2)
         self.set_skill(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

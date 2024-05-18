@@ -5,31 +5,31 @@ import trigger_api
 # 플레이어 감지
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_ladder(trigger_ids=[601], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[602], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[603], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[604], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[605], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[606], visible=False, enable=False)
-        self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        self.set_onetime_effect(id=102, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        self.set_onetime_effect(id=103, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        self.set_onetime_effect(id=104, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        self.set_onetime_effect(id=105, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        self.set_onetime_effect(id=106, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_portal(portal_id=2)
+        self.set_ladder(trigger_ids=[601])
+        self.set_ladder(trigger_ids=[602])
+        self.set_ladder(trigger_ids=[603])
+        self.set_ladder(trigger_ids=[604])
+        self.set_ladder(trigger_ids=[605])
+        self.set_ladder(trigger_ids=[606])
+        self.set_onetime_effect(id=101, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=102, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=103, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=104, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=105, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=106, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_mesh(trigger_ids=[904,905,906,907,908,909], visible=True)
-        self.set_mesh(trigger_ids=[910,911,912,913,921,914,915,922,916,917,918,919,920,923,924,925,926,927], visible=False)
-        self.set_mesh(trigger_ids=[928,929,930,931,932,933,934,935,936,937], visible=False)
+        self.set_mesh(trigger_ids=[910,911,912,913,921,914,915,922,916,917,918,919,920,923,924,925,926,927])
+        self.set_mesh(trigger_ids=[928,929,930,931,932,933,934,935,936,937])
         self.enable_spawn_point_pc(spawn_id=0, is_enable=True)
-        self.enable_spawn_point_pc(spawn_id=1, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=2, is_enable=False)
-        self.set_skill(trigger_ids=[2000], enable=False)
-        self.set_effect(trigger_ids=[3000], visible=False)
-        self.set_effect(trigger_ids=[3001], visible=False)
-        self.set_effect(trigger_ids=[3002], visible=False)
-        self.set_effect(trigger_ids=[3003], visible=False)
-        self.set_effect(trigger_ids=[3004], visible=False)
+        self.enable_spawn_point_pc(spawn_id=1)
+        self.enable_spawn_point_pc(spawn_id=2)
+        self.set_skill(trigger_ids=[2000])
+        self.set_effect(trigger_ids=[3000])
+        self.set_effect(trigger_ids=[3001])
+        self.set_effect(trigger_ids=[3002])
+        self.set_effect(trigger_ids=[3003])
+        self.set_effect(trigger_ids=[3004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[701], job_code=0):
@@ -38,7 +38,7 @@ class idle(trigger_api.Trigger):
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101,102], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,102])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101,102]):
@@ -74,7 +74,7 @@ class 잠시쉬기2(trigger_api.Trigger):
 
 class 잠시쉬기3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[904,905,906,907,908,909], visible=False)
+        self.set_mesh(trigger_ids=[904,905,906,907,908,909])
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +85,7 @@ class 잠시쉬기3(trigger_api.Trigger):
 class 몬스터생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[203])
-        self.spawn_monster(spawn_ids=[103,1031,1032,1033,1034], auto_target=True)
+        self.spawn_monster(spawn_ids=[103,1031,1032,1033,1034])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[103,1031,1032,1033,1034]):
@@ -95,7 +95,7 @@ class 몬스터생성(trigger_api.Trigger):
 class 다음몬스터생성조건체크(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=11004644, illust='SlaveMan3_normal', duration=4000, script='$02000539_BF__MAIN__1$')
-        self.spawn_monster(spawn_ids=[107,1071,1072], auto_target=True)
+        self.spawn_monster(spawn_ids=[107,1071,1072])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -191,9 +191,9 @@ class 다리만들기6(trigger_api.Trigger):
 class 다음몬스터생성1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[202], auto_target=False)
-        self.spawn_monster(spawn_ids=[111,1111,1112,112,1121], auto_target=True)
+        self.spawn_monster(spawn_ids=[111,1111,1112,112,1121])
         self.side_npc_talk(npc_id=11004644, illust='SlaveMan3_normal', duration=3000, script='$02000539_BF__MAIN__5$')
-        self.enable_spawn_point_pc(spawn_id=0, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=0)
         self.enable_spawn_point_pc(spawn_id=1, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -204,7 +204,7 @@ class 다음몬스터생성1(trigger_api.Trigger):
 class 다음몬스터생성조건체크2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000539_BF__MAIN__6$')
-        self.spawn_monster(spawn_ids=[113,1131,1132,1133,1134], auto_target=True)
+        self.spawn_monster(spawn_ids=[113,1131,1132,1133,1134])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[705], job_code=0):
@@ -268,7 +268,7 @@ class 보스문으로이동(trigger_api.Trigger):
 class 벽부시기3단계(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=105, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        self.set_mesh(trigger_ids=[938,939,940,941,942,943], visible=False)
+        self.set_mesh(trigger_ids=[938,939,940,941,942,943])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[702], job_code=0):
@@ -278,9 +278,9 @@ class 벽부시기3단계(trigger_api.Trigger):
 class 보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=11004644, illust='SlaveMan3_normal', duration=3000, script='$02000539_BF__MAIN__9$')
-        self.enable_spawn_point_pc(spawn_id=1, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=1)
         self.enable_spawn_point_pc(spawn_id=2, is_enable=True)
-        self.spawn_monster(spawn_ids=[119], auto_target=True)
+        self.spawn_monster(spawn_ids=[119])
         self.set_onetime_effect(id=106, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
     def on_tick(self) -> trigger_api.Trigger:

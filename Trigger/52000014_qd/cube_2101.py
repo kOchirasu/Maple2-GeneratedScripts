@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2101], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[2102], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[12101], visible=False) # Fire Cast Sound
+        self.set_mesh(trigger_ids=[2101], visible=True)
+        self.set_mesh(trigger_ids=[2102], visible=True)
+        self.set_effect(trigger_ids=[12101]) # Fire Cast Sound
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[92101]):
@@ -17,8 +17,8 @@ class 무너짐01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=5)
         self.set_effect(trigger_ids=[12101], visible=True) # Fire Cast Sound
-        self.set_mesh(trigger_ids=[2101], visible=False, start_delay=0, interval=0, fade=1)
-        self.set_mesh(trigger_ids=[2102], visible=False, start_delay=500, interval=0, fade=1)
+        self.set_mesh(trigger_ids=[2101], fade=1.0)
+        self.set_mesh(trigger_ids=[2102], start_delay=500, fade=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -27,7 +27,7 @@ class 무너짐01(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[12101], visible=False) # Fire Cast Sound
+        self.set_effect(trigger_ids=[12101]) # Fire Cast Sound
 
 
 initial_state = 대기

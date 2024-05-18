@@ -1,13 +1,14 @@
 """ trigger/02020142_bf/setlighttest.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 전투체크(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 스타트 지점에서 1페이즈 전투판으로 가는 포탈 처음에는 감추기
-        self.set_portal(portal_id=4401, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=4401)
         # 1페이즈에서 2페이즈 전투판으로 가는 포탈 처음에는 감추기
-        self.set_portal(portal_id=4403, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=4403)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -29,9 +30,9 @@ class 어둠조명설정(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[301], visible=True) # 1페이즈 전투판의 빛기둥 생성
         # arg1 = AmbientColor RGB값
-        self.set_ambient_light(primary=[45,21,28])
+        self.set_ambient_light(primary=Vector3(45,21,28))
         # arg1 = DiffuseColor RGB값,  arg2 = SpecularColor RGB값
-        self.set_directional_light(diffuse_color=[16,30,29], specular_color=[130,130,130])
+        self.set_directional_light(diffuse_color=Vector3(16,30,29), specular_color=Vector3(130,130,130))
         # 스타트 지점에서 1페이즈 전투판으로 가는 포탈 등장
         self.set_portal(portal_id=4401, visible=True, enable=True, minimap_visible=True)
         # 1페이즈에서 2페이즈 전투판으로 가는 포탈 등장
@@ -44,11 +45,11 @@ class 어둠조명설정(trigger_api.Trigger):
 
 class 밝은조명설정(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[301], visible=False) # 1페이즈 전투판 빛기둥 제거
+        self.set_effect(trigger_ids=[301]) # 1페이즈 전투판 빛기둥 제거
         # arg1 = AmbientColor RGB값
-        self.set_ambient_light(primary=[255,140,172])
+        self.set_ambient_light(primary=Vector3(255,140,172))
         # arg1 = DiffuseColor RGB값,  arg2 = SpecularColor RGB값
-        self.set_directional_light(diffuse_color=[146,221,218], specular_color=[130,130,130])
+        self.set_directional_light(diffuse_color=Vector3(146,221,218), specular_color=Vector3(130,130,130))
         # 2페이즈 부터 맵이 밝아지면서, 백그라운드 이미지 교체함
         self.change_background(dds='BG_Turka_A.dds')
         # 스타트 지점에서 1페이즈 전투판으로 가는 포탈 등장

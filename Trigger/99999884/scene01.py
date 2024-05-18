@@ -6,12 +6,12 @@ class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # for test
         # self.spawn_monster(spawn_ids=[201])
-        self.set_effect(trigger_ids=[401], visible=False)
-        self.set_effect(trigger_ids=[402], visible=False)
-        self.set_effect(trigger_ids=[403], visible=False)
-        self.set_effect(trigger_ids=[404], visible=False)
-        self.set_actor(trigger_id=405, visible=False)
-        self.set_effect(trigger_ids=[406], visible=False)
+        self.set_effect(trigger_ids=[401])
+        self.set_effect(trigger_ids=[402])
+        self.set_effect(trigger_ids=[403])
+        self.set_effect(trigger_ids=[404])
+        self.set_actor(trigger_id=405)
+        self.set_effect(trigger_ids=[406])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -23,7 +23,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 벨라등장(trigger_api.Trigger):
 
 class 벨라대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[401], visible=False)
+        self.set_effect(trigger_ids=[401])
         self.set_timer(timer_id='1', seconds=2)
         self.set_dialogue(type=2, spawn_id=11000057, script='$99999884__SCENE01__0$', time=2)
 
@@ -88,7 +88,7 @@ class 프레이대사1(trigger_api.Trigger):
 class 벨라대사3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=2)
-        self.set_effect(trigger_ids=[402], visible=False)
+        self.set_effect(trigger_ids=[402])
         self.move_npc(spawn_id=202, patrol_name='202_MS2PatrolData_Bella_TurnToFrey')
         self.set_dialogue(type=1, spawn_id=202, script='$99999884__SCENE01__3$', time=2)
 
@@ -132,7 +132,7 @@ class 프레이대사2(trigger_api.Trigger):
 class 벨라대사5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=1)
-        self.set_effect(trigger_ids=[402], visible=False)
+        self.set_effect(trigger_ids=[402])
         self.set_effect(trigger_ids=[403], visible=True)
         self.move_npc(spawn_id=202, patrol_name='202_MS2PatrolData_Bella_TurnToFrey')
         self.set_dialogue(type=1, spawn_id=202, script='$99999884__SCENE01__6$', time=2)
@@ -156,7 +156,7 @@ class 오스칼대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=2)
         self.destroy_monster(spawn_ids=[203])
-        self.set_effect(trigger_ids=[403], visible=False)
+        self.set_effect(trigger_ids=[403])
         self.set_effect(trigger_ids=[406], visible=True)
         self.set_actor(trigger_id=405, visible=True, initial_sequence='Down_Idle_A')
         self.move_npc(spawn_id=204, patrol_name='204_MS2PatrolData_Oskhal_MoveToFrey')
@@ -191,7 +191,7 @@ class 연출끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.select_camera_path(path_ids=[302], return_view=True)
+        self.select_camera_path(path_ids=[302])
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:

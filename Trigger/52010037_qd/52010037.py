@@ -1,5 +1,7 @@
 """ trigger/52010037_qd/52010037.xml """
 import trigger_api
+from System.Numerics import Vector3
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Wait(trigger_api.Trigger):
@@ -67,7 +69,7 @@ class 지하기지전경씬01(trigger_api.Trigger):
 class 지하기지전경씬02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Quit01, action='nextState')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[3000,3001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +97,7 @@ class 지하기지전경씬02_c(trigger_api.Trigger):
 
 class 지하기지전경씬03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52010037_QD__52010037__0$', desc='$52010037_QD__52010037__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=7000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52010037_QD__52010037__0$', desc='$52010037_QD__52010037__1$', align=Align.Bottom | Align.Left, duration=7000, scale=2.5)
         self.select_camera_path(path_ids=[3006,3007], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,10 +116,10 @@ class 지하기지전경씬04(trigger_api.Trigger):
 
 class Quit01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9001], quest_ids=[91000003], quest_states=[3]):
@@ -154,8 +156,8 @@ class 블리체와대장들이동(trigger_api.Trigger):
 class 긴급상황발동01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(trigger_id=9010, enable=True) # 케이틀린 등장 브금
-        self.set_ambient_light(primary=[232,92,53])
-        self.set_directional_light(diffuse_color=[41,21,18], specular_color=[130,130,130])
+        self.set_ambient_light(primary=Vector3(232,92,53))
+        self.set_directional_light(diffuse_color=Vector3(41,21,18), specular_color=Vector3(130,130,130))
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_actor(trigger_id=501, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=502, visible=True, initial_sequence='sf_quest_light_A01_On')
@@ -183,7 +185,7 @@ class 긴급상황발동01(trigger_api.Trigger):
 
 class 긴급상황발동02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.spawn_monster(spawn_ids=[209], auto_target=False) # 프레이
         self.spawn_monster(spawn_ids=[210], auto_target=False) # 오스칼
 

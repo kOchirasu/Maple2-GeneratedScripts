@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[7000], enable=False) # CubeBreak
+        self.set_skill(trigger_ids=[7000]) # CubeBreak
         self.set_user_value(key='BossKill', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

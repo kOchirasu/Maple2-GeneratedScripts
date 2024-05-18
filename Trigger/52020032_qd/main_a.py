@@ -4,9 +4,9 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=8001, visible=False, initial_sequence='Damg_Idle_B')
+        self.set_actor(trigger_id=8001, initial_sequence='Damg_Idle_B')
         self.set_interact_object(trigger_ids=[10001281], state=0)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[60200100], quest_states=[3]):
@@ -26,15 +26,15 @@ class Idle(trigger_api.Trigger):
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=8001, visible=True, initial_sequence='Damg_Idle_B')
-        self.spawn_monster(spawn_ids=[102], auto_target=True) # 미카엘
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
-        self.spawn_monster(spawn_ids=[203], auto_target=True)
-        self.spawn_monster(spawn_ids=[204], auto_target=True)
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
-        self.spawn_monster(spawn_ids=[206], auto_target=True)
-        self.spawn_monster(spawn_ids=[207], auto_target=True)
-        self.spawn_monster(spawn_ids=[301], auto_target=True) # 폭주 마리오네트
+        self.spawn_monster(spawn_ids=[102]) # 미카엘
+        self.spawn_monster(spawn_ids=[201])
+        self.spawn_monster(spawn_ids=[202])
+        self.spawn_monster(spawn_ids=[203])
+        self.spawn_monster(spawn_ids=[204])
+        self.spawn_monster(spawn_ids=[205])
+        self.spawn_monster(spawn_ids=[206])
+        self.spawn_monster(spawn_ids=[207])
+        self.spawn_monster(spawn_ids=[301]) # 폭주 마리오네트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[60200095], quest_states=[1]):
@@ -100,7 +100,7 @@ class Event_04(trigger_api.Trigger):
 
 class Battle_B(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=0.5)
@@ -123,14 +123,14 @@ class Event_End(trigger_api.Trigger):
 
 class Exit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 미카엘
-        self.set_actor(trigger_id=8001, visible=False, initial_sequence='Damg_Idle_B')
+        self.spawn_monster(spawn_ids=[101]) # 미카엘
+        self.set_actor(trigger_id=8001, initial_sequence='Damg_Idle_B')
 
 
 class Del_Npc(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[101])
-        self.set_actor(trigger_id=8001, visible=False, initial_sequence='Damg_Idle_B')
+        self.set_actor(trigger_id=8001, initial_sequence='Damg_Idle_B')
 
 
 initial_state = Idle

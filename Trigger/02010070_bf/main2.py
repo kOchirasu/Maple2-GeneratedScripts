@@ -6,9 +6,9 @@ class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[2000,2001,2002,2003,2004,2005,2006,2007,2008,2100,2101,2102,2103,2104,2105,2106,2107,2108])
         self.set_interact_object(trigger_ids=[10000834], state=1)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[95001], visible=False)
+        self.set_portal(portal_id=2)
+        self.set_portal(portal_id=4)
+        self.set_effect(trigger_ids=[95001])
         self.destroy_monster(spawn_ids=[22210,22211,22212,22213])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +66,7 @@ class 시작2(trigger_api.Trigger):
         # 욕망이 불러낸 몬스터를 모두 처치해야 합니다.
         self.show_guide_summary(entity_id=20100708, text_id=20100708)
         self.destroy_monster(spawn_ids=[2100,2101,2102,2103,2104,2105,2106,2107,2108])
-        self.spawn_monster(spawn_ids=[2000,2001,2002,2003], auto_target=True)
+        self.spawn_monster(spawn_ids=[2000,2001,2002,2003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):
@@ -75,7 +75,7 @@ class 시작2(trigger_api.Trigger):
 
 class 시작32(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[2004,2005], auto_target=True)
+        self.spawn_monster(spawn_ids=[2004,2005])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2000,2001,2002,2003,2004,2005]):
@@ -136,7 +136,7 @@ class 시작8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=4, visible=True, enable=True)
 
 
 initial_state = 대기

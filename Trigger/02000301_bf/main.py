@@ -7,10 +7,10 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000585], state=0)
         self.set_interact_object(trigger_ids=[11000004], state=2)
         self.set_interact_object(trigger_ids=[13000006], state=2)
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[604])
         self.spawn_monster(spawn_ids=[1007,1008], auto_target=False)
         self.spawn_monster(spawn_ids=[2099], auto_target=False)
-        self.set_mesh(trigger_ids=[4998,4999], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4998,4999], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -30,7 +30,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_timer(timer_id='3', seconds=3)
         self.set_skip(state=연출종료)
 
@@ -52,7 +52,7 @@ class 트리스탄01(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[301], return_view=True)
+        self.select_camera_path(path_ids=[301])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 몬스터전투(self.ctx)
@@ -79,7 +79,7 @@ class 골두스이동(trigger_api.Trigger):
             return 또다른연출시작(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[4998,4999], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4998,4999])
 
 
 class 또다른연출시작(trigger_api.Trigger):

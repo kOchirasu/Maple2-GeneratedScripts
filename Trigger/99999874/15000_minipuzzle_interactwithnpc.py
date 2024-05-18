@@ -7,9 +7,9 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='StandAsideTypeA', value=0)
         self.set_user_value(key='StandAsideTypeB', value=0)
         # InvisibleBlock_Enterance
-        self.set_mesh(trigger_ids=[15101], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[15102], visible=False, start_delay=0, interval=0, fade=0) # InvisibleBlock_Inside
-        self.set_actor(trigger_id=15100, visible=False, initial_sequence='Idle_A') # Dummy RareBox
+        self.set_mesh(trigger_ids=[15101])
+        self.set_mesh(trigger_ids=[15102]) # InvisibleBlock_Inside
+        self.set_actor(trigger_id=15100, initial_sequence='Idle_A') # Dummy RareBox
         # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001151 걸어서 71001051 제거
         self.set_interact_object(trigger_ids=[12000070], state=2)
         # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeA / Additional Effect 71001051 71001231 부여
@@ -18,11 +18,11 @@ class Wait(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000093], state=2)
         self.destroy_monster(spawn_ids=[15401,15402,15501,15502]) # TypeA 15401 15402
         # TypeB 15501 15502
-        self.set_effect(trigger_ids=[15300], visible=False) # Success Sound Effect
-        self.set_effect(trigger_ids=[15301], visible=False) # Right Sound Effect
-        self.set_effect(trigger_ids=[15302], visible=False) # Wrong Sound Effect
-        self.set_effect(trigger_ids=[15303], visible=False) # Happy Sound Effect
-        self.set_effect(trigger_ids=[15304], visible=False) # Shy Sound Effect
+        self.set_effect(trigger_ids=[15300]) # Success Sound Effect
+        self.set_effect(trigger_ids=[15301]) # Right Sound Effect
+        self.set_effect(trigger_ids=[15302]) # Wrong Sound Effect
+        self.set_effect(trigger_ids=[15303]) # Happy Sound Effect
+        self.set_effect(trigger_ids=[15304]) # Shy Sound Effect
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimeEventOn') >= 1:
@@ -38,15 +38,15 @@ class SettingDelay(trigger_api.Trigger):
 class InteractWithNpc_NpcTypeRandomPick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # InvisibleBlock_Enterance
-        self.set_mesh(trigger_ids=[15101], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[15002], visible=True, start_delay=0, interval=0, fade=0) # InvisibleBlock_Inside
+        self.set_mesh(trigger_ids=[15101], visible=True)
+        self.set_mesh(trigger_ids=[15002], visible=True) # InvisibleBlock_Inside
         self.set_actor(trigger_id=15100, visible=True, initial_sequence='Idle_A') # Dummy RareBox
         self.set_user_value(trigger_id=15001, key='PortalOn', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return InteractWithNpc_NpcTypeA_Setting(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return InteractWithNpc_NpcTypeB_Setting(self.ctx)
 
 
@@ -59,7 +59,7 @@ class InteractWithNpc_NpcTypeA_Setting(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000078], state=0):
             # UI 표시 안함 / 황금 상자 소유권 Additional Effect 71001051 지속시간 동일
-            self.set_timer(timer_id='1', seconds=90, start_delay=1, interval=0, v_offset=0)
+            self.set_timer(timer_id='1', seconds=90, start_delay=1)
             return InteractWithNpc_NpcTypeA_NpcSpawn(self.ctx)
         if self.user_value(key='TimeEventOn') >= 0:
             return Wait(self.ctx)
@@ -68,7 +68,7 @@ class InteractWithNpc_NpcTypeA_Setting(trigger_api.Trigger):
 class InteractWithNpc_NpcTypeA_NpcSpawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[12000078], state=2)
-        self.spawn_monster(spawn_ids=[15401], auto_target=True)
+        self.spawn_monster(spawn_ids=[15401])
         self.set_user_value(trigger_id=1000051, key='NPCTalk', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,15 +82,15 @@ class InteractWithNpc_NpcTypeA_NpcSpawn(trigger_api.Trigger):
 
 class InteractWithNpc_NpcTypeA_NpcChange(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[15300], visible=False) # Success Sound Effect
+        self.set_effect(trigger_ids=[15300]) # Success Sound Effect
         self.destroy_monster(spawn_ids=[15401])
-        self.spawn_monster(spawn_ids=[15402], auto_target=True)
+        self.spawn_monster(spawn_ids=[15402])
         self.set_user_value(trigger_id=15001, key='PortalOn', value=2)
         # InvisibleBlock_Enterance
-        self.set_mesh(trigger_ids=[15101], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[15102], visible=False, start_delay=0, interval=0, fade=0) # InvisibleBlock_Inside
+        self.set_mesh(trigger_ids=[15101])
+        self.set_mesh(trigger_ids=[15102]) # InvisibleBlock_Inside
         self.add_buff(box_ids=[150001], skill_id=71001052, level=1, is_player=False, is_skill_set=False)
-        self.set_timer(timer_id='10', seconds=60, start_delay=1, interval=0, v_offset=0)
+        self.set_timer(timer_id='10', seconds=60, start_delay=1)
         self.set_user_value(trigger_id=151001, key='NPCKill', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,7 +104,7 @@ class InteractWithNpc_NpcTypeA_StandAside(trigger_api.Trigger):
         self.move_npc(spawn_id=15402, patrol_name='MS2PatrolData_15600')
 
     def on_tick(self) -> trigger_api.Trigger:
-        self.set_effect(trigger_ids=[15303], visible=False)
+        self.set_effect(trigger_ids=[15303])
         return InteractWithNpc_Success(self.ctx)
 
 
@@ -116,7 +116,7 @@ class InteractWithNpc_NpcTypeB_Setting(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000093], state=0):
-            self.set_timer(timer_id='1', seconds=90, start_delay=1, interval=0, v_offset=0)
+            self.set_timer(timer_id='1', seconds=90, start_delay=1)
             return InteractWithNpc_NpcTypeB_NpcSpawn(self.ctx)
         if self.user_value(key='TimeEventOn') >= 0:
             return Wait(self.ctx)
@@ -125,7 +125,7 @@ class InteractWithNpc_NpcTypeB_Setting(trigger_api.Trigger):
 class InteractWithNpc_NpcTypeB_NpcSpawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[12000093], state=2)
-        self.spawn_monster(spawn_ids=[15501], auto_target=True)
+        self.spawn_monster(spawn_ids=[15501])
         self.set_user_value(trigger_id=1000052, key='NPCTalk', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -139,15 +139,15 @@ class InteractWithNpc_NpcTypeB_NpcSpawn(trigger_api.Trigger):
 
 class InteractWithNpc_NpcTypeB_NpcChange(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[15300], visible=False) # Success Sound Effect
+        self.set_effect(trigger_ids=[15300]) # Success Sound Effect
         self.destroy_monster(spawn_ids=[15501])
-        self.spawn_monster(spawn_ids=[15502], auto_target=True)
+        self.spawn_monster(spawn_ids=[15502])
         self.set_user_value(trigger_id=15001, key='PortalOn', value=2)
         # InvisibleBlock_Enterance
-        self.set_mesh(trigger_ids=[15101], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[15102], visible=False, start_delay=0, interval=0, fade=0) # InvisibleBlock_Inside
+        self.set_mesh(trigger_ids=[15101])
+        self.set_mesh(trigger_ids=[15102]) # InvisibleBlock_Inside
         self.add_buff(box_ids=[150001], skill_id=71001052, level=1, is_player=False, is_skill_set=False)
-        self.set_timer(timer_id='10', seconds=60, start_delay=1, interval=0, v_offset=0)
+        self.set_timer(timer_id='10', seconds=60, start_delay=1)
         self.set_user_value(trigger_id=151001, key='NPCKill', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -168,7 +168,7 @@ class InteractWithNpc_NpcTypeB_StandAside(trigger_api.Trigger):
 class InteractWithNpc_Success(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=15000, key='TimeEventOn', value=0)
-        self.set_actor(trigger_id=15100, visible=False, initial_sequence='Idle_A') # Dummy RareBox
+        self.set_actor(trigger_id=15100, initial_sequence='Idle_A') # Dummy RareBox
         # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001151 걸어서 71001051 제거
         self.set_interact_object(trigger_ids=[12000070], state=1)
 

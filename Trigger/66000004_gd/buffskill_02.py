@@ -18,11 +18,11 @@ class 스킬랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[10602]):
             return 초기화(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return A스킬작동(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return B스킬작동(self.ctx)
-        if self.random_condition(weight=34):
+        if self.random_condition(weight=34.0):
             return C스킬작동(self.ctx)
 
 
@@ -33,7 +33,7 @@ class A스킬작동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='60'):
-            self.set_skill(trigger_ids=[7201], enable=False)
+            self.set_skill(trigger_ids=[7201])
             return 시작대기중(self.ctx)
 
 
@@ -44,7 +44,7 @@ class B스킬작동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='60'):
-            self.set_skill(trigger_ids=[7202], enable=False)
+            self.set_skill(trigger_ids=[7202])
             return 시작대기중(self.ctx)
 
 
@@ -55,16 +55,16 @@ class C스킬작동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='60'):
-            self.set_skill(trigger_ids=[7203], enable=False)
+            self.set_skill(trigger_ids=[7203])
             return 시작대기중(self.ctx)
 
 
 class 초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=1)
-        self.set_skill(trigger_ids=[7201], enable=False)
-        self.set_skill(trigger_ids=[7202], enable=False)
-        self.set_skill(trigger_ids=[7203], enable=False)
+        self.set_skill(trigger_ids=[7201])
+        self.set_skill(trigger_ids=[7202])
+        self.set_skill(trigger_ids=[7203])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):

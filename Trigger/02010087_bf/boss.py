@@ -4,17 +4,17 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7301], visible=False)
-        self.set_effect(trigger_ids=[7302], visible=False)
-        self.set_effect(trigger_ids=[7303], visible=False)
-        self.set_effect(trigger_ids=[7304], visible=False)
-        self.set_effect(trigger_ids=[7305], visible=False)
-        self.set_effect(trigger_ids=[7306], visible=False)
-        self.set_effect(trigger_ids=[7307], visible=False)
-        self.set_effect(trigger_ids=[7308], visible=False)
-        self.set_effect(trigger_ids=[7309], visible=False)
+        self.set_effect(trigger_ids=[7301])
+        self.set_effect(trigger_ids=[7302])
+        self.set_effect(trigger_ids=[7303])
+        self.set_effect(trigger_ids=[7304])
+        self.set_effect(trigger_ids=[7305])
+        self.set_effect(trigger_ids=[7306])
+        self.set_effect(trigger_ids=[7307])
+        self.set_effect(trigger_ids=[7308])
+        self.set_effect(trigger_ids=[7309])
         self.set_effect(trigger_ids=[7310], visible=True)
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=10)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):
@@ -28,10 +28,10 @@ class 폭발예고(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=8002, enable=True)
-        self.set_mesh(trigger_ids=[6001,6002,6003,6004], visible=False, interval=0, fade=10) # 벽 해제
+        self.select_camera(trigger_id=8002)
+        self.set_mesh(trigger_ids=[6001,6002,6003,6004], fade=10.0) # 벽 해제
         self.set_effect(trigger_ids=[7308], visible=True) # 지진 이펙트
-        self.set_timer(timer_id='2', seconds=2, interval=0)
+        self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -43,7 +43,7 @@ class 폭발(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7306], visible=True) # 폭발 이펙트
         self.set_skill(trigger_ids=[8306], enable=True) # 벽 날리는 스킬
         self.set_skill(trigger_ids=[8307], enable=True) # 벽 날리는 스킬
-        self.set_timer(timer_id='2', seconds=2, interval=0)
+        self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -88,17 +88,17 @@ class 클리어(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[201])
         self.spawn_monster(spawn_ids=[202])
-        self.set_effect(trigger_ids=[7301], visible=False)
-        self.set_effect(trigger_ids=[7302], visible=False)
-        self.set_effect(trigger_ids=[7303], visible=False)
-        self.set_effect(trigger_ids=[7304], visible=False)
-        self.set_effect(trigger_ids=[7305], visible=False)
-        self.set_effect(trigger_ids=[7306], visible=False)
-        self.set_effect(trigger_ids=[7307], visible=False)
-        self.set_effect(trigger_ids=[7308], visible=False)
-        self.set_effect(trigger_ids=[7309], visible=False)
-        self.set_effect(trigger_ids=[7310], visible=False)
-        self.set_effect(trigger_ids=[7311], visible=False)
+        self.set_effect(trigger_ids=[7301])
+        self.set_effect(trigger_ids=[7302])
+        self.set_effect(trigger_ids=[7303])
+        self.set_effect(trigger_ids=[7304])
+        self.set_effect(trigger_ids=[7305])
+        self.set_effect(trigger_ids=[7306])
+        self.set_effect(trigger_ids=[7307])
+        self.set_effect(trigger_ids=[7308])
+        self.set_effect(trigger_ids=[7309])
+        self.set_effect(trigger_ids=[7310])
+        self.set_effect(trigger_ids=[7311])
         self.play_system_sound_in_box(sound='System_Dark_Ending_Chord_01')
         self.set_actor(trigger_id=5001, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=5002, visible=True, initial_sequence='sf_quest_light_A01_Off')
@@ -108,7 +108,7 @@ class 클리어(trigger_api.Trigger):
         self.set_actor(trigger_id=5006, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=5007, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=5008, visible=True, initial_sequence='sf_quest_light_A01_Off')
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -122,10 +122,10 @@ class 클리어(trigger_api.Trigger):
 class 웨이홍_대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[199]) # 웨이홍
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_dialogue(type=2, spawn_id=11003125, script='$02010087_BF__BOSS__0$', time=3) # 웨이홍 대사
         self.set_skip(state=웨이홍_대사02)
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -139,7 +139,7 @@ class 웨이홍_대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11003125, script='$02010087_BF__BOSS__1$', time=3) # 웨이홍 대사
         self.set_skip(state=종료)
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -156,7 +156,7 @@ class 웨이홍_대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11003125, script='$02010087_BF__BOSS__2$', time=3) # 웨이홍 대사
         self.set_skip(state=종료)
-        self.set_timer(timer_id='4', seconds=4, interval=0)
+        self.set_timer(timer_id='4', seconds=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='4'):

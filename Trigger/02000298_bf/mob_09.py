@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[604], visible=False)
-        self.set_effect(trigger_ids=[607], visible=False)
-        self.set_mesh(trigger_ids=[3016,3017,3018,3019,3020], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3216,3217,3218,3219,3220], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[604])
+        self.set_effect(trigger_ids=[607])
+        self.set_mesh(trigger_ids=[3016,3017,3018,3019,3020], visible=True)
+        self.set_mesh(trigger_ids=[3216,3217,3218,3219,3220], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[110]):
@@ -27,7 +27,7 @@ class 방호벽대기(trigger_api.Trigger):
 class 방호벽해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[604], visible=True)
-        self.set_mesh(trigger_ids=[3016,3017,3018,3019,3020], visible=False, start_delay=0, interval=0, fade=5)
+        self.set_mesh(trigger_ids=[3016,3017,3018,3019,3020], fade=5.0)
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +47,7 @@ class 번생성12(trigger_api.Trigger):
 class 방호벽해제2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[607], visible=True)
-        self.set_mesh(trigger_ids=[3216,3217,3218,3219,3220], visible=False, start_delay=0, interval=0, fade=5)
+        self.set_mesh(trigger_ids=[3216,3217,3218,3219,3220], fade=5.0)
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:

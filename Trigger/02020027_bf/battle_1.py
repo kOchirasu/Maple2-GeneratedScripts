@@ -17,9 +17,9 @@ class 몬스터소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[301,302,303,304,305,306])
         self.set_event_ui(type=1, arg2='$02020027_BF__battle_1__0$', arg3='4000')
-        self.set_dialogue(type=1, spawn_id=301, script='$02020027_BF__battle_1__1$', time=3, arg5=0)
-        self.set_dialogue(type=1, spawn_id=303, script='$02020027_BF__battle_1__2$', time=3, arg5=0)
-        self.set_dialogue(type=1, spawn_id=305, script='$02020027_BF__battle_1__3$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=301, script='$02020027_BF__battle_1__1$', time=3)
+        self.set_dialogue(type=1, spawn_id=303, script='$02020027_BF__battle_1__2$', time=3)
+        self.set_dialogue(type=1, spawn_id=305, script='$02020027_BF__battle_1__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[301,302,303,304,305,306]):
@@ -28,8 +28,8 @@ class 몬스터소환(trigger_api.Trigger):
 
 class 버프(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(box_ids=[201], skill_id=62000002, level=1, is_player=True)
-        self.add_buff(box_ids=[201], skill_id=51200002, level=1, is_player=True)
+        self.add_buff(box_ids=[201], skill_id=62000002, level=1)
+        self.add_buff(box_ids=[201], skill_id=51200002, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         pass

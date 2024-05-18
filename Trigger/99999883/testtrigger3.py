@@ -5,8 +5,8 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001010], state=0) # FlyingCloud
-        self.set_breakable(trigger_ids=[4000], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[4000], visible=False)
+        self.set_breakable(trigger_ids=[4000])
+        self.set_visible_breakable_object(trigger_ids=[4000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9900]):
@@ -68,8 +68,8 @@ class TakeOffFlyingCloud04(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4000], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[4000], visible=False)
+        self.set_breakable(trigger_ids=[4000])
+        self.set_visible_breakable_object(trigger_ids=[4000])
 
 
 initial_state = Wait

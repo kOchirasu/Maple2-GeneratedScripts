@@ -1,5 +1,6 @@
 """ trigger/52000076_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 대기(trigger_api.Trigger):
@@ -20,45 +21,45 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000810], state=2)
         self.set_interact_object(trigger_ids=[10000811], state=2)
         self.set_interact_object(trigger_ids=[10000812], state=2)
-        self.set_mesh(trigger_ids=[39101,39102,39103,39104,39105,39106], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3701,3702,3703,3704,3705,3706,3707,3708,3709,3710,3711,3712,3713,3714,3715,3716], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[600], visible=False) # fog 500
-        self.set_effect(trigger_ids=[601], visible=False) # fog 1000
-        self.set_effect(trigger_ids=[602], visible=False) # fog 1500
-        self.set_effect(trigger_ids=[6101], visible=False)
-        self.set_effect(trigger_ids=[6102], visible=False)
-        self.set_effect(trigger_ids=[6103], visible=False)
-        self.set_effect(trigger_ids=[6104], visible=False)
-        self.set_effect(trigger_ids=[6105], visible=False)
-        self.set_effect(trigger_ids=[6106], visible=False)
-        self.set_effect(trigger_ids=[6107], visible=False)
-        self.set_effect(trigger_ids=[6108], visible=False)
-        self.set_effect(trigger_ids=[6201], visible=False)
-        self.set_effect(trigger_ids=[6202], visible=False)
-        self.set_effect(trigger_ids=[6203], visible=False)
-        self.set_effect(trigger_ids=[6204], visible=False)
-        self.set_effect(trigger_ids=[6205], visible=False)
-        self.set_skill(trigger_ids=[701], enable=False)
-        self.set_skill(trigger_ids=[702], enable=False)
-        self.set_skill(trigger_ids=[703], enable=False)
-        self.set_skill(trigger_ids=[704], enable=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[39101,39102,39103,39104,39105,39106], visible=True)
+        self.set_mesh(trigger_ids=[3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816], visible=True)
+        self.set_mesh(trigger_ids=[3701,3702,3703,3704,3705,3706,3707,3708,3709,3710,3711,3712,3713,3714,3715,3716])
+        self.set_effect(trigger_ids=[600]) # fog 500
+        self.set_effect(trigger_ids=[601]) # fog 1000
+        self.set_effect(trigger_ids=[602]) # fog 1500
+        self.set_effect(trigger_ids=[6101])
+        self.set_effect(trigger_ids=[6102])
+        self.set_effect(trigger_ids=[6103])
+        self.set_effect(trigger_ids=[6104])
+        self.set_effect(trigger_ids=[6105])
+        self.set_effect(trigger_ids=[6106])
+        self.set_effect(trigger_ids=[6107])
+        self.set_effect(trigger_ids=[6108])
+        self.set_effect(trigger_ids=[6201])
+        self.set_effect(trigger_ids=[6202])
+        self.set_effect(trigger_ids=[6203])
+        self.set_effect(trigger_ids=[6204])
+        self.set_effect(trigger_ids=[6205])
+        self.set_skill(trigger_ids=[701])
+        self.set_skill(trigger_ids=[702])
+        self.set_skill(trigger_ids=[703])
+        self.set_skill(trigger_ids=[704])
+        self.set_portal(portal_id=2)
         self.set_agent(trigger_ids=[901], visible=True)
         self.set_agent(trigger_ids=[902], visible=True)
         self.set_agent(trigger_ids=[903], visible=True)
         self.set_agent(trigger_ids=[904], visible=True)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_onetime_effect(id=11, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001901.xml')
-        self.set_onetime_effect(id=12, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001902.xml')
-        self.set_onetime_effect(id=13, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001903.xml')
-        self.set_onetime_effect(id=14, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001904.xml')
-        self.set_onetime_effect(id=15, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001905.xml')
-        self.set_onetime_effect(id=16, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001906.xml')
-        self.set_onetime_effect(id=17, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001907.xml')
-        self.set_onetime_effect(id=18, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001908.xml')
-        self.set_onetime_effect(id=19, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001909.xml')
-        self.set_onetime_effect(id=20, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001910.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=11, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001901.xml')
+        self.set_onetime_effect(id=12, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001902.xml')
+        self.set_onetime_effect(id=13, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001903.xml')
+        self.set_onetime_effect(id=14, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001904.xml')
+        self.set_onetime_effect(id=15, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001905.xml')
+        self.set_onetime_effect(id=16, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001906.xml')
+        self.set_onetime_effect(id=17, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001907.xml')
+        self.set_onetime_effect(id=18, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001908.xml')
+        self.set_onetime_effect(id=19, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001909.xml')
+        self.set_onetime_effect(id=20, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001910.xml')
         self.set_user_value(key='saveEveIntheDark', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +94,7 @@ class QuestOnGoing01(trigger_api.Trigger):
 
 class QuestOnGoing02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=320, enable=True)
+        self.select_camera(trigger_id=320)
         self.spawn_monster(spawn_ids=[1310,1410], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -135,7 +136,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class 진행01벽제거(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=201, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=201, initial_sequence='Idle_A')
         self.set_interact_object(trigger_ids=[10000806], state=1)
         self.show_guide_summary(entity_id=20003492, text_id=20003492)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -143,7 +144,7 @@ class 진행01벽제거(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000806], state=0):
             self.hide_guide_summary(entity_id=20003492)
-            self.set_mesh(trigger_ids=[39101], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[39101])
             return 진행01몬스터(self.ctx)
 
 
@@ -160,7 +161,7 @@ class 진행01오브젝트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=20003496, text_id=20003496)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.set_actor(trigger_id=202, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=202, initial_sequence='Idle_A')
         self.set_interact_object(trigger_ids=[10000807], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -171,7 +172,7 @@ class 진행01오브젝트(trigger_api.Trigger):
 
 class 진행02몬스터(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[39102], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[39102])
         self.spawn_monster(spawn_ids=[1004,1005,1006], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -183,7 +184,7 @@ class 진행02오브젝트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=20003497, text_id=20003497)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.set_actor(trigger_id=203, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=203, initial_sequence='Idle_A')
         self.set_interact_object(trigger_ids=[10000808], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -194,7 +195,7 @@ class 진행02오브젝트(trigger_api.Trigger):
 
 class 진행03몬스터(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[39103], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[39103])
         self.spawn_monster(spawn_ids=[1007,1008,1009], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -206,7 +207,7 @@ class 진행04오브젝트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=20003498, text_id=20003498)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.set_actor(trigger_id=204, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=204, initial_sequence='Idle_A')
         self.set_interact_object(trigger_ids=[10000809], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -217,7 +218,7 @@ class 진행04오브젝트(trigger_api.Trigger):
 
 class 진행04몬스터(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[39104], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[39104])
         self.spawn_monster(spawn_ids=[1010,1011,1012], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -229,7 +230,7 @@ class 진행05오브젝트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=20003499, text_id=20003499)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.set_actor(trigger_id=205, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=205, initial_sequence='Idle_A')
         self.set_interact_object(trigger_ids=[10000810], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -240,7 +241,7 @@ class 진행05오브젝트(trigger_api.Trigger):
 
 class 진행05몬스터(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[39105], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[39105])
         self.spawn_monster(spawn_ids=[1013,1014,1015], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -252,7 +253,7 @@ class 진행06오브젝트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=20003500, text_id=20003500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.set_actor(trigger_id=206, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=206, initial_sequence='Idle_A')
         self.set_interact_object(trigger_ids=[10000811], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -264,8 +265,8 @@ class 진행06오브젝트(trigger_api.Trigger):
 
 class 진행06몬스터(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[39106], visible=False, start_delay=0, interval=0, fade=0)
-        self.spawn_monster(spawn_ids=[1016,1017,1018,1019,1020], auto_target=True)
+        self.set_mesh(trigger_ids=[39106])
+        self.spawn_monster(spawn_ids=[1016,1017,1018,1019,1020])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[1106]):
@@ -276,7 +277,7 @@ class 레논오브젝트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=20003495, text_id=20003495)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.set_actor(trigger_id=207, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=207, initial_sequence='Idle_A')
         self.set_interact_object(trigger_ids=[10000812], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -291,7 +292,7 @@ class 레논구출(trigger_api.Trigger):
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_skip(state=레논구출종료)
         self.destroy_monster(spawn_ids=[2001])
         self.spawn_monster(spawn_ids=[2002], auto_target=False)
@@ -326,7 +327,7 @@ class 레논대사02(trigger_api.Trigger):
 class 레논구출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.create_item(spawn_ids=[9001], trigger_id=100)
-        self.select_camera_path(path_ids=[301], return_view=True)
+        self.select_camera_path(path_ids=[301])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 진행07(self.ctx)
@@ -479,7 +480,7 @@ class 카드반연출시작(trigger_api.Trigger):
         self.set_effect(trigger_ids=[602], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         # self.set_skip(state=카드반연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -509,7 +510,7 @@ class 카드반대사02(trigger_api.Trigger):
 
 class 레논대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
         self.set_dialogue(type=2, spawn_id=11000064, script='$02000349_BF__MAIN__7$', time=4)
         # self.set_skip(state=카드반연출종료)
 
@@ -520,7 +521,7 @@ class 레논대사05(trigger_api.Trigger):
 
 class 카드반대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.set_dialogue(type=2, spawn_id=24001705, script='$02000349_BF__MAIN__8$', time=6)
         # self.set_skip(state=카드반연출종료)
 
@@ -531,7 +532,7 @@ class 카드반대사03(trigger_api.Trigger):
 
 class 카드반대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.set_dialogue(type=2, spawn_id=24001705, script='$02000349_BF__MAIN__9$', time=8)
         # self.set_skip(state=카드반연출종료)
 
@@ -542,7 +543,7 @@ class 카드반대사04(trigger_api.Trigger):
 
 class 카드반대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.spawn_monster(spawn_ids=[1025,1026], auto_target=False)
         self.set_dialogue(type=2, spawn_id=24001705, script='$02000349_BF__MAIN__10$', time=7)
         # self.set_skip(state=카드반연출종료)
@@ -559,13 +560,13 @@ class 카드반연출종료(trigger_api.Trigger):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.destroy_monster(spawn_ids=[1025,1026])
         self.destroy_monster(spawn_ids=[1099])
-        self.set_agent(trigger_ids=[901], visible=False)
-        self.set_agent(trigger_ids=[902], visible=False)
-        self.set_agent(trigger_ids=[903], visible=False)
-        self.set_agent(trigger_ids=[904], visible=False)
+        self.set_agent(trigger_ids=[901])
+        self.set_agent(trigger_ids=[902])
+        self.set_agent(trigger_ids=[903])
+        self.set_agent(trigger_ids=[904])
         self.destroy_monster(spawn_ids=[2007])
         self.spawn_monster(spawn_ids=[2006], auto_target=False)
-        self.select_camera_path(path_ids=[302], return_view=True)
+        self.select_camera_path(path_ids=[302])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 진행16(self.ctx)
@@ -593,7 +594,7 @@ class BossBattleStart01(trigger_api.Trigger):
         self.set_agent(trigger_ids=[902], visible=True)
         self.set_agent(trigger_ids=[903], visible=True)
         self.set_agent(trigger_ids=[904], visible=True)
-        self.set_mesh(trigger_ids=[3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816], visible=False, start_delay=0, interval=200, fade=2)
+        self.set_mesh(trigger_ids=[3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816], interval=200, fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='saveEveIntheDark') >= 1:
@@ -607,11 +608,11 @@ class BossNpcChange01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_agent(trigger_ids=[901], visible=False)
-        self.set_agent(trigger_ids=[902], visible=False)
-        self.set_agent(trigger_ids=[903], visible=False)
-        self.set_agent(trigger_ids=[904], visible=False)
-        self.set_mesh(trigger_ids=[3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816], visible=True, start_delay=0, interval=0, fade=2)
+        self.set_agent(trigger_ids=[901])
+        self.set_agent(trigger_ids=[902])
+        self.set_agent(trigger_ids=[903])
+        self.set_agent(trigger_ids=[904])
+        self.set_mesh(trigger_ids=[3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816], visible=True, fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -623,7 +624,7 @@ class BossNpcChange02(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1025,1026,1099,2006])
         self.move_user(map_id=52000076, portal_id=20, box_id=100)
         self.spawn_monster(spawn_ids=[1200,1300], auto_target=False)
-        self.select_camera(trigger_id=310, enable=True)
+        self.select_camera(trigger_id=310)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -632,8 +633,8 @@ class BossNpcChange02(trigger_api.Trigger):
 
 class BossNpcChange03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_npc_emotion_loop(spawn_id=1200, sequence_name='Attack_Idle_A', duration=15000)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_npc_emotion_loop(spawn_id=1200, sequence_name='Attack_Idle_A', duration=15000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -642,7 +643,7 @@ class BossNpcChange03(trigger_api.Trigger):
 
 class BossNpcChange04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=311, enable=True)
+        self.select_camera(trigger_id=311)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -653,7 +654,7 @@ class EveEnter01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1400], auto_target=False)
         self.move_npc(spawn_id=1400, patrol_name='MS2PatrolData_1400')
-        self.select_camera(trigger_id=312, enable=True)
+        self.select_camera(trigger_id=312)
         self.set_dialogue(type=1, spawn_id=1400, script='$52000076_QD__MAIN__0$', time=4, arg5=2)
         self.set_scene_skip(state=EvilKatvanLeave04, action='nextState')
 
@@ -664,7 +665,7 @@ class EveEnter01(trigger_api.Trigger):
 
 class EveEnter02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=313, enable=True)
+        self.select_camera(trigger_id=313)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -676,7 +677,7 @@ class EveEnter03(trigger_api.Trigger):
         self.move_npc(spawn_id=1300, patrol_name='MS2PatrolData_1300')
         self.move_user_path(patrol_name='MS2PatrolData_1000')
         self.set_dialogue(type=1, spawn_id=1300, script='$52000076_QD__MAIN__1$', time=2, arg5=2)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000076_QD__MAIN__2$', time=2, arg5=1)
+        self.set_dialogue(type=1, script='$52000076_QD__MAIN__2$', time=2, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -686,20 +687,20 @@ class EveEnter03(trigger_api.Trigger):
 class EveEnter04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=11, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001901.xml')
-        self.set_dialogue(type=1, spawn_id=1200, script='$52000076_QD__MAIN__3$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1200, script='$52000076_QD__MAIN__3$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             return EveTalk01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=11, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001901.xml')
+        self.set_onetime_effect(id=11, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001901.xml')
 
 
 class EveTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=314, enable=True)
-        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__4$', duration=5000, align='center')
+        self.select_camera(trigger_id=314)
+        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__4$', duration=5000, align=Align.Center)
         self.set_npc_emotion_sequence(spawn_id=1400, sequence_name='Talk_A')
         # self.set_skip(state=EveTalk01Skip)
 
@@ -721,7 +722,7 @@ class EveTalk01Skip(trigger_api.Trigger):
 
 class EveTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__5$', duration=5000, align='center')
+        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__5$', duration=5000, align=Align.Center)
         self.set_npc_emotion_sequence(spawn_id=1400, sequence_name='Talk_A')
         # self.set_skip(state=EveTalk02Skip)
 
@@ -765,7 +766,7 @@ class LennonTalk01Skip(trigger_api.Trigger):
 
 class LennonTurnAround01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=315, enable=True)
+        self.select_camera(trigger_id=315)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -817,7 +818,7 @@ class EvilKatvanTalk01(trigger_api.Trigger):
             return EvilKatvanTalk01Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=12, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001902.xml')
+        self.set_onetime_effect(id=12, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001902.xml')
 
 
 class EvilKatvanTalk01Skip(trigger_api.Trigger):
@@ -842,7 +843,7 @@ class EvilKatvanTalk02(trigger_api.Trigger):
             return EvilKatvanTalk02Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=13, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001903.xml')
+        self.set_onetime_effect(id=13, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001903.xml')
 
 
 class EvilKatvanTalk02Skip(trigger_api.Trigger):
@@ -867,7 +868,7 @@ class EvilKatvanTalk03(trigger_api.Trigger):
             return EvilKatvanTalk03Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=14, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001904.xml')
+        self.set_onetime_effect(id=14, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001904.xml')
 
 
 class EvilKatvanTalk03Skip(trigger_api.Trigger):
@@ -893,7 +894,7 @@ class EveWalkFront01(trigger_api.Trigger):
 class EveTalk10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=1400, sequence_name='Talk_A')
-        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__11$', duration=5000, align='center')
+        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__11$', duration=5000, align=Align.Center)
         # self.set_skip(state=EveTalk10Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -917,7 +918,7 @@ class EveTalk10Skip(trigger_api.Trigger):
 class EveTalk11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=1400, sequence_name='Talk_A')
-        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__12$', duration=7000, align='center')
+        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__12$', duration=7000, align=Align.Center)
         # self.set_skip(state=EveTalk11Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -974,7 +975,7 @@ class EvilKatvanTalk10(trigger_api.Trigger):
             return EvilKatvanTalk10Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=15, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001905.xml')
+        self.set_onetime_effect(id=15, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001905.xml')
 
 
 class EvilKatvanTalk10Skip(trigger_api.Trigger):
@@ -1003,7 +1004,7 @@ class LennonTalk10Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         # self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=316, enable=True)
+        self.select_camera(trigger_id=316)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1022,7 +1023,7 @@ class EvilKatvanTalk20(trigger_api.Trigger):
             return EvilKatvanTalk20Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=16, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001906.xml')
+        self.set_onetime_effect(id=16, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001906.xml')
 
 
 class EvilKatvanTalk20Skip(trigger_api.Trigger):
@@ -1050,7 +1051,7 @@ class EvilKatvanTalk21(trigger_api.Trigger):
             return EvilKatvanTalk21Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=17, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001907.xml')
+        self.set_onetime_effect(id=17, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001907.xml')
 
 
 class EvilKatvanTalk21Skip(trigger_api.Trigger):
@@ -1077,14 +1078,14 @@ class EvilKatvanTalk22(trigger_api.Trigger):
             return EvilKatvanTalk22Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=18, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001908.xml')
+        self.set_onetime_effect(id=18, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001908.xml')
 
 
 class EvilKatvanTalk22Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         # self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=317, enable=True)
+        self.select_camera(trigger_id=317)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1134,7 +1135,7 @@ class EvilKatvanTalk31(trigger_api.Trigger):
             return EvilKatvanTalk31Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=19, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001909.xml')
+        self.set_onetime_effect(id=19, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001909.xml')
 
 
 class EvilKatvanTalk31Skip(trigger_api.Trigger):
@@ -1159,7 +1160,7 @@ class EvilKatvanTalk32(trigger_api.Trigger):
             return EvilKatvanTalk32Skip(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=20, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001910.xml')
+        self.set_onetime_effect(id=20, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001910.xml')
 
 
 class EvilKatvanTalk32Skip(trigger_api.Trigger):
@@ -1193,7 +1194,7 @@ class EvilKatvanLeave02(trigger_api.Trigger):
 class EvilKatvanLeave03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=1300, patrol_name='MS2PatrolData_1303')
-        self.set_dialogue(type=1, spawn_id=1300, script='$52000076_QD__MAIN__22$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1300, script='$52000076_QD__MAIN__22$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1215,7 +1216,7 @@ class PositionArrange01(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1200,1300,1400])
         self.move_user(map_id=52000076, portal_id=30, box_id=100)
         self.spawn_monster(spawn_ids=[1310,1410], auto_target=False)
-        self.select_camera(trigger_id=320, enable=True)
+        self.select_camera(trigger_id=320)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1224,7 +1225,7 @@ class PositionArrange01(trigger_api.Trigger):
 
 class PositionArrange02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -1279,7 +1280,7 @@ class LennonTalk31Skip(trigger_api.Trigger):
 class EveTalk20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=1410, sequence_name='Talk_A')
-        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__25$', duration=6000, align='center')
+        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__25$', duration=6000, align=Align.Center)
         # self.set_skip(state=EveTalk20Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1301,7 +1302,7 @@ class EveTalk20Skip(trigger_api.Trigger):
 class EveTalk21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=1410, sequence_name='Talk_A')
-        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__26$', duration=6000, align='center')
+        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__26$', duration=6000, align=Align.Center)
         # self.set_skip(state=EveTalk21Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1345,7 +1346,7 @@ class LennonTalk40Skip(trigger_api.Trigger):
 class EveTalk30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=1410, sequence_name='Talk_A')
-        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__28$', duration=3000, align='center')
+        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__28$', duration=3000, align=Align.Center)
         # self.set_skip(state=EveTalk30Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1358,7 +1359,7 @@ class EveTalk30Skip(trigger_api.Trigger):
         self.set_npc_emotion_sequence(spawn_id=1410, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         # self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=321, enable=True)
+        self.select_camera(trigger_id=321)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -1367,7 +1368,7 @@ class EveTalk30Skip(trigger_api.Trigger):
 
 class EveTalk31(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__29$', duration=5000, align='center')
+        self.add_cinematic_talk(npc_id=11000523, illust_id='Eve_serious', msg='$52000076_QD__MAIN__29$', duration=5000, align=Align.Center)
         # self.set_skip(state=EveTalk31Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1391,8 +1392,8 @@ class QuestComplete01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=100, type='trigger', achieve='saveEveIntheDark')
         self.set_effect(trigger_ids=[6205], visible=True)
-        self.set_mesh(trigger_ids=[3701,3702,3703,3704,3705,3706,3707,3708,3709,3710,3711,3712,3713,3714,3715,3716], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3701,3702,3703,3704,3705,3706,3707,3708,3709,3710,3711,3712,3713,3714,3715,3716], visible=True)
+        self.set_portal(portal_id=2, visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1403,8 +1404,8 @@ class QuestComplete02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.reset_camera(interpolation_time=1)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera(interpolation_time=1.0)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[100], quest_ids=[40002688], quest_states=[2]):
@@ -1422,7 +1423,7 @@ class QuestComplete03(trigger_api.Trigger):
 
 class GotoTria01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1310, script='$52000076_QD__MAIN__30$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1310, script='$52000076_QD__MAIN__30$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[606], visible=False)
-        self.set_effect(trigger_ids=[607], visible=False)
-        self.set_effect(trigger_ids=[608], visible=False)
+        self.set_effect(trigger_ids=[606])
+        self.set_effect(trigger_ids=[607])
+        self.set_effect(trigger_ids=[608])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[199], quest_ids=[50001454], quest_states=[1]):
@@ -23,7 +23,7 @@ class 대기(trigger_api.Trigger):
 class 시작조건(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1003,2003], auto_target=False)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017])
         self.set_interact_object(trigger_ids=[10001020], state=2)
         self.set_interact_object(trigger_ids=[10001021], state=2)
 
@@ -36,7 +36,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=305, enable=True)
+        self.select_camera(trigger_id=305)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -55,7 +55,7 @@ class NPC이동(trigger_api.Trigger):
 
 class 말퉁선대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1003, script='$52000043_QD__50001454__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1003, script='$52000043_QD__50001454__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -124,7 +124,7 @@ class 준타대사02(trigger_api.Trigger):
 
 class 준타대사02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[606], visible=False)
+        self.set_effect(trigger_ids=[606])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -164,7 +164,7 @@ class 틴차이대사02(trigger_api.Trigger):
 
 class 틴차이대사02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[607], visible=False)
+        self.set_effect(trigger_ids=[607])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -394,7 +394,7 @@ class 준타대사13(trigger_api.Trigger):
 
 class 준타대사13스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[608], visible=False)
+        self.set_effect(trigger_ids=[608])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -404,7 +404,7 @@ class 준타대사13스킵(trigger_api.Trigger):
 
 class PC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=306, enable=True)
+        self.select_camera(trigger_id=306)
         self.move_user_path(patrol_name='MS2PatrolData_PCG')
 
     def on_tick(self) -> trigger_api.Trigger:

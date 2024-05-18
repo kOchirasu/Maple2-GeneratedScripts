@@ -27,7 +27,7 @@ class 연출시작1(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[103], auto_target=False)
         self.destroy_monster(spawn_ids=[104])
         self.spawn_monster(spawn_ids=[104], auto_target=False)
-        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Quest_Programming', duration=15000000)
+        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Quest_Programming', duration=15000000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -36,12 +36,12 @@ class 연출시작1(trigger_api.Trigger):
 
 class 연출시작2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[4005], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=9000)
-        self.face_emotion(spawn_id=0, emotion_name='defaultBattle')
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=9000.0)
+        self.face_emotion(emotion_name='defaultBattle')
         self.add_cinematic_talk(npc_id=11003755, msg='어떤가요? 사용할 수 있겠어요?', duration=3000)
         self.add_cinematic_talk(npc_id=11003717, msg='절 너무 물로보면 곤란합니다.', duration=3000)
         self.add_cinematic_talk(npc_id=11003755, msg='그럼 순서대로 검색해볼까요?', duration=3000)
@@ -64,7 +64,7 @@ class 정보검색첫번째(trigger_api.Trigger):
 
 class 정보검색첫번째2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4006], return_view=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -146,7 +146,7 @@ class 정보검색첫번째4_3(trigger_api.Trigger):
 
 class 정보검색첫번째4_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=3000.0)
         self.add_cinematic_talk(npc_id=11003755, msg='흐음. 누가 접근을 막고 있는건지는 알 수 있을까나?', duration=3000)
         self.add_cinematic_talk(npc_id=11003717, msg='노력은 해보겠지만, 시간이 필요합니다.', duration=3000)
         self.add_cinematic_talk(npc_id=11003717, msg='그 외의 정보라면 먼저 검색해 볼 수 있을 것 같습니다.', duration=3000)
@@ -159,7 +159,7 @@ class 정보검색첫번째4_4(trigger_api.Trigger):
 class 정보검색첫번째5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4008], return_view=False)
-        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=20000)
+        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=20000.0)
         self.add_cinematic_talk(npc_id=0, msg='그렇다면, 제가 먼저 천공의 심장을 찾으러 가겠어요.', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -170,7 +170,7 @@ class 정보검색첫번째5(trigger_api.Trigger):
 class 정보검색첫번째5_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4009], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=9000)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=9000.0)
         self.add_cinematic_talk(npc_id=11003755, msg='...아무래도 그게 좋겠군요.', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -191,7 +191,7 @@ class 정보검색첫번째5_2(trigger_api.Trigger):
 class 정보검색첫번째5_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4009], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=3000.0)
         self.add_cinematic_talk(npc_id=11003755, msg='예. 저는 더 찾고 싶은 정보가 있습니다.\\n나중에 뵙죠.', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -233,7 +233,7 @@ class 정보검색첫번째7(trigger_api.Trigger):
 class 정보검색첫번째8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(is_visible=False)
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4004], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=104, sequence_name='Bore_A')
         self.add_cinematic_talk(npc_id=11003755, msg='방해꾼이 사라졌군요.', duration=3000)

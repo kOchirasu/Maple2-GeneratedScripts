@@ -4,10 +4,10 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7002], visible=False)
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_effect(trigger_ids=[7004], visible=False)
-        self.set_mesh(trigger_ids=[16004], visible=False, interval=0, fade=0) # 벽 해제
+        self.set_effect(trigger_ids=[7002])
+        self.set_effect(trigger_ids=[7003])
+        self.set_effect(trigger_ids=[7004])
+        self.set_mesh(trigger_ids=[16004]) # 벽 해제
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=704) >= 1:
@@ -53,7 +53,7 @@ class 관문_03_개방(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=106, text_id=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
-        self.set_mesh(trigger_ids=[8030,8031,8032,8033,8034], visible=False, interval=0, fade=10) # 벽 해제
+        self.set_mesh(trigger_ids=[8030,8031,8032,8033,8034], fade=10.0) # 벽 해제
 
 
 initial_state = 시작

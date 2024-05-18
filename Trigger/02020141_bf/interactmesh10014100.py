@@ -14,11 +14,11 @@ class 최초시작(trigger_api.Trigger):
 
 class 탈것_등장대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return WaitTick후에결정01(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return WaitTick후에결정02(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return WaitTick후에결정03(self.ctx)
 
 
@@ -51,9 +51,9 @@ class WaitTick후에결정03(trigger_api.Trigger):
 
 class 탈것_확률결정(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=85):
+        if self.random_condition(weight=85.0):
             return 탈것등장_실패(self.ctx)
-        if self.random_condition(weight=15):
+        if self.random_condition(weight=15.0):
             # 15% 확률로 거대 로봇탈것이 등장함
             return 탈것등장_성공(self.ctx)
 

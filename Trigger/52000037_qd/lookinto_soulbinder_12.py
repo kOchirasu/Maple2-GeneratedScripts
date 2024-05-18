@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4000, visible=False, initial_sequence='Dead_A') # NelfActor
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_actor(trigger_id=4000, initial_sequence='Dead_A') # NelfActor
+        self.set_portal(portal_id=2)
         self.set_interact_object(trigger_ids=[10000175], state=0) # Bag
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -53,7 +53,7 @@ class 연출01시작(trigger_api.Trigger):
 
 class PC말풍선01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, script='$52000037_QD__LOOKINTO_SOULBINDER_12__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -62,7 +62,7 @@ class PC말풍선01(trigger_api.Trigger):
 
 class PC말풍선02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000037_QD__LOOKINTO_SOULBINDER_12__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -71,7 +71,7 @@ class PC말풍선02(trigger_api.Trigger):
 
 class PC말풍선03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__2$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000037_QD__LOOKINTO_SOULBINDER_12__2$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -80,7 +80,7 @@ class PC말풍선03(trigger_api.Trigger):
 
 class PC말풍선04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__3$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000037_QD__LOOKINTO_SOULBINDER_12__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -89,7 +89,7 @@ class PC말풍선04(trigger_api.Trigger):
 
 class PC말풍선05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__4$', time=5, arg5=0)
+        self.set_dialogue(type=1, script='$52000037_QD__LOOKINTO_SOULBINDER_12__4$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -104,7 +104,7 @@ class 강제이동02조건(trigger_api.Trigger):
 
 class PC말풍선07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__5$', time=2, arg5=0)
+        self.set_dialogue(type=1, script='$52000037_QD__LOOKINTO_SOULBINDER_12__5$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

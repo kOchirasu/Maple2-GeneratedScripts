@@ -4,8 +4,8 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[444], enable=False) # 맵 스킬 초기화 셋팅
-        self.set_skill(trigger_ids=[666], enable=False) # 맵 스킬 초기화 셋팅
+        self.set_skill(trigger_ids=[444]) # 맵 스킬 초기화 셋팅
+        self.set_skill(trigger_ids=[666]) # 맵 스킬 초기화 셋팅
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=750) >= 1:
@@ -57,9 +57,9 @@ class 단계_70000104_2(trigger_api.Trigger):
 
 class 스킬끄기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[444], enable=False) # 맵 스킬 끄기
+        self.set_skill(trigger_ids=[444]) # 맵 스킬 끄기
         # 던전실패 하거나 던전성공 하거나 어쨌든 끝나면 혹시 몸에 걸려있는 지옥의 불 시리즈 디버프를 제거해 주기 위해 아래 애디셔널을 걸어줌
-        self.set_skill(trigger_ids=[666], enable=False)
+        self.set_skill(trigger_ids=[666])
         # 지옥의 불 디버프 제거해주는 애디샤날던 던전 끝나면 걸어주기, MS2TriggerBox   TriggerObjectID = 750,   750은 스타팅 지점 전투판 다  포함되는 범위
         self.add_buff(box_ids=[750], skill_id=50004524, level=1, is_player=False)
 

@@ -4,12 +4,12 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[801], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[802], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[803], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[804], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[805], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[806], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[801])
+        self.set_ladder(trigger_ids=[802])
+        self.set_ladder(trigger_ids=[803])
+        self.set_ladder(trigger_ids=[804])
+        self.set_ladder(trigger_ids=[805])
+        self.set_ladder(trigger_ids=[806])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[903]):

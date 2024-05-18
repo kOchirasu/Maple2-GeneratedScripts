@@ -1,5 +1,6 @@
 """ trigger/02020111_bf/summon_01.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 시작(trigger_api.Trigger):
@@ -27,8 +28,8 @@ class 몬스터등장(trigger_api.Trigger):
 
 class 몬스터등장_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[52,48,38])
-        self.set_directional_light(diffuse_color=[0,0,0], specular_color=[206,174,84])
+        self.set_ambient_light(primary=Vector3(52,48,38))
+        self.set_directional_light(diffuse_color=Vector3(0,0,0), specular_color=Vector3(206,174,84))
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Summon') >= 0:

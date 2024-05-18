@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1101,1102,1103,1104,1105,1106,1107,1108], visible=False, start_delay=0, interval=100)
+        self.set_mesh(trigger_ids=[1101,1102,1103,1104,1105,1106,1107,1108], interval=100)
         self.set_interact_object(trigger_ids=[10000409], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 class 물(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1101,1102,1103,1104,1105,1106,1107,1108], visible=True, start_delay=0, interval=250)
+        self.set_mesh(trigger_ids=[1101,1102,1103,1104,1105,1106,1107,1108], visible=True, interval=250)
 
 
 initial_state = 대기

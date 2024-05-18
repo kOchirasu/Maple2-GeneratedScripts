@@ -10,10 +10,10 @@ class 시작대기중(trigger_api.Trigger):
 
 class 기본셋팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False) # 맵 나가기 포탈, 시작 지점에
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False) # 맵 나가기 포탈, 전투판 지점에
+        self.set_portal(portal_id=1) # 맵 나가기 포탈, 시작 지점에
+        self.set_portal(portal_id=2) # 맵 나가기 포탈, 전투판 지점에
         # 맵 나가기 포탈, 전투판으로 가기 위한 맵 내부 포탈
-        self.set_portal(portal_id=601, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -32,7 +32,7 @@ class 보스등장이벤트대기(trigger_api.Trigger):
 
 class 연출대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=23000113, illust='Ishura_Dark_Idle', script='$02020120_BF__BOSSSPAWN__0$', duration=4000, voice='ko/Npc/00002192')
+        self.side_npc_talk(npc_id=23000113, illust='Ishura_Dark_Idle', script='$02020120_BF__BOSSSPAWN__0$', duration=4000, voice='ko/Npc/00002192')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -62,7 +62,7 @@ class 종료딜레이(trigger_api.Trigger):
 
 class 마무리연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=23000113, illust='Ishura_Dark_Idle', script='$02020120_BF__BOSSSPAWN__2$', duration=6576, voice='ko/Npc/00002194')
+        self.side_npc_talk(npc_id=23000113, illust='Ishura_Dark_Idle', script='$02020120_BF__BOSSSPAWN__2$', duration=6576, voice='ko/Npc/00002194')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):

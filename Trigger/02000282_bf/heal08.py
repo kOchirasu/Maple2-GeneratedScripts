@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[708], enable=False)
+        self.set_skill(trigger_ids=[708])
         self.set_interact_object(trigger_ids=[10000247], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +19,7 @@ class 스킬작동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
-            self.set_skill(trigger_ids=[708], enable=False)
+            self.set_skill(trigger_ids=[708])
             return 대기(self.ctx)
 
 

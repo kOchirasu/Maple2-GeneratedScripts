@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=11)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[10]):
@@ -26,7 +26,7 @@ class 난이도별보스등장(trigger_api.Trigger):
 
 class 일반난이도_보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):
@@ -35,7 +35,7 @@ class 일반난이도_보스등장(trigger_api.Trigger):
 
 class 어려움난이도_보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[102], auto_target=True)
+        self.spawn_monster(spawn_ids=[102])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[102]):

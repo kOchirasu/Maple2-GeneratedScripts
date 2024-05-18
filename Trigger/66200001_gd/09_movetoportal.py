@@ -6,7 +6,7 @@ class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='MoveToTeamPortal', value=0)
         # LeavePortal_Safe (arg3=작동여부)
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=6)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MoveToTeamPortal') >= 1:
@@ -37,7 +37,7 @@ class QuitDelay(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=6, visible=False, enable=True, minimap_visible=False) # 게임 시작 후 입장한 유저 퇴장 조치
+        self.set_portal(portal_id=6, enable=True) # 게임 시작 후 입장한 유저 퇴장 조치
 
 
 initial_state = Wait

@@ -18,7 +18,7 @@ class 오브젝트반응(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.spawn_monster(spawn_ids=[104])
-        self.set_actor(trigger_id=2104, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=2104, initial_sequence='Idle_A')
 
 
 class NPC이동(trigger_api.Trigger):

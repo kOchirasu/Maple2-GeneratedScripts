@@ -11,28 +11,28 @@ class 시작대기중(trigger_api.Trigger):
 class 순간이동포탈감추기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 12시 3시 6시 9시 넓은 전투판의 순간이동 포탈
-        self.set_portal(portal_id=12000, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=3000, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=6000, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=12000)
+        self.set_portal(portal_id=3000)
+        self.set_portal(portal_id=6000)
         # 4계절 도로에 2개씩 배치한 순간이동 포탈
-        self.set_portal(portal_id=9000, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=12201, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=12202, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=4501, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=4502, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=7801, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=7802, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=10111, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=9000)
+        self.set_portal(portal_id=12201)
+        self.set_portal(portal_id=12202)
+        self.set_portal(portal_id=4501)
+        self.set_portal(portal_id=4502)
+        self.set_portal(portal_id=7801)
+        self.set_portal(portal_id=7802)
+        self.set_portal(portal_id=10111)
         # 중앙 넓은 전투판에서 12시 3시 6시 9시 넓은 전투판으로 가는 순간이동 포탈
-        self.set_portal(portal_id=10112, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13003, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13006, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13009, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13012, visible=False, enable=False, minimap_visible=False) # 다리도로에 1개씩 배치한 순간이동 포탈
-        self.set_portal(portal_id=13121, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13031, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13061, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13091, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=10112)
+        self.set_portal(portal_id=13003)
+        self.set_portal(portal_id=13006)
+        self.set_portal(portal_id=13009)
+        self.set_portal(portal_id=13012) # 다리도로에 1개씩 배치한 순간이동 포탈
+        self.set_portal(portal_id=13121)
+        self.set_portal(portal_id=13031)
+        self.set_portal(portal_id=13061)
+        self.set_portal(portal_id=13091)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SpeedRacingMode') >= 1:

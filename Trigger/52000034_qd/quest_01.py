@@ -33,7 +33,7 @@ class 연출01시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.destroy_monster(spawn_ids=[2001,2002,2003])
         self.spawn_monster(spawn_ids=[1001,1002,1003], auto_target=False)
 

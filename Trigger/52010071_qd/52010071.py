@@ -35,7 +35,7 @@ class 칠신장들_01(trigger_api.Trigger):
 
 class 칠신장들_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.select_camera_path(path_ids=[4000,4001], return_view=False)
 
@@ -46,7 +46,7 @@ class 칠신장들_02(trigger_api.Trigger):
 
 class 검마대사_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=6000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=6000.0)
         self.add_cinematic_talk(npc_id=11003894, msg='$52010071_QD__52010071__1$', duration=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,9 +65,9 @@ class 검마대사_02(trigger_api.Trigger):
 
 class 검마대사_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4002,4003], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=15000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=15000.0)
         self.add_cinematic_talk(npc_id=11003894, msg='$52010071_QD__52010071__2$', duration=5000)
         self.add_cinematic_talk(npc_id=11003894, msg='$52010071_QD__52010071__3$', duration=5000)
         self.add_cinematic_talk(npc_id=11003894, msg='$52010071_QD__52010071__4$', duration=5000)
@@ -90,7 +90,7 @@ class 검마대사_04(trigger_api.Trigger):
 class 투르카대사_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4004], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=11000)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=11000.0)
         self.add_cinematic_talk(npc_id=11001956, msg='$52010071_QD__52010071__6$', duration=5000)
         self.add_cinematic_talk(npc_id=11001956, msg='$52010071_QD__52010071__7$', duration=6000)
 
@@ -102,7 +102,7 @@ class 투르카대사_01(trigger_api.Trigger):
 class 둘이말함_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4005], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Attack_01_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Attack_01_A', duration=3000.0)
         self.add_cinematic_talk(npc_id=11003894, msg='$52010071_QD__52010071__8$', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class 둘이말함_01(trigger_api.Trigger):
 
 class 둘이말함_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=18000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=18000.0)
         self.add_cinematic_talk(npc_id=11003894, msg='$52010071_QD__52010071__15$', duration=6000)
         self.add_cinematic_talk(npc_id=11003894, msg='$52010071_QD__52010071__9$', duration=5000)
         self.add_cinematic_talk(npc_id=11003894, msg='$52010071_QD__52010071__10$', duration=4000)
@@ -157,8 +157,8 @@ class 검마명령_04(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

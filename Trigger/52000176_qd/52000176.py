@@ -1,10 +1,11 @@
 """ trigger/52000176_qd/52000176.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1000, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1000)
         self.move_user(map_id=52000176, portal_id=1010)
         self.set_cinematic_ui(type=1)
 
@@ -39,7 +40,7 @@ class 숲전경씬01(trigger_api.Trigger):
 
 class 숲전경씬02_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_user_path(patrol_name='MS2PatrolData_pc')
         self.select_camera_path(path_ids=[4000,4002,4003], return_view=False)
         self.set_cinematic_ui(type=1)
@@ -51,7 +52,7 @@ class 숲전경씬02_1(trigger_api.Trigger):
 
 class 숲전경씬02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52000176_QD__52000176__0$', desc='$52000176_QD__52000176__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000176_QD__52000176__0$', desc='$52000176_QD__52000176__1$', align=Align.Bottom | Align.Left, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -69,7 +70,7 @@ class 숲전경씬03(trigger_api.Trigger):
 
 class Quit01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,8 +81,8 @@ class Quit01(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -92,8 +93,8 @@ class Quit02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
-        self.add_balloon_talk(spawn_id=0, msg='$52000176_QD__52000176__2$', duration=6000, delay_tick=1000)
+        self.reset_camera()
+        self.add_balloon_talk(msg='$52000176_QD__52000176__2$', duration=6000, delay_tick=1000)
         self.show_guide_summary(entity_id=52001761, text_id=52001761, duration=10000)
         self.spawn_monster(spawn_ids=[400], auto_target=False) # 과녁
 

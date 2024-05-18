@@ -4,25 +4,25 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=44, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_portal(portal_id=45, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_portal(portal_id=46, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_portal(portal_id=47, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_portal(portal_id=48, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_portal(portal_id=49, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_portal(portal_id=50, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_portal(portal_id=51, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212], visible=False, start_delay=0, interval=0, fade=0) # MobGround_AlawaysOff
+        self.set_portal(portal_id=44) # 20170223 업데이트 던전 개편 단축
+        self.set_portal(portal_id=45) # 20170223 업데이트 던전 개편 단축
+        self.set_portal(portal_id=46) # 20170223 업데이트 던전 개편 단축
+        self.set_portal(portal_id=47) # 20170223 업데이트 던전 개편 단축
+        self.set_portal(portal_id=48) # 20170223 업데이트 던전 개편 단축
+        self.set_portal(portal_id=49) # 20170223 업데이트 던전 개편 단축
+        self.set_portal(portal_id=50) # 20170223 업데이트 던전 개편 단축
+        self.set_portal(portal_id=51) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212]) # MobGround_AlawaysOff
         # LaserTotemBarrier_AlawaysOn
-        self.set_mesh(trigger_ids=[4001,4002,4003,4004,4005,4006,4007,4008], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4001,4002,4003,4004,4005,4006,4007,4008], visible=True)
         # JuntaFlyGround_AlawaysOff
-        self.set_mesh(trigger_ids=[4100,4101,4102,4103,4104,4105,4106], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # CrystalOff
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=0) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3001], visible=True, start_delay=0, interval=0) # CrystalOff
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=0) # CrystalOn
-        self.set_effect(trigger_ids=[5201], visible=False) # Sound_CrystalOn
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
+        self.set_mesh(trigger_ids=[4100,4101,4102,4103,4104,4105,4106])
+        self.set_mesh(trigger_ids=[3001], visible=True) # CrystalOff
+        self.set_mesh(trigger_ids=[3101]) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3001], visible=True) # CrystalOff
+        self.set_mesh_animation(trigger_ids=[3101]) # CrystalOn
+        self.set_effect(trigger_ids=[5201]) # Sound_CrystalOn
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9000) >= 1:
@@ -42,7 +42,7 @@ class ReadyToWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_100')
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_200')
-        self.set_dialogue(type=1, spawn_id=200, script='$02000378_BF__01_FINDWAY__0$', time=3, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=200, script='$02000378_BF__01_FINDWAY__0$', time=3) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -61,7 +61,7 @@ class ReadyToWalkIn02(trigger_api.Trigger):
 
 class ReadyToWalkIn03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=200, script='$02000378_BF__01_FINDWAY__1$', time=3, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=200, script='$02000378_BF__01_FINDWAY__1$', time=3) # 준타
         self.set_dialogue(type=1, spawn_id=100, script='$02000378_BF__01_FINDWAY__2$', time=2, arg5=3) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,10 +89,10 @@ class Round01_Sucess(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1001])
         self.spawn_monster(spawn_ids=[101], auto_target=False) # 연출용 틴차이
         self.set_effect(trigger_ids=[5201], visible=True) # Sound_CrystalOn
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=100, interval=0, fade=0) # CrystalOff
-        self.set_mesh(trigger_ids=[3101], visible=True, start_delay=0, interval=0, fade=0) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3001], visible=False, start_delay=0, interval=0) # CrystalOff
-        self.set_mesh_animation(trigger_ids=[3101], visible=True, start_delay=0, interval=0) # CrystalOn
+        self.set_mesh(trigger_ids=[3001], start_delay=100) # CrystalOff
+        self.set_mesh(trigger_ids=[3101], visible=True) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3001]) # CrystalOff
+        self.set_mesh_animation(trigger_ids=[3101], visible=True) # CrystalOn
         self.set_dialogue(type=1, spawn_id=101, script='$02000378_BF__01_FINDWAY__3$', time=2, arg5=1) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,25 +106,25 @@ class Round01_RouteSelect(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[201], auto_target=False) # 연출용 준타
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PickRoute_Left(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PickRoute_Right(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PortalOn_04(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PortalOn_05(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PortalOn_06(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PortalOn_07(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PortalOn_08(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PortalOn_09(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PortalOn_10(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Round01_PortalOn_11(self.ctx)
 
 
@@ -171,9 +171,9 @@ class GoToRound03(trigger_api.Trigger):
 # 04번 포탈로
 class Round01_PortalOn_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=3) # CrystalOn
-        self.set_portal(portal_id=44, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3101], interval=3) # CrystalOn
+        self.set_portal(portal_id=44, visible=True, enable=True) # 20170223 업데이트 던전 개편 단축
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -193,9 +193,9 @@ class GoToRound04(trigger_api.Trigger):
 # 05번 포탈로
 class Round01_PortalOn_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=3) # CrystalOn
-        self.set_portal(portal_id=45, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3101], interval=3) # CrystalOn
+        self.set_portal(portal_id=45, visible=True, enable=True) # 20170223 업데이트 던전 개편 단축
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -215,9 +215,9 @@ class GoToRound05(trigger_api.Trigger):
 # 06번 포탈로
 class Round01_PortalOn_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=3) # CrystalOn
-        self.set_portal(portal_id=46, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3101], interval=3) # CrystalOn
+        self.set_portal(portal_id=46, visible=True, enable=True) # 20170223 업데이트 던전 개편 단축
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -237,9 +237,9 @@ class GoToRound06(trigger_api.Trigger):
 # 07번 포탈로
 class Round01_PortalOn_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=3) # CrystalOn
-        self.set_portal(portal_id=47, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3101], interval=3) # CrystalOn
+        self.set_portal(portal_id=47, visible=True, enable=True) # 20170223 업데이트 던전 개편 단축
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -259,9 +259,9 @@ class GoToRound07(trigger_api.Trigger):
 # 08번 포탈로
 class Round01_PortalOn_08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=3) # CrystalOn
-        self.set_portal(portal_id=48, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3101], interval=3) # CrystalOn
+        self.set_portal(portal_id=48, visible=True, enable=True) # 20170223 업데이트 던전 개편 단축
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -281,9 +281,9 @@ class GoToRound08(trigger_api.Trigger):
 # 09번 포탈로
 class Round01_PortalOn_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=3) # CrystalOn
-        self.set_portal(portal_id=49, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3101], interval=3) # CrystalOn
+        self.set_portal(portal_id=49, visible=True, enable=True) # 20170223 업데이트 던전 개편 단축
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -303,9 +303,9 @@ class GoToRound09(trigger_api.Trigger):
 # 10번 포탈로
 class Round01_PortalOn_10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=3) # CrystalOn
-        self.set_portal(portal_id=50, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3101], interval=3) # CrystalOn
+        self.set_portal(portal_id=50, visible=True, enable=True) # 20170223 업데이트 던전 개편 단축
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -325,9 +325,9 @@ class GoToRound10(trigger_api.Trigger):
 # 11번 포탈로
 class Round01_PortalOn_11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3101], visible=False, start_delay=0, interval=3) # CrystalOn
-        self.set_portal(portal_id=51, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3101], interval=3) # CrystalOn
+        self.set_portal(portal_id=51, visible=True, enable=True) # 20170223 업데이트 던전 개편 단축
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

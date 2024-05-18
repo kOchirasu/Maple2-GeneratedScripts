@@ -4,15 +4,15 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4000, visible=False, initial_sequence='Dead_A') # NelfActor
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3000,3001], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/Sound/Eff_System_Dark_Ending_Chord_01.xml')
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_actor(trigger_id=4000, initial_sequence='Dead_A') # NelfActor
+        self.set_portal(portal_id=2)
+        self.set_portal(portal_id=13)
+        self.set_mesh(trigger_ids=[3000,3001], visible=True)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/Sound/Eff_System_Dark_Ending_Chord_01.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[60100070], quest_states=[3], job_code=80):
@@ -47,7 +47,7 @@ class LoadingDelay01(trigger_api.Trigger):
 class CameraWalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.select_camera(trigger_id=800, enable=True)
+        self.select_camera(trigger_id=800)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -58,7 +58,7 @@ class CameraWalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -67,7 +67,7 @@ class CameraWalk02(trigger_api.Trigger):
 
 class CameraWalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=801, enable=True)
+        self.select_camera(trigger_id=801)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -85,7 +85,7 @@ class CameraWalk04(trigger_api.Trigger):
 
 class CameraShot01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=802, enable=True)
+        self.select_camera(trigger_id=802)
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +95,7 @@ class CameraShot01(trigger_api.Trigger):
 
 class CameraShot02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=803, enable=True)
+        self.select_camera(trigger_id=803)
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -105,7 +105,7 @@ class CameraShot02(trigger_api.Trigger):
 
 class CameraShot03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=804, enable=True)
+        self.select_camera(trigger_id=804)
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -124,7 +124,7 @@ class CameraFadeIn01(trigger_api.Trigger):
 
 class CameraFadeOut01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera(trigger_id=804, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -172,7 +172,7 @@ class FindDoor01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user_path(patrol_name='MS2PatrolData_1200')
-        self.select_camera(trigger_id=810, enable=True)
+        self.select_camera(trigger_id=810)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -191,7 +191,7 @@ class FindDoor02(trigger_api.Trigger):
 
 class FindDoor03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=811, enable=True)
+        self.select_camera(trigger_id=811)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -200,7 +200,7 @@ class FindDoor03(trigger_api.Trigger):
 
 class Chase01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=100, interval=200, fade=1)
+        self.set_mesh(trigger_ids=[3000,3001], start_delay=100, interval=200, fade=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

@@ -49,7 +49,7 @@ class 클로즈대기중(trigger_api.Trigger):
 
 class 클로즈5초전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.notice(type=0, script='$02000064_TW_Triatown02__MASSIVE_DOOR_1__0$', arg3=True)
+        self.notice(script='$02000064_TW_Triatown02__MASSIVE_DOOR_1__0$', arg3=True)
         self.set_timer(timer_id='4', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,7 +75,7 @@ class 클로즈중1(trigger_api.Trigger):
 
 class 클로즈중2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.notice(type=0, script='$02000064_TW_Triatown02__MASSIVE_DOOR_1__1$', arg3=True)
+        self.notice(script='$02000064_TW_Triatown02__MASSIVE_DOOR_1__1$', arg3=True)
         self.set_timer(timer_id='6', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:

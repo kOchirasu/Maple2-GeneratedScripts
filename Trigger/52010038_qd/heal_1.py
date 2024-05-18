@@ -20,21 +20,21 @@ class 대기(trigger_api.Trigger):
 
 class 랜덤조건(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 체크10001258(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 체크10001259(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 체크10001260(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 체크10001261(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 체크10001262(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 체크10001263(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 체크10001264(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 체크10001265(self.ctx)
         if self.user_value(key='WoundEnd') >= 1:
             self.set_user_value(trigger_id=993001, key='WoundStart', value=0)

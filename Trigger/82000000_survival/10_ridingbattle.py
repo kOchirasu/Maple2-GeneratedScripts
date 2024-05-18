@@ -5,7 +5,7 @@ import trigger_api
 # 변신 탈것 riding battle
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(group_id=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341], is_start=False)
+        self.start_combine_spawn(group_id=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341])
         self.set_user_value(key='BattleRidingOnCount', value=0)
         self.set_user_value(key='BattleRidingOff', value=0)
 
@@ -16,9 +16,9 @@ class Setting(trigger_api.Trigger):
 
 class OnOffRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=40):
+        if self.random_condition(weight=40.0):
             return BattleRidingOn(self.ctx)
-        if self.random_condition(weight=60):
+        if self.random_condition(weight=60.0):
             return BattleRidingOff(self.ctx)
 
 
@@ -38,19 +38,19 @@ class BattleRidingOn(trigger_api.Trigger):
 
 class DelayRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Delay_5min00sec(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Delay_5min20sec(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Delay_5min40sec(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Delay_6min00sec(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Delay_6min20sec(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Delay_6min40sec(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return Delay_7min00sec(self.ctx)
 
 
@@ -130,27 +130,27 @@ class RidingSpawn(trigger_api.Trigger):
         self.side_npc_talk(npc_id=23000110, illust='Mushking_normal', duration=5000, script='$82000000_survival__10_RIDINGBATTLE__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_none(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_north(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_south(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_east(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_west(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_northsouth(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_northeast(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_northwest(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_eastwest(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_southeast(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return RidingSpawn_Extra_southwest(self.ctx)
 
 
@@ -252,7 +252,7 @@ class RidingSpawn_Extra_southwest(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(group_id=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341], is_start=False) # riding battle test
+        self.start_combine_spawn(group_id=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341]) # riding battle test
 
 
 initial_state = Setting

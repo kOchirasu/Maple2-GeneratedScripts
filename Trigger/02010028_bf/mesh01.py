@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005], visible=True)
         self.set_interact_object(trigger_ids=[10000902], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005], visible=False, start_delay=0, interval=0, fade=7)
+        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005], fade=7.0)
         self.set_timer(timer_id='2', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:

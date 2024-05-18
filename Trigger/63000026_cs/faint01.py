@@ -4,22 +4,22 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=10000, enable=False) # BGM
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5104], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5105], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5106], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5107], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5300], visible=False) # Faint
-        self.set_effect(trigger_ids=[5400], visible=False) # ShadowApp
-        self.set_effect(trigger_ids=[6000], visible=False) # Voice_Tinchai_00001681
-        self.set_effect(trigger_ids=[6001], visible=False) # Voice_Tinchai_00001717
-        self.set_effect(trigger_ids=[6002], visible=False) # Voice_Tinchai_00001682
-        self.set_effect(trigger_ids=[6003], visible=False) # Voice_Tinchai_00001683
+        self.set_sound(trigger_id=10000) # BGM
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # 경로 안내
+        self.set_effect(trigger_ids=[5101]) # 경로 안내
+        self.set_effect(trigger_ids=[5102]) # 경로 안내
+        self.set_effect(trigger_ids=[5103]) # 경로 안내
+        self.set_effect(trigger_ids=[5104]) # 경로 안내
+        self.set_effect(trigger_ids=[5105]) # 경로 안내
+        self.set_effect(trigger_ids=[5106]) # 경로 안내
+        self.set_effect(trigger_ids=[5107]) # 경로 안내
+        self.set_effect(trigger_ids=[5300]) # Faint
+        self.set_effect(trigger_ids=[5400]) # ShadowApp
+        self.set_effect(trigger_ids=[6000]) # Voice_Tinchai_00001681
+        self.set_effect(trigger_ids=[6001]) # Voice_Tinchai_00001717
+        self.set_effect(trigger_ids=[6002]) # Voice_Tinchai_00001682
+        self.set_effect(trigger_ids=[6003]) # Voice_Tinchai_00001683
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -28,8 +28,8 @@ class Wait(trigger_api.Trigger):
         self.set_agent(trigger_ids=[8005], visible=True)
         self.set_agent(trigger_ids=[8006], visible=True)
         self.set_agent(trigger_ids=[8007], visible=True)
-        self.set_agent(trigger_ids=[8100], visible=False)
-        self.set_agent(trigger_ids=[8101], visible=False)
+        self.set_agent(trigger_ids=[8100])
+        self.set_agent(trigger_ids=[8101])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -64,14 +64,14 @@ class Enter02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10033010)
-        self.set_effect(trigger_ids=[5100], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5104], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5105], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5106], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5107], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5100]) # 경로 안내
+        self.set_effect(trigger_ids=[5101]) # 경로 안내
+        self.set_effect(trigger_ids=[5102]) # 경로 안내
+        self.set_effect(trigger_ids=[5103]) # 경로 안내
+        self.set_effect(trigger_ids=[5104]) # 경로 안내
+        self.set_effect(trigger_ids=[5105]) # 경로 안내
+        self.set_effect(trigger_ids=[5106]) # 경로 안내
+        self.set_effect(trigger_ids=[5107]) # 경로 안내
 
 
 class OnTheBridge01(trigger_api.Trigger):
@@ -79,7 +79,7 @@ class OnTheBridge01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -117,7 +117,7 @@ class OnTheBridge04(trigger_api.Trigger):
 
 class TinChaiComeIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
         self.set_sound(trigger_id=10000, enable=True) # BGM
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -127,7 +127,7 @@ class TinChaiComeIn01(trigger_api.Trigger):
 
 class TinChaiComeIn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=101, script='$63000026_CS__FAINT01__5$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$63000026_CS__FAINT01__5$', time=2)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_101')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -146,7 +146,7 @@ class TinChaiComeIn03(trigger_api.Trigger):
 
 class TinChaiComeIn04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
         self.set_scene_skip(state=PCTeleport03, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -192,7 +192,7 @@ class TinChaiTalk03(trigger_api.Trigger):
         self.move_npc(spawn_id=913, patrol_name='MS2PatrolData_913')
         self.move_npc(spawn_id=914, patrol_name='MS2PatrolData_914')
         self.move_npc(spawn_id=915, patrol_name='MS2PatrolData_915')
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -202,7 +202,7 @@ class TinChaiTalk03(trigger_api.Trigger):
 # 연출용 그림자 패트롤
 class DarkShadowApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -222,7 +222,7 @@ class DarkShadowApp02(trigger_api.Trigger):
 
 class DarkShadowApp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -275,7 +275,7 @@ class ReadyToBattle05(trigger_api.Trigger):
 class ReadyToBattle06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=30000)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=30000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -285,7 +285,7 @@ class ReadyToBattle06(trigger_api.Trigger):
 # PC가 털썩 바닥에 쓰러지는 사운드 이펙트
 class PCFaint01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=702, enable=True)
+        self.select_camera(trigger_id=702)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -328,7 +328,7 @@ class PCFaint04(trigger_api.Trigger):
 
 class TinChaiGoToFight01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=710, enable=True)
+        self.select_camera(trigger_id=710)
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_104')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -349,14 +349,14 @@ class TinChaiGoToFight02(trigger_api.Trigger):
 class TinChaiGoToFight03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip() # Missing State: State
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -367,7 +367,7 @@ class PCTeleport01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(trigger_ids=[8100], visible=True)
         self.set_agent(trigger_ids=[8101], visible=True)
-        self.select_camera_path(path_ids=[720,721], return_view=True)
+        self.select_camera_path(path_ids=[720,721])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

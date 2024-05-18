@@ -5,11 +5,11 @@ import trigger_api
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[101], auto_target=False) # 기본 배치 될 몬스터 등장
-        self.set_effect(trigger_ids=[7301], visible=False)
-        self.set_effect(trigger_ids=[7302], visible=False)
-        self.set_effect(trigger_ids=[7303], visible=False)
-        self.set_effect(trigger_ids=[7304], visible=False)
-        self.set_effect(trigger_ids=[7305], visible=False)
+        self.set_effect(trigger_ids=[7301])
+        self.set_effect(trigger_ids=[7302])
+        self.set_effect(trigger_ids=[7303])
+        self.set_effect(trigger_ids=[7304])
+        self.set_effect(trigger_ids=[7305])
         self.set_effect(trigger_ids=[7310], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

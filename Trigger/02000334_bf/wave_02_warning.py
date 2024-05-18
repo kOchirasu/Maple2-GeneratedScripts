@@ -24,7 +24,7 @@ class 돌격(trigger_api.Trigger):
         self.set_effect(trigger_ids=[98001], visible=True)
         self.set_dialogue(type=1, spawn_id=190, script='$02000334_BF__WAVE__2$', time=3) # 보스 대사
         self.move_npc(spawn_id=190, patrol_name='MS2PatrolData_3501') # 바라하 빡침 모션
-        self.spawn_monster(spawn_ids=[991,993,994], auto_target=True)
+        self.spawn_monster(spawn_ids=[991,993,994])
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -52,7 +52,7 @@ class 돌격2(trigger_api.Trigger):
         self.set_effect(trigger_ids=[98001], visible=True)
         self.move_npc(spawn_id=190, patrol_name='MS2PatrolData_3501') # 바라하 빡침 모션
         self.set_dialogue(type=1, spawn_id=190, script='$02000334_BF__WAVE__4$', time=3) # 보스 대사
-        self.spawn_monster(spawn_ids=[992,995], auto_target=True)
+        self.spawn_monster(spawn_ids=[992,995])
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:

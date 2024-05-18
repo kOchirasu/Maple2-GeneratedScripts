@@ -10,7 +10,7 @@ import trigger_api
 """
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
+        self.set_effect(trigger_ids=[5001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[30000334], quest_states=[1]):
@@ -29,7 +29,7 @@ class 세번째전투끝나고(trigger_api.Trigger):
 class 세번째전투끝나고1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.spawn_monster(spawn_ids=[101], auto_target=False)
-        # self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=12000) # 쓰러져있는 연출용 하렌
+        # self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=12000.0) # 쓰러져있는 연출용 하렌
         self.select_camera_path(path_ids=[4003], return_view=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -51,10 +51,10 @@ class 세번째전투끝나고2(trigger_api.Trigger):
 
 class 세번째전투끝나고2_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=6, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=6, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_effect(trigger_ids=[5001], visible=True)
-        self.face_emotion(spawn_id=0, emotion_name='defaultBattle')
-        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=5000)
+        self.face_emotion(emotion_name='defaultBattle')
+        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=5000.0)
         self.add_cinematic_talk(npc_id=0, msg='역시 너희 흑성회는 믿을 만한 사람들이 아니었군.\\n천공의 심장은 내가 가져가겠어.', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +65,7 @@ class 세번째전투끝나고2_2(trigger_api.Trigger):
 class 세번째전투끝나고3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4010], return_view=False)
-        self.set_effect(trigger_ids=[5001], visible=False)
+        self.set_effect(trigger_ids=[5001])
         self.add_cinematic_talk(npc_id=11003756, msg='크윽...', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:

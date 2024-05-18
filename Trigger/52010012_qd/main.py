@@ -4,8 +4,8 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[1003,1004], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[1003,1004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[10002797], quest_states=[1]):
@@ -35,11 +35,11 @@ class Event_02(trigger_api.Trigger):
 
 class Event_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_mesh(trigger_ids=[1003,1004], visible=True, start_delay=0, interval=80, fade=10)
-        self.set_mesh(trigger_ids=[1001,1002], visible=False, start_delay=0, interval=80, fade=10)
+        self.set_mesh(trigger_ids=[1003,1004], visible=True, interval=80, fade=10.0)
+        self.set_mesh(trigger_ids=[1001,1002], interval=80, fade=10.0)
         self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:

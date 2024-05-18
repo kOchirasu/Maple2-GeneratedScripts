@@ -4,17 +4,17 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[600], visible=False)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
+        self.set_effect(trigger_ids=[600])
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
         self.set_actor(trigger_id=201, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_off')
         self.set_actor(trigger_id=202, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_off')
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3400], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3401], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_sound(trigger_id=13500, enable=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107])
+        self.set_mesh(trigger_ids=[3400], visible=True)
+        self.set_mesh(trigger_ids=[3401], visible=True)
+        self.set_sound(trigger_id=13500)
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199], job_code=100):
@@ -66,18 +66,18 @@ class 차연출시작1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[2001], auto_target=False)
-        self.set_npc_emotion_loop(spawn_id=2001, sequence_name='Attack_Idle_A', duration=1E+10)
+        self.set_npc_emotion_loop(spawn_id=2001, sequence_name='Attack_Idle_A', duration=10000000000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199], job_code=100):
             self.spawn_monster(spawn_ids=[1001], auto_target=False)
-            self.set_npc_emotion_loop(spawn_id=1001, sequence_name='Attack_Idle_A', duration=1E+10)
+            self.set_npc_emotion_loop(spawn_id=1001, sequence_name='Attack_Idle_A', duration=10000000000.0)
             return 차연출딜레이1(self.ctx)
         if self.user_detected(box_ids=[199], job_code=110):
             self.spawn_monster(spawn_ids=[11001], auto_target=False)
-            self.set_npc_emotion_loop(spawn_id=11001, sequence_name='Attack_Idle_A', duration=1E+10)
+            self.set_npc_emotion_loop(spawn_id=11001, sequence_name='Attack_Idle_A', duration=10000000000.0)
             return 차연출딜레이1(self.ctx)
 
 
@@ -109,9 +109,9 @@ class 계단생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[2001])
         self.spawn_monster(spawn_ids=[2002], auto_target=False)
-        self.set_npc_emotion_loop(spawn_id=2002, sequence_name='Attack_Idle_A', duration=1E+10)
+        self.set_npc_emotion_loop(spawn_id=2002, sequence_name='Attack_Idle_A', duration=10000000000.0)
         self.destroy_monster(spawn_ids=[2101,2102])
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=True, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=True, fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[102]):
@@ -123,12 +123,12 @@ class 차전투대기2(trigger_api.Trigger):
         if self.user_detected(box_ids=[199], job_code=100):
             self.destroy_monster(spawn_ids=[1001])
             self.spawn_monster(spawn_ids=[1002], auto_target=False)
-            self.set_npc_emotion_loop(spawn_id=1002, sequence_name='Attack_Idle_A', duration=1E+10)
+            self.set_npc_emotion_loop(spawn_id=1002, sequence_name='Attack_Idle_A', duration=10000000000.0)
             return 차전투2(self.ctx)
         if self.user_detected(box_ids=[199], job_code=110):
             self.destroy_monster(spawn_ids=[11001])
             self.spawn_monster(spawn_ids=[11002], auto_target=False)
-            self.set_npc_emotion_loop(spawn_id=11002, sequence_name='Attack_Idle_A', duration=1E+10)
+            self.set_npc_emotion_loop(spawn_id=11002, sequence_name='Attack_Idle_A', duration=10000000000.0)
             return 차전투2(self.ctx)
 
 
@@ -143,7 +143,7 @@ class 차전투2(trigger_api.Trigger):
 
 class 문열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3400], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3400])
         self.set_actor(trigger_id=201, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_on')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -157,7 +157,7 @@ class 차연출시작2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -223,7 +223,7 @@ class 칸두라공격이펙트(trigger_api.Trigger):
 
 class 가로막기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
         self.move_npc(spawn_id=1002, patrol_name='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -234,7 +234,7 @@ class 가로막기(trigger_api.Trigger):
 class 처맞기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
-        self.select_camera(trigger_id=304, enable=True)
+        self.select_camera(trigger_id=304)
         self.move_npc(spawn_id=1002, patrol_name='MS2PatrolData_1002B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -245,13 +245,13 @@ class 처맞기(trigger_api.Trigger):
 class 처맞기후딜레이(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.set_npc_emotion_loop(spawn_id=1002, sequence_name='Down_Idle_A', duration=1E+10)
+            self.set_npc_emotion_loop(spawn_id=1002, sequence_name='Down_Idle_A', duration=10000000000.0)
             return NPC대사01(self.ctx)
 
 
 class NPC대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=307, enable=True)
+        self.select_camera(trigger_id=307)
         self.set_dialogue(type=2, spawn_id=11001782, script='$63000038_CS__40002640__2$', time=3)
         self.set_skip(state=NPC대사01스킵)
 
@@ -292,7 +292,7 @@ class NPC대사02스킵(trigger_api.Trigger):
 
 class 칸두라대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
+        self.select_camera(trigger_id=305)
         self.set_dialogue(type=2, spawn_id=11001559, script='$63000038_CS__40002640__4$', time=5)
         self.set_skip(state=칸두라대사03스킵)
 
@@ -314,7 +314,7 @@ class 차연출시작_소울바인더2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -380,7 +380,7 @@ class 칸두라공격이펙트_소울바인더(trigger_api.Trigger):
 
 class 가로막기_소울바인더(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
         self.move_npc(spawn_id=11002, patrol_name='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -391,7 +391,7 @@ class 가로막기_소울바인더(trigger_api.Trigger):
 class 처맞기_소울바인더(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
-        self.select_camera(trigger_id=304, enable=True)
+        self.select_camera(trigger_id=304)
         self.move_npc(spawn_id=11002, patrol_name='MS2PatrolData_1002B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -402,13 +402,13 @@ class 처맞기_소울바인더(trigger_api.Trigger):
 class 처맞기후딜레이_소울바인더(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.set_npc_emotion_loop(spawn_id=11002, sequence_name='Down_Idle_A', duration=1E+10)
+            self.set_npc_emotion_loop(spawn_id=11002, sequence_name='Down_Idle_A', duration=10000000000.0)
             return 칸두라대사03_소울바인더(self.ctx)
 
 
 class 칸두라대사03_소울바인더(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
+        self.select_camera(trigger_id=305)
         self.set_dialogue(type=2, spawn_id=11001559, script='$63000038_CS__40002640__7$', time=3)
         self.set_skip(state=칸두라대사03스킵_소울바인더)
 
@@ -428,7 +428,7 @@ class 칸두라대사03스킵_소울바인더(trigger_api.Trigger):
 
 class 칸두라대사04_소울바인더(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
+        self.select_camera(trigger_id=305)
         self.set_dialogue(type=2, spawn_id=11001559, script='$63000038_CS__40002640__8$', time=6)
         # Missing State: 칸두라대사04스킵_소울바인더
         self.set_skip()
@@ -467,7 +467,7 @@ class 차연출종료2(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='FirstPhaseEnd') >= 1:
-            self.set_mesh(trigger_ids=[3401], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[3401])
             self.set_actor(trigger_id=202, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_on')
             return 차연출시작3(self.ctx)
 
@@ -477,7 +477,7 @@ class 차연출시작3(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawn_ids=[2104,2105])
-        self.select_camera(trigger_id=306, enable=True)
+        self.select_camera(trigger_id=306)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=15000):
@@ -528,11 +528,11 @@ class 차소환분기4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199], job_code=100):
             self.destroy_monster(spawn_ids=[1002])
-            self.spawn_monster(spawn_ids=[1003], auto_target=True)
+            self.spawn_monster(spawn_ids=[1003])
             return NPC소환(self.ctx)
         if self.quest_user_detected(box_ids=[199], quest_ids=[40002651], quest_states=[1]):
             self.destroy_monster(spawn_ids=[11003])
-            self.spawn_monster(spawn_ids=[11004], auto_target=True)
+            self.spawn_monster(spawn_ids=[11004])
             return NPC소환(self.ctx)
 
 
@@ -544,7 +544,7 @@ class NPC소환(trigger_api.Trigger):
 
 class NPC원위치딜레이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=13500, enable=False)
+        self.set_sound(trigger_id=13500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -610,7 +610,7 @@ class 준타틴차이등장(trigger_api.Trigger):
 
 class 준타대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=308, enable=True)
+        self.select_camera(trigger_id=308)
         self.set_dialogue(type=2, spawn_id=11001557, script='$63000038_CS__40002640__9$', time=5)
         self.set_skip(state=준타대사01스킵)
 
@@ -630,9 +630,9 @@ class 준타대사01스킵(trigger_api.Trigger):
 
 class 칸두라대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=311, enable=True)
+        self.select_camera(trigger_id=311)
         self.spawn_monster(spawn_ids=[2004], auto_target=False)
-        self.set_npc_emotion_loop(spawn_id=2004, sequence_name='Attack_Idle_A', duration=1E+10)
+        self.set_npc_emotion_loop(spawn_id=2004, sequence_name='Attack_Idle_A', duration=10000000000.0)
         self.set_dialogue(type=2, spawn_id=11001559, script='$63000038_CS__40002640__10$', time=5)
         self.set_skip(state=칸두라대사05스킵)
 
@@ -671,7 +671,7 @@ class 칸두라대사06스킵(trigger_api.Trigger):
 
 class 비전등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=309, enable=True)
+        self.select_camera(trigger_id=309)
         self.spawn_monster(spawn_ids=[14001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -691,7 +691,7 @@ class 칸두라공격02(trigger_api.Trigger):
 
 class 비전대신맞기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=310, enable=True)
+        self.select_camera(trigger_id=310)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -700,7 +700,7 @@ class 비전대신맞기(trigger_api.Trigger):
 
 class 비전대신맞기이펙트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.select_camera(trigger_id=312, enable=True)
+        # self.select_camera(trigger_id=312)
         self.set_effect(trigger_ids=[603], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

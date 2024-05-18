@@ -11,9 +11,9 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='SpawnHold', value=0)
         self.destroy_monster(spawn_ids=[30100,30075,30050,30025,30001,31001,31002,31003])
         # Normal Slime Rebirth Sound
-        self.set_effect(trigger_ids=[5103], visible=False)
+        self.set_effect(trigger_ids=[5103])
         # Abnormal Slime Rebirth Sound
-        self.set_effect(trigger_ids=[5203], visible=False)
+        self.set_effect(trigger_ids=[5203])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Gauge') >= 100:
@@ -127,15 +127,15 @@ class SpawnHold(trigger_api.Trigger):
 # 돌연변이 슬라임 랜덤 낮은 확률
 class Gauge_SpawnRamdom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=100, desc='Normal'):
+        if self.random_condition(weight=100.0, desc='Normal'):
             return Spawn_Normal(self.ctx)
-        if self.random_condition(weight=5, desc='Eater'):
+        if self.random_condition(weight=5.0, desc='Eater'):
             return Spawn_Eater(self.ctx)
         """
-        if self.random_condition(weight=1, desc='BigMom'):
+        if self.random_condition(weight=1.0, desc='BigMom'):
             return Spawn_BigMom(self.ctx)
         """
-        if self.random_condition(weight=10, desc='Runner'):
+        if self.random_condition(weight=10.0, desc='Runner'):
             return Spawn_Runner(self.ctx)
 
 

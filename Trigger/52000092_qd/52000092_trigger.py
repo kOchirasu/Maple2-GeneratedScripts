@@ -4,16 +4,16 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_gravity(gravity=-39)
+        self.set_gravity(gravity=-39.0)
         self.spawn_monster(spawn_ids=[800], auto_target=False) # 오르데 소환
-        self.set_mesh(trigger_ids=[900], visible=False)
-        self.set_effect(trigger_ids=[901], visible=False)
-        self.set_effect(trigger_ids=[902], visible=False)
-        self.set_effect(trigger_ids=[903], visible=False)
-        self.set_effect(trigger_ids=[904], visible=False)
-        self.set_effect(trigger_ids=[905], visible=False)
-        self.set_effect(trigger_ids=[906], visible=False)
-        self.set_effect(trigger_ids=[907], visible=False)
+        self.set_mesh(trigger_ids=[900])
+        self.set_effect(trigger_ids=[901])
+        self.set_effect(trigger_ids=[902])
+        self.set_effect(trigger_ids=[903])
+        self.set_effect(trigger_ids=[904])
+        self.set_effect(trigger_ids=[905])
+        self.set_effect(trigger_ids=[906])
+        self.set_effect(trigger_ids=[907])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -44,7 +44,7 @@ class 중력감지메시지(trigger_api.Trigger):
 class 진행중일때20002276(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 마법진이 표시된다
-        self.set_mesh(trigger_ids=[900], visible=True, start_delay=0, interval=0, fade=5000)
+        self.set_mesh(trigger_ids=[900], visible=True, fade=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9001], quest_ids=[50100510], quest_states=[2]):
@@ -56,7 +56,7 @@ class 진행중일때20002276(trigger_api.Trigger):
 class 완료가능할때20002276(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 마법진이 활성화된다
-        self.set_mesh(trigger_ids=[900], visible=False, start_delay=0, interval=0, fade=100)
+        self.set_mesh(trigger_ids=[900], fade=100.0)
         self.set_effect(trigger_ids=[901], visible=True)
         self.set_effect(trigger_ids=[902], visible=True)
         self.set_effect(trigger_ids=[903], visible=True)
@@ -85,7 +85,7 @@ class 완료시01_50100520(trigger_api.Trigger):
 
 class 완료시02_20002277(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -152,14 +152,14 @@ class 완료20002277(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.move_user(map_id=52000092, portal_id=0)
+        self.move_user(map_id=52000092)
 
 
 class 이동52000091(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.move_user(map_id=52000091, portal_id=0)
+        self.move_user(map_id=52000091)
 
 
 initial_state = 대기

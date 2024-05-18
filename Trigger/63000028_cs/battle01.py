@@ -5,39 +5,39 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='Guide')
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # Sound_ShadowApp_Loop
-        self.set_effect(trigger_ids=[6000], visible=False) # Voice_Tinchai_00001684
-        self.set_effect(trigger_ids=[6001], visible=False) # Voice_Tinchai_00001685
-        self.set_effect(trigger_ids=[6002], visible=False) # Voice_Tinchai_00001686
-        self.set_effect(trigger_ids=[6003], visible=False) # Voice_Tinchai_00001717
-        self.set_effect(trigger_ids=[6004], visible=False) # Voice_Tinchai_00001687
-        self.set_effect(trigger_ids=[6100], visible=False) # Voice_Junta_00001773
-        self.set_effect(trigger_ids=[6101], visible=False) # Voice_Junta_00001774
-        self.set_effect(trigger_ids=[6102], visible=False) # Voice_Junta_00001775
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # Sound_ShadowApp_Loop
+        self.set_effect(trigger_ids=[6000]) # Voice_Tinchai_00001684
+        self.set_effect(trigger_ids=[6001]) # Voice_Tinchai_00001685
+        self.set_effect(trigger_ids=[6002]) # Voice_Tinchai_00001686
+        self.set_effect(trigger_ids=[6003]) # Voice_Tinchai_00001717
+        self.set_effect(trigger_ids=[6004]) # Voice_Tinchai_00001687
+        self.set_effect(trigger_ids=[6100]) # Voice_Junta_00001773
+        self.set_effect(trigger_ids=[6101]) # Voice_Junta_00001774
+        self.set_effect(trigger_ids=[6102]) # Voice_Junta_00001775
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
         self.set_agent(trigger_ids=[8003], visible=True)
         self.set_agent(trigger_ids=[8004], visible=True)
         self.set_agent(trigger_ids=[8005], visible=True)
-        self.set_agent(trigger_ids=[8100], visible=False)
-        self.set_agent(trigger_ids=[8101], visible=False)
-        self.set_agent(trigger_ids=[8102], visible=False)
-        self.set_agent(trigger_ids=[8103], visible=False)
-        self.set_agent(trigger_ids=[8104], visible=False)
-        self.set_agent(trigger_ids=[8105], visible=False)
-        self.set_agent(trigger_ids=[8106], visible=False)
-        self.set_agent(trigger_ids=[8107], visible=False)
-        self.set_agent(trigger_ids=[8108], visible=False)
-        self.set_agent(trigger_ids=[8109], visible=False)
-        self.set_agent(trigger_ids=[8110], visible=False)
-        self.set_agent(trigger_ids=[8111], visible=False)
-        self.set_agent(trigger_ids=[8112], visible=False)
-        self.set_agent(trigger_ids=[8113], visible=False)
-        self.set_agent(trigger_ids=[8114], visible=False)
-        self.set_agent(trigger_ids=[8115], visible=False)
-        self.set_skill(trigger_ids=[7000], enable=False) # 올킬
+        self.set_agent(trigger_ids=[8100])
+        self.set_agent(trigger_ids=[8101])
+        self.set_agent(trigger_ids=[8102])
+        self.set_agent(trigger_ids=[8103])
+        self.set_agent(trigger_ids=[8104])
+        self.set_agent(trigger_ids=[8105])
+        self.set_agent(trigger_ids=[8106])
+        self.set_agent(trigger_ids=[8107])
+        self.set_agent(trigger_ids=[8108])
+        self.set_agent(trigger_ids=[8109])
+        self.set_agent(trigger_ids=[8110])
+        self.set_agent(trigger_ids=[8111])
+        self.set_agent(trigger_ids=[8112])
+        self.set_agent(trigger_ids=[8113])
+        self.set_agent(trigger_ids=[8114])
+        self.set_agent(trigger_ids=[8115])
+        self.set_skill(trigger_ids=[7000]) # 올킬
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -96,7 +96,7 @@ class QuestOnGoing22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=63000028, portal_id=11, box_id=9900)
         self.spawn_monster(spawn_ids=[104,203], auto_target=False)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -127,7 +127,7 @@ class PCWakeUp01(trigger_api.Trigger):
 
 class PCWakeUp02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.set_scene_skip(state=TinChaiTalk02_CSkip, action='nextState')
         self.spawn_monster(spawn_ids=[101,900,901,902], auto_target=False)
 
@@ -150,7 +150,7 @@ class PCWakeUp03(trigger_api.Trigger):
 class PCWakeUp04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Bore_C'])
-        self.set_dialogue(type=1, spawn_id=0, script='$63000028_CS__BATTLE01__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$63000028_CS__BATTLE01__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -159,7 +159,7 @@ class PCWakeUp04(trigger_api.Trigger):
 
 class PCWakeUp05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$63000028_CS__BATTLE01__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$63000028_CS__BATTLE01__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -177,7 +177,7 @@ class BattleING01(trigger_api.Trigger):
 
 class BattleING02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -216,12 +216,12 @@ class ReadyToBattle01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
         self.select_camera(trigger_id=501, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -303,7 +303,7 @@ class BattleEnd04(trigger_api.Trigger):
 
 class BattleEnd05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$63000028_CS__BATTLE01__3$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$63000028_CS__BATTLE01__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -334,7 +334,7 @@ class ShadowWave01(trigger_api.Trigger):
 
 class ShadowWave02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_effect(trigger_ids=[5100], visible=True) # Sound_ShadowApp_Loop
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -374,7 +374,7 @@ class ShadowWave04(trigger_api.Trigger):
 # 카메라 워크
 class ShadowWave05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_101')
         self.move_user_path(patrol_name='MS2PatrolData_1002')
 
@@ -403,7 +403,7 @@ class ShadowWave06(trigger_api.Trigger):
 # 양측 2차 스폰
 class ShadowWave07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$63000028_CS__BATTLE01__4$', time=3, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=102, script='$63000028_CS__BATTLE01__4$', time=3) # 틴차이
         self.spawn_monster(spawn_ids=[940,941,942,943,944,945,960,961,962,963,964,965])
         self.move_npc(spawn_id=940, patrol_name='MS2PatrolData_940')
         self.move_npc(spawn_id=941, patrol_name='MS2PatrolData_941')
@@ -425,9 +425,9 @@ class ShadowWave07(trigger_api.Trigger):
 
 class TinChaiDesperate01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=602, enable=True)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Attack_Idle_A', duration=12000)
-        self.set_pc_emotion_loop(sequence_name='Orb_Attack_Idle_A', duration=12000)
+        self.select_camera(trigger_id=602)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Attack_Idle_A', duration=12000.0)
+        self.set_pc_emotion_loop(sequence_name='Orb_Attack_Idle_A', duration=12000.0)
         self.set_effect(trigger_ids=[6001], visible=True) # Voice_Tinchai_00001685
         self.set_dialogue(type=2, spawn_id=11001708, script='$63000028_CS__BATTLE01__5$', time=5) # 틴차이 00001685
         self.set_skip(state=TinChaiDesperate02)
@@ -460,7 +460,7 @@ class JuntaApp01(trigger_api.Trigger):
 
 class JuntaApp02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
         self.destroy_monster(spawn_ids=[910,911,912,913,920,921,922,923,924,930,931,932,933,940,941,942,943,944,945,950,951,952,953,960,961,962,963,964,965])
         self.spawn_monster(spawn_ids=[970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998], auto_target=False)
 
@@ -473,18 +473,18 @@ class JuntaApp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_agent(trigger_ids=[8100], visible=False)
-        self.set_agent(trigger_ids=[8101], visible=False)
-        self.set_agent(trigger_ids=[8102], visible=False)
-        self.set_agent(trigger_ids=[8103], visible=False)
-        self.set_agent(trigger_ids=[8104], visible=False)
-        self.set_agent(trigger_ids=[8105], visible=False)
-        self.set_agent(trigger_ids=[8106], visible=False)
-        self.set_agent(trigger_ids=[8107], visible=False)
-        self.set_agent(trigger_ids=[8108], visible=False)
-        self.set_agent(trigger_ids=[8109], visible=False)
-        self.set_agent(trigger_ids=[8110], visible=False)
-        self.set_agent(trigger_ids=[8111], visible=False)
+        self.set_agent(trigger_ids=[8100])
+        self.set_agent(trigger_ids=[8101])
+        self.set_agent(trigger_ids=[8102])
+        self.set_agent(trigger_ids=[8103])
+        self.set_agent(trigger_ids=[8104])
+        self.set_agent(trigger_ids=[8105])
+        self.set_agent(trigger_ids=[8106])
+        self.set_agent(trigger_ids=[8107])
+        self.set_agent(trigger_ids=[8108])
+        self.set_agent(trigger_ids=[8109])
+        self.set_agent(trigger_ids=[8110])
+        self.set_agent(trigger_ids=[8111])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -506,7 +506,7 @@ class JuntaApp04(trigger_api.Trigger):
 
 class JuntaTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5100], visible=False) # Sound_ShadowApp_Loop
+        self.set_effect(trigger_ids=[5100]) # Sound_ShadowApp_Loop
         self.set_effect(trigger_ids=[6100], visible=True) # Voice_Junta_00001773
         self.set_dialogue(type=2, spawn_id=11001557, script='$63000028_CS__BATTLE01__6$', time=4) # 준타 00001773
 
@@ -531,7 +531,7 @@ class MeetJunta01(trigger_api.Trigger):
 
 class MeetJunta02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Talk_A')
         self.set_effect(trigger_ids=[6002], visible=True) # Voice_Tinchai_00001686
         self.set_dialogue(type=2, spawn_id=11001708, script='$63000028_CS__BATTLE01__7$', time=5) # 틴차이 00001686
@@ -563,8 +563,8 @@ class MeetJunta04(trigger_api.Trigger):
 
 class MeetJunta05_Cskip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
-        self.set_effect(trigger_ids=[5100], visible=False) # Sound_ShadowApp_Loop
+        self.select_camera(trigger_id=701)
+        self.set_effect(trigger_ids=[5100]) # Sound_ShadowApp_Loop
         self.destroy_monster(spawn_ids=[910,911,912,913,920,921,922,923,924,930,931,932,933,940,941,942,943,944,945,950,951,952,953,960,961,962,963,964,965])
         self.move_user_path(patrol_name='MS2PatrolData_1003')
 
@@ -663,7 +663,7 @@ class ShadowWaveAgain01(trigger_api.Trigger):
         self.move_user(map_id=63000028, portal_id=12, box_id=9900)
         self.destroy_monster(spawn_ids=[103,202])
         self.spawn_monster(spawn_ids=[104,203], auto_target=False)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_scene_skip(state=TimeToLeave05, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -700,7 +700,7 @@ class ShadowWaveAgain02(trigger_api.Trigger):
 # 정면 2차 스폰 후 다리 패트롤 바로 시작
 class ShadowWaveAgain03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.set_effect(trigger_ids=[5100], visible=True) # Sound_ShadowApp_Loop
         self.set_effect(trigger_ids=[6003], visible=True) # Voice_Tinchai_00001717
         self.set_dialogue(type=1, spawn_id=104, script='$63000028_CS__BATTLE01__9$', time=3, arg5=1) # 틴차이 00001717
@@ -774,7 +774,7 @@ class ShadowWaveAgain06(trigger_api.Trigger):
 
 class TimeToLeave01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
         self.set_effect(trigger_ids=[6004], visible=True) # Voice_Tinchai_00001687
         self.set_dialogue(type=2, spawn_id=11001708, script='$63000028_CS__BATTLE01__11$', time=4) # 틴차이 00001687
         self.set_scene_skip() # Missing State: State

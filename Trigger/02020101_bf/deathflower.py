@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 랜덤대상선정(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.random_additional_effect(target='pc', box_id=1003, spawn_id=0, target_count=1, tick=3, wait_tick=2, target_effect='Additional/Etc/Eff_Target_Select_Keep.xml', additional_effect_id=62100021)
+        self.random_additional_effect(target='pc', box_id=1003, target_count=1, tick=3, wait_tick=2, target_effect='Additional/Etc/Eff_Target_Select_Keep.xml', additional_effect_id=62100021)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):

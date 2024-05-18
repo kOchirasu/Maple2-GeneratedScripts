@@ -13,7 +13,7 @@ class Setting(trigger_api.Trigger):
 
 class HidePartyUI(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_visible_ui(ui_names=['PartyDialog'], visible=False)
+        self.set_visible_ui(ui_names=['PartyDialog'])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

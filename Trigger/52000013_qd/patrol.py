@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_actor(trigger_id=6000, visible=False, initial_sequence='Idle_A')
+        self.set_portal(portal_id=2)
+        self.set_actor(trigger_id=6000, initial_sequence='Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -106,7 +106,7 @@ class 어린벨라소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='15', seconds=1)
         self.destroy_monster(spawn_ids=[5000])
-        self.set_actor(trigger_id=6000, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=6000, initial_sequence='Idle_A')
         self.spawn_monster(spawn_ids=[6001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -27,9 +27,9 @@ class Battle02(trigger_api.Trigger):
 
 class Battle03Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return Battle03A(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return Battle03B(self.ctx)
 
 

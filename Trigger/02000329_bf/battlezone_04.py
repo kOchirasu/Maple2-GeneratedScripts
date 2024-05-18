@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6609,6610], visible=False)
-        self.set_mesh(trigger_ids=[1531,1532,1533,1534,1535,1536,1537,1538,1539,1540], visible=True, start_delay=0, interval=1000, fade=0)
+        self.set_effect(trigger_ids=[6609,6610])
+        self.set_mesh(trigger_ids=[1531,1532,1533,1534,1535,1536,1537,1538,1539,1540], visible=True, interval=1000)
         self.set_mesh(trigger_ids=[19994], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,12 +33,12 @@ class 애플몽키소환(trigger_api.Trigger):
 
 class 섹터개방(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.set_timer(timer_id='3', seconds=3)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=102, text_id=40011) # 다음 지역으로 이동하세요
         # self.set_event_ui(type=1, arg2='$02000329_BF__BATTLEZONE_04__0$', arg3='3000')
-        self.set_mesh(trigger_ids=[19994], visible=False)
-        self.set_mesh(trigger_ids=[1531,1532,1533,1534,1535,1536,1537,1538,1539,1540], visible=False, start_delay=0, interval=0, fade=10)
+        self.set_mesh(trigger_ids=[19994])
+        self.set_mesh(trigger_ids=[1531,1532,1533,1534,1535,1536,1537,1538,1539,1540], fade=10.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):

@@ -1,5 +1,6 @@
 """ trigger/52000105_qd/52000105.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Wait(trigger_api.Trigger):
@@ -62,7 +63,7 @@ class 할아버지대련01(trigger_api.Trigger):
 class 할아버지대련02_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_ten_comeFront')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[1000,1001,1002,1003], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -72,8 +73,8 @@ class 할아버지대련02_b(trigger_api.Trigger):
 
 class 할아버지대련03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=True, start_scale=1, end_scale=0.5, duration=2, interpolator=2) # 2초간 느려지기 시작
-        self.set_npc_emotion_loop(spawn_id=200, sequence_name='Attack_Idle_A', duration=15000)
+        self.set_time_scale(enable=True, start_scale=1.0, end_scale=0.5, duration=2.0, interpolator=2) # 2초간 느려지기 시작
+        self.set_npc_emotion_loop(spawn_id=200, sequence_name='Attack_Idle_A', duration=15000.0)
         self.select_camera_path(path_ids=[1004,1005], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -83,9 +84,9 @@ class 할아버지대련03(trigger_api.Trigger):
 
 class 할아버지대련04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=6000)
+        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=6000.0)
         self.select_camera_path(path_ids=[1006,1007], return_view=False)
-        self.add_balloon_talk(spawn_id=0, msg='$52000105_QD__52000105__0$', duration=6000, delay_tick=1000)
+        self.add_balloon_talk(msg='$52000105_QD__52000105__0$', duration=6000, delay_tick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -104,7 +105,7 @@ class 할아버지대련05_B(trigger_api.Trigger):
 
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,7 +115,7 @@ class Skip_1(trigger_api.Trigger):
 
 class 할아버지대련05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.destroy_monster(spawn_ids=[200])
         self.spawn_monster(spawn_ids=[500], auto_target=False)
         self.set_cinematic_ui(type=0)
@@ -144,7 +145,7 @@ class 대련종료씬시작02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[200])
         self.set_cinematic_ui(type=1)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
         self.spawn_monster(spawn_ids=[202], auto_target=False)
         self.move_user(map_id=52000105, portal_id=3)
 
@@ -164,7 +165,7 @@ class 대련종료씬시작02_01(trigger_api.Trigger):
 
 class 대련종료씬시작03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Attack_Idle_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Attack_Idle_A', duration=5000.0)
         self.move_user_path(patrol_name='MS2PatrolData_PC_Run_0')
         self.select_camera_path(path_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2012,2013], return_view=False)
 
@@ -214,7 +215,7 @@ class 대련종료씬시작07_b(trigger_api.Trigger):
 
 class 대련종료씬시작08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=100, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
+        self.set_onetime_effect(id=100, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
         self.set_pc_emotion_sequence(sequence_names=['Stuck_A'])
         self.select_camera_path(path_ids=[2018,2019], return_view=False)
 
@@ -234,10 +235,10 @@ class 대련종료씬시작09(trigger_api.Trigger):
 
 class 대련종료씬시작10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
-        self.set_onetime_effect(id=10, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.reset_camera(interpolation_time=1)
-        self.set_pc_emotion_loop(sequence_name='Stun_A', duration=6500)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
+        self.set_onetime_effect(id=10, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.reset_camera(interpolation_time=1.0)
+        self.set_pc_emotion_loop(sequence_name='Stun_A', duration=6500.0)
         self.spawn_monster(spawn_ids=[201], auto_target=False)
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_ririn_go')
 
@@ -249,8 +250,8 @@ class 대련종료씬시작10(trigger_api.Trigger):
 class Skip_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.reset_camera(interpolation_time=1)
-        self.set_pc_emotion_loop(sequence_name='Stun_A', duration=6500)
+        self.reset_camera(interpolation_time=1.0)
+        self.set_pc_emotion_loop(sequence_name='Stun_A', duration=6500.0)
         self.spawn_monster(spawn_ids=[201], auto_target=False)
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_ririn_go')
 
@@ -284,7 +285,7 @@ class 떠나는할아버지01(trigger_api.Trigger):
 
 class 떠나는할아버지02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_ten_exit_0')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_ririn_Turn')
         self.move_user_path(patrol_name='MS2PatrolData_PC_Turn')
@@ -297,7 +298,7 @@ class 떠나는할아버지02(trigger_api.Trigger):
 
 class 떠나는할아버지03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003175, illust_id='Ten_normal', msg='$52000105_QD__52000105__1$', duration=4000, align='right')
+        self.add_cinematic_talk(npc_id=11003175, illust_id='Ten_normal', msg='$52000105_QD__52000105__1$', duration=4000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -307,7 +308,7 @@ class 떠나는할아버지03(trigger_api.Trigger):
 class 떠나는할아버지04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_tenExit_1')
-        self.add_balloon_talk(spawn_id=0, msg='$52000105_QD__52000105__2$', duration=6000, delay_tick=1000)
+        self.add_balloon_talk(msg='$52000105_QD__52000105__2$', duration=6000, delay_tick=1000)
         self.add_balloon_talk(spawn_id=201, msg='$52000105_QD__52000105__3$', duration=6000, delay_tick=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -328,7 +329,7 @@ class 떠나는할아버지06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.show_caption(type='VerticalCaption', title='$52000105_QD__52000105__4$', desc='$52000105_QD__52000105__5$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=10000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000105_QD__52000105__4$', desc='$52000105_QD__52000105__5$', align=Align.Bottom | Align.Left, duration=10000, scale=2.5)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:

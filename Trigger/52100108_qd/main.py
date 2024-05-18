@@ -1,5 +1,6 @@
 """ trigger/52100108_qd/main.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class Ready(trigger_api.Trigger):
@@ -11,7 +12,7 @@ class Ready(trigger_api.Trigger):
 class wait_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_effect(trigger_ids=[6000], visible=False)
+        self.set_effect(trigger_ids=[6000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -30,7 +31,7 @@ class wait_03(trigger_api.Trigger):
 
 class 들어왔다(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[4001,4002], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,8 +74,8 @@ class 제어기기(trigger_api.Trigger):
 
 class 들킴(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[232,92,53])
-        self.set_directional_light(diffuse_color=[41,21,18], specular_color=[130,130,130])
+        self.set_ambient_light(primary=Vector3(232,92,53))
+        self.set_directional_light(diffuse_color=Vector3(41,21,18), specular_color=Vector3(130,130,130))
         self.spawn_monster(spawn_ids=[101], auto_target=False)
         self.set_effect(trigger_ids=[6000], visible=True)
         self.set_actor(trigger_id=201, visible=True, initial_sequence='sf_quest_light_A01_On')
@@ -119,10 +120,10 @@ class Skip_1(trigger_api.Trigger):
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.destroy_monster(spawn_ids=[101])
         self.spawn_monster(spawn_ids=[101], auto_target=False)
-        self.set_effect(trigger_ids=[6000], visible=False)
+        self.set_effect(trigger_ids=[6000])
         self.set_effect(trigger_ids=[6000], visible=True)
-        self.set_ambient_light(primary=[232,92,53])
-        self.set_directional_light(diffuse_color=[41,21,18], specular_color=[130,130,130])
+        self.set_ambient_light(primary=Vector3(232,92,53))
+        self.set_directional_light(diffuse_color=Vector3(41,21,18), specular_color=Vector3(130,130,130))
         self.set_actor(trigger_id=201, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=202, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=203, visible=True, initial_sequence='sf_quest_light_A01_On')
@@ -148,7 +149,7 @@ class 정리_01(trigger_api.Trigger):
 
 class 정리_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -159,7 +160,7 @@ class 정리_02(trigger_api.Trigger):
 
 class 밝아짐(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):
@@ -168,9 +169,9 @@ class 밝아짐(trigger_api.Trigger):
 
 class 경보끝_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6000], visible=False)
-        self.set_ambient_light(primary=[131,160,209])
-        self.set_directional_light(diffuse_color=[134,160,143], specular_color=[130,130,130])
+        self.set_effect(trigger_ids=[6000])
+        self.set_ambient_light(primary=Vector3(131,160,209))
+        self.set_directional_light(diffuse_color=Vector3(134,160,143), specular_color=Vector3(130,130,130))
         self.set_actor(trigger_id=201, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=202, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=203, visible=True, initial_sequence='sf_quest_light_A01_Off')

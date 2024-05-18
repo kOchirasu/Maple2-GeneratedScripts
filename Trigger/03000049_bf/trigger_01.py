@@ -5,7 +5,7 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000289], state=1)
-        self.set_effect(trigger_ids=[101], visible=False)
+        self.set_effect(trigger_ids=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000289], state=0):

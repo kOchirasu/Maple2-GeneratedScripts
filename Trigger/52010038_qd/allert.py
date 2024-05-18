@@ -1,14 +1,15 @@
 """ trigger/52010038_qd/allert.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[131,160,209])
-        self.set_directional_light(diffuse_color=[134,160,143], specular_color=[130,130,130])
-        self.set_effect(trigger_ids=[6000,6299], visible=False)
-        self.set_effect(trigger_ids=[6101,6102,6103,6104,6105,6106,6107,6108,6109], visible=False)
-        self.set_effect(trigger_ids=[6201,6202,6203,6204], visible=False)
+        self.set_ambient_light(primary=Vector3(131,160,209))
+        self.set_directional_light(diffuse_color=Vector3(134,160,143), specular_color=Vector3(130,130,130))
+        self.set_effect(trigger_ids=[6000,6299])
+        self.set_effect(trigger_ids=[6101,6102,6103,6104,6105,6106,6107,6108,6109])
+        self.set_effect(trigger_ids=[6201,6202,6203,6204])
         self.set_actor(trigger_id=201, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=202, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=203, visible=True, initial_sequence='sf_quest_light_A01_Off')
@@ -53,8 +54,8 @@ class 이펙트시퀀스02(trigger_api.Trigger):
 
 class 이펙트시퀀스03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[232,92,53])
-        self.set_directional_light(diffuse_color=[41,21,18], specular_color=[130,130,130])
+        self.set_ambient_light(primary=Vector3(232,92,53))
+        self.set_directional_light(diffuse_color=Vector3(41,21,18), specular_color=Vector3(130,130,130))
         self.set_skill(trigger_ids=[702], enable=True)
         self.set_skill(trigger_ids=[706], enable=True)
         self.set_effect(trigger_ids=[6102,6106], visible=True)

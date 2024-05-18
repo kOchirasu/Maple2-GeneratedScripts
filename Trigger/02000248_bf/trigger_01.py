@@ -8,7 +8,7 @@ from dungeon_common.checkusercount import *
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[101,102,103,104,105,106,107,108,109,110])
-        self.set_effect(trigger_ids=[2001], visible=False)
+        self.set_effect(trigger_ids=[2001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=201) >= 1:
@@ -23,8 +23,8 @@ class DungeonStart(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[798,799], visible=False)
-        self.set_timer(timer_id='89', seconds=3, start_delay=0)
+        self.set_mesh(trigger_ids=[798,799])
+        self.set_timer(timer_id='89', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='89'):
@@ -33,10 +33,10 @@ class 시작(trigger_api.Trigger):
 
 class 공격(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101,102,103], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,102,103])
         self.set_effect(trigger_ids=[2001], visible=True)
         self.set_event_ui(type=1, arg2='$02000248_BF__TRIGGER_01__0$', arg3='5000', arg4='0')
-        self.set_timer(timer_id='1', seconds=9, start_delay=0)
+        self.set_timer(timer_id='1', seconds=9)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101,102,103]):
@@ -47,8 +47,8 @@ class 공격(trigger_api.Trigger):
 
 class 공격1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[104,105], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[104,105])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[104,105]):
@@ -59,8 +59,8 @@ class 공격1(trigger_api.Trigger):
 
 class 공격2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[106,107,108], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[106,107,108])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[106,107,108]):
@@ -71,8 +71,8 @@ class 공격2(trigger_api.Trigger):
 
 class 공격2_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[109,110], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[109,110])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[109,110]):
@@ -83,8 +83,8 @@ class 공격2_2(trigger_api.Trigger):
 
 class 공격3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[114,115,116], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[114,115,116])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[114,115,116]):
@@ -95,8 +95,8 @@ class 공격3(trigger_api.Trigger):
 
 class 공격3_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[111,112,113], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[111,112,113])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[111,112,113]):
@@ -107,8 +107,8 @@ class 공격3_2(trigger_api.Trigger):
 
 class 공격3_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[117,118,119,120], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[117,118,119,120])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[117,118,119,120]):
@@ -119,8 +119,8 @@ class 공격3_3(trigger_api.Trigger):
 
 class 공격4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[121,122,123,124,125], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[121,122,123,124,125])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[121,122,123,124,125]):
@@ -131,8 +131,8 @@ class 공격4(trigger_api.Trigger):
 
 class 공격4_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[126,127,128,129,130], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[126,127,128,129,130])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[126,127,128,129,130]):
@@ -143,8 +143,8 @@ class 공격4_2(trigger_api.Trigger):
 
 class 공격5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[131,132,133,134,135,136], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[131,132,133,134,135,136])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[131,132,133,134,135,136]):
@@ -155,8 +155,8 @@ class 공격5(trigger_api.Trigger):
 
 class 공격5_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[137,138,139,140], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[137,138,139,140])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[137,138,139,140]):
@@ -167,8 +167,8 @@ class 공격5_2(trigger_api.Trigger):
 
 class 공격6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[141,142,143,144,145,146,148], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[141,142,143,144,145,146,148])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[141,142,143,144,145,146,148]):
@@ -179,8 +179,8 @@ class 공격6(trigger_api.Trigger):
 
 class 공격7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[151,153,154,155,156,157,158], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[151,153,154,155,156,157,158])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[151,153,154,155,156,157,158]):
@@ -191,8 +191,8 @@ class 공격7(trigger_api.Trigger):
 
 class 공격8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[161,162,163,164,167,168,169,170], auto_target=True)
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.spawn_monster(spawn_ids=[161,162,163,164,167,168,169,170])
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -207,7 +207,7 @@ class 끝연출(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[8001,8003,8002], return_view=False)
-        self.set_timer(timer_id='1', seconds=4, start_delay=0)
+        self.set_timer(timer_id='1', seconds=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -217,7 +217,7 @@ class 끝연출(trigger_api.Trigger):
 class 끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=2000249, portal_id=2)
-        self.set_timer(timer_id='1', seconds=3, start_delay=0)
+        self.set_timer(timer_id='1', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -226,7 +226,7 @@ class 끝(trigger_api.Trigger):
 
 class 차진입대기2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=15, start_delay=0)
+        self.set_timer(timer_id='1', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):

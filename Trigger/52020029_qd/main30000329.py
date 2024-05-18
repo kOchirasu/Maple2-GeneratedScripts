@@ -34,7 +34,7 @@ class 연출시작_02(trigger_api.Trigger):
 
 class 진리의문입장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4001], return_view=False)
         self.move_user_path(patrol_name='MS2PatrolData_3001')
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_3002')
@@ -58,7 +58,7 @@ class 진리의문입장_02(trigger_api.Trigger):
 
 class 진리의문입장_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.face_emotion(spawn_id=0, emotion_name='defaultBattle')
+        self.face_emotion(emotion_name='defaultBattle')
         self.add_cinematic_talk(npc_id=0, msg='저건...', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,8 +114,8 @@ class 마무리2(trigger_api.Trigger):
 
 class 마무리3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=0)
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

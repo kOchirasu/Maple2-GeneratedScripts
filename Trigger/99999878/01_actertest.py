@@ -5,7 +5,7 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=1000, visible=True, initial_sequence='Closed')
-        self.set_breakable(trigger_ids=[2000], enable=False)
+        self.set_breakable(trigger_ids=[2000])
         self.set_visible_breakable_object(trigger_ids=[2000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,9 +38,9 @@ class OffDelay(trigger_api.Trigger):
 
 class Off(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=1000, visible=False, initial_sequence='Opened')
-        self.set_breakable(trigger_ids=[2000], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[2000], visible=False)
+        self.set_actor(trigger_id=1000, initial_sequence='Opened')
+        self.set_breakable(trigger_ids=[2000])
+        self.set_visible_breakable_object(trigger_ids=[2000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

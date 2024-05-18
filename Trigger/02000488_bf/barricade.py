@@ -20,7 +20,7 @@ class 카운트(trigger_api.Trigger):
 class 차단(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Closed') # IronDoor_StageEnter
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0) # DoorBarrier_StageEnter
+        self.set_mesh(trigger_ids=[3100], visible=True) # DoorBarrier_StageEnter
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[999]):
@@ -30,7 +30,7 @@ class 차단(trigger_api.Trigger):
 class 차단해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Opened') # IronDoor_StageEnter
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=0, interval=0, fade=0) # DoorBarrier_StageEnter
+        self.set_mesh(trigger_ids=[3100]) # DoorBarrier_StageEnter
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

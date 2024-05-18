@@ -11,7 +11,7 @@ class idle(trigger_api.Trigger):
 
 class portal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[802], auto_target=True) # 포탈
+        self.spawn_monster(spawn_ids=[802]) # 포탈
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[802]):
@@ -20,7 +20,7 @@ class portal(trigger_api.Trigger):
 
 class portal_off(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7014], visible=False) # 다크 포탈
+        self.set_effect(trigger_ids=[7014]) # 다크 포탈
         self.set_effect(trigger_ids=[7114], visible=True) # 다크 포탈 폭발
 
 

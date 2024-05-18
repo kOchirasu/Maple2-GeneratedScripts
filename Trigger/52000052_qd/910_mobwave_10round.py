@@ -6,7 +6,7 @@ class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='PenaltyFinish', value=0)
         self.set_user_value(key='WaveTime', value=0) # 웨이브 진행 순서 기억
-        self.set_effect(trigger_ids=[5110], visible=False) # 10Round_ShadowApp
+        self.set_effect(trigger_ids=[5110]) # 10Round_ShadowApp
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobWaveStart') >= 1:
@@ -34,15 +34,15 @@ class FirstWaveStart(trigger_api.Trigger):
 # 방향 랜덤
 class FirstWaveDirectionRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FirstWaveDirection10(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FirstWaveDirection20(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FirstWaveDirection30(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FirstWaveDirection40(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FirstWaveDirection50(self.ctx)
 
 
@@ -169,11 +169,11 @@ class FirstWaveDirection51(trigger_api.Trigger):
 # 딜레이 랜덤
 class FirstWaveDelayRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay7000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay8000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay9000(self.ctx)
 
 
@@ -219,15 +219,15 @@ class SecondWaveStart(trigger_api.Trigger):
 # 방향 랜덤
 class SecondWaveDirectionRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return SecondWaveDirection10(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return SecondWaveDirection20(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return SecondWaveDirection30(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return SecondWaveDirection40(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return SecondWaveDirection50(self.ctx)
 
 
@@ -354,11 +354,11 @@ class SecondWaveDirection51(trigger_api.Trigger):
 # 딜레이 랜덤
 class SecondWaveDelayRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay5000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay6000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay7000(self.ctx)
 
 
@@ -400,15 +400,15 @@ class ThirdWaveStart(trigger_api.Trigger):
 
 class ThirdWaveDirectionRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection10(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection20(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection30(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection40(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection50(self.ctx)
 
 
@@ -535,11 +535,11 @@ class ThirdWaveDirection51(trigger_api.Trigger):
 # 딜레이 랜덤
 class ThirdWaveDelayRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay3000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay4000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay5000(self.ctx)
 
 
@@ -581,15 +581,15 @@ class FourthWaveStart(trigger_api.Trigger):
 # 방향 랜덤
 class FourthWaveDirectionRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection10(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection20(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection30(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection40(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection50(self.ctx)
 
 
@@ -751,7 +751,7 @@ class DefenceSucess01(trigger_api.Trigger):
 
 class DefenceSucess02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5110], visible=False) # 10Round_ShadowApp
+        self.set_effect(trigger_ids=[5110]) # 10Round_ShadowApp
         self.set_user_value(trigger_id=10, key='10RoundSuccess', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:

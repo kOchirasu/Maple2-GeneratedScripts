@@ -13,14 +13,14 @@ class idle(trigger_api.Trigger):
 
 class start_sound(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=1, interval=0)
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
             return idle(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[9000005], visible=False) # TeleportSound EFfect On
+        self.set_effect(trigger_ids=[9000005]) # TeleportSound EFfect On
 
 
 initial_state = idle

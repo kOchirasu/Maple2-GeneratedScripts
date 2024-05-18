@@ -20,7 +20,7 @@ class 채집가능(trigger_api.Trigger):
 
 class 채집완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):

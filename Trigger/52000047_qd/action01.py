@@ -4,29 +4,29 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 미션 성공 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # DoorOpen
-        self.set_effect(trigger_ids=[5101], visible=False) # DoorClose
-        self.set_effect(trigger_ids=[5200], visible=False) # Dust
-        self.set_effect(trigger_ids=[5201], visible=False) # Dust
-        self.set_effect(trigger_ids=[5202], visible=False) # Dust
-        self.set_effect(trigger_ids=[5203], visible=False) # Dust
-        self.set_effect(trigger_ids=[5204], visible=False) # Dust
-        self.set_effect(trigger_ids=[5205], visible=False) # Dust
-        self.set_effect(trigger_ids=[5206], visible=False) # Dust
-        self.set_effect(trigger_ids=[5207], visible=False) # Dust
-        self.set_effect(trigger_ids=[5208], visible=False) # Dust
-        self.set_effect(trigger_ids=[5209], visible=False) # Dust
-        self.set_effect(trigger_ids=[5210], visible=False) # Dust
-        self.set_effect(trigger_ids=[5220], visible=False) # SandFlow
-        self.set_effect(trigger_ids=[5221], visible=False) # SandFlow
-        self.set_effect(trigger_ids=[5300], visible=False) # RockFall
-        self.set_skill(trigger_ids=[7000], enable=False) # PCKnockBack
-        self.set_skill(trigger_ids=[7001], enable=False) # PCKnockBack
-        self.set_skill(trigger_ids=[7002], enable=False) # CubeBreak
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021], visible=False, start_delay=0, interval=0, fade=0) # BrokenCube  Visible OFF
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=0, interval=0, fade=0) # Barrier Visible OFF
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 미션 성공 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # DoorOpen
+        self.set_effect(trigger_ids=[5101]) # DoorClose
+        self.set_effect(trigger_ids=[5200]) # Dust
+        self.set_effect(trigger_ids=[5201]) # Dust
+        self.set_effect(trigger_ids=[5202]) # Dust
+        self.set_effect(trigger_ids=[5203]) # Dust
+        self.set_effect(trigger_ids=[5204]) # Dust
+        self.set_effect(trigger_ids=[5205]) # Dust
+        self.set_effect(trigger_ids=[5206]) # Dust
+        self.set_effect(trigger_ids=[5207]) # Dust
+        self.set_effect(trigger_ids=[5208]) # Dust
+        self.set_effect(trigger_ids=[5209]) # Dust
+        self.set_effect(trigger_ids=[5210]) # Dust
+        self.set_effect(trigger_ids=[5220]) # SandFlow
+        self.set_effect(trigger_ids=[5221]) # SandFlow
+        self.set_effect(trigger_ids=[5300]) # RockFall
+        self.set_skill(trigger_ids=[7000]) # PCKnockBack
+        self.set_skill(trigger_ids=[7001]) # PCKnockBack
+        self.set_skill(trigger_ids=[7002]) # CubeBreak
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021]) # BrokenCube  Visible OFF
+        self.set_mesh(trigger_ids=[3100]) # Barrier Visible OFF
         self.set_user_value(key='VasaraTired', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +84,7 @@ class QuestOnGoing02(trigger_api.Trigger):
 # 최초 입장
 class LoadingDelay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.spawn_monster(spawn_ids=[500,501,502,503,504,505,506,507,508,509], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -96,7 +96,7 @@ class PCWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
         self.move_user_path(patrol_name='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,7 +106,7 @@ class PCWalkIn01(trigger_api.Trigger):
 
 class PCWalkIn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=500, sequence_name='Talk_A', duration=6000)
+        self.set_npc_emotion_loop(spawn_id=500, sequence_name='Talk_A', duration=6000.0)
         self.set_npc_emotion_sequence(spawn_id=507, sequence_name='Bore_A')
         self.set_npc_emotion_sequence(spawn_id=501, sequence_name='Bore_A')
 
@@ -117,10 +117,10 @@ class PCWalkIn02(trigger_api.Trigger):
 
 class PCWalkIn03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=502, sequence_name='Talk_A', duration=6000)
-        self.set_npc_emotion_loop(spawn_id=509, sequence_name='Talk_A', duration=6000)
+        self.set_npc_emotion_loop(spawn_id=502, sequence_name='Talk_A', duration=6000.0)
+        self.set_npc_emotion_loop(spawn_id=509, sequence_name='Talk_A', duration=6000.0)
         self.set_npc_emotion_sequence(spawn_id=503, sequence_name='Bore_A')
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -130,7 +130,7 @@ class PCWalkIn03(trigger_api.Trigger):
 class NPCNotice01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=509, patrol_name='MS2PatrolData_509')
-        self.set_dialogue(type=1, spawn_id=509, script='$52000047_QD__ACTION01__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=509, script='$52000047_QD__ACTION01__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -159,7 +159,7 @@ class NPCNotice03(trigger_api.Trigger):
 class NPCNotice04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=508, patrol_name='MS2PatrolData_508')
-        self.set_dialogue(type=1, spawn_id=504, script='$52000047_QD__ACTION01__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=504, script='$52000047_QD__ACTION01__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -197,7 +197,7 @@ class NPCNotice07(trigger_api.Trigger):
 
 class MafiaReadyToFight01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=505, script='$52000047_QD__ACTION01__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=505, script='$52000047_QD__ACTION01__2$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -206,9 +206,9 @@ class MafiaReadyToFight01(trigger_api.Trigger):
 
 class MafiaReadyToFight02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=503, enable=True)
+        self.select_camera(trigger_id=503)
         self.set_pc_emotion_sequence(sequence_names=['Striker_Bore_A'])
-        self.set_dialogue(type=1, spawn_id=0, script='$52000047_QD__ACTION01__3$', time=2, arg5=1)
+        self.set_dialogue(type=1, script='$52000047_QD__ACTION01__3$', time=2, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -217,7 +217,7 @@ class MafiaReadyToFight02(trigger_api.Trigger):
 
 class MafiaReadyToFight03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=504, enable=True)
+        self.select_camera(trigger_id=504)
         self.change_monster(from_spawn_id=500, to_spawn_id=900)
         self.change_monster(from_spawn_id=501, to_spawn_id=901)
         self.change_monster(from_spawn_id=502, to_spawn_id=902)
@@ -281,7 +281,7 @@ class WeihongWalkIn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[100], auto_target=False) # 웨이 홍
         self.move_npc(spawn_id=100, patrol_name='MS2PatrolData_100')
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -302,7 +302,7 @@ class WeihongWalkIn03(trigger_api.Trigger):
 
 class WeihongTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.set_dialogue(type=2, spawn_id=11000251, script='$52000047_QD__ACTION01__4$', time=4) # 웨이 홍
         self.set_skip(state=WeihongTalk01Skip)
 
@@ -348,7 +348,7 @@ class WeihongTalk02Skip(trigger_api.Trigger):
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -367,7 +367,7 @@ class MeetAgainWeihong01(trigger_api.Trigger):
         self.move_npc(spawn_id=527, patrol_name='MS2PatrolData_527')
         self.move_npc(spawn_id=528, patrol_name='MS2PatrolData_528')
         self.move_npc(spawn_id=529, patrol_name='MS2PatrolData_529')
-        self.set_dialogue(type=1, spawn_id=520, script='$52000047_QD__ACTION01__6$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=520, script='$52000047_QD__ACTION01__6$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -376,7 +376,7 @@ class MeetAgainWeihong01(trigger_api.Trigger):
 
 class MeetAgainWeihong02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=527, script='$52000047_QD__ACTION01__7$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=527, script='$52000047_QD__ACTION01__7$', time=2)
         self.set_dialogue(type=1, spawn_id=529, script='$52000047_QD__ACTION01__8$', time=2, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -387,7 +387,7 @@ class MeetAgainWeihong02(trigger_api.Trigger):
 class MeetAgainWeihong03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1001')
-        self.set_dialogue(type=1, spawn_id=0, script='$52000047_QD__ACTION01__9$', time=4, arg5=1)
+        self.set_dialogue(type=1, script='$52000047_QD__ACTION01__9$', time=4, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -449,7 +449,7 @@ class PositionArrange01(trigger_api.Trigger):
 
 class PositionArrange02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
         self.move_user(map_id=52000047, portal_id=3, box_id=9900)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -469,7 +469,7 @@ class PositionArrange03(trigger_api.Trigger):
 
 class WeihongStepBack01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=101, script='$52000047_QD__ACTION01__10$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$52000047_QD__ACTION01__10$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -478,7 +478,7 @@ class WeihongStepBack01(trigger_api.Trigger):
 
 class WeihongStepBack02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_102')
         self.set_dialogue(type=1, spawn_id=101, script='$52000047_QD__ACTION01__11$', time=2, arg5=1)
 
@@ -489,9 +489,9 @@ class WeihongStepBack02(trigger_api.Trigger):
 
 class PCTryToAttackWeihong01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=710, enable=True)
-        self.set_pc_emotion_loop(sequence_name='Knuckle_Attack_Idle_A', duration=1734)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000047_QD__ACTION01__12$', time=2, arg5=0)
+        self.select_camera(trigger_id=710)
+        self.set_pc_emotion_loop(sequence_name='Knuckle_Attack_Idle_A', duration=1734.0)
+        self.set_dialogue(type=1, script='$52000047_QD__ACTION01__12$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -500,7 +500,7 @@ class PCTryToAttackWeihong01(trigger_api.Trigger):
 
 class PCTryToAttackWeihong02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=711, enable=True)
+        self.select_camera(trigger_id=711)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -519,7 +519,7 @@ class PCTryToAttackWeihong03(trigger_api.Trigger):
 class VasaraPush01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_202')
-        self.set_dialogue(type=1, spawn_id=201, script='$52000047_QD__ACTION01__20$', time=1, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$52000047_QD__ACTION01__20$', time=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -546,7 +546,7 @@ class VasaraPush03(trigger_api.Trigger):
 
 class VasaraPush04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Push_A', duration=1500)
+        self.set_pc_emotion_loop(sequence_name='Push_A', duration=1500.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -566,7 +566,7 @@ class SceneChange01(trigger_api.Trigger):
 
 class SceneChange02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=720, enable=True)
+        self.select_camera(trigger_id=720)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -586,7 +586,7 @@ class SceneChange03(trigger_api.Trigger):
 class VasaraTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_203')
-        self.set_dialogue(type=1, spawn_id=0, script='$52000047_QD__ACTION01__13$', time=2, arg5=0)
+        self.set_dialogue(type=1, script='$52000047_QD__ACTION01__13$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -595,7 +595,7 @@ class VasaraTalk01(trigger_api.Trigger):
 
 class VasaraTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=201, script='$52000047_QD__ACTION01__14$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$52000047_QD__ACTION01__14$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -604,7 +604,7 @@ class VasaraTalk02(trigger_api.Trigger):
 
 class VasaraTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000047_QD__ACTION01__15$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000047_QD__ACTION01__15$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -657,7 +657,7 @@ class VasaraTired01(trigger_api.Trigger):
 
 class VasaraTired02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=720, enable=True)
+        self.select_camera(trigger_id=720)
         self.move_user(map_id=52000047, portal_id=4, box_id=9900)
         self.destroy_monster(spawn_ids=[202])
         self.spawn_monster(spawn_ids=[203], auto_target=False)
@@ -669,8 +669,8 @@ class VasaraTired02(trigger_api.Trigger):
 
 class VasaraTired03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Down_Idle_A', duration=9000)
-        self.set_pc_emotion_loop(sequence_name='Knuckle_Attack_Idle_A', duration=9537)
+        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Down_Idle_A', duration=9000.0)
+        self.set_pc_emotion_loop(sequence_name='Knuckle_Attack_Idle_A', duration=9537.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -689,7 +689,7 @@ class VasaraTired04(trigger_api.Trigger):
 
 class VasaraTired05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=203, script='$52000047_QD__ACTION01__21$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=203, script='$52000047_QD__ACTION01__21$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -698,7 +698,7 @@ class VasaraTired05(trigger_api.Trigger):
 
 class WeihongOrder01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=730, enable=True)
+        self.select_camera(trigger_id=730)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Talk_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -730,7 +730,7 @@ class WeihongOrder02Skip(trigger_api.Trigger):
 
 class MafiaMove01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=731, enable=True)
+        self.select_camera(trigger_id=731)
         self.move_npc(spawn_id=530, patrol_name='MS2PatrolData_530')
         self.move_npc(spawn_id=535, patrol_name='MS2PatrolData_535')
         self.move_npc(spawn_id=534, patrol_name='MS2PatrolData_534')
@@ -801,7 +801,7 @@ class VasaraPushAgain03(trigger_api.Trigger):
 
 class VasaraPushAgain04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Push_A', duration=6000)
+        self.set_pc_emotion_loop(sequence_name='Push_A', duration=6000.0)
         self.set_npc_emotion_sequence(spawn_id=203, sequence_name='Attack_01_I,Attack_Idle_A,Attack_Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -843,8 +843,8 @@ class VasaraLastAttack02(trigger_api.Trigger):
 class VasaraLastAttack03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5221], visible=True) # SandFlow
-        self.select_camera(trigger_id=731, enable=True)
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0) # Barrier Visible OFF
+        self.select_camera(trigger_id=731)
+        self.set_mesh(trigger_ids=[3100], visible=True) # Barrier Visible OFF
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):

@@ -1,11 +1,12 @@
 """ trigger/52020020_qd/main_b.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[60200135], quest_states=[2]):
@@ -31,7 +32,7 @@ class Monologue_01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npc_id=0, msg='곧 알현식이 열린다고?', duration=2500)
-        self.set_pc_emotion_loop(sequence_name='Object_React_H', duration=16000)
+        self.set_pc_emotion_loop(sequence_name='Object_React_H', duration=16000.0)
         self.set_scene_skip(state=EndReady, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +90,7 @@ class EventTalk_01(trigger_api.Trigger):
 
 class EventTalk_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=0, msg='설마....', duration=2500, align='Right')
+        self.add_cinematic_talk(npc_id=0, msg='설마....', duration=2500, align=Align.Right)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -111,8 +112,8 @@ class EndReady(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_sound(trigger_id=7001, enable=True)
-        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=100)
-        self.spawn_monster(spawn_ids=[201], auto_target=True) # 조디
+        self.set_pc_emotion_loop(sequence_name='Idle_A', duration=100.0)
+        self.spawn_monster(spawn_ids=[201]) # 조디
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -123,7 +124,7 @@ class exit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
 
 initial_state = idle

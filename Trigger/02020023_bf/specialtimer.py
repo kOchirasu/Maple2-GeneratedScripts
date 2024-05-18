@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 타이머시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='SpecialTimer', seconds=180, start_delay=1, interval=0)
+        self.set_timer(timer_id='SpecialTimer', seconds=180, start_delay=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크(self.ctx)

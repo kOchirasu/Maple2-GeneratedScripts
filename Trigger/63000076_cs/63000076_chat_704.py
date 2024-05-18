@@ -10,7 +10,7 @@ class 준비(trigger_api.Trigger):
 
 class 잡담_01_704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=107, msg='$63000076_CS__63000076_CHAT_704__0$', duration=2000, delay_tick=0) # 너 피부 좋아졌다?
+        self.add_balloon_talk(spawn_id=107, msg='$63000076_CS__63000076_CHAT_704__0$', duration=2000) # 너 피부 좋아졌다?
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -19,7 +19,7 @@ class 잡담_01_704(trigger_api.Trigger):
 
 class 잡담_02_704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=105, msg='$63000076_CS__63000076_CHAT_704__1$', duration=2500, delay_tick=0) # 요즘 스팀 마사지하고 있거든
+        self.add_balloon_talk(spawn_id=105, msg='$63000076_CS__63000076_CHAT_704__1$', duration=2500) # 요즘 스팀 마사지하고 있거든
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):

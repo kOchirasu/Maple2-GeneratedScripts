@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
         self.widget_action(type='Round', func='SettingFinalRound', widget_arg='1')
         self.widget_action(type='Round', func='SettingAllowedFailCount', widget_arg='3')
         self.widget_action(type='Round', func='SettingRoundInitIfFail', widget_arg='0')
-        self.lock_my_pc(is_lock=False)
+        self.lock_my_pc()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GameLogicStart') >= 1:
@@ -117,7 +117,7 @@ class 라운드3진행(trigger_api.Trigger):
 
 class 라운드종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        self.lock_my_pc(is_lock=False)
+        self.lock_my_pc()
         return 새라운드시작가능체크(self.ctx)
 
 

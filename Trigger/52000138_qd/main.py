@@ -1,5 +1,6 @@
 """ trigger/52000138_qd/main.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 # 플레이어 감지
@@ -55,9 +56,9 @@ class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG\\weather\\Eff_monochrome_03.xml')
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/Sound/Eff_ Object_Train_alert.xml')
-        self.set_ambient_light(primary=[0,0,0])
-        self.set_ambient_light(primary=[1,1,1])
-        self.add_buff(box_ids=[701], skill_id=99910230, level=1, is_player=False, is_skill_set=True) # 레논 변신
+        self.set_ambient_light(primary=Vector3(0,0,0))
+        self.set_ambient_light(primary=Vector3(1,1,1))
+        self.add_buff(box_ids=[701], skill_id=99910230, level=1, is_player=False) # 레논 변신
         self.add_buff(box_ids=[701], skill_id=99910230, level=1, is_player=False, is_skill_set=False) # 레논 변신
         # 다크윈드 대원 101번 소환
         # self.spawn_monster(spawn_ids=[101,102,103,104,105,122])
@@ -81,7 +82,7 @@ class act1_wave1(trigger_api.Trigger):
         self.set_actor(trigger_id=1026, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=1027, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=1028, visible=True, initial_sequence='sf_quest_light_A01_On') # 다크윈드 대원 101번 대사
-        self.set_dialogue(type=1, spawn_id=101, script='$52000138_QD__MAIN__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$52000138_QD__MAIN__1$', time=3)
         self.set_sound(trigger_id=10000, enable=True)
         self.set_sound(trigger_id=7002, enable=True)
         # self.set_dialogue(type=1, spawn_id=122, script='레논! 사실이 아니지? 네가 그럴리가 없잖아!', time=4, arg5=4)
@@ -185,7 +186,7 @@ class act2_wave1(trigger_api.Trigger):
         self.set_actor(trigger_id=1012, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=1023, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=1024, visible=True, initial_sequence='sf_quest_light_A01_On')
-        self.set_dialogue(type=1, spawn_id=110, script='$52000138_QD__MAIN__5$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$52000138_QD__MAIN__5$', time=2)
         self.set_dialogue(type=1, spawn_id=111, script='$52000138_QD__MAIN__6$', time=3, arg5=1)
         # self.set_dialogue(type=1, spawn_id=123, script='아니라고 말해줘! 아니라고 말해달라고!', time=4, arg5=3) # 블랙아이 대사
 
@@ -272,7 +273,7 @@ class act3_wave1_move(trigger_api.Trigger):
         self.set_actor(trigger_id=1020, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=1021, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=1022, visible=True, initial_sequence='sf_quest_light_A01_On')
-        self.set_dialogue(type=1, spawn_id=113, script='$52000138_QD__MAIN__10$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=113, script='$52000138_QD__MAIN__10$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1):
@@ -337,7 +338,7 @@ class plot(trigger_api.Trigger):
 
 class scheme1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__14$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__14$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -346,7 +347,7 @@ class scheme1(trigger_api.Trigger):
 
 class scheme2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__15$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__15$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -355,7 +356,7 @@ class scheme2(trigger_api.Trigger):
 
 class scheme3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__16$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__16$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -367,8 +368,8 @@ class scheme3(trigger_api.Trigger):
 
 class scheme4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=1500)
-        self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__17$', time=5, arg5=0)
+        self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=1500.0)
+        self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__17$', time=5)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:

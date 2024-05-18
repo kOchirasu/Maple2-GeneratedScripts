@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[401,402,403,404], visible=False)
+        self.set_effect(trigger_ids=[401,402,403,404])
         self.set_interact_object(trigger_ids=[10000131], state=1)
-        self.set_mesh(trigger_ids=[201,202,203], visible=False)
-        self.set_ladder(trigger_ids=[301], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[302], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[303], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[304], visible=False, enable=False)
+        self.set_mesh(trigger_ids=[201,202,203])
+        self.set_ladder(trigger_ids=[301])
+        self.set_ladder(trigger_ids=[302])
+        self.set_ladder(trigger_ids=[303])
+        self.set_ladder(trigger_ids=[304])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000131], state=0):

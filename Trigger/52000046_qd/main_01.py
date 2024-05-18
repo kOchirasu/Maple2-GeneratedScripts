@@ -1,5 +1,6 @@
 """ trigger/52000046_qd/main_01.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class idle(trigger_api.Trigger):
@@ -44,7 +45,7 @@ class scene_02(trigger_api.Trigger):
 
 class scene_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -53,7 +54,7 @@ class scene_03(trigger_api.Trigger):
 
 class scene_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003215, msg='$52000046_QD__MAIN_01__0$', duration=3735, align='Left')
+        self.add_cinematic_talk(npc_id=11003215, msg='$52000046_QD__MAIN_01__0$', duration=3735, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -62,7 +63,7 @@ class scene_04(trigger_api.Trigger):
 
 class scene_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003215, msg='$52000046_QD__MAIN_01__1$', duration=2000, align='Left')
+        self.add_cinematic_talk(npc_id=11003215, msg='$52000046_QD__MAIN_01__1$', duration=2000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -71,7 +72,7 @@ class scene_05(trigger_api.Trigger):
 
 class scene_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003215, msg='$52000046_QD__MAIN_01__2$', duration=2000, align='Left')
+        self.add_cinematic_talk(npc_id=11003215, msg='$52000046_QD__MAIN_01__2$', duration=2000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -80,7 +81,7 @@ class scene_06(trigger_api.Trigger):
 
 class scene_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003215, msg='$52000046_QD__MAIN_01__3$', duration=2000, align='Left')
+        self.add_cinematic_talk(npc_id=11003215, msg='$52000046_QD__MAIN_01__3$', duration=2000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -89,7 +90,7 @@ class scene_07(trigger_api.Trigger):
 
 class scene_08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=0, msg='$52000046_QD__MAIN_01__4$', duration=3000)
+        self.add_balloon_talk(msg='$52000046_QD__MAIN_01__4$', duration=3000)
         self.spawn_monster(spawn_ids=[201], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

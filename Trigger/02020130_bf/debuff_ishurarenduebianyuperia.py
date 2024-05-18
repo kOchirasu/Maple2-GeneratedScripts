@@ -48,7 +48,7 @@ class 이슈라_디버프스킬끄기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # IshuraFirstSetEnd 변수 0으로 초기화
         self.set_user_value(key='IshuraFirstSetEnd', value=0)
-        self.set_skill(trigger_ids=[1301], enable=False) # 이슈라 전투판 디버프 스킬 끄기
+        self.set_skill(trigger_ids=[1301]) # 이슈라 전투판 디버프 스킬 끄기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=370):
@@ -59,7 +59,7 @@ class 렌듀비앙_디버프스킬끄기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # RenduebianFirstSetEnd 변수 0으로 초기화
         self.set_user_value(key='RenduebianFirstSetEnd', value=0)
-        self.set_skill(trigger_ids=[1302], enable=False) # 렌듀비앙 전투판 디버프 스킬 끄기
+        self.set_skill(trigger_ids=[1302]) # 렌듀비앙 전투판 디버프 스킬 끄기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=370):
@@ -70,7 +70,7 @@ class 유페리아_디버프스킬끄기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # YuperiaFirstSetEnd 변수 0으로 초기화
         self.set_user_value(key='YuperiaFirstSetEnd', value=0)
-        self.set_skill(trigger_ids=[1303], enable=False) # 유페리아 전투판 디버프 스킬 끄기
+        self.set_skill(trigger_ids=[1303]) # 유페리아 전투판 디버프 스킬 끄기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=370):

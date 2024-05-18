@@ -21,7 +21,7 @@ class ready(trigger_api.Trigger):
         self.set_sound(trigger_id=7002, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
         self.set_scene_skip(state=endwaiting, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class move(trigger_api.Trigger):
 class talk(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Clap_A')
-        self.add_balloon_talk(spawn_id=201, msg='$52000126_QD__MAIN_01__1$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=201, msg='$52000126_QD__MAIN_01__1$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -51,7 +51,7 @@ class talk(trigger_api.Trigger):
 
 class endtalk(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=201, msg='$52000126_QD__MAIN_01__2$', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=201, msg='$52000126_QD__MAIN_01__2$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -64,7 +64,7 @@ class endwaiting(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
         self.destroy_monster(spawn_ids=[201])
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
+        self.spawn_monster(spawn_ids=[202])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

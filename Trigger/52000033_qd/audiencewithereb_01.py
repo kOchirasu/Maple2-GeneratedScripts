@@ -5,9 +5,9 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[101,201,301,401,501,502,503,504,505,506,507,508,509,510], auto_target=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # SpotLight_01
-        self.set_effect(trigger_ids=[5001], visible=False) # SpotLight_02
-        self.set_effect(trigger_ids=[5002], visible=False) # GuardBow
+        self.set_effect(trigger_ids=[5000]) # SpotLight_01
+        self.set_effect(trigger_ids=[5001]) # SpotLight_02
+        self.set_effect(trigger_ids=[5002]) # GuardBow
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -61,7 +61,7 @@ class PCWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -70,7 +70,7 @@ class PCWalkIn01(trigger_api.Trigger):
 
 class PCWalkIn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -88,7 +88,7 @@ class PCWalkIn03(trigger_api.Trigger):
 
 class PCWalkIn04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -116,7 +116,7 @@ class BowAction01(trigger_api.Trigger):
 
 class BowAction02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -126,7 +126,7 @@ class BowAction02(trigger_api.Trigger):
 class ErebTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1001')
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -135,7 +135,7 @@ class ErebTalk01(trigger_api.Trigger):
 
 class ErebTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__0$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__0$', time=4)
         self.set_skip(state=ErebTalk03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -208,7 +208,7 @@ class PCGoCenter03(trigger_api.Trigger):
 
 class PCGoCenter04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=800, enable=True)
+        self.select_camera(trigger_id=800)
         self.move_user_path(patrol_name='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -248,7 +248,7 @@ class PCSpotLighting02(trigger_api.Trigger):
 class PCSpotLighting03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1003')
-        self.select_camera(trigger_id=801, enable=True)
+        self.select_camera(trigger_id=801)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -257,7 +257,7 @@ class PCSpotLighting03(trigger_api.Trigger):
 
 class ErebTalk11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__1$', time=5, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__1$', time=5)
         self.set_skip(state=ErebTalk12)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -284,8 +284,8 @@ class ErebTalk13(trigger_api.Trigger):
             return PCtoLeave01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5000], visible=False) # SpotLight_01
-        self.set_effect(trigger_ids=[5001], visible=False) # SpotLight_02
+        self.set_effect(trigger_ids=[5000]) # SpotLight_01
+        self.set_effect(trigger_ids=[5001]) # SpotLight_02
 
 
 class PCtoLeave01(trigger_api.Trigger):

@@ -4,7 +4,7 @@ import trigger_api
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4000], visible=False)
+        self.set_mesh(trigger_ids=[4000])
         self.destroy_monster(spawn_ids=[101,102])
 
     def on_tick(self) -> trigger_api.Trigger:

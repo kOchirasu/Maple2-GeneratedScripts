@@ -4,23 +4,23 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6107], visible=False) # Voice_Junta_00001768
-        self.set_effect(trigger_ids=[6006], visible=False) # Voice_Tinchai_00001700
-        self.set_agent(trigger_ids=[8100], visible=False)
-        self.set_agent(trigger_ids=[8101], visible=False)
-        self.set_agent(trigger_ids=[8102], visible=False)
-        self.set_agent(trigger_ids=[8103], visible=False)
-        self.set_agent(trigger_ids=[8104], visible=False)
-        self.set_agent(trigger_ids=[8105], visible=False)
-        self.set_agent(trigger_ids=[8106], visible=False)
-        self.set_agent(trigger_ids=[8107], visible=False)
-        self.set_agent(trigger_ids=[8108], visible=False)
-        self.set_agent(trigger_ids=[8109], visible=False)
-        self.set_agent(trigger_ids=[8110], visible=False)
-        self.set_agent(trigger_ids=[8111], visible=False)
-        self.set_agent(trigger_ids=[8112], visible=False)
-        self.set_skill(trigger_ids=[7000], enable=False) # Push
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=0, interval=0, fade=0) # Invisible_Barrier
+        self.set_effect(trigger_ids=[6107]) # Voice_Junta_00001768
+        self.set_effect(trigger_ids=[6006]) # Voice_Tinchai_00001700
+        self.set_agent(trigger_ids=[8100])
+        self.set_agent(trigger_ids=[8101])
+        self.set_agent(trigger_ids=[8102])
+        self.set_agent(trigger_ids=[8103])
+        self.set_agent(trigger_ids=[8104])
+        self.set_agent(trigger_ids=[8105])
+        self.set_agent(trigger_ids=[8106])
+        self.set_agent(trigger_ids=[8107])
+        self.set_agent(trigger_ids=[8108])
+        self.set_agent(trigger_ids=[8109])
+        self.set_agent(trigger_ids=[8110])
+        self.set_agent(trigger_ids=[8111])
+        self.set_agent(trigger_ids=[8112])
+        self.set_skill(trigger_ids=[7000]) # Push
+        self.set_mesh(trigger_ids=[3100]) # Invisible_Barrier
         self.set_user_value(key='PushStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class Wait(trigger_api.Trigger):
 
 class Enter01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Barrier
+        self.set_mesh(trigger_ids=[3100], visible=True) # Invisible_Barrier
         self.set_agent(trigger_ids=[8100], visible=True)
         self.set_agent(trigger_ids=[8101], visible=True)
         self.set_agent(trigger_ids=[8102], visible=True)
@@ -61,9 +61,9 @@ class Push01(trigger_api.Trigger):
 
 class NpcTalkRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return JuntaTalk01(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return TinChaiTalk01(self.ctx)
 
 

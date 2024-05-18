@@ -4,19 +4,19 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=201, visible=False, initial_sequence='Idle_A')
-        self.set_mesh(trigger_ids=[3001,3002,3003], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3004], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3005], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_actor(trigger_id=201, initial_sequence='Idle_A')
+        self.set_mesh(trigger_ids=[3001,3002,3003])
+        self.set_mesh(trigger_ids=[3004])
+        self.set_mesh(trigger_ids=[3005], visible=True)
         self.set_effect(trigger_ids=[601], visible=True)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_effect(trigger_ids=[604], visible=False)
-        self.set_effect(trigger_ids=[605], visible=False)
-        self.set_effect(trigger_ids=[606], visible=False)
-        self.set_effect(trigger_ids=[607], visible=False)
-        self.set_effect(trigger_ids=[608], visible=False)
-        self.set_effect(trigger_ids=[609], visible=False)
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_effect(trigger_ids=[604])
+        self.set_effect(trigger_ids=[605])
+        self.set_effect(trigger_ids=[606])
+        self.set_effect(trigger_ids=[607])
+        self.set_effect(trigger_ids=[608])
+        self.set_effect(trigger_ids=[609])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -25,7 +25,7 @@ class 대기(trigger_api.Trigger):
 
 class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,2001], auto_target=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -39,10 +39,10 @@ class 홀슈타트변신(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[2001])
         self.spawn_monster(spawn_ids=[2002], auto_target=False)
-        self.set_effect(trigger_ids=[601], visible=False)
-        # self.set_mesh(trigger_ids=[3001,3002,3003], visible=False, start_delay=0, interval=0, fade=2)
+        self.set_effect(trigger_ids=[601])
+        # self.set_mesh(trigger_ids=[3001,3002,3003], fade=2.0)
         self.set_effect(trigger_ids=[605], visible=True)
-        self.add_buff(box_ids=[2002], skill_id=71000005, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[2002], skill_id=71000005, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -52,9 +52,9 @@ class 홀슈타트변신(trigger_api.Trigger):
 class 유페리아대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=201, visible=True, initial_sequence='Idle_A')
-        self.select_camera(trigger_id=3022, enable=True)
+        self.select_camera(trigger_id=3022)
         self.set_effect(trigger_ids=[606], visible=True)
-        self.set_dialogue(type=2, spawn_id=11001564, script='$52000032_QD__MAIN__0$', time=2, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001564, script='$52000032_QD__MAIN__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -63,7 +63,7 @@ class 유페리아대사01(trigger_api.Trigger):
 
 class 유페리아돌진(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1001_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,7 +73,7 @@ class 유페리아돌진(trigger_api.Trigger):
 
 class 카메라전환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -83,7 +83,7 @@ class 카메라전환(trigger_api.Trigger):
 class 이슈라돌진(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[603], visible=True)
-        self.select_camera(trigger_id=3033, enable=True)
+        self.select_camera(trigger_id=3033)
         self.move_npc(spawn_id=1003, patrol_name='MS2PatrolData_1003_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -111,8 +111,8 @@ class 화면전환대기(trigger_api.Trigger):
 
 class 홀슈타트대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3034, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001231, script='$52000032_QD__MAIN__1$', time=3, arg5=0)
+        self.select_camera(trigger_id=3034)
+        self.set_dialogue(type=2, spawn_id=11001231, script='$52000032_QD__MAIN__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -140,9 +140,9 @@ class 홀슈타트소멸(trigger_api.Trigger):
 
 class 카메라이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=201, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=201, initial_sequence='Idle_A')
         self.spawn_monster(spawn_ids=[2099], auto_target=False)
-        # self.select_camera(trigger_id=304, enable=True)
+        # self.select_camera(trigger_id=304)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101], job_code=1):
@@ -169,9 +169,9 @@ class 카메라이동(trigger_api.Trigger):
 
 class 투입대사10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__2$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11000076, script='$52000032_QD__MAIN__3$', time=3, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__2$', time=2)
+        self.set_dialogue(type=2, spawn_id=11000076, script='$52000032_QD__MAIN__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -184,9 +184,9 @@ class 투입대사10(trigger_api.Trigger):
 
 class 투입대사20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__4$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11001581, script='$52000032_QD__MAIN__5$', time=3, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__4$', time=2)
+        self.set_dialogue(type=2, spawn_id=11001581, script='$52000032_QD__MAIN__5$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -199,8 +199,8 @@ class 투입대사20(trigger_api.Trigger):
 
 class 투입대사30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__6$', time=2, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__6$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -210,7 +210,7 @@ class 투입대사30(trigger_api.Trigger):
 class 투입대사30_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[608], visible=True)
-        self.set_dialogue(type=2, spawn_id=11000032, script='$52000032_QD__MAIN__7$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000032, script='$52000032_QD__MAIN__7$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -223,9 +223,9 @@ class 투입대사30_1(trigger_api.Trigger):
 
 class 투입대사40(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__8$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11001578, script='$52000032_QD__MAIN__9$', time=3, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__8$', time=2)
+        self.set_dialogue(type=2, spawn_id=11001578, script='$52000032_QD__MAIN__9$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -238,9 +238,9 @@ class 투입대사40(trigger_api.Trigger):
 
 class 투입대사50(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__10$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11000015, script='$52000032_QD__MAIN__11$', time=3, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__10$', time=2)
+        self.set_dialogue(type=2, spawn_id=11000015, script='$52000032_QD__MAIN__11$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -253,9 +253,9 @@ class 투입대사50(trigger_api.Trigger):
 
 class 투입대사60(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__12$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11001583, script='$52000032_QD__MAIN__13$', time=3, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__12$', time=2)
+        self.set_dialogue(type=2, spawn_id=11001583, script='$52000032_QD__MAIN__13$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -268,9 +268,9 @@ class 투입대사60(trigger_api.Trigger):
 
 class 투입대사70(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__14$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11001586, script='$52000032_QD__MAIN__15$', time=3, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__14$', time=2)
+        self.set_dialogue(type=2, spawn_id=11001586, script='$52000032_QD__MAIN__15$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -283,9 +283,9 @@ class 투입대사70(trigger_api.Trigger):
 
 class 투입대사80(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__16$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11001584, script='$52000032_QD__MAIN__17$', time=3, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__16$', time=2)
+        self.set_dialogue(type=2, spawn_id=11001584, script='$52000032_QD__MAIN__17$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -298,9 +298,9 @@ class 투입대사80(trigger_api.Trigger):
 
 class 투입대사90(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__18$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__19$', time=3, arg5=0)
+        self.select_camera(trigger_id=305)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__18$', time=2)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__19$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -324,7 +324,7 @@ class 누타만전투종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=305, enable=True)
+        self.select_camera(trigger_id=305)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -334,8 +334,8 @@ class 누타만전투종료(trigger_api.Trigger):
 class 렌듀비앙대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1103,1104], auto_target=False)
-        self.select_camera(trigger_id=304, enable=True)
-        self.set_dialogue(type=2, spawn_id=11001575, script='$52000032_QD__MAIN__20$', time=3, arg5=0)
+        self.select_camera(trigger_id=304)
+        self.set_dialogue(type=2, spawn_id=11001575, script='$52000032_QD__MAIN__20$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -345,7 +345,7 @@ class 렌듀비앙대사01(trigger_api.Trigger):
 class 유페리아대사_흐느낌(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[607], visible=True)
-        self.set_dialogue(type=2, spawn_id=11001576, script='$52000032_QD__MAIN__21$', time=8, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001576, script='$52000032_QD__MAIN__21$', time=8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8500):
@@ -355,7 +355,7 @@ class 유페리아대사_흐느낌(trigger_api.Trigger):
 class 아노스대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[609], visible=True)
-        self.set_dialogue(type=2, spawn_id=11000032, script='$52000032_QD__MAIN__22$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000032, script='$52000032_QD__MAIN__22$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -364,7 +364,7 @@ class 아노스대사01(trigger_api.Trigger):
 
 class 렌듀비앙대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__23$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000032_QD__MAIN__23$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -382,7 +382,7 @@ class 렌듀비앙이동(trigger_api.Trigger):
 
 class 렌듀비앙캐스팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(box_ids=[1103], skill_id=71000004, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[1103], skill_id=71000004, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -391,7 +391,7 @@ class 렌듀비앙캐스팅(trigger_api.Trigger):
 
 class 포털생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3004], visible=True, start_delay=0, interval=0, fade=3)
+        self.set_mesh(trigger_ids=[3004], visible=True, fade=3.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

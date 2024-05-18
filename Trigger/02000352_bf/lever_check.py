@@ -38,7 +38,7 @@ class 레버체크완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_cinematic_ui(type=1)
         # self.set_cinematic_ui(type=3)
-        # self.select_camera(trigger_id=8002, enable=True)
+        # self.select_camera(trigger_id=8002)
         self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,8 +49,8 @@ class 레버체크완료(trigger_api.Trigger):
 class 열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='2', seconds=2)
-        self.set_mesh(trigger_ids=[6054,6055,6056], visible=False, interval=200, fade=15) # 빨간선 사라지게
-        self.set_mesh(trigger_ids=[6154,6155,6156], visible=True, interval=200, fade=0) # 파란선 나타나게
+        self.set_mesh(trigger_ids=[6054,6055,6056], interval=200, fade=15.0) # 빨간선 사라지게
+        self.set_mesh(trigger_ids=[6154,6155,6156], visible=True, interval=200) # 파란선 나타나게
         self.set_effect(trigger_ids=[9000005], visible=True) # Sound EFfect on
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +62,7 @@ class 열림(trigger_api.Trigger):
         # self.set_cinematic_ui(type=0)
         # self.set_cinematic_ui(type=2)
         # self.set_cinematic_ui(type=7)
-        self.set_mesh(trigger_ids=[6003], visible=False, interval=0, fade=10) # 벽 해제
+        self.set_mesh(trigger_ids=[6003], fade=10.0) # 벽 해제
 
 
 class 열림_끝(trigger_api.Trigger):

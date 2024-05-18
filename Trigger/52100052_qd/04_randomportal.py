@@ -7,14 +7,14 @@ class Wait(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10002088], state=0) # ToWall_True
         self.set_interact_object(trigger_ids=[10002089], state=0) # ToRoom_True
         self.set_interact_object(trigger_ids=[10002090], state=0) # ToTower_True
-        self.set_mesh(trigger_ids=[3200], visible=True, start_delay=0, interval=0, fade=0) # CurtainBarrier
-        self.set_mesh(trigger_ids=[3201,3202], visible=True, start_delay=0, interval=0, fade=0) # CurtainOpen
-        self.set_mesh(trigger_ids=[3300], visible=True, start_delay=0, interval=0, fade=0) # ToTowerDoorBarrier
-        self.set_effect(trigger_ids=[5000], visible=False) # DoorOpen
+        self.set_mesh(trigger_ids=[3200], visible=True) # CurtainBarrier
+        self.set_mesh(trigger_ids=[3201,3202], visible=True) # CurtainOpen
+        self.set_mesh(trigger_ids=[3300], visible=True) # ToTowerDoorBarrier
+        self.set_effect(trigger_ids=[5000]) # DoorOpen
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Closed') # NextMap
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False) # ToWall
-        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False) # ToRoom
-        self.set_portal(portal_id=30, visible=False, enable=False, minimap_visible=False) # ToTower
+        self.set_portal(portal_id=10) # ToWall
+        self.set_portal(portal_id=20) # ToRoom
+        self.set_portal(portal_id=30) # ToTower
         self.set_user_value(key='SearchStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,11 +25,11 @@ class Wait(trigger_api.Trigger):
 # 3개의 문 중에서 하나 뽑기
 class PickRandomPortal(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ToWall01(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ToRoom01(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ToTower01(self.ctx)
 
 
@@ -47,9 +47,9 @@ class ToWall01(trigger_api.Trigger):
 
 class ToWall02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3200], visible=False, start_delay=0, interval=0, fade=0) # CurtainBarrier
-        self.set_mesh(trigger_ids=[3201,3202], visible=False, start_delay=0, interval=0, fade=3) # CurtainOpen
-        self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=False) # ToWall
+        self.set_mesh(trigger_ids=[3200]) # CurtainBarrier
+        self.set_mesh(trigger_ids=[3201,3202], fade=3.0) # CurtainOpen
+        self.set_portal(portal_id=10, visible=True, enable=True) # ToWall
         self.set_event_ui(type=1, arg2='$02000396_BF__04_RANDOMPORTAL__0$', arg3='2000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -96,7 +96,7 @@ class ToRoom01(trigger_api.Trigger):
 class ToRoom02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52100052_QD__04_RANDOMPORTAL__1$', arg3='2000', arg4='0')
-        self.set_portal(portal_id=20, visible=True, enable=True, minimap_visible=False) # ToRoom
+        self.set_portal(portal_id=20, visible=True, enable=True) # ToRoom
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -142,10 +142,10 @@ class ToTower01(trigger_api.Trigger):
 class ToTower02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52100052_QD__04_RANDOMPORTAL__3$', arg3='2000', arg4='0')
-        self.set_mesh(trigger_ids=[3300], visible=False, start_delay=0, interval=0, fade=0) # ToTowerDoorBarrier
+        self.set_mesh(trigger_ids=[3300]) # ToTowerDoorBarrier
         self.set_effect(trigger_ids=[5000], visible=True) # DoorOpen
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Opened') # NextMap
-        self.set_portal(portal_id=30, visible=True, enable=True, minimap_visible=False) # ToTower
+        self.set_portal(portal_id=30, visible=True, enable=True) # ToTower
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

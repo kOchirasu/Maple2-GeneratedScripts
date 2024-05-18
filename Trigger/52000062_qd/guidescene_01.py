@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[1003], auto_target=False)
         self.spawn_monster(spawn_ids=[1004], auto_target=False)
         self.spawn_monster(spawn_ids=[1007], auto_target=False)
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -32,7 +32,7 @@ class 페르시카대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -41,8 +41,8 @@ class 페르시카대사01(trigger_api.Trigger):
 
 class 페르시카대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001176, script='$52000062_QD__GUIDESCENE_01__0$', time=3, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11001176, script='$52000062_QD__GUIDESCENE_01__1$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001176, script='$52000062_QD__GUIDESCENE_01__0$', time=3)
+        self.set_dialogue(type=2, spawn_id=11001176, script='$52000062_QD__GUIDESCENE_01__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -82,7 +82,7 @@ class PC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.move_user_path(patrol_name='MS2PatrolData_PC')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -122,7 +122,7 @@ class 연출종료2(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=301, enable=False)
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

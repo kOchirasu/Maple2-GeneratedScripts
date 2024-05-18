@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='60', seconds=60, start_delay=0, interval=1)
+        self.set_timer(timer_id='60', seconds=60, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=104) >= 20:
@@ -29,10 +29,10 @@ class 대기(trigger_api.Trigger):
 
 class PvP(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=1, start_delay=0)
+        self.set_timer(timer_id='1', seconds=1)
         # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
         self.set_achievement(trigger_id=104, type='trigger', achieve='dailyquest_start')
-        self.give_guild_exp(box_id=0, type=2)
+        self.give_guild_exp(type=2)
         self.set_pvp_zone(box_id=104, prepare_time=3, match_time=600, additional_effect_id=90001002, type=3, box_ids=[1,2,101,102,103])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class 게임종료(trigger_api.Trigger):
 
 class 비김(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='3', seconds=3, start_delay=0)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -78,7 +78,7 @@ class 완료(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
-            self.move_user(map_id=0, portal_id=0)
+            self.move_user()
             return 종료(self.ctx)
 
 

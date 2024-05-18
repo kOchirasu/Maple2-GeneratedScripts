@@ -4,23 +4,23 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=99999, enable=False)
-        self.set_effect(trigger_ids=[100000001], visible=False) # wall01 사라짐
-        self.set_effect(trigger_ids=[100000002], visible=False) # 다리 생성
-        self.set_effect(trigger_ids=[100000003], visible=False) # 다리 제거
-        self.set_effect(trigger_ids=[100000004], visible=False) # wall01 사라짐
-        self.set_effect(trigger_ids=[100000005], visible=False) # 다리 생성
-        self.set_effect(trigger_ids=[100000006], visible=False) # 다리 제거
-        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005,1006,1007,1008], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1300,1301,1302,1303,1304,1305,1306,1307,1308], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1400], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1500], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_agent(trigger_ids=[1000001,1000002,1000003,1000004,1000005,1000006], visible=False)
-        self.set_agent(trigger_ids=[1100001,1100002,1100003], visible=False)
+        self.set_sound(trigger_id=99999)
+        self.set_effect(trigger_ids=[100000001]) # wall01 사라짐
+        self.set_effect(trigger_ids=[100000002]) # 다리 생성
+        self.set_effect(trigger_ids=[100000003]) # 다리 제거
+        self.set_effect(trigger_ids=[100000004]) # wall01 사라짐
+        self.set_effect(trigger_ids=[100000005]) # 다리 생성
+        self.set_effect(trigger_ids=[100000006]) # 다리 제거
+        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005,1006,1007,1008], visible=True)
+        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111])
+        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211])
+        self.set_mesh(trigger_ids=[1300,1301,1302,1303,1304,1305,1306,1307,1308], visible=True)
+        self.set_mesh(trigger_ids=[1400], visible=True)
+        self.set_mesh(trigger_ids=[1500], visible=True)
+        self.set_agent(trigger_ids=[1000001,1000002,1000003,1000004,1000005,1000006])
+        self.set_agent(trigger_ids=[1100001,1100002,1100003])
         self.set_interact_object(trigger_ids=[10000065], state=2)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[1]):
@@ -38,7 +38,7 @@ class 생성_1(trigger_api.Trigger):
 
 class 연출시작_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=2000001, enable=True)
+        self.select_camera(trigger_id=2000001)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=1)
 
@@ -97,8 +97,8 @@ class 연출끝_1(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData0_101_1')
-        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005,1006,1007,1008], visible=False, start_delay=2000, interval=100, fade=0)
-        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111], visible=True, start_delay=5000, interval=100, fade=0)
+        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005,1006,1007,1008], start_delay=2000, interval=100)
+        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111], visible=True, start_delay=5000, interval=100)
 
 
 class 돌사운드_1(trigger_api.Trigger):
@@ -124,7 +124,7 @@ class 다리사운드_1(trigger_api.Trigger):
 
 class 몬스터등장_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1400], visible=False, start_delay=1000, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1400], start_delay=1000)
         self.spawn_monster(spawn_ids=[1001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -141,7 +141,7 @@ class 유저감지_2(trigger_api.Trigger):
 class 길막추가_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(trigger_ids=[1000001,1000002,1000003,1000004,1000005,1000006], visible=True)
-        self.set_mesh(trigger_ids=[1400], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1400], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=200):
@@ -156,7 +156,7 @@ class npc감지_1(trigger_api.Trigger):
 
 class 다리제거_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111], visible=False, start_delay=100, interval=100, fade=0)
+        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111], start_delay=100, interval=100)
         self.set_effect(trigger_ids=[100000003], visible=True) # 다리 생성
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -175,16 +175,16 @@ class 몬스터사망_1(trigger_api.Trigger):
 
 class 번째구역통로오픈3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[1000001,1000002,1000003,1000004,1000005,1000006], visible=False)
-        self.set_mesh(trigger_ids=[1300,1301,1302,1303,1304,1305,1306,1307,1308], visible=False, start_delay=2000, interval=100, fade=0)
-        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211], visible=True, start_delay=4000, interval=100, fade=0)
+        self.set_agent(trigger_ids=[1000001,1000002,1000003,1000004,1000005,1000006])
+        self.set_mesh(trigger_ids=[1300,1301,1302,1303,1304,1305,1306,1307,1308], start_delay=2000, interval=100)
+        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211], visible=True, start_delay=4000, interval=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=200):
             return 돌사운드_2(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[1500], visible=False, start_delay=5000, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1500], start_delay=5000)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData0_101_2')
 
 
@@ -214,7 +214,7 @@ class 유저감지_3(trigger_api.Trigger):
 
 class 길막추가_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1500], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1500], visible=True)
         self.set_agent(trigger_ids=[1100001,1100002,1100003], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,7 +226,7 @@ class 다리제거_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(trigger_id=99999, enable=True)
         self.spawn_monster(spawn_ids=[1002], auto_target=False)
-        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211], visible=False, start_delay=100, interval=100, fade=0)
+        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211], start_delay=100, interval=100)
         self.set_effect(trigger_ids=[100000006], visible=True) # 다리 제거
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -242,8 +242,8 @@ class 몬스터사망_2(trigger_api.Trigger):
 
 class 연출시작_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=99999, enable=False)
-        self.select_camera(trigger_id=2000002, enable=True)
+        self.set_sound(trigger_id=99999)
+        self.select_camera(trigger_id=2000002)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=1)
 

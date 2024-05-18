@@ -23,9 +23,9 @@ class 탱크준비(trigger_api.Trigger):
         self.add_buff(box_ids=[199], skill_id=70000107, level=1, is_player=False, is_skill_set=False)
         self.show_guide_summary(entity_id=20040103, text_id=20040103, duration=3500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.spawn_monster(spawn_ids=[1201,1202,1203,1204,1205,1206,1207,1208], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=1201, script='$52100031_QD__FACTION_03__0$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1201, script='$52100031_QD__FACTION_03__0$', time=5)
         self.set_interact_object(trigger_ids=[10002069], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -60,7 +60,7 @@ class 퀘스트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:

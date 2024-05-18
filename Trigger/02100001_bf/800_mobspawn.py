@@ -6,7 +6,7 @@ class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='RemoveAll', value=0)
         self.destroy_monster(spawn_ids=[800])
-        self.set_mesh(trigger_ids=[3200], visible=False, start_delay=0, interval=0, fade=0) # Egg
+        self.set_mesh(trigger_ids=[3200]) # Egg
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -16,7 +16,7 @@ class Wait(trigger_api.Trigger):
 class MobSpawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[800], auto_target=False)
-        self.set_mesh(trigger_ids=[3200], visible=True, start_delay=0, interval=0, fade=0) # Egg
+        self.set_mesh(trigger_ids=[3200], visible=True) # Egg
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[800]):
@@ -27,7 +27,7 @@ class MobSpawn(trigger_api.Trigger):
 
 class Delay01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3200], visible=False, start_delay=0, interval=0, fade=0) # Egg
+        self.set_mesh(trigger_ids=[3200]) # Egg
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=180000):

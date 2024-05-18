@@ -12,13 +12,13 @@ class 대기(trigger_api.Trigger):
 
 class 랜덤대화(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초20(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초25(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초30(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초35(self.ctx)
         if self.monster_dead(spawn_ids=[1099]):
             return 종료대화(self.ctx)
@@ -70,20 +70,20 @@ class 초35(trigger_api.Trigger):
 
 class 대화(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 대사1(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 대사2(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 대사3(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 대사4(self.ctx)
 
 
 class 대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='2', seconds=2)
-        self.set_dialogue(type=1, spawn_id=1002, script='$02000300_BF__TEXTBALLOON__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1002, script='$02000300_BF__TEXTBALLOON__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -126,7 +126,7 @@ class 종료대화(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):
-            self.set_dialogue(type=1, spawn_id=1001, script='$02000300_BF__TEXTBALLOON__4$', time=3, arg5=0)
+            self.set_dialogue(type=1, spawn_id=1001, script='$02000300_BF__TEXTBALLOON__4$', time=3)
             self.set_dialogue(type=1, spawn_id=1003, script='$02000300_BF__TEXTBALLOON__5$', time=2, arg5=2)
             self.set_dialogue(type=1, spawn_id=1002, script='$02000300_BF__TEXTBALLOON__6$', time=2, arg5=4)
             return 종료(self.ctx)

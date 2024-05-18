@@ -6,10 +6,10 @@ class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dungeon_variable(var_id=2, value=0)
         self.set_dungeon_variable(var_id=100, value=0)
-        self.set_interact_object(trigger_ids=[10002178], state=1, arg3=False)
-        self.start_combine_spawn(group_id=[510], is_start=False)
-        self.start_combine_spawn(group_id=[511], is_start=False)
-        self.start_combine_spawn(group_id=[512], is_start=False)
+        self.set_interact_object(trigger_ids=[10002178], state=1)
+        self.start_combine_spawn(group_id=[510])
+        self.start_combine_spawn(group_id=[511])
+        self.start_combine_spawn(group_id=[512])
         self.set_user_value(trigger_id=99990001, key='Team1Win', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,11 +25,11 @@ class 지역선택1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(var_id=3) == 1:
             return 종료(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return A지역1(self.ctx)
-        if self.random_condition(weight=34):
+        if self.random_condition(weight=34.0):
             return B지역1(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return C지역1(self.ctx)
 
 
@@ -94,9 +94,9 @@ class 지역선택2_1(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return B지역2(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return C지역2(self.ctx)
 
 
@@ -110,9 +110,9 @@ class 지역선택2_2(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return A지역2(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return C지역2(self.ctx)
 
 
@@ -126,9 +126,9 @@ class 지역선택2_3(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return A지역2(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return B지역2(self.ctx)
 
 
@@ -196,9 +196,9 @@ class 지역선택3_1(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return B지역3(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return C지역3(self.ctx)
 
 
@@ -212,9 +212,9 @@ class 지역선택3_2(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return A지역3(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return C지역3(self.ctx)
 
 
@@ -228,9 +228,9 @@ class 지역선택3_3(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return A지역3(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return B지역3(self.ctx)
 
 
@@ -269,13 +269,13 @@ class C지역3(trigger_api.Trigger):
 
 class 시작_보스전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(trigger_ids=[10002175], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002176], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002177], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002178], state=0, arg3=False)
-        self.start_combine_spawn(group_id=[510], is_start=False)
-        self.start_combine_spawn(group_id=[511], is_start=False)
-        self.start_combine_spawn(group_id=[512], is_start=False)
+        self.set_interact_object(trigger_ids=[10002175], state=0)
+        self.set_interact_object(trigger_ids=[10002176], state=0)
+        self.set_interact_object(trigger_ids=[10002177], state=0)
+        self.set_interact_object(trigger_ids=[10002178], state=0)
+        self.start_combine_spawn(group_id=[510])
+        self.start_combine_spawn(group_id=[511])
+        self.start_combine_spawn(group_id=[512])
         self.spawn_monster(spawn_ids=[901], auto_target=False)
         self.set_dungeon_variable(var_id=100, value=1)
 
@@ -293,13 +293,13 @@ class 성공(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(trigger_ids=[10002175], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002176], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002177], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002178], state=0, arg3=False)
-        self.start_combine_spawn(group_id=[510], is_start=False)
-        self.start_combine_spawn(group_id=[511], is_start=False)
-        self.start_combine_spawn(group_id=[512], is_start=False)
+        self.set_interact_object(trigger_ids=[10002175], state=0)
+        self.set_interact_object(trigger_ids=[10002176], state=0)
+        self.set_interact_object(trigger_ids=[10002177], state=0)
+        self.set_interact_object(trigger_ids=[10002178], state=0)
+        self.start_combine_spawn(group_id=[510])
+        self.start_combine_spawn(group_id=[511])
+        self.start_combine_spawn(group_id=[512])
         self.destroy_monster(spawn_ids=[901])
 
 

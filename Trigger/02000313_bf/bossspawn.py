@@ -7,31 +7,31 @@ from dungeon_common.checkusercount import *
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=12, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_effect(trigger_ids=[5004], visible=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
-        self.set_effect(trigger_ids=[5006], visible=False)
-        self.set_ladder(trigger_ids=[4001], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4002], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4003], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4004], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4005], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4006], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4007], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4008], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4101], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4102], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4103], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[4104], visible=False, enable=False)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=11)
+        self.set_portal(portal_id=12)
+        self.set_portal(portal_id=13)
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
+        self.set_effect(trigger_ids=[5003])
+        self.set_effect(trigger_ids=[5004])
+        self.set_effect(trigger_ids=[5005])
+        self.set_effect(trigger_ids=[5006])
+        self.set_ladder(trigger_ids=[4001])
+        self.set_ladder(trigger_ids=[4002])
+        self.set_ladder(trigger_ids=[4003])
+        self.set_ladder(trigger_ids=[4004])
+        self.set_ladder(trigger_ids=[4005])
+        self.set_ladder(trigger_ids=[4006])
+        self.set_ladder(trigger_ids=[4007])
+        self.set_ladder(trigger_ids=[4008])
+        self.set_ladder(trigger_ids=[4101])
+        self.set_ladder(trigger_ids=[4102])
+        self.set_ladder(trigger_ids=[4103])
+        self.set_ladder(trigger_ids=[4104])
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015])
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158])
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235])
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325])
         self.spawn_monster(spawn_ids=[1099], auto_target=False)
         self.spawn_monster(spawn_ids=[1101,1102,1103,1104,1105,1106,1107,1108], auto_target=False)
 
@@ -48,10 +48,10 @@ class DungeonStart(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015], visible=True)
         self.spawn_monster(spawn_ids=[1001], auto_target=False)
         self.spawn_monster(spawn_ids=[2001], auto_target=False)
-        self.select_camera(trigger_id=30000, enable=True)
+        self.select_camera(trigger_id=30000)
         self.set_effect(trigger_ids=[5002], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -129,7 +129,7 @@ class 차전투시작2(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[4006], visible=True, enable=True)
         self.set_ladder(trigger_ids=[4007], visible=True, enable=True)
         self.set_ladder(trigger_ids=[4008], visible=True, enable=True)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2002]):
@@ -174,7 +174,7 @@ class 차전투시작3(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[4102], visible=True, enable=True)
         self.set_ladder(trigger_ids=[4103], visible=True, enable=True)
         self.set_ladder(trigger_ids=[4104], visible=True, enable=True)
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2003]):
@@ -183,7 +183,7 @@ class 차전투시작3(trigger_api.Trigger):
 
 class 보스등장연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=30001, enable=True)
+        self.select_camera(trigger_id=30001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -205,15 +205,15 @@ class 보스등장연출2(trigger_api.Trigger):
 
 class 보스등장연출3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=1101, sequence_name='Dead_A', duration=9000)
-        self.set_npc_emotion_loop(spawn_id=1102, sequence_name='Dead_A', duration=9000)
-        self.set_npc_emotion_loop(spawn_id=1103, sequence_name='Dead_A', duration=9000)
-        self.set_npc_emotion_loop(spawn_id=1104, sequence_name='Dead_A', duration=9000)
-        self.set_npc_emotion_loop(spawn_id=1105, sequence_name='Dead_A', duration=9000)
-        self.set_npc_emotion_loop(spawn_id=1106, sequence_name='Dead_A', duration=9000)
-        self.set_npc_emotion_loop(spawn_id=1107, sequence_name='Dead_A', duration=9000)
-        self.set_npc_emotion_loop(spawn_id=1108, sequence_name='Dead_A', duration=9000)
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_npc_emotion_loop(spawn_id=1101, sequence_name='Dead_A', duration=9000.0)
+        self.set_npc_emotion_loop(spawn_id=1102, sequence_name='Dead_A', duration=9000.0)
+        self.set_npc_emotion_loop(spawn_id=1103, sequence_name='Dead_A', duration=9000.0)
+        self.set_npc_emotion_loop(spawn_id=1104, sequence_name='Dead_A', duration=9000.0)
+        self.set_npc_emotion_loop(spawn_id=1105, sequence_name='Dead_A', duration=9000.0)
+        self.set_npc_emotion_loop(spawn_id=1106, sequence_name='Dead_A', duration=9000.0)
+        self.set_npc_emotion_loop(spawn_id=1107, sequence_name='Dead_A', duration=9000.0)
+        self.set_npc_emotion_loop(spawn_id=1108, sequence_name='Dead_A', duration=9000.0)
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325], visible=True)
         self.set_skip(state=보스전투시작)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -225,8 +225,8 @@ class 보스등장연출3(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.destroy_monster(spawn_ids=[1101,1102,1103,1104,1105,1106,1107,1108])
-        self.set_npc_emotion_loop(spawn_id=1005, sequence_name='Dead_Idle_A', duration=1E+16)
-        self.set_effect(trigger_ids=[5002], visible=False)
+        self.set_npc_emotion_loop(spawn_id=1005, sequence_name='Dead_Idle_A', duration=10000000000000000.0)
+        self.set_effect(trigger_ids=[5002])
 
 
 class 보스전투시작(trigger_api.Trigger):
@@ -286,11 +286,11 @@ class 퀘스트연출_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_cinematic_ui(type=9, script='$02000313_BF__BOSSSPAWN__43$', arg3=False)
-        self.spawn_monster(spawn_ids=[205], auto_target=True) # 바야르
-        self.spawn_monster(spawn_ids=[202], auto_target=True) # 무파사
-        self.spawn_monster(spawn_ids=[203], auto_target=True) # 구르는천둥
-        self.spawn_monster(spawn_ids=[204], auto_target=True) # 시끄러운 주먹
+        self.set_cinematic_ui(type=9, script='$02000313_BF__BOSSSPAWN__43$')
+        self.spawn_monster(spawn_ids=[205]) # 바야르
+        self.spawn_monster(spawn_ids=[202]) # 무파사
+        self.spawn_monster(spawn_ids=[203]) # 구르는천둥
+        self.spawn_monster(spawn_ids=[204]) # 시끄러운 주먹
         self.move_user(map_id=2000313, portal_id=6001)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -303,12 +303,12 @@ class 퀘스트연출_상황보여주기_01(trigger_api.Trigger):
         self.set_scene_skip(state=퀘스트연출끝_이동, action='exit')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=30000, enable=True)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.select_camera(trigger_id=30000)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=0, msg='$02000313_BF__BOSSSPAWN__44$', duration=3000)
         self.add_cinematic_talk(npc_id=11003392, msg='$02000313_BF__BOSSSPAWN__45$', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=205, sequence_name='Stun_A', duration=160000000)
-        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Attack_Idle_A', duration=160000000)
+        self.set_npc_emotion_loop(spawn_id=205, sequence_name='Stun_A', duration=160000000.0)
+        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Attack_Idle_A', duration=160000000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -331,9 +331,9 @@ class 퀘스트연출_상황보여주기_02(trigger_api.Trigger):
 class 퀘스트연출_상황보여주기_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4014], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Attack_Idle_A', duration=1E+09)
+        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Attack_Idle_A', duration=1000000000.0)
         self.set_npc_emotion_sequence(spawn_id=204, sequence_name='Talk_A,Bore_B')
-        self.set_effect(trigger_ids=[5001], visible=False)
+        self.set_effect(trigger_ids=[5001])
         self.add_cinematic_talk(npc_id=11003454, msg='$02000313_BF__BOSSSPAWN__48$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -359,8 +359,8 @@ class 퀘스트연출_상황보여주기_04_2(trigger_api.Trigger):
         self.set_pc_emotion_sequence(sequence_names=['Talk_A'])
         self.add_cinematic_talk(npc_id=0, msg='$02000313_BF__BOSSSPAWN__52$', duration=3000)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__53$', duration=3000)
-        self.spawn_monster(spawn_ids=[201], auto_target=True) # 붉은늑대심장
-        self.add_balloon_talk(spawn_id=0, msg='$02000313_BF__BOSSSPAWN__54$', duration=2000, delay_tick=5000)
+        self.spawn_monster(spawn_ids=[201]) # 붉은늑대심장
+        self.add_balloon_talk(msg='$02000313_BF__BOSSSPAWN__54$', duration=2000, delay_tick=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -370,7 +370,7 @@ class 퀘스트연출_상황보여주기_04_2(trigger_api.Trigger):
 class 퀘스트연출_상황보여주기_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawn_id=201, emotion_name='Talk')
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Idle_A', duration=1E+09)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Idle_A', duration=1000000000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -391,7 +391,7 @@ class 퀘스트연출_상황보여주기_05(trigger_api.Trigger):
 class 퀘스트연출_상황보여주기_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4013], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Idle_A', duration=1E+09)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Idle_A', duration=1000000000.0)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__56$', duration=3000)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__57$', duration=3000)
 
@@ -413,7 +413,7 @@ class 퀘스트연출_상황보여주기_07(trigger_api.Trigger):
 class 퀘스트연출_상황보여주기_08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4018], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Idle_A', duration=1E+09)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Idle_A', duration=1000000000.0)
         self.set_npc_emotion_sequence(spawn_id=202, sequence_name='Bore_A')
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_9994')
         self.add_cinematic_talk(npc_id=11003393, msg='$02000313_BF__BOSSSPAWN__15$', duration=3000)
@@ -426,7 +426,7 @@ class 퀘스트연출_상황보여주기_08(trigger_api.Trigger):
 class 퀘스트연출_상황보여주기_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4013], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Attack_Idle_A', duration=1E+09)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Attack_Idle_A', duration=1000000000.0)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__59$', duration=3000)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__60$', duration=3000)
 
@@ -454,7 +454,7 @@ class 퀘스트연출_상황보여주기_10_1(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4013], return_view=False)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__63$', duration=3000)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__64$', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Attack_Idle_A', duration=1E+09)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Attack_Idle_A', duration=1000000000.0)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__65$', duration=3000)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__66$', duration=3000)
         self.add_cinematic_talk(npc_id=0, msg='$02000313_BF__BOSSSPAWN__67$', duration=3000)
@@ -481,7 +481,7 @@ class 퀘스트연출_상황보여주기_11_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4014], return_view=False)
         self.add_cinematic_talk(npc_id=11003387, msg='$02000313_BF__BOSSSPAWN__70$', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Sit_Down_A', duration=10000)
+        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Sit_Down_A', duration=10000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -554,7 +554,7 @@ class 퀘스트연출_상황보여주기_13(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=11003393, msg='$02000313_BF__BOSSSPAWN__79$', duration=3000)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__80$', duration=3000)
         self.add_cinematic_talk(npc_id=11003393, msg='$02000313_BF__BOSSSPAWN__81$', duration=3000)
-        self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=101, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.destroy_monster(spawn_ids=[203]) # 구르는천둥
         self.destroy_monster(spawn_ids=[204]) # 시끄러운 주먹
 
@@ -582,7 +582,7 @@ class 퀘스트연출_마지막전투_02(trigger_api.Trigger):
         self.visible_my_pc(is_visible=False)
         self.add_cinematic_talk(npc_id=11003393, msg='$02000313_BF__BOSSSPAWN__83$', duration=3000)
         self.add_cinematic_talk(npc_id=11003407, msg='$02000313_BF__BOSSSPAWN__84$', duration=3000)
-        self.set_onetime_effect(id=102, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=102, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_npc_emotion_sequence(spawn_id=205, sequence_name='Attack_02_H')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -623,13 +623,13 @@ class 퀘스트연출_마지막전투_04(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[201])
         self.destroy_monster(spawn_ids=[202])
         self.destroy_monster(spawn_ids=[205])
-        self.spawn_monster(spawn_ids=[206], auto_target=True)
-        self.spawn_monster(spawn_ids=[207], auto_target=True)
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_effect(trigger_ids=[5004], visible=False)
-        self.set_npc_emotion_loop(spawn_id=206, sequence_name='Dead_A', duration=1000000)
-        self.set_npc_emotion_loop(spawn_id=207, sequence_name='Dead_B', duration=1000000)
+        self.spawn_monster(spawn_ids=[206])
+        self.spawn_monster(spawn_ids=[207])
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5003])
+        self.set_effect(trigger_ids=[5004])
+        self.set_npc_emotion_loop(spawn_id=206, sequence_name='Dead_A', duration=1000000.0)
+        self.set_npc_emotion_loop(spawn_id=207, sequence_name='Dead_B', duration=1000000.0)
         self.face_emotion(spawn_id=206, emotion_name='Trigger_Dead')
         self.face_emotion(spawn_id=207, emotion_name='Trigger_Dead')
         self.set_effect(trigger_ids=[5006], visible=True)
@@ -641,7 +641,7 @@ class 퀘스트연출_마지막전투_04(trigger_api.Trigger):
 
 class 퀘스트연출_마지막전투_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
         self.set_onetime_effect(id=3, enable=True, path='BG\\weather\\Eff_monochrome_03.xml')
         self.select_camera_path(path_ids=[4021,4022], return_view=False)
 
@@ -653,10 +653,10 @@ class 퀘스트연출_마지막전투_05(trigger_api.Trigger):
 class 퀘스트연출_마지막전투_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
-        self.set_onetime_effect(id=3, enable=False, path='BG\\weather\\Eff_monochrome_03.xml')
-        self.set_cinematic_ui(type=9, script='$02000313_BF__BOSSSPAWN__85$', arg3=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
-        self.set_effect(trigger_ids=[5006], visible=False)
+        self.set_onetime_effect(id=3, path='BG\\weather\\Eff_monochrome_03.xml')
+        self.set_cinematic_ui(type=9, script='$02000313_BF__BOSSSPAWN__85$')
+        self.set_effect(trigger_ids=[5005])
+        self.set_effect(trigger_ids=[5006])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -665,7 +665,7 @@ class 퀘스트연출_마지막전투_06(trigger_api.Trigger):
 
 class 퀘스트연출_마지막전투_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$02000313_BF__BOSSSPAWN__86$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$02000313_BF__BOSSSPAWN__86$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):

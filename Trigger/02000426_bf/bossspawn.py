@@ -4,11 +4,11 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
         self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
-        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3002], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001])
+        self.set_mesh(trigger_ids=[3002], visible=True)
         # 이 변수 신호 받아서 자쿰 몸체 등장시키는데 사용함
         self.set_user_value(key='ZakumBodyAppearance', value=0)
 
@@ -111,9 +111,9 @@ class 종료딜레이(trigger_api.Trigger):
         # 계약의 토템에 의해 오른쪽 용암 올라오게 하는 트리거 xml 담당, 999109_Lavaflow.xml
         self.set_user_value(trigger_id=999109, key='BattleEnd2', value=1)
         # 자쿰 몸통 아래쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3002])
         # 자쿰 몸통 위쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3003])
         # 던전 클리어 하면 토템의 저주 자쿰의 저주 제거하기
         self.remove_buff(box_id=199, skill_id=50005300)
         self.remove_buff(box_id=199, skill_id=50005301)
@@ -135,9 +135,9 @@ class 던전실패(trigger_api.Trigger):
         self.dungeon_close_timer()
         self.set_user_value(trigger_id=999103, key='BattleEnd', value=1)
         # 자쿰 몸통 아래쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3002])
         # 자쿰 몸통 위쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3003])
         # 던전 클리어 하면 토템의 저주 자쿰의 저주 제거하기
         self.remove_buff(box_id=199, skill_id=50005300)
         self.remove_buff(box_id=199, skill_id=50005301)
@@ -153,7 +153,7 @@ class 던전실패(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 initial_state = 시작

@@ -7,14 +7,14 @@ from dungeon_common.checkusercount import *
 
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[33000], visible=False)
-        self.set_effect(trigger_ids=[34001], visible=False)
-        self.set_effect(trigger_ids=[34002], visible=False)
-        self.set_effect(trigger_ids=[34022], visible=False)
-        self.set_effect(trigger_ids=[34023], visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], visible=True)
+        self.set_effect(trigger_ids=[33000])
+        self.set_effect(trigger_ids=[34001])
+        self.set_effect(trigger_ids=[34002])
+        self.set_effect(trigger_ids=[34022])
+        self.set_effect(trigger_ids=[34023])
+        self.set_portal(portal_id=2)
+        self.set_portal(portal_id=3)
         self.set_interact_object(trigger_ids=[10000817], state=0)
         self.destroy_monster(spawn_ids=[44441,44442,44443])
 
@@ -56,7 +56,7 @@ class 차어나운스1(trigger_api.Trigger):
 class 차어나운스2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[33000], visible=True)
-        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], visible=False, start_delay=200, interval=50, fade=0)
+        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], start_delay=200, interval=50)
         self.move_user(map_id=2010069, portal_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 차어나운스2(trigger_api.Trigger):
 
 class 연출1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=999900, enable=True)
+        self.select_camera(trigger_id=999900)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -133,7 +133,7 @@ class 연출3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(trigger_id=999900, enable=False)
         self.move_user(map_id=2010069, portal_id=2)
-        self.set_portal(portal_id=2, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=2, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -144,8 +144,8 @@ class 연출4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_effect(trigger_ids=[34022], visible=False)
-        self.set_effect(trigger_ids=[34023], visible=False)
+        self.set_effect(trigger_ids=[34022])
+        self.set_effect(trigger_ids=[34023])
 
 
 initial_state = Setting

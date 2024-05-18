@@ -1,5 +1,6 @@
 """ trigger/52100106_qd/52100106.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class Ready(trigger_api.Trigger):
@@ -12,8 +13,8 @@ class Ready(trigger_api.Trigger):
 
 class 들킴(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[232,92,53])
-        self.set_directional_light(diffuse_color=[41,21,18], specular_color=[130,130,130])
+        self.set_ambient_light(primary=Vector3(232,92,53))
+        self.set_directional_light(diffuse_color=Vector3(41,21,18), specular_color=Vector3(130,130,130))
         self.set_effect(trigger_ids=[6000], visible=True)
         self.set_actor(trigger_id=201, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_actor(trigger_id=203, visible=True, initial_sequence='sf_quest_light_A01_On')

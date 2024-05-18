@@ -7,9 +7,9 @@ from dungeon_common.checkusercount import *
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False, arg5=False)
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False, arg5=False)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False, arg5=False)
+        self.set_portal(portal_id=6)
+        self.set_portal(portal_id=5)
+        self.set_portal(portal_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=101) >= 1:
@@ -18,10 +18,10 @@ class idle(trigger_api.Trigger):
 
 class DungeonStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False, arg5=False)
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False, arg5=False)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False, arg5=False)
-        self.set_mesh(trigger_ids=[2001,2002,2003,2004], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=6)
+        self.set_portal(portal_id=5)
+        self.set_portal(portal_id=3)
+        self.set_mesh(trigger_ids=[2001,2002,2003,2004], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -36,8 +36,8 @@ class Start(trigger_api.Trigger):
 
 class Step_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7], visible=False) # 다리안보임
+        self.set_portal(portal_id=3)
+        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7]) # 다리안보임
         self.spawn_monster(spawn_ids=[201], auto_target=False)
         self.spawn_monster(spawn_ids=[202], auto_target=False)
         self.spawn_monster(spawn_ids=[203], auto_target=False)
@@ -59,7 +59,7 @@ class Step_1(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[404], auto_target=False)
         self.spawn_monster(spawn_ids=[405], auto_target=False)
         self.spawn_monster(spawn_ids=[406], auto_target=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[105]):
@@ -103,7 +103,7 @@ class Step_1_C(trigger_api.Trigger):
 
 class Step_1_D_Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8,9,10,11], visible=False) # 다리안보임
+        self.set_mesh(trigger_ids=[8,9,10,11]) # 다리안보임
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[107]):

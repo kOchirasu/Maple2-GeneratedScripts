@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[604], visible=False)
-        self.set_effect(trigger_ids=[605], visible=False)
-        self.set_effect(trigger_ids=[606], visible=False)
+        self.set_effect(trigger_ids=[604])
+        self.set_effect(trigger_ids=[605])
+        self.set_effect(trigger_ids=[606])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='gameStart') >= 1:
@@ -26,15 +26,15 @@ class 감지대기(trigger_api.Trigger):
 
 class 스킬랜덤(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[604], visible=False)
-        self.set_effect(trigger_ids=[605], visible=False)
-        self.set_effect(trigger_ids=[606], visible=False)
+        self.set_effect(trigger_ids=[604])
+        self.set_effect(trigger_ids=[605])
+        self.set_effect(trigger_ids=[606])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=80):
+        if self.random_condition(weight=80.0):
             self.add_buff(box_ids=[199], skill_id=70000008, level=1, is_player=False, is_skill_set=False)
             return 종료(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             self.add_buff(box_ids=[199], skill_id=70000009, level=1, is_player=False, is_skill_set=False)
             return 종료(self.ctx)
 

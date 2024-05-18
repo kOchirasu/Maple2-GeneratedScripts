@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3101,3102,3103,3104,3105,3106], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3113,3114], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=22, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=33, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=44, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3000], visible=True)
+        self.set_mesh(trigger_ids=[3101,3102,3103,3104,3105,3106], visible=True)
+        self.set_mesh(trigger_ids=[3113,3114], visible=True)
+        self.set_portal(portal_id=11)
+        self.set_portal(portal_id=22)
+        self.set_portal(portal_id=33)
+        self.set_portal(portal_id=44)
         self.set_interact_object(trigger_ids=[10000983], state=2)
         self.set_interact_object(trigger_ids=[10000984], state=2)
         self.set_interact_object(trigger_ids=[10000985], state=2)
@@ -36,7 +36,7 @@ class 전투01(trigger_api.Trigger):
 
 class 전투02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3101,3102], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3101,3102])
         self.set_interact_object(trigger_ids=[10000983], state=1)
         self.set_interact_object(trigger_ids=[10000984], state=1)
         self.spawn_monster(spawn_ids=[12101,12102,12201,12202,12203,12204,12205,12206], auto_target=False)
@@ -48,14 +48,14 @@ class 전투02(trigger_api.Trigger):
 
 class 전투03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3103,3104], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3103,3104])
         self.set_interact_object(trigger_ids=[10000985], state=1)
         self.set_interact_object(trigger_ids=[10000986], state=1)
         self.spawn_monster(spawn_ids=[13101,13102,13103,13104,13105,13106,13107,13108,13201,13202,13203,13204], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[13101,13102,13103,13104,13105,13106,13107,13108,13201,13202,13203,13204]):
-            self.set_mesh(trigger_ids=[3105,3106], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[3105,3106])
             self.set_interact_object(trigger_ids=[10000987], state=1)
             self.set_interact_object(trigger_ids=[10000988], state=1)
             return 합류대기(self.ctx)
@@ -78,16 +78,16 @@ class 전투04(trigger_api.Trigger):
 
 class 포털개방(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=True, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=22, visible=True, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=33, visible=True, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=44, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=11, visible=True, enable=True)
+        self.set_portal(portal_id=22, visible=True, enable=True)
+        self.set_portal(portal_id=33, visible=True, enable=True)
+        self.set_portal(portal_id=44, visible=True, enable=True)
         self.spawn_monster(spawn_ids=[41101,41102,41103,41104,41105,41106,41201,41202,41203,41204], auto_target=False)
         self.set_user_value(trigger_id=9999900, key='main2', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[41101,41102,41103,41104,41105,41106,41201,41202,41203,41204]):
-            self.set_mesh(trigger_ids=[3113,3114], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[3113,3114])
             self.set_interact_object(trigger_ids=[10000995], state=1)
             self.set_interact_object(trigger_ids=[10000996], state=1)
             return 종료(self.ctx)

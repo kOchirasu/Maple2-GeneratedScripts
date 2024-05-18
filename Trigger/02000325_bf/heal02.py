@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[702], enable=False)
+        self.set_skill(trigger_ids=[702])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000740], state=0):
@@ -15,11 +15,11 @@ class 스킬작동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(trigger_ids=[702], enable=True)
         self.set_timer(timer_id='1', seconds=1)
-        self.set_effect(trigger_ids=[612], visible=False)
+        self.set_effect(trigger_ids=[612])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
-            self.set_skill(trigger_ids=[702], enable=False)
+            self.set_skill(trigger_ids=[702])
             return 대기(self.ctx)
 
 

@@ -5,7 +5,7 @@ import trigger_api
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 포탈ID 1220 , 큐브 파괴되어 추락된 플레이어 이전 전투판으로 보내는 순간이동 포탈 초기화 시키기
-        self.set_portal(portal_id=1220, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1220)
         # SkillBreakStart 변수 0으로 초기화
         self.set_user_value(key='SkillBreakStart', value=0)
         self.set_user_value(key='DungeonReset', value=0) # DungeonReset 변수 0으로 초기화
@@ -40,7 +40,7 @@ class 스킬브레이크신호대기_BGM교체(trigger_api.Trigger):
 class 스킬브레이크로직작동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 5스테이지 가운데 전투판에 보스 메인 전투판으로 보내는 순간이동 포탈 이때 감추기, 이 포탈 PortalStage06Boss.xml 에서도 사용함
-        self.set_portal(portal_id=6201, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=6201)
         # 혹시 5스테이지 가운데로 진행했을 경우, 이 포탈이 미리 생성되어있을 수 있어서 그려면 파괴된 바닥 큐브가 재생되기 전에 플레이어가  미리 가버려서 허공에 도착하는 버그 상황이 생길 수 있어서 이 포탈 이 타이밍에 감추기 함
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class 보스한테보내는포탈생성(trigger_api.Trigger):
         # 5스테이지 가운데 전투판에 보스 메인 전투판으로 보내는 순간이동 포탈 생성시키기, 이 포탈 PortalStage06Boss.xml 에서도 사용함
         self.set_portal(portal_id=6201, visible=True, enable=True, minimap_visible=True)
         # 포탈ID 1220 , 큐브 파괴되어 추락된 플레이어 이전 전투판으로 보내는 순간이동 포탈 다시 감추기
-        self.set_portal(portal_id=1220, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1220)
         # SkillBreakStart 변수 0으로 초기화
         self.set_user_value(key='SkillBreakStart', value=0)
 
@@ -101,7 +101,7 @@ class 보스한테보내는포탈생성_시간초기화안함02(trigger_api.Trig
         # 5스테이지 가운데 전투판에 보스 메인 전투판으로 보내는 순간이동 포탈 생성시키기, 이 포탈 PortalStage06Boss.xml 에서도 사용함
         self.set_portal(portal_id=6201, visible=True, enable=True, minimap_visible=True)
         # 포탈ID 1220 , 큐브 파괴되어 추락된 플레이어 이전 전투판으로 보내는 순간이동 포탈 다시 감추기
-        self.set_portal(portal_id=1220, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1220)
         # SkillBreakStart 변수 0으로 초기화
         self.set_user_value(key='SkillBreakStart', value=0)
 

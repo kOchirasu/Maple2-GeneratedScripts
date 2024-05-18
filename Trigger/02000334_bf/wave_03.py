@@ -21,27 +21,27 @@ class 차타이머1(trigger_api.Trigger):
 # 몬스터 랜덤 생성
 class 생성랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return 번생성1(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 번생성2(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return 번생성3(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 번생성4(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return 번생성5(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 번생성6(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return 번생성7(self.ctx)
-        if self.random_condition(weight=13):
+        if self.random_condition(weight=13.0):
             return 번생성8(self.ctx)
 
 
 class 번생성1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[131], auto_target=True)
+        self.spawn_monster(spawn_ids=[131])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기시간(self.ctx)
@@ -49,7 +49,7 @@ class 번생성1(trigger_api.Trigger):
 
 class 번생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[132], auto_target=True)
+        self.spawn_monster(spawn_ids=[132])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기시간(self.ctx)
@@ -57,7 +57,7 @@ class 번생성2(trigger_api.Trigger):
 
 class 번생성3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[133], auto_target=True)
+        self.spawn_monster(spawn_ids=[133])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기시간(self.ctx)
@@ -65,7 +65,7 @@ class 번생성3(trigger_api.Trigger):
 
 class 번생성4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[134], auto_target=True)
+        self.spawn_monster(spawn_ids=[134])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기시간(self.ctx)
@@ -73,7 +73,7 @@ class 번생성4(trigger_api.Trigger):
 
 class 번생성5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[131], auto_target=True)
+        self.spawn_monster(spawn_ids=[131])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기시간(self.ctx)
@@ -81,7 +81,7 @@ class 번생성5(trigger_api.Trigger):
 
 class 번생성6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[132], auto_target=True)
+        self.spawn_monster(spawn_ids=[132])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기시간(self.ctx)
@@ -89,7 +89,7 @@ class 번생성6(trigger_api.Trigger):
 
 class 번생성7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[133], auto_target=True)
+        self.spawn_monster(spawn_ids=[133])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기시간(self.ctx)
@@ -97,7 +97,7 @@ class 번생성7(trigger_api.Trigger):
 
 class 번생성8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[134], auto_target=True)
+        self.spawn_monster(spawn_ids=[134])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기시간(self.ctx)

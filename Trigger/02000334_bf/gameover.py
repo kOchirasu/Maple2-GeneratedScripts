@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[200,999], auto_target=True) # 성벽
+        self.spawn_monster(spawn_ids=[200,999]) # 성벽
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[200]):

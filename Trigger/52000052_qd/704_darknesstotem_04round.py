@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513], visible=False, start_delay=0, interval=0, fade=0) # TotemGround
+        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513]) # TotemGround
         self.set_user_value(key='TotemApp', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -16,7 +16,7 @@ class TotemApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[2004]) # 전투용 준타
         self.spawn_monster(spawn_ids=[2304], auto_target=False) # 날아라 준타
-        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513], visible=True, start_delay=0, interval=0, fade=5) # TotemGround
+        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513], visible=True, fade=5.0) # TotemGround
         self.spawn_monster(spawn_ids=[922], auto_target=False) # 암흑 토템
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -26,7 +26,7 @@ class TotemApp01(trigger_api.Trigger):
 
 class JuntaReady01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=2304, script='$52000052_QD__702_DARKNESSTOTEM_02ROUND__0$', time=3, arg5=0) # 전투중인 준타
+        self.set_dialogue(type=1, spawn_id=2304, script='$52000052_QD__702_DARKNESSTOTEM_02ROUND__0$', time=3) # 전투중인 준타
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -73,7 +73,7 @@ class JuntaReturn02(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513], visible=False, start_delay=0, interval=0, fade=5) # TotemGround
+        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513], fade=5.0) # TotemGround
 
 
 initial_state = Wait

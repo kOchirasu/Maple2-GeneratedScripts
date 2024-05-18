@@ -1,5 +1,6 @@
 """ trigger/52100105_qd/52100105_01.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class wait_01(trigger_api.Trigger):
@@ -49,7 +50,7 @@ class 투르카_클라디아(trigger_api.Trigger):
 
 class 투르카_클라디아_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[4001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,9 +62,9 @@ class 투르카_클라디아_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4002], return_view=False)
         self.set_cinematic_ui(type=3)
-        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align='right', msg='$52100105_QD__52100105_01__0$', duration=4000)
-        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align='right', msg='$52100105_QD__52100105_01__1$', duration=4000)
-        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align='right', msg='$52100105_QD__52100105_01__2$', duration=4000)
+        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align=Align.Right, msg='$52100105_QD__52100105_01__0$', duration=4000)
+        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align=Align.Right, msg='$52100105_QD__52100105_01__1$', duration=4000)
+        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align=Align.Right, msg='$52100105_QD__52100105_01__2$', duration=4000)
         self.set_scene_skip(state=Skip_1, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -74,9 +75,9 @@ class 투르카_클라디아_03(trigger_api.Trigger):
 class 투르카_클라디아_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4003], return_view=False)
-        self.add_cinematic_talk(npc_id=11004392, illust_id='cladia_normal', align='left', msg='$52100105_QD__52100105_01__3$', duration=3500)
-        self.add_cinematic_talk(npc_id=11004392, illust_id='cladia_normal', align='left', msg='$52100105_QD__52100105_01__4$', duration=3500)
-        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align='right', msg='$52100105_QD__52100105_01__5$', duration=4000)
+        self.add_cinematic_talk(npc_id=11004392, illust_id='cladia_normal', align=Align.Left, msg='$52100105_QD__52100105_01__3$', duration=3500)
+        self.add_cinematic_talk(npc_id=11004392, illust_id='cladia_normal', align=Align.Left, msg='$52100105_QD__52100105_01__4$', duration=3500)
+        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align=Align.Right, msg='$52100105_QD__52100105_01__5$', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=11000):
@@ -86,7 +87,7 @@ class 투르카_클라디아_04(trigger_api.Trigger):
 class 투르카_클라디아_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4004], return_view=False)
-        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align='left', msg='$52100105_QD__52100105_01__6$', duration=5000)
+        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align=Align.Left, msg='$52100105_QD__52100105_01__6$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -96,9 +97,9 @@ class 투르카_클라디아_05(trigger_api.Trigger):
 class 장치가동_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4007], return_view=False)
-        self.set_npc_rotation(spawn_id=102, rotation=270)
+        self.set_npc_rotation(spawn_id=102, rotation=270.0)
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Bore_A')
-        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align='left', msg='$52100105_QD__52100105_01__7$', duration=3000)
+        self.add_cinematic_talk(npc_id=11004430, illust_id='Turka_normal', align=Align.Left, msg='$52100105_QD__52100105_01__7$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -125,7 +126,7 @@ class 장치가동_01_03(trigger_api.Trigger):
 
 class 장치가동_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=101, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.select_camera_path(path_ids=[4006], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -135,10 +136,10 @@ class 장치가동_02(trigger_api.Trigger):
 
 class 장치가동_02_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_rotation(spawn_id=102, rotation=360)
+        self.set_npc_rotation(spawn_id=102, rotation=360.0)
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Quest_Attack_A', duration=5000) # 클라디아
-        self.add_cinematic_talk(npc_id=11004392, illust_id='cladia_normal', align='right', msg='$52100105_QD__52100105_01__8$', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Quest_Attack_A', duration=5000.0) # 클라디아
+        self.add_cinematic_talk(npc_id=11004392, illust_id='cladia_normal', align=Align.Right, msg='$52100105_QD__52100105_01__8$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -148,7 +149,7 @@ class 장치가동_02_01(trigger_api.Trigger):
 class 장치가동_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4002,4008], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Quest_Effect_A', duration=12000) # 클라디아
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Quest_Effect_A', duration=12000.0) # 클라디아
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -159,7 +160,7 @@ class 장치가동_03(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=101, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -169,7 +170,7 @@ class Skip_1(trigger_api.Trigger):
 class 장치가동_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=101, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

@@ -20,26 +20,26 @@ class 퍼즐대기중(trigger_api.Trigger):
         # 퍼즐 큐브 바운딩 모두 살린다 (arg2=1)
         self.set_mesh(trigger_ids=[451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494], visible=True)
         # 퍼즐 큐브 외곽 발판 모두 가린다 (arg2=0)
-        self.set_mesh(trigger_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544], visible=False)
-        self.set_mesh(trigger_ids=[551,552], visible=False) # 열린 문을 가린다 (arg2=0)
+        self.set_mesh(trigger_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544])
+        self.set_mesh(trigger_ids=[551,552]) # 열린 문을 가린다 (arg2=0)
         # 순간 이동 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=101, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=101, enable=True)
         # 순간 이동 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=102, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=102, enable=True)
         # 순간 이동 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=103, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=103, enable=True)
         # 순간 이동 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=104, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=104, enable=True)
         # 순간 이동 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=115, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=115, enable=True)
         # 순간 이동 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=116, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=116, enable=True)
         # 순간 이동 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=117, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=117, enable=True)
         # 순간 이동 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=118, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=118, enable=True)
         # 탈락자용 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=500, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=500, enable=True)
         # 202 스폰 포인트의 NPC(문 안의 퍼즈룬)를 없앤다
         self.destroy_monster(spawn_ids=[202], arg2=False)
 
@@ -109,23 +109,23 @@ class 시작대기(trigger_api.Trigger):
         # arg1은 상태그룹의 ID, arg2 상태그룹에 포함되는 상태이름들, arg3 0이면 순서대로 1이면 상태그룹을 랜덤하게 섞는다.
         self.set_state(id=1, states=[퍼즐패턴1,퍼즐패턴2,퍼즐패턴3], randomize=True)
         # 퍼즐 패턴 섞기 종료
-        self.set_mesh(trigger_ids=[201,202,203,204,205,206,207,208], visible=False) # 순간 이동 발판이 사라진다
+        self.set_mesh(trigger_ids=[201,202,203,204,205,206,207,208]) # 순간 이동 발판이 사라진다
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=101, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=101)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=102, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=102)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=103, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=103)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=104, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=104)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=115, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=115)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=116, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=116)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=117, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=117)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=118, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=118)
         # 202 스폰 포인트의 NPC(문 안의 퍼즈룬)를 리젠시킨다. 타겟지정 안 한다(arg2=0)
         self.spawn_monster(spawn_ids=[202], auto_target=False)
         self.set_event_ui(type=1, arg2='$61000005_ME__MAINPROCESS__5$', arg3='4500')
@@ -153,7 +153,7 @@ class 멘트1(trigger_api.Trigger):
 class 퍼즐단계1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='99', seconds=14) # 바닥이 사라지는 데 걸리는 시간과 맞출 것
-        self.use_state(id=1, randomize=False)
+        self.use_state(id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='99'):
@@ -199,7 +199,7 @@ class 퍼즐단계2대기(trigger_api.Trigger):
 class 퍼즐단계2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='99', seconds=14) # 바닥이 사라지는 데 걸리는 시간과 맞출 것
-        self.use_state(id=1, randomize=False)
+        self.use_state(id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='99'):
@@ -248,7 +248,7 @@ class 퍼즐단계3대기(trigger_api.Trigger):
 class 퍼즐단계3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='99', seconds=14)
-        self.use_state(id=1, randomize=False)
+        self.use_state(id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='99'):
@@ -318,29 +318,29 @@ class 퍼즐종료처리(trigger_api.Trigger):
         self.set_event_ui(type=0, arg2='0,0')
         self.set_event_ui(type=1, arg2='$61000005_ME__MAINPROCESS__12$', arg3='5000')
         self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176], visible=True) # 퍼즐 큐브를 모두 보인다
-        self.set_mesh(trigger_ids=[211,212], visible=False) # 닫힌 문을 가린다
-        self.set_mesh(trigger_ids=[401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436], visible=False) # 퍼즐 펜스 모두 가린다
-        self.set_mesh(trigger_ids=[451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494], visible=False) # 퍼즐 큐브 바운딩 모두 죽인다
+        self.set_mesh(trigger_ids=[211,212]) # 닫힌 문을 가린다
+        self.set_mesh(trigger_ids=[401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436]) # 퍼즐 펜스 모두 가린다
+        self.set_mesh(trigger_ids=[451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494]) # 퍼즐 큐브 바운딩 모두 죽인다
         self.set_mesh(trigger_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544], visible=True) # 퍼즐 큐브 외곽 발판 모두 보인다
         self.set_mesh(trigger_ids=[551,552], visible=True) # 열린 문을 보인다
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=101, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=101)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=102, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=102)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=103, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=103)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=104, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=104)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=115, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=115)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=116, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=116)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=117, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=117)
         # 순간 이동 포털을 안 보이게 하고 동작 안하게 한다
-        self.set_portal(portal_id=118, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=118)
         # 탈락자용 포털을 안 보이게(arg2=0) 하고 동작하게(arg3=1) 한다
-        self.set_portal(portal_id=500, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=500, enable=True)
         self.set_timer(timer_id='1', seconds=6)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -360,7 +360,7 @@ class 강제종료(trigger_api.Trigger):
 
 class 유저이동(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        self.move_user(map_id=63000001, portal_id=5, box_id=0) # 단풍나무 광장 5번 포털로 이동
+        self.move_user(map_id=63000001, portal_id=5) # 단풍나무 광장 5번 포털로 이동
         return 종료(self.ctx)
 
 
@@ -372,22 +372,22 @@ class 퍼즐패턴1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # arg3:start delay / arg4:떨어지는 간격 / 모두  1/1000초 단위
         self.set_timer(timer_id='1', seconds=14)
-        self.set_mesh(trigger_ids=[101,102,103,104], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[128,138,148,158], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[176,175,174,173], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[149,139,129,119], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[110,109,108,107,106,105], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[166,157,147,137,127,118], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[167,168,169,170,171,172], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[111,120,130,140,150,159], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[112,113,114,115,116], visible=False, start_delay=4500, interval=300)
-        self.set_mesh(trigger_ids=[117,126,136,146,156], visible=False, start_delay=4500, interval=300)
-        self.set_mesh(trigger_ids=[165,164,163,162,161], visible=False, start_delay=4500, interval=300)
-        self.set_mesh(trigger_ids=[160,151,141,131,121], visible=False, start_delay=4500, interval=300)
-        self.set_mesh(trigger_ids=[125,124,123], visible=False, start_delay=6500, interval=300)
-        self.set_mesh(trigger_ids=[122,132,142], visible=False, start_delay=6500, interval=300)
-        self.set_mesh(trigger_ids=[152,153,154], visible=False, start_delay=6500, interval=300)
-        self.set_mesh(trigger_ids=[155,145,135], visible=False, start_delay=6500, interval=300)
+        self.set_mesh(trigger_ids=[101,102,103,104], interval=300)
+        self.set_mesh(trigger_ids=[128,138,148,158], interval=300)
+        self.set_mesh(trigger_ids=[176,175,174,173], interval=300)
+        self.set_mesh(trigger_ids=[149,139,129,119], interval=300)
+        self.set_mesh(trigger_ids=[110,109,108,107,106,105], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[166,157,147,137,127,118], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[167,168,169,170,171,172], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[111,120,130,140,150,159], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[112,113,114,115,116], start_delay=4500, interval=300)
+        self.set_mesh(trigger_ids=[117,126,136,146,156], start_delay=4500, interval=300)
+        self.set_mesh(trigger_ids=[165,164,163,162,161], start_delay=4500, interval=300)
+        self.set_mesh(trigger_ids=[160,151,141,131,121], start_delay=4500, interval=300)
+        self.set_mesh(trigger_ids=[125,124,123], start_delay=6500, interval=300)
+        self.set_mesh(trigger_ids=[122,132,142], start_delay=6500, interval=300)
+        self.set_mesh(trigger_ids=[152,153,154], start_delay=6500, interval=300)
+        self.set_mesh(trigger_ids=[155,145,135], start_delay=6500, interval=300)
 
 
 # 안에서 밖으로 없어지면서 나간다. 살아남는 건 최 외곽의 4개씩
@@ -395,15 +395,15 @@ class 퍼즐패턴2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # arg3:start delay / arg4:떨어지는 간격 / 모두  1/1000초 단위
         self.set_timer(timer_id='1', seconds=14)
-        self.set_mesh(trigger_ids=[133,134,144,143], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[142,132,122,123,124,125], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[135,145,155,154,153,152], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[113,114,115,116,117,126,136,146,156,165], visible=False, start_delay=5500, interval=300)
-        self.set_mesh(trigger_ids=[164,163,162,161,160,151,141,131,121,112], visible=False, start_delay=5500, interval=300)
-        self.set_mesh(trigger_ids=[105,106,107,108,109,110], visible=False, start_delay=9500, interval=300)
-        self.set_mesh(trigger_ids=[118,127,137,147,157,166], visible=False, start_delay=9500, interval=300)
-        self.set_mesh(trigger_ids=[172,171,170,169,168,167], visible=False, start_delay=9500, interval=300)
-        self.set_mesh(trigger_ids=[159,150,140,130,120,111], visible=False, start_delay=9500, interval=300)
+        self.set_mesh(trigger_ids=[133,134,144,143], interval=300)
+        self.set_mesh(trigger_ids=[142,132,122,123,124,125], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[135,145,155,154,153,152], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[113,114,115,116,117,126,136,146,156,165], start_delay=5500, interval=300)
+        self.set_mesh(trigger_ids=[164,163,162,161,160,151,141,131,121,112], start_delay=5500, interval=300)
+        self.set_mesh(trigger_ids=[105,106,107,108,109,110], start_delay=9500, interval=300)
+        self.set_mesh(trigger_ids=[118,127,137,147,157,166], start_delay=9500, interval=300)
+        self.set_mesh(trigger_ids=[172,171,170,169,168,167], start_delay=9500, interval=300)
+        self.set_mesh(trigger_ids=[159,150,140,130,120,111], start_delay=9500, interval=300)
 
 
 # 안과 밖에서 동시에 없어지는 패턴, 도넛 모양으로 살아 남는다
@@ -411,20 +411,20 @@ class 퍼즐패턴3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # arg3:start delay / arg4:떨어지는 간격 / 모두  1/1000초 단위
         self.set_timer(timer_id='1', seconds=14)
-        self.set_mesh(trigger_ids=[101,102,103,104], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[128,138,148,158], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[176,175,174,173], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[149,139,129,119], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[133,134,144,143], visible=False, start_delay=0, interval=300)
-        self.set_mesh(trigger_ids=[105,106,107,108,109,110], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[118,127,137,147,157,166], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[172,171,170,169,168,167], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[159,150,140,130,120,111], visible=False, start_delay=2500, interval=300)
-        self.set_mesh(trigger_ids=[122,123,124], visible=False, start_delay=2500, interval=600)
-        self.set_mesh(trigger_ids=[125,135,145], visible=False, start_delay=2500, interval=600)
-        self.set_mesh(trigger_ids=[155,154,153], visible=False, start_delay=2500, interval=600)
-        self.set_mesh(trigger_ids=[152,142,132], visible=False, start_delay=2500, interval=600)
-        self.set_mesh(trigger_ids=[112,117,165,160], visible=False, start_delay=6500, interval=300)
+        self.set_mesh(trigger_ids=[101,102,103,104], interval=300)
+        self.set_mesh(trigger_ids=[128,138,148,158], interval=300)
+        self.set_mesh(trigger_ids=[176,175,174,173], interval=300)
+        self.set_mesh(trigger_ids=[149,139,129,119], interval=300)
+        self.set_mesh(trigger_ids=[133,134,144,143], interval=300)
+        self.set_mesh(trigger_ids=[105,106,107,108,109,110], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[118,127,137,147,157,166], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[172,171,170,169,168,167], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[159,150,140,130,120,111], start_delay=2500, interval=300)
+        self.set_mesh(trigger_ids=[122,123,124], start_delay=2500, interval=600)
+        self.set_mesh(trigger_ids=[125,135,145], start_delay=2500, interval=600)
+        self.set_mesh(trigger_ids=[155,154,153], start_delay=2500, interval=600)
+        self.set_mesh(trigger_ids=[152,142,132], start_delay=2500, interval=600)
+        self.set_mesh(trigger_ids=[112,117,165,160], start_delay=6500, interval=300)
 
 
 # 퍼즐 패턴 끝

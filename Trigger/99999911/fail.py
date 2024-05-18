@@ -13,15 +13,15 @@ class idle(trigger_api.Trigger):
 
 class fail_random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return fail_01(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return fail_02(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return fail_03(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return fail_04(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return fail_04(self.ctx)
 
 

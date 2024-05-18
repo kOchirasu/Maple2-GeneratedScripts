@@ -15,7 +15,7 @@ class Wait(trigger_api.Trigger):
 
 class Wait2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.debug_string(string='AddEffectNif 테스트')
+        self.debug_string(value='AddEffectNif 테스트')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -28,7 +28,7 @@ class Wait2(trigger_api.Trigger):
 
 class Guide(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.debug_string(string='40002673퀘스트 완료가능 or 완료 상태를 만들고 6번 영역안에 들어가보세요.')
+        self.debug_string(value='40002673퀘스트 완료가능 or 완료 상태를 만들고 6번 영역안에 들어가보세요.')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9050], quest_ids=[40002673,40002674,40002675,40002676,40002677,40002678,40002679], quest_states=[1]):
@@ -48,7 +48,7 @@ class NpcChange01(trigger_api.Trigger):
 class Reset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[11000044])
-        self.debug_string(string='5초 후에 트리거가 리셋됩니다. 6번 영역 밖으로 나가세요.')
+        self.debug_string(value='5초 후에 트리거가 리셋됩니다. 6번 영역 밖으로 나가세요.')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

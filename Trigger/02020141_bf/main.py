@@ -10,7 +10,7 @@ class 시작대기중(trigger_api.Trigger):
 
 class 기본셋팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False) # 나가기 포탈 최초에는 감추기
+        self.set_portal(portal_id=1) # 나가기 포탈 최초에는 감추기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[102]):
@@ -24,7 +24,7 @@ class 기본셋팅(trigger_api.Trigger):
 class 보스등장준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 공중에 떠있는 스타팅 지점의 바닥 트리거 메쉬 제거하여 플레이어가 공중에서 추락하면서 시작 하도록 하기
-        self.set_mesh(trigger_ids=[301], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[301])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -76,7 +76,7 @@ class 던전실패(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 class 연출딜레이(trigger_api.Trigger):

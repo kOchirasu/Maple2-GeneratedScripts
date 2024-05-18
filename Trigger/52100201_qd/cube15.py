@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 큐브15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4027], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4027], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -19,7 +19,7 @@ class 큐브15(trigger_api.Trigger):
 
 class 큐브제거(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4027], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4027])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2600):
@@ -34,7 +34,7 @@ class 큐브제거(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

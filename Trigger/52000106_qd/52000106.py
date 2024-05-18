@@ -1,5 +1,6 @@
 """ trigger/52000106_qd/52000106.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Wait(trigger_api.Trigger):
@@ -32,7 +33,7 @@ class 그림자의침략01(trigger_api.Trigger):
 
 class 그림자의침략02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[1000,1001], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Bore_A')
 
@@ -106,7 +107,7 @@ class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_ririn_Turn')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.reset_camera(interpolation_time=0.5)
         self.spawn_monster(spawn_ids=[700,701,702,703], auto_target=False)
         self.spawn_monster(spawn_ids=[704,705,706,707], auto_target=False)
@@ -129,7 +130,7 @@ class 그림자의침략09(trigger_api.Trigger):
         self.reset_camera(interpolation_time=0.5)
         self.show_guide_summary(entity_id=25201061, text_id=25201061, duration=5000)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_ririn_go')
-        self.add_balloon_talk(spawn_id=0, msg='$52000106_QD__52000106__0$', duration=6000, delay_tick=1000)
+        self.add_balloon_talk(msg='$52000106_QD__52000106__0$', duration=6000, delay_tick=1000)
         self.add_balloon_talk(spawn_id=101, msg='$52000106_QD__52000106__1$', duration=6000, delay_tick=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +141,7 @@ class 그림자의침략09(trigger_api.Trigger):
 # ########################그림자의침략 마무리########################
 class 그림자의침략완료01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=0, msg='$52000106_QD__52000106__2$', duration=6000, delay_tick=1000)
+        self.add_balloon_talk(msg='$52000106_QD__52000106__2$', duration=6000, delay_tick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -165,7 +166,7 @@ class 그림자의침략완료03(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=0.5)
-        self.set_onetime_effect(id=20, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
+        self.set_onetime_effect(id=20, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
         self.move_user(map_id=52000106, portal_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -206,7 +207,7 @@ class 리엔을떠나다01(trigger_api.Trigger):
 class 리엔을떠나다02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(is_visible=False) # 유저 투명 처리
-        self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=30, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[1004,1005], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -217,7 +218,7 @@ class 리엔을떠나다02(trigger_api.Trigger):
 class 리엔을떠나다03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
-        self.add_cinematic_talk(npc_id=11003174, msg='$52000106_QD__52000106__3$', duration=4000, align='right')
+        self.add_cinematic_talk(npc_id=11003174, msg='$52000106_QD__52000106__3$', duration=4000, align=Align.Right)
         self.select_camera_path(path_ids=[1006,1007], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -227,7 +228,7 @@ class 리엔을떠나다03(trigger_api.Trigger):
 
 class 리엔을떠나다04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003174, msg='$52000106_QD__52000106__4$', duration=5000, align='right')
+        self.add_cinematic_talk(npc_id=11003174, msg='$52000106_QD__52000106__4$', duration=5000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -237,7 +238,7 @@ class 리엔을떠나다04(trigger_api.Trigger):
 class 리엔을떠나다05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[1008,1009], return_view=False)
-        self.add_cinematic_talk(npc_id=11003174, illust_id='Ririn_normal', msg='$52000106_QD__52000106__5$', duration=4000, align='right')
+        self.add_cinematic_talk(npc_id=11003174, illust_id='Ririn_normal', msg='$52000106_QD__52000106__5$', duration=4000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -246,7 +247,7 @@ class 리엔을떠나다05(trigger_api.Trigger):
 
 class 리엔을떠나다06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003174, illust_id='Ririn_normal', msg='$52000106_QD__52000106__6$', duration=4000, align='right')
+        self.add_cinematic_talk(npc_id=11003174, illust_id='Ririn_normal', msg='$52000106_QD__52000106__6$', duration=4000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -266,7 +267,7 @@ class 리엔을떠나다08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.show_caption(type='VerticalCaption', title='$52000106_QD__52000106__7$', desc='$52000106_QD__52000106__8$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=10000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000106_QD__52000106__7$', desc='$52000106_QD__52000106__8$', align=Align.Bottom | Align.Left, duration=10000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

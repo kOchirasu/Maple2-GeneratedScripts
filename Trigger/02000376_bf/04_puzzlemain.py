@@ -8,13 +8,13 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='CorrectSecondPiece', value=0)
         self.set_user_value(key='CorrectThirdPiece', value=0)
         self.set_user_value(key='CorrectFouthPiece', value=0)
-        self.set_effect(trigger_ids=[5002], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5003], visible=False) # Pattern_LightOn
+        self.set_effect(trigger_ids=[5002]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5003]) # Pattern_LightOn
         self.set_interact_object(trigger_ids=[10001023], state=0) # Lever
         self.set_user_value(key='PuzzleStart', value=0)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109], visible=False, start_delay=0, interval=0, fade=0) # Quiz
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004], visible=False, start_delay=0, interval=0, fade=0) # BaseRock
-        self.set_mesh(trigger_ids=[3020], visible=False, start_delay=0, interval=0, fade=0) # LionStone
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109]) # Quiz
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004]) # BaseRock
+        self.set_mesh(trigger_ids=[3020]) # LionStone
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PuzzleStart') >= 1:
@@ -28,7 +28,7 @@ class StartPuzzle(trigger_api.Trigger):
         # 네 번째 문양은 세 번째 뽑힌 문양을 제외하고 8번 트리거에서 뽑음 , 중복 2개 제한 장치
         self.set_user_value(trigger_id=7, key='PickThirdPiece', value=1)
         self.set_interact_object(trigger_ids=[10001023], state=1) # Lever
-        self.set_mesh(trigger_ids=[3020], visible=True, start_delay=0, interval=0, fade=0) # LionStone
+        self.set_mesh(trigger_ids=[3020], visible=True) # LionStone
         self.set_effect(trigger_ids=[5002], visible=True) # 가이드 서머리 사운드 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,7 +38,7 @@ class StartPuzzle(trigger_api.Trigger):
 
 class CheckAnswer01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3020], visible=False, start_delay=200, interval=0, fade=0) # LionStone
+        self.set_mesh(trigger_ids=[3020], start_delay=200) # LionStone
         self.set_user_value(trigger_id=5, key='CheckFirstPiece', value=1)
         self.set_user_value(trigger_id=6, key='CheckSecondPiece', value=1)
         self.set_user_value(trigger_id=7, key='CheckThirdPiece', value=1)
@@ -128,7 +128,7 @@ class Retry01(trigger_api.Trigger):
 class Retry02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001023], state=1) # Lever
-        self.set_mesh(trigger_ids=[3020], visible=True, start_delay=0, interval=0, fade=0) # LionStone
+        self.set_mesh(trigger_ids=[3020], visible=True) # LionStone
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10001023], state=0):
@@ -141,7 +141,7 @@ class Retry02(trigger_api.Trigger):
 class PuzzleSolved(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5003], visible=True) # Pattern_LightOn
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004], visible=True, start_delay=0, interval=0, fade=0) # BaseRock
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004], visible=True) # BaseRock
         self.set_user_value(trigger_id=1, key='PuzzleSolved', value=1)
         self.set_user_value(trigger_id=5, key='LockFirstPiece', value=1)
         self.set_user_value(trigger_id=6, key='LockSecondPiece', value=1)

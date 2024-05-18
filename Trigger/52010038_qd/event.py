@@ -17,14 +17,14 @@ class 대기(trigger_api.Trigger):
         self.set_agent(trigger_ids=[8011], visible=True)
         self.set_agent(trigger_ids=[8012], visible=True)
         self.set_agent(trigger_ids=[8013], visible=True)
-        self.set_skill(trigger_ids=[710], enable=False)
-        self.set_skill(trigger_ids=[711], enable=False)
-        self.set_effect(trigger_ids=[6110], visible=False)
-        self.set_effect(trigger_ids=[6111], visible=False)
-        self.set_effect(trigger_ids=[6298], visible=False)
-        self.set_actor(trigger_id=220, visible=False)
-        self.set_actor(trigger_id=221, visible=False)
-        self.set_actor(trigger_id=222, visible=False)
+        self.set_skill(trigger_ids=[710])
+        self.set_skill(trigger_ids=[711])
+        self.set_effect(trigger_ids=[6110])
+        self.set_effect(trigger_ids=[6111])
+        self.set_effect(trigger_ids=[6298])
+        self.set_actor(trigger_id=220)
+        self.set_actor(trigger_id=221)
+        self.set_actor(trigger_id=222)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EventStart') >= 1:
@@ -44,7 +44,7 @@ class 이벤트시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1200], auto_target=False)
         self.destroy_monster(spawn_ids=[1201])
-        self.set_dialogue(type=1, spawn_id=1200, script='$52010038_QD__EVENT__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1200, script='$52010038_QD__EVENT__0$', time=2)
         self.move_npc(spawn_id=1200, patrol_name='MS2PatrolData_1200')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(trigger_ids=[710], enable=True)
         self.set_effect(trigger_ids=[6110], visible=True)
-        self.spawn_monster(spawn_ids=[2012,2013,2014,2015], auto_target=True)
+        self.spawn_monster(spawn_ids=[2012,2013,2014,2015])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -65,15 +65,15 @@ class 생성(trigger_api.Trigger):
 
 class 감지대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
-        self.set_agent(trigger_ids=[8009], visible=False)
-        self.set_agent(trigger_ids=[8010], visible=False)
-        self.set_agent(trigger_ids=[8011], visible=False)
-        self.set_agent(trigger_ids=[8012], visible=False)
-        self.set_agent(trigger_ids=[8013], visible=False)
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
+        self.set_agent(trigger_ids=[8009])
+        self.set_agent(trigger_ids=[8010])
+        self.set_agent(trigger_ids=[8011])
+        self.set_agent(trigger_ids=[8012])
+        self.set_agent(trigger_ids=[8013])
         self.set_dialogue(type=1, spawn_id=1200, script='$52010038_QD__EVENT__2$', time=3, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,7 +109,7 @@ class 폭발(trigger_api.Trigger):
         self.set_actor(trigger_id=221, visible=True, initial_sequence='Attack_02_A')
         self.set_actor(trigger_id=222, visible=True, initial_sequence='Attack_02_A')
         self.set_skill(trigger_ids=[711], enable=True)
-        self.set_effect(trigger_ids=[6298], visible=False)
+        self.set_effect(trigger_ids=[6298])
         self.set_effect(trigger_ids=[6111], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -119,9 +119,9 @@ class 폭발(trigger_api.Trigger):
 
 class 폭탄숨김(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=220, visible=False)
-        self.set_actor(trigger_id=221, visible=False)
-        self.set_actor(trigger_id=222, visible=False)
+        self.set_actor(trigger_id=220)
+        self.set_actor(trigger_id=221)
+        self.set_actor(trigger_id=222)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1300):

@@ -10,7 +10,7 @@ class idle(trigger_api.Trigger):
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$02000348_BF__NPC_MOVE__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000348_BF__NPC_MOVE__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

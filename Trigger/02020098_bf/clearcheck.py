@@ -44,7 +44,7 @@ class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         # 스타트포인트 지점의 칸막이 트리거메쉬 제거하기
-        self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308,309,310,311], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308,309,310,311])
         # 나가기 포탈 생성은 portal.xml 에서 설정함
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 던전실패(trigger_api.Trigger):
         self.dungeon_set_end_time()
         self.dungeon_close_timer()
         # 스타트포인트 지점의 칸막이 트리거메쉬 제거하기
-        self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308,309,310,311], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308,309,310,311])
         self.destroy_monster(spawn_ids=[-1]) # 모든 구간에 나가기 포탈 생성하기
         # 보스 죽이면 나가기 포탈 생성하기, 졸구간 전투판에서 나가기 포탈
         self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
@@ -81,7 +81,7 @@ class 던전실패(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 initial_state = 시작대기중

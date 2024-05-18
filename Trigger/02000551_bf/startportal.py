@@ -11,8 +11,8 @@ class 시작대기중(trigger_api.Trigger):
 class 기본셋팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 최초 입구에 있는 전투판으로 가는  포탈 최초에는 감추기
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[8101,8102,8103,8104,8105], visible=False) # 최초 시작 지점에 나오는 화살표 표시 끄기
+        self.set_portal(portal_id=11)
+        self.set_effect(trigger_ids=[8101,8102,8103,8104,8105]) # 최초 시작 지점에 나오는 화살표 표시 끄기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -24,7 +24,7 @@ class 포탈활성화(trigger_api.Trigger):
         # 최초 입구에 있는 전투판으로 가는  포탈 활성화
         self.set_portal(portal_id=11, visible=True, enable=True, minimap_visible=True)
         # self.set_effect(trigger_ids=[8101,8102,8103,8104,8105], visible=True) # 최초 시작 지점에 나오는 화살표 표시
-        self.dungeon_enable_give_up(is_enable='1')
+        self.dungeon_enable_give_up(is_enable=True)
         self.set_event_ui(type=1, arg2='$02020140_BF__BARRICADE__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,9 +40,9 @@ class 포탈활성화(trigger_api.Trigger):
 
 class 포탈감추기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False) # 전투판으로 가는  포탈  감추기
+        self.set_portal(portal_id=11) # 전투판으로 가는  포탈  감추기
         # # 최초 시작 지점에 나오는 화살표 표시 끄기
-        self.set_effect(trigger_ids=[8101,8102,8103,8104,8105], visible=False)
+        self.set_effect(trigger_ids=[8101,8102,8103,8104,8105])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_timeout():

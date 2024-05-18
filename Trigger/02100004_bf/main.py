@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3000,3001], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3000,3001], visible=True)
+        self.set_effect(trigger_ids=[601])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
 
 class CheckUser10_GuildRaid(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='99', seconds=30, start_delay=1, interval=0, v_offset=0)
+        self.set_timer(timer_id='99', seconds=30, start_delay=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=199) >= 10:
@@ -73,7 +73,7 @@ class Caption01Skip(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001])
         self.close_cinematic()
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -89,7 +89,7 @@ class 시작(trigger_api.Trigger):
 class 라운드시작1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=20002411)
-        self.show_count_ui(text='$02100004_BF__MAIN__1$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__1$', count=3)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +99,7 @@ class 라운드시작1(trigger_api.Trigger):
 
 class 라운드1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='1,10')
         self.set_timer(timer_id='1', seconds=20, start_delay=1, interval=1)
@@ -118,7 +118,7 @@ class 라운드시작2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
-        self.show_count_ui(text='$02100004_BF__MAIN__2$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__2$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -127,7 +127,7 @@ class 라운드시작2(trigger_api.Trigger):
 
 class 라운드2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='2', seconds=20, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='2,10')
@@ -146,7 +146,7 @@ class 라운드시작3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
-        self.show_count_ui(text='$02100004_BF__MAIN__3$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__3$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -155,7 +155,7 @@ class 라운드시작3(trigger_api.Trigger):
 
 class 라운드3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='3', seconds=20, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='3,10')
@@ -174,7 +174,7 @@ class 라운드시작4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
-        self.show_count_ui(text='$02100004_BF__MAIN__4$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__4$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -183,7 +183,7 @@ class 라운드시작4(trigger_api.Trigger):
 
 class 라운드4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='4', seconds=20, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='4,10')
@@ -202,7 +202,7 @@ class 라운드시작5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
-        self.show_count_ui(text='$02100004_BF__MAIN__5$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__5$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -211,7 +211,7 @@ class 라운드시작5(trigger_api.Trigger):
 
 class 라운드5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='5', seconds=20, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='5,10')
@@ -230,7 +230,7 @@ class 라운드시작6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
-        self.show_count_ui(text='$02100004_BF__MAIN__6$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__6$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -239,7 +239,7 @@ class 라운드시작6(trigger_api.Trigger):
 
 class 라운드6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='6', seconds=20, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='6,10')
@@ -258,7 +258,7 @@ class 라운드시작7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
-        self.show_count_ui(text='$02100004_BF__MAIN__7$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__7$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -267,7 +267,7 @@ class 라운드시작7(trigger_api.Trigger):
 
 class 라운드7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='7', seconds=20, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='7,10')
@@ -286,7 +286,7 @@ class 라운드시작8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
-        self.show_count_ui(text='$02100004_BF__MAIN__8$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__8$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -295,7 +295,7 @@ class 라운드시작8(trigger_api.Trigger):
 
 class 라운드8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='8', seconds=20, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='8,10')
@@ -314,7 +314,7 @@ class 라운드시작9(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_user_value(trigger_id=999992, key='RoundStart', value=1)
-        self.show_count_ui(text='$02100004_BF__MAIN__9$', stage=0, count=3)
+        self.show_count_ui(text='$02100004_BF__MAIN__9$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -323,7 +323,7 @@ class 라운드시작9(trigger_api.Trigger):
 
 class 라운드9(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='9', seconds=20, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='9,10')
@@ -341,8 +341,8 @@ class 라운드9(trigger_api.Trigger):
 class 라운드시작10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
-        self.spawn_monster(spawn_ids=[2000], auto_target=True)
-        self.show_count_ui(text='$02100004_BF__MAIN__10$', stage=0, count=3)
+        self.spawn_monster(spawn_ids=[2000])
+        self.show_count_ui(text='$02100004_BF__MAIN__10$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -351,7 +351,7 @@ class 라운드시작10(trigger_api.Trigger):
 
 class 라운드10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.set_timer(timer_id='10', seconds=150, start_delay=1, interval=1)
         self.move_random_user(map_id=2100004, portal_id=99, box_id=101, count=1)
         self.set_event_ui(type=0, arg2='10,10')

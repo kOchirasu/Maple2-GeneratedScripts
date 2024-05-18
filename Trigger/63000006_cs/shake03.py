@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5070], visible=False)
+        self.set_effect(trigger_ids=[5070])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -21,13 +21,13 @@ class 시작(trigger_api.Trigger):
 
 class 간격랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초간격4(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초간격5(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초간격6(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초간격7(self.ctx)
 
 
@@ -77,7 +77,7 @@ class 초간격7(trigger_api.Trigger):
 
 class 초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5070], visible=False)
+        self.set_effect(trigger_ids=[5070])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 시작(self.ctx)
@@ -85,7 +85,7 @@ class 초기화(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5070], visible=False)
+        self.set_effect(trigger_ids=[5070])
 
 
 initial_state = 대기

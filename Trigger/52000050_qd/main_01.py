@@ -12,10 +12,10 @@ import trigger_api
 """
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7011], visible=False) # 참새 조용함
-        self.set_breakable(trigger_ids=[9001,9002,9003,9004,9005], enable=False) # 참새들 조용히 있음
-        self.set_visible_breakable_object(trigger_ids=[9001,9002,9003,9004,9005], visible=False) # 참새들 조용히 있음
-        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[7011]) # 참새 조용함
+        self.set_breakable(trigger_ids=[9001,9002,9003,9004,9005]) # 참새들 조용히 있음
+        self.set_visible_breakable_object(trigger_ids=[9001,9002,9003,9004,9005]) # 참새들 조용히 있음
+        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010])
         self.spawn_monster(spawn_ids=[101,102,103], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class start(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[101,102]) # 퀘스트용 소멸
         self.spawn_monster(spawn_ids=[111,112], auto_target=False) # 연출용 리젠
         self.move_npc(spawn_id=112, patrol_name='MS2PatrolData_1201') # 연출용 틴차이 이동
-        self.set_dialogue(type=1, spawn_id=112, script='$52000050_QD__MAIN_01__8$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=112, script='$52000050_QD__MAIN_01__8$', time=2)
         self.set_dialogue(type=1, spawn_id=112, script='$52000050_QD__MAIN_01__0$', time=2, arg5=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,7 +114,7 @@ class start_02_resume(trigger_api.Trigger):
 
 class start_02_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=111, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=111, sequence_name='Talk_A', duration=3000.0)
         self.set_dialogue(type=2, spawn_id=11001557, script='$52000050_QD__MAIN_01__3$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +125,7 @@ class start_02_b(trigger_api.Trigger):
 class start_02_c(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001708, script='$52000050_QD__MAIN_01__4$', time=3)
-        self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -151,7 +151,7 @@ class start_02_e(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
             self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005], visible=True) # 참새들 표시
-            self.set_mesh_animation(trigger_ids=[6001,6002,6003,6004,6005], visible=True, start_delay=0, interval=0)
+            self.set_mesh_animation(trigger_ids=[6001,6002,6003,6004,6005], visible=True)
             return start_02_f(self.ctx)
 
 
@@ -165,12 +165,12 @@ class start_02_f(trigger_api.Trigger):
 class start_02_g(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8003,8004], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            self.set_breakable(trigger_ids=[9001,9002,9003,9004,9005], enable=False) # 참새들 조용히 있음
-            self.set_visible_breakable_object(trigger_ids=[9001,9002,9003,9004,9005], visible=False) # 참새들 조용히 있음
+            self.set_breakable(trigger_ids=[9001,9002,9003,9004,9005]) # 참새들 조용히 있음
+            self.set_visible_breakable_object(trigger_ids=[9001,9002,9003,9004,9005]) # 참새들 조용히 있음
             self.move_npc(spawn_id=122, patrol_name='MS2PatrolData_1203') # 연출용 틴차이 이동
             return start_02_h(self.ctx)
 
@@ -186,7 +186,7 @@ class start_02_h(trigger_api.Trigger):
 
 class start_02_i(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=3000.0)
         self.set_dialogue(type=2, spawn_id=11001708, script='$52000050_QD__MAIN_01__7$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -197,7 +197,7 @@ class start_02_i(trigger_api.Trigger):
 
 class start_02_j(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[8002], return_view=True)
+        self.select_camera_path(path_ids=[8002])
         self.destroy_monster(spawn_ids=[111]) # 퀘스트용 소멸
         self.spawn_monster(spawn_ids=[121], auto_target=False) # 퀘스트용 리젠
         self.set_cinematic_ui(type=0)

@@ -15,7 +15,7 @@ class 말풍선01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_dialogue(type=1, spawn_id=1001, script='$63000003_CS__50001475__0$', time=4, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1001, script='$63000003_CS__50001475__0$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -43,7 +43,7 @@ class PC이동(trigger_api.Trigger):
 
 class 강제이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=2000062, portal_id=0)
+        self.move_user(map_id=2000062)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

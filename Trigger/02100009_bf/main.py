@@ -10,9 +10,9 @@ class 유저감지(trigger_api.Trigger):
 
 class 타이머설정(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=True)
+        self.set_portal(portal_id=3, minimap_visible=True)
         self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True)
-        self.set_timer(timer_id='10000', seconds=300, start_delay=1, interval=1, v_offset=0)
+        self.set_timer(timer_id='10000', seconds=300, start_delay=1, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 끝(self.ctx)

@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 어나운스0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='4', seconds=15, start_delay=0)
+        self.set_timer(timer_id='4', seconds=15)
         # self.set_event_ui(type=1, arg2='$61000004_ME__NOTICE__0$', arg3='4000', arg4='102')
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8161,8162,8163,8164], visible=False) # 안보이는 상태
+        self.set_mesh(trigger_ids=[8161,8162,8163,8164]) # 안보이는 상태
         self.set_interact_object(trigger_ids=[10000898], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -26,8 +26,8 @@ class 시작(trigger_api.Trigger):
 
 class 작동_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8161,8162,8163,8164], visible=True, interval=300, fade=10) # 파란 선으로
-        self.set_mesh(trigger_ids=[8261,8262,8263,8264], visible=False, interval=300, fade=10) # 빨간 선이
+        self.set_mesh(trigger_ids=[8161,8162,8163,8164], visible=True, interval=300, fade=10.0) # 파란 선으로
+        self.set_mesh(trigger_ids=[8261,8262,8263,8264], interval=300, fade=10.0) # 빨간 선이
         self.set_effect(trigger_ids=[7012], visible=True)
         self.set_timer(timer_id='3', seconds=3)
 
@@ -40,10 +40,10 @@ class 작동_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=106, text_id=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
-        self.set_mesh(trigger_ids=[8064,8065,8066,8067,8068], visible=False, interval=0, fade=10) # 벽은 사라지고
+        self.set_mesh(trigger_ids=[8064,8065,8066,8067,8068], fade=10.0) # 벽은 사라지고
         self.set_skill(trigger_ids=[5808], enable=True) # 벽 날리는 스킬
-        self.set_mesh(trigger_ids=[8069], visible=False, interval=30, fade=0) # 드럼통 폭발
-        self.set_mesh(trigger_ids=[8161,8162,8163,8164], visible=False, interval=0, fade=10) # 파란 선도 마저 삭제
+        self.set_mesh(trigger_ids=[8069], interval=30) # 드럼통 폭발
+        self.set_mesh(trigger_ids=[8161,8162,8163,8164], fade=10.0) # 파란 선도 마저 삭제
 
 
 initial_state = 대기

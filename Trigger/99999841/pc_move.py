@@ -18,11 +18,11 @@ class 유저이동확률(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(var_id=2) == 1:
             return 종료(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return 유저이동1(self.ctx)
-        if self.random_condition(weight=34):
+        if self.random_condition(weight=34.0):
             return 유저이동2(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return 유저이동3(self.ctx)
 
 

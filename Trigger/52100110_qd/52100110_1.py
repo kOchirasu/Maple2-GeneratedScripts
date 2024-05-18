@@ -28,7 +28,7 @@ class 퀘스트체크521001101(trigger_api.Trigger):
 
 class 화이트박스제거521001101(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[10000], visible=False)
+        self.set_mesh(trigger_ids=[10000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

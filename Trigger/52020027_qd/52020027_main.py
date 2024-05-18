@@ -22,10 +22,10 @@ class 카메라_시작(trigger_api.Trigger):
         self.set_scene_skip(state=카메라_종료, action='exit')
         self.move_user(map_id=52020027, portal_id=2)
         self.spawn_monster(spawn_ids=[101], auto_target=False)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=5000.0)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -43,8 +43,8 @@ class 카메라_세리하대사1(trigger_api.Trigger):
 
 class 카메라_세리하대사2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
-        self.set_npc_rotation(spawn_id=101, rotation=180)
+        self.select_camera(trigger_id=502)
+        self.set_npc_rotation(spawn_id=101, rotation=180.0)
         self.set_dialogue(type=2, spawn_id=22000114, script='여기까지 쫓아왔어?', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,7 +75,7 @@ class 카메라_종료(trigger_api.Trigger):
 
 class 보스전시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[111], auto_target=True)
+        self.spawn_monster(spawn_ids=[111])
         self.set_user_value(trigger_id=99990002, key='Boss', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:

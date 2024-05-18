@@ -4,14 +4,14 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[601,602,603], visible=False)
+        self.set_portal(portal_id=3)
+        self.set_effect(trigger_ids=[601,602,603])
         self.move_user(map_id=2000393, portal_id=1)
         self.set_interact_object(trigger_ids=[10001083], state=1)
         self.set_interact_object(trigger_ids=[10001084], state=1)
         self.set_interact_object(trigger_ids=[10001085], state=1)
-        self.select_camera(trigger_id=299, enable=True)
-        # self.reset_camera(interpolation_time=0)
+        self.select_camera(trigger_id=299)
+        # self.reset_camera()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -25,8 +25,8 @@ class 대기(trigger_api.Trigger):
 class 이벤트시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.select_camera(trigger_id=300, enable=True)
-            self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+            self.select_camera(trigger_id=300)
+            self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
             return 캐릭터선택대기(self.ctx)
 
 
@@ -53,7 +53,7 @@ class 천둥선택(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=True)
         self.add_buff(box_ids=[199], skill_id=99910090, level=1, is_player=False, is_skill_set=False)
-        self.select_camera(trigger_id=311, enable=True)
+        self.select_camera(trigger_id=311)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -64,7 +64,7 @@ class 알론선택(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[602], visible=True)
         self.add_buff(box_ids=[199], skill_id=99910100, level=1, is_player=False, is_skill_set=False)
-        self.select_camera(trigger_id=312, enable=True)
+        self.select_camera(trigger_id=312)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -75,7 +75,7 @@ class 오스칼선택(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[603], visible=True)
         self.add_buff(box_ids=[199], skill_id=99910110, level=1, is_player=False, is_skill_set=False)
-        self.select_camera(trigger_id=313, enable=True)
+        self.select_camera(trigger_id=313)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -88,7 +88,7 @@ class 게임준비(trigger_api.Trigger):
         self.create_widget(type='ScoreBoard')
         # 스코어 창 열기  arg3는 위치 (1:중앙:다크스트림, 2:우상단:아케이드)
         self.widget_action(type='ScoreBoard', func='OpenBoard', widget_arg='1')
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -101,7 +101,7 @@ class 게임시작(trigger_api.Trigger):
         # self.widget_action(type='ScoreBoard', func='AddScore', widget_arg='10', desc='점수 강제 추가')
         self.show_count_ui(text='$02000385_BF__VIP_DUNGEON_MAIN__0$', stage=1, count=3)
         self.set_event_ui(type=0, arg2='1,5')
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -111,7 +111,7 @@ class 게임시작(trigger_api.Trigger):
 class 라운드시작1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=9991001, key='round1start', value=1)
-        self.set_timer(timer_id='30', seconds=30, start_delay=0, interval=1, v_offset=80)
+        self.set_timer(timer_id='30', seconds=30, interval=1, v_offset=80)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=30000):
@@ -131,7 +131,7 @@ class 라운드종료1(trigger_api.Trigger):
 class 라운드시작2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=9991001, key='round2start', value=1)
-        self.set_timer(timer_id='30', seconds=30, start_delay=0, interval=1, v_offset=80)
+        self.set_timer(timer_id='30', seconds=30, interval=1, v_offset=80)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=30000):
@@ -151,7 +151,7 @@ class 라운드종료2(trigger_api.Trigger):
 class 라운드시작3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=9991001, key='round3start', value=1)
-        self.set_timer(timer_id='30', seconds=30, start_delay=0, interval=1, v_offset=80)
+        self.set_timer(timer_id='30', seconds=30, interval=1, v_offset=80)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=30000):
@@ -171,7 +171,7 @@ class 라운드종료3(trigger_api.Trigger):
 class 라운드시작4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=9991001, key='round4start', value=1)
-        self.set_timer(timer_id='30', seconds=30, start_delay=0, interval=1, v_offset=80)
+        self.set_timer(timer_id='30', seconds=30, interval=1, v_offset=80)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=30000):
@@ -191,7 +191,7 @@ class 라운드종료4(trigger_api.Trigger):
 class 라운드시작5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=9991001, key='round5start', value=1)
-        self.set_timer(timer_id='30', seconds=30, start_delay=0, interval=1, v_offset=80)
+        self.set_timer(timer_id='30', seconds=30, interval=1, v_offset=80)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=30000):
@@ -200,7 +200,7 @@ class 라운드시작5(trigger_api.Trigger):
 
 class 게임종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_event_ui(type=0, arg2='0,0')
         self.move_user(map_id=2000393, portal_id=2)
 

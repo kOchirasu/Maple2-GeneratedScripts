@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=13500, enable=False)
+        self.set_sound(trigger_id=13500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ChangeBGM') >= 1:

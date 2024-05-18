@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
         self.destroy_monster(spawn_ids=[2001])
         self.destroy_monster(spawn_ids=[2099])
         self.destroy_monster(spawn_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016])
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -46,7 +46,7 @@ class 차목표1(trigger_api.Trigger):
 class 카메라이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_skip(state=연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,7 +57,7 @@ class 카메라이동(trigger_api.Trigger):
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[602], visible=True)
-        self.select_camera_path(path_ids=[301], return_view=True)
+        self.select_camera_path(path_ids=[301])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -86,7 +86,7 @@ class 피자들기(trigger_api.Trigger):
 class 엘리트스폰대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016], auto_target=False)
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[602])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -98,7 +98,7 @@ class 엘리트스폰대기(trigger_api.Trigger):
 class 엘리트스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entity_id=25200402, text_id=25200402)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009], visible=True, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009], visible=True, fade=2.0)
         self.spawn_monster(spawn_ids=[2001], auto_target=False)
         self.set_dialogue(type=1, spawn_id=2001, script='$52000004_QD__MAIN__3$', time=3)
 
@@ -114,7 +114,7 @@ class 엘리트스폰(trigger_api.Trigger):
 
 class 벽해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009], visible=False, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009], fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[102]):
@@ -125,7 +125,7 @@ class 벽해제(trigger_api.Trigger):
 
 class NPC등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.spawn_monster(spawn_ids=[2099], auto_target=False)
         self.set_dialogue(type=1, spawn_id=2099, script='$52000004_QD__MAIN__4$', time=3)
         self.move_npc(spawn_id=2099, patrol_name='MS2PatrolData_2099')
@@ -185,8 +185,8 @@ class 종료(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[2001])
         self.destroy_monster(spawn_ids=[2099])
         self.destroy_monster(spawn_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016])
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대기(self.ctx)

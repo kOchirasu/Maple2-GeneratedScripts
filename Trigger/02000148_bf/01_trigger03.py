@@ -5,9 +5,9 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000171], state=1)
-        self.set_effect(trigger_ids=[209,210,211,212], visible=False)
+        self.set_effect(trigger_ids=[209,210,211,212])
         self.set_mesh(trigger_ids=[317,318,319,320], visible=True)
-        self.set_mesh(trigger_ids=[321,322,323,324], visible=False)
+        self.set_mesh(trigger_ids=[321,322,323,324])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000171], state=0):
@@ -16,8 +16,8 @@ class 대기(trigger_api.Trigger):
 
 class 개봉박두(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[317,318,319,320], visible=False)
-        self.spawn_monster(spawn_ids=[99,100,101,102], auto_target=True)
+        self.set_mesh(trigger_ids=[317,318,319,320])
+        self.spawn_monster(spawn_ids=[99,100,101,102])
         self.set_mesh(trigger_ids=[321,322,323,324], visible=True)
         self.set_effect(trigger_ids=[209,210,211,212], visible=True)
 

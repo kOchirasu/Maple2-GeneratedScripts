@@ -8,9 +8,9 @@ class 대기(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1005])
         self.destroy_monster(spawn_ids=[1006])
         self.destroy_monster(spawn_ids=[1007])
-        self.set_mesh(trigger_ids=[107], visible=False, start_delay=0, interval=0, fade=0) # InvisibleBarrier
-        self.set_mesh(trigger_ids=[31000,31001,31002,31003,31004,31005], visible=True, start_delay=0, interval=0, fade=0) # Stairs
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[107]) # InvisibleBarrier
+        self.set_mesh(trigger_ids=[31000,31001,31002,31003,31004,31005], visible=True) # Stairs
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -25,10 +25,10 @@ class LoadingDelay(trigger_api.Trigger):
 
 class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[107], visible=True, start_delay=0, interval=0, fade=0) # InvisibleBarrier
+        self.set_mesh(trigger_ids=[107], visible=True) # InvisibleBarrier
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=888888, enable=True)
+        self.select_camera(trigger_id=888888)
         self.move_npc(spawn_id=1004, patrol_name='MS2PatrolData1')
         self.set_skip(state=연출종료)
 
@@ -123,15 +123,15 @@ class 연출종료(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=888888, enable=False)
-        self.set_mesh(trigger_ids=[107], visible=False, start_delay=0, interval=0, fade=0) # InvisibleBarrier
-        self.set_mesh(trigger_ids=[31000,31001,31002,31003,31004,31005], visible=False, start_delay=0, interval=0, fade=0) # Stairs
+        self.set_mesh(trigger_ids=[107]) # InvisibleBarrier
+        self.set_mesh(trigger_ids=[31000,31001,31002,31003,31004,31005]) # Stairs
         self.spawn_monster(spawn_ids=[6200], auto_target=False)
         self.destroy_monster(spawn_ids=[1003])
         self.destroy_monster(spawn_ids=[1002])
         self.destroy_monster(spawn_ids=[1001])
         self.destroy_monster(spawn_ids=[1004])
         self.spawn_monster(spawn_ids=[1005], auto_target=False)
-        self.spawn_monster(spawn_ids=[1006], auto_target=True)
+        self.spawn_monster(spawn_ids=[1006])
         self.spawn_monster(spawn_ids=[1008], auto_target=False)
         self.set_user_value(trigger_id=999991, key='BattleStart', value=1)
 
@@ -142,7 +142,7 @@ class 연출종료(trigger_api.Trigger):
 
 class 엔딩연출1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[31000,31001,31002,31003,31004,31005], visible=True, start_delay=0, interval=0, fade=0) # Stairs
+        self.set_mesh(trigger_ids=[31000,31001,31002,31003,31004,31005], visible=True) # Stairs
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
@@ -153,7 +153,7 @@ class 엔딩연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=888888, enable=True)
+        self.select_camera(trigger_id=888888)
         self.destroy_monster(spawn_ids=[1006])
         self.spawn_monster(spawn_ids=[1007], auto_target=False)
         self.move_npc(spawn_id=1007, patrol_name='MS2PatrolData5')

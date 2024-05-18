@@ -1,5 +1,6 @@
 """ trigger/84000006_wd/84000006_wd_main.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 """
@@ -24,12 +25,12 @@ import trigger_api
 class Reception(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portal_id=10001, visible=True, enable=True, minimap_visible=True) # 결혼식장 복귀 포탈 설정
-        self.set_portal(portal_id=10002, visible=False, enable=False, minimap_visible=False) # 결혼식장 복귀 포탈 설정
+        self.set_portal(portal_id=10002) # 결혼식장 복귀 포탈 설정
         # NPC생성 : 어렴풋이 레인보우 피냐타가 보이게
         self.spawn_monster(spawn_ids=[102], auto_target=False)
-        self.set_effect(trigger_ids=[3000], visible=False) # 이펙트off : 불꽃놀이
-        self.set_effect(trigger_ids=[3001], visible=False) # 이펙트off : 레인보우 피냐타 이펙트 꺼둠
-        self.set_effect(trigger_ids=[3002], visible=False) # 이펙트off : 강철 피냐타 꺼둠
+        self.set_effect(trigger_ids=[3000]) # 이펙트off : 불꽃놀이
+        self.set_effect(trigger_ids=[3001]) # 이펙트off : 레인보우 피냐타 이펙트 꺼둠
+        self.set_effect(trigger_ids=[3002]) # 이펙트off : 강철 피냐타 꺼둠
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -40,7 +41,7 @@ class Reception(trigger_api.Trigger):
 # 시작 대기
 class EntryDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=40, start_delay=1, interval=0) # 테스트 가능 지점 : 라이브 시 60초로 수정
+        self.set_timer(timer_id='1', seconds=40, start_delay=1) # 테스트 가능 지점 : 라이브 시 60초로 수정
         # 몬스터 생성 : 어렴풋이 레인보우 피냐타가 보이게
         self.spawn_monster(spawn_ids=[101], auto_target=False)
 
@@ -58,7 +59,7 @@ class openingscene_start(trigger_api.Trigger):
         self.set_cinematic_ui(type=1) # 화면 보정
         self.set_cinematic_ui(type=3) # 화면 보정
         self.visible_my_pc(is_visible=False) # 연출 위해 PC 숨김
-        self.select_camera_path(path_ids=[5004,5003], return_view=True) # 연출용 카메라 2개
+        self.select_camera_path(path_ids=[5004,5003]) # 연출용 카메라 2개
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -96,7 +97,7 @@ class openingscene_1_2(trigger_api.Trigger):
 # 연출3: 피냐타에 노총각 악령 빙의
 class openingscene_1_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[150,150,150]) # 화면 살짝 어둡게
+        self.set_ambient_light(primary=Vector3(150,150,150)) # 화면 살짝 어둡게
         self.spawn_monster(spawn_ids=[201], auto_target=False, delay=30000) # 몬스터 등장: 피냐타에 빙의
         self.set_effect(trigger_ids=[3002], visible=True) # 이펙트 on: 악령 피냐타
         # self.play_system_sound_in_box(sound='System_WeddingSolo_01') # 몬스터 등장음
@@ -112,15 +113,15 @@ class openingscene_1_3(trigger_api.Trigger):
 # 가이드1: 콘대르가 상황 정리
 class GameGuide01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=1) # 카메라 강제 리셋
+        self.reset_camera(interpolation_time=1.0) # 카메라 강제 리셋
         # 훔쳐먹기 페이즈: 텅빈 스킬셋. 장난감은 사용 가능
-        self.add_buff(box_ids=[9002], skill_id=99940044, level=1, is_player=False, is_skill_set=True)
+        self.add_buff(box_ids=[9002], skill_id=99940044, level=1, is_player=False)
         self.set_cinematic_ui(type=0) # 연출용 화면 보정 off
         self.set_cinematic_ui(type=2) # 연출용 화면 보정 off
         self.visible_my_pc(is_visible=True) # 연출 후 PC 재노출
         # 콘대르 사이드톡: 이런 젠장! 리스항구의 노총각 악령이다!
         self.side_npc_talk(npc_id=11004772, illust='Conder_normal', duration=4000, script='$84000006_WD__84000006_WD_MAIN__5$')
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=20000) # 연출 후 PC 재노출
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=20000.0) # 연출 후 PC 재노출
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -187,7 +188,7 @@ class Pinata_Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=1004, key='Interaction', value=1) # 센서: Object.xml의 상호작용 시작
         self.destroy_monster(spawn_ids=[102]) # 콘대르 아저씨 해결책 찾기 위해 퇴장
-        self.set_mesh(trigger_ids=[8000,8001,8002,8003,8004,8005,8006,8007,8008,8009,8010,8011], visible=False, start_delay=0, interval=0, fade=0) # 메쉬 끄기
+        self.set_mesh(trigger_ids=[8000,8001,8002,8003,8004,8005,8006,8007,8008,8009,8010,8011]) # 메쉬 끄기
         self.start_mini_game(box_id=9001, round=1, is_show_result_ui=False, game_name='PinataWD') # 미니게임 시작 선언 보상UI 꺼둠
         self.add_balloon_talk(spawn_id=201, msg='$84000006_WD__84000006_WD_MAIN__11$', duration=8000, delay_tick=1000) # 음식들...\n건들지마...
         self.show_guide_summary(entity_id=28500010, text_id=28500010, duration=5000) # 가이드 : 오브젝트 상호작용해서 보상수령하셈
@@ -219,13 +220,13 @@ class Pinata_Fight2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[201]):
             self.add_balloon_talk(spawn_id=201, msg='$84000006_WD__84000006_WD_MAIN__14$', duration=3000, delay_tick=1000) # 몬스터 대사 : 오늘도... 혼자야...
-            self.set_timer(timer_id='4', seconds=20, start_delay=0, interval=0) # 타이머4 설정 : 타이머UI 감추기용
+            self.set_timer(timer_id='4', seconds=20) # 타이머4 설정 : 타이머UI 감추기용
             # 타이머UI를 감추는 이유는, 연출 시 깔끔하려고
             return Pinata_Kill(self.ctx)
         if self.time_expired(timer_id='3'):
             # 몬스터 대사 : 일단 버티긴 했지만, 빨리 도망쳐야겠군
             self.add_balloon_talk(spawn_id=201, msg='$84000006_WD__84000006_WD_MAIN__15$', duration=3000, delay_tick=1000)
-            self.set_timer(timer_id='4', seconds=20, start_delay=0, interval=0) # 타이머4 설정 : 타이머UI 감추기용
+            self.set_timer(timer_id='4', seconds=20) # 타이머4 설정 : 타이머UI 감추기용
             return Pinata_noKill(self.ctx)
 
 
@@ -257,7 +258,7 @@ class Pinata_noKill(trigger_api.Trigger):
 # 성공 후 레인보우 유니콘 피냐타 리젠
 class Pinata_Revive(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[255,255,255]) # 조명 원상 복구
+        self.set_ambient_light(primary=Vector3(255,255,255)) # 조명 원상 복구
         self.set_user_value(trigger_id=1004, key='Interaction', value=2) # UV발사: IntObj OFF
         self.set_event_ui(type=3, arg2='$84000006_WD__84000006_WD_MAIN__16$', arg3='3000', arg4='9001') # 승리UI
         self.set_event_ui(type=4, arg2='$84000006_WD__84000006_WD_MAIN__17$', arg3='3000', arg4='!9001') # 패배UI
@@ -267,7 +268,7 @@ class Pinata_Revive(trigger_api.Trigger):
         # NPC 레인보우 피냐타 대사: 구해주셔서 고마워요!\n결혼 축하해요!
         self.add_balloon_talk(spawn_id=101, msg='$84000006_WD__84000006_WD_MAIN__18$', duration=5000, delay_tick=100)
         self.add_balloon_talk(spawn_id=103, msg='$84000006_WD__84000006_WD_MAIN__19$', duration=20000, delay_tick=1000) # NPC 콘대르 대사 : 오늘도 승리로군!
-        self.set_ambient_light(primary=[255,255,255])
+        self.set_ambient_light(primary=Vector3(255,255,255))
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -277,7 +278,7 @@ class Pinata_Revive(trigger_api.Trigger):
 # 실패 후 레인보우 유니콘 피냐타 리젠
 class Pinata_Revive2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ambient_light(primary=[255,255,255]) # 조명 원상 복구
+        self.set_ambient_light(primary=Vector3(255,255,255)) # 조명 원상 복구
         self.set_user_value(trigger_id=1004, key='Interaction', value=2) # UV발사: IntObj OFF
         self.set_event_ui(type=3, arg2='$84000006_WD__84000006_WD_MAIN__20$', arg3='3000', arg4='9002') # 승리 UI
         self.set_event_ui(type=4, arg2='$84000006_WD__84000006_WD_MAIN__21$', arg3='3000', arg4='!9002') # 패배 UI
@@ -296,7 +297,7 @@ class Pinata_Revive2(trigger_api.Trigger):
 # 불꽃놀이 타임
 class Pinata_Fireworks(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[5002,5001], return_view=True) # 불꽃놀이 전용 카메라 경로 이동
+        self.select_camera_path(path_ids=[5002,5001]) # 불꽃놀이 전용 카메라 경로 이동
         # 센서: Fireworks.xml의 불꽃놀이 연출 시작
         self.set_user_value(trigger_id=1002, key='Fireworks', value=1)
 
@@ -308,14 +309,14 @@ class Pinata_Fireworks(trigger_api.Trigger):
 # 마무리 사교시간
 class Finale(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8022,8023,8024], visible=False, start_delay=0, interval=0, fade=0) # 입장문 개방 : 메쉬를 끄는 방식
-        self.set_portal(portal_id=10001, visible=False, enable=False, minimap_visible=False) # 결혼식장 복귀 포탈 설정
+        self.set_mesh(trigger_ids=[8022,8023,8024]) # 입장문 개방 : 메쉬를 끄는 방식
+        self.set_portal(portal_id=10001) # 결혼식장 복귀 포탈 설정
         self.set_portal(portal_id=10002, visible=True, enable=True, minimap_visible=True) # 결혼식장 복귀 포탈 설정
         self.set_user_value(trigger_id=1001, key='Conder', value=1) # 콘대르 대사 셋 변경
-        self.add_buff(box_ids=[9002], skill_id=99940042, level=1, is_player=False, is_skill_set=True) # 불꽃놀이 스킬셋 제공
+        self.add_buff(box_ids=[9002], skill_id=99940042, level=1, is_player=False) # 불꽃놀이 스킬셋 제공
         self.set_event_ui(type=1, arg2='$84000006_WD__84000006_WD_MAIN__24$', arg3='3000') # UI 팝업 : 잠시 후 애프터파티가 종료됩니다
         # 타이머5 설정 : 60초. 현재는 테스트 때문에 10초
-        self.set_timer(timer_id='5', seconds=150, start_delay=0, interval=1)
+        self.set_timer(timer_id='5', seconds=150, interval=1)
         # NPC 레인보우 피냐타: 남은 시간,\n친구들과 재밌게 보내세요!
         self.add_balloon_talk(spawn_id=101, msg='$84000006_WD__84000006_WD_MAIN__25$', duration=5000, delay_tick=3000)
         self.add_balloon_talk(spawn_id=103, msg='$84000006_WD__84000006_WD_MAIN__26$', duration=5000, delay_tick=3000) # NPC 콘대르 : 하하하! 지금부터 파티타임!

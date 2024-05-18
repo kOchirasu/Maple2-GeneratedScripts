@@ -14,8 +14,8 @@ class 대기(trigger_api.Trigger):
 
 class 안전장치_활성화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=8, visible=True, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=8, visible=True, enable=True)
+        self.set_portal(portal_id=10, visible=True, enable=True)
         self.set_interact_object(trigger_ids=[10002118], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:

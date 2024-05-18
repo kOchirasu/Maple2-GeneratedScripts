@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3200,3210], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3704,3705,3706], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209])
+        self.set_mesh(trigger_ids=[3200,3210], visible=True)
+        self.set_mesh(trigger_ids=[3704,3705,3706])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[123]):
@@ -26,8 +26,8 @@ class 아이템체크(trigger_api.Trigger):
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1201], auto_target=False)
-        self.set_mesh(trigger_ids=[3200], visible=False, start_delay=500, interval=0, fade=0)
-        self.add_buff(box_ids=[1201], skill_id=60170051, level=1, is_player=True, is_skill_set=True)
+        self.set_mesh(trigger_ids=[3200], start_delay=500)
+        self.add_buff(box_ids=[1201], skill_id=60170051, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -36,7 +36,7 @@ class 생성(trigger_api.Trigger):
 
 class 삼(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3706], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3706], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -45,8 +45,8 @@ class 삼(trigger_api.Trigger):
 
 class 이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3706], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3705], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3706])
+        self.set_mesh(trigger_ids=[3705], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -55,8 +55,8 @@ class 이(trigger_api.Trigger):
 
 class 일(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3705], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3704], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3705])
+        self.set_mesh(trigger_ids=[3704], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -65,7 +65,7 @@ class 일(trigger_api.Trigger):
 
 class 출발(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3704], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3704])
         self.move_npc(spawn_id=1201, patrol_name='MS2PatrolData1201A')
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -30,8 +30,8 @@ class 죽음대기(trigger_api.Trigger):
 
 class 셀린사망(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=2002, script='$02000432_BF__SUMMON__1$', time=4, arg5=0)
-        self.add_buff(box_ids=[2002], skill_id=40500011, level=1, is_player=True, is_skill_set=False)
+        self.set_dialogue(type=1, spawn_id=2002, script='$02000432_BF__SUMMON__1$', time=4)
+        self.add_buff(box_ids=[2002], skill_id=40500011, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2002]):
@@ -45,8 +45,8 @@ class 피리스사망(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[603], visible=True)
         self.set_achievement(trigger_id=199, type='trigger', achieve='BigSisterFirst')
-        self.set_dialogue(type=1, spawn_id=2001, script='$02000432_BF__SUMMON__0$', time=4, arg5=0)
-        self.add_buff(box_ids=[2001], skill_id=40500011, level=1, is_player=True, is_skill_set=False)
+        self.set_dialogue(type=1, spawn_id=2001, script='$02000432_BF__SUMMON__0$', time=4)
+        self.add_buff(box_ids=[2001], skill_id=40500011, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2001]):

@@ -4,27 +4,27 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[401], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[402], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[403], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[404], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[405], visible=False, enable=False, fade=0)
+        self.set_ladder(trigger_ids=[401])
+        self.set_ladder(trigger_ids=[402])
+        self.set_ladder(trigger_ids=[403])
+        self.set_ladder(trigger_ids=[404])
+        self.set_ladder(trigger_ids=[405])
         self.spawn_monster(spawn_ids=[1001], auto_target=False)
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3003], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3004], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3005], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3006], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3007], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3008], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3001], visible=True)
+        self.set_mesh(trigger_ids=[3002])
+        self.set_mesh(trigger_ids=[3003], visible=True)
+        self.set_mesh(trigger_ids=[3004])
+        self.set_mesh(trigger_ids=[3005], visible=True)
+        self.set_mesh(trigger_ids=[3006])
+        self.set_mesh(trigger_ids=[3007], visible=True)
+        self.set_mesh(trigger_ids=[3008])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[102], quest_ids=[10002851], quest_states=[1]):
             self.spawn_monster(spawn_ids=[1002], auto_target=False)
             self.spawn_monster(spawn_ids=[1003], auto_target=False)
             self.spawn_monster(spawn_ids=[1004], auto_target=False)
-            self.spawn_monster(spawn_ids=[2001], auto_target=True)
+            self.spawn_monster(spawn_ids=[2001])
             return 카메라연출01(self.ctx)
 
 
@@ -32,7 +32,7 @@ class 카메라연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -44,11 +44,11 @@ class 미카대사01(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1001])
         self.spawn_monster(spawn_ids=[1005], auto_target=False)
         self.move_npc(spawn_id=1005, patrol_name='MS2PatrolData_1005')
-        self.set_ladder(trigger_ids=[401], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[402], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[403], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[404], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[405], visible=True, enable=True, fade=0)
+        self.set_ladder(trigger_ids=[401], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[402], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[403], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[404], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[405], visible=True, enable=True)
         self.set_dialogue(type=2, spawn_id=11001285, script='$52010017_QD__MAIN__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class 체크포인트01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2001]):
-            self.spawn_monster(spawn_ids=[2002], auto_target=True)
+            self.spawn_monster(spawn_ids=[2002])
             return 카메라연출02(self.ctx)
 
 
@@ -72,7 +72,7 @@ class 카메라연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -115,8 +115,8 @@ class 미키이동01(trigger_api.Trigger):
 class 오브젝트01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0)
-            self.set_mesh(trigger_ids=[3002], visible=True, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[3001])
+            self.set_mesh(trigger_ids=[3002], visible=True)
             return 카메라연출03(self.ctx)
 
 
@@ -133,8 +133,8 @@ class 카메라연출03(trigger_api.Trigger):
 class 타라대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001218, script='$52010017_QD__MAIN__2$', time=2)
-        self.select_camera(trigger_id=303, enable=True)
-        self.spawn_monster(spawn_ids=[2003], auto_target=True)
+        self.select_camera(trigger_id=303)
+        self.spawn_monster(spawn_ids=[2003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -168,8 +168,8 @@ class 미키이동02(trigger_api.Trigger):
 class 오브젝트02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            self.set_mesh(trigger_ids=[3003], visible=False, start_delay=0, interval=0, fade=0)
-            self.set_mesh(trigger_ids=[3004], visible=True, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[3003])
+            self.set_mesh(trigger_ids=[3004], visible=True)
             return 카메라연출04(self.ctx)
 
 
@@ -185,9 +185,9 @@ class 카메라연출04(trigger_api.Trigger):
 
 class 둔바대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=304, enable=True)
+        self.select_camera(trigger_id=304)
         self.set_dialogue(type=2, spawn_id=11001217, script='$52010017_QD__MAIN__3$', time=2)
-        self.spawn_monster(spawn_ids=[2004], auto_target=True)
+        self.spawn_monster(spawn_ids=[2004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -221,8 +221,8 @@ class 미키이동03(trigger_api.Trigger):
 class 오브젝트03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            self.set_mesh(trigger_ids=[3005], visible=False, start_delay=0, interval=0, fade=0)
-            self.set_mesh(trigger_ids=[3006], visible=True, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[3005])
+            self.set_mesh(trigger_ids=[3006], visible=True)
             return 카메라연출05(self.ctx)
 
 
@@ -238,9 +238,9 @@ class 카메라연출05(trigger_api.Trigger):
 
 class 스타츠대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
+        self.select_camera(trigger_id=305)
         self.set_dialogue(type=2, spawn_id=11001292, script='$52010017_QD__MAIN__4$', time=2)
-        self.spawn_monster(spawn_ids=[2005], auto_target=True)
+        self.spawn_monster(spawn_ids=[2005])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -274,8 +274,8 @@ class 미키이동04(trigger_api.Trigger):
 class 오브젝트04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            self.set_mesh(trigger_ids=[3007], visible=False, start_delay=0, interval=0, fade=0)
-            self.set_mesh(trigger_ids=[3008], visible=True, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[3007])
+            self.set_mesh(trigger_ids=[3008], visible=True)
             return 카메라연출06(self.ctx)
 
 

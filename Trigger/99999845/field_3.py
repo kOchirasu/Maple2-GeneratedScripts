@@ -1,5 +1,6 @@
 """ trigger/99999845/field_3.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 대기(trigger_api.Trigger):
@@ -10,9 +11,9 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000316], state=2)
         self.set_interact_object(trigger_ids=[12000317], state=2)
         self.set_interact_object(trigger_ids=[12000318], state=2)
-        # self.set_visible_breakable_object(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010], visible=False)
-        # self.set_visible_breakable_object(trigger_ids=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020], visible=False)
-        # self.set_visible_breakable_object(trigger_ids=[1021,1022], visible=False)
+        # self.set_visible_breakable_object(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010])
+        # self.set_visible_breakable_object(trigger_ids=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020])
+        # self.set_visible_breakable_object(trigger_ids=[1021,1022])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Block') >= 1:
@@ -81,7 +82,7 @@ class CableOn_13(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000313], state=0):
             self.set_interact_object(trigger_ids=[12000313], state=2)
-            self.move_user_to_pos(pos=[-2514.072,3816.40259,1500], rot=[0,0,0])
+            self.move_user_to_pos(pos=Vector3(-2514.072,3816.40259,1500))
             return CableDelay_13(self.ctx)
 
 
@@ -90,12 +91,12 @@ class CableOn_14_15(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000314], state=0):
             self.set_interact_object(trigger_ids=[12000314], state=2)
             self.set_interact_object(trigger_ids=[12000315], state=2)
-            self.move_user_to_pos(pos=[-3524.431,-1479.53162,137], rot=[0,0,0])
+            self.move_user_to_pos(pos=Vector3(-3524.431,-1479.53162,137))
             return CableDelay_14(self.ctx)
         if self.object_interacted(interact_ids=[12000315], state=0):
             self.set_interact_object(trigger_ids=[12000314], state=2)
             self.set_interact_object(trigger_ids=[12000315], state=2)
-            self.move_user_to_pos(pos=[-1478.22412,-4127.897,137], rot=[0,0,0])
+            self.move_user_to_pos(pos=Vector3(-1478.22412,-4127.897,137))
             return CableDelay_15(self.ctx)
 
 
@@ -104,12 +105,12 @@ class CableOn_16_17(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000316], state=0):
             self.set_interact_object(trigger_ids=[12000316], state=2)
             self.set_interact_object(trigger_ids=[12000317], state=2)
-            self.move_user_to_pos(pos=[-848.5522,-7473.63,2690], rot=[0,0,0])
+            self.move_user_to_pos(pos=Vector3(-848.5522,-7473.63,2690))
             return CableDelay_16(self.ctx)
         if self.object_interacted(interact_ids=[12000317], state=0):
             self.set_interact_object(trigger_ids=[12000316], state=2)
             self.set_interact_object(trigger_ids=[12000317], state=2)
-            self.move_user_to_pos(pos=[1372.17615,-8612.513,2690], rot=[0,0,0])
+            self.move_user_to_pos(pos=Vector3(1372.17615,-8612.513,2690))
             return CableDelay_17(self.ctx)
 
 
@@ -117,7 +118,7 @@ class CableOn_18(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000318], state=0):
             self.set_interact_object(trigger_ids=[12000318], state=2)
-            self.move_user_to_pos(pos=[-840.132935,6427.83936,1640], rot=[0,0,0])
+            self.move_user_to_pos(pos=Vector3(-840.132935,6427.83936,1640))
             return CableDelay_18(self.ctx)
 
 
@@ -166,7 +167,7 @@ class CableDelay_18(trigger_api.Trigger):
 class CableOff_13(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
-            # self.move_user_to_pos(pos=[525,1425,300], rot=[0,0,0])
+            # self.move_user_to_pos(pos=Vector3(525,1425,300))
             self.set_user_value(trigger_id=900005, key='Block', value=1)
             return End_03(self.ctx)
 
@@ -174,7 +175,7 @@ class CableOff_13(trigger_api.Trigger):
 class CableOff_14(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
-            # self.move_user_to_pos(pos=[-375,-75,300], rot=[0,0,0])
+            # self.move_user_to_pos(pos=Vector3(-375,-75,300))
             self.set_user_value(trigger_id=900005, key='Block', value=1)
             return End_03(self.ctx)
 
@@ -182,7 +183,7 @@ class CableOff_14(trigger_api.Trigger):
 class CableOff_15(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
-            # self.move_user_to_pos(pos=[3375,-5475,1500], rot=[0,0,0])
+            # self.move_user_to_pos(pos=Vector3(3375,-5475,1500))
             self.set_user_value(trigger_id=900005, key='Block', value=2)
             return End_03(self.ctx)
 
@@ -190,7 +191,7 @@ class CableOff_15(trigger_api.Trigger):
 class CableOff_16(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
-            # self.move_user_to_pos(pos=[525,-1575,300], rot=[0,0,0])
+            # self.move_user_to_pos(pos=Vector3(525,-1575,300))
             self.set_user_value(trigger_id=900005, key='Block', value=1)
             return End_03(self.ctx)
 
@@ -198,7 +199,7 @@ class CableOff_16(trigger_api.Trigger):
 class CableOff_17(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
-            # self.move_user_to_pos(pos=[3975,-5925,1500], rot=[0,0,0])
+            # self.move_user_to_pos(pos=Vector3(3975,-5925,1500))
             self.set_user_value(trigger_id=900005, key='Block', value=2)
             return End_03(self.ctx)
 
@@ -206,7 +207,7 @@ class CableOff_17(trigger_api.Trigger):
 class CableOff_18(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
-            # self.move_user_to_pos(pos=[2475,4575,2550], rot=[0,0,0])
+            # self.move_user_to_pos(pos=Vector3(2475,4575,2550))
             self.set_user_value(trigger_id=900005, key='Block', value=3)
             return End_03(self.ctx)
 
@@ -214,12 +215,12 @@ class CableOff_18(trigger_api.Trigger):
 class End_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
-            # self.set_visible_breakable_object(trigger_ids=[1013], visible=False)
-            # self.set_visible_breakable_object(trigger_ids=[1014], visible=False)
-            # self.set_visible_breakable_object(trigger_ids=[1015], visible=False)
-            # self.set_visible_breakable_object(trigger_ids=[1016], visible=False)
-            # self.set_visible_breakable_object(trigger_ids=[1017], visible=False)
-            # self.set_visible_breakable_object(trigger_ids=[1018], visible=False)
+            # self.set_visible_breakable_object(trigger_ids=[1013])
+            # self.set_visible_breakable_object(trigger_ids=[1014])
+            # self.set_visible_breakable_object(trigger_ids=[1015])
+            # self.set_visible_breakable_object(trigger_ids=[1016])
+            # self.set_visible_breakable_object(trigger_ids=[1017])
+            # self.set_visible_breakable_object(trigger_ids=[1018])
             return 대기(self.ctx)
 
 

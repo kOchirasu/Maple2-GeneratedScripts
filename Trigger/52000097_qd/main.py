@@ -33,7 +33,7 @@ class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[8001,8002], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class scene_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8003,8004], return_view=False)
         self.set_dialogue(type=2, spawn_id=11003084, script='$52000097_QD__MAIN__0$', time=5)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -94,8 +94,8 @@ class scene_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8007], return_view=False)
         self.set_pc_emotion_sequence(sequence_names=['Talk_A'])
-        self.set_dialogue(type=1, spawn_id=0, script='$52000097_QD__MAIN__4$', time=3, arg5=0)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000097_QD__MAIN__5$', time=3, arg5=3)
+        self.set_dialogue(type=1, script='$52000097_QD__MAIN__4$', time=3)
+        self.set_dialogue(type=1, script='$52000097_QD__MAIN__5$', time=3, arg5=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -123,7 +123,7 @@ class scene_08(trigger_api.Trigger):
 
 class scene_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000097_QD__MAIN__8$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000097_QD__MAIN__8$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -169,7 +169,7 @@ class scene_12(trigger_api.Trigger):
             return scene_13(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
 
 class scene_13(trigger_api.Trigger):
@@ -177,7 +177,7 @@ class scene_13(trigger_api.Trigger):
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_2002')
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_2001')
         self.set_dialogue(type=1, spawn_id=102, script='$52000097_QD__MAIN__10$', time=2, arg5=1)
-        self.set_dialogue(type=1, spawn_id=101, script='$52000097_QD__MAIN__11$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$52000097_QD__MAIN__11$', time=2)
         self.select_camera_path(path_ids=[8008], return_view=False)
         self.set_pc_emotion_sequence(sequence_names=['Emotion_Failure_Idle_A'])
         self.set_dialogue(type=2, spawn_id=11003086, script='$52000097_QD__MAIN__12$', time=5)
@@ -190,7 +190,7 @@ class scene_13(trigger_api.Trigger):
 class scene_14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8010], return_view=False)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000097_QD__MAIN__13$', time=3, arg5=1)
+        self.set_dialogue(type=1, script='$52000097_QD__MAIN__13$', time=3, arg5=1)
         self.move_user_path(patrol_name='MS2PatrolData_2003')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_2004')
 
@@ -202,9 +202,9 @@ class scene_14(trigger_api.Trigger):
 class scene_15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Talk_A'])
-        self.set_dialogue(type=1, spawn_id=0, script='$52000097_QD__MAIN__14$', time=4, arg5=0)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000097_QD__MAIN__15$', time=4, arg5=4)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000097_QD__MAIN__16$', time=4, arg5=8)
+        self.set_dialogue(type=1, script='$52000097_QD__MAIN__14$', time=4)
+        self.set_dialogue(type=1, script='$52000097_QD__MAIN__15$', time=4, arg5=4)
+        self.set_dialogue(type=1, script='$52000097_QD__MAIN__16$', time=4, arg5=8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=12000):
@@ -299,7 +299,7 @@ class scene_24(trigger_api.Trigger):
 
 class scene_25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000097_QD__MAIN__24$', time=4, arg5=0)
+        self.set_dialogue(type=1, script='$52000097_QD__MAIN__24$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

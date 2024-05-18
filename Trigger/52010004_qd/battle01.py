@@ -4,12 +4,12 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[10000], visible=False)
-        self.set_agent(trigger_ids=[10001], visible=False)
-        self.set_agent(trigger_ids=[10002], visible=False)
-        self.set_agent(trigger_ids=[10003], visible=False)
+        self.set_agent(trigger_ids=[10000])
+        self.set_agent(trigger_ids=[10001])
+        self.set_agent(trigger_ids=[10002])
+        self.set_agent(trigger_ids=[10003])
         self.spawn_monster(spawn_ids=[101], auto_target=False) # Quest
-        self.set_mesh(trigger_ids=[7000,7001,7002,7003], visible=False, start_delay=0, interval=0, fade=0) # BattleZone
+        self.set_mesh(trigger_ids=[7000,7001,7002,7003]) # BattleZone
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[10002800], quest_states=[2]):
@@ -19,7 +19,7 @@ class 대기(trigger_api.Trigger):
 class 둔바교체01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=2)
-        self.set_mesh(trigger_ids=[7000,7001,7002,7003], visible=True, start_delay=0, interval=0, fade=0) # BattleZone
+        self.set_mesh(trigger_ids=[7000,7001,7002,7003], visible=True) # BattleZone
         self.destroy_monster(spawn_ids=[101]) # Quest
         self.spawn_monster(spawn_ids=[102], auto_target=False) # Act
 
@@ -31,7 +31,7 @@ class 둔바교체01(trigger_api.Trigger):
 class 둔바연출준비01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='2', seconds=2)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -110,7 +110,7 @@ class 전투준비01(trigger_api.Trigger):
         self.set_agent(trigger_ids=[10002], visible=True)
         self.set_agent(trigger_ids=[10003], visible=True)
         self.destroy_monster(spawn_ids=[102]) # Act
-        self.spawn_monster(spawn_ids=[201], auto_target=True) # Monster
+        self.spawn_monster(spawn_ids=[201]) # Monster
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='20'):
@@ -128,7 +128,7 @@ class 전투중01(trigger_api.Trigger):
 
 class 둔바교체대기02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[7000,7001,7002,7003], visible=False, start_delay=0, interval=0, fade=0) # BattleZone
+        self.set_mesh(trigger_ids=[7000,7001,7002,7003]) # BattleZone
         self.set_timer(timer_id='30', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:

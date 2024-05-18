@@ -5,9 +5,9 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice_DarkShadow_02000986
-        self.set_effect(trigger_ids=[5000], visible=False)
-        self.set_effect(trigger_ids=[5001], visible=False) # Voice_Kandura_00001863
-        self.set_effect(trigger_ids=[5002], visible=False) # Voice_Kandura_00001864
+        self.set_effect(trigger_ids=[5000])
+        self.set_effect(trigger_ids=[5001]) # Voice_Kandura_00001863
+        self.set_effect(trigger_ids=[5002]) # Voice_Kandura_00001864
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -34,7 +34,7 @@ class Enter01(trigger_api.Trigger):
 class CameraWalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[101,102], auto_target=False)
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.set_scene_skip(state=DialogueSkip03, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class CameraWalk02(trigger_api.Trigger):
 
 class CameraWalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

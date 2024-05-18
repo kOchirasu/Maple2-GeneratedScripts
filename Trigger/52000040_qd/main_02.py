@@ -5,8 +5,8 @@ import trigger_api
 # 출연진 : 라오즈(401 : 11001760)
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=4)
+        self.set_portal(portal_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[10003053], quest_states=[1]):
@@ -37,7 +37,7 @@ class start(trigger_api.Trigger):
 
 class start_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=401, script='$52000040_QD__MAIN_02__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=401, script='$52000040_QD__MAIN_02__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -46,7 +46,7 @@ class start_02(trigger_api.Trigger):
 
 class start_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=401, script='$52000040_QD__MAIN_02__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=401, script='$52000040_QD__MAIN_02__1$', time=2)
         self.set_dialogue(type=1, spawn_id=401, script='$52000040_QD__MAIN_02__2$', time=2, arg5=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -87,7 +87,7 @@ class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[501])
         self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
-        self.set_portal(portal_id=4, visible=True, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=4, visible=True)
 
 
 initial_state = ready

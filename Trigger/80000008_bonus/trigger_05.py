@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[801,802,803,804,805], visible=False)
-        self.set_effect(trigger_ids=[806,807,808,809,810], visible=False)
-        self.set_mesh(trigger_ids=[201,202,203,204,205], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[801,802,803,804,805])
+        self.set_effect(trigger_ids=[806,807,808,809,810])
+        self.set_mesh(trigger_ids=[201,202,203,204,205])
         self.set_interact_object(trigger_ids=[10000212], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 꽝(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[103])
         self.destroy_monster(spawn_ids=[104])
         self.destroy_monster(spawn_ids=[105])
-        self.set_mesh(trigger_ids=[201,202,203,204,205], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[201,202,203,204,205], visible=True)
         self.set_interact_object(trigger_ids=[10000208], state=2)
         self.set_interact_object(trigger_ids=[10000209], state=2)
         self.set_interact_object(trigger_ids=[10000210], state=2)

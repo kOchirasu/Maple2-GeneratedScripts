@@ -4,13 +4,13 @@ import trigger_api
 
 class 감지(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[9991], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009], visible=False)
-        self.set_visible_breakable_object(trigger_ids=[6001,6002], visible=False)
-        self.set_visible_breakable_object(trigger_ids=[7001,7002], visible=False)
-        self.set_breakable(trigger_ids=[6001,6002], enable=False)
-        self.set_breakable(trigger_ids=[7001,7002], enable=False)
-        self.set_portal(portal_id=1, visible=False, enable=False)
+        self.set_skill(trigger_ids=[9991])
+        self.set_visible_breakable_object(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009])
+        self.set_visible_breakable_object(trigger_ids=[6001,6002])
+        self.set_visible_breakable_object(trigger_ids=[7001,7002])
+        self.set_breakable(trigger_ids=[6001,6002])
+        self.set_breakable(trigger_ids=[7001,7002])
+        self.set_portal(portal_id=1)
         self.set_agent(trigger_ids=[9001], visible=True)
         self.set_agent(trigger_ids=[9002], visible=True)
         self.set_agent(trigger_ids=[9003], visible=True)
@@ -53,7 +53,7 @@ class 연출카메라1(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[103], auto_target=False, delay=30000)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=503, enable=True)
+        self.select_camera(trigger_id=503)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -71,7 +71,7 @@ class 연출카메라1_세리하대사1(trigger_api.Trigger):
 
 class 연출카메라1_크란츠대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=504, enable=True)
+        self.select_camera(trigger_id=504)
         self.set_dialogue(type=2, spawn_id=11003675, script='아름답지 않은 시중을 받을 생각은 없다!!', time=3)
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Bore_A')
 
@@ -82,8 +82,8 @@ class 연출카메라1_크란츠대사1(trigger_api.Trigger):
 
 class 연출카메라1_PC대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
-        self.set_dialogue(type=1, spawn_id=0, script='저녀석은 흑성회의 일원이야! 조심해!', time=3)
+        self.select_camera(trigger_id=501)
+        self.set_dialogue(type=1, script='저녀석은 흑성회의 일원이야! 조심해!', time=3)
         self.set_pc_emotion_sequence(sequence_names=['Emotion_Troubled_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +93,7 @@ class 연출카메라1_PC대사1(trigger_api.Trigger):
 
 class 연출카메라1_이오네대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=505, enable=True)
+        self.select_camera(trigger_id=505)
         self.set_dialogue(type=2, spawn_id=11003674, script='시커먼 속내를 가진 건 메이플 연합도 마찬가지 아닌가요? \\n크리티아스의 힘은 누구에게도 이용당하게 두지 않겠어요!', time=5)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Bore_A')
 
@@ -104,7 +104,7 @@ class 연출카메라1_이오네대사1(trigger_api.Trigger):
 
 class 연출카메라1_세리하대사2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=503, enable=True)
+        self.select_camera(trigger_id=503)
         self.set_dialogue(type=2, spawn_id=11003660, script='그 말이 맞는 것 같네?\\n세상에 진짜 선과 악은 없는 법이지~', time=3)
         self.set_npc_emotion_sequence(spawn_id=103, sequence_name='Bore_B')
 
@@ -115,7 +115,7 @@ class 연출카메라1_세리하대사2(trigger_api.Trigger):
 
 class 연출카메라1_흑성회등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
         self.set_dialogue(type=2, spawn_id=11003660, script='이제 어떻게 하실려나?', time=3)
         self.spawn_monster(spawn_ids=[201,202,203,204,205,206,207], auto_target=False)
         self.spawn_monster(spawn_ids=[104,105,106], auto_target=False)
@@ -136,7 +136,7 @@ class 연출카메라1_탈출장치(trigger_api.Trigger):
 
 class 연출카메라1_벽부수기세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=507, enable=True)
+        self.select_camera(trigger_id=507)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -146,7 +146,7 @@ class 연출카메라1_벽부수기세팅(trigger_api.Trigger):
 class 연출카메라1_레지스탕스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(trigger_ids=[9991], enable=True)
-        self.set_npc_rotation(spawn_id=103, rotation=270)
+        self.set_npc_rotation(spawn_id=103, rotation=270.0)
         self.destroy_monster(spawn_ids=[101,102])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -156,7 +156,7 @@ class 연출카메라1_레지스탕스등장(trigger_api.Trigger):
 
 class 연출카메라1_체키대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
         self.set_dialogue(type=2, spawn_id=11003661, script='아이고 오늘 정모날인가?', time=3)
         self.set_npc_emotion_sequence(spawn_id=104, sequence_name='Bore_A')
 
@@ -167,7 +167,7 @@ class 연출카메라1_체키대사1(trigger_api.Trigger):
 
 class 연출카메라1_세리하대사3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=504, enable=True)
+        self.select_camera(trigger_id=504)
         self.set_visible_breakable_object(trigger_ids=[6001,6002], visible=True)
         self.set_visible_breakable_object(trigger_ids=[7001,7002], visible=True)
         self.set_breakable(trigger_ids=[6001,6002], enable=True)
@@ -193,11 +193,11 @@ class 연출카메라1_세리하대사4(trigger_api.Trigger):
 
 class 연출카메라1_체키대사2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
-        self.set_visible_breakable_object(trigger_ids=[6001,6002], visible=False)
-        self.set_visible_breakable_object(trigger_ids=[7001,7002], visible=False)
-        self.set_breakable(trigger_ids=[6001,6002], enable=False)
-        self.set_breakable(trigger_ids=[7001,7002], enable=False)
+        self.select_camera(trigger_id=502)
+        self.set_visible_breakable_object(trigger_ids=[6001,6002])
+        self.set_visible_breakable_object(trigger_ids=[7001,7002])
+        self.set_breakable(trigger_ids=[6001,6002])
+        self.set_breakable(trigger_ids=[7001,7002])
         self.set_dialogue(type=2, spawn_id=11003661, script='왕녀는 우리가 접수하겠다. 얘들아 처리해라!', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -207,9 +207,9 @@ class 연출카메라1_체키대사2(trigger_api.Trigger):
 
 class 연출카메라1_체키대사3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_rotation(spawn_id=104, rotation=180)
-        self.set_npc_rotation(spawn_id=105, rotation=180)
-        self.set_npc_rotation(spawn_id=106, rotation=180)
+        self.set_npc_rotation(spawn_id=104, rotation=180.0)
+        self.set_npc_rotation(spawn_id=105, rotation=180.0)
+        self.set_npc_rotation(spawn_id=106, rotation=180.0)
         self.set_dialogue(type=2, spawn_id=11003661, script='어서 움직이자!', time=3)
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_Chekky')
         self.move_npc(spawn_id=105, patrol_name='MS2PatrolData_Jigmunt')
@@ -222,7 +222,7 @@ class 연출카메라1_체키대사3(trigger_api.Trigger):
 
 class 연출카메라1_세리하대사5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
         self.set_dialogue(type=1, spawn_id=103, script='하늘로 솟은거야?? 탑 위에 뭐가 있나 봐야겠어!!', time=3)
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_Seriha')
 
@@ -234,44 +234,44 @@ class 연출카메라1_세리하대사5(trigger_api.Trigger):
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(trigger_ids=[9991], enable=True)
-        self.set_visible_breakable_object(trigger_ids=[6001,6002], visible=False)
-        self.set_visible_breakable_object(trigger_ids=[7001,7002], visible=False)
-        self.set_breakable(trigger_ids=[6001,6002], enable=False)
-        self.set_breakable(trigger_ids=[7001,7002], enable=False)
+        self.set_visible_breakable_object(trigger_ids=[6001,6002])
+        self.set_visible_breakable_object(trigger_ids=[7001,7002])
+        self.set_breakable(trigger_ids=[6001,6002])
+        self.set_breakable(trigger_ids=[7001,7002])
         self.destroy_monster(spawn_ids=[-1])
-        self.set_visible_breakable_object(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009], visible=False)
-        self.set_breakable(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009], enable=False)
+        self.set_visible_breakable_object(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009])
+        self.set_breakable(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009])
         self.reset_camera(interpolation_time=0.1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_agent(trigger_ids=[9001], visible=False)
-        self.set_agent(trigger_ids=[9002], visible=False)
-        self.set_agent(trigger_ids=[9003], visible=False)
-        self.set_agent(trigger_ids=[9004], visible=False)
-        self.set_agent(trigger_ids=[9005], visible=False)
-        self.set_agent(trigger_ids=[9006], visible=False)
-        self.set_agent(trigger_ids=[9007], visible=False)
-        self.set_agent(trigger_ids=[9008], visible=False)
-        self.set_agent(trigger_ids=[9009], visible=False)
-        self.set_agent(trigger_ids=[9010], visible=False)
-        self.set_agent(trigger_ids=[9011], visible=False)
-        self.set_agent(trigger_ids=[9012], visible=False)
-        self.set_agent(trigger_ids=[9013], visible=False)
-        self.set_agent(trigger_ids=[9014], visible=False)
-        self.set_agent(trigger_ids=[9015], visible=False)
-        self.set_agent(trigger_ids=[9016], visible=False)
-        self.set_agent(trigger_ids=[9017], visible=False)
-        self.set_agent(trigger_ids=[9018], visible=False)
-        self.set_agent(trigger_ids=[9019], visible=False)
-        self.set_agent(trigger_ids=[9020], visible=False)
-        self.set_agent(trigger_ids=[9021], visible=False)
-        self.set_agent(trigger_ids=[9022], visible=False)
-        self.set_agent(trigger_ids=[9023], visible=False)
-        self.set_agent(trigger_ids=[9024], visible=False)
-        self.set_agent(trigger_ids=[9025], visible=False)
-        self.set_agent(trigger_ids=[9026], visible=False)
-        self.set_agent(trigger_ids=[9027], visible=False)
-        self.set_agent(trigger_ids=[9028], visible=False)
+        self.set_agent(trigger_ids=[9001])
+        self.set_agent(trigger_ids=[9002])
+        self.set_agent(trigger_ids=[9003])
+        self.set_agent(trigger_ids=[9004])
+        self.set_agent(trigger_ids=[9005])
+        self.set_agent(trigger_ids=[9006])
+        self.set_agent(trigger_ids=[9007])
+        self.set_agent(trigger_ids=[9008])
+        self.set_agent(trigger_ids=[9009])
+        self.set_agent(trigger_ids=[9010])
+        self.set_agent(trigger_ids=[9011])
+        self.set_agent(trigger_ids=[9012])
+        self.set_agent(trigger_ids=[9013])
+        self.set_agent(trigger_ids=[9014])
+        self.set_agent(trigger_ids=[9015])
+        self.set_agent(trigger_ids=[9016])
+        self.set_agent(trigger_ids=[9017])
+        self.set_agent(trigger_ids=[9018])
+        self.set_agent(trigger_ids=[9019])
+        self.set_agent(trigger_ids=[9020])
+        self.set_agent(trigger_ids=[9021])
+        self.set_agent(trigger_ids=[9022])
+        self.set_agent(trigger_ids=[9023])
+        self.set_agent(trigger_ids=[9024])
+        self.set_agent(trigger_ids=[9025])
+        self.set_agent(trigger_ids=[9026])
+        self.set_agent(trigger_ids=[9027])
+        self.set_agent(trigger_ids=[9028])
 
     def on_tick(self) -> trigger_api.Trigger:
         return NPC생성(self.ctx)
@@ -298,7 +298,7 @@ class 전투시작(trigger_api.Trigger):
 
 class 계단전투1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[221], auto_target=True)
+        self.spawn_monster(spawn_ids=[221])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[903]):
@@ -307,7 +307,7 @@ class 계단전투1(trigger_api.Trigger):
 
 class 계단전투2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[222], auto_target=True)
+        self.spawn_monster(spawn_ids=[222])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[211,212,213,214,215,216,217,221,222]):

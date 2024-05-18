@@ -5,8 +5,8 @@ import trigger_api
 class 시작대기중1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000164], state=1)
-        self.set_mesh(trigger_ids=[301], visible=False)
-        self.set_effect(trigger_ids=[401], visible=False)
+        self.set_mesh(trigger_ids=[301])
+        self.set_effect(trigger_ids=[401])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000164], state=0):
@@ -16,8 +16,8 @@ class 시작대기중1(trigger_api.Trigger):
 class 시작대기중2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000164], state=1)
-        self.set_mesh(trigger_ids=[301], visible=False)
-        self.set_effect(trigger_ids=[401], visible=False)
+        self.set_mesh(trigger_ids=[301])
+        self.set_effect(trigger_ids=[401])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000164], state=0):
@@ -43,8 +43,8 @@ class 열기1(trigger_api.Trigger):
 
 class 아이템1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_item(spawn_ids=[501], trigger_id=0, item_id=10000164)
-        self.set_mesh(trigger_ids=[301], visible=False)
+        self.create_item(spawn_ids=[501], item_id=10000164)
+        self.set_mesh(trigger_ids=[301])
         self.set_interact_object(trigger_ids=[10000164], state=1)
         self.set_effect(trigger_ids=[401], visible=True)
         self.destroy_monster(spawn_ids=[103])
@@ -55,8 +55,8 @@ class 아이템1(trigger_api.Trigger):
 
 class 아이템2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_item(spawn_ids=[501], trigger_id=0, item_id=10000164)
-        self.set_mesh(trigger_ids=[301], visible=False)
+        self.create_item(spawn_ids=[501], item_id=10000164)
+        self.set_mesh(trigger_ids=[301])
         self.set_interact_object(trigger_ids=[10000164], state=1)
         self.set_effect(trigger_ids=[401], visible=True)
         self.destroy_monster(spawn_ids=[104])
@@ -67,8 +67,8 @@ class 아이템2(trigger_api.Trigger):
 
 class 아이템3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_item(spawn_ids=[501], trigger_id=0, item_id=10000164)
-        self.set_mesh(trigger_ids=[301], visible=False)
+        self.create_item(spawn_ids=[501], item_id=10000164)
+        self.set_mesh(trigger_ids=[301])
         self.set_interact_object(trigger_ids=[10000164], state=1)
         self.set_effect(trigger_ids=[401], visible=True)
         self.destroy_monster(spawn_ids=[105])

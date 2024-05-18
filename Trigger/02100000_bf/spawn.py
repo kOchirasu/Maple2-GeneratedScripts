@@ -8,9 +8,9 @@ class 소환(trigger_api.Trigger):
             return 끝_1(self.ctx)
 
     def on_exit(self) -> None:
-        self.spawn_monster(spawn_ids=[81003], auto_target=True)
-        self.spawn_monster(spawn_ids=[810031], auto_target=True)
-        self.spawn_monster(spawn_ids=[810032], auto_target=True)
+        self.spawn_monster(spawn_ids=[81003])
+        self.spawn_monster(spawn_ids=[810031])
+        self.spawn_monster(spawn_ids=[810032])
 
 
 class 끝_1(trigger_api.Trigger):

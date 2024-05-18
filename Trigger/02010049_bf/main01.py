@@ -7,15 +7,15 @@ from dungeon_common.checkusercount import *
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # Voice 60000509
-        self.set_mesh(trigger_ids=[10000], visible=True, start_delay=0, interval=0, fade=0) # battle02
-        self.set_mesh(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=True, start_delay=0, interval=0, fade=0) # battle02 flag
-        self.set_mesh(trigger_ids=[20000], visible=True, start_delay=0, interval=0, fade=0) # battle03
-        self.set_mesh(trigger_ids=[30000], visible=True, start_delay=0, interval=0, fade=0) # battle04
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016], visible=True, start_delay=0, interval=0, fade=0) # battle03 flag
-        self.set_mesh(trigger_ids=[9990,9991,9992,9993], visible=True, start_delay=0, interval=0, fade=0) # startzone
-        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017], visible=True, start_delay=0, interval=0, fade=0) # startzone flag
-        self.set_mesh(trigger_ids=[7000,7001,7002,7003], visible=False, start_delay=0, interval=0, fade=0) # bridge
+        self.set_effect(trigger_ids=[5000]) # Voice 60000509
+        self.set_mesh(trigger_ids=[10000], visible=True) # battle02
+        self.set_mesh(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=True) # battle02 flag
+        self.set_mesh(trigger_ids=[20000], visible=True) # battle03
+        self.set_mesh(trigger_ids=[30000], visible=True) # battle04
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016], visible=True) # battle03 flag
+        self.set_mesh(trigger_ids=[9990,9991,9992,9993], visible=True) # startzone
+        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017], visible=True) # startzone flag
+        self.set_mesh(trigger_ids=[7000,7001,7002,7003]) # bridge
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -44,7 +44,7 @@ class CameraWalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_skip(state=CameraWalk02)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,8 +70,8 @@ class CameraWalk02(trigger_api.Trigger):
 
 class GateOpen01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[9990,9991,9992,9993], visible=False, start_delay=0, interval=0, fade=0) # startzone
-        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017], visible=False, start_delay=0, interval=0, fade=10) # startzone flag
+        self.set_mesh(trigger_ids=[9990,9991,9992,9993]) # startzone
+        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017], fade=10.0) # startzone flag
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9001]):
@@ -90,8 +90,8 @@ class 전투지역01시작(trigger_api.Trigger):
 
 class 전투지역02대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[10000], visible=False, start_delay=0, interval=0, fade=0) # battle02
-        self.set_mesh(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=False, start_delay=0, interval=0, fade=10) # battle02 flag
+        self.set_mesh(trigger_ids=[10000]) # battle02
+        self.set_mesh(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], fade=10.0) # battle02 flag
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entity_id=20104903, text_id=20104903, duration=5000) # 안 쪽에 벌레들이 더 있습니다.
 
@@ -122,8 +122,8 @@ class 전투지역02추가(trigger_api.Trigger):
 
 class 전투지역03대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[20000], visible=False, start_delay=0, interval=0, fade=0) # battle03
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016], visible=False, start_delay=0, interval=0, fade=10) # battle03 flag
+        self.set_mesh(trigger_ids=[20000]) # battle03
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016], fade=10.0) # battle03 flag
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entity_id=20104903, text_id=20104903, duration=5000) # 안 쪽에 벌레들이 더 있습니다.
 
@@ -162,7 +162,7 @@ class 퇴장연출01(trigger_api.Trigger):
         self.move_npc(spawn_id=400, patrol_name='MS2PatrolData_399')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -192,7 +192,7 @@ class 퇴장연출03(trigger_api.Trigger):
 class 다리생성01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[400])
-        self.set_mesh(trigger_ids=[30000], visible=False, start_delay=0, interval=0, fade=0) # battle04
+        self.set_mesh(trigger_ids=[30000]) # battle04
         self.set_random_mesh(trigger_ids=[7000,7001,7002,7003], visible=True, start_delay=4, interval=100, fade=100) # bridge
         self.show_guide_summary(entity_id=20104905, text_id=20104905, duration=6000) # 포탈을 타세요
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')

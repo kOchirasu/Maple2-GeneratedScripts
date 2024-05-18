@@ -6,13 +6,13 @@ class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1001], auto_target=False)
         # 포탈ID 1: 던전 입구에 있는 나가기 포탈 셋팅 초기화
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
         # 포탈ID 2: 3페이즈 전투 장소에 나가기 포탈 셋팅 초기화
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         # 포탈ID 8: 1페이즈 전투 장소에 나가기 포탈 셋팅 초기화, 보스가 1페이즈에서 순삭 당할 수 있기 때문에 1페이즈 전투 장소에도 나가기 포탈 생성함
-        self.set_portal(portal_id=8, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=8)
         # 포탈ID 9: 2페이즈 전투 장소에 나가기 포탈 셋팅 초기화, 보스가 2페이즈에서 순삭 당할 수 있기 때문에 1페이즈 전투 장소에도 나가기 포탈 생성함
-        self.set_portal(portal_id=9, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=9)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -41,7 +41,7 @@ class 난이도체크(trigger_api.Trigger):
 
 class 퀘스트던전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.set_timer(timer_id='1', seconds=300, start_delay=0, interval=1)
+        # self.set_timer(timer_id='1', seconds=300, interval=1)
         self.add_buff(box_ids=[101], skill_id=70000118, level=1, is_player=False, is_skill_set=False)
         self.spawn_monster(spawn_ids=[2299], auto_target=False)
 

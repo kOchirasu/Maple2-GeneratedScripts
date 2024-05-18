@@ -23,7 +23,7 @@ class wait_01_02(trigger_api.Trigger):
 
 class 티마이온(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -56,7 +56,7 @@ class 티마이온_03(trigger_api.Trigger):
 class 티마이온_03_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4003], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Attack_Idle', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Attack_Idle', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -76,7 +76,7 @@ class 티마이온_03_02(trigger_api.Trigger):
 class 티마이온_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4004,4006], return_view=False)
-        self.face_emotion(spawn_id=0, emotion_name='Trigger_serious')
+        self.face_emotion(emotion_name='Trigger_serious')
         self.add_cinematic_talk(npc_id=0, msg='$52100202_QD__52100202__1$', duration=4500)
         self.add_cinematic_talk(npc_id=0, msg='$52100202_QD__52100202__2$', duration=4500)
         self.set_scene_skip() # Missing State: State
@@ -88,7 +88,7 @@ class 티마이온_04(trigger_api.Trigger):
 
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

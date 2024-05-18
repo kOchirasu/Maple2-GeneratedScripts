@@ -8,7 +8,7 @@ import trigger_api
 """
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2001,2002], visible=True, start_delay=0, interval=0)
+        self.set_mesh(trigger_ids=[2001,2002], visible=True)
         self.set_interact_object(trigger_ids=[10001067], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class start(trigger_api.Trigger):
 
 class start_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2001,2002], visible=False, start_delay=0, interval=200)
+        self.set_mesh(trigger_ids=[2001,2002], interval=200)
         self.show_guide_summary(entity_id=20003444, text_id=20003444, duration=5000)
 
 

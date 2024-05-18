@@ -13,7 +13,7 @@ class 타이머(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=28000):
             self.set_event_ui(type=1, arg2='$02000410_BF__BARRICADE_GIVEUP_0$', arg3='5000')
-            self.dungeon_enable_give_up(is_enable='1')
+            self.dungeon_enable_give_up(is_enable=True)
             return 입구포탈제거(self.ctx)
 
 
@@ -21,7 +21,7 @@ class 입구포탈제거(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=30000):
             # 스타팅지점에서 메인 전투판으로 보내주는 포탈을 30초 지나면 제거시켜서 다시 진입하지 못하게 막음,   arg1="3" 은 포탈ID
-            self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+            self.set_portal(portal_id=3)
             return 보스HP체크(self.ctx)
 
 
@@ -39,11 +39,11 @@ class 보스HP체크(trigger_api.Trigger):
                     LessEqual,
                     Less,
         """
-        if self.npc_damage(spawn_id=102) >= 1:
+        if self.npc_damage(spawn_id=102) >= 1.0:
             # 인페르녹 보스 스폰하기, 스폰ID : 102
             # 이때 보스 HP에 있는 인페르녹의 보호막 이펙트와 쉴드 버프 아이콘을 제거시겨서 보스 100% 클이어 조건이 되었음을 알림
             # 여기서 전투판 안에 있는 몬스터인 인페르녹에게 50004522 버프를 부여하여  인페르녹의 보호막 이펙트와 쉴드 버프 아이콘 출력 용도인 50004521 애디셔널을 제거시킴
-            self.add_buff(box_ids=[102], skill_id=50004522, level=1, is_player=True)
+            self.add_buff(box_ids=[102], skill_id=50004522, level=1)
             # 몬스터에게 애디셔널 거는 경우:  arg4 = "타겟이 몬스터로 하려면 1 인 경우  ->    arg1 = "몬스터스폰ID", arg2 = "애디셔널코드", arg3 = "애디셔널레벨", arg4 = "타겟이 몬스터로 하려면 1설정"
             # 플레이어에게 애디셔널 거는 경우:  arg4 = "타겟이 플레이어로 하려면 0   인 경우  ->  arg1 = "트리거박스ID", arg2 = "애디셔널코드", arg3 = "애디셔널레벨", arg4 = "타겟이 플레이어로 하려면 0 설정"
             # 레드마인 버그 #46130 이슈로 인페르녹 보스는 대포 석궁 펫 등 으로 플레이어 스킬 이외에 추가 대미지를 받는 요소가  많이 있기 때문에, 트리거에서 인페르녹 HP 100% 다 깎았는지를 체크하여 트리거 신호 보내는 방식으로 해야 함

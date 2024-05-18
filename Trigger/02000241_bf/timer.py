@@ -7,9 +7,9 @@ from dungeon_common.checkusercount import *
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[2001], visible=False)
-        self.set_effect(trigger_ids=[2002], visible=False)
-        self.set_effect(trigger_ids=[2003], visible=False)
+        self.set_effect(trigger_ids=[2001])
+        self.set_effect(trigger_ids=[2002])
+        self.set_effect(trigger_ids=[2003])
         self.set_mesh(trigger_ids=[709,710], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,7 +25,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class 어나운스0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='88', seconds=5, start_delay=0)
+        self.set_timer(timer_id='88', seconds=5)
         self.set_effect(trigger_ids=[2001], visible=True)
         self.set_event_ui(type=1, arg2='$02000241_BF__TIMER__0$', arg3='5000', arg4='0')
 
@@ -36,7 +36,7 @@ class 어나운스0(trigger_api.Trigger):
 
 class 어나운스1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='88', seconds=5, start_delay=0)
+        self.set_timer(timer_id='88', seconds=5)
         self.set_effect(trigger_ids=[2002], visible=True)
         self.set_event_ui(type=1, arg2='$02000241_BF__TIMER__1$', arg3='5000', arg4='0')
 
@@ -48,7 +48,7 @@ class 어나운스1(trigger_api.Trigger):
 """
 class 어나운스2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='88', seconds=5, start_delay=0)
+        self.set_timer(timer_id='88', seconds=5)
         self.set_event_ui(type=1, arg2='$02000241_BF__TIMER__2$', arg3='5000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +61,7 @@ class 어나운스2(trigger_api.Trigger):
 """
 class 어나운스3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='88', seconds=5, start_delay=0)
+        self.set_timer(timer_id='88', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=205) >= 4:
@@ -93,7 +93,7 @@ class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_event_ui(type=1, arg2='$02000241_BF__TIMER__4$', arg3='5000', arg4='0')
-        self.set_mesh(trigger_ids=[709,710], visible=False)
+        self.set_mesh(trigger_ids=[709,710])
         self.set_timer(timer_id='44', seconds=6)
 
     def on_tick(self) -> trigger_api.Trigger:

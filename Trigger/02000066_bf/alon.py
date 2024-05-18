@@ -17,13 +17,13 @@ class 전투대기(trigger_api.Trigger):
 
 class 말풍선랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return NPC대사01(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return NPC대사02(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return NPC대사03(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return NPC대사04(self.ctx)
 
 

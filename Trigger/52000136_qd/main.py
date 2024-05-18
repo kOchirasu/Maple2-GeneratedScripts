@@ -1,10 +1,11 @@
 """ trigger/52000136_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601,602], visible=False)
+        self.set_effect(trigger_ids=[601,602])
         self.spawn_monster(spawn_ids=[101], auto_target=False)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -19,7 +20,7 @@ class start(trigger_api.Trigger):
 
 class 기본(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -39,8 +40,8 @@ class 연출시작(trigger_api.Trigger):
 class 첫진입(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8000], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.add_cinematic_talk(npc_id=0, illust_id='0', msg='$52000136_QD__MAIN__0$', duration=3000, align='left')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.add_cinematic_talk(npc_id=0, illust_id='0', msg='$52000136_QD__MAIN__0$', duration=3000, align=Align.Left)
         self.set_scene_skip(state=불안한케이틀린_스킵완료, action='nextState') # setsceneskip 1 set
         # setsceneskip 1 set
         # setsceneskip 1 set
@@ -75,7 +76,7 @@ class 케이틀린발견01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8003], return_view=False)
         self.move_npc(spawn_id=101, patrol_name='Patrol_101_katelyn_wander')
-        self.add_balloon_talk(spawn_id=101, msg='$52000136_QD__MAIN__1$', duration=1000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=101, msg='$52000136_QD__MAIN__1$', duration=1000)
         self.add_balloon_talk(spawn_id=101, msg='$52000136_QD__MAIN__2$', duration=1000, delay_tick=500)
         self.add_balloon_talk(spawn_id=101, msg='$52000136_QD__MAIN__3$', duration=1000, delay_tick=500)
         self.set_skip(state=불안한케이틀린_스킵완료) # 통스킵 위한 추가한 액션
@@ -88,7 +89,7 @@ class 케이틀린발견01(trigger_api.Trigger):
 class 케이틀린발견02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8004], return_view=False)
-        self.add_cinematic_talk(npc_id=0, illust_id='0', msg='$52000136_QD__MAIN__4$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=0, illust_id='0', msg='$52000136_QD__MAIN__4$', duration=3000, align=Align.Left)
         self.move_user_path(patrol_name='MS2PatrolData_PC')
         self.set_skip(state=불안한케이틀린_스킵완료) # 통스킵 위한 추가한 액션
 
@@ -112,8 +113,8 @@ class 케이틀린발견03(trigger_api.Trigger):
 class 케이틀린대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8006], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003261, script='$52000136_QD__MAIN__6$', time=3, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4300)
+        self.set_dialogue(type=2, spawn_id=11003261, script='$52000136_QD__MAIN__6$', time=3)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4300.0)
         self.set_skip(state=불안한케이틀린_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +135,7 @@ class 케이틀린대사01_skip(trigger_api.Trigger):
 class PC대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8005], return_view=False)
-        self.add_cinematic_talk(npc_id=0, illust_id='0', msg='$52000136_QD__MAIN__7$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=0, illust_id='0', msg='$52000136_QD__MAIN__7$', duration=3000, align=Align.Left)
         self.set_skip(state=불안한케이틀린_스킵완료) # 통스킵 위한 추가한 액션
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -145,7 +146,7 @@ class PC대사01(trigger_api.Trigger):
 class 케이틀린대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8010], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003261, script='$52000136_QD__MAIN__8$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003261, script='$52000136_QD__MAIN__8$', time=3)
         self.set_skip(state=불안한케이틀린_스킵완료) # 통스킵 위한 추가한 액션
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -177,7 +178,7 @@ class 불안한케이틀린_스킵완료(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=3)
+        self.reset_camera(interpolation_time=3.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

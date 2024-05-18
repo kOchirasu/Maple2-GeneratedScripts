@@ -114,14 +114,14 @@ class MelodyPlay05_End(trigger_api.Trigger):
 # 정답체크 / 레-파-미-파-솔
 class CheckAnswer01_Start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=11101, visible=False, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever C
-        self.set_actor(trigger_id=11102, visible=False, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever D
-        self.set_actor(trigger_id=11103, visible=False, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever E
-        self.set_actor(trigger_id=11104, visible=False, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever F
-        self.set_actor(trigger_id=11105, visible=False, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever G
-        self.set_actor(trigger_id=11106, visible=False, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever A
-        self.set_actor(trigger_id=11107, visible=False, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever B
-        self.set_actor(trigger_id=11108, visible=False, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever HighC
+        self.set_actor(trigger_id=11101, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever C
+        self.set_actor(trigger_id=11102, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever D
+        self.set_actor(trigger_id=11103, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever E
+        self.set_actor(trigger_id=11104, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever F
+        self.set_actor(trigger_id=11105, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever G
+        self.set_actor(trigger_id=11106, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever A
+        self.set_actor(trigger_id=11107, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever B
+        self.set_actor(trigger_id=11108, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever HighC
         self.set_interact_object(trigger_ids=[12000058], state=1) # Lever C
         self.set_interact_object(trigger_ids=[12000059], state=1) # Lever D
         self.set_interact_object(trigger_ids=[12000060], state=1) # Lever E

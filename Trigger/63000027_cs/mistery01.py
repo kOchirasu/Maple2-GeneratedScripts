@@ -4,17 +4,17 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False) # VibrateLong
-        self.set_effect(trigger_ids=[5300], visible=False) # Sound_SpaceDestroy
-        self.set_effect(trigger_ids=[5400], visible=False) # Voice_Vision_00001725
-        self.set_effect(trigger_ids=[5401], visible=False) # Voice_Vision_00001741
-        self.set_effect(trigger_ids=[5402], visible=False) # Voice_Vision_00001872
-        self.set_effect(trigger_ids=[5500], visible=False) # Sound_VisionBuff
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=0, interval=0, fade=0) # barrier
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=0) # barrier
-        self.set_mesh(trigger_ids=[3102], visible=False, start_delay=0, interval=0, fade=0) # barrier
-        self.set_mesh(trigger_ids=[3103], visible=False, start_delay=0, interval=0, fade=0) # barrier
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5200]) # VibrateLong
+        self.set_effect(trigger_ids=[5300]) # Sound_SpaceDestroy
+        self.set_effect(trigger_ids=[5400]) # Voice_Vision_00001725
+        self.set_effect(trigger_ids=[5401]) # Voice_Vision_00001741
+        self.set_effect(trigger_ids=[5402]) # Voice_Vision_00001872
+        self.set_effect(trigger_ids=[5500]) # Sound_VisionBuff
+        self.set_mesh(trigger_ids=[3100]) # barrier
+        self.set_mesh(trigger_ids=[3101]) # barrier
+        self.set_mesh(trigger_ids=[3102]) # barrier
+        self.set_mesh(trigger_ids=[3103]) # barrier
         self.set_user_value(key='CollapseEnd', value=0)
         self.set_user_value(key='ZoomIn', value=0)
 
@@ -74,7 +74,7 @@ class QuestOnGoing11(trigger_api.Trigger):
 
 class Delay01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.set_scene_skip(state=VisionApp02, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +94,7 @@ class LookAround01(trigger_api.Trigger):
 
 class LookAround02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -104,7 +104,7 @@ class LookAround02(trigger_api.Trigger):
 class LookAround03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1000')
-        self.set_dialogue(type=1, spawn_id=0, script='$63000027_CS__MISTERY01__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$63000027_CS__MISTERY01__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -113,7 +113,7 @@ class LookAround03(trigger_api.Trigger):
 
 class LookAround04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
         self.set_pc_emotion_sequence(sequence_names=['Bore_C'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +123,7 @@ class LookAround04(trigger_api.Trigger):
 
 class VisionApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -242,7 +242,7 @@ class TimeToLeave01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=250):
@@ -265,7 +265,7 @@ class TimeToLeave03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -285,7 +285,7 @@ class PCGetEffect01(trigger_api.Trigger):
 class VisionSayGoodbye01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5402], visible=True) # Voice_Vision_00001872
-        self.set_dialogue(type=1, spawn_id=103, script='$63000027_CS__MISTERY01__3$', time=4, arg5=0) # Voice 00001872
+        self.set_dialogue(type=1, spawn_id=103, script='$63000027_CS__MISTERY01__3$', time=4) # Voice 00001872
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -295,7 +295,7 @@ class VisionSayGoodbye01(trigger_api.Trigger):
 class VisionSayGoodbye02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5401], visible=True) # Voice_Vision_00001741
-        self.set_dialogue(type=1, spawn_id=103, script='$63000027_CS__MISTERY01__4$', time=4, arg5=0) # Voice 00001741
+        self.set_dialogue(type=1, spawn_id=103, script='$63000027_CS__MISTERY01__4$', time=4) # Voice 00001741
         self.set_dialogue(type=1, spawn_id=103, script='$63000027_CS__MISTERY01__5$', time=3, arg5=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -325,11 +325,11 @@ class VisionSayGoodbye04(trigger_api.Trigger):
 class Collapse01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5200], visible=True) # VibrateLong
-        self.select_camera(trigger_id=710, enable=True)
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0) # barrier
-        self.set_mesh(trigger_ids=[3101], visible=True, start_delay=0, interval=0, fade=0) # barrier
-        self.set_mesh(trigger_ids=[3102], visible=True, start_delay=0, interval=0, fade=0) # barrier
-        self.set_mesh(trigger_ids=[3103], visible=True, start_delay=0, interval=0, fade=0) # barrier
+        self.select_camera(trigger_id=710)
+        self.set_mesh(trigger_ids=[3100], visible=True) # barrier
+        self.set_mesh(trigger_ids=[3101], visible=True) # barrier
+        self.set_mesh(trigger_ids=[3102], visible=True) # barrier
+        self.set_mesh(trigger_ids=[3103], visible=True) # barrier
         self.set_user_value(trigger_id=2, key='CollapseStart', value=1)
         self.set_effect(trigger_ids=[5300], visible=True) # Sound_SpaceDestroy
 
@@ -340,7 +340,7 @@ class Collapse01(trigger_api.Trigger):
 
 class Collapse02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=711, enable=True)
+        self.select_camera(trigger_id=711)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CollapseEnd') >= 1:
@@ -358,7 +358,7 @@ class PCFainted01(trigger_api.Trigger):
 
 class PCTeleport01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=10000)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=10000.0)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)

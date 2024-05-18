@@ -5,8 +5,8 @@ import trigger_api
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=218, visible=True, initial_sequence='Closed')
-        self.set_mesh(trigger_ids=[3181], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3182], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3181], visible=True)
+        self.set_mesh(trigger_ids=[3182], visible=True)
         self.set_agent(trigger_ids=[9181], visible=True)
         self.set_agent(trigger_ids=[9182], visible=True)
         self.set_agent(trigger_ids=[9183], visible=True)
@@ -19,12 +19,12 @@ class 시작(trigger_api.Trigger):
 class 문열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=218, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[3181], visible=False, start_delay=0, interval=0, fade=5)
-        self.set_mesh(trigger_ids=[3182], visible=False, start_delay=0, interval=0, fade=5)
-        self.set_agent(trigger_ids=[9181], visible=False)
-        self.set_agent(trigger_ids=[9182], visible=False)
-        self.set_agent(trigger_ids=[9183], visible=False)
-        self.spawn_monster(spawn_ids=[1019], auto_target=True)
+        self.set_mesh(trigger_ids=[3181], fade=5.0)
+        self.set_mesh(trigger_ids=[3182], fade=5.0)
+        self.set_agent(trigger_ids=[9181])
+        self.set_agent(trigger_ids=[9182])
+        self.set_agent(trigger_ids=[9183])
+        self.spawn_monster(spawn_ids=[1019])
 
 
 initial_state = 시작

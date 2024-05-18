@@ -30,8 +30,8 @@ class CameraEffect02(trigger_api.Trigger):
 
 class CameraEffect02_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        self.add_buff(box_ids=[2001], skill_id=99910403, level=1, is_player=False, is_skill_set=True) # 다크로드 변신
+        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'])
+        self.add_buff(box_ids=[2001], skill_id=99910403, level=1, is_player=False) # 다크로드 변신
         self.add_buff(box_ids=[2001], skill_id=99910403, level=1, is_player=False, is_skill_set=False) # 다크로드 변신
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,7 +41,7 @@ class CameraEffect02_2(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

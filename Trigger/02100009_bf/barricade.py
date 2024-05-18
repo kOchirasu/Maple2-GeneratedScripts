@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 class CheckUser10_GuildRaid(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=30, start_delay=1, interval=0, v_offset=0) # 최대 30초 대기
+        self.set_timer(timer_id='1', seconds=30, start_delay=1) # 최대 30초 대기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=102) >= 10:
@@ -47,7 +47,7 @@ class MaxCount10_Start(trigger_api.Trigger):
 
 class DungeonStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=904, enable=True)
+        self.select_camera(trigger_id=904)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -105,11 +105,11 @@ class CloseCaptionSetting(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False)
-        self.set_effect(trigger_ids=[7002], visible=False)
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_effect(trigger_ids=[7004], visible=False)
-        self.set_mesh(trigger_ids=[8000], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[7001])
+        self.set_effect(trigger_ids=[7002])
+        self.set_effect(trigger_ids=[7003])
+        self.set_effect(trigger_ids=[7004])
+        self.set_mesh(trigger_ids=[8000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_in_combat(spawn_ids=[100000001]) or self.monster_in_combat(spawn_ids=[100000002]):
@@ -133,7 +133,7 @@ class 카운트(trigger_api.Trigger):
 
 class 차단(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[8000], visible=True)
         self.set_effect(trigger_ids=[7001], visible=True)
         self.set_effect(trigger_ids=[7002], visible=True)
         self.set_effect(trigger_ids=[7003], visible=True)
@@ -146,11 +146,11 @@ class 차단(trigger_api.Trigger):
 
 class 차단해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8000], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[7001], visible=False)
-        self.set_effect(trigger_ids=[7002], visible=False)
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_effect(trigger_ids=[7004], visible=False)
+        self.set_mesh(trigger_ids=[8000])
+        self.set_effect(trigger_ids=[7001])
+        self.set_effect(trigger_ids=[7002])
+        self.set_effect(trigger_ids=[7003])
+        self.set_effect(trigger_ids=[7004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

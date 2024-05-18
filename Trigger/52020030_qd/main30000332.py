@@ -1,13 +1,14 @@
 """ trigger/52020030_qd/main30000332.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 # 천공의 탑 입장
 class 입장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
+        self.set_effect(trigger_ids=[5003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[30000332], quest_states=[1]):
@@ -27,9 +28,9 @@ class 천공의탑전경보여주기(trigger_api.Trigger):
 
 class 천공의탑전경보여주기02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4008,4010], return_view=False)
-        self.show_caption(type='VerticalCaption', title='천공의 탑', desc='크리티아스 마법 연구소', align='centerLeft', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2)
+        self.show_caption(type='VerticalCaption', title='천공의 탑', desc='크리티아스 마법 연구소', align=Align.Center | Align.Left, duration=3000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -48,8 +49,8 @@ class 천공의탑전경보여주기03(trigger_api.Trigger):
 
 class 천공의탑전경보여주기04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=0)
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

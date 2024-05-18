@@ -10,9 +10,9 @@ class idle(trigger_api.Trigger):
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7006], visible=False)
-        self.set_mesh(trigger_ids=[1106], visible=False, start_delay=0, interval=200, fade=15)
-        self.set_mesh(trigger_ids=[1206], visible=True, start_delay=0, interval=200, fade=15)
+        self.set_effect(trigger_ids=[7006])
+        self.set_mesh(trigger_ids=[1106], interval=200, fade=15.0)
+        self.set_mesh(trigger_ids=[1206], visible=True, interval=200, fade=15.0)
         self.spawn_monster(spawn_ids=[206], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +89,7 @@ class Event_06_g(trigger_api.Trigger):
 
 class Event_06_h(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1107, script='$52100041_QD__MAGIC_06__4$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1107, script='$52100041_QD__MAGIC_06__4$', time=5)
         self.set_dialogue(type=1, spawn_id=1108, script='$52100041_QD__MAGIC_06__5$', time=3, arg5=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -100,7 +100,7 @@ class Event_06_h(trigger_api.Trigger):
 class Event_06_i(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=1107, patrol_name='MS2PatrolData_2142')
-        self.set_dialogue(type=1, spawn_id=1107, script='$52100041_QD__MAGIC_06__6$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1107, script='$52100041_QD__MAGIC_06__6$', time=5)
         self.set_dialogue(type=1, spawn_id=1108, script='$52100041_QD__MAGIC_06__7$', time=3, arg5=3)
         self.set_dialogue(type=1, spawn_id=1107, script='$52100041_QD__MAGIC_06__8$', time=3, arg5=5)
 

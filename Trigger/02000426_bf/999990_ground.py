@@ -5,7 +5,7 @@ import trigger_api
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 자쿰과의 전투 장소 3층 지형의 일부 바닥 큐브를 숨김 처리함
-        self.set_mesh(trigger_ids=[5001,5002,5003,5004,5005,5006], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[5001,5002,5003,5004,5005,5006])
         # 이 트리거메쉬는   "5001 5002  5003             5006  5005  5004"    순서로 배치되어 있음
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -4,20 +4,20 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
-        self.enable_spawn_point_pc(spawn_id=1, is_enable=False) # <시작 위치 세팅>
-        self.enable_spawn_point_pc(spawn_id=2, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=3, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=4, is_enable=False)
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
+        self.set_portal(portal_id=3)
+        self.enable_spawn_point_pc(spawn_id=1) # <시작 위치 세팅>
+        self.enable_spawn_point_pc(spawn_id=2)
+        self.enable_spawn_point_pc(spawn_id=3)
+        self.enable_spawn_point_pc(spawn_id=4)
         self.reset_timer(timer_id='1')
         self.reset_timer(timer_id='2')
         self.reset_timer(timer_id='3')
         self.set_actor(trigger_id=1901, visible=True, initial_sequence='Idle_A') # <연출용 액터>
         self.set_effect(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=True)
         self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048], visible=True) # <가두기 트리거 메쉬>
-        self.shadow_expedition(type='CloseBossGauge')
+        self.shadow_expedition_close_boss_gauge()
         self.set_user_value(trigger_id=99990002, key='SpawnStart', value=0)
         self.set_user_value(trigger_id=99990003, key='ObjectPhase', value=0)
         self.set_user_value(trigger_id=99990008, key='BossPhase', value=0)
@@ -41,7 +41,7 @@ class 딜레이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=9002, type='trigger', achieve='corps_battle')
         self.set_event_ui(type=1, arg2='$02020061_BF__MAIN__0$', arg3='5000')
-        self.select_camera(trigger_id=999, enable=True)
+        self.select_camera(trigger_id=999)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -59,7 +59,7 @@ class 방폭(trigger_api.Trigger):
 
 class 내보내기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=0)
+        self.move_user()
 
     def on_tick(self) -> trigger_api.Trigger:
         return 종료(self.ctx)
@@ -71,15 +71,15 @@ class 시작(trigger_api.Trigger):
         self.enable_spawn_point_pc(spawn_id=2, is_enable=True)
         self.enable_spawn_point_pc(spawn_id=3, is_enable=True)
         self.enable_spawn_point_pc(spawn_id=4, is_enable=True)
-        self.reset_camera(interpolation_time=1)
-        self.set_effect(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=False)
-        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048], visible=False)
+        self.reset_camera(interpolation_time=1.0)
+        self.set_effect(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016])
+        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048])
         self.set_event_ui(type=0, arg2='1,3')
         self.set_event_ui(type=1, arg2='$02020061_BF__MAIN__2$', arg3='5000')
         self.set_timer(timer_id='1', seconds=180, start_delay=1, interval=1, v_offset=60) # <1라운드 게임 플레이 타임 설정>
-        self.shadow_expedition(type='OpenBossGauge', max_gauge_point=800)
+        self.shadow_expedition_open_boss_gauge(max_gauge_point=800)
         self.set_user_value(trigger_id=99990002, key='SpawnStart', value=1)
-        self.set_actor(trigger_id=1901, visible=False, initial_sequence='Idle_A') # <연출용 액터>
+        self.set_actor(trigger_id=1901, initial_sequence='Idle_A') # <연출용 액터>
         self.spawn_monster(spawn_ids=[701], auto_target=False) # <무적 오브젝트 생성>
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +95,7 @@ class 오브젝트페이즈(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.give_reward_content(reward_id=31000001)
         self.set_event_ui(type=1, arg2='$02020061_BF__MAIN__3$', arg3='5000')
-        self.shadow_expedition(type='CloseBossGauge')
+        self.shadow_expedition_close_boss_gauge()
         self.set_event_ui(type=0, arg2='2,3')
         self.reset_timer(timer_id='1')
         self.set_user_value(trigger_id=99990003, key='ObjectPhase', value=1)
@@ -131,7 +131,7 @@ class 보스페이즈(trigger_api.Trigger):
 
 class 성공_세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020061_BF__MAIN__5$')
+        self.side_npc_talk(npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020061_BF__MAIN__5$')
         self.reset_timer(timer_id='1')
         self.reset_timer(timer_id='2')
         self.reset_timer(timer_id='3')
@@ -146,7 +146,7 @@ class 성공_세팅(trigger_api.Trigger):
 
 class 성공_대사용(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11003533, illust='Bliche_smile', duration=5000, script='$02020061_BF__MAIN__6$')
+        self.side_npc_talk(npc_id=11003533, illust='Bliche_smile', duration=5000, script='$02020061_BF__MAIN__6$')
         self.destroy_monster(spawn_ids=[-1])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -156,7 +156,7 @@ class 성공_대사용(trigger_api.Trigger):
 
 class 실패_세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020061_BF__MAIN__7$')
+        self.side_npc_talk(npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020061_BF__MAIN__7$')
         self.reset_timer(timer_id='1')
         self.reset_timer(timer_id='2')
         self.reset_timer(timer_id='3')
@@ -172,7 +172,7 @@ class 실패_세팅(trigger_api.Trigger):
 
 class 실패_대사용(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11003533, illust='Bliche_normal', duration=5000, script='$02020061_BF__MAIN__8$')
+        self.side_npc_talk(npc_id=11003533, illust='Bliche_normal', duration=5000, script='$02020061_BF__MAIN__8$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -190,7 +190,7 @@ class 성공(trigger_api.Trigger):
 
 class 실패(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.field_war_end(is_clear=False)
+        self.field_war_end()
 
     def on_tick(self) -> trigger_api.Trigger:
         return 종료(self.ctx)

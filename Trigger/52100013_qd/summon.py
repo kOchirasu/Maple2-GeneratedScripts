@@ -14,7 +14,7 @@ class idle(trigger_api.Trigger):
 
 class Summon(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[501,502,503], auto_target=True)
+        self.spawn_monster(spawn_ids=[501,502,503])
         self.set_user_value(trigger_id=203903, key='Summon', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,9 +24,9 @@ class Summon(trigger_api.Trigger):
 
 class Summon_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$52100013_QD__SUMMON__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$52100013_QD__SUMMON__0$', time=2)
         self.set_dialogue(type=1, spawn_id=101, script='$52100013_QD__SUMMON__1$', time=2, arg5=2)
-        self.spawn_monster(spawn_ids=[504,505,506], auto_target=True)
+        self.spawn_monster(spawn_ids=[504,505,506])
         self.set_user_value(trigger_id=203903, key='Summon', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class Summon_02(trigger_api.Trigger):
 
 class Summon_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.spawn_monster(spawn_ids=[507,508,509,510], auto_target=True)
+        # self.spawn_monster(spawn_ids=[507,508,509,510])
         self.set_user_value(trigger_id=203903, key='Summon', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

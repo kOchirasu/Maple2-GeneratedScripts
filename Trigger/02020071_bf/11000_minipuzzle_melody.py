@@ -6,7 +6,7 @@ class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timer_id='1')
         self.reset_timer(timer_id='2')
-        self.enable_local_camera(is_enable=False) # 로컬카메라 전체 OFF
+        self.enable_local_camera() # 로컬카메라 전체 OFF
         # RareBox 맵 별로 유니크하도록 변경해야 하는 값
         self.set_interact_object(trigger_ids=[12000203], state=2)
         # AntiqueMap / 기믹 시작 오브젝트 / Additional Effect 71001011 부여
@@ -38,17 +38,17 @@ class Wait(trigger_api.Trigger):
         self.set_actor(trigger_id=11106, visible=True, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever A
         self.set_actor(trigger_id=11107, visible=True, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever B
         self.set_actor(trigger_id=11108, visible=True, initial_sequence='ks_quest_musical_A01_off') # Dummy Lever HighC
-        self.set_effect(trigger_ids=[11201], visible=False) # Bell C
-        self.set_effect(trigger_ids=[11202], visible=False) # Bell D
-        self.set_effect(trigger_ids=[11203], visible=False) # Bell E
-        self.set_effect(trigger_ids=[11204], visible=False) # Bell F
-        self.set_effect(trigger_ids=[11205], visible=False) # Bell G
-        self.set_effect(trigger_ids=[11206], visible=False) # Bell A
-        self.set_effect(trigger_ids=[11207], visible=False) # Bell B
-        self.set_effect(trigger_ids=[11208], visible=False) # Bell HighC
-        self.set_effect(trigger_ids=[11300], visible=False) # Success Sound Effect
-        self.set_effect(trigger_ids=[11301], visible=False) # Right Sound Effect
-        self.set_effect(trigger_ids=[11302], visible=False) # Wrong Sound Effect
+        self.set_effect(trigger_ids=[11201]) # Bell C
+        self.set_effect(trigger_ids=[11202]) # Bell D
+        self.set_effect(trigger_ids=[11203]) # Bell E
+        self.set_effect(trigger_ids=[11204]) # Bell F
+        self.set_effect(trigger_ids=[11205]) # Bell G
+        self.set_effect(trigger_ids=[11206]) # Bell A
+        self.set_effect(trigger_ids=[11207]) # Bell B
+        self.set_effect(trigger_ids=[11208]) # Bell HighC
+        self.set_effect(trigger_ids=[11300]) # Success Sound Effect
+        self.set_effect(trigger_ids=[11301]) # Right Sound Effect
+        self.set_effect(trigger_ids=[11302]) # Wrong Sound Effect
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimeEventOn') >= 1:
@@ -63,7 +63,7 @@ class Setting(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000074], state=0):
             # UI 표시 안함 / 황금 상자 소유권 Additional Effect 71001011 지속시간 동일
-            self.set_timer(timer_id='1', seconds=120, start_delay=1, interval=0, v_offset=0)
+            self.set_timer(timer_id='1', seconds=120, start_delay=1)
             return StartMelodyQuiz_Delay01(self.ctx)
         if self.user_value(key='TimeEventOn') >= 0:
             return Wait(self.ctx)
@@ -105,45 +105,45 @@ class StartMelodyQuiz_Delay02(trigger_api.Trigger):
 # 패턴 랜덤픽
 class StartMelodyQuiz_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern01(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern02(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern03(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern04(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern05(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern06(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern07(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern08(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern09(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern10(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern11(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern12(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern13(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern14(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern15(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern16(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern17(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern18(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern19(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return MelodyQuizPattern20(self.ctx)
 
 
@@ -536,7 +536,7 @@ class EndMelodyQuiz_Success(trigger_api.Trigger):
         self.set_effect(trigger_ids=[11300], visible=True) # Success Sound Effect
         # RareBox 맵 별로 유니크하도록 변경해야 하는 값
         self.set_interact_object(trigger_ids=[12000203], state=1)
-        self.set_timer(timer_id='2', seconds=60, start_delay=1, interval=0, v_offset=0)
+        self.set_timer(timer_id='2', seconds=60, start_delay=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000203], state=0):

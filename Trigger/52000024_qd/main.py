@@ -100,7 +100,7 @@ class startB_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=8005, enable=True) # 카메라 초기화
+        self.select_camera(trigger_id=8005) # 카메라 초기화
         self.move_user(map_id=52000024, portal_id=99)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -229,7 +229,7 @@ class startB_12(trigger_api.Trigger):
 
 class startC_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=104, script='$52000024_QD__MAIN__5$', time=3, arg5=0) # 음성 코드 00001309
+        self.set_dialogue(type=1, spawn_id=104, script='$52000024_QD__MAIN__5$', time=3) # 음성 코드 00001309
         self.set_effect(trigger_ids=[7005], visible=True) # 음성 코드 00001309
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -239,7 +239,7 @@ class startC_01(trigger_api.Trigger):
 
 class startC_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.set_dialogue(type=1, spawn_id=102, script='어서 가 봐! 레잔은 내가 챙길테니까.', time=3, arg5=0)
+        # self.set_dialogue(type=1, spawn_id=102, script='어서 가 봐! 레잔은 내가 챙길테니까.', time=3)
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_2002')
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_2007') # 이슈라 집에감
 

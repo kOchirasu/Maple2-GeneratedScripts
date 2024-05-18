@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 미션 완료 사운드 이펙트
         self.spawn_monster(spawn_ids=[101,201,301,401,501], auto_target=False)
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
@@ -16,30 +16,30 @@ class Wait(trigger_api.Trigger):
         self.set_agent(trigger_ids=[8006], visible=True)
         self.set_agent(trigger_ids=[8007], visible=True)
         self.set_agent(trigger_ids=[8008], visible=True)
-        self.set_skill(trigger_ids=[7000], enable=False) # PCKnockBack
-        self.set_effect(trigger_ids=[7001], visible=False) # VibrateDizzy
-        self.set_effect(trigger_ids=[6000], visible=False) # RingBellStart
-        self.set_effect(trigger_ids=[6001], visible=False) # RingBellFinish
+        self.set_skill(trigger_ids=[7000]) # PCKnockBack
+        self.set_effect(trigger_ids=[7001]) # VibrateDizzy
+        self.set_effect(trigger_ids=[6000]) # RingBellStart
+        self.set_effect(trigger_ids=[6001]) # RingBellFinish
         # Voice VasaraChen 00001349
-        self.set_effect(trigger_ids=[7100], visible=False)
+        self.set_effect(trigger_ids=[7100])
         # Voice VasaraChen 00001350
-        self.set_effect(trigger_ids=[7101], visible=False)
+        self.set_effect(trigger_ids=[7101])
         # Voice VasaraChen 00001351
-        self.set_effect(trigger_ids=[7102], visible=False)
+        self.set_effect(trigger_ids=[7102])
         # Voice VasaraChen 00001374
-        self.set_effect(trigger_ids=[7103], visible=False)
-        self.set_effect(trigger_ids=[7200], visible=False) # Voice Speenchi 03000902
-        self.set_effect(trigger_ids=[7201], visible=False) # Voice Speenchi 03000903
-        self.set_effect(trigger_ids=[7202], visible=False) # Voice Speenchi 03000904
-        self.set_effect(trigger_ids=[7203], visible=False) # Voice Speenchi 03000905
-        self.set_effect(trigger_ids=[7204], visible=False) # Voice Speenchi 03000906
-        self.set_effect(trigger_ids=[7205], visible=False) # Voice Speenchi 03000907
-        self.set_effect(trigger_ids=[7206], visible=False) # Voice Speenchi 03000908
-        self.set_effect(trigger_ids=[7207], visible=False) # Voice Speenchi 03000909
-        self.set_effect(trigger_ids=[7208], visible=False) # Voice Speenchi 03000910
-        self.set_effect(trigger_ids=[7209], visible=False) # Voice Speenchi 03000911
-        self.set_effect(trigger_ids=[7210], visible=False) # Voice Speenchi 03000912
-        self.set_effect(trigger_ids=[7211], visible=False) # Voice Speenchi 03000913
+        self.set_effect(trigger_ids=[7103])
+        self.set_effect(trigger_ids=[7200]) # Voice Speenchi 03000902
+        self.set_effect(trigger_ids=[7201]) # Voice Speenchi 03000903
+        self.set_effect(trigger_ids=[7202]) # Voice Speenchi 03000904
+        self.set_effect(trigger_ids=[7203]) # Voice Speenchi 03000905
+        self.set_effect(trigger_ids=[7204]) # Voice Speenchi 03000906
+        self.set_effect(trigger_ids=[7205]) # Voice Speenchi 03000907
+        self.set_effect(trigger_ids=[7206]) # Voice Speenchi 03000908
+        self.set_effect(trigger_ids=[7207]) # Voice Speenchi 03000909
+        self.set_effect(trigger_ids=[7208]) # Voice Speenchi 03000910
+        self.set_effect(trigger_ids=[7209]) # Voice Speenchi 03000911
+        self.set_effect(trigger_ids=[7210]) # Voice Speenchi 03000912
+        self.set_effect(trigger_ids=[7211]) # Voice Speenchi 03000913
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -52,7 +52,7 @@ class LodingDelay01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -71,7 +71,7 @@ class LookAround01(trigger_api.Trigger):
 
 class LookAround02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -80,7 +80,7 @@ class LookAround02(trigger_api.Trigger):
 
 class LookAround03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=511, enable=True)
+        self.select_camera(trigger_id=511)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -89,7 +89,7 @@ class LookAround03(trigger_api.Trigger):
 
 class LookAround04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -98,7 +98,7 @@ class LookAround04(trigger_api.Trigger):
 
 class TalkKay03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=13000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=13000.0)
         self.set_effect(trigger_ids=[7205], visible=True) # Voice Speenchi 03000907
         self.set_dialogue(type=2, spawn_id=11001626, script='$63000020_CS__BATTLE01__0$', time=7) # Voice 03000907
         self.set_skip(state=TalkKay04)
@@ -110,7 +110,7 @@ class TalkKay03(trigger_api.Trigger):
 
 class TalkKay04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7205], visible=False) # Voice Speenchi 03000907
+        self.set_effect(trigger_ids=[7205]) # Voice Speenchi 03000907
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -132,7 +132,7 @@ class TalkKay10(trigger_api.Trigger):
 class TalkKay11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Idle_A')
-        self.set_effect(trigger_ids=[7206], visible=False) # Voice Speenchi 03000908
+        self.set_effect(trigger_ids=[7206]) # Voice Speenchi 03000908
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
@@ -145,7 +145,7 @@ class TalkKay11(trigger_api.Trigger):
 
 class FirstChampoin01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -154,7 +154,7 @@ class FirstChampoin01(trigger_api.Trigger):
 
 class FirstChampoin02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.spawn_monster(spawn_ids=[901], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -184,7 +184,7 @@ class FirstChampoin04(trigger_api.Trigger):
 
 class FirstChampoin05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7207], visible=False) # Voice Speenchi 03000909
+        self.set_effect(trigger_ids=[7207]) # Voice Speenchi 03000909
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -200,7 +200,7 @@ class FirstChampoin06(trigger_api.Trigger):
         self.move_user(map_id=63000020, portal_id=2)
         self.destroy_monster(spawn_ids=[901])
         self.spawn_monster(spawn_ids=[911], auto_target=False)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -223,21 +223,21 @@ class FirstBattle01(trigger_api.Trigger):
 
 class FirstBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7210], visible=False) # Voice Speenchi 03000912
+        self.set_effect(trigger_ids=[7210]) # Voice Speenchi 03000912
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=700, enable=False)
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
         self.set_effect(trigger_ids=[6000], visible=True) # RingBellStart
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -308,7 +308,7 @@ class SecondChampoin04(trigger_api.Trigger):
 
 class SecondChampoin05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7208], visible=False) # Voice Speenchi 03000910
+        self.set_effect(trigger_ids=[7208]) # Voice Speenchi 03000910
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -324,7 +324,7 @@ class SecondChampoin06(trigger_api.Trigger):
         self.move_user(map_id=63000020, portal_id=2)
         self.destroy_monster(spawn_ids=[902])
         self.spawn_monster(spawn_ids=[912], auto_target=False)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -356,21 +356,21 @@ class SecondBattle01(trigger_api.Trigger):
 
 class SecondBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7210], visible=False) # Voice Speenchi 03000912
+        self.set_effect(trigger_ids=[7210]) # Voice Speenchi 03000912
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=700, enable=False)
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
         self.set_effect(trigger_ids=[6000], visible=True) # RingBellStart
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -441,7 +441,7 @@ class ThirdChampoin04(trigger_api.Trigger):
 
 class ThirdChampoin05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7209], visible=False) # Voice Speenchi 03000911
+        self.set_effect(trigger_ids=[7209]) # Voice Speenchi 03000911
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -457,7 +457,7 @@ class ThirdChampoin06(trigger_api.Trigger):
         self.move_user(map_id=63000020, portal_id=2)
         self.destroy_monster(spawn_ids=[903])
         self.spawn_monster(spawn_ids=[913], auto_target=False)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -489,21 +489,21 @@ class ThirdBattle01(trigger_api.Trigger):
 
 class ThirdBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7210], visible=False) # Voice Speenchi 03000912
+        self.set_effect(trigger_ids=[7210]) # Voice Speenchi 03000912
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=700, enable=False)
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
         self.set_effect(trigger_ids=[6000], visible=True) # RingBellStart
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -536,7 +536,7 @@ class TalkKay20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=503, enable=True)
+        self.select_camera(trigger_id=503)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -546,7 +546,7 @@ class TalkKay20(trigger_api.Trigger):
 class TalkKay21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Talk_A')
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
         self.set_dialogue(type=2, spawn_id=11001626, script='$63000020_CS__BATTLE01__8$', time=9) # Voice 03000913
         self.set_effect(trigger_ids=[7211], visible=True) # Voice Speenchi 03000913
         self.set_skip(state=TalkKay22)
@@ -561,7 +561,7 @@ class TalkKay22(trigger_api.Trigger):
         self.move_user(map_id=63000020, portal_id=6)
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.set_effect(trigger_ids=[7211], visible=False) # Voice Speenchi 03000913
+        self.set_effect(trigger_ids=[7211]) # Voice Speenchi 03000913
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -571,7 +571,7 @@ class TalkKay22(trigger_api.Trigger):
 # PC 현기증 Blur
 class PCFeelDizzy01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=703, enable=True)
+        self.select_camera(trigger_id=703)
         self.move_user_path(patrol_name='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -581,7 +581,7 @@ class PCFeelDizzy01(trigger_api.Trigger):
 
 class PCFeelDizzy02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$63000020_CS__BATTLE01__9$', time=4, arg5=0)
+        self.set_dialogue(type=1, script='$63000020_CS__BATTLE01__9$', time=4)
         self.set_pc_emotion_sequence(sequence_names=['Emotion_Disappoint_A','Emotion_Disappoint_Idle_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -591,7 +591,7 @@ class PCFeelDizzy02(trigger_api.Trigger):
 
 class PCFeelDizzy03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=705, enable=True)
+        self.select_camera(trigger_id=705)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=200):
@@ -600,7 +600,7 @@ class PCFeelDizzy03(trigger_api.Trigger):
 
 class PCFeelDizzy04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=704, enable=True)
+        self.select_camera(trigger_id=704)
         self.set_effect(trigger_ids=[7001], visible=True) # VibrateDizzy
         self.add_buff(box_ids=[9900], skill_id=70000094, level=1)
 
@@ -611,7 +611,7 @@ class PCFeelDizzy04(trigger_api.Trigger):
 
 class PCFeelOkay01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False) # VibrateDizzy
+        self.set_effect(trigger_ids=[7001]) # VibrateDizzy
         self.add_buff(box_ids=[9900], skill_id=70000096, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -621,7 +621,7 @@ class PCFeelOkay01(trigger_api.Trigger):
 
 class PCFeelOkay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=703, enable=True)
+        self.select_camera(trigger_id=703)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -630,7 +630,7 @@ class PCFeelOkay02(trigger_api.Trigger):
 
 class PCFeelOkay03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$63000020_CS__BATTLE01__10$', time=4, arg5=0)
+        self.set_dialogue(type=1, script='$63000020_CS__BATTLE01__10$', time=4)
         self.set_pc_emotion_sequence(sequence_names=['Bore_C'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -641,7 +641,7 @@ class PCFeelOkay03(trigger_api.Trigger):
 class PCFeelOkay04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6000], visible=True) # RingBellStart
-        self.select_camera(trigger_id=504, enable=True)
+        self.select_camera(trigger_id=504)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -673,8 +673,8 @@ class TalkKay24(trigger_api.Trigger):
 
 class TalkKay25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7200], visible=False) # Voice Speenchi 03000902
-        self.select_camera(trigger_id=710, enable=True)
+        self.set_effect(trigger_ids=[7200]) # Voice Speenchi 03000902
+        self.select_camera(trigger_id=710)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -700,7 +700,7 @@ class TalkKay27(trigger_api.Trigger):
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.set_effect(trigger_ids=[7201], visible=False) # Voice Speenchi 03000903
+        self.set_effect(trigger_ids=[7201]) # Voice Speenchi 03000903
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -711,7 +711,7 @@ class TalkKay28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Talk_A')
         self.set_dialogue(type=2, spawn_id=11001626, script='$63000020_CS__BATTLE01__13$', time=10) # Voice 03000904
         self.set_effect(trigger_ids=[7202], visible=True) # Voice Speenchi 03000904
@@ -724,7 +724,7 @@ class TalkKay28(trigger_api.Trigger):
 
 class TalkKay29(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7202], visible=False) # Voice Speenchi 03000904
+        self.set_effect(trigger_ids=[7202]) # Voice Speenchi 03000904
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -736,7 +736,7 @@ class LastChampoin01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -785,7 +785,7 @@ class LastChampoin05(trigger_api.Trigger):
 
 class LastChampoin06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7203], visible=False) # Voice Speenchi 03000905
+        self.set_effect(trigger_ids=[7203]) # Voice Speenchi 03000905
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -801,7 +801,7 @@ class LastChampoin07(trigger_api.Trigger):
         self.move_user(map_id=63000020, portal_id=2)
         self.destroy_monster(spawn_ids=[900])
         self.spawn_monster(spawn_ids=[924], auto_target=False)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -834,10 +834,10 @@ class LastBattle01(trigger_api.Trigger):
 # 조정 필요
 class LastBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7204], visible=False) # Voice Speenchi 03000906
+        self.set_effect(trigger_ids=[7204]) # Voice Speenchi 03000906
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -846,7 +846,7 @@ class LastBattle02(trigger_api.Trigger):
 
 class LastBattle03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$63000020_CS__BATTLE01__16$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$63000020_CS__BATTLE01__16$', time=3)
         self.set_pc_emotion_sequence(sequence_names=['Striker_Bore_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -858,7 +858,7 @@ class LastBattle04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[924])
         self.spawn_monster(spawn_ids=[910], auto_target=False)
-        self.select_camera(trigger_id=702, enable=True)
+        self.select_camera(trigger_id=702)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -879,7 +879,7 @@ class TalkChen10(trigger_api.Trigger):
 class TalkChen11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice VasaraChen 00001349
-        self.set_effect(trigger_ids=[7100], visible=False)
+        self.set_effect(trigger_ids=[7100])
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -900,15 +900,15 @@ class BattleStart01(trigger_api.Trigger):
 
 class BattleStart02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
         self.show_guide_summary(entity_id=10025040, text_id=10025040) # 가이드 : 바사라 첸 쓰러트리기
         self.set_effect(trigger_ids=[5000], visible=True) # 가이드 서머리 사운드 이펙트
 
@@ -934,7 +934,7 @@ class CameraAct02(trigger_api.Trigger):
         self.move_user(map_id=63000020, portal_id=4)
         self.destroy_monster(spawn_ids=[910])
         self.spawn_monster(spawn_ids=[920], auto_target=False)
-        self.select_camera(trigger_id=800, enable=True)
+        self.select_camera(trigger_id=800)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -973,7 +973,7 @@ class KnockBack01(trigger_api.Trigger):
 class KnockBack02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(trigger_ids=[7000], enable=True)
-        self.select_camera(trigger_id=801, enable=True)
+        self.select_camera(trigger_id=801)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=900):
@@ -982,7 +982,7 @@ class KnockBack02(trigger_api.Trigger):
 
 class KnockBack03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Push_A', duration=3000)
+        self.set_pc_emotion_loop(sequence_name='Push_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -992,7 +992,7 @@ class KnockBack03(trigger_api.Trigger):
 # PC 1인칭 시점 Blur 연출
 class BlurAct01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=802, enable=True) # FirstPerspective
+        self.select_camera(trigger_id=802) # FirstPerspective
         self.add_buff(box_ids=[9900], skill_id=70000094, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1002,7 +1002,7 @@ class BlurAct01(trigger_api.Trigger):
 
 class BlurAct02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=803, enable=True) # FirstPerspective
+        self.select_camera(trigger_id=803) # FirstPerspective
         self.set_effect(trigger_ids=[7001], visible=True) # VibrateDizzy
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1027,7 +1027,7 @@ class BlurAct04(trigger_api.Trigger):
 
 class BlurAct05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=805, enable=True)
+        self.select_camera(trigger_id=805)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1200):
@@ -1047,10 +1047,10 @@ class BlurAct06(trigger_api.Trigger):
 
 class BlurAct07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Emotion_Disappoint_Idle_A', duration=24000)
-        self.set_effect(trigger_ids=[7001], visible=False) # VibrateDizzy
+        self.set_pc_emotion_loop(sequence_name='Emotion_Disappoint_Idle_A', duration=24000.0)
+        self.set_effect(trigger_ids=[7001]) # VibrateDizzy
         self.add_buff(box_ids=[9900], skill_id=70000096, level=1)
-        self.select_camera(trigger_id=806, enable=True)
+        self.select_camera(trigger_id=806)
         self.destroy_monster(spawn_ids=[920])
         self.spawn_monster(spawn_ids=[922], auto_target=False)
 
@@ -1085,7 +1085,7 @@ class TalkChen01(trigger_api.Trigger):
 class TalkChen02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice VasaraChen 00001350
-        self.set_effect(trigger_ids=[7101], visible=False)
+        self.set_effect(trigger_ids=[7101])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -1108,7 +1108,7 @@ class TalkChen03(trigger_api.Trigger):
 class TalkChen04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice VasaraChen 00001374
-        self.set_effect(trigger_ids=[7103], visible=False)
+        self.set_effect(trigger_ids=[7103])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -1136,7 +1136,7 @@ class TalkChen06(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[922])
         self.spawn_monster(spawn_ids=[923], auto_target=False)
         # Voice VasaraChen 00001351
-        self.set_effect(trigger_ids=[7102], visible=False)
+        self.set_effect(trigger_ids=[7102])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -1147,7 +1147,7 @@ class TalkChen06(trigger_api.Trigger):
 
 class LastAttack00(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=923, sequence_name='Attack_02_G', duration=2000)
+        self.set_npc_emotion_loop(spawn_id=923, sequence_name='Attack_02_G', duration=2000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -1160,7 +1160,7 @@ class LastAttack01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_buff(box_ids=[9900], skill_id=70000095, level=1)
-        self.select_camera(trigger_id=807, enable=True) # FirstPerspective Hit
+        self.select_camera(trigger_id=807) # FirstPerspective Hit
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -1169,7 +1169,7 @@ class LastAttack01(trigger_api.Trigger):
 
 class LastAttack02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=808, enable=True) # FirstPerspective Hit
+        self.select_camera(trigger_id=808) # FirstPerspective Hit
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=900):
@@ -1201,7 +1201,7 @@ class PCFainted01(trigger_api.Trigger):
 class PCFainted02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(box_ids=[9900], skill_id=70000095, level=1)
-        self.select_camera(trigger_id=804, enable=True) # FirstPerspective Down
+        self.select_camera(trigger_id=804) # FirstPerspective Down
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -1237,7 +1237,7 @@ class PlayerDown02(trigger_api.Trigger):
         self.move_user(map_id=63000020, portal_id=5)
         self.destroy_monster(spawn_ids=[923])
         self.spawn_monster(spawn_ids=[921], auto_target=False)
-        self.select_camera(trigger_id=810, enable=True)
+        self.select_camera(trigger_id=810)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -1246,7 +1246,7 @@ class PlayerDown02(trigger_api.Trigger):
 
 class PlayerDown03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=16000)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=16000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -1267,7 +1267,7 @@ class PlayerDown04(trigger_api.Trigger):
 
 class PlayerDown05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=811, enable=True)
+        self.select_camera(trigger_id=811)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -1276,7 +1276,7 @@ class PlayerDown05(trigger_api.Trigger):
 
 class PlayerDown06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=812, enable=True)
+        self.select_camera(trigger_id=812)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

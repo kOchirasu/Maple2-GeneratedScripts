@@ -10,18 +10,18 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000433], state=2)
         self.set_interact_object(trigger_ids=[10000434], state=2)
         self.set_interact_object(trigger_ids=[10000435], state=2)
-        self.set_ladder(trigger_ids=[341], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[342], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[343], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[351], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[352], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[353], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[361], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[362], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[363], visible=False, enable=False)
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
+        self.set_ladder(trigger_ids=[341])
+        self.set_ladder(trigger_ids=[342])
+        self.set_ladder(trigger_ids=[343])
+        self.set_ladder(trigger_ids=[351])
+        self.set_ladder(trigger_ids=[352])
+        self.set_ladder(trigger_ids=[353])
+        self.set_ladder(trigger_ids=[361])
+        self.set_ladder(trigger_ids=[362])
+        self.set_ladder(trigger_ids=[363])
+        self.set_portal(portal_id=4)
+        self.set_portal(portal_id=5)
+        self.set_portal(portal_id=6)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -51,11 +51,11 @@ class 준비(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[1021], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return 번생성4(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return 번생성5(self.ctx)
-        if self.random_condition(weight=34):
+        if self.random_condition(weight=34.0):
             return 번생성6(self.ctx)
 
 
@@ -81,7 +81,7 @@ class 번몬스터4(trigger_api.Trigger):
             self.set_ladder(trigger_ids=[341], visible=True, enable=True)
             self.set_ladder(trigger_ids=[342], visible=True, enable=True)
             self.set_ladder(trigger_ids=[343], visible=True, enable=True)
-            self.set_portal(portal_id=4, visible=False, enable=True, minimap_visible=True)
+            self.set_portal(portal_id=4, enable=True, minimap_visible=True)
             return 소멸대기(self.ctx)
 
 
@@ -107,7 +107,7 @@ class 번몬스터5(trigger_api.Trigger):
             self.set_ladder(trigger_ids=[351], visible=True, enable=True)
             self.set_ladder(trigger_ids=[352], visible=True, enable=True)
             self.set_ladder(trigger_ids=[353], visible=True, enable=True)
-            self.set_portal(portal_id=5, visible=False, enable=True, minimap_visible=True)
+            self.set_portal(portal_id=5, enable=True, minimap_visible=True)
             return 소멸대기(self.ctx)
 
 
@@ -133,7 +133,7 @@ class 번몬스터6(trigger_api.Trigger):
             self.set_ladder(trigger_ids=[361], visible=True, enable=True)
             self.set_ladder(trigger_ids=[362], visible=True, enable=True)
             self.set_ladder(trigger_ids=[363], visible=True, enable=True)
-            self.set_portal(portal_id=6, visible=False, enable=True, minimap_visible=True)
+            self.set_portal(portal_id=6, enable=True, minimap_visible=True)
             return 소멸대기(self.ctx)
 
 

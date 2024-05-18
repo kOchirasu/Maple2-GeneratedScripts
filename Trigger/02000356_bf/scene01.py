@@ -5,16 +5,16 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[201])
-        self.set_effect(trigger_ids=[401], visible=False)
-        self.set_effect(trigger_ids=[601], visible=False) # 벨라 음성
-        self.set_effect(trigger_ids=[602], visible=False) # 벨라 음성
-        self.set_effect(trigger_ids=[603], visible=False) # 벨라 음성
-        self.set_effect(trigger_ids=[604], visible=False) # 벨라 음성
-        self.set_effect(trigger_ids=[605], visible=False) # 벨라 음성
-        self.set_effect(trigger_ids=[606], visible=False) # 레논 음성
-        self.set_effect(trigger_ids=[607], visible=False) # 알론 음성
-        self.set_effect(trigger_ids=[608], visible=False) # 알론 음성
-        self.set_effect(trigger_ids=[609], visible=False) # 알론 음성
+        self.set_effect(trigger_ids=[401])
+        self.set_effect(trigger_ids=[601]) # 벨라 음성
+        self.set_effect(trigger_ids=[602]) # 벨라 음성
+        self.set_effect(trigger_ids=[603]) # 벨라 음성
+        self.set_effect(trigger_ids=[604]) # 벨라 음성
+        self.set_effect(trigger_ids=[605]) # 벨라 음성
+        self.set_effect(trigger_ids=[606]) # 레논 음성
+        self.set_effect(trigger_ids=[607]) # 알론 음성
+        self.set_effect(trigger_ids=[608]) # 알론 음성
+        self.set_effect(trigger_ids=[609]) # 알론 음성
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SetSkillA') >= 1:
@@ -31,7 +31,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -83,7 +83,7 @@ class 벨라등장(trigger_api.Trigger):
 
 class 벨라대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[401], visible=False)
+        self.set_effect(trigger_ids=[401])
         self.set_timer(timer_id='1', seconds=4)
         self.set_effect(trigger_ids=[601], visible=True) # 3.40
         self.set_dialogue(type=2, spawn_id=11000057, script='$02000213_BF__SCENE01__2$', time=4)
@@ -173,7 +173,7 @@ class 벨라사라짐(trigger_api.Trigger):
         self.set_timer(timer_id='1', seconds=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.select_camera_path(path_ids=[302], return_view=True)
+        self.select_camera_path(path_ids=[302])
         self.destroy_monster(spawn_ids=[202])
         self.destroy_monster(spawn_ids=[203])
         self.destroy_monster(spawn_ids=[204])

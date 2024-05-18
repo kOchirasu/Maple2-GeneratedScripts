@@ -10,21 +10,21 @@ class 시작대기중(trigger_api.Trigger):
 
 class 기본셋팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
-        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
-        self.set_portal(portal_id=8, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
-        self.set_portal(portal_id=9, visible=False, enable=False, minimap_visible=False) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=1) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=2) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=3) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=4) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=5) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=6) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=7) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=8) # 2페이즈 가는 포탈 최초에는 감추기
+        self.set_portal(portal_id=9) # 2페이즈 가는 포탈 최초에는 감추기
         # 게임포기 할때 던전 밖으로 가는  다수 포탈  최초 감추기
-        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=22, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=23, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=24, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=25, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=21)
+        self.set_portal(portal_id=22)
+        self.set_portal(portal_id=23)
+        self.set_portal(portal_id=24)
+        self.set_portal(portal_id=25)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -66,7 +66,7 @@ class 쉬운난이도보스등장(trigger_api.Trigger):
 
 class 일러스트대화창(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=23000101, illust='BlackBean_Smile', script='$02000551_BF__BOSSSPAWN__0$', duration=7000)
+        self.side_npc_talk(npc_id=23000101, illust='BlackBean_Smile', script='$02000551_BF__BOSSSPAWN__0$', duration=7000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2100):
@@ -118,7 +118,7 @@ class 던전실패(trigger_api.Trigger):
 class 게임오버(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # StartPortal.xml 트리거에서 <action name="DungeonEnableGiveUp" isEnable="1" /> 설정함
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
         # 게임포기 했으니 던전 밖으로 가는 다수 포탈  등장시키기
         self.set_portal(portal_id=21, visible=True, enable=True, minimap_visible=True)
         self.set_portal(portal_id=22, visible=True, enable=True, minimap_visible=True)

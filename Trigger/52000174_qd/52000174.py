@@ -1,5 +1,6 @@
 """ trigger/52000174_qd/52000174.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class wait_01(trigger_api.Trigger):
@@ -41,7 +42,7 @@ class wait_02(trigger_api.Trigger):
 
 class 숙소도착_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -52,7 +53,7 @@ class 숙소도착_01(trigger_api.Trigger):
 class 숙소도착_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4001,4002], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$52000174_QD__52000174__0$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000174_QD__52000174__0$', align=Align.Bottom | Align.Left, duration=3000, scale=2.5)
         self.move_user_path(patrol_name='MS2PatrolData_3003')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,7 +72,7 @@ class 숙소도착_03(trigger_api.Trigger):
 
 class 숙소도착_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,8 +83,8 @@ class 숙소도착_04(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -92,7 +93,7 @@ class Skip_1(trigger_api.Trigger):
 
 class 숙소도착_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entity_id=25201741, text_id=25201741, duration=3000)
@@ -152,7 +153,7 @@ class 깨어났다_02(trigger_api.Trigger):
 
 class 깨어났다_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_2, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -163,7 +164,7 @@ class 깨어났다_03(trigger_api.Trigger):
 class 깨어났다_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4003,4004], return_view=False)
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=6000)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=6000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -181,7 +182,7 @@ class 깨어났다_05(trigger_api.Trigger):
 
 class 깨어났다_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -192,7 +193,7 @@ class 깨어났다_06(trigger_api.Trigger):
 class Skip_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -201,7 +202,7 @@ class Skip_2(trigger_api.Trigger):
 
 class 깨어났다_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -221,7 +222,7 @@ class 전직이펙트_01(trigger_api.Trigger):
 
 class 전직이펙트_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
+        self.set_onetime_effect(id=30, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

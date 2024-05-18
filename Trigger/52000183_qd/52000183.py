@@ -38,7 +38,7 @@ class 전경씬01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52000183, portal_id=80)
         self.set_scene_skip(state=Skip_1, action='nextState')
-        self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
+        self.set_onetime_effect(id=30, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
         self.select_camera_path(path_ids=[4000,4001,4002], return_view=False)
         self.set_cinematic_ui(type=1)
 
@@ -50,14 +50,14 @@ class 전경씬01(trigger_api.Trigger):
 class 전경씬02_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Priest_HeavensPray3_A'])
-        self.set_npc_emotion_loop(spawn_id=500, sequence_name='Bore_A', duration=8000)
-        self.set_npc_emotion_loop(spawn_id=501, sequence_name='Idle_A', duration=8000)
-        self.set_npc_emotion_loop(spawn_id=502, sequence_name='Idle_A', duration=8000)
-        self.set_npc_emotion_loop(spawn_id=503, sequence_name='Bore_A', duration=8000)
-        self.set_npc_emotion_loop(spawn_id=504, sequence_name='Idle_A', duration=8000)
-        self.set_npc_emotion_loop(spawn_id=505, sequence_name='Bore_A', duration=8000)
-        self.set_npc_emotion_loop(spawn_id=506, sequence_name='Idle_A', duration=8000)
-        self.set_npc_emotion_loop(spawn_id=507, sequence_name='Bore_A', duration=8000)
+        self.set_npc_emotion_loop(spawn_id=500, sequence_name='Bore_A', duration=8000.0)
+        self.set_npc_emotion_loop(spawn_id=501, sequence_name='Idle_A', duration=8000.0)
+        self.set_npc_emotion_loop(spawn_id=502, sequence_name='Idle_A', duration=8000.0)
+        self.set_npc_emotion_loop(spawn_id=503, sequence_name='Bore_A', duration=8000.0)
+        self.set_npc_emotion_loop(spawn_id=504, sequence_name='Idle_A', duration=8000.0)
+        self.set_npc_emotion_loop(spawn_id=505, sequence_name='Bore_A', duration=8000.0)
+        self.set_npc_emotion_loop(spawn_id=506, sequence_name='Idle_A', duration=8000.0)
+        self.set_npc_emotion_loop(spawn_id=507, sequence_name='Bore_A', duration=8000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
@@ -75,7 +75,7 @@ class 전경씬02(trigger_api.Trigger):
 
 class Quit01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -86,8 +86,8 @@ class Quit01(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -102,7 +102,7 @@ class Quit02(trigger_api.Trigger):
         self.move_npc(spawn_id=506, patrol_name='MS2PatrolData_506')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.show_guide_summary(entity_id=52001831, text_id=52001831, duration=10000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +121,7 @@ class 전직이펙트_01(trigger_api.Trigger):
 
 class 전직이펙트_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
+        self.set_onetime_effect(id=30, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9001], quest_ids=[20002342], quest_states=[3]):
@@ -181,7 +181,7 @@ class 전원퇴장01_b(trigger_api.Trigger):
 
 class 전원퇴장02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=10, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=10, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.show_guide_summary(entity_id=52001832, text_id=52001832, duration=10000)
         self.spawn_monster(spawn_ids=[510], auto_target=False)
         self.set_cinematic_ui(type=0)

@@ -20,23 +20,23 @@ class ready(trigger_api.Trigger):
 
 class random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return pattern_a_01(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return pattern_b_01(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return pattern_c_01(self.ctx)
-        if self.random_condition(weight=12):
+        if self.random_condition(weight=12.0):
             return pattern_d_01(self.ctx)
-        if self.random_condition(weight=6):
+        if self.random_condition(weight=6.0):
             return pattern_e_01(self.ctx)
-        if self.random_condition(weight=6):
+        if self.random_condition(weight=6.0):
             return pattern_f_01(self.ctx)
 
 
 class pattern_a_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -45,7 +45,7 @@ class pattern_a_01(trigger_api.Trigger):
 
 class pattern_a_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
+        self.spawn_monster(spawn_ids=[202])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -54,7 +54,7 @@ class pattern_a_02(trigger_api.Trigger):
 
 class pattern_a_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[203], auto_target=True)
+        self.spawn_monster(spawn_ids=[203])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -63,7 +63,7 @@ class pattern_a_03(trigger_api.Trigger):
 
 class pattern_a_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[204], auto_target=True)
+        self.spawn_monster(spawn_ids=[204])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -72,7 +72,7 @@ class pattern_a_04(trigger_api.Trigger):
 
 class pattern_b_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[204], auto_target=True)
+        self.spawn_monster(spawn_ids=[204])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -81,7 +81,7 @@ class pattern_b_01(trigger_api.Trigger):
 
 class pattern_b_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[203], auto_target=True)
+        self.spawn_monster(spawn_ids=[203])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -90,7 +90,7 @@ class pattern_b_02(trigger_api.Trigger):
 
 class pattern_b_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
+        self.spawn_monster(spawn_ids=[202])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -99,7 +99,7 @@ class pattern_b_03(trigger_api.Trigger):
 
 class pattern_b_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -108,7 +108,7 @@ class pattern_b_04(trigger_api.Trigger):
 
 class pattern_c_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -117,7 +117,7 @@ class pattern_c_01(trigger_api.Trigger):
 
 class pattern_c_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -126,7 +126,7 @@ class pattern_c_02(trigger_api.Trigger):
 
 class pattern_c_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -135,7 +135,7 @@ class pattern_c_03(trigger_api.Trigger):
 
 class pattern_c_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -144,7 +144,7 @@ class pattern_c_04(trigger_api.Trigger):
 
 class pattern_d_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[204], auto_target=True)
+        self.spawn_monster(spawn_ids=[204])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -153,7 +153,7 @@ class pattern_d_01(trigger_api.Trigger):
 
 class pattern_d_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[204], auto_target=True)
+        self.spawn_monster(spawn_ids=[204])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -162,7 +162,7 @@ class pattern_d_02(trigger_api.Trigger):
 
 class pattern_d_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[204], auto_target=True)
+        self.spawn_monster(spawn_ids=[204])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -171,7 +171,7 @@ class pattern_d_03(trigger_api.Trigger):
 
 class pattern_d_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[204], auto_target=True)
+        self.spawn_monster(spawn_ids=[204])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -180,7 +180,7 @@ class pattern_d_04(trigger_api.Trigger):
 
 class pattern_e_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -189,7 +189,7 @@ class pattern_e_01(trigger_api.Trigger):
 
 class pattern_e_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -198,7 +198,7 @@ class pattern_e_02(trigger_api.Trigger):
 
 class pattern_e_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -207,7 +207,7 @@ class pattern_e_03(trigger_api.Trigger):
 
 class pattern_e_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -216,7 +216,7 @@ class pattern_e_04(trigger_api.Trigger):
 
 class pattern_f_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -225,7 +225,7 @@ class pattern_f_01(trigger_api.Trigger):
 
 class pattern_f_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -234,7 +234,7 @@ class pattern_f_02(trigger_api.Trigger):
 
 class pattern_f_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -243,7 +243,7 @@ class pattern_f_03(trigger_api.Trigger):
 
 class pattern_f_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

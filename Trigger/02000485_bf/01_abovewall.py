@@ -5,37 +5,37 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # InvisibleMesh_forTransparancy
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3000], visible=True)
+        self.set_portal(portal_id=2)
         self.set_interact_object(trigger_ids=[10002048], state=0) # LeverForLadder01
         self.set_interact_object(trigger_ids=[10002049], state=0) # LeverForRope
         self.set_interact_object(trigger_ids=[10002050], state=0) # LeverForLadder02
         self.destroy_monster(spawn_ids=[901,902,903]) # Mob
         self.destroy_monster(spawn_ids=[910,911,912,920,921,922,930,931,932,940,941,942]) # Mob
-        self.set_ladder(trigger_ids=[510], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[511], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[512], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[513], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[514], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[520], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[521], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[522], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[523], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[524], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[525], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[526], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[527], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[528], visible=False, enable=False, fade=0) # Ladder02
-        self.set_rope(trigger_id=530, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=531, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=532, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=533, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=534, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=535, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=536, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=537, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=538, visible=False, enable=False, fade=0) # Rope
-        self.set_rope(trigger_id=539, visible=False, enable=False, fade=0) # Rope
+        self.set_ladder(trigger_ids=[510]) # Ladder01
+        self.set_ladder(trigger_ids=[511]) # Ladder01
+        self.set_ladder(trigger_ids=[512]) # Ladder01
+        self.set_ladder(trigger_ids=[513]) # Ladder01
+        self.set_ladder(trigger_ids=[514]) # Ladder01
+        self.set_ladder(trigger_ids=[520]) # Ladder02
+        self.set_ladder(trigger_ids=[521]) # Ladder02
+        self.set_ladder(trigger_ids=[522]) # Ladder02
+        self.set_ladder(trigger_ids=[523]) # Ladder02
+        self.set_ladder(trigger_ids=[524]) # Ladder02
+        self.set_ladder(trigger_ids=[525]) # Ladder02
+        self.set_ladder(trigger_ids=[526]) # Ladder02
+        self.set_ladder(trigger_ids=[527]) # Ladder02
+        self.set_ladder(trigger_ids=[528]) # Ladder02
+        self.set_rope(trigger_id=530) # Rope
+        self.set_rope(trigger_id=531) # Rope
+        self.set_rope(trigger_id=532) # Rope
+        self.set_rope(trigger_id=533) # Rope
+        self.set_rope(trigger_id=534) # Rope
+        self.set_rope(trigger_id=535) # Rope
+        self.set_rope(trigger_id=536) # Rope
+        self.set_rope(trigger_id=537) # Rope
+        self.set_rope(trigger_id=538) # Rope
+        self.set_rope(trigger_id=539) # Rope
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -180,7 +180,7 @@ class PortalOn(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[528], visible=True, enable=True, fade=2) # Ladder02
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=20039804, text_id=20039804, duration=5000) # 가이드 : 사다리를 타고 위로 올라가세요.
-        self.set_portal(portal_id=2, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=2, enable=True)
 
 
 initial_state = Wait

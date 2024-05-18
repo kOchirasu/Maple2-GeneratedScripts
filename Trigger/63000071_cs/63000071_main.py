@@ -4,7 +4,7 @@ import trigger_api
 
 class standby(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -31,8 +31,8 @@ class openingscene_start(trigger_api.Trigger):
 
 class openingscene_1_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
-        self.set_effect(trigger_ids=[5000], visible=False)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
+        self.set_effect(trigger_ids=[5000])
         self.add_balloon_talk(spawn_id=101, msg='$63000071_CS__63000071_MAIN__0$', duration=2500, delay_tick=1000) # 내 유언장 내놔!
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Attack_01_A,Attack_01_B')
 
@@ -43,7 +43,7 @@ class openingscene_1_1(trigger_api.Trigger):
 
 class openingscene_1_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Attack_Idle_A', duration=3500)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Attack_Idle_A', duration=3500.0)
         self.add_balloon_talk(spawn_id=101, msg='$63000071_CS__63000071_MAIN__1$', duration=2500, delay_tick=500) # 내 딸을! 내 딸을 찾아줘!
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -53,7 +53,7 @@ class openingscene_1_2(trigger_api.Trigger):
 
 class openingscene_1_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Stun_A', duration=8000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Stun_A', duration=8000.0)
         self.add_balloon_talk(spawn_id=101, msg='$63000071_CS__63000071_MAIN__2$', duration=2500, delay_tick=500) # 마리엔! 어디있니
         self.add_balloon_talk(spawn_id=101, msg='$63000071_CS__63000071_MAIN__3$', duration=3500, delay_tick=4000) # 모든게 잘못됐어! 가만두지 않겠어!!
 
@@ -70,8 +70,8 @@ class openingscene_1_3(trigger_api.Trigger):
 
 class openingscene_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
-        self.set_effect(trigger_ids=[5001], visible=False)
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
+        self.set_effect(trigger_ids=[5001])
         self.add_balloon_talk(spawn_id=102, msg='$63000071_CS__63000071_MAIN__4$', duration=2500, delay_tick=500) # 아빠…
         self.add_balloon_talk(spawn_id=102, msg='$63000071_CS__63000071_MAIN__5$', duration=2500, delay_tick=4000) # 아빠 나 여기있어…
 
@@ -101,7 +101,7 @@ class openingscene_3(trigger_api.Trigger):
 
 class openingscene_end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,13 +116,13 @@ class openingscene_end(trigger_api.Trigger):
 
 class openingskip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.destroy_monster(spawn_ids=[101,102])
         self.set_effect(trigger_ids=[5002], visible=True)
         self.set_effect(trigger_ids=[5003], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -131,8 +131,8 @@ class openingskip_1(trigger_api.Trigger):
 
 class Bossbattle_ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
+        self.set_effect(trigger_ids=[5002])
+        self.set_effect(trigger_ids=[5003])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.visible_my_pc(is_visible=True)
@@ -143,7 +143,7 @@ class Bossbattle_ready(trigger_api.Trigger):
             return Bossbattle_start(self.ctx)
 
     def on_exit(self) -> None:
-        # self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        # self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         pass
 
 
@@ -167,8 +167,8 @@ class endingscene_start(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8000,8001], return_view=False)
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불끄기
         self.set_scene_skip(state=endingskip_1, action='exit') # endingscene 전체스킵
-        self.set_effect(trigger_ids=[5004], visible=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
+        self.set_effect(trigger_ids=[5004])
+        self.set_effect(trigger_ids=[5005])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -177,7 +177,7 @@ class endingscene_start(trigger_api.Trigger):
 
 class endingscene_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
         self.add_balloon_talk(spawn_id=104, msg='$63000071_CS__63000071_MAIN__9$', duration=2500, delay_tick=500) # 아빠. 이제 다 끝났어
         self.add_balloon_talk(spawn_id=103, msg='$63000071_CS__63000071_MAIN__10$', duration=2500, delay_tick=4000) # 오, 마리엔! 우리 아가!
         self.add_balloon_talk(spawn_id=104, msg='$63000071_CS__63000071_MAIN__11$', duration=2500, delay_tick=8000) # 보고 싶었어. 아빠…
@@ -254,7 +254,7 @@ class endingskip_1(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[104])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -263,12 +263,12 @@ class endingskip_1(trigger_api.Trigger):
 
 class final(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.visible_my_pc(is_visible=True)
-        self.set_effect(trigger_ids=[5006], visible=False)
+        self.set_effect(trigger_ids=[5006])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

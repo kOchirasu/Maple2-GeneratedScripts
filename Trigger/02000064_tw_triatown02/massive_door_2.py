@@ -8,7 +8,7 @@ class 클로즈대기중(trigger_api.Trigger):
 
 class 클로즈5초전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.announce(type=0, content='5초 후 게이트가 닫힙니다. 서둘러 입장해 주세요.', arg3=True)
+        # self.announce(content='5초 후 게이트가 닫힙니다. 서둘러 입장해 주세요.', arg3=True)
         self.set_timer(timer_id='115', seconds=115)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 클로즈중1(trigger_api.Trigger):
 
 class 클로즈중2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.announce(type=0, content='빛나는 문이 닫혔습니다.', arg3=True)
+        # self.announce(content='빛나는 문이 닫혔습니다.', arg3=True)
         self.set_timer(timer_id='6', seconds=60)
 
     def on_tick(self) -> trigger_api.Trigger:

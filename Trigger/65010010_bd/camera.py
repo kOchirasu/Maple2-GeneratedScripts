@@ -17,14 +17,14 @@ class PvP종료(trigger_api.Trigger):
 class 완료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=15000):
-            self.move_user(map_id=0, portal_id=0)
+            self.move_user()
             return 종료(self.ctx)
 
 
 """
 class 카메라300(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='5', seconds=5, start_delay=0)
+        self.set_timer(timer_id='5', seconds=5)
         self.select_camera_path(path_ids=[300,304], return_view=False)
         self.set_event_ui(type=1, arg2='1vs1 대결을 시작합니다.', arg3='3000')
 
@@ -38,7 +38,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='Username1')
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -50,7 +50,7 @@ class 연출시작(trigger_api.Trigger):
 class 카메라302(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3, script='Username2')
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -1,5 +1,6 @@
 """ trigger/02000376_bf/09_lightup.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class Wait(trigger_api.Trigger):
@@ -26,8 +27,8 @@ class LightOff02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=2, key='InnerLight', value=1)
         self.set_user_value(trigger_id=3, key='ResetInnerLight', value=1)
-        self.set_ambient_light(primary=[0,0,0])
-        self.set_directional_light(diffuse_color=[0,0,0], specular_color=[0,0,0])
+        self.set_ambient_light(primary=Vector3(0,0,0))
+        self.set_directional_light(diffuse_color=Vector3(0,0,0))
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -38,8 +39,8 @@ class RemoveTotem01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=3, key='RemoveInnerLight', value=1)
         self.set_user_value(trigger_id=2, key='InactivateLotus', value=1)
-        self.set_ambient_light(primary=[96,160,157])
-        self.set_directional_light(diffuse_color=[193,180,137], specular_color=[100,100,100])
+        self.set_ambient_light(primary=Vector3(96,160,157))
+        self.set_directional_light(diffuse_color=Vector3(193,180,137), specular_color=Vector3(100,100,100))
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

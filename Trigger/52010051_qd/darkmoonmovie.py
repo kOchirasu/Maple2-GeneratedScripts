@@ -20,7 +20,7 @@ class CameraEffect01(trigger_api.Trigger):
 
 class CameraEffect02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.select_camera(trigger_id=1000, enable=True)
+        # self.select_camera(trigger_id=1000)
         pass
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,8 +30,8 @@ class CameraEffect02(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.select_camera(trigger_id=1000, enable=True)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.select_camera(trigger_id=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -40,7 +40,7 @@ class CameraEffect03(trigger_api.Trigger):
 
 class CameraEffect4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=1001, enable=True)
+        self.select_camera(trigger_id=1001)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):
@@ -58,7 +58,7 @@ class CameraEffect5(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=99999890, portal_id=0)
+        self.move_user(map_id=99999890)
 
 
 initial_state = start

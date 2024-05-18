@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False)
-        self.set_effect(trigger_ids=[5001], visible=False)
+        self.set_effect(trigger_ids=[5000])
+        self.set_effect(trigger_ids=[5001])
         self.spawn_monster(spawn_ids=[1001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class 말풍선딜레이(trigger_api.Trigger):
 
 class PC말풍선01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000017_QD__QUEST01__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000017_QD__QUEST01__0$', time=3)
         self.set_scene_skip(state=종료, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class NPC대사01(trigger_api.Trigger):
 
 class NPC대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False)
+        self.set_effect(trigger_ids=[5000])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -76,7 +76,7 @@ class NPC대사02(trigger_api.Trigger):
 
 class NPC대사02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
+        self.set_effect(trigger_ids=[5001])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 

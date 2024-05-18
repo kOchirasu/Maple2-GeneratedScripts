@@ -19,29 +19,29 @@ class 랜덤스폰(trigger_api.Trigger):
         self.set_user_value(trigger_id=999992, key='RoundStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크01(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크02(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크03(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크04(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크05(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크06(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크08(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크09(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크10(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크11(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크12(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 중복체크13(self.ctx)
 
 

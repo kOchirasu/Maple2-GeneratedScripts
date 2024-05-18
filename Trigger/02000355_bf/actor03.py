@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[603], visible=False)
+        self.set_effect(trigger_ids=[603])
         self.set_actor(trigger_id=203, visible=True, initial_sequence='Damg_B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class 몬스터소환(trigger_api.Trigger):
 
 class 더미해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=203, visible=False, initial_sequence='Damg_B')
+        self.set_actor(trigger_id=203, initial_sequence='Damg_B')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2003]):

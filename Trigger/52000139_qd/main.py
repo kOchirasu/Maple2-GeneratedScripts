@@ -1,20 +1,21 @@
 """ trigger/52000139_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0) # 유저 이동 하게
         self.set_cinematic_ui(type=2) # UI 복구
-        self.spawn_monster(spawn_ids=[109], auto_target=True)
-        self.spawn_monster(spawn_ids=[110], auto_target=True)
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
-        self.spawn_monster(spawn_ids=[102], auto_target=True)
-        self.spawn_monster(spawn_ids=[104], auto_target=True)
-        self.spawn_monster(spawn_ids=[105], auto_target=True)
-        self.spawn_monster(spawn_ids=[106], auto_target=True)
-        self.spawn_monster(spawn_ids=[107], auto_target=True)
-        self.set_effect(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5014], visible=False) # 경로 안내
+        self.spawn_monster(spawn_ids=[109])
+        self.spawn_monster(spawn_ids=[110])
+        self.spawn_monster(spawn_ids=[101])
+        self.spawn_monster(spawn_ids=[102])
+        self.spawn_monster(spawn_ids=[104])
+        self.spawn_monster(spawn_ids=[105])
+        self.spawn_monster(spawn_ids=[106])
+        self.spawn_monster(spawn_ids=[107])
+        self.set_effect(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5014]) # 경로 안내
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[40002700], quest_states=[3]):
@@ -73,7 +74,7 @@ class 카메라연출_01(trigger_api.Trigger):
 class 카메라연출_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8001,8002], return_view=False)
-        self.set_pc_emotion_loop(sequence_name='Emotion_Disappoint_Idle_A', duration=14000)
+        self.set_pc_emotion_loop(sequence_name='Emotion_Disappoint_Idle_A', duration=14000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -82,7 +83,7 @@ class 카메라연출_02(trigger_api.Trigger):
 
 class 카메라연출_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52000139_QD__MAIN__22$', desc='$52000139_QD__MAIN__23$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=4000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000139_QD__MAIN__22$', desc='$52000139_QD__MAIN__23$', align=Align.Bottom | Align.Left, duration=4000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -111,8 +112,8 @@ class 검은화면전환_02(trigger_api.Trigger):
 
 class 밝은화면전환_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_pc_emotion_loop(sequence_name='Emotion_Disappoint_Idle_A', duration=2000)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_pc_emotion_loop(sequence_name='Emotion_Disappoint_Idle_A', duration=2000.0)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_2001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +124,7 @@ class 밝은화면전환_01(trigger_api.Trigger):
 class 기사와대화_00(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=퀘스트수락_01, action='nextState')
-        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__0$', duration=2500, align='left')
+        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__0$', duration=2500, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -141,8 +142,8 @@ class 기사와대화_01(trigger_api.Trigger):
 
 class 기사와대화_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__2$', duration=2500, align='left')
-        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__3$', duration=2500, align='left')
+        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__2$', duration=2500, align=Align.Left)
+        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__3$', duration=2500, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5500):
@@ -161,7 +162,7 @@ class 기사와대화_03(trigger_api.Trigger):
 
 class 기사와대화_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__6$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__6$', duration=3000, align=Align.Left)
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_2002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -182,7 +183,7 @@ class 기사와대화_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_2003')
         self.move_user_path(patrol_name='MS2PatrolData_2004')
-        self.add_cinematic_talk(npc_id=11003321, msg='$52000139_QD__MAIN__8$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003321, msg='$52000139_QD__MAIN__8$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -191,7 +192,7 @@ class 기사와대화_06(trigger_api.Trigger):
 
 class 기사와대화_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__9$', duration=2500, align='right')
+        self.add_cinematic_talk(npc_id=11003320, msg='$52000139_QD__MAIN__9$', duration=2500, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -201,8 +202,8 @@ class 기사와대화_07(trigger_api.Trigger):
 """
 class 기사와대화_08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003321, msg='$52000139_QD__MAIN__10$', duration=2500, align='left')
-        self.add_cinematic_talk(npc_id=11003321, msg='$52000139_QD__MAIN__11$', duration=2500, align='left')
+        self.add_cinematic_talk(npc_id=11003321, msg='$52000139_QD__MAIN__10$', duration=2500, align=Align.Left)
+        self.add_cinematic_talk(npc_id=11003321, msg='$52000139_QD__MAIN__11$', duration=2500, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5772):
@@ -222,7 +223,7 @@ class 기사와대화_09(trigger_api.Trigger):
 class 퀘스트수락_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip() # Missing State: State
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0) # 유저 이동 가능하게
         self.set_cinematic_ui(type=2) # UI 원상복구
         self.destroy_monster(spawn_ids=[102])
@@ -260,7 +261,7 @@ class 기지로이동_01(trigger_api.Trigger):
 
 class 퀘스트진행_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5014], visible=False)
+        self.set_effect(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5014])
         self.show_guide_summary(entity_id=25201392, text_id=25201392)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -308,7 +309,7 @@ class 다시검은화면_02(trigger_api.Trigger):
 class 부상병과대화_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=25201393)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11003327, msg='$52000139_QD__MAIN__13$', duration=3000)
         self.set_scene_skip(state=마무리, action='exit')
 

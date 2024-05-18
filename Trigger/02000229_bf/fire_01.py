@@ -5,7 +5,7 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000051], state=1)
-        self.set_effect(trigger_ids=[501], visible=False)
+        self.set_effect(trigger_ids=[501])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000051], state=0):
@@ -31,7 +31,7 @@ class 딜레이(trigger_api.Trigger):
             return 딜레이2(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[501], visible=False)
+        self.set_effect(trigger_ids=[501])
         self.destroy_monster(spawn_ids=[101])
 
 

@@ -4,17 +4,17 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[3000], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[3001], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[3002], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[3003], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[3004], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[3000])
+        self.set_ladder(trigger_ids=[3001])
+        self.set_ladder(trigger_ids=[3002])
+        self.set_ladder(trigger_ids=[3003])
+        self.set_ladder(trigger_ids=[3004])
         self.destroy_monster(spawn_ids=[910,911,912,913,914,915,916,917])
         self.spawn_monster(spawn_ids=[4100], auto_target=False) # BossActor
         self.destroy_monster(spawn_ids=[4101]) # BossBattle
-        self.spawn_monster(spawn_ids=[900,901,902], auto_target=True) # MobEnterance
-        self.spawn_monster(spawn_ids=[800,801,802,803,804], auto_target=True) # LuminaBattle
-        self.spawn_monster(spawn_ids=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331], auto_target=True) # SlaveNpc
+        self.spawn_monster(spawn_ids=[900,901,902]) # MobEnterance
+        self.spawn_monster(spawn_ids=[800,801,802,803,804]) # LuminaBattle
+        self.spawn_monster(spawn_ids=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331]) # SlaveNpc
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -28,26 +28,26 @@ class 대기(trigger_api.Trigger):
         self.set_agent(trigger_ids=[8010], visible=True)
         self.set_agent(trigger_ids=[8011], visible=True)
         self.set_agent(trigger_ids=[8012], visible=True)
-        self.set_effect(trigger_ids=[5000], visible=False) # TargetGuide
-        self.set_effect(trigger_ids=[5001], visible=False) # TargetGuide
-        self.set_effect(trigger_ids=[5002], visible=False) # TargetGuide
-        self.set_effect(trigger_ids=[5100], visible=False) # Wheel
-        self.set_effect(trigger_ids=[5101], visible=False) # MetalDoorOpen
-        self.set_effect(trigger_ids=[5102], visible=False) # MetalDoorClose
-        self.set_effect(trigger_ids=[5103], visible=False) # BossAct
-        self.set_breakable(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129], enable=False) # Jail_Mid
-        self.set_breakable(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229], enable=False) # Jail_Under
-        self.set_visible_breakable_object(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129], visible=False) # Jail_Mid
-        self.set_visible_breakable_object(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229], visible=False) # Jail_Under
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[95001,95002,95003,95004,95005,95006], visible=True, start_delay=0, interval=0, fade=0) # Stairs
+        self.set_effect(trigger_ids=[5000]) # TargetGuide
+        self.set_effect(trigger_ids=[5001]) # TargetGuide
+        self.set_effect(trigger_ids=[5002]) # TargetGuide
+        self.set_effect(trigger_ids=[5100]) # Wheel
+        self.set_effect(trigger_ids=[5101]) # MetalDoorOpen
+        self.set_effect(trigger_ids=[5102]) # MetalDoorClose
+        self.set_effect(trigger_ids=[5103]) # BossAct
+        self.set_breakable(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129]) # Jail_Mid
+        self.set_breakable(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229]) # Jail_Under
+        self.set_visible_breakable_object(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129]) # Jail_Mid
+        self.set_visible_breakable_object(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229]) # Jail_Under
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[95001,95002,95003,95004,95005,95006], visible=True) # Stairs
         # InvisibleEnteranceBarrier
-        self.set_mesh(trigger_ids=[2000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[2000], visible=True)
         # InvisibleJailBlock_alwaysON
-        self.set_mesh(trigger_ids=[2001,2002], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045], visible=False, start_delay=0, interval=0, fade=0) # Deck01_ClearOn
-        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246], visible=False, start_delay=0, interval=0, fade=0) # Deck02_ClearOn
-        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159], visible=True, start_delay=0, interval=0, fade=0) # Jail
+        self.set_mesh(trigger_ids=[2001,2002], visible=True)
+        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045]) # Deck01_ClearOn
+        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246]) # Deck02_ClearOn
+        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159], visible=True) # Jail
         self.set_user_value(key='LuminaArmyJoin', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class NpcMonologue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_dialogue(type=1, spawn_id=201, script='$02000295_BF__MAIN__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$02000295_BF__MAIN__0$', time=3)
         self.set_skip(state=CameraWalk02)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -92,7 +92,7 @@ class CameraWalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.set_skip(state=CameraWalk02)
         self.add_balloon_talk(spawn_id=301, msg='$02000295_BF__MAIN__1$', duration=3000, delay_tick=2000) # Right
         self.add_balloon_talk(spawn_id=310, msg='$02000295_BF__MAIN__2$', duration=3000, delay_tick=2000) # Right
@@ -134,8 +134,8 @@ class CameraWalk03(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[3000], visible=True, enable=True, fade=10)
         self.set_ladder(trigger_ids=[3001], visible=True, enable=True, fade=12)
         # InvisibleEnteranceBarrier
-        self.set_mesh(trigger_ids=[2000], visible=False, start_delay=0, interval=0, fade=0)
-        self.select_camera(trigger_id=600, enable=True)
+        self.set_mesh(trigger_ids=[2000])
+        self.select_camera(trigger_id=600)
         self.set_skip(state=CameraWalk05)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -159,7 +159,7 @@ class CameraWalk05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip() # Missing State: State
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_202')
-        self.set_dialogue(type=1, spawn_id=202, script='$02000295_BF__MAIN__15$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=202, script='$02000295_BF__MAIN__15$', time=5)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=600, enable=False)
@@ -188,11 +188,11 @@ class BattleReady01(trigger_api.Trigger):
 
 class 트리거01웨이브(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # TargetGuide
-        self.set_effect(trigger_ids=[5001], visible=False) # TargetGuide
-        self.set_effect(trigger_ids=[5002], visible=False) # TargetGuide
-        self.set_mesh(trigger_ids=[95001,95002,95003,95004,95005,95006], visible=False, start_delay=0, interval=0, fade=2) # Stairs
-        self.spawn_monster(spawn_ids=[910,911], auto_target=True)
+        self.set_effect(trigger_ids=[5000]) # TargetGuide
+        self.set_effect(trigger_ids=[5001]) # TargetGuide
+        self.set_effect(trigger_ids=[5002]) # TargetGuide
+        self.set_mesh(trigger_ids=[95001,95002,95003,95004,95005,95006], fade=2.0) # Stairs
+        self.spawn_monster(spawn_ids=[910,911])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -201,7 +201,7 @@ class 트리거01웨이브(trigger_api.Trigger):
 
 class 트리거02웨이브(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[912,913], auto_target=True)
+        self.spawn_monster(spawn_ids=[912,913])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -210,7 +210,7 @@ class 트리거02웨이브(trigger_api.Trigger):
 
 class 트리거03웨이브(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[914,915], auto_target=True)
+        self.spawn_monster(spawn_ids=[914,915])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -219,7 +219,7 @@ class 트리거03웨이브(trigger_api.Trigger):
 
 class 트리거04웨이브(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[916,917], auto_target=True)
+        self.spawn_monster(spawn_ids=[916,917])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[910,911,912,913,914,915,916,917]):
@@ -236,7 +236,7 @@ class BossAct02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=603, enable=True)
+        self.select_camera(trigger_id=603)
         self.set_effect(trigger_ids=[5103], visible=True) # BossAct
         self.set_skip(state=BossAct03)
 
@@ -261,7 +261,7 @@ class BossAct03(trigger_api.Trigger):
 class BossBattle01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[4100]) # BossActor
-        self.spawn_monster(spawn_ids=[4101], auto_target=True) # BossBattle
+        self.spawn_monster(spawn_ids=[4101]) # BossBattle
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LuminaArmyJoin') >= 1:
@@ -273,12 +273,12 @@ class BossBattle01(trigger_api.Trigger):
 # 보스 체력 30% 루미나 해방군 전투 합류
 class BossBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8010], visible=False)
-        self.set_agent(trigger_ids=[8011], visible=False)
-        self.set_agent(trigger_ids=[8012], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8010])
+        self.set_agent(trigger_ids=[8011])
+        self.set_agent(trigger_ids=[8012])
         self.destroy_monster(spawn_ids=[900,901,902])
         self.change_monster(from_spawn_id=800, to_spawn_id=810)
         self.change_monster(from_spawn_id=801, to_spawn_id=811)
@@ -310,16 +310,16 @@ class BossBattle03(trigger_api.Trigger):
 
 class BattleEnd01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
-        self.set_agent(trigger_ids=[8009], visible=False)
-        self.set_mesh(trigger_ids=[95001,95002,95003,95004,95005,95006], visible=True, start_delay=0, interval=0, fade=2) # Stairs
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
+        self.set_agent(trigger_ids=[8009])
+        self.set_mesh(trigger_ids=[95001,95002,95003,95004,95005,95006], visible=True, fade=2.0) # Stairs
         self.move_npc(spawn_id=203, patrol_name='MS2PatrolData_204')
-        self.set_dialogue(type=1, spawn_id=203, script='$02000295_BF__MAIN__18$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=203, script='$02000295_BF__MAIN__18$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -350,7 +350,7 @@ class ReleaseSlaves01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -359,8 +359,8 @@ class ReleaseSlaves01(trigger_api.Trigger):
 
 class ReleaseSlaves02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045], visible=True, start_delay=0, interval=0, fade=2) # Deck01_ClearOn
-        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246], visible=True, start_delay=200, interval=30, fade=2) # Deck02_ClearOn
+        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045], visible=True, fade=2.0) # Deck01_ClearOn
+        self.set_mesh(trigger_ids=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246], visible=True, start_delay=200, interval=30, fade=2.0) # Deck02_ClearOn
         self.set_effect(trigger_ids=[5100], visible=True) # Wheel
         self.set_effect(trigger_ids=[5101], visible=True) # MetalDoorOpen
 
@@ -371,7 +371,7 @@ class ReleaseSlaves02(trigger_api.Trigger):
 
 class ReleaseSlaves03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159], visible=False, start_delay=100, interval=0, fade=0) # Jail
+        self.set_mesh(trigger_ids=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159], start_delay=100) # Jail
         self.set_breakable(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129], enable=True) # Jail_Mid
         self.set_breakable(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229], enable=True) # Jail_Under
         self.set_visible_breakable_object(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129], visible=True) # Jail_Mid
@@ -415,7 +415,7 @@ class ReleaseSlaves03(trigger_api.Trigger):
 class ReleaseSlaves04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5102], visible=True) # MetalDoorClose
-        self.set_effect(trigger_ids=[5100], visible=False) # Wheel
+        self.set_effect(trigger_ids=[5100]) # Wheel
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_301')
         self.move_npc(spawn_id=402, patrol_name='MS2PatrolData_302')
         self.move_npc(spawn_id=403, patrol_name='MS2PatrolData_303')
@@ -446,15 +446,15 @@ class ReleaseSlaves04(trigger_api.Trigger):
         self.move_npc(spawn_id=429, patrol_name='MS2PatrolData_329')
         self.move_npc(spawn_id=430, patrol_name='MS2PatrolData_330')
         self.move_npc(spawn_id=431, patrol_name='MS2PatrolData_331')
-        self.set_dialogue(type=1, spawn_id=402, script='$02000295_BF__MAIN__19$', time=2, arg5=0) # Right
-        self.set_dialogue(type=1, spawn_id=410, script='$02000295_BF__MAIN__20$', time=3, arg5=0) # Right
+        self.set_dialogue(type=1, spawn_id=402, script='$02000295_BF__MAIN__19$', time=2) # Right
+        self.set_dialogue(type=1, spawn_id=410, script='$02000295_BF__MAIN__20$', time=3) # Right
         self.set_dialogue(type=1, spawn_id=418, script='$02000295_BF__MAIN__21$', time=3, arg5=1) # Right
         self.set_dialogue(type=1, spawn_id=416, script='$02000295_BF__MAIN__22$', time=2, arg5=2) # Right
         self.set_dialogue(type=1, spawn_id=407, script='$02000295_BF__MAIN__23$', time=3, arg5=2) # Right
         self.set_dialogue(type=1, spawn_id=412, script='$02000295_BF__MAIN__24$', time=3, arg5=3) # Right
         self.set_dialogue(type=1, spawn_id=405, script='$02000295_BF__MAIN__25$', time=3, arg5=3) # Right
         self.set_dialogue(type=1, spawn_id=414, script='$02000295_BF__MAIN__26$', time=3, arg5=3) # Right
-        self.set_dialogue(type=1, spawn_id=425, script='$02000295_BF__MAIN__27$', time=2, arg5=0) # Left
+        self.set_dialogue(type=1, spawn_id=425, script='$02000295_BF__MAIN__27$', time=2) # Left
         self.set_dialogue(type=1, spawn_id=421, script='$02000295_BF__MAIN__28$', time=3, arg5=1) # Left
         self.set_dialogue(type=1, spawn_id=424, script='$02000295_BF__MAIN__29$', time=3, arg5=2) # Left
         self.set_dialogue(type=1, spawn_id=427, script='$02000295_BF__MAIN__30$', time=3, arg5=2) # Left
@@ -469,10 +469,10 @@ class ReleaseSlaves04(trigger_api.Trigger):
 class ReleaseSlaves05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip() # Missing State: State
-        self.spawn_monster(spawn_ids=[200], auto_target=True)
+        self.spawn_monster(spawn_ids=[200])
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_199')
         self.select_camera(trigger_id=602, enable=False)
-        self.select_camera(trigger_id=603, enable=True)
+        self.select_camera(trigger_id=603)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):

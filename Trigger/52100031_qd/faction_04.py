@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         self.remove_buff(box_id=199, skill_id=99910160)
         self.set_interact_object(trigger_ids=[10002066], state=2)
         self.set_interact_object(trigger_ids=[10002070], state=2)
@@ -23,10 +23,10 @@ class 인원수체크(trigger_api.Trigger):
         # self.set_cinematic_ui(type=1)
         # self.set_cinematic_ui(type=3)
         self.add_buff(box_ids=[199], skill_id=70000107, level=1, is_player=False, is_skill_set=False)
-        self.select_camera(trigger_id=303, enable=True)
-        self.spawn_monster(spawn_ids=[1300], auto_target=True)
+        self.select_camera(trigger_id=303)
+        self.spawn_monster(spawn_ids=[1300])
         self.spawn_monster(spawn_ids=[1301,1302,1303,1304,1305], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=1301, script='$52100031_QD__FACTION_04__0$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1301, script='$52100031_QD__FACTION_04__0$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -43,7 +43,7 @@ class 반응대기(trigger_api.Trigger):
         self.remove_buff(box_id=199, skill_id=70000107)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='NPClanding') >= 1:

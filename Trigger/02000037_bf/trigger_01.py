@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], visible=True, start_delay=0, interval=0)
+        self.set_portal(portal_id=10)
+        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_in_combat(spawn_ids=[2000]):
@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
 
 class 발판(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], visible=False, start_delay=0, interval=200)
+        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], interval=200)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -25,7 +25,7 @@ class 발판(trigger_api.Trigger):
 
 class 포털등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=10, visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2000,2001]):
@@ -34,8 +34,8 @@ class 포털등장(trigger_api.Trigger):
 
 class 발록죽음(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], visible=True, start_delay=0, interval=200)
+        self.set_portal(portal_id=10)
+        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], visible=True, interval=200)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

@@ -5,8 +5,8 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001071], state=0) # TrapLever
-        self.set_mesh(trigger_ids=[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], visible=True, start_delay=0, interval=0, fade=3) # TrapMesh
-        self.set_effect(trigger_ids=[5000], visible=False) # DownArrow
+        self.set_mesh(trigger_ids=[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], visible=True, fade=3.0) # TrapMesh
+        self.set_effect(trigger_ids=[5000]) # DownArrow
         self.set_user_value(key='TrapLeverOn', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,10 +28,10 @@ class TrapLeverOn01(trigger_api.Trigger):
 
 class TrapFalse01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5000]) # DownArrow
         self.set_interact_object(trigger_ids=[10001071], state=0) # TrapLever
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Closed') # TrapLever
-        self.set_mesh(trigger_ids=[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], visible=True, start_delay=500, interval=50, fade=1) # TrapMesh
+        self.set_mesh(trigger_ids=[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], visible=True, start_delay=500, interval=50, fade=1.0) # TrapMesh
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9300]):
@@ -41,7 +41,7 @@ class TrapFalse01(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5000]) # DownArrow
         self.set_interact_object(trigger_ids=[10001071], state=0) # TrapLever
 
 

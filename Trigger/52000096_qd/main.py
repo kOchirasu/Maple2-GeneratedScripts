@@ -29,7 +29,7 @@ class 몹소환01(trigger_api.Trigger):
 
 class 위협당함01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1001, script='$52000096_QD__MAIN__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1001, script='$52000096_QD__MAIN__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -38,7 +38,7 @@ class 위협당함01(trigger_api.Trigger):
 
 class 위협당함02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1002, script='$52000096_QD__MAIN__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1002, script='$52000096_QD__MAIN__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -47,7 +47,7 @@ class 위협당함02(trigger_api.Trigger):
 
 class 위협당함03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1003, script='$52000096_QD__MAIN__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1003, script='$52000096_QD__MAIN__2$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -56,7 +56,7 @@ class 위협당함03(trigger_api.Trigger):
 
 class 위협당함04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1004, script='$52000096_QD__MAIN__3$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1004, script='$52000096_QD__MAIN__3$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -74,7 +74,7 @@ class 시점이동(trigger_api.Trigger):
 
 class 경로이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000096_QD__MAIN__4$', time=2, arg5=0)
+        self.set_dialogue(type=1, script='$52000096_QD__MAIN__4$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -83,8 +83,8 @@ class 경로이동(trigger_api.Trigger):
 
 class 몹말풍선01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=3)
-        self.set_dialogue(type=1, spawn_id=1003, script='$52000096_QD__MAIN__5$', time=2, arg5=0)
+        self.reset_camera(interpolation_time=3.0)
+        self.set_dialogue(type=1, spawn_id=1003, script='$52000096_QD__MAIN__5$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -105,10 +105,10 @@ class 연출종료(trigger_api.Trigger):
 
 class 몬스터재스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[1001], auto_target=True) # 몬스터 스폰포인트 1
-        self.spawn_monster(spawn_ids=[1002], auto_target=True) # 몬스터 스폰포인트 2
-        self.spawn_monster(spawn_ids=[1003], auto_target=True) # 몬스터 스폰포인트 3
-        self.spawn_monster(spawn_ids=[1004], auto_target=True) # 몬스터 스폰포인트 4
+        self.spawn_monster(spawn_ids=[1001]) # 몬스터 스폰포인트 1
+        self.spawn_monster(spawn_ids=[1002]) # 몬스터 스폰포인트 2
+        self.spawn_monster(spawn_ids=[1003]) # 몬스터 스폰포인트 3
+        self.spawn_monster(spawn_ids=[1004]) # 몬스터 스폰포인트 4
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

@@ -4,12 +4,12 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[611], visible=False)
+        self.set_effect(trigger_ids=[611])
         self.set_interact_object(trigger_ids=[10000759], state=2)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         self.set_actor(trigger_id=211, visible=True, initial_sequence='Closed')
         self.spawn_monster(spawn_ids=[1011,1012,1013,1014,1015,1016,1017,1018], auto_target=False)
-        self.set_effect(trigger_ids=[6811], visible=False)
+        self.set_effect(trigger_ids=[6811])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[5001]):
@@ -66,7 +66,7 @@ class 닭장열기(trigger_api.Trigger):
 
 class 보스전투끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[611], visible=False)
+        self.set_effect(trigger_ids=[611])
         self.set_effect(trigger_ids=[6811], visible=True)
         self.set_timer(timer_id='6', seconds=6)
         self.set_timer(timer_id='2', seconds=2)

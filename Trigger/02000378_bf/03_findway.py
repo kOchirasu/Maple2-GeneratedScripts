@@ -4,13 +4,13 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=25, visible=False, enable=False, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
-        self.set_mesh(trigger_ids=[4023], visible=True, start_delay=0, interval=0, fade=0) # RoundBarrier
-        self.set_mesh(trigger_ids=[3003], visible=True, start_delay=0, interval=0, fade=0) # CrystalOff
-        self.set_mesh(trigger_ids=[3103], visible=False, start_delay=0, interval=0, fade=0) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3003], visible=True, start_delay=0, interval=0) # CrystalOff
-        self.set_mesh_animation(trigger_ids=[3103], visible=False, start_delay=0, interval=0) # CrystalOn
-        self.set_effect(trigger_ids=[5203], visible=False) # Sound_CrystalOn
+        self.set_portal(portal_id=25) # 20170223 업데이트 던전 개편 단축
+        self.set_mesh(trigger_ids=[4023], visible=True) # RoundBarrier
+        self.set_mesh(trigger_ids=[3003], visible=True) # CrystalOff
+        self.set_mesh(trigger_ids=[3103]) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3003], visible=True) # CrystalOff
+        self.set_mesh_animation(trigger_ids=[3103]) # CrystalOn
+        self.set_effect(trigger_ids=[5203]) # Sound_CrystalOn
         self.set_user_value(key='FindWay', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,11 +20,11 @@ class Wait(trigger_api.Trigger):
 
 class ReadyToWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4023], visible=False, start_delay=0, interval=0, fade=0) # RoundBarrier
+        self.set_mesh(trigger_ids=[4023]) # RoundBarrier
         self.spawn_monster(spawn_ids=[904,905,906], auto_target=False)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_103')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_203')
-        self.set_dialogue(type=1, spawn_id=201, script='$02000378_BF__03_FINDWAY__0$', time=2, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=201, script='$02000378_BF__03_FINDWAY__0$', time=2) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -81,12 +81,12 @@ class Round03_Sucess02(trigger_api.Trigger):
         self.move_npc(spawn_id=2003, patrol_name='MS2PatrolData_2003')
         self.destroy_monster(spawn_ids=[1003])
         self.spawn_monster(spawn_ids=[103], auto_target=False) # 연출용 틴차이
-        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=100, interval=0, fade=0) # CrystalOff
-        # self.set_mesh(trigger_ids=[3103], visible=True, start_delay=0, interval=0, fade=0) # CrystalOn
-        self.set_mesh_animation(trigger_ids=[3003], visible=False, start_delay=0, interval=0) # CrystalOff
-        # self.set_mesh_animation(trigger_ids=[3103], visible=True, start_delay=0, interval=0) # CrystalOn
+        self.set_mesh(trigger_ids=[3003], start_delay=100) # CrystalOff
+        # self.set_mesh(trigger_ids=[3103], visible=True) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3003]) # CrystalOff
+        # self.set_mesh_animation(trigger_ids=[3103], visible=True) # CrystalOn
         self.set_effect(trigger_ids=[5203], visible=True) # Sound_CrystalOn
-        self.set_portal(portal_id=25, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=25, visible=True, enable=True)
         self.set_dialogue(type=1, spawn_id=103, script='$02000378_BF__03_FINDWAY__4$', time=2, arg5=1) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,11 +103,11 @@ class Round03_RouteSelect(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         """
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round03_PickRoute_Left(self.ctx)
         """
         """
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round03_PickRoute_Right(self.ctx)
         """
         if self.wait_tick(wait_tick=500):

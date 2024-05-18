@@ -4,10 +4,10 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5016], visible=False) # 우르르 쾅쾅
-        self.set_effect(trigger_ids=[5017], visible=False) # 먼지
-        self.set_breakable(trigger_ids=[10001], enable=False)
-        self.set_breakable(trigger_ids=[10002], enable=False)
+        self.set_effect(trigger_ids=[5016]) # 우르르 쾅쾅
+        self.set_effect(trigger_ids=[5017]) # 먼지
+        self.set_breakable(trigger_ids=[10001])
+        self.set_breakable(trigger_ids=[10002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2005], quest_ids=[60200050], quest_states=[2]):

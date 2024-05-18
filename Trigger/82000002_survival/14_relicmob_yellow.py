@@ -24,25 +24,25 @@ class Delay(trigger_api.Trigger):
 
 class MobSpawnRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn01(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn02(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn03(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn04(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn05(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn06(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn07(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn08(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn09(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return MobSpawn10(self.ctx)
         if self.user_value(key='ExtraEventOff') >= 1:
             return Quit(self.ctx)

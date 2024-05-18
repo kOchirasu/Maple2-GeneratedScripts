@@ -4,12 +4,12 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[701], enable=False)
-        self.set_effect(trigger_ids=[601], visible=False) # 스킬 준비 효과음
-        self.set_effect(trigger_ids=[602], visible=False) # 스킬 발동 효과음
-        self.set_effect(trigger_ids=[603], visible=False) # 스킬 발동 이펙트
-        self.set_effect(trigger_ids=[604], visible=False) # 스킬 발동 이펙트
-        self.set_effect(trigger_ids=[605], visible=False) # 스킬 발동 이펙트
+        self.set_skill(trigger_ids=[701])
+        self.set_effect(trigger_ids=[601]) # 스킬 준비 효과음
+        self.set_effect(trigger_ids=[602]) # 스킬 발동 효과음
+        self.set_effect(trigger_ids=[603]) # 스킬 발동 이펙트
+        self.set_effect(trigger_ids=[604]) # 스킬 발동 이펙트
+        self.set_effect(trigger_ids=[605]) # 스킬 발동 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[102]):
@@ -20,11 +20,11 @@ class 스킬랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[103]):
             return 종료(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return A스킬작동(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return B스킬작동(self.ctx)
-        if self.random_condition(weight=34):
+        if self.random_condition(weight=34.0):
             return C스킬작동(self.ctx)
 
 

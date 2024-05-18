@@ -37,7 +37,7 @@ class 카단대사(trigger_api.Trigger):
             return 휴지(self.ctx)
 
     def on_exit(self) -> None:
-        self.spawn_monster(spawn_ids=[102], auto_target=True)
+        self.spawn_monster(spawn_ids=[102])
 
 
 class 휴지(trigger_api.Trigger):

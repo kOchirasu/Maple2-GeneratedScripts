@@ -4,10 +4,10 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[8000], enable=False)
-        self.set_skill(trigger_ids=[8001], enable=False)
-        self.set_effect(trigger_ids=[7000], visible=False) # RockDrop
-        self.set_effect(trigger_ids=[7001], visible=False) # RockDrop
+        self.set_skill(trigger_ids=[8000])
+        self.set_skill(trigger_ids=[8001])
+        self.set_effect(trigger_ids=[7000]) # RockDrop
+        self.set_effect(trigger_ids=[7001]) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -70,10 +70,10 @@ class RockDrop22(trigger_api.Trigger):
 
 class Reset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[8000], enable=False)
-        self.set_skill(trigger_ids=[8001], enable=False)
-        self.set_effect(trigger_ids=[7000], visible=False) # RockDrop
-        self.set_effect(trigger_ids=[7001], visible=False) # RockDrop
+        self.set_skill(trigger_ids=[8000])
+        self.set_skill(trigger_ids=[8001])
+        self.set_effect(trigger_ids=[7000]) # RockDrop
+        self.set_effect(trigger_ids=[7001]) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101,102,103], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,102,103])
 
 
 initial_state = 시작

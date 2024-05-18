@@ -4,16 +4,16 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4000], enable=False) # SlidingBoard
-        self.set_visible_breakable_object(trigger_ids=[4000], visible=False) # SlidingBoard
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=0, interval=0, fade=0) # WallforMinimap
-        self.set_mesh(trigger_ids=[4100], visible=False, start_delay=0, interval=0, fade=0) # BoardOpened
-        self.set_mesh(trigger_ids=[4200], visible=True, start_delay=0, interval=0, fade=0) # BoardClosed
+        self.set_breakable(trigger_ids=[4000]) # SlidingBoard
+        self.set_visible_breakable_object(trigger_ids=[4000]) # SlidingBoard
+        self.set_mesh(trigger_ids=[3100]) # WallforMinimap
+        self.set_mesh(trigger_ids=[4100]) # BoardOpened
+        self.set_mesh(trigger_ids=[4200], visible=True) # BoardClosed
         self.set_actor(trigger_id=3000, visible=True, initial_sequence='Closed') # Door
         self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_effect(trigger_ids=[6000], visible=False) # LargeGear_SlidingBoard
-        self.set_effect(trigger_ids=[6100], visible=False) # DoorOpen
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_effect(trigger_ids=[6000]) # LargeGear_SlidingBoard
+        self.set_effect(trigger_ids=[6100]) # DoorOpen
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[40002677], quest_states=[1]):
@@ -22,7 +22,7 @@ class Wait(trigger_api.Trigger):
 
 class LoadingDelay01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -33,7 +33,7 @@ class PCEnter01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -42,8 +42,8 @@ class PCEnter01(trigger_api.Trigger):
 
 class PCEnter02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
-        self.set_mesh(trigger_ids=[4200], visible=False, start_delay=100, interval=0, fade=3) # BoardClosed
+        self.select_camera(trigger_id=601)
+        self.set_mesh(trigger_ids=[4200], start_delay=100, fade=3.0) # BoardClosed
         self.set_breakable(trigger_ids=[4000], enable=True) # SlidingBoard
         self.set_visible_breakable_object(trigger_ids=[4000], visible=True) # SlidingBoard
         self.set_effect(trigger_ids=[6000], visible=True) # LargeGear_SlidingBoard
@@ -66,7 +66,7 @@ class BoardSlide01(trigger_api.Trigger):
 
 class BoardSlide02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4100], visible=True, start_delay=800, interval=0, fade=3) # BoardOpened
+        self.set_mesh(trigger_ids=[4100], visible=True, start_delay=800, fade=3.0) # BoardOpened
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -75,9 +75,9 @@ class BoardSlide02(trigger_api.Trigger):
 
 class EnemyNpcWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6000], visible=False) # LargeGear_SlidingBoard
-        self.set_breakable(trigger_ids=[4000], enable=False) # SlidingBoard
-        self.set_visible_breakable_object(trigger_ids=[4000], visible=False) # SlidingBoard
+        self.set_effect(trigger_ids=[6000]) # LargeGear_SlidingBoard
+        self.set_breakable(trigger_ids=[4000]) # SlidingBoard
+        self.set_visible_breakable_object(trigger_ids=[4000]) # SlidingBoard
         self.move_user_path(patrol_name='MS2PatrolData_1000')
         self.spawn_monster(spawn_ids=[101], auto_target=False)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_101')
@@ -89,7 +89,7 @@ class EnemyNpcWalkIn01(trigger_api.Trigger):
 
 class EnemyNpcWalkIn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
         self.spawn_monster(spawn_ids=[102], auto_target=False)
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_102')
 
@@ -112,7 +112,7 @@ class EnemyNpcWalkIn04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[104], auto_target=False)
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_104')
-        self.select_camera(trigger_id=603, enable=True)
+        self.select_camera(trigger_id=603)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -166,7 +166,7 @@ class EnemyMobChange01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.destroy_monster(spawn_ids=[101,102,103,104])
         self.spawn_monster(spawn_ids=[901,902,903,904], auto_target=False)
 
@@ -188,7 +188,7 @@ class BattleEnd01(trigger_api.Trigger):
 
 class PCPositionFix01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=604, enable=True)
+        self.select_camera(trigger_id=604)
         self.move_user(map_id=52000070, portal_id=10, box_id=9900)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -198,7 +198,7 @@ class PCPositionFix01(trigger_api.Trigger):
 
 class PCPositionFix02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -221,7 +221,7 @@ class FriendNpcWalkIn01(trigger_api.Trigger):
 class FriendNpcWalkIn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1001')
-        self.select_camera(trigger_id=605, enable=True)
+        self.select_camera(trigger_id=605)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -265,7 +265,7 @@ class FriendNpcTalk02Skip(trigger_api.Trigger):
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -294,7 +294,7 @@ class WayOpen02(trigger_api.Trigger):
 
 class WayOpen03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=201, script='$52000070_QD__TRAP01__4$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$52000070_QD__TRAP01__4$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

@@ -89,7 +89,7 @@ class 분완료15(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         # 인페르녹 보스 스폰ID : 102 의 몬스터가 지금까지 받은 대미지가 HP 기준 대비 100%보다 적으면 던전 실패 처리
-        if self.npc_damage(spawn_id=102) >= 1:
+        if self.npc_damage(spawn_id=102) >= 1.0:
             return 성공연출시작(self.ctx)
         """
         condition name="CheckNpcDamage"   파라미터 기능 설명
@@ -99,7 +99,7 @@ class 분완료15(trigger_api.Trigger):
                     operator: 연산자 기준 입니다 생략시 해당 값 이상 (GreaterEqual 이며) 다음 옵션을 사용 가능합니다.
                     Greater, GreaterEqual, Equal, LessEqual, Less,
         """
-        if self.npc_damage(spawn_id=102) < 1:
+        if self.npc_damage(spawn_id=102) < 1.0:
             # 인페르녹 보스 스폰ID : 102
             return 실패연출시작(self.ctx)
 
@@ -120,7 +120,7 @@ class 성공연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 다섯번째팝업영상출력
         # duration="0" 은 영상 끝날때까지 계속 출력
-        self.side_npc_talk(type='movie', usm='Common/WorldInvasionScene5.usm', duration=0)
+        self.side_npc_movie(usm='Common/WorldInvasionScene5.usm', duration=0)
         self.side_npc_talk(npc_id=11003533, illust='Bliche_nomal', duration=8000, script='$02000410_BF__ClearCheck__3$', voice='ko/Npc/00002177')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -166,7 +166,7 @@ class 실패연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 다섯번째팝업영상출력
         # duration="0" 은 영상 끝날때까지 계속 출력
-        self.side_npc_talk(type='movie', usm='Common/WorldInvasionScene5.usm', duration=0)
+        self.side_npc_movie(usm='Common/WorldInvasionScene5.usm', duration=0)
         self.side_npc_talk(npc_id=11003533, illust='Bliche_nomal', duration=8000, script='$02000410_BF__ClearCheck__5$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -220,7 +220,7 @@ class 최종성공처리(trigger_api.Trigger):
         # 대포하고 12시 방향의 파괴 직전의 인페르녹 전함 제거함
         self.destroy_monster(spawn_ids=[-1])
         # arg3="ClearBalrogMagicBurster" 는 achieve.xlsx 의 코드 21230095 던전 클리어 조건 트로피 설정에 넣는 데이터임
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_achievement(trigger_id=750, type='trigger', achieve='infernogout')
         # arg1="750"는 MS2TriggerBox   TriggerObjectID = 750  이것으로 02000410 맵에 트리거 박스가 2개 있는데(700, 750)  750이 안전부활 장소까지 포함되는 범위라서 이거 사용함
         self.set_achievement(trigger_id=750, type='trigger', achieve='ClearBalrogMagicBurster')
@@ -254,7 +254,7 @@ class 최종실패처리(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 initial_state = Ready

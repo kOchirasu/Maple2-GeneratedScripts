@@ -10,7 +10,7 @@ class Ready(trigger_api.Trigger):
 
 class Ready_Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=1, interval=0)
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -19,7 +19,7 @@ class Ready_Idle(trigger_api.Trigger):
 
 class Ready_Idle_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='60', seconds=60, interval=0)
+        self.set_timer(timer_id='60', seconds=60)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='60'):

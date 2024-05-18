@@ -32,7 +32,7 @@ class 감지(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=9905, visible=False, initial_sequence='Interaction_Lapentafoothold_A01_On')
+        self.set_actor(trigger_id=9905, initial_sequence='Interaction_Lapentafoothold_A01_On')
 
 
 initial_state = 대기

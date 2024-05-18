@@ -5,8 +5,8 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000884], state=2)
-        self.set_effect(trigger_ids=[610], visible=False)
-        self.set_mesh(trigger_ids=[3127], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[610])
+        self.set_mesh(trigger_ids=[3127], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[105]):
@@ -17,7 +17,7 @@ class 몬스터생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[610], visible=True)
         self.spawn_monster(spawn_ids=[2022], auto_target=False)
-        self.set_mesh(trigger_ids=[3127], visible=False, start_delay=0, interval=0, fade=5)
+        self.set_mesh(trigger_ids=[3127], fade=5.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2022]):

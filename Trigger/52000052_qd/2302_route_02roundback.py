@@ -8,8 +8,8 @@ class Wait(trigger_api.Trigger):
         self.set_agent(trigger_ids=[28022], visible=True)
         self.set_agent(trigger_ids=[28023], visible=True)
         self.set_agent(trigger_ids=[28024], visible=True)
-        self.set_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], visible=False, start_delay=0, interval=0, fade=0) # Fake
-        self.set_mesh(trigger_ids=[430200,430201,430202,430203,430204,430205,430206,430207,430208,430209,430210,430211,430212,430213,430214,430215,430216,430217,430218,430219], visible=False, start_delay=0, interval=0, fade=0) # Real
+        self.set_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219]) # Fake
+        self.set_mesh(trigger_ids=[430200,430201,430202,430203,430204,430205,430206,430207,430208,430209,430210,430211,430212,430213,430214,430215,430216,430217,430218,430219]) # Real
         self.set_user_value(key='RouteSelected', value=0)
         self.set_user_value(key='MakeTrue', value=0)
         self.set_user_value(key='MakeFalse', value=0)
@@ -33,7 +33,7 @@ class StartDazzlingRandom01(trigger_api.Trigger):
             return MakeFalse(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_random_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], visible=False, start_delay=20, interval=0, fade=0) # Fake
+        self.set_random_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], start_delay=20) # Fake
 
 
 class StartDazzlingRandom02(trigger_api.Trigger):
@@ -49,18 +49,18 @@ class StartDazzlingRandom02(trigger_api.Trigger):
             return MakeFalse(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_random_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], visible=False, start_delay=20, interval=0, fade=0) # Fake
+        self.set_random_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], start_delay=20) # Fake
 
 
 class MakeTrue(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5002], visible=True) # 02Round_BridgeApp
-        self.set_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], visible=False, start_delay=0, interval=0, fade=5) # Fake
+        self.set_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], fade=5.0) # Fake
         self.set_random_mesh(trigger_ids=[430200,430201,430202,430203,430204,430205,430206,430207,430208,430209,430210,430211,430212,430213,430214,430215,430216,430217,430218,430219], visible=True, start_delay=20, interval=100, fade=50) # Real
-        self.set_agent(trigger_ids=[28021], visible=False)
-        self.set_agent(trigger_ids=[28022], visible=False)
-        self.set_agent(trigger_ids=[28023], visible=False)
-        self.set_agent(trigger_ids=[28024], visible=False)
+        self.set_agent(trigger_ids=[28021])
+        self.set_agent(trigger_ids=[28022])
+        self.set_agent(trigger_ids=[28023])
+        self.set_agent(trigger_ids=[28024])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -69,7 +69,7 @@ class MakeTrue(trigger_api.Trigger):
 
 class MakeFalse(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], visible=False, start_delay=0, interval=0, fade=5) # Fake
+        self.set_mesh(trigger_ids=[230200,230201,230202,230203,230204,230205,230206,230207,230208,230209,230210,230211,230212,230213,230214,230215,230216,230217,230218,230219], fade=5.0) # Fake
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

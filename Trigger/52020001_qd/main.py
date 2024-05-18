@@ -4,17 +4,17 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[40001], enable=False)
-        self.set_skill(trigger_ids=[6001], enable=False)
+        self.set_skill(trigger_ids=[40001])
+        self.set_skill(trigger_ids=[6001])
         self.set_interact_object(trigger_ids=[10002001], state=2)
         self.set_interact_object(trigger_ids=[10002002], state=2)
         self.set_interact_object(trigger_ids=[10002003], state=2)
         self.spawn_monster(spawn_ids=[6000020], auto_target=False)
-        self.set_effect(trigger_ids=[10090], visible=False)
-        self.set_effect(trigger_ids=[10091], visible=False)
-        self.set_effect(trigger_ids=[10092], visible=False)
-        self.set_mesh(trigger_ids=[80000], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_portal(portal_id=14, visible=False, enable=False, minimap_visible=False)
+        self.set_effect(trigger_ids=[10090])
+        self.set_effect(trigger_ids=[10091])
+        self.set_effect(trigger_ids=[10092])
+        self.set_mesh(trigger_ids=[80000])
+        self.set_portal(portal_id=14)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[5]):
@@ -33,7 +33,7 @@ class 인트로(trigger_api.Trigger):
 
 class 인트로_카메라(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=2000012, enable=True)
+        self.select_camera(trigger_id=2000012)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -126,7 +126,7 @@ class 대기(trigger_api.Trigger):
 """
 class 대기_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=2000004, enable=True)
+        self.select_camera(trigger_id=2000004)
         self.set_dialogue(type=2, script='저 녀석의 공격을 조심해야 겠어...', time=6)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -160,7 +160,7 @@ class 몬스터출현_1(trigger_api.Trigger):
             return 실패(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_dialogue(type=1, spawn_id=0, script='서둘러야 해!', time=3, arg5=0)
+        self.set_dialogue(type=1, script='서둘러야 해!', time=3)
 
 
 class 몬스터사망_1(trigger_api.Trigger):
@@ -206,7 +206,7 @@ class 스위치생성연출(trigger_api.Trigger):
 
 class 스위치생성연출_카메라(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=2000003, enable=True)
+        self.select_camera(trigger_id=2000003)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -234,7 +234,7 @@ class 스위치생성연출_카메라_초기화(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.spawn_monster(spawn_ids=[6100001], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=0, script='저 스위치를 한번 작동시켜 볼까?', time=3, arg5=0)
+        self.set_dialogue(type=1, script='저 스위치를 한번 작동시켜 볼까?', time=3)
 
 
 class 작동(trigger_api.Trigger):
@@ -257,7 +257,7 @@ class 연출시작_1(trigger_api.Trigger):
 
 class 발사_카메라연출_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=2000001, enable=True)
+        self.select_camera(trigger_id=2000001)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -384,8 +384,8 @@ class 맵폭발연출_2(trigger_api.Trigger):
 
 class 카메라리셋(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=15, visible=True, enable=True, minimap_visible=False)
-        self.reset_camera(arg1='interpolationTime', interpolation_time=0.5)
+        self.set_portal(portal_id=15, visible=True, enable=True)
+        self.reset_camera(interpolation_time=0.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -397,11 +397,11 @@ class 실패(trigger_api.Trigger):
         self.set_effect(trigger_ids=[10090], visible=True)
         self.set_effect(trigger_ids=[10091], visible=True)
         self.set_effect(trigger_ids=[10092], visible=True)
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
         self.destroy_monster(spawn_ids=[-1])
         self.set_event_ui(type=1, arg2='미션에 실패하였습니다. 다시 재도전 해보세요.', arg3='4000')
         self.move_user(map_id=52020001, portal_id=99)
-        self.set_portal(portal_id=14, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=14, visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

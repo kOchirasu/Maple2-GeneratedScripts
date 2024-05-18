@@ -5,9 +5,9 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1001], auto_target=False)
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3002,3003,3004,3005], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3006,3007,3008,3009], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3001])
+        self.set_mesh(trigger_ids=[3002,3003,3004,3005], visible=True)
+        self.set_mesh(trigger_ids=[3006,3007,3008,3009])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -96,7 +96,7 @@ class 미카교체(trigger_api.Trigger):
 class 사슬(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1002], auto_target=False)
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[3001], visible=True, fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -306,9 +306,9 @@ class 사슬해제(trigger_api.Trigger):
         self.move_npc(spawn_id=1003, patrol_name='MS2PatrolData_1003_B')
         self.move_npc(spawn_id=1004, patrol_name='MS2PatrolData_1004_B')
         self.move_npc(spawn_id=1005, patrol_name='MS2PatrolData_1005_B')
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=3)
-        self.set_mesh(trigger_ids=[3002,3003,3004,3005], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3006,3007,3008,3009], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3001], fade=3.0)
+        self.set_mesh(trigger_ids=[3002,3003,3004,3005])
+        self.set_mesh(trigger_ids=[3006,3007,3008,3009], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -389,7 +389,7 @@ class 업적이벤트발생(trigger_api.Trigger):
 
 class 강제이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=2010030, portal_id=4, box_id=0)
+        self.move_user(map_id=2010030, portal_id=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

@@ -5,30 +5,30 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001001], state=0) # car
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False) # 목표 바닥 지점 자동차 옆
-        self.set_effect(trigger_ids=[5300], visible=False) # 자동차 화살표
-        self.set_effect(trigger_ids=[5100], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5104], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5200]) # 목표 바닥 지점 자동차 옆
+        self.set_effect(trigger_ids=[5300]) # 자동차 화살표
+        self.set_effect(trigger_ids=[5100]) # 경로 안내
+        self.set_effect(trigger_ids=[5101]) # 경로 안내
+        self.set_effect(trigger_ids=[5102]) # 경로 안내
+        self.set_effect(trigger_ids=[5103]) # 경로 안내
+        self.set_effect(trigger_ids=[5104]) # 경로 안내
         self.spawn_monster(spawn_ids=[201,301,401,501,601], auto_target=False)
-        self.set_breakable(trigger_ids=[4000], enable=False)
-        self.set_effect(trigger_ids=[6000], visible=False) # CarIdle
-        self.set_effect(trigger_ids=[6001], visible=False) # CarMovingAway
-        self.set_effect(trigger_ids=[7000], visible=False) # Voice Bravo 00001460
-        self.set_effect(trigger_ids=[7001], visible=False) # Voice Bravo 00001461
-        self.set_effect(trigger_ids=[7002], visible=False) # Voice Bravo 00001462
-        self.set_effect(trigger_ids=[7003], visible=False) # Voice Bravo 00001463
-        self.set_effect(trigger_ids=[7100], visible=False) # Voice Jabeth 00001548
-        self.set_effect(trigger_ids=[7101], visible=False) # Voice Jabeth 00001549
-        self.set_effect(trigger_ids=[7102], visible=False) # Voice Jabeth 00001550
-        self.set_effect(trigger_ids=[7103], visible=False) # Voice Jabeth 00001551
+        self.set_breakable(trigger_ids=[4000])
+        self.set_effect(trigger_ids=[6000]) # CarIdle
+        self.set_effect(trigger_ids=[6001]) # CarMovingAway
+        self.set_effect(trigger_ids=[7000]) # Voice Bravo 00001460
+        self.set_effect(trigger_ids=[7001]) # Voice Bravo 00001461
+        self.set_effect(trigger_ids=[7002]) # Voice Bravo 00001462
+        self.set_effect(trigger_ids=[7003]) # Voice Bravo 00001463
+        self.set_effect(trigger_ids=[7100]) # Voice Jabeth 00001548
+        self.set_effect(trigger_ids=[7101]) # Voice Jabeth 00001549
+        self.set_effect(trigger_ids=[7102]) # Voice Jabeth 00001550
+        self.set_effect(trigger_ids=[7103]) # Voice Jabeth 00001551
         # Voice BravoNJabeth 00001598
-        self.set_effect(trigger_ids=[7200], visible=False)
+        self.set_effect(trigger_ids=[7200])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -40,7 +40,7 @@ class LodingDelay01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[90000440], quest_states=[3]):
@@ -111,7 +111,7 @@ class WalkWithJacey01(trigger_api.Trigger):
 
 class WalkWithJacey02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
         self.move_user_path(patrol_name='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +123,7 @@ class WalkWithJacey03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -145,7 +145,7 @@ class Dialogue01(trigger_api.Trigger):
 
 class Dialogue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7000], visible=False) # Voice Bravo 00001460
+        self.set_effect(trigger_ids=[7000]) # Voice Bravo 00001460
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -169,7 +169,7 @@ class Dialogue03(trigger_api.Trigger):
 
 class Dialogue04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7100], visible=False) # Voice Jabeth 00001548
+        self.set_effect(trigger_ids=[7100]) # Voice Jabeth 00001548
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -193,7 +193,7 @@ class Dialogue05(trigger_api.Trigger):
 
 class Dialogue06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False) # Voice Bravo 00001461
+        self.set_effect(trigger_ids=[7001]) # Voice Bravo 00001461
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -238,7 +238,7 @@ class Dialogue09(trigger_api.Trigger):
 
 class Dialogue10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7101], visible=False) # Voice Jabeth 00001549
+        self.set_effect(trigger_ids=[7101]) # Voice Jabeth 00001549
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -262,7 +262,7 @@ class Dialogue11(trigger_api.Trigger):
 
 class Dialogue12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7002], visible=False) # Voice Bravo 00001462
+        self.set_effect(trigger_ids=[7002]) # Voice Bravo 00001462
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -286,7 +286,7 @@ class Dialogue13(trigger_api.Trigger):
 
 class Dialogue14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7102], visible=False) # Voice Jabeth 00001550
+        self.set_effect(trigger_ids=[7102]) # Voice Jabeth 00001550
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -331,7 +331,7 @@ class Dialogue17(trigger_api.Trigger):
 
 class Dialogue18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7003], visible=False) # Voice Bravo 00001463
+        self.set_effect(trigger_ids=[7003]) # Voice Bravo 00001463
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -376,11 +376,11 @@ class Dialogue21(trigger_api.Trigger):
 
 class Dialogue22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7103], visible=False) # Voice Jabeth 00001551
+        self.set_effect(trigger_ids=[7103]) # Voice Jabeth 00001551
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -393,8 +393,8 @@ class AttackIdle01(trigger_api.Trigger):
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_301')
         # Voice BravoNJabeth 00001598
         self.set_effect(trigger_ids=[7200], visible=True)
-        self.set_dialogue(type=1, spawn_id=201, script='$63000023_CS__GOTOTRIA01__11$', time=3, arg5=0) # 둘이 함께  Voice 00001598
-        self.set_dialogue(type=1, spawn_id=301, script='$63000023_CS__GOTOTRIA01__12$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$63000023_CS__GOTOTRIA01__11$', time=3) # 둘이 함께  Voice 00001598
+        self.set_dialogue(type=1, spawn_id=301, script='$63000023_CS__GOTOTRIA01__12$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -414,7 +414,7 @@ class TalkJacey01(trigger_api.Trigger):
 
 class TalkJacey02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -424,7 +424,7 @@ class TalkJacey02(trigger_api.Trigger):
 class TalkJacey03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Voice BravoNJabeth 00001598
-        self.set_effect(trigger_ids=[7200], visible=False)
+        self.set_effect(trigger_ids=[7200])
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_102')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -478,7 +478,7 @@ class JaceyLeave03(trigger_api.Trigger):
 
 class JaceyLeave04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=101, script='$63000023_CS__GOTOTRIA01__14$', time=4, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$63000023_CS__GOTOTRIA01__14$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -576,16 +576,16 @@ class GetInTheCar01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(trigger_ids=[4000], enable=True)
         self.hide_guide_summary(entity_id=10028040)
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False) # 목표 바닥 지점 자동차 옆
-        self.set_effect(trigger_ids=[5100], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5104], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5300], visible=False) # 자동차 화살표
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5200]) # 목표 바닥 지점 자동차 옆
+        self.set_effect(trigger_ids=[5100]) # 경로 안내
+        self.set_effect(trigger_ids=[5101]) # 경로 안내
+        self.set_effect(trigger_ids=[5102]) # 경로 안내
+        self.set_effect(trigger_ids=[5103]) # 경로 안내
+        self.set_effect(trigger_ids=[5104]) # 경로 안내
+        self.set_effect(trigger_ids=[5300]) # 자동차 화살표
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -597,10 +597,10 @@ class GetInTheCar01(trigger_api.Trigger):
 
 class GetInTheCar02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6000], visible=False) # CarIdle
+        self.set_effect(trigger_ids=[6000]) # CarIdle
         self.set_effect(trigger_ids=[6001], visible=True) # CarMovingAway
         self.move_user(map_id=63000023, portal_id=2, box_id=9900)
-        self.select_camera(trigger_id=800, enable=True)
+        self.select_camera(trigger_id=800)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -625,7 +625,7 @@ class CarMoving01(trigger_api.Trigger):
 
 class CarMoving02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4000], enable=False)
+        self.set_breakable(trigger_ids=[4000])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -638,7 +638,7 @@ class CarMoving02(trigger_api.Trigger):
 
 class CarMoving03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6001], visible=False) # CarMovingAway
+        self.set_effect(trigger_ids=[6001]) # CarMovingAway
         self.move_user(map_id=2000062, portal_id=13, box_id=9900)
 
     def on_tick(self) -> trigger_api.Trigger:

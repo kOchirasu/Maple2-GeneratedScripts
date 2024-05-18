@@ -1,22 +1,23 @@
 """ trigger/82000006_survival/01_survival.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import FieldGame
 
 
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=False) # SafeZone Barrier Effect
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007], visible=True, start_delay=0, interval=0, fade=0) # Barrier Center
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=True, start_delay=0, interval=0, fade=0) # Barrier North
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207], visible=True, start_delay=0, interval=0, fade=0) # Barrier South
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307], visible=True, start_delay=0, interval=0, fade=0) # Barrier East
-        self.set_mesh(trigger_ids=[3400,3401,3402,3403,3404,3405,3406,3407], visible=True, start_delay=0, interval=0, fade=0) # Barrier West
-        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507], visible=True, start_delay=0, interval=0, fade=0) # Barrier SouthEast
-        self.set_mesh(trigger_ids=[3600,3601,3602,3603,3604,3605,3606,3607], visible=True, start_delay=0, interval=0, fade=0) # Barrier SouthWest
-        self.set_mesh(trigger_ids=[3700,3701,3702,3703,3704,3705,3706,3707], visible=True, start_delay=0, interval=0, fade=0) # Barrier NorthEast
-        self.set_mesh(trigger_ids=[3800,3801,3802,3803,3804,3805,3806,3807], visible=True, start_delay=0, interval=0, fade=0) # Barrier NorthWest
-        self.set_sound(trigger_id=20000, enable=False) # BGM Intro
-        self.set_sound(trigger_id=20001, enable=False) # BGM Loop
-        self.set_local_camera(camera_id=100, enable=False)
+        self.set_effect(trigger_ids=[4000,4100,4200,4300,4400,4500,4600,4700,4800]) # SafeZone Barrier Effect
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007], visible=True) # Barrier Center
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=True) # Barrier North
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207], visible=True) # Barrier South
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307], visible=True) # Barrier East
+        self.set_mesh(trigger_ids=[3400,3401,3402,3403,3404,3405,3406,3407], visible=True) # Barrier West
+        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507], visible=True) # Barrier SouthEast
+        self.set_mesh(trigger_ids=[3600,3601,3602,3603,3604,3605,3606,3607], visible=True) # Barrier SouthWest
+        self.set_mesh(trigger_ids=[3700,3701,3702,3703,3704,3705,3706,3707], visible=True) # Barrier NorthEast
+        self.set_mesh(trigger_ids=[3800,3801,3802,3803,3804,3805,3806,3807], visible=True) # Barrier NorthWest
+        self.set_sound(trigger_id=20000) # BGM Intro
+        self.set_sound(trigger_id=20001) # BGM Loop
+        self.set_local_camera(camera_id=100)
         self.sight_range(enable=True, range=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -356,8 +357,8 @@ class RideRiseUp(trigger_api.Trigger):
 
 class Countdown(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_field_game(type='MapleSurvival')
-        self.show_count_ui(text='$82000012_survival__01_SURVIVAL__14$', stage=0, count=3)
+        self.create_field_game(type=FieldGame.MapleSurvival)
+        self.show_count_ui(text='$82000012_survival__01_SURVIVAL__14$', count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -373,17 +374,17 @@ class AreaOpen(trigger_api.Trigger):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_user_value(trigger_id=4, key='InvincibleOff', value=1)
         self.add_buff(box_ids=[9000], skill_id=71000053, level=1, is_player=False, is_skill_set=False) # 31초 무적
-        self.set_effect(trigger_ids=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=False) # SafeZone Barrier Effect
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007], visible=False, start_delay=1000, interval=0, fade=1) # Barrier Center
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], visible=False, start_delay=1000, interval=0, fade=1) # Barrier_North
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207], visible=False, start_delay=1000, interval=0, fade=1) # Barrier_South
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307], visible=False, start_delay=1000, interval=0, fade=1) # Barrier_East
-        self.set_mesh(trigger_ids=[3400,3401,3402,3403,3404,3405,3406,3407], visible=False, start_delay=1000, interval=0, fade=1) # Barrier_West
-        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507], visible=False, start_delay=1000, interval=0, fade=1) # Barrier_SouthEast
-        self.set_mesh(trigger_ids=[3600,3601,3602,3603,3604,3605,3606,3607], visible=False, start_delay=1000, interval=0, fade=1) # Barrier_SouthWest
-        self.set_mesh(trigger_ids=[3700,3701,3702,3703,3704,3705,3706,3707], visible=False, start_delay=1000, interval=0, fade=1) # Barrier_NorthEast
-        self.set_mesh(trigger_ids=[3800,3801,3802,3803,3804,3805,3806,3807], visible=False, start_delay=1000, interval=0, fade=1) # Barrier_NorthWest
-        self.set_sound(trigger_id=20000, enable=False) # BGM Intro
+        self.set_effect(trigger_ids=[4000,4100,4200,4300,4400,4500,4600,4700,4800]) # SafeZone Barrier Effect
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007], start_delay=1000, fade=1.0) # Barrier Center
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107], start_delay=1000, fade=1.0) # Barrier_North
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207], start_delay=1000, fade=1.0) # Barrier_South
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307], start_delay=1000, fade=1.0) # Barrier_East
+        self.set_mesh(trigger_ids=[3400,3401,3402,3403,3404,3405,3406,3407], start_delay=1000, fade=1.0) # Barrier_West
+        self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507], start_delay=1000, fade=1.0) # Barrier_SouthEast
+        self.set_mesh(trigger_ids=[3600,3601,3602,3603,3604,3605,3606,3607], start_delay=1000, fade=1.0) # Barrier_SouthWest
+        self.set_mesh(trigger_ids=[3700,3701,3702,3703,3704,3705,3706,3707], start_delay=1000, fade=1.0) # Barrier_NorthEast
+        self.set_mesh(trigger_ids=[3800,3801,3802,3803,3804,3805,3806,3807], start_delay=1000, fade=1.0) # Barrier_NorthWest
+        self.set_sound(trigger_id=20000) # BGM Intro
         self.set_sound(trigger_id=20001, enable=True) # BGM Loop
         self.write_log(log_name='Survival', event='Start') # 서바이벌 시작 로그 남김
 
@@ -445,7 +446,7 @@ class ReadyToKickOut(trigger_api.Trigger):
 class GameEnd(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 우승자 카메라 (LocalTargetCamera 호출) 연출 시, 비석 상태인 유저의 위치 기준으로 우승자가 멀리 있어도 우승자가 보이도록 워포그 해제
-        self.sight_range(enable=False, range=3)
+        self.sight_range(range=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[9000]):
@@ -458,8 +459,8 @@ class Quit(trigger_api.Trigger):
         self.set_user_value(trigger_id=8, key='RareMobOff', value=1)
         self.set_user_value(trigger_id=9, key='NormaBoxOff', value=1)
         self.destroy_monster(spawn_ids=[-1])
-        self.move_user(map_id=0, portal_id=0)
-        self.start_combine_spawn(group_id=[37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159], is_start=False) # 나태 버섯 Normal Mob
+        self.move_user()
+        self.start_combine_spawn(group_id=[37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159]) # 나태 버섯 Normal Mob
 
 
 initial_state = Setting

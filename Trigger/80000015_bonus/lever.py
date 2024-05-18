@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[7101], enable=False)
+        self.set_skill(trigger_ids=[7101])
         self.set_interact_object(trigger_ids=[10001314], state=1)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -35,8 +35,8 @@ class 안내(trigger_api.Trigger):
 class 문열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6000], visible=True)
-        self.spawn_npc_range(range_ids=[2001], is_auto_targeting=False, score=1500)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005], visible=False, start_delay=0, interval=0, fade=0)
+        self.spawn_npc_range(range_ids=[2001], score=1500)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2001]):

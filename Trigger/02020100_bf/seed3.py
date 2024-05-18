@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[229])
-        self.set_mesh(trigger_ids=[1304], visible=True, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[1304], visible=True, fade=2.0)
         self.set_interact_object(trigger_ids=[10002111], state=1, arg3=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 시작(trigger_api.Trigger):
 class 씨앗3_심기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=99990001, key='Seed3interact', value=1)
-        self.set_mesh(trigger_ids=[1304], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1304])
         self.set_interact_object(trigger_ids=[10002122], state=1, arg3=True)
 
     def on_tick(self) -> trigger_api.Trigger:

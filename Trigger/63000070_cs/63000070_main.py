@@ -1,16 +1,17 @@
 """ trigger/63000070_cs/63000070_main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class standby(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[529], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_effect(trigger_ids=[604], visible=False)
-        self.set_effect(trigger_ids=[605], visible=False)
+        self.set_portal(portal_id=20)
+        self.set_mesh(trigger_ids=[529], visible=True)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_effect(trigger_ids=[604])
+        self.set_effect(trigger_ids=[605])
         self.set_interact_object(trigger_ids=[32000015], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -102,7 +103,7 @@ class scene1_ladymonologue1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.select_camera_path(path_ids=[8001,8002], return_view=False)
         self.move_user(map_id=63000070, portal_id=10) # PC, 복도 앞으로 자동 이동
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
         # 고아가 된 어린애나,\n유언장을 찾겠다고 나서는 것들이나….
         self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', msg='$63000070_CS__63000070_MAIN__1$', duration=4000)
 
@@ -115,7 +116,7 @@ class scene1_ladymonologue2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8003], return_view=False)
         self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', msg='$63000070_CS__63000070_MAIN__2$', duration=3000) # 뭔가 바꿀 수 있을 거라고 생각해?
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -125,10 +126,10 @@ class scene1_ladymonologue2(trigger_api.Trigger):
 class scene1_ladyzoomin(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8005,8006], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
         # 어리석은 자들!\n아무 것도 바꿀 수 없어!
         self.add_cinematic_talk(npc_id=11004289, msg='$63000070_CS__63000070_MAIN__3$', duration=4000)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Idle_A', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Idle_A', duration=4000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -140,7 +141,7 @@ class scene1_ladygoback1(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8006,8007], return_view=False)
         self.move_npc(spawn_id=101, patrol_name='Patrol_lady_backward_01')
         # 하지만 여기까지 온 것이 가상하니까,\n제안을 하나 하지.
-        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align='right', msg='$63000070_CS__63000070_MAIN__4$', duration=5000)
+        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align=Align.Right, msg='$63000070_CS__63000070_MAIN__4$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -151,7 +152,7 @@ class scene1_ladygoback2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8008], return_view=False)
         # 자, 네가 원하던 것!\n가질 수 있다면 가져봐.
-        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align='right', msg='$63000070_CS__63000070_MAIN__5$', duration=3000)
+        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align=Align.Right, msg='$63000070_CS__63000070_MAIN__5$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -163,7 +164,7 @@ class scene1_ladygoback3(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8010], return_view=False)
         self.move_npc(spawn_id=101, patrol_name='Patrol_lady_backward_02')
         # 그래… 네가 찾으려던 것, 이 안에 있어.\n하지만 넌 얻을 수 없을 거야.
-        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align='right', msg='$63000070_CS__63000070_MAIN__6$', duration=4000)
+        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align=Align.Right, msg='$63000070_CS__63000070_MAIN__6$', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -172,8 +173,8 @@ class scene1_ladygoback3(trigger_api.Trigger):
 
 class scene1_ladygoback4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align='right', msg='$63000070_CS__63000070_MAIN__7$', duration=4000) # 왠줄 알아?
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000)
+        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align=Align.Right, msg='$63000070_CS__63000070_MAIN__7$', duration=4000) # 왠줄 알아?
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -202,7 +203,7 @@ class scene1_robottroops(trigger_api.Trigger):
 class scene1_ladygoback5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=101, patrol_name='Patrol_lady_backward_03')
-        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align='center', msg='$63000070_CS__63000070_MAIN__8$', duration=3000) # 그 전에 목숨을 잃게 될 테니까!
+        self.add_cinematic_talk(npc_id=11004289, illust_id='Rue_Halloween', align=Align.Center, msg='$63000070_CS__63000070_MAIN__8$', duration=3000) # 그 전에 목숨을 잃게 될 테니까!
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -211,7 +212,7 @@ class scene1_ladygoback5(trigger_api.Trigger):
 
 class scene1_readytofight(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
         # Missing State: State,  setsceneskip 1 close
         self.set_scene_skip()
@@ -225,7 +226,7 @@ class scene1_readytofight(trigger_api.Trigger):
 
 class sceneskip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
         self.move_user(map_id=63000070, portal_id=10) # PC, 복도 앞으로 자동 이동
         self.set_cinematic_ui(type=1)
@@ -259,8 +260,8 @@ class scene1_setbattle1(trigger_api.Trigger):
 
 class wave_1st_ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
-        self.spawn_monster(spawn_ids=[201], auto_target=True) # 몬스터 준비 : 생성
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
+        self.spawn_monster(spawn_ids=[201]) # 몬스터 준비 : 생성
         self.set_effect(trigger_ids=[601], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -270,7 +271,7 @@ class wave_1st_ready(trigger_api.Trigger):
 
 class wave_1st_go(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[201]):
@@ -318,7 +319,7 @@ class scene2_marienneappears_ready(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
         # NPC,몬스터 남아있을 수 있는 애들 다 지우기
         self.destroy_monster(spawn_ids=[101,105,111,112,113,114,115,116,117,118,119,120,1001,1011,1021])
-        self.spawn_monster(spawn_ids=[105], auto_target=True) # NPC 생성 : 꼬마유령 마리엔
+        self.spawn_monster(spawn_ids=[105]) # NPC 생성 : 꼬마유령 마리엔
         self.move_user(map_id=63000070, portal_id=11) # 연출포인트로 PC 이동
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -334,7 +335,7 @@ class scene2_marienneappears_set(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
         # 연출용 오브젝트 서류가방 : 반응가능 상태로 만들어 보이게 처리
         self.set_interact_object(trigger_ids=[32000015], state=1)
-        self.set_mesh(trigger_ids=[529], visible=False, start_delay=0, interval=0, fade=0) # 연출용 오브젝트 서류가방 더미 :  끔
+        self.set_mesh(trigger_ids=[529]) # 연출용 오브젝트 서류가방 더미 :  끔
         self.set_scene_skip(state=sceneskip_2, action='exit') # setsceneskip 2 set
         # setsceneskip 2 set
         # setsceneskip 2 set
@@ -347,7 +348,7 @@ class scene2_marienneappears_set(trigger_api.Trigger):
 class scene2_start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8021], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
         self.set_effect(trigger_ids=[604], visible=True)
         self.move_npc(spawn_id=105, patrol_name='Patrol_girl')
         self.add_cinematic_talk(npc_id=11004308, msg='$63000070_CS__63000070_MAIN__9$', duration=3000) # 여기까지 와줬구나.\n정말 고마워
@@ -361,7 +362,7 @@ class scene2_girltalk(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8022], return_view=False)
         self.add_cinematic_talk(npc_id=11004308, msg='$63000070_CS__63000070_MAIN__10$', duration=2000) # 이제
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -370,7 +371,7 @@ class scene2_girltalk(trigger_api.Trigger):
 
 class scene2_casezoomin(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004308, align='right', msg='$63000070_CS__63000070_MAIN__11$', duration=3000) # 진실을 확인할 시간
+        self.add_cinematic_talk(npc_id=11004308, align=Align.Right, msg='$63000070_CS__63000070_MAIN__11$', duration=3000) # 진실을 확인할 시간
         # Missing State: State,  setsceneskip 2 close
         self.set_scene_skip()
         # setsceneskip 2 close
@@ -384,7 +385,7 @@ class scene2_casezoomin(trigger_api.Trigger):
 class sceneskip_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=105, patrol_name='Patrol_girl')
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[604])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
 
@@ -395,7 +396,7 @@ class sceneskip_2(trigger_api.Trigger):
 
 class scene2_readytosearch(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -405,7 +406,7 @@ class scene2_readytosearch(trigger_api.Trigger):
 
 class scene2_search_ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -416,7 +417,7 @@ class scene2_search_ready(trigger_api.Trigger):
 
 class scene2_search(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[32000015], state=0):
@@ -459,7 +460,7 @@ class scene3_girltalk1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 아빠는 날 지키려고 날 지배인 아저씨의 양녀로 만들고\n모든 걸 지배인 아저씨에게 남겼어
         self.add_cinematic_talk(npc_id=11004308, msg='$63000070_CS__63000070_MAIN__13$', duration=5000)
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5500):
@@ -470,7 +471,7 @@ class scene3_girltalk2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 나, 마지막 부탁이 있는데 들어줄 수 있어?\n로비에서 만나자.
         self.add_cinematic_talk(npc_id=11004308, msg='$63000070_CS__63000070_MAIN__14$', duration=4500)
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=4500)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=4500.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4800):
@@ -515,9 +516,9 @@ class sceneskip_3(trigger_api.Trigger):
 
 class scene3_readytoend(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_portal(portal_id=20, visible=True, enable=True, minimap_visible=True)
-        self.set_effect(trigger_ids=[605], visible=False)
+        self.set_effect(trigger_ids=[605])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

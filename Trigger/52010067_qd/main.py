@@ -7,7 +7,7 @@ class 연출01(trigger_api.Trigger):
         if self.check_user():
             self.visible_my_pc(is_visible=False) # 유저 투명 처리
             self.set_cinematic_ui(type=1)
-            self.set_effect(trigger_ids=[9010], visible=False)
+            self.set_effect(trigger_ids=[9010])
             return 연출브릿지(self.ctx)
 
 
@@ -33,7 +33,7 @@ class 조준씬01(trigger_api.Trigger):
 
 class 연출02_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1300):

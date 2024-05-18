@@ -5,9 +5,9 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000897], state=0)
-        self.set_effect(trigger_ids=[7003], visible=False) # 전원 붙는 소리
-        self.set_effect(trigger_ids=[7004], visible=False) # 전원 붙는 소리
-        self.set_mesh(trigger_ids=[1161,1162,1163], visible=False) # 파랑 안보이는 상태
+        self.set_effect(trigger_ids=[7003]) # 전원 붙는 소리
+        self.set_effect(trigger_ids=[7004]) # 전원 붙는 소리
+        self.set_mesh(trigger_ids=[1161,1162,1163]) # 파랑 안보이는 상태
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000897], state=1):
@@ -32,8 +32,8 @@ class 작동_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7003], visible=True) # 전원 붙는 소리
         self.set_effect(trigger_ids=[7004], visible=True) # 전원 붙는 소리
-        self.set_mesh(trigger_ids=[1171,1172,1173], visible=False, interval=300, fade=10) # 빨간 선이
-        self.set_mesh(trigger_ids=[1161,1162,1163], visible=True, interval=300, fade=10) # 파란 선으로
+        self.set_mesh(trigger_ids=[1171,1172,1173], interval=300, fade=10.0) # 빨간 선이
+        self.set_mesh(trigger_ids=[1161,1162,1163], visible=True, interval=300, fade=10.0) # 파란 선으로
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,9 +43,9 @@ class 작동_01(trigger_api.Trigger):
 
 class 작동_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2111], visible=False, interval=30, fade=0) # 드럼통 폭발
-        self.set_mesh(trigger_ids=[1161,1162,1163], visible=False, interval=0, fade=10) # 파란 선도 마저 삭제
-        self.set_mesh(trigger_ids=[2101], visible=False, interval=50, fade=1) # 유리창 해제
+        self.set_mesh(trigger_ids=[2111], interval=30) # 드럼통 폭발
+        self.set_mesh(trigger_ids=[1161,1162,1163], fade=10.0) # 파란 선도 마저 삭제
+        self.set_mesh(trigger_ids=[2101], interval=50, fade=1.0) # 유리창 해제
         self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:

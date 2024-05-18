@@ -4,8 +4,8 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[605], visible=False)
-        self.set_actor(trigger_id=208, visible=False, initial_sequence='Dead_A')
+        self.set_effect(trigger_ids=[605])
+        self.set_actor(trigger_id=208, initial_sequence='Dead_A')
         self.set_interact_object(trigger_ids=[10000376], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +66,7 @@ class 부활(trigger_api.Trigger):
 
 class NPC대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=208, visible=False, initial_sequence='Dead_A')
+        self.set_actor(trigger_id=208, initial_sequence='Dead_A')
         self.set_dialogue(type=1, spawn_id=2008, script='$02000066_BF__NPC08__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:

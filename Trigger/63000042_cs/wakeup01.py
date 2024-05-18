@@ -18,7 +18,7 @@ class LodingDelay00(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -38,8 +38,8 @@ class LodingDelay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[102])
         self.spawn_monster(spawn_ids=[101], auto_target=False)
-        self.select_camera(trigger_id=500, enable=True)
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_D', duration=6000)
+        self.select_camera(trigger_id=500)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_D', duration=6000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -91,9 +91,9 @@ class DoctorTalk01Skip(trigger_api.Trigger):
 class LookAround01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(trigger_id=500, enable=False)
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_101')
-        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=18000)
+        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=18000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -112,7 +112,7 @@ class LookAround02(trigger_api.Trigger):
 
 class DoctorTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000.0)
         self.set_dialogue(type=2, spawn_id=11000038, script='$63000042_CS__WAKEUP01__1$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -122,7 +122,7 @@ class DoctorTalk02(trigger_api.Trigger):
 
 class DoctorTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000.0)
         self.set_dialogue(type=2, spawn_id=11000038, script='$63000042_CS__WAKEUP01__2$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -132,7 +132,7 @@ class DoctorTalk03(trigger_api.Trigger):
 
 class DoctorTalk04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000.0)
         self.set_dialogue(type=2, spawn_id=11000038, script='$63000042_CS__WAKEUP01__3$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:

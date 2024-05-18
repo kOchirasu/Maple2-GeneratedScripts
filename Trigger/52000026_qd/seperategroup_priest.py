@@ -4,36 +4,36 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=10000, enable=False) # TriaAttack
-        self.set_effect(trigger_ids=[5000], visible=False) # LeftDoorOpen
-        self.set_effect(trigger_ids=[5001], visible=False) # LeftDoorClose
-        self.set_effect(trigger_ids=[5002], visible=False) # RightDoorOpen
-        self.set_effect(trigger_ids=[5003], visible=False) # RightDoorClose
-        self.set_effect(trigger_ids=[5004], visible=False) # blastjump
+        self.set_sound(trigger_id=10000) # TriaAttack
+        self.set_effect(trigger_ids=[5000]) # LeftDoorOpen
+        self.set_effect(trigger_ids=[5001]) # LeftDoorClose
+        self.set_effect(trigger_ids=[5002]) # RightDoorOpen
+        self.set_effect(trigger_ids=[5003]) # RightDoorClose
+        self.set_effect(trigger_ids=[5004]) # blastjump
         # Asimov Voice 00000553 / everytime
-        self.set_effect(trigger_ids=[6001], visible=False)
+        self.set_effect(trigger_ids=[6001])
         # Asimov Voice 00001338 / everytime
-        self.set_effect(trigger_ids=[6002], visible=False)
+        self.set_effect(trigger_ids=[6002])
         # Asimov Voice 00001339 / everytime
-        self.set_effect(trigger_ids=[6003], visible=False)
+        self.set_effect(trigger_ids=[6003])
         # Asimov Voice 00001340 / everytime
-        self.set_effect(trigger_ids=[6004], visible=False)
+        self.set_effect(trigger_ids=[6004])
         # Asimov Voice 00001341 / in case RuneBlader, Berserker, Priest, Wizard
-        self.set_effect(trigger_ids=[6005], visible=False)
+        self.set_effect(trigger_ids=[6005])
         # Asimov Voice 00001342 / in case RuneBlader, Wizard
-        self.set_effect(trigger_ids=[6006], visible=False)
+        self.set_effect(trigger_ids=[6006])
         # Asimov Voice 00000561 / in case Berserker
-        self.set_effect(trigger_ids=[6007], visible=False)
+        self.set_effect(trigger_ids=[6007])
         # Ishura Voice 00001291 / only RB
-        self.set_effect(trigger_ids=[6101], visible=False)
+        self.set_effect(trigger_ids=[6101])
         # Ishura Voice 00001292 / everytime
-        self.set_effect(trigger_ids=[6102], visible=False)
+        self.set_effect(trigger_ids=[6102])
         # Ishura Voice 00001293 / only RB
-        self.set_effect(trigger_ids=[6103], visible=False)
+        self.set_effect(trigger_ids=[6103])
         # Ishura Voice 00001155 / in case Assassin, Berserker, Heavygunner, Knight, Priest, Ranger, Thief, Wizard
-        self.set_effect(trigger_ids=[6104], visible=False)
+        self.set_effect(trigger_ids=[6104])
         # Ishura Voice 00001159 / in case Assassin, Berserker, Heavygunner, Knight, Priest, Ranger, Thief, Wizard
-        self.set_effect(trigger_ids=[6105], visible=False)
+        self.set_effect(trigger_ids=[6105])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[10002953], quest_states=[1], job_code=40):
@@ -46,7 +46,7 @@ class 연출준비01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=3000, enable=True)
+        self.select_camera(trigger_id=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -69,7 +69,7 @@ class 연출준비02(trigger_api.Trigger):
 
 class 유저이동01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3001, enable=True)
+        self.select_camera(trigger_id=3001)
         self.move_user_path(patrol_name='MS2PatrolData_2000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,10 +79,10 @@ class 유저이동01(trigger_api.Trigger):
 
 class 차입장01_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101,201], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,201])
         self.set_effect(trigger_ids=[5000], visible=True) # LeftDoorOpen
         self.move_user_path(patrol_name='MS2PatrolData_2001')
-        self.select_camera(trigger_id=3002, enable=True)
+        self.select_camera(trigger_id=3002)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -103,7 +103,7 @@ class 차입장02_1(trigger_api.Trigger):
 
 class 차입장03_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001578, script='$52000026_QD__SEPERATEGROUP_PRIEST__0$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001578, script='$52000026_QD__SEPERATEGROUP_PRIEST__0$', time=4)
         self.set_skip(state=차입장04_1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +123,7 @@ class 차입장04_1(trigger_api.Trigger):
 
 class 차입장05_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__1$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__1$', time=4)
         self.set_skip(state=차입장01_2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -136,7 +136,7 @@ class 차입장01_2(trigger_api.Trigger):
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[5002], visible=True) # RightDoorOpen
-        self.select_camera(trigger_id=3100, enable=True)
+        self.select_camera(trigger_id=3100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -145,7 +145,7 @@ class 차입장01_2(trigger_api.Trigger):
 
 class 차입장02_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[301], auto_target=True)
+        self.spawn_monster(spawn_ids=[301])
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_301')
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_102')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_202')
@@ -159,7 +159,7 @@ class 차입장02_2(trigger_api.Trigger):
 
 class 차입장03_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[401], auto_target=True)
+        self.spawn_monster(spawn_ids=[401])
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_401')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -170,7 +170,7 @@ class 차입장03_2(trigger_api.Trigger):
 class 차입장04_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6104], visible=True) # 음성 코드 00001155
-        self.set_dialogue(type=2, spawn_id=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__2$', time=3, arg5=0) # 음성 코드 00001155
+        self.set_dialogue(type=2, spawn_id=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__2$', time=3) # 음성 코드 00001155
         self.set_skip(state=차입장05_2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -190,7 +190,7 @@ class 차입장05_2(trigger_api.Trigger):
 
 class 차입장06_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__3$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__3$', time=4)
         self.set_skip(state=차입장07_2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -202,11 +202,11 @@ class 차입장07_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.set_effect(trigger_ids=[6101], visible=False) # Ishura Voice 00001291
+        self.set_effect(trigger_ids=[6101]) # Ishura Voice 00001291
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_302')
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_402')
         self.move_user_path(patrol_name='MS2PatrolData_2003')
-        self.select_camera(trigger_id=3101, enable=True)
+        self.select_camera(trigger_id=3101)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -216,7 +216,7 @@ class 차입장07_2(trigger_api.Trigger):
 class 차입장01_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5002], visible=True) # RightDoorOpen
-        self.spawn_monster(spawn_ids=[501], auto_target=True)
+        self.spawn_monster(spawn_ids=[501])
         self.move_npc(spawn_id=501, patrol_name='MS2PatrolData_501')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,7 +226,7 @@ class 차입장01_3(trigger_api.Trigger):
 
 class 차입장02_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[601], auto_target=True)
+        self.spawn_monster(spawn_ids=[601])
         self.move_npc(spawn_id=601, patrol_name='MS2PatrolData_601')
         self.set_effect(trigger_ids=[5003], visible=True) # RightDoorClose
 
@@ -237,9 +237,9 @@ class 차입장02_3(trigger_api.Trigger):
 
 class 차입장03_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3102, enable=True)
+        self.select_camera(trigger_id=3102)
         self.set_effect(trigger_ids=[6001], visible=True) # Asimov Voice 00000553
-        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__4$', time=7, arg5=0) # 음성 코드 00000553
+        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__4$', time=7) # 음성 코드 00000553
         self.set_skip(state=차입장01_4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -251,8 +251,8 @@ class 차입장01_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.set_effect(trigger_ids=[6001], visible=False) # Asimov Voice 00000553
-        self.select_camera(trigger_id=3200, enable=True)
+        self.set_effect(trigger_ids=[6001]) # Asimov Voice 00000553
+        self.select_camera(trigger_id=3200)
         self.set_effect(trigger_ids=[5002], visible=True) # RightDoorOpen
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -262,8 +262,8 @@ class 차입장01_4(trigger_api.Trigger):
 
 class 차입장02_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3210, enable=True)
-        self.spawn_monster(spawn_ids=[701], auto_target=True)
+        self.select_camera(trigger_id=3210)
+        self.spawn_monster(spawn_ids=[701])
         self.move_npc(spawn_id=701, patrol_name='MS2PatrolData_701')
         self.set_effect(trigger_ids=[5003], visible=True) # RightDoorClose
 
@@ -274,7 +274,7 @@ class 차입장02_4(trigger_api.Trigger):
 
 class 차입장03_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001581, script='$52000026_QD__SEPERATEGROUP_PRIEST__5$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001581, script='$52000026_QD__SEPERATEGROUP_PRIEST__5$', time=4)
         self.set_skip(state=차입장04_4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -286,8 +286,8 @@ class 차입장04_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=3201, enable=True)
-        self.spawn_monster(spawn_ids=[801], auto_target=True)
+        self.select_camera(trigger_id=3201)
+        self.spawn_monster(spawn_ids=[801])
         self.move_npc(spawn_id=801, patrol_name='MS2PatrolData_801')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -297,7 +297,7 @@ class 차입장04_4(trigger_api.Trigger):
 
 class 차입장05_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__6$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__6$', time=4)
         self.set_skip(state=차입장06_4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -327,8 +327,8 @@ class 차입장01_5(trigger_api.Trigger):
 class 차입장02_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=701, patrol_name='MS2PatrolData_702')
-        self.select_camera(trigger_id=3300, enable=True)
-        self.spawn_monster(spawn_ids=[901], auto_target=True)
+        self.select_camera(trigger_id=3300)
+        self.spawn_monster(spawn_ids=[901])
         self.move_npc(spawn_id=901, patrol_name='MS2PatrolData_901')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -338,7 +338,7 @@ class 차입장02_5(trigger_api.Trigger):
 
 class 차입장03_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001583, script='$52000026_QD__SEPERATEGROUP_PRIEST__7$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001583, script='$52000026_QD__SEPERATEGROUP_PRIEST__7$', time=3)
         self.set_skip(state=차입장04_5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -350,8 +350,8 @@ class 차입장04_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=3301, enable=True)
-        self.spawn_monster(spawn_ids=[1001], auto_target=True)
+        self.select_camera(trigger_id=3301)
+        self.spawn_monster(spawn_ids=[1001])
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -361,7 +361,7 @@ class 차입장04_5(trigger_api.Trigger):
 
 class 차입장05_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001584, script='$52000026_QD__SEPERATEGROUP_PRIEST__8$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001584, script='$52000026_QD__SEPERATEGROUP_PRIEST__8$', time=4)
         self.set_skip(state=차입장06_5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -373,8 +373,8 @@ class 차입장06_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=3302, enable=True)
-        self.spawn_monster(spawn_ids=[1101], auto_target=True)
+        self.select_camera(trigger_id=3302)
+        self.spawn_monster(spawn_ids=[1101])
         self.move_npc(spawn_id=1101, patrol_name='MS2PatrolData_1101')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -384,7 +384,7 @@ class 차입장06_5(trigger_api.Trigger):
 
 class 차입장07_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000015, script='$52000026_QD__SEPERATEGROUP_PRIEST__9$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000015, script='$52000026_QD__SEPERATEGROUP_PRIEST__9$', time=3)
         self.set_skip(state=차입장08_5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -397,8 +397,8 @@ class 차입장08_5(trigger_api.Trigger):
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[5002], visible=True) # RightDoorOpen
-        self.select_camera(trigger_id=3303, enable=True)
-        self.spawn_monster(spawn_ids=[1201], auto_target=True)
+        self.select_camera(trigger_id=3303)
+        self.spawn_monster(spawn_ids=[1201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -417,7 +417,7 @@ class 차입장09_5(trigger_api.Trigger):
 
 class 차입장10_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001586, script='$52000026_QD__SEPERATEGROUP_PRIEST__10$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001586, script='$52000026_QD__SEPERATEGROUP_PRIEST__10$', time=3)
         self.set_skip(state=차입장11_5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -429,7 +429,7 @@ class 차입장11_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=3304, enable=True)
+        self.select_camera(trigger_id=3304)
         self.move_npc(spawn_id=801, patrol_name='MS2PatrolData_802')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -439,7 +439,7 @@ class 차입장11_5(trigger_api.Trigger):
 
 class 차입장12_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__11$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__11$', time=3)
         self.set_skip(state=입장완료01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -462,7 +462,7 @@ class 입장완료01(trigger_api.Trigger):
 class 정렬01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6002], visible=True) # Asimov Voice 00001338
-        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__12$', time=5, arg5=0) # 음성 코드 00001338
+        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__12$', time=5) # 음성 코드 00001338
         self.set_skip(state=정렬02)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -517,7 +517,7 @@ class 정렬05(trigger_api.Trigger):
 
 class 정렬06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6002], visible=False) # Asimov Voice 00001338
+        self.set_effect(trigger_ids=[6002]) # Asimov Voice 00001338
         self.move_npc(spawn_id=701, patrol_name='MS2PatrolData_703')
         self.move_npc(spawn_id=801, patrol_name='MS2PatrolData_803')
 
@@ -529,7 +529,7 @@ class 정렬06(trigger_api.Trigger):
 class 본론01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6003], visible=True) # Asimov Voice 00001339
-        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__13$', time=10, arg5=0) # 음성 코드 00001339
+        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__13$', time=10) # 음성 코드 00001339
         self.set_skip(state=본론02)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -549,9 +549,9 @@ class 본론02(trigger_api.Trigger):
 
 class 본론03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6003], visible=False) # Asimov Voice 00001339
+        self.set_effect(trigger_ids=[6003]) # Asimov Voice 00001339
         self.set_effect(trigger_ids=[6004], visible=True) # Asimov Voice 00001340
-        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__14$', time=6, arg5=0) # 음성 코드 00001340
+        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__14$', time=6) # 음성 코드 00001340
         self.set_skip(state=본론04)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -565,8 +565,8 @@ class 본론04(trigger_api.Trigger):
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_effect(trigger_ids=[6004], visible=False) # Asimov Voice 00001340
-        self.select_camera(trigger_id=3500, enable=True)
+        self.set_effect(trigger_ids=[6004]) # Asimov Voice 00001340
+        self.select_camera(trigger_id=3500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -595,7 +595,7 @@ class 본론06(trigger_api.Trigger):
 class 본론07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6102], visible=True) # Ishura Voice 00001292
-        self.set_dialogue(type=2, spawn_id=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__15$', time=5, arg5=0) # 음성 코드 00001292
+        self.set_dialogue(type=2, spawn_id=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__15$', time=5) # 음성 코드 00001292
         self.set_skip(state=영상01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -610,7 +610,7 @@ class 영상01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.set_effect(trigger_ids=[6102], visible=False) # Ishura Voice 00001292
+        self.set_effect(trigger_ids=[6102]) # Ishura Voice 00001292
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -650,9 +650,9 @@ class 영상04(trigger_api.Trigger):
 
 class 정리01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3600, enable=True)
+        self.select_camera(trigger_id=3600)
         self.set_effect(trigger_ids=[6105], visible=True) # 음성 코드 00001159
-        self.set_dialogue(type=2, spawn_id=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__16$', time=6, arg5=0) # 음성 코드 00001159
+        self.set_dialogue(type=2, spawn_id=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__16$', time=6) # 음성 코드 00001159
         self.set_skip(state=정리02)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -664,7 +664,7 @@ class 정리02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.set_effect(trigger_ids=[6103], visible=False) # Ishura Voice 00001293
+        self.set_effect(trigger_ids=[6103]) # Ishura Voice 00001293
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -673,7 +673,7 @@ class 정리02(trigger_api.Trigger):
 
 class 반대01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__17$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__17$', time=4)
         self.set_skip(state=반대02)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -685,7 +685,7 @@ class 반대02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=3601, enable=True)
+        self.select_camera(trigger_id=3601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -694,7 +694,7 @@ class 반대02(trigger_api.Trigger):
 
 class 반대03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001586, script='$52000026_QD__SEPERATEGROUP_PRIEST__18$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001586, script='$52000026_QD__SEPERATEGROUP_PRIEST__18$', time=4)
         self.set_skip(state=반대04)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -715,7 +715,7 @@ class 반대04(trigger_api.Trigger):
 
 class 반대05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3602, enable=True)
+        self.select_camera(trigger_id=3602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -724,7 +724,7 @@ class 반대05(trigger_api.Trigger):
 
 class 반대06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001584, script='$52000026_QD__SEPERATEGROUP_PRIEST__19$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001584, script='$52000026_QD__SEPERATEGROUP_PRIEST__19$', time=4)
         self.set_skip(state=반대07)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -737,7 +737,7 @@ class 반대07(trigger_api.Trigger):
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1003')
-        self.select_camera(trigger_id=3603, enable=True)
+        self.select_camera(trigger_id=3603)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -746,8 +746,8 @@ class 반대07(trigger_api.Trigger):
 
 class 반대08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3604, enable=True)
-        self.set_dialogue(type=2, spawn_id=11000015, script='$52000026_QD__SEPERATEGROUP_PRIEST__20$', time=4, arg5=0)
+        self.select_camera(trigger_id=3604)
+        self.set_dialogue(type=2, spawn_id=11000015, script='$52000026_QD__SEPERATEGROUP_PRIEST__20$', time=4)
         self.set_skip(state=반대09)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -778,7 +778,7 @@ class 반대10(trigger_api.Trigger):
 
 class 요약01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3700, enable=True)
+        self.select_camera(trigger_id=3700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -788,7 +788,7 @@ class 요약01(trigger_api.Trigger):
 class 요약02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1101,901])
-        self.set_dialogue(type=2, spawn_id=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__21$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__21$', time=3)
         self.set_skip(state=요약03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -808,7 +808,7 @@ class 요약03(trigger_api.Trigger):
 
 class 요약04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__22$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__22$', time=4)
         self.set_skip(state=요약05)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -820,7 +820,7 @@ class 요약05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=3800, enable=True)
+        self.select_camera(trigger_id=3800)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -830,7 +830,7 @@ class 요약05(trigger_api.Trigger):
 class 요약06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6005], visible=True) # Asimov Voice 00001341
-        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__23$', time=9, arg5=0) # 음성 코드 00001341
+        self.set_dialogue(type=2, spawn_id=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__23$', time=9) # 음성 코드 00001341
         self.set_skip(state=요약07)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -842,8 +842,8 @@ class 요약07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=3802, enable=True)
-        self.set_effect(trigger_ids=[6005], visible=False) # Asimov Voice 00001341
+        self.select_camera(trigger_id=3802)
+        self.set_effect(trigger_ids=[6005]) # Asimov Voice 00001341
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -852,7 +852,7 @@ class 요약07(trigger_api.Trigger):
 
 class 요약08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__24$', time=5, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__24$', time=5)
         self.set_skip(state=연출종료01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -864,8 +864,8 @@ class 연출종료01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.set_effect(trigger_ids=[6007], visible=False) # Asimov Voice 00001342
-        self.select_camera(trigger_id=3801, enable=True)
+        self.set_effect(trigger_ids=[6007]) # Asimov Voice 00001342
+        self.select_camera(trigger_id=3801)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -899,7 +899,7 @@ class 강제퇴장(trigger_api.Trigger):
         self.move_user(map_id=2000001, portal_id=17, box_id=9001)
 
     def on_exit(self) -> None:
-        self.set_sound(trigger_id=10000, enable=False) # TriaAttack
+        self.set_sound(trigger_id=10000) # TriaAttack
 
 
 initial_state = 대기

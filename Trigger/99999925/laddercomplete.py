@@ -4,12 +4,12 @@ import trigger_api
 
 class IsLadderComplete(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[311], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[312], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[313], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[314], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[315], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[316], visible=False, enable=False, fade=0)
+        self.set_ladder(trigger_ids=[311])
+        self.set_ladder(trigger_ids=[312])
+        self.set_ladder(trigger_ids=[313])
+        self.set_ladder(trigger_ids=[314])
+        self.set_ladder(trigger_ids=[315])
+        self.set_ladder(trigger_ids=[316])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ladderComp') >= 1:
@@ -18,12 +18,12 @@ class IsLadderComplete(trigger_api.Trigger):
 
 class ladderComplete(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[311], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[312], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[313], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[314], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[315], visible=True, enable=True, fade=0)
-        self.set_ladder(trigger_ids=[316], visible=True, enable=True, fade=0)
+        self.set_ladder(trigger_ids=[311], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[312], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[313], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[314], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[315], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[316], visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

@@ -15,11 +15,11 @@ class idle(trigger_api.Trigger):
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7004], visible=False)
-        self.set_mesh(trigger_ids=[1104], visible=False, start_delay=0, interval=200, fade=15)
-        self.set_mesh(trigger_ids=[1204], visible=True, start_delay=0, interval=200, fade=15)
+        self.set_effect(trigger_ids=[7004])
+        self.set_mesh(trigger_ids=[1104], interval=200, fade=15.0)
+        self.set_mesh(trigger_ids=[1204], visible=True, interval=200, fade=15.0)
         self.spawn_monster(spawn_ids=[204], auto_target=False)
-        self.add_buff(box_ids=[204], skill_id=70002031, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[204], skill_id=70002031, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[204]):

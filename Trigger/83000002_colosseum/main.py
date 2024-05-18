@@ -1,5 +1,6 @@
 """ trigger/83000002_colosseum/main.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 대기(trigger_api.Trigger):
@@ -26,7 +27,7 @@ class WaitRound1(trigger_api.Trigger):
             self.set_user_value(trigger_id=910001, key='StartRound1', value=1)
             return ResultRound1(self.ctx)
         if self.user_detected(box_ids=[902]):
-            self.move_user_to_pos(pos=[300,-225,1500], rot=[0,0,270])
+            self.move_user_to_pos(pos=Vector3(300,-225,1500), rot=Vector3(0,0,270))
             return WaitRound1(self.ctx)
 
 
@@ -36,7 +37,7 @@ class ContinuePlayDelay(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.move_user_to_pos(pos=[300,-225,1500], rot=[0,0,270])
+            self.move_user_to_pos(pos=Vector3(300,-225,1500), rot=Vector3(0,0,270))
             return ContinuePlayDelay2(self.ctx)
 
 
@@ -53,43 +54,43 @@ class ContinuePlay(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ClearRound') >= 1:
-            # self.debug_string(string='이어하기로 2스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 2스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910002, key='StartRound2', value=1)
             return ResultRound2(self.ctx)
         if self.user_value(key='ClearRound') >= 2:
-            # self.debug_string(string='이어하기로 3스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 3스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910003, key='StartRound3', value=1)
             return ResultRound3(self.ctx)
         if self.user_value(key='ClearRound') >= 3:
-            # self.debug_string(string='이어하기로 4스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 4스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910004, key='StartRound4', value=1)
             return ResultRound4(self.ctx)
         if self.user_value(key='ClearRound') >= 4:
-            # self.debug_string(string='이어하기로 5스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 5스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910005, key='StartRound5', value=1)
             return ResultRound5(self.ctx)
         if self.user_value(key='ClearRound') >= 5:
-            # self.debug_string(string='이어하기로 6스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 6스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910006, key='StartRound6', value=1)
             return ResultRound6(self.ctx)
         if self.user_value(key='ClearRound') >= 6:
-            # self.debug_string(string='이어하기로 7스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 7스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910007, key='StartRound7', value=1)
             return ResultRound7(self.ctx)
         if self.user_value(key='ClearRound') >= 7:
-            # self.debug_string(string='이어하기로 8스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 8스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910008, key='StartRound8', value=1)
             return ResultRound8(self.ctx)
         if self.user_value(key='ClearRound') >= 8:
-            # self.debug_string(string='이어하기로 9스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 9스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910009, key='StartRound9', value=1)
             return ResultRound9(self.ctx)
         if self.user_value(key='ClearRound') >= 9:
-            # self.debug_string(string='이어하기로 10스테이지 부터 시작합니다.')
+            # self.debug_string(value='이어하기로 10스테이지 부터 시작합니다.')
             self.set_user_value(trigger_id=910010, key='StartRound10', value=1)
             return ResultRound10(self.ctx)
         if self.user_value(key='ClearRound') >= 10:
-            # self.debug_string(string='이미 10 스테이지까지 완료 했습니다. 처음부터 시작합니다. ')
+            # self.debug_string(value='이미 10 스테이지까지 완료 했습니다. 처음부터 시작합니다. ')
             return WaitRound1(self.ctx)
 
 

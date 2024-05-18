@@ -4,20 +4,20 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[1000], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[1001], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[1002], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[1003], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[1004], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[1005], visible=False, enable=False) # LadderEnterance
+        self.set_ladder(trigger_ids=[1000]) # LadderEnterance
+        self.set_ladder(trigger_ids=[1001]) # LadderEnterance
+        self.set_ladder(trigger_ids=[1002]) # LadderEnterance
+        self.set_ladder(trigger_ids=[1003]) # LadderEnterance
+        self.set_ladder(trigger_ids=[1004]) # LadderEnterance
+        self.set_ladder(trigger_ids=[1005]) # LadderEnterance
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Closed') # TrapLever
-        self.set_mesh(trigger_ids=[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], visible=True, start_delay=0, interval=0, fade=3) # TrapMesh
-        self.set_effect(trigger_ids=[5001], visible=False) # DownArrow
-        self.set_breakable(trigger_ids=[4100], enable=False) # Move_Agent
-        self.set_breakable(trigger_ids=[4200], enable=False) # Move_Train
-        self.set_visible_breakable_object(trigger_ids=[4100], visible=False) # Move_Agent
-        self.set_visible_breakable_object(trigger_ids=[4200], visible=False) # Move_Train
-        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], visible=True, fade=3.0) # TrapMesh
+        self.set_effect(trigger_ids=[5001]) # DownArrow
+        self.set_breakable(trigger_ids=[4100]) # Move_Agent
+        self.set_breakable(trigger_ids=[4200]) # Move_Train
+        self.set_visible_breakable_object(trigger_ids=[4100]) # Move_Agent
+        self.set_visible_breakable_object(trigger_ids=[4200]) # Move_Train
+        self.set_portal(portal_id=2, visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -37,7 +37,7 @@ class LodingDelay01(trigger_api.Trigger):
 class PCMonologue01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1002')
-        self.set_dialogue(type=1, spawn_id=0, script='$52000066_QD__CHASE01__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000066_QD__CHASE01__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -46,7 +46,7 @@ class PCMonologue01(trigger_api.Trigger):
 
 class LodingDelay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -96,7 +96,7 @@ class SecondCameraGuide01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.spawn_monster(spawn_ids=[102], auto_target=False)
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_102')
 
@@ -109,7 +109,7 @@ class SecondCameraGuide02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52000066, portal_id=40)
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='Opened') # TrapLever
-        self.set_mesh(trigger_ids=[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], visible=False, start_delay=500, interval=50, fade=1) # TrapMesh
+        self.set_mesh(trigger_ids=[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], start_delay=500, interval=50, fade=1.0) # TrapMesh
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -128,7 +128,7 @@ class SecondCameraGuide03(trigger_api.Trigger):
 class SecondPhaseChase01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1001')
-        self.set_dialogue(type=1, spawn_id=0, script='$52000066_QD__CHASE01__2$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000066_QD__CHASE01__2$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -183,7 +183,7 @@ class ThirdCameraGuide02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -195,7 +195,7 @@ class ThirdCameraGuide02(trigger_api.Trigger):
 
 class ThirdCameraGuide03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=604, enable=True)
+        self.select_camera(trigger_id=604)
         self.move_user_path(patrol_name='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -205,7 +205,7 @@ class ThirdCameraGuide03(trigger_api.Trigger):
 
 class PCMonologue10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000066_QD__CHASE01__3$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000066_QD__CHASE01__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -219,10 +219,10 @@ class PCMonologue10(trigger_api.Trigger):
 
 class FourthTrainMove01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4100], enable=False) # Move_Agent
-        self.set_breakable(trigger_ids=[4200], enable=False) # Move_Train
-        self.set_visible_breakable_object(trigger_ids=[4100], visible=False) # Move_Agent
-        self.set_visible_breakable_object(trigger_ids=[4200], visible=False) # Move_Train
+        self.set_breakable(trigger_ids=[4100]) # Move_Agent
+        self.set_breakable(trigger_ids=[4200]) # Move_Train
+        self.set_visible_breakable_object(trigger_ids=[4100]) # Move_Agent
+        self.set_visible_breakable_object(trigger_ids=[4200]) # Move_Train
         self.set_user_value(trigger_id=3, key='TrainMove', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -245,7 +245,7 @@ class AgentEscape01(trigger_api.Trigger):
 
 class AgentEscape02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=603, enable=True)
+        self.select_camera(trigger_id=603)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9600, spawn_ids=[103]):
@@ -273,7 +273,7 @@ class AgentEscape04(trigger_api.Trigger):
 
 class PCMonologue20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000066_QD__CHASE01__4$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000066_QD__CHASE01__4$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -293,7 +293,7 @@ class QuestEndCheck01(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=2, visible=True, enable=True)
 
 
 initial_state = Wait

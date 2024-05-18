@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[701]):

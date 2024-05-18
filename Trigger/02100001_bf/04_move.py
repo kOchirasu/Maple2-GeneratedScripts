@@ -6,7 +6,7 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001244], state=1) # CrowMove
-        self.set_breakable(trigger_ids=[4502], enable=False) # Move
+        self.set_breakable(trigger_ids=[4502]) # Move
         self.set_visible_breakable_object(trigger_ids=[4502], visible=True) # Move
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,8 +25,8 @@ class MoveStart(trigger_api.Trigger):
 
 class MoveStop(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4502], enable=False) # Move
-        self.set_visible_breakable_object(trigger_ids=[4502], visible=False) # Move
+        self.set_breakable(trigger_ids=[4502]) # Move
+        self.set_visible_breakable_object(trigger_ids=[4502]) # Move
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=15000):

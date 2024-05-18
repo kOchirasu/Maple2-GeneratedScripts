@@ -28,17 +28,17 @@ class 주민구출(trigger_api.Trigger):
 class 문열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='10', seconds=3)
-        self.set_dialogue(type=1, spawn_id=200, script='$02000230_BF__SAVE_02__0$', time=2, arg5=0)
-        self.set_actor(trigger_id=20201, visible=False, initial_sequence='Attack_Idle_A')
-        self.spawn_monster(spawn_ids=[20211], auto_target=True)
-        self.set_actor(trigger_id=20202, visible=False, initial_sequence='Attack_02_A')
-        self.spawn_monster(spawn_ids=[20212], auto_target=True)
-        self.set_actor(trigger_id=20203, visible=False, initial_sequence='Attack_02_A')
-        self.spawn_monster(spawn_ids=[20213], auto_target=True)
-        self.set_actor(trigger_id=20204, visible=False, initial_sequence='Attack_Idle_A')
-        self.spawn_monster(spawn_ids=[20214], auto_target=True)
-        self.set_actor(trigger_id=20205, visible=False, initial_sequence='Attack_02_A')
-        self.spawn_monster(spawn_ids=[20215], auto_target=True)
+        self.set_dialogue(type=1, spawn_id=200, script='$02000230_BF__SAVE_02__0$', time=2)
+        self.set_actor(trigger_id=20201, initial_sequence='Attack_Idle_A')
+        self.spawn_monster(spawn_ids=[20211])
+        self.set_actor(trigger_id=20202, initial_sequence='Attack_02_A')
+        self.spawn_monster(spawn_ids=[20212])
+        self.set_actor(trigger_id=20203, initial_sequence='Attack_02_A')
+        self.spawn_monster(spawn_ids=[20213])
+        self.set_actor(trigger_id=20204, initial_sequence='Attack_Idle_A')
+        self.spawn_monster(spawn_ids=[20214])
+        self.set_actor(trigger_id=20205, initial_sequence='Attack_02_A')
+        self.spawn_monster(spawn_ids=[20215])
         self.set_dialogue(type=1, spawn_id=20211, script='$02000230_BF__SAVE_02__1$', time=2, arg5=1)
         self.set_dialogue(type=1, spawn_id=20213, script='$02000230_BF__SAVE_02__2$', time=2, arg5=2)
 
@@ -50,9 +50,9 @@ class 문열림(trigger_api.Trigger):
 class 도망과공격(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[200])
-        self.set_actor(trigger_id=201, visible=False, initial_sequence='Emotion_Failure_Idle_A')
+        self.set_actor(trigger_id=201, initial_sequence='Emotion_Failure_Idle_A')
         self.spawn_monster(spawn_ids=[211], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=211, script='$02000230_BF__SAVE_02__3$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=211, script='$02000230_BF__SAVE_02__3$', time=2)
         self.move_npc(spawn_id=211, patrol_name='MS2PatrolData_211_11000688')
         self.set_dialogue(type=1, spawn_id=211, script='$02000230_BF__SAVE_02__4$', time=2, arg5=2)
 

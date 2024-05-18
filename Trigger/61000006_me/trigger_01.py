@@ -6,7 +6,7 @@ class 레버(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000223], state=1)
         self.set_interact_object(trigger_ids=[10000214], state=1)
-        self.set_mesh(trigger_ids=[307,308,309,310,311,312,313,314,315,316,317,318,319], visible=False)
+        self.set_mesh(trigger_ids=[307,308,309,310,311,312,313,314,315,316,317,318,319])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000223], state=0):

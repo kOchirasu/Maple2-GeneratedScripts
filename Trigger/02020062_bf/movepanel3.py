@@ -4,8 +4,8 @@ import trigger_api
 
 class 발판초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[2200,2201,2202,2203,2204,2205,2206,2207,2208], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[2200,2201,2202,2203,2204,2205,2206,2207,2208], visible=False)
+        self.set_breakable(trigger_ids=[2200,2201,2202,2203,2204,2205,2206,2207,2208])
+        self.set_visible_breakable_object(trigger_ids=[2200,2201,2202,2203,2204,2205,2206,2207,2208])
         self.set_user_value(trigger_id=99990026, key='MovePanel03', value=0)
         self.set_interact_object(trigger_ids=[12000117], state=2) # 이동발판트리거
 
@@ -37,7 +37,7 @@ class 발판이동(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[2200,2201,2202,2203,2204,2205,2206,2207,2208], enable=False)
+        self.set_breakable(trigger_ids=[2200,2201,2202,2203,2204,2205,2206,2207,2208])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

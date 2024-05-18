@@ -10,12 +10,12 @@ class 대기(trigger_api.Trigger):
 
 class 대기시간(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[706], enable=False)
-        self.set_skill(trigger_ids=[707], enable=False)
-        self.set_skill(trigger_ids=[708], enable=False)
-        self.set_skill(trigger_ids=[709], enable=False)
-        self.set_skill(trigger_ids=[710], enable=False)
-        self.set_skill(trigger_ids=[711], enable=False)
+        self.set_skill(trigger_ids=[706])
+        self.set_skill(trigger_ids=[707])
+        self.set_skill(trigger_ids=[708])
+        self.set_skill(trigger_ids=[709])
+        self.set_skill(trigger_ids=[710])
+        self.set_skill(trigger_ids=[711])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1300):

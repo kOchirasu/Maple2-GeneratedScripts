@@ -5,7 +5,7 @@ import trigger_api
 # 오닉스 타워 3층
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         self.set_mesh(trigger_ids=[7000], visible=True)
         self.set_mesh(trigger_ids=[7001], visible=True)
         self.set_mesh(trigger_ids=[7002], visible=True)
@@ -15,19 +15,19 @@ class idle(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[7006], visible=True)
         self.set_mesh(trigger_ids=[7007], visible=True)
         self.set_mesh(trigger_ids=[7008], visible=True)
-        self.set_effect(trigger_ids=[8000], visible=False)
-        self.set_effect(trigger_ids=[8001], visible=False)
-        self.set_effect(trigger_ids=[8002], visible=False)
-        self.set_effect(trigger_ids=[8003], visible=False)
-        self.set_effect(trigger_ids=[8004], visible=False)
-        self.set_effect(trigger_ids=[8005], visible=False)
-        self.set_effect(trigger_ids=[8006], visible=False)
-        self.set_effect(trigger_ids=[8007], visible=False)
-        self.set_effect(trigger_ids=[8008], visible=False)
-        self.set_effect(trigger_ids=[8009], visible=False)
-        self.spawn_monster(spawn_ids=[508,509,510,511], auto_target=True)
-        self.spawn_monster(spawn_ids=[716,715,713,717,718], auto_target=True)
-        self.spawn_monster(spawn_ids=[701,702,703,704,705,706,707,708,709,710,711,712], auto_target=True)
+        self.set_effect(trigger_ids=[8000])
+        self.set_effect(trigger_ids=[8001])
+        self.set_effect(trigger_ids=[8002])
+        self.set_effect(trigger_ids=[8003])
+        self.set_effect(trigger_ids=[8004])
+        self.set_effect(trigger_ids=[8005])
+        self.set_effect(trigger_ids=[8006])
+        self.set_effect(trigger_ids=[8007])
+        self.set_effect(trigger_ids=[8008])
+        self.set_effect(trigger_ids=[8009])
+        self.spawn_monster(spawn_ids=[508,509,510,511])
+        self.spawn_monster(spawn_ids=[716,715,713,717,718])
+        self.spawn_monster(spawn_ids=[701,702,703,704,705,706,707,708,709,710,711,712])
         self.move_npc(spawn_id=508, patrol_name='MS2PatrolData_4000')
         self.move_npc(spawn_id=509, patrol_name='MS2PatrolData_4001')
         self.move_npc(spawn_id=511, patrol_name='MS2PatrolData_4002')
@@ -39,9 +39,9 @@ class idle(trigger_api.Trigger):
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         self.set_event_ui(type=1, arg2='$02000534_BF__MAIN__0$', arg3='3000')
-        self.set_portal(portal_id=2, visible=False)
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -54,9 +54,9 @@ class 첫번째몬스터전투시작(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10003133], state=0)
         self.set_interact_object(trigger_ids=[10003134], state=0)
         self.set_interact_object(trigger_ids=[10003135], state=0)
-        self.spawn_monster(spawn_ids=[501,520,521,522,523], auto_target=True)
-        self.add_balloon_talk(spawn_id=523, msg='$02000534_BF__MAIN__1$', duration=3500, delay_tick=0)
-        self.add_balloon_talk(spawn_id=520, msg='$02000534_BF__MAIN__2$', duration=3500, delay_tick=0)
+        self.spawn_monster(spawn_ids=[501,520,521,522,523])
+        self.add_balloon_talk(spawn_id=523, msg='$02000534_BF__MAIN__1$', duration=3500)
+        self.add_balloon_talk(spawn_id=520, msg='$02000534_BF__MAIN__2$', duration=3500)
         self.add_balloon_talk(spawn_id=521, msg='$02000534_BF__MAIN__3$', duration=3500, delay_tick=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 첫번째몬스터전투시작(trigger_api.Trigger):
 class 첫번째몬스터처치(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8000], visible=True)
-        self.set_mesh(trigger_ids=[7000], visible=False)
+        self.set_mesh(trigger_ids=[7000])
         self.side_npc_talk(npc_id=11004639, illust='Jay_normal', duration=4000, script='$02000534_BF__MAIN__4$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,9 +78,9 @@ class 첫번째몬스터처치(trigger_api.Trigger):
 class 하렌등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=23300001, illust='Haren_smile', duration=4000, script='$02000534_BF__MAIN__5$')
-        self.spawn_monster(spawn_ids=[502,524,525,526,527], auto_target=True, delay=100)
-        self.add_balloon_talk(spawn_id=502, msg='$02000534_BF__MAIN__6$', duration=3500, delay_tick=0)
-        self.add_balloon_talk(spawn_id=527, msg='$02000534_BF__MAIN__7$', duration=3500, delay_tick=0)
+        self.spawn_monster(spawn_ids=[502,524,525,526,527], delay=100)
+        self.add_balloon_talk(spawn_id=502, msg='$02000534_BF__MAIN__6$', duration=3500)
+        self.add_balloon_talk(spawn_id=527, msg='$02000534_BF__MAIN__7$', duration=3500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -108,7 +108,7 @@ class 하렌등장3(trigger_api.Trigger):
 class 두번째몬스터처치(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8005], visible=True)
-        self.set_mesh(trigger_ids=[7005], visible=False)
+        self.set_mesh(trigger_ids=[7005])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[703], job_code=0):
@@ -118,7 +118,7 @@ class 두번째몬스터처치(trigger_api.Trigger):
 class 첫번째연구실몬스터정리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawn_id=713, msg='$02000534_BF__MAIN__10$', duration=3500, delay_tick=2000)
-        self.spawn_monster(spawn_ids=[518,519,528], auto_target=True, delay=500)
+        self.spawn_monster(spawn_ids=[518,519,528], delay=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[518,519,528]):
@@ -136,7 +136,7 @@ class 오브젝트설명1(trigger_api.Trigger):
 
 class 방해1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=0, msg='$02000534_BF__MAIN__12$', duration=3500, delay_tick=2000)
+        self.add_balloon_talk(msg='$02000534_BF__MAIN__12$', duration=3500, delay_tick=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -145,7 +145,7 @@ class 방해1(trigger_api.Trigger):
 
 class 첫번째연구실나오기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[7001], visible=False)
+        self.set_mesh(trigger_ids=[7001])
         self.set_effect(trigger_ids=[8001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -155,8 +155,8 @@ class 첫번째연구실나오기(trigger_api.Trigger):
 
 class 두번째전투판몬스터생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[503,529,530,531,532], auto_target=True, delay=500)
-        self.add_balloon_talk(spawn_id=503, msg='$02000534_BF__MAIN__13$', duration=3500, delay_tick=0)
+        self.spawn_monster(spawn_ids=[503,529,530,531,532], delay=500)
+        self.add_balloon_talk(spawn_id=503, msg='$02000534_BF__MAIN__13$', duration=3500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[503,529,530,531,532]):
@@ -165,9 +165,9 @@ class 두번째전투판몬스터생성(trigger_api.Trigger):
 
 class 두번째연구소이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[714], auto_target=True)
+        self.spawn_monster(spawn_ids=[714])
         self.set_effect(trigger_ids=[8006], visible=True)
-        self.set_mesh(trigger_ids=[7006], visible=False)
+        self.set_mesh(trigger_ids=[7006])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[704], job_code=0):
@@ -178,7 +178,7 @@ class 두번째연구실몬스터정리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawn_id=714, msg='$02000534_BF__MAIN__14$', duration=3500, delay_tick=500)
         self.move_npc(spawn_id=714, patrol_name='MS2PatrolData_4003')
-        self.spawn_monster(spawn_ids=[516,517,5516], auto_target=True, delay=500)
+        self.spawn_monster(spawn_ids=[516,517,5516], delay=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[516,517,5516]):
@@ -198,7 +198,7 @@ class 두번째연구실몬스터정리2(trigger_api.Trigger):
 class 오브젝트설명2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10003133], state=0)
-        self.add_balloon_talk(spawn_id=0, msg='$02000534_BF__MAIN__15$', duration=3000)
+        self.add_balloon_talk(msg='$02000534_BF__MAIN__15$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -207,7 +207,7 @@ class 오브젝트설명2(trigger_api.Trigger):
 
 class 두번째연구실나오기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=0, msg='$02000534_BF__MAIN__16$', duration=3500, delay_tick=0)
+        self.add_balloon_talk(msg='$02000534_BF__MAIN__16$', duration=3500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -216,7 +216,7 @@ class 두번째연구실나오기(trigger_api.Trigger):
 
 class 세번째전투판(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[7002], visible=False)
+        self.set_mesh(trigger_ids=[7002])
         self.set_effect(trigger_ids=[8002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,8 +226,8 @@ class 세번째전투판(trigger_api.Trigger):
 
 class 세번째전투판몬스터생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[504,533], auto_target=True, delay=500)
-        self.add_balloon_talk(spawn_id=504, msg='$02000534_BF__MAIN__17$', duration=3500, delay_tick=0)
+        self.spawn_monster(spawn_ids=[504,533], delay=500)
+        self.add_balloon_talk(spawn_id=504, msg='$02000534_BF__MAIN__17$', duration=3500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[504,533]):
@@ -237,7 +237,7 @@ class 세번째전투판몬스터생성(trigger_api.Trigger):
 class 세번째몬스터처치(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8007], visible=True)
-        self.set_mesh(trigger_ids=[7007], visible=False)
+        self.set_mesh(trigger_ids=[7007])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[705], job_code=0):
@@ -267,7 +267,7 @@ class 방해3(trigger_api.Trigger):
 
 class 방해33(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=0, msg='$02000534_BF__MAIN__22$', duration=3500, delay_tick=0)
+        self.add_balloon_talk(msg='$02000534_BF__MAIN__22$', duration=3500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -276,7 +276,7 @@ class 방해33(trigger_api.Trigger):
 
 class 네번째전투판(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[7003], visible=False)
+        self.set_mesh(trigger_ids=[7003])
         self.set_effect(trigger_ids=[8003], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -287,7 +287,7 @@ class 네번째전투판(trigger_api.Trigger):
 class 네번째몬스터처치(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[505,534,535,536,537], auto_target=False)
-        self.add_balloon_talk(spawn_id=536, msg='$02000534_BF__MAIN__23$', duration=3500, delay_tick=0)
+        self.add_balloon_talk(spawn_id=536, msg='$02000534_BF__MAIN__23$', duration=3500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[505,534,535,536,537]):
@@ -297,7 +297,7 @@ class 네번째몬스터처치(trigger_api.Trigger):
 class 네번째연구소로이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8008], visible=True)
-        self.set_mesh(trigger_ids=[7008], visible=False)
+        self.set_mesh(trigger_ids=[7008])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[706], job_code=0):
@@ -306,7 +306,7 @@ class 네번째연구소로이동(trigger_api.Trigger):
 
 class 네번째연구소정리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[512,513,5513], auto_target=True)
+        self.spawn_monster(spawn_ids=[512,513,5513])
         self.add_balloon_talk(spawn_id=716, msg='$02000534_BF__MAIN__24$', duration=3500, delay_tick=1000)
         self.add_balloon_talk(spawn_id=716, msg='$02000534_BF__MAIN__25$', duration=3500, delay_tick=4500)
         self.side_npc_talk(npc_id=11004639, illust='Jay_normal', duration=4000, script='$02000534_BF__MAIN__26$')
@@ -339,8 +339,8 @@ class 오브젝트설명4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.add_balloon_talk(spawn_id=0, msg='$02000534_BF__MAIN__29$', duration=3000)
-        self.add_balloon_talk(spawn_id=0, msg='$02000534_BF__MAIN__30$', duration=3500, delay_tick=3000)
+        self.add_balloon_talk(msg='$02000534_BF__MAIN__29$', duration=3000)
+        self.add_balloon_talk(msg='$02000534_BF__MAIN__30$', duration=3500, delay_tick=3000)
         self.set_scene_skip(state=방해4, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -352,7 +352,7 @@ class 방해4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.remove_balloon_talk(spawn_id=0)
+        self.remove_balloon_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -362,7 +362,7 @@ class 방해4(trigger_api.Trigger):
 class 방해44(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=11004639, illust='Jay_normal', duration=4000, script='$02000534_BF__MAIN__31$')
-        self.add_balloon_talk(spawn_id=0, msg='$02000534_BF__MAIN__32$', duration=3500, delay_tick=0)
+        self.add_balloon_talk(msg='$02000534_BF__MAIN__32$', duration=3500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -371,7 +371,7 @@ class 방해44(trigger_api.Trigger):
 
 class 마지막전투판(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[7004], visible=False)
+        self.set_mesh(trigger_ids=[7004])
         self.set_effect(trigger_ids=[8004], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -382,9 +382,9 @@ class 마지막전투판(trigger_api.Trigger):
 class 보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[7004], visible=True)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         self.side_npc_talk(npc_id=11004639, illust='Jay_normal', duration=4000, script='$02000534_BF__MAIN__33$')
-        self.spawn_monster(spawn_ids=[507], auto_target=True)
+        self.spawn_monster(spawn_ids=[507])
         self.add_balloon_talk(spawn_id=507, msg='$02000534_BF__MAIN__34$', duration=3500, delay_tick=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -437,7 +437,7 @@ class 실패(trigger_api.Trigger):
 
 class 포탈생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=15, interval=0)
+        self.set_timer(timer_id='1', seconds=15)
         self.side_npc_talk(npc_id=11004639, illust='Jay_normal', duration=3000, script='$02000534_BF__MAIN__39$')
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -23,7 +23,7 @@ class 보고시작준비_01(trigger_api.Trigger):
 
 class 보고시작준비_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[4002], return_view=False)
         self.move_user_path(patrol_name='MS2PatrolData_3001')
         self.set_scene_skip(state=Skip_1, action='nextState')
@@ -35,7 +35,7 @@ class 보고시작준비_02(trigger_api.Trigger):
 
 class 보고시작준비_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=5000)
+        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=5000.0)
         self.select_camera_path(path_ids=[4003], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -77,8 +77,8 @@ class 영상재생(trigger_api.Trigger):
 
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(map_id=52000087, portal_id=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,10 +88,10 @@ class Skip_1(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
 
 initial_state = 대기

@@ -25,7 +25,7 @@ class 몹생성(trigger_api.Trigger):
 
 class 통과(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[703,704], visible=False)
+        self.set_mesh(trigger_ids=[703,704])
         self.set_timer(timer_id='1', seconds=180)
 
 

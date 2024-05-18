@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[40002684], quest_states=[2]):
@@ -57,7 +57,7 @@ class SetCamera01(trigger_api.Trigger):
 
 class SetCamera02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.spawn_monster(spawn_ids=[102,301,401], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class ActStart01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_301')
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_401')
 
@@ -89,7 +89,7 @@ class ActStart02(trigger_api.Trigger):
 
 class ActStart03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -111,7 +111,7 @@ class ActEnd02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[102])
         self.spawn_monster(spawn_ids=[101], auto_target=False)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -120,7 +120,7 @@ class ActEnd02(trigger_api.Trigger):
 
 class ActEnd03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 class Event_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timer_id='3', seconds=3)

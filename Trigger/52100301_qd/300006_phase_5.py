@@ -10,8 +10,8 @@ class 대기(trigger_api.Trigger):
 
 class 패이즈_5_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300006_PHASE_5__0$', duration=3176)
-        self.set_effect(trigger_ids=[200021,200022,200023,200024,200025,200026,200027,200028], visible=False)
+        self.side_npc_talk(npc_id=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300006_PHASE_5__0$', duration=3176)
+        self.set_effect(trigger_ids=[200021,200022,200023,200024,200025,200026,200027,200028])
         self.set_user_value(key='AI_Phase', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,8 +25,8 @@ class 시작(trigger_api.Trigger):
         self.set_user_value(trigger_id=3000052, key='Phase_4_Interect_02', value=0)
         self.set_user_value(trigger_id=3000053, key='Phase_4_Interect_03', value=0)
         self.set_user_value(trigger_id=3000054, key='Phase_4_Interect_04', value=0)
-        self.set_effect(trigger_ids=[200001,200002,200003,200004,200005,200006,200007,200008], visible=False)
-        self.side_npc_talk(type='talk', npc_id=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300006_PHASE_5__1$', duration=3176)
+        self.set_effect(trigger_ids=[200001,200002,200003,200004,200005,200006,200007,200008])
+        self.side_npc_talk(npc_id=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300006_PHASE_5__1$', duration=3176)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

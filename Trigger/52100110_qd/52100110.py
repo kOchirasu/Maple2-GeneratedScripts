@@ -4,7 +4,7 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[10000], visible=False)
+        self.set_mesh(trigger_ids=[10000])
         self.set_effect(trigger_ids=[601], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class 화이트박스생성2(trigger_api.Trigger):
 
 class 화이트박스제거(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[10000], visible=False)
+        self.set_mesh(trigger_ids=[10000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

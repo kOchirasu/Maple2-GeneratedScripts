@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 class 반항(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
         self.set_dialogue(type=1, spawn_id=201, script='$03000049_BF__TRIGGER_02__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +23,7 @@ class 반항(trigger_api.Trigger):
 
 class 반항2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=30, start_delay=0)
+        self.set_timer(timer_id='1', seconds=30)
         self.set_interact_object(trigger_ids=[10000286], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -4,14 +4,14 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=False) # ToNextMap
+        self.set_portal(portal_id=2, visible=True) # ToNextMap
         self.set_interact_object(trigger_ids=[10002046], state=0) # Chair
         self.destroy_monster(spawn_ids=[940,941,942]) # Mob
-        self.set_breakable(trigger_ids=[6200], enable=False) # Rock
-        self.set_visible_breakable_object(trigger_ids=[6200], visible=False) # Rock
-        self.set_mesh(trigger_ids=[3910], visible=True, start_delay=0, interval=0, fade=0) # RockClosed
-        self.set_mesh(trigger_ids=[3920], visible=False, start_delay=0, interval=0, fade=0) # RockOpened
-        self.set_effect(trigger_ids=[5300], visible=False) # StoneGate
+        self.set_breakable(trigger_ids=[6200]) # Rock
+        self.set_visible_breakable_object(trigger_ids=[6200]) # Rock
+        self.set_mesh(trigger_ids=[3910], visible=True) # RockClosed
+        self.set_mesh(trigger_ids=[3920]) # RockOpened
+        self.set_effect(trigger_ids=[5300]) # StoneGate
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9400]):
@@ -61,7 +61,7 @@ class SwichOn(trigger_api.Trigger):
 
 class RockMove01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3910], visible=False, start_delay=100, interval=0, fade=2) # RockClosed
+        self.set_mesh(trigger_ids=[3910], start_delay=100, fade=2.0) # RockClosed
         self.set_breakable(trigger_ids=[6200], enable=True) # Rock
         self.set_visible_breakable_object(trigger_ids=[6200], visible=True) # Rock
         self.set_effect(trigger_ids=[5300], visible=True) # StoneGate
@@ -73,7 +73,7 @@ class RockMove01(trigger_api.Trigger):
 
 class RockMove02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=False) # ToNextMap
+        self.set_portal(portal_id=2, visible=True, enable=True) # ToNextMap
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -82,9 +82,9 @@ class RockMove02(trigger_api.Trigger):
 
 class RockMove03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3920], visible=True, start_delay=0, interval=0, fade=0) # RockOpened
-        self.set_breakable(trigger_ids=[6200], enable=False) # Rock
-        self.set_visible_breakable_object(trigger_ids=[6200], visible=False) # Rock
+        self.set_mesh(trigger_ids=[3920], visible=True) # RockOpened
+        self.set_breakable(trigger_ids=[6200]) # Rock
+        self.set_visible_breakable_object(trigger_ids=[6200]) # Rock
 
 
 initial_state = Wait

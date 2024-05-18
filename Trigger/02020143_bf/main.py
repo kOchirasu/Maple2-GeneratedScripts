@@ -10,7 +10,7 @@ class 시작대기중(trigger_api.Trigger):
 
 class 기본셋팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False) # 나가기 포탈 최초에는 감추기
+        self.set_portal(portal_id=1) # 나가기 포탈 최초에는 감추기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[10003330], quest_states=[2]):
@@ -25,7 +25,7 @@ class 기본셋팅(trigger_api.Trigger):
 class 보스등장준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 공중에 떠있는 스타팅 지점의 바닥 트리거 메쉬 제거하여 플레이어가 공중에서 추락하면서 시작 하도록 하기
-        self.set_mesh(trigger_ids=[301], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[301])
         # MS2TriggerBox   TriggerObjectID = 102, 이 트리거 박스 안의 플레이어에게 애디셔널 50000554(레벨1) 회복 버프 부여하기, 이 맵은 추락하면서 시작하는데 추락 대미지에 의해 죽을 수있기 때문에 시작하자마자 무조건 HP회복 버프 부여함
         self.add_buff(box_ids=[102], skill_id=50000554, level=1, is_player=False, is_skill_set=False)
         # arg4 =1 이면 타겟이 npc로 변경 / arg1이 스폰 포인트 ID가 된다.       arg5 =1 이면 박스 외에 모든 맵/ 0은 박스 안
@@ -75,7 +75,7 @@ class 던전실패(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 class 연출딜레이(trigger_api.Trigger):

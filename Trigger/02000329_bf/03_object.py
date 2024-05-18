@@ -10,7 +10,7 @@ class 오브젝트_03(trigger_api.Trigger):
 
 class 오브젝트_03_작동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[10001], visible=False)
+        self.set_mesh(trigger_ids=[10001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[103]):

@@ -20,7 +20,7 @@ class 오브젝트반응(trigger_api.Trigger):
             return NPC이동(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=1061, visible=False, initial_sequence='SOS_B')
+        self.set_actor(trigger_id=1061, initial_sequence='SOS_B')
         self.destroy_monster(spawn_ids=[302])
         self.spawn_monster(spawn_ids=[106])
 
@@ -28,7 +28,7 @@ class 오브젝트반응(trigger_api.Trigger):
 class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=106, patrol_name='MS2PatrolData106')
-        self.set_dialogue(type=1, spawn_id=106, script='$02000116_BF__IA_106__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=106, script='$02000116_BF__IA_106__0$', time=2)
         self.set_dialogue(type=1, spawn_id=106, script='$02000116_BF__IA_106__1$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:

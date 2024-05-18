@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 몹스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[111004], auto_target=True)
+        self.spawn_monster(spawn_ids=[111004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[111001]):

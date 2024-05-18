@@ -5,13 +5,13 @@ import trigger_api
 # 플레이어 감지
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[9001], visible=False, enable=False, fade=0) # 사다리 가려
-        self.set_ladder(trigger_ids=[9002], visible=False, enable=False, fade=0) # 사다리 가려
-        self.set_ladder(trigger_ids=[9003], visible=False, enable=False, fade=0) # 사다리 가려
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False) # 보상으로 연결되는 포탈 제어 (끔)
+        self.set_ladder(trigger_ids=[9001]) # 사다리 가려
+        self.set_ladder(trigger_ids=[9002]) # 사다리 가려
+        self.set_ladder(trigger_ids=[9003]) # 사다리 가려
+        self.set_portal(portal_id=4) # 보상으로 연결되는 포탈 제어 (끔)
         self.set_interact_object(trigger_ids=[10000787], state=0) # 보상 상태 (없음)
         self.set_mesh(trigger_ids=[6001,6011], visible=True) # 벽 생성
-        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], visible=False) # 길 차단
+        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010]) # 길 차단
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=60001) >= 1:
@@ -20,7 +20,7 @@ class 대기(trigger_api.Trigger):
 
 class 오브젝티브_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='2', seconds=2, interval=0)
+        self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -29,12 +29,12 @@ class 오브젝티브_01(trigger_api.Trigger):
 
 class 오브젝티브_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[8001,8002], return_view=True) # 연출 카메라
+        self.select_camera_path(path_ids=[8001,8002]) # 연출 카메라
         self.set_cinematic_ui(type=1)
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 보스 등장
+        self.spawn_monster(spawn_ids=[101]) # 보스 등장
         # self.move_user(map_id=2000347, portal_id=3)
         self.set_cinematic_ui(type=3, script='$02000347_BF__MAIN1__0$') # 오브젝티브
-        self.set_timer(timer_id='5', seconds=5, interval=0)
+        self.set_timer(timer_id='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
@@ -50,8 +50,8 @@ class 오브젝티브_02(trigger_api.Trigger):
 # 플레이어 감지하면 1초 대기
 class 시작_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_count_ui(text='$02000347_BF__MAIN1__2$', stage=0, count=3)
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.show_count_ui(text='$02000347_BF__MAIN1__2$', count=3)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -60,9 +60,9 @@ class 시작_01(trigger_api.Trigger):
 
 class 시작_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[9001], visible=True, enable=True, fade=0) # 사다리 보여
-        self.set_ladder(trigger_ids=[9002], visible=True, enable=True, fade=0) # 사다리 보여
-        self.set_ladder(trigger_ids=[9003], visible=True, enable=True, fade=0) # 사다리 보여
+        self.set_ladder(trigger_ids=[9001], visible=True, enable=True) # 사다리 보여
+        self.set_ladder(trigger_ids=[9002], visible=True, enable=True) # 사다리 보여
+        self.set_ladder(trigger_ids=[9003], visible=True, enable=True) # 사다리 보여
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):
@@ -73,8 +73,8 @@ class 클리어(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True) # 보상으로 연결되는 포탈 제어 (on)
         self.set_event_ui(type=7, arg2='$02000347_BF__MAIN1__1$', arg3='3000')
-        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], visible=True, interval=0, fade=10) # 길 생성
-        self.set_mesh(trigger_ids=[6011], visible=False, interval=0, fade=0) # 벽 삭제
+        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], visible=True, fade=10.0) # 길 생성
+        self.set_mesh(trigger_ids=[6011]) # 벽 삭제
         self.set_interact_object(trigger_ids=[10000787], state=1) # 보상 상태 (없음)
         self.set_timer(timer_id='5', seconds=5)
 

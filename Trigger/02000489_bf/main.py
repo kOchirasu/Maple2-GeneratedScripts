@@ -4,10 +4,10 @@ import trigger_api
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6001], visible=False)
-        self.set_mesh(trigger_ids=[6002], visible=False)
-        self.set_mesh(trigger_ids=[6003], visible=False)
-        self.set_mesh(trigger_ids=[6004], visible=False)
+        self.set_mesh(trigger_ids=[6001])
+        self.set_mesh(trigger_ids=[6002])
+        self.set_mesh(trigger_ids=[6003])
+        self.set_mesh(trigger_ids=[6004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[702]):

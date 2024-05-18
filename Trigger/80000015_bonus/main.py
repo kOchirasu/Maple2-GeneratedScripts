@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6000], visible=False)
+        self.set_effect(trigger_ids=[6000])
         self.set_interact_object(trigger_ids=[10001339], state=1)
         self.set_interact_object(trigger_ids=[10001340], state=2)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3020,3021,3022,3023], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3024], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[30001,30002,30003,30004,30005,30006,30007,30008,30009,30010,30011,30012,30013,30014,30015,30016,30017,30018,30019,30020,30021,30022,30023,30024,30025,30026,30027,30028,30029,30030,30031,30032,30033,30034,30035,30036,30037,30038,30039,30040,30041,30042,30043,30044,30045,30046,30047,30048,30049,30050,30051,30052,30053,30054,30055,30056,30057,30058,30059,30060,30061,30062,30063,30064,30065,30066,30067,30068,30069,30070,30071,30072,30073,30074,30075,30076,30077,30078,30079,30080,30081,30082,30083,30084,30085,30086,30087,30088,30089,30090], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3020,3021,3022,3023], visible=True)
+        self.set_mesh(trigger_ids=[3024])
+        self.set_mesh(trigger_ids=[30001,30002,30003,30004,30005,30006,30007,30008,30009,30010,30011,30012,30013,30014,30015,30016,30017,30018,30019,30020,30021,30022,30023,30024,30025,30026,30027,30028,30029,30030,30031,30032,30033,30034,30035,30036,30037,30038,30039,30040,30041,30042,30043,30044,30045,30046,30047,30048,30049,30050,30051,30052,30053,30054,30055,30056,30057,30058,30059,30060,30061,30062,30063,30064,30065,30066,30067,30068,30069,30070,30071,30072,30073,30074,30075,30076,30077,30078,30079,30080,30081,30082,30083,30084,30085,30086,30087,30088,30089,30090], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -26,7 +26,7 @@ class 문열기(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.score_board_create(type='ScoreBoardTopCenter', max_score=0)
+        self.score_board_create(type='ScoreBoardTopCenter')
         self.score_board_set_score(score=0)
         self.spawn_item_range(range_ids=[9001,9002,9003,9004,9005,9006,9007,9008,9009,9010,9011,9012,9013,9014,9015,9016,9017,9018,9019], random_pick_count=11)
         self.set_event_ui(type=1, arg2='$80000015_bonus__main__0$', arg3='3000')
@@ -49,8 +49,8 @@ class 보스소환대기(trigger_api.Trigger):
 class 보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6000], visible=True)
-        self.set_mesh(trigger_ids=[30001,30002,30003,30004,30005,30006,30007,30008,30009,30010,30011,30012,30013,30014,30015,30016,30017,30018,30019,30020,30021,30022,30023,30024,30025,30026,30027,30028,30029,30030,30031,30032,30033,30034,30035,30036,30037,30038,30039,30040,30041,30042,30043,30044,30045,30046,30047,30048,30049,30050,30051,30052,30053,30054,30055,30056,30057,30058,30059,30060,30061,30062,30063,30064,30065,30066,30067,30068,30069,30070,30071,30072,30073,30074,30075,30076,30077,30078,30079,30080,30081,30082,30083,30084,30085,30086,30087,30088,30089,30090], visible=False, start_delay=0, interval=0, fade=3)
-        self.spawn_npc_range(range_ids=[2099], is_auto_targeting=False, score=5000)
+        self.set_mesh(trigger_ids=[30001,30002,30003,30004,30005,30006,30007,30008,30009,30010,30011,30012,30013,30014,30015,30016,30017,30018,30019,30020,30021,30022,30023,30024,30025,30026,30027,30028,30029,30030,30031,30032,30033,30034,30035,30036,30037,30038,30039,30040,30041,30042,30043,30044,30045,30046,30047,30048,30049,30050,30051,30052,30053,30054,30055,30056,30057,30058,30059,30060,30061,30062,30063,30064,30065,30066,30067,30068,30069,30070,30071,30072,30073,30074,30075,30076,30077,30078,30079,30080,30081,30082,30083,30084,30085,30086,30087,30088,30089,30090], fade=3.0)
+        self.spawn_npc_range(range_ids=[2099], score=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2099]):
@@ -68,8 +68,8 @@ class 딜레이(trigger_api.Trigger):
 
 class 정산(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3020,3021,3022,3023], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3024], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3020,3021,3022,3023])
+        self.set_mesh(trigger_ids=[3024], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.score_board_score() >= 28000:

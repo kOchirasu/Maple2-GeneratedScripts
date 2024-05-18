@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 class 전투_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_reset_time(seconds=300)
-        self.set_npc_duel_hp_bar(is_open=True, spawn_id=[201], duration_tick=300000, npc_hp_step=100)
+        self.set_npc_duel_hp_bar(is_open=True, spawn_id=201, duration_tick=300000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_play_time() <= 180 and self.monster_dead(spawn_ids=[201]):
@@ -49,9 +49,9 @@ class 전투_종료(trigger_api.Trigger):
         # self.add_buff(box_ids=[1003], skill_id=72000050, level=1)
         # self.destroy_monster(spawn_ids=[301,302,303,304,305,306])
         # self.destroy_monster(spawn_ids=[401,402,403,404,405,406])
-        # self.set_npc_emotion_loop(spawn_id=201, sequence_name='Attack_Idle_A', duration=60000)
+        # self.set_npc_emotion_loop(spawn_id=201, sequence_name='Attack_Idle_A', duration=60000.0)
         self.side_npc_talk(npc_id=24120006, illust='Mason_normal', duration=4000, script='$02020027_BF__02020027_battle__0$', voice='ko/Npc/00002259')
-        self.set_npc_duel_hp_bar(is_open=False, spawn_id=[201])
+        self.set_npc_duel_hp_bar(spawn_id=201)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

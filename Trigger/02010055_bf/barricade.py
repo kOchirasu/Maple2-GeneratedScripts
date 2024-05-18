@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_mesh(trigger_ids=[3000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_in_combat(spawn_ids=[2099]):
@@ -30,7 +30,7 @@ class 차단(trigger_api.Trigger):
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_effect(trigger_ids=[602], visible=True)
         self.set_effect(trigger_ids=[603], visible=True)
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2099,2199]):
@@ -39,10 +39,10 @@ class 차단(trigger_api.Trigger):
 
 class 차단해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_mesh(trigger_ids=[3000])
 
 
 initial_state = 대기

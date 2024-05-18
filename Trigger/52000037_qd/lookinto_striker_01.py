@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4000, visible=False, initial_sequence='Dead_A') # NelfActor
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_actor(trigger_id=4000, initial_sequence='Dead_A') # NelfActor
+        self.set_portal(portal_id=2)
         self.set_interact_object(trigger_ids=[10000175], state=0) # Bag
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +81,7 @@ class StrikerSetting01(trigger_api.Trigger):
 
 class SayHi01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=201, script='$52000037_QD__LOOKINTO_STRIKER_01__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$52000037_QD__LOOKINTO_STRIKER_01__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -93,7 +93,7 @@ class PCMove01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -114,7 +114,7 @@ class Patrol01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -124,7 +124,7 @@ class Patrol01(trigger_api.Trigger):
 class Patrol02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1000')
-        self.set_dialogue(type=1, spawn_id=201, script='$52000037_QD__LOOKINTO_STRIKER_01__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$52000037_QD__LOOKINTO_STRIKER_01__1$', time=3)
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_401')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -144,7 +144,7 @@ class Patrol03(trigger_api.Trigger):
 
 class Patrol04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=301, script='$52000037_QD__LOOKINTO_STRIKER_01__2$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=301, script='$52000037_QD__LOOKINTO_STRIKER_01__2$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -155,7 +155,7 @@ class ComeAcrossSB01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -164,7 +164,7 @@ class ComeAcrossSB01(trigger_api.Trigger):
 
 class ComeAcrossSB02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=301, script='$52000037_QD__LOOKINTO_STRIKER_01__3$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=301, script='$52000037_QD__LOOKINTO_STRIKER_01__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -179,7 +179,7 @@ class ComeAcrossSB03(trigger_api.Trigger):
 
 class SBRunAway01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=401, script='$52000037_QD__LOOKINTO_STRIKER_01__14$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=401, script='$52000037_QD__LOOKINTO_STRIKER_01__14$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -197,7 +197,7 @@ class SBRunAway02(trigger_api.Trigger):
 
 class SBRunAway03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -249,7 +249,7 @@ class Dialogue04(trigger_api.Trigger):
 
 class StepInside01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=301, script='$52000037_QD__LOOKINTO_STRIKER_01__6$', time=4, arg5=0)
+        self.set_dialogue(type=1, spawn_id=301, script='$52000037_QD__LOOKINTO_STRIKER_01__6$', time=4)
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_202')
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_302')
 
@@ -260,7 +260,7 @@ class StepInside01(trigger_api.Trigger):
 
 class StepInside02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=201, script='$52000037_QD__LOOKINTO_STRIKER_01__7$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=201, script='$52000037_QD__LOOKINTO_STRIKER_01__7$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -332,7 +332,7 @@ class NPCChange01(trigger_api.Trigger):
 
 class NextQuestStart01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=202, script='$52000037_QD__LOOKINTO_STRIKER_01__10$', time=4, arg5=0)
+        self.set_dialogue(type=1, spawn_id=202, script='$52000037_QD__LOOKINTO_STRIKER_01__10$', time=4)
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_203')
         self.move_npc(spawn_id=302, patrol_name='MS2PatrolData_303')
 
@@ -376,7 +376,7 @@ class ReadyToLeave02(trigger_api.Trigger):
 class ReadyToLeave03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=302, patrol_name='MS2PatrolData_304')
-        self.set_dialogue(type=1, spawn_id=302, script='$52000037_QD__LOOKINTO_STRIKER_01__12$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=302, script='$52000037_QD__LOOKINTO_STRIKER_01__12$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -394,7 +394,7 @@ class ReadyToLeave04(trigger_api.Trigger):
 
 class ReadyToLeave05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=202, script='$52000037_QD__LOOKINTO_STRIKER_01__13$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=202, script='$52000037_QD__LOOKINTO_STRIKER_01__13$', time=3)
         self.move_npc(spawn_id=302, patrol_name='MS2PatrolData_305')
 
     def on_tick(self) -> trigger_api.Trigger:

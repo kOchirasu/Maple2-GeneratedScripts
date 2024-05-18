@@ -16,7 +16,7 @@ class 몬스터_사망(trigger_api.Trigger):
 
 class 초강력버프(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(box_ids=[401,402], skill_id=49200001, level=1, is_player=True)
+        self.add_buff(box_ids=[401,402], skill_id=49200001, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         pass

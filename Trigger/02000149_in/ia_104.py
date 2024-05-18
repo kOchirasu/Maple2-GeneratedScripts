@@ -17,14 +17,14 @@ class 오브젝트반응(trigger_api.Trigger):
             return NPC이동(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=204, visible=False, initial_sequence='Sit_Chair_Idle_A')
+        self.set_actor(trigger_id=204, initial_sequence='Sit_Chair_Idle_A')
         self.spawn_monster(spawn_ids=[404])
 
 
 class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=404, patrol_name='MS2PatrolData_504')
-        self.set_dialogue(type=1, spawn_id=404, script='$02000149_IN__IA_104__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=404, script='$02000149_IN__IA_104__0$', time=2)
         self.set_dialogue(type=1, spawn_id=404, script='$02000149_IN__IA_104__1$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:

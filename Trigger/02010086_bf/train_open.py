@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False) # 전원 붙는 소리
-        self.set_effect(trigger_ids=[7002], visible=False) # 전원 붙는 소리
-        self.set_mesh(trigger_ids=[1061,1062,1063], visible=False) # 안보이는 상태
-        self.set_mesh(trigger_ids=[2011,2012,2013], visible=False) # 안보이는 상태
+        self.set_effect(trigger_ids=[7001]) # 전원 붙는 소리
+        self.set_effect(trigger_ids=[7002]) # 전원 붙는 소리
+        self.set_mesh(trigger_ids=[1061,1062,1063]) # 안보이는 상태
+        self.set_mesh(trigger_ids=[2011,2012,2013]) # 안보이는 상태
         self.set_interact_object(trigger_ids=[10000896], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,8 +33,8 @@ class 작동_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7001], visible=True) # 전원 붙는 소리
         self.set_effect(trigger_ids=[7002], visible=True) # 전원 붙는 소리
-        self.set_mesh(trigger_ids=[1071,1072,1073], visible=False, interval=300, fade=10) # 빨간 선이
-        self.set_mesh(trigger_ids=[1061,1062,1063], visible=True, interval=300, fade=10) # 파란 선으로
+        self.set_mesh(trigger_ids=[1071,1072,1073], interval=300, fade=10.0) # 빨간 선이
+        self.set_mesh(trigger_ids=[1061,1062,1063], visible=True, interval=300, fade=10.0) # 파란 선으로
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,11 +44,11 @@ class 작동_01(trigger_api.Trigger):
 
 class 작동_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1055], visible=False, interval=30, fade=0) # 드럼통 폭발
-        self.set_mesh(trigger_ids=[1061,1062,1063], visible=False, interval=0, fade=10) # 파란 선도 마저 삭제
-        self.set_mesh(trigger_ids=[1005], visible=False, interval=50, fade=1) # 유리창 해제
+        self.set_mesh(trigger_ids=[1055], interval=30) # 드럼통 폭발
+        self.set_mesh(trigger_ids=[1061,1062,1063], fade=10.0) # 파란 선도 마저 삭제
+        self.set_mesh(trigger_ids=[1005], interval=50, fade=1.0) # 유리창 해제
         self.set_actor(trigger_id=1022, visible=True, initial_sequence='Opened') # 문 열림
-        self.set_mesh(trigger_ids=[1021], visible=False, interval=0, fade=10) # 벽 해제
+        self.set_mesh(trigger_ids=[1021], fade=10.0) # 벽 해제
         self.set_timer(timer_id='1', seconds=1)
 
 

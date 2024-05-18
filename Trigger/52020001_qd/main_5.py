@@ -10,7 +10,7 @@ class 시작(trigger_api.Trigger):
 
 class 기다림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.shadow_expedition(type='OpenBossGauge', max_gauge_point=300, title='출력 에너지')
+        self.shadow_expedition_open_boss_gauge(max_gauge_point=300, title='출력 에너지')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):
@@ -34,8 +34,8 @@ class 알림_1(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.spawn_monster(spawn_ids=[6000041], auto_target=False)
         self.spawn_monster(spawn_ids=[6000042], auto_target=False)
-        self.add_buff(box_ids=[6000041], skill_id=49286001, level=1, is_player=True)
-        self.add_buff(box_ids=[6000042], skill_id=49286001, level=1, is_player=True)
+        self.add_buff(box_ids=[6000041], skill_id=49286001, level=1)
+        self.add_buff(box_ids=[6000042], skill_id=49286001, level=1)
 
 
 class 체력조건_2(trigger_api.Trigger):
@@ -79,7 +79,7 @@ class 마지막_연출(trigger_api.Trigger):
 class 캐릭터숨기기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(is_visible=False)
-        self.spawn_monster(spawn_ids=[7002], auto_target=True)
+        self.spawn_monster(spawn_ids=[7002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -109,7 +109,7 @@ class AI연출(trigger_api.Trigger):
 
 class AI연출_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=0, script='준비완료! 크리티아스로 돌진!', time=3, arg5=0)
+        self.set_dialogue(type=2, script='준비완료! 크리티아스로 돌진!', time=3)
         self.set_ai_extra_data(key='wing', value=1, box_id=4)
 
     def on_tick(self) -> trigger_api.Trigger:

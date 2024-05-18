@@ -102,205 +102,205 @@ class WaitGreeting(trigger_api.Trigger):
 # 고객 주문 랜덤
 class OrderRandomPick(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000617(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000618(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000619(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000620(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000621(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000622(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000623(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000624(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000625(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000626(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000627(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000628(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000629(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000630(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000631(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000632(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000633(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000634(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000635(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000636(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000637(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000638(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000639(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000640(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000641(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000642(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000643(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000644(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000645(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000646(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000647(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000648(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000649(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000650(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000651(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000652(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000653(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000654(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000655(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000656(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000657(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000658(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000659(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000660(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000661(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000662(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000663(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000664(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000665(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000666(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000667(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000668(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000669(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000670(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000671(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000672(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000673(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000674(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000675(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000676(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000677(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000678(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000679(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000680(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000681(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000682(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000683(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000684(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000685(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000686(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000687(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000688(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000689(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000690(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000691(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000692(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000693(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000694(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000695(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000696(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000697(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000698(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000699(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000700(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000701(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000702(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000703(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000704(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000705(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000706(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000707(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000708(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000709(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000710(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000711(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000712(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000713(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000714(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000715(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000716(self.ctx)
 
 
@@ -2506,10 +2506,10 @@ class DetectItem_30000716(trigger_api.Trigger):
 # 미션 성공
 class RightItem(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5101], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5101]) # DownArrow
         self.play_system_sound_in_box(box_ids=[9900], sound='System_PartTimeJob_Right_01')
         self.remove_effect_nif(spawn_id=1001)
-        self.set_dialogue(type=1, spawn_id=1001, script='$02000387_BF__1001_CUSTOMER__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1001, script='$02000387_BF__1001_CUSTOMER__0$', time=3)
         self.add_buff(box_ids=[9900], skill_id=70000112, level=1, is_player=False, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -2538,10 +2538,10 @@ class Quit(trigger_api.Trigger):
 # 잘못된 아이템을 내려놓으면
 class WrongItem(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5101], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5101]) # DownArrow
         self.play_system_sound_in_box(box_ids=[9900], sound='System_PartTimeJob_Wrong_01')
         self.remove_effect_nif(spawn_id=1001)
-        self.set_dialogue(type=1, spawn_id=1001, script='$02000387_BF__1001_CUSTOMER__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1001, script='$02000387_BF__1001_CUSTOMER__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):

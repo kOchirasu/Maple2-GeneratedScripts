@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
+        self.set_portal(portal_id=3)
+        self.set_portal(portal_id=4)
+        self.set_portal(portal_id=5)
+        self.set_portal(portal_id=6)
+        self.set_portal(portal_id=7)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[901], job_code=0):

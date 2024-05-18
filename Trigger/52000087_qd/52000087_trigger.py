@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[600], visible=False)
+        self.set_portal(portal_id=10)
+        self.set_effect(trigger_ids=[600])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[22651], quest_ids=[20002266], quest_states=[3]):
@@ -30,7 +30,7 @@ class 카르카르시작(trigger_api.Trigger):
 
 class 진행(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -529,7 +529,7 @@ class 완료연출01_20002265(trigger_api.Trigger):
 
 class 완료연출02_20002265(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[2002,2003,2004], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -579,10 +579,10 @@ class 완료연출04_c20002265(trigger_api.Trigger):
 
 class 완료연출05_20002265(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[600], visible=False)
+        self.set_effect(trigger_ids=[600])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.move_npc(spawn_id=1003, patrol_name='MS2PatrolData_Orde') # 오르데 이동
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -617,7 +617,7 @@ class 완료연출01_20002266(trigger_api.Trigger):
 
 class 완료연출02_20002266(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[2005,2006], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -650,7 +650,7 @@ class 완료연출05_20002266(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
 
 class 용무없는유저는아웃(trigger_api.Trigger):
@@ -986,7 +986,7 @@ class 챕터10에필로그연출22(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(map_id=2000025, portal_id=2)

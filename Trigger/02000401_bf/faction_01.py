@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
 
 class 석궁준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1001, script='$02000401_BF__FACTION_01__0$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1001, script='$02000401_BF__FACTION_01__0$', time=5)
         self.set_dialogue(type=1, spawn_id=1001, script='$02000401_BF__FACTION_01__1$', time=5, arg5=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +61,7 @@ class 종료체크(trigger_api.Trigger):
             self.set_interact_object(trigger_ids=[12000021], state=0)
             self.set_interact_object(trigger_ids=[12000022], state=0)
             self.set_interact_object(trigger_ids=[12000037], state=0)
-            self.set_dialogue(type=1, spawn_id=1001, script='$02000401_BF__FACTION_01__2$', time=5, arg5=0)
+            self.set_dialogue(type=1, spawn_id=1001, script='$02000401_BF__FACTION_01__2$', time=5)
             self.remove_buff(box_id=199, skill_id=99910150)
             return NPC삭제대기(self.ctx)
 

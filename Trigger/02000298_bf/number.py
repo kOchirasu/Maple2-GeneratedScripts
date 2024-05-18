@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[608], visible=False)
-        self.set_effect(trigger_ids=[610], visible=False)
-        self.set_effect(trigger_ids=[611], visible=False)
+        self.set_effect(trigger_ids=[608])
+        self.set_effect(trigger_ids=[610])
+        self.set_effect(trigger_ids=[611])
         self.set_actor(trigger_id=292, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=293, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=294, visible=True, initial_sequence='sf_quest_light_A01_Off')
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
         self.set_actor(trigger_id=297, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=298, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=299, visible=True, initial_sequence='sf_quest_light_A01_Off')
-        self.set_mesh(trigger_ids=[3224,3225,3226], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3224,3225,3226])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[198]):
@@ -467,8 +467,8 @@ class 문열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='5', seconds=5)
         self.set_effect(trigger_ids=[608], visible=True)
-        self.set_mesh(trigger_ids=[3221,3222,3223], visible=False, start_delay=0, interval=0, fade=5)
-        self.set_mesh(trigger_ids=[3224,3225,3226], visible=True, start_delay=1000, interval=1000, fade=5)
+        self.set_mesh(trigger_ids=[3221,3222,3223], fade=5.0)
+        self.set_mesh(trigger_ids=[3224,3225,3226], visible=True, start_delay=1000, interval=1000, fade=5.0)
         self.show_guide_summary(entity_id=20002984, text_id=20002984)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -506,7 +506,7 @@ class 방어모드(trigger_api.Trigger):
         self.set_effect(trigger_ids=[611], visible=True)
         self.show_guide_summary(entity_id=20002986, text_id=20002986)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.spawn_monster(spawn_ids=[1098,1099], auto_target=True)
+        self.spawn_monster(spawn_ids=[1098,1099])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1098,1099]):
@@ -519,7 +519,7 @@ class 방어모드(trigger_api.Trigger):
             self.set_actor(trigger_id=297, visible=True, initial_sequence='sf_quest_light_A01_Off')
             self.set_actor(trigger_id=298, visible=True, initial_sequence='sf_quest_light_A01_Off')
             self.set_actor(trigger_id=299, visible=True, initial_sequence='sf_quest_light_A01_Off')
-            self.set_effect(trigger_ids=[611], visible=False)
+            self.set_effect(trigger_ids=[611])
             return 암호체크(self.ctx)
 
 

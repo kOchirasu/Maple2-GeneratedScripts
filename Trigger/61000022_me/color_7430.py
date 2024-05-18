@@ -5,9 +5,9 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Color43', value=10)
-        self.set_mesh(trigger_ids=[843], visible=True, start_delay=0, interval=0, fade=0) # yellow
-        self.set_mesh(trigger_ids=[943], visible=False, start_delay=0, interval=0, fade=0) # green
-        self.set_mesh(trigger_ids=[1043], visible=False, start_delay=0, interval=0, fade=0) # red
+        self.set_mesh(trigger_ids=[843], visible=True) # yellow
+        self.set_mesh(trigger_ids=[943]) # green
+        self.set_mesh(trigger_ids=[1043]) # red
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorStart') >= 1:
@@ -17,9 +17,9 @@ class Wait(trigger_api.Trigger):
 # Yellow Before
 class YellowBefore(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[843], visible=True, start_delay=0, interval=0, fade=2) # yellow
-        self.set_mesh(trigger_ids=[943], visible=False, start_delay=0, interval=0, fade=0) # green
-        self.set_mesh(trigger_ids=[1043], visible=False, start_delay=0, interval=0, fade=0) # red
+        self.set_mesh(trigger_ids=[843], visible=True, fade=2.0) # yellow
+        self.set_mesh(trigger_ids=[943]) # green
+        self.set_mesh(trigger_ids=[1043]) # red
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Color43') >= 2:
@@ -37,9 +37,9 @@ class YellowBefore(trigger_api.Trigger):
 # Red Before
 class RedBefore(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1043], visible=True, start_delay=0, interval=0, fade=0) # red
-        self.set_mesh(trigger_ids=[943], visible=False, start_delay=0, interval=0, fade=0) # green
-        self.set_mesh(trigger_ids=[843], visible=False, start_delay=0, interval=0, fade=0) # yellow
+        self.set_mesh(trigger_ids=[1043], visible=True) # red
+        self.set_mesh(trigger_ids=[943]) # green
+        self.set_mesh(trigger_ids=[843]) # yellow
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Color43') >= 1:
@@ -57,7 +57,7 @@ class RedBefore(trigger_api.Trigger):
 # Green After
 class GreenAfter(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[943], visible=True, start_delay=0, interval=0, fade=0) # green
+        self.set_mesh(trigger_ids=[943], visible=True) # green
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Color43') >= 1:
@@ -75,9 +75,9 @@ class GreenAfter(trigger_api.Trigger):
 # Yellow After
 class YellowAfter(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[843], visible=True, start_delay=0, interval=0, fade=2) # yellow
-        self.set_mesh(trigger_ids=[943], visible=False, start_delay=0, interval=0, fade=0) # green
-        self.set_mesh(trigger_ids=[1043], visible=False, start_delay=100, interval=0, fade=0) # red
+        self.set_mesh(trigger_ids=[843], visible=True, fade=2.0) # yellow
+        self.set_mesh(trigger_ids=[943]) # green
+        self.set_mesh(trigger_ids=[1043], start_delay=100) # red
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Color43') >= 2:
@@ -95,9 +95,9 @@ class YellowAfter(trigger_api.Trigger):
 # Red After
 class RedAfter(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1043], visible=True, start_delay=0, interval=0, fade=0) # red
-        self.set_mesh(trigger_ids=[943], visible=False, start_delay=0, interval=0, fade=0) # green
-        self.set_mesh(trigger_ids=[843], visible=False, start_delay=100, interval=0, fade=0) # yellow
+        self.set_mesh(trigger_ids=[1043], visible=True) # red
+        self.set_mesh(trigger_ids=[943]) # green
+        self.set_mesh(trigger_ids=[843], start_delay=100) # yellow
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Color43') >= 1:
@@ -115,9 +115,9 @@ class RedAfter(trigger_api.Trigger):
 # All Clear
 class Clear(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[943], visible=False, start_delay=0, interval=0, fade=2) # green
-        self.set_mesh(trigger_ids=[843], visible=False, start_delay=0, interval=0, fade=2) # yellow
-        self.set_mesh(trigger_ids=[1043], visible=False, start_delay=0, interval=0, fade=2) # red
+        self.set_mesh(trigger_ids=[943], fade=2.0) # green
+        self.set_mesh(trigger_ids=[843], fade=2.0) # yellow
+        self.set_mesh(trigger_ids=[1043], fade=2.0) # red
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Color43') >= 5:
@@ -128,9 +128,9 @@ class Clear(trigger_api.Trigger):
 class Regen(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='ColorStart', value=0) # Pattern Trigger
-        self.set_mesh(trigger_ids=[843], visible=True, start_delay=400, interval=0, fade=0) # yellow
-        self.set_mesh(trigger_ids=[943], visible=False, start_delay=0, interval=0, fade=0) # green
-        self.set_mesh(trigger_ids=[1043], visible=False, start_delay=0, interval=0, fade=0) # red
+        self.set_mesh(trigger_ids=[843], visible=True, start_delay=400) # yellow
+        self.set_mesh(trigger_ids=[943]) # green
+        self.set_mesh(trigger_ids=[1043]) # red
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[8120], visible=False)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
+        self.set_effect(trigger_ids=[8120])
         self.set_interact_object(trigger_ids=[10000939], state=2) # On
         self.set_interact_object(trigger_ids=[10000955], state=2) # Off
 
@@ -49,8 +49,8 @@ class Activate7121(trigger_api.Trigger):
 class Sensor7122(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=7120, key='Color12', value=1) # yellow
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[8120], visible=False)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
+        self.set_effect(trigger_ids=[8120])
         self.set_interact_object(trigger_ids=[10000939], state=0) # On
         self.set_interact_object(trigger_ids=[10000955], state=0) # Off
 
@@ -92,7 +92,7 @@ class Enable7122(trigger_api.Trigger):
 class Activate7122(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8120], visible=True)
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=True)
         self.set_interact_object(trigger_ids=[10000939], state=2) # On
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -120,8 +120,8 @@ class Delay7122(trigger_api.Trigger):
 
 class DeActivate7122(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8120], visible=False)
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8120])
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -134,8 +134,8 @@ class DeActivate7122(trigger_api.Trigger):
 class Sensor7123(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=7120, key='Color12', value=1) # yellow
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[8120], visible=False)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
+        self.set_effect(trigger_ids=[8120])
         self.set_interact_object(trigger_ids=[10000939], state=0) # On
         self.set_interact_object(trigger_ids=[10000955], state=0) # Off
 
@@ -177,7 +177,7 @@ class Enable7123(trigger_api.Trigger):
 class Activate7123(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8120], visible=True)
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=True)
         self.set_interact_object(trigger_ids=[10000939], state=2) # On
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -205,8 +205,8 @@ class Delay7123(trigger_api.Trigger):
 
 class DeActivate7123(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8120], visible=False)
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8120])
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -219,8 +219,8 @@ class DeActivate7123(trigger_api.Trigger):
 class Sensor7124(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=7120, key='Color12', value=1) # yellow
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[8120], visible=False)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
+        self.set_effect(trigger_ids=[8120])
         self.set_interact_object(trigger_ids=[10000939], state=0) # On
         self.set_interact_object(trigger_ids=[10000955], state=0) # Off
 
@@ -262,7 +262,7 @@ class Enable7124(trigger_api.Trigger):
 class Activate7124(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8120], visible=True)
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=True)
         self.set_interact_object(trigger_ids=[10000939], state=2) # On
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -290,8 +290,8 @@ class Delay7124(trigger_api.Trigger):
 
 class DeActivate7124(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8120], visible=False)
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8120])
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -304,8 +304,8 @@ class DeActivate7124(trigger_api.Trigger):
 class Sensor7125(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=7120, key='Color12', value=1) # yellow
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[8120], visible=False)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
+        self.set_effect(trigger_ids=[8120])
         self.set_interact_object(trigger_ids=[10000939], state=0) # On
         self.set_interact_object(trigger_ids=[10000955], state=0) # Off
 
@@ -347,7 +347,7 @@ class Enable7125(trigger_api.Trigger):
 class Activate7125(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8120], visible=True)
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=True)
         self.set_interact_object(trigger_ids=[10000939], state=2) # On
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -375,8 +375,8 @@ class Delay7125(trigger_api.Trigger):
 
 class DeActivate7125(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8120], visible=False)
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8120])
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -387,8 +387,8 @@ class DeActivate7125(trigger_api.Trigger):
 
 class Reset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[8120], visible=False)
+        self.set_mesh(trigger_ids=[8121,8122,8123,8124,8125,8126])
+        self.set_effect(trigger_ids=[8120])
         self.set_interact_object(trigger_ids=[10000939], state=0) # On
         self.set_interact_object(trigger_ids=[10000955], state=0) # Off
         self.set_user_value(key='Barrier12', value=0)

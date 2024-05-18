@@ -10,9 +10,9 @@ class 시작대기중(trigger_api.Trigger):
 
 class 보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=12, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=11)
+        self.set_portal(portal_id=12)
+        self.set_portal(portal_id=13)
         self.spawn_monster(spawn_ids=[91], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

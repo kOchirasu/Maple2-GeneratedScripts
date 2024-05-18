@@ -16,7 +16,7 @@ class ready(trigger_api.Trigger):
 class Ready_Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=100)
-        self.set_timer(timer_id='1200', seconds=1200, start_delay=0, interval=1)
+        self.set_timer(timer_id='1200', seconds=1200, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1200'):
@@ -29,7 +29,7 @@ class endGame(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            self.move_user(map_id=0, portal_id=0)
+            self.move_user()
             return end(self.ctx)
 
 

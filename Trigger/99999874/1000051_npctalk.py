@@ -16,7 +16,7 @@ class NPCTalkOnWait(trigger_api.Trigger):
 
 class NPCTalkOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=15401, msg='쳇!! 요즘 애들은 너무 인사성이 없어!!', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=15401, msg='쳇!! 요즘 애들은 너무 인사성이 없어!!', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

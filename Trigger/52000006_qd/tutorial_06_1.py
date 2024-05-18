@@ -32,7 +32,7 @@ class PC대사1(trigger_api.Trigger):
 class 양등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=2)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[201], auto_target=False)
         self.set_cinematic_ui(type=3, script='$52000006_QD__TUTORIAL_06_1__1$')
 

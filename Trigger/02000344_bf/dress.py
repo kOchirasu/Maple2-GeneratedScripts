@@ -8,8 +8,8 @@ import trigger_api
 """
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6701,6702,6703,6704,6705], visible=True, start_delay=0, interval=0) # 가림막
-        self.set_mesh(trigger_ids=[6711,6712,6713,6714,6715], visible=False, start_delay=0, interval=10) # 가림막
+        self.set_mesh(trigger_ids=[6701,6702,6703,6704,6705], visible=True) # 가림막
+        self.set_mesh(trigger_ids=[6711,6712,6713,6714,6715], interval=10) # 가림막
         self.set_interact_object(trigger_ids=[10001066], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,8 +37,8 @@ class start(trigger_api.Trigger):
 
 class start_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6701,6702,6703,6704,6705], visible=False, start_delay=0, interval=0) # 가림막
-        self.set_mesh(trigger_ids=[6711,6712,6713,6714,6715], visible=True, start_delay=0, interval=10) # 가림막
+        self.set_mesh(trigger_ids=[6701,6702,6703,6704,6705]) # 가림막
+        self.set_mesh(trigger_ids=[6711,6712,6713,6714,6715], visible=True, interval=10) # 가림막
         self.show_guide_summary(entity_id=20003444, text_id=20003444, duration=5000)
 
 

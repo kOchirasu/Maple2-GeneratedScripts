@@ -4,7 +4,7 @@ import trigger_api
 
 class 퀘스트조건01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
         self.set_interact_object(trigger_ids=[10000872], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class Q1_마샤르이동01(trigger_api.Trigger):
 
 class Q1_마샤르대화01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$52010005_QD__ACT01__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$52010005_QD__ACT01__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=8002, spawn_ids=[102]):
@@ -64,7 +64,7 @@ class Q1_마샤르대화01(trigger_api.Trigger):
 class Q1_마샤르대화02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='4', seconds=3)
-        self.set_dialogue(type=1, spawn_id=102, script='$52010005_QD__ACT01__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$52010005_QD__ACT01__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='4'):
@@ -76,7 +76,7 @@ class Q1_카메라연출01(trigger_api.Trigger):
         self.set_timer(timer_id='5', seconds=3)
         self.destroy_monster(spawn_ids=[102])
         self.spawn_monster(spawn_ids=[104], auto_target=False)
-        self.select_camera(trigger_id=1001, enable=True)
+        self.select_camera(trigger_id=1001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -128,7 +128,7 @@ class Q1_퇴장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[103])
         self.destroy_monster(spawn_ids=[202])
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
 
 
 initial_state = 퀘스트조건01

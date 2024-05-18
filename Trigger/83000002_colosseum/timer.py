@@ -30,7 +30,7 @@ class 대기(trigger_api.Trigger):
 class 스테이지1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer', seconds=180, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[101], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=101, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크1(self.ctx)
@@ -49,7 +49,7 @@ class 타이머체크1(trigger_api.Trigger):
 class 스테이지2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer2', seconds=180, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[102], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=102, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크2(self.ctx)
@@ -68,7 +68,7 @@ class 타이머체크2(trigger_api.Trigger):
 class 스테이지3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer3', seconds=180, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[103], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=103, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크3(self.ctx)
@@ -87,7 +87,7 @@ class 타이머체크3(trigger_api.Trigger):
 class 스테이지4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer4', seconds=180, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[104], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=104, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크4(self.ctx)
@@ -105,7 +105,7 @@ class 타이머체크4(trigger_api.Trigger):
 class 스테이지5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer5', seconds=180, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[105], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=105, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크5(self.ctx)
@@ -123,7 +123,7 @@ class 타이머체크5(trigger_api.Trigger):
 class 스테이지6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer6', seconds=180, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[106], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=106, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크6(self.ctx)
@@ -141,7 +141,7 @@ class 타이머체크6(trigger_api.Trigger):
 class 스테이지7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer7', seconds=180, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[107], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=107, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크7(self.ctx)
@@ -159,7 +159,7 @@ class 타이머체크7(trigger_api.Trigger):
 class 스테이지8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer8', seconds=300, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[108], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=108, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크8(self.ctx)
@@ -177,7 +177,7 @@ class 타이머체크8(trigger_api.Trigger):
 class 스테이지9(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer9', seconds=300, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[109], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=109, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크9(self.ctx)
@@ -195,7 +195,7 @@ class 타이머체크9(trigger_api.Trigger):
 class 스테이지10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='LimitTimer10', seconds=300, start_delay=1)
-        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=[110], duration_tick=180000, npc_hp_step=100)
+        # self.set_npc_duel_hp_bar(is_open=True, spawn_id=110, duration_tick=180000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 타이머체크10(self.ctx)

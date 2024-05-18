@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[200015,200016,200017,200018], visible=False)
+        self.set_effect(trigger_ids=[200015,200016,200017,200018])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Phase_3_Interect_01') >= 1:
@@ -34,8 +34,8 @@ class 인터렉트_설정(trigger_api.Trigger):
 
 class 인터렉트_동작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[200015,200016,200017,200018], visible=False)
-        self.set_ai_extra_data(key='Shoot_Cannon_1', value=1, is_modify=False)
+        self.set_effect(trigger_ids=[200015,200016,200017,200018])
+        self.set_ai_extra_data(key='Shoot_Cannon_1', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -46,7 +46,7 @@ class 인터렉트_동작(trigger_api.Trigger):
 
 class 인터렉트_리셋(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ai_extra_data(key='Shoot_Cannon_1', value=0, is_modify=False)
+        self.set_ai_extra_data(key='Shoot_Cannon_1', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=15000):

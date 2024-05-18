@@ -13,7 +13,7 @@ class 시작(trigger_api.Trigger):
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[604])
         self.set_interact_object(trigger_ids=[10000334], state=0)
         self.spawn_monster(spawn_ids=[3002], auto_target=False)
 

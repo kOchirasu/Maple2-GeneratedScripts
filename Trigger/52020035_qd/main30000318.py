@@ -29,12 +29,12 @@ class 연출시작3_1(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[119])
         self.destroy_monster(spawn_ids=[120])
         self.destroy_monster(spawn_ids=[121])
-        self.spawn_monster(spawn_ids=[110], auto_target=False, delay=0) # 연출라딘
-        self.spawn_monster(spawn_ids=[117], auto_target=False, delay=0) # 연출웨이홍
-        self.spawn_monster(spawn_ids=[118], auto_target=False, delay=0) # 연출브리드민
-        self.spawn_monster(spawn_ids=[119], auto_target=False, delay=0) # 연출바사라첸
-        self.spawn_monster(spawn_ids=[120], auto_target=False, delay=0) # 연출하렌
-        self.spawn_monster(spawn_ids=[121], auto_target=False, delay=0) # 연출카일
+        self.spawn_monster(spawn_ids=[110], auto_target=False) # 연출라딘
+        self.spawn_monster(spawn_ids=[117], auto_target=False) # 연출웨이홍
+        self.spawn_monster(spawn_ids=[118], auto_target=False) # 연출브리드민
+        self.spawn_monster(spawn_ids=[119], auto_target=False) # 연출바사라첸
+        self.spawn_monster(spawn_ids=[120], auto_target=False) # 연출하렌
+        self.spawn_monster(spawn_ids=[121], auto_target=False) # 연출카일
         self.select_camera_path(path_ids=[4026], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 연출시작3_1(trigger_api.Trigger):
 
 class 뒷이야기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=8, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=8, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11003754, msg='크크큭... 착한 연기 잘 하는군. 라딘.', duration=3000)
         self.set_scene_skip(state=끝, action='exit')
 
@@ -107,10 +107,10 @@ class 끝(trigger_api.Trigger):
 
 class 초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=9, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=9, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.visible_my_pc(is_visible=True)
         self.move_user(map_id=2020012, portal_id=1)
         self.destroy_monster(spawn_ids=[111])

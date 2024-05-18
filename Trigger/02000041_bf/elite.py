@@ -13,7 +13,7 @@ class 생성(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='30', seconds=30, start_delay=0, interval=0)
+        self.set_timer(timer_id='30', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='30'):

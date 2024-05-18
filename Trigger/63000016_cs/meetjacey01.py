@@ -5,11 +5,11 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='Guide')
-        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=True)
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0) # MonitorOff
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # MonitorOn
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[6000], visible=False) # RadioInterference
+        self.set_portal(portal_id=2, visible=True, minimap_visible=True)
+        self.set_mesh(trigger_ids=[3000], visible=True) # MonitorOff
+        self.set_mesh(trigger_ids=[3001]) # MonitorOn
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[6000]) # RadioInterference
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -55,7 +55,7 @@ class WalkIn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.move_user_path(patrol_name='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +65,7 @@ class WalkIn02(trigger_api.Trigger):
 
 class WalkIn03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -86,7 +86,7 @@ class MeetJacey02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -244,7 +244,7 @@ class PatrolWithJacey01(trigger_api.Trigger):
 
 class PatrolWithJacey02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=101, script='$63000016_CS__MEETJACEY01__6$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$63000016_CS__MEETJACEY01__6$', time=3)
         self.set_dialogue(type=1, spawn_id=101, script='$63000016_CS__MEETJACEY01__7$', time=3, arg5=3)
         self.set_dialogue(type=1, spawn_id=101, script='$63000016_CS__MEETJACEY01__8$', time=3, arg5=6)
 
@@ -255,7 +255,7 @@ class PatrolWithJacey02(trigger_api.Trigger):
 
 class PatrolWithJacey03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=101, script='$63000016_CS__MEETJACEY01__9$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$63000016_CS__MEETJACEY01__9$', time=3)
         self.set_dialogue(type=1, spawn_id=101, script='$63000016_CS__MEETJACEY01__10$', time=3, arg5=3)
         self.set_dialogue(type=1, spawn_id=101, script='$63000016_CS__MEETJACEY01__11$', time=3, arg5=6)
 
@@ -278,7 +278,7 @@ class CallNextRoom01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -287,8 +287,8 @@ class CallNextRoom01(trigger_api.Trigger):
 
 class CallNextRoom02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=100, interval=0, fade=0) # MonitorOff
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # MonitorOn
+        self.set_mesh(trigger_ids=[3000], start_delay=100) # MonitorOff
+        self.set_mesh(trigger_ids=[3001], visible=True) # MonitorOn
         self.set_effect(trigger_ids=[6000], visible=True) # RadioInterference
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -315,7 +315,7 @@ class CallNextRoom04(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[101])
         self.spawn_monster(spawn_ids=[102], auto_target=False)
         self.select_camera(trigger_id=700, enable=False)
-        self.set_effect(trigger_ids=[6000], visible=False) # RadioInterference
+        self.set_effect(trigger_ids=[6000]) # RadioInterference
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

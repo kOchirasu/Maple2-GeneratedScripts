@@ -17,10 +17,10 @@ class 대기(trigger_api.Trigger):
 class 열기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=2)
-        self.set_effect(trigger_ids=[8031], visible=False)
-        self.set_effect(trigger_ids=[8032], visible=False)
-        self.set_mesh(trigger_ids=[169,170], visible=False)
-        self.spawn_monster(spawn_ids=[1012], auto_target=True)
+        self.set_effect(trigger_ids=[8031])
+        self.set_effect(trigger_ids=[8032])
+        self.set_mesh(trigger_ids=[169,170])
+        self.spawn_monster(spawn_ids=[1012])
         self.set_dialogue(type=1, spawn_id=1012, script='$02000252_BF__DOOR_01__0$', time=2)
         self.move_npc(spawn_id=1012, patrol_name='MS2PatrolData_3')
 

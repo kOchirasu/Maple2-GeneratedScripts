@@ -7,9 +7,9 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000504], state=2)
         self.set_interact_object(trigger_ids=[12000505], state=2)
         self.set_interact_object(trigger_ids=[12000506], state=2)
-        # self.set_visible_breakable_object(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010], visible=False)
-        # self.set_visible_breakable_object(trigger_ids=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020], visible=False)
-        # self.set_visible_breakable_object(trigger_ids=[1021,1022], visible=False)
+        # self.set_visible_breakable_object(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010])
+        # self.set_visible_breakable_object(trigger_ids=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020])
+        # self.set_visible_breakable_object(trigger_ids=[1021,1022])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Block') >= 1:
@@ -26,7 +26,7 @@ class 대기(trigger_api.Trigger):
 class Block_1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1104,1150,1151,1152,1157,1158,1159,1160,1161]):
-            self.side_npc_talk(type='talk', npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_1__0$', duration=5000)
+            self.side_npc_talk(npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_1__0$', duration=5000)
             self.set_interact_object(trigger_ids=[12000504], state=1)
             self.spawn_monster(spawn_ids=[1107], auto_target=False)
             self.spawn_monster(spawn_ids=[1108], auto_target=False)
@@ -35,7 +35,7 @@ class Block_1(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1211,1212,1213,1214,1215,1216,1217,1218,1219,1220], auto_target=False)
             self.spawn_monster(spawn_ids=[1221,1222,1223,1224], auto_target=False)
             self.spawn_monster(spawn_ids=[30001,30002,30003,30004], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=102, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=102)
             self.enable_spawn_point_pc(spawn_id=103, is_enable=True)
             return CableOn_04(self.ctx)
 
@@ -43,7 +43,7 @@ class Block_1(trigger_api.Trigger):
 class Block_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1105,1153,1154,1162,1163,1164,1165,1166]):
-            self.side_npc_talk(type='talk', npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_1__1$', duration=5000)
+            self.side_npc_talk(npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_1__1$', duration=5000)
             self.set_interact_object(trigger_ids=[12000505], state=1)
             self.spawn_monster(spawn_ids=[1107], auto_target=False)
             self.spawn_monster(spawn_ids=[1108], auto_target=False)
@@ -52,7 +52,7 @@ class Block_2(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1211,1212,1213,1214,1215,1216,1217,1218,1219,1220], auto_target=False)
             self.spawn_monster(spawn_ids=[1221,1222,1223,1224], auto_target=False)
             self.spawn_monster(spawn_ids=[30001,30002,30003,30004], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=102, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=102)
             self.enable_spawn_point_pc(spawn_id=104, is_enable=True)
             return CableOn_05(self.ctx)
 
@@ -60,7 +60,7 @@ class Block_2(trigger_api.Trigger):
 class Block_3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1106,1155,1156,1167,1168,1169,1170,1171,1172]):
-            self.side_npc_talk(type='talk', npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_1__2$', duration=5000)
+            self.side_npc_talk(npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_1__2$', duration=5000)
             self.set_interact_object(trigger_ids=[12000506], state=1)
             self.spawn_monster(spawn_ids=[1107], auto_target=False)
             self.spawn_monster(spawn_ids=[1108], auto_target=False)
@@ -69,7 +69,7 @@ class Block_3(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1211,1212,1213,1214,1215,1216,1217,1218,1219,1220], auto_target=False)
             self.spawn_monster(spawn_ids=[1221,1222,1223,1224], auto_target=False)
             self.spawn_monster(spawn_ids=[30001,30002,30003,30004], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=102, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=102)
             self.enable_spawn_point_pc(spawn_id=105, is_enable=True)
             return CableOn_06(self.ctx)
 
@@ -79,7 +79,7 @@ class CableOn_04(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000504], state=0):
             self.set_interact_object(trigger_ids=[12000504], state=0)
             self.destroy_monster(spawn_ids=[30003,30004], arg2=False)
-            self.set_mesh(trigger_ids=[1100101,1100102,1100103,1100104,1100105,1100106,1100107,1100108,1100109,1100110], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[1100101,1100102,1100103,1100104,1100105,1100106,1100107,1100108,1100109,1100110])
             return CableDelay_04(self.ctx)
 
 
@@ -88,7 +88,7 @@ class CableOn_05(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000505], state=0):
             self.set_interact_object(trigger_ids=[12000505], state=0)
             self.destroy_monster(spawn_ids=[30001,30002,30004], arg2=False)
-            self.set_mesh(trigger_ids=[1100201,1100202,1100203,1100204,1100205,1100206,1100207,1100208,1100209,1100210], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[1100201,1100202,1100203,1100204,1100205,1100206,1100207,1100208,1100209,1100210])
             return CableDelay_05(self.ctx)
 
 
@@ -97,7 +97,7 @@ class CableOn_06(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000506], state=0):
             self.set_interact_object(trigger_ids=[12000506], state=0)
             self.destroy_monster(spawn_ids=[30001,30002,30003], arg2=False)
-            self.set_mesh(trigger_ids=[1100301,1100302,1100303,1100304,1100305,1100306,1100307,1100308,1100309,1100310], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[1100301,1100302,1100303,1100304,1100305,1100306,1100307,1100308,1100309,1100310])
             return CableDelay_06(self.ctx)
 
 

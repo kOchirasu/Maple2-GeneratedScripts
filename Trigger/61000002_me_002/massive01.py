@@ -24,7 +24,7 @@ class 퍼즐대기중(trigger_api.Trigger):
         self.set_actor(trigger_id=260, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Opened')
         self.set_actor(trigger_id=261, visible=True, initial_sequence='Eff_MassiveEvent_Door_Opened')
         self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=True)
-        self.set_portal(portal_id=777, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=777, enable=True)
         self.set_portal(portal_id=778, visible=True, enable=True, minimap_visible=True)
         self.set_portal(portal_id=779, visible=True, enable=True, minimap_visible=True)
 
@@ -36,7 +36,7 @@ class 퍼즐대기중(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.set_actor(trigger_id=261, visible=True, initial_sequence='Eff_MassiveEvent_Door_Vanished')
-        self.set_portal(portal_id=777, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=777)
 
 
 class 계단없애기(trigger_api.Trigger):
@@ -49,13 +49,13 @@ class 계단없애기(trigger_api.Trigger):
             return 계단없애기2(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[206,207,208,209,210,211], visible=False)
+        self.set_mesh(trigger_ids=[206,207,208,209,210,211])
         self.set_actor(trigger_id=256, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(trigger_id=257, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(trigger_id=258, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(trigger_id=259, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(trigger_id=260, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
-        self.set_actor(trigger_id=261, visible=False, initial_sequence='Eff_MassiveEvent_Door_Vanished')
+        self.set_actor(trigger_id=261, initial_sequence='Eff_MassiveEvent_Door_Vanished')
         self.reset_timer(timer_id='1')
 
 
@@ -68,17 +68,17 @@ class 계단없애기2(trigger_api.Trigger):
             return 시작대기(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[201,202,203,204,205], visible=False)
+        self.set_mesh(trigger_ids=[201,202,203,204,205])
         self.set_actor(trigger_id=251, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(trigger_id=252, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(trigger_id=253, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(trigger_id=254, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(trigger_id=255, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Closed')
-        self.set_actor(trigger_id=256, visible=False, initial_sequence='Eff_MassiveEvent_Stair_Closed')
-        self.set_actor(trigger_id=257, visible=False, initial_sequence='Eff_MassiveEvent_Stair_Closed')
-        self.set_actor(trigger_id=258, visible=False, initial_sequence='Eff_MassiveEvent_Stair_Closed')
-        self.set_actor(trigger_id=259, visible=False, initial_sequence='Eff_MassiveEvent_Stair_Closed')
-        self.set_actor(trigger_id=260, visible=False, initial_sequence='Eff_MassiveEvent_Stair_Closed')
+        self.set_actor(trigger_id=256, initial_sequence='Eff_MassiveEvent_Stair_Closed')
+        self.set_actor(trigger_id=257, initial_sequence='Eff_MassiveEvent_Stair_Closed')
+        self.set_actor(trigger_id=258, initial_sequence='Eff_MassiveEvent_Stair_Closed')
+        self.set_actor(trigger_id=259, initial_sequence='Eff_MassiveEvent_Stair_Closed')
+        self.set_actor(trigger_id=260, initial_sequence='Eff_MassiveEvent_Stair_Closed')
         self.reset_timer(timer_id='1')
 
 
@@ -105,7 +105,7 @@ class 멘트0(trigger_api.Trigger):
         self.set_achievement(trigger_id=301, type='trigger', achieve='finalsurvivor_start')
         # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
         self.set_achievement(trigger_id=301, type='trigger', achieve='dailyquest_start')
-        self.give_guild_exp(box_id=0, type=2)
+        self.give_guild_exp(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -173,7 +173,7 @@ class 퍼즐단계1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.start_mini_game_round(box_id=301, round=1)
         self.set_timer(timer_id='1', seconds=40)
-        self.set_random_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=False, start_delay=20, interval=0, fade=2000)
+        self.set_random_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], start_delay=20, fade=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -222,7 +222,7 @@ class 퍼즐단계2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.start_mini_game_round(box_id=301, round=2)
         self.set_timer(timer_id='1', seconds=30)
-        self.set_random_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=False, start_delay=30, interval=0, fade=1000)
+        self.set_random_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], start_delay=30, fade=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -271,7 +271,7 @@ class 퍼즐단계3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.start_mini_game_round(box_id=301, round=3)
         self.set_timer(timer_id='1', seconds=15)
-        self.set_random_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=False, start_delay=30, interval=0, fade=500)
+        self.set_random_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], start_delay=30, fade=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -320,7 +320,7 @@ class 퍼즐단계4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.start_mini_game_round(box_id=301, round=4)
         self.set_timer(timer_id='1', seconds=5)
-        self.set_random_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=False, start_delay=15, interval=0, fade=200)
+        self.set_random_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], start_delay=15, fade=200)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -362,7 +362,7 @@ class 우승자카메라연출(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
-            self.set_local_camera(camera_id=901, enable=False)
+            self.set_local_camera(camera_id=901)
             return 보상단계(self.ctx)
 
 
@@ -427,7 +427,7 @@ class 퍼즐종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.unset_mini_game_area_for_hack() # 해킹 보안 종료
         self.set_event_ui(type=0, arg2='0,0')
-        self.set_portal(portal_id=777, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=777, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -443,7 +443,7 @@ class 실패(trigger_api.Trigger):
         self.play_system_sound_in_box(box_ids=[301], sound='ME_001_Massive00_14')
         self.set_event_ui(type=5, arg2='$61000002_ME_002__MASSIVE01__13$', arg3='5000')
         self.set_mesh(trigger_ids=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=True)
-        self.set_portal(portal_id=777, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=777, enable=True)
         self.set_mesh(trigger_ids=[201,202,203,204,205], visible=True)
         self.set_actor(trigger_id=251, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Opened')
         self.set_actor(trigger_id=252, visible=True, initial_sequence='Eff_MassiveEvent_Stair_Opened')
@@ -486,7 +486,7 @@ class 유저이동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=120000):
-            self.move_user(map_id=0, portal_id=0)
+            self.move_user()
             return 종료(self.ctx)
 
 

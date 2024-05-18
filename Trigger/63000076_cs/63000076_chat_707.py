@@ -10,7 +10,7 @@ class 준비(trigger_api.Trigger):
 
 class 잡담_01_707(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=119, msg='$63000076_CS__63000076_CHAT_707__0$', duration=2500, delay_tick=0) # 이거 이거 열어봐도 돼요?
+        self.add_balloon_talk(spawn_id=119, msg='$63000076_CS__63000076_CHAT_707__0$', duration=2500) # 이거 이거 열어봐도 돼요?
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -19,7 +19,7 @@ class 잡담_01_707(trigger_api.Trigger):
 
 class 잡담_02_707(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=119, msg='$63000076_CS__63000076_CHAT_707__1$', duration=2500, delay_tick=0) # 안 돼요?
+        self.add_balloon_talk(spawn_id=119, msg='$63000076_CS__63000076_CHAT_707__1$', duration=2500) # 안 돼요?
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):

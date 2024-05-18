@@ -4,11 +4,11 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[4200], visible=False, enable=False, fade=0) # Ladder_Shortcut
-        self.set_ladder(trigger_ids=[4201], visible=False, enable=False, fade=0) # Ladder_Shortcut
-        self.set_ladder(trigger_ids=[4202], visible=False, enable=False, fade=0) # Ladder_Shortcut
-        self.set_ladder(trigger_ids=[4203], visible=False, enable=False, fade=0) # Ladder_Shortcut
-        self.set_interact_object(trigger_ids=[10001128], state=0, arg4=False) # LeverForLadder
+        self.set_ladder(trigger_ids=[4200]) # Ladder_Shortcut
+        self.set_ladder(trigger_ids=[4201]) # Ladder_Shortcut
+        self.set_ladder(trigger_ids=[4202]) # Ladder_Shortcut
+        self.set_ladder(trigger_ids=[4203]) # Ladder_Shortcut
+        self.set_interact_object(trigger_ids=[10001128], state=0) # LeverForLadder
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9200, spawn_ids=[101]):

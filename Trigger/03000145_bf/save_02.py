@@ -5,7 +5,7 @@ import trigger_api
 class 트리거초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='10', seconds=1)
-        self.set_mesh(trigger_ids=[2001], visible=False, fade=1)
+        self.set_mesh(trigger_ids=[2001], fade=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):
@@ -27,7 +27,7 @@ class 대기(trigger_api.Trigger):
 class 문열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=1)
-        self.set_mesh(trigger_ids=[2001], visible=True, fade=1)
+        self.set_mesh(trigger_ids=[2001], visible=True, fade=1.0)
         self.destroy_monster(spawn_ids=[201])
         self.destroy_monster(spawn_ids=[202])
         self.destroy_monster(spawn_ids=[203])
@@ -43,7 +43,7 @@ class 문열림(trigger_api.Trigger):
 class 도망갈준비1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='2', seconds=2)
-        self.set_dialogue(type=1, spawn_id=211, script='$03000145_BF__SAVE_02__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=211, script='$03000145_BF__SAVE_02__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -53,7 +53,7 @@ class 도망갈준비1(trigger_api.Trigger):
 class 도망갈준비2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=3)
-        self.set_dialogue(type=1, spawn_id=212, script='$03000145_BF__SAVE_02__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=212, script='$03000145_BF__SAVE_02__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -63,7 +63,7 @@ class 도망갈준비2(trigger_api.Trigger):
 class 도망갈준비3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='4', seconds=1)
-        self.set_dialogue(type=1, spawn_id=213, script='$03000145_BF__SAVE_02__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=213, script='$03000145_BF__SAVE_02__2$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='4'):
@@ -83,7 +83,7 @@ class 도망시작(trigger_api.Trigger):
 class 도망중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='6', seconds=4)
-        self.set_dialogue(type=1, spawn_id=212, script='$03000145_BF__SAVE_02__3$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=212, script='$03000145_BF__SAVE_02__3$', time=2)
         self.set_dialogue(type=1, spawn_id=211, script='$03000145_BF__SAVE_02__4$', time=2, arg5=1)
         self.set_dialogue(type=1, spawn_id=213, script='$03000145_BF__SAVE_02__5$', time=2, arg5=2)
 

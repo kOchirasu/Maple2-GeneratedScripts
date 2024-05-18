@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[103], auto_target=True)
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
+        self.spawn_monster(spawn_ids=[103])
+        self.spawn_monster(spawn_ids=[202])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[10002781], quest_states=[1]):
@@ -57,8 +57,8 @@ class 영감대화02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=3)
         self.set_dialogue(type=2, spawn_id=11000001, script='$52000005_QD__ACT01__1$', time=3)
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
+        self.spawn_monster(spawn_ids=[201])
         self.set_skip(state=여제입장01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class 여제입장01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_timer(timer_id='10', seconds=1)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):

@@ -4,11 +4,11 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[4101], visible=False)
-        self.set_effect(trigger_ids=[4102], visible=False)
-        self.set_mesh(trigger_ids=[1100], visible=True, start_delay=0, interval=0, fade=0) # barrier
-        self.set_mesh(trigger_ids=[1101], visible=True, start_delay=0, interval=0, fade=0) # barrier
+        self.set_portal(portal_id=2)
+        self.set_effect(trigger_ids=[4101])
+        self.set_effect(trigger_ids=[4102])
+        self.set_mesh(trigger_ids=[1100], visible=True) # barrier
+        self.set_mesh(trigger_ids=[1101], visible=True) # barrier
         self.set_actor(trigger_id=2100, visible=True, initial_sequence='Closed') # door
         self.set_actor(trigger_id=2101, visible=True, initial_sequence='Closed') # door
         self.set_agent(trigger_ids=[3101], visible=True)
@@ -37,21 +37,21 @@ class 전투시작(trigger_api.Trigger):
 
 class 문열기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1100], visible=False, start_delay=0, interval=0, fade=0) # barrier
-        self.set_mesh(trigger_ids=[1101], visible=False, start_delay=0, interval=0, fade=0) # barrier
+        self.set_mesh(trigger_ids=[1100]) # barrier
+        self.set_mesh(trigger_ids=[1101]) # barrier
         self.set_effect(trigger_ids=[4101], visible=True)
         self.set_effect(trigger_ids=[4102], visible=True)
         self.set_actor(trigger_id=2100, visible=True, initial_sequence='Opened') # door
         self.set_actor(trigger_id=2101, visible=True, initial_sequence='Opened') # door
-        self.set_agent(trigger_ids=[3101], visible=False)
-        self.set_agent(trigger_ids=[3102], visible=False)
-        self.set_agent(trigger_ids=[3103], visible=False)
-        self.set_agent(trigger_ids=[3104], visible=False)
-        self.set_agent(trigger_ids=[3105], visible=False)
-        self.set_agent(trigger_ids=[3106], visible=False)
-        self.set_agent(trigger_ids=[3107], visible=False)
-        self.set_agent(trigger_ids=[3108], visible=False)
-        self.set_agent(trigger_ids=[3109], visible=False)
+        self.set_agent(trigger_ids=[3101])
+        self.set_agent(trigger_ids=[3102])
+        self.set_agent(trigger_ids=[3103])
+        self.set_agent(trigger_ids=[3104])
+        self.set_agent(trigger_ids=[3105])
+        self.set_agent(trigger_ids=[3106])
+        self.set_agent(trigger_ids=[3107])
+        self.set_agent(trigger_ids=[3108])
+        self.set_agent(trigger_ids=[3109])
         self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
 
 

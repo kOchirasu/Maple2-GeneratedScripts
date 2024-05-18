@@ -5,8 +5,8 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Box34Check', value=10)
-        self.set_mesh(trigger_ids=[534], visible=True, start_delay=0, interval=0, fade=0) # 34 / Ground outter
-        self.set_mesh(trigger_ids=[5340], visible=True, start_delay=0, interval=0, fade=0) # 34 / Ground inner
+        self.set_mesh(trigger_ids=[534], visible=True) # 34 / Ground outter
+        self.set_mesh(trigger_ids=[5340], visible=True) # 34 / Ground inner
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Box34Check') >= 0:
@@ -71,7 +71,7 @@ class Sensor5(trigger_api.Trigger):
 class Pass(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(box_ids=[9340], sound='DDStop_Stage_Pass_01')
-        self.set_mesh(trigger_ids=[534], visible=False, start_delay=0, interval=0, fade=2) # 34 / Ground outter
+        self.set_mesh(trigger_ids=[534], fade=2.0) # 34 / Ground outter
         self.set_user_value(trigger_id=7340, key='ColorReset', value=1) # color reset
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,8 +82,8 @@ class Pass(trigger_api.Trigger):
 class Fail(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(box_ids=[9340], sound='DDStop_Stage_Fail_01')
-        self.set_mesh(trigger_ids=[534], visible=False, start_delay=0, interval=0, fade=2) # 34 / Ground outter
-        self.set_mesh(trigger_ids=[5340], visible=False, start_delay=0, interval=0, fade=0) # 34 / Ground inner
+        self.set_mesh(trigger_ids=[534], fade=2.0) # 34 / Ground outter
+        self.set_mesh(trigger_ids=[5340]) # 34 / Ground inner
         self.set_user_value(trigger_id=7340, key='ColorClear', value=1) # color clear
 
     def on_tick(self) -> trigger_api.Trigger:

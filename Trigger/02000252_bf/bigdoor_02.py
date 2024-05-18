@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 class 열기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawn_ids=[9001], trigger_id=998)
-        self.set_mesh(trigger_ids=[165,166,167,168], visible=False)
+        self.set_mesh(trigger_ids=[165,166,167,168])
 
 
 initial_state = 대기

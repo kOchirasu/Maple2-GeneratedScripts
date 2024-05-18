@@ -1,5 +1,6 @@
 """ trigger/52020035_qd/main30000316.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 # 퀘스트 이후 라딘의 막사로 PC이동
@@ -25,8 +26,8 @@ class 연출시작_02(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.visible_my_pc(is_visible=False)
-        self.spawn_monster(spawn_ids=[101], auto_target=False, delay=0) # 연출라딘
-        self.spawn_monster(spawn_ids=[102], auto_target=False, delay=0) # 연출연구원
+        self.spawn_monster(spawn_ids=[101], auto_target=False) # 연출라딘
+        self.spawn_monster(spawn_ids=[102], auto_target=False) # 연출연구원
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -36,9 +37,9 @@ class 연출시작_02(trigger_api.Trigger):
 # 라딘 이야기
 class 라딘이야기01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=Skip01, action='exit')
-        self.show_caption(type='VerticalCaption', title='라딘의 막사', desc='$MyPCName$$pp:가,이$ 떠난 직후', align='centerLeft', offset_rate_x=0, offset_rate_y=0, duration=4000, scale=2)
+        self.show_caption(type='VerticalCaption', title='라딘의 막사', desc='$MyPCName$$pp:가,이$ 떠난 직후', align=Align.Center | Align.Left, duration=4000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -47,7 +48,7 @@ class 라딘이야기01(trigger_api.Trigger):
 
 class 라딘이야기01_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Bore_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Bore_A', duration=3000.0)
         self.add_cinematic_talk(npc_id=11003750, msg='…이런 일이 있었다고 합니다.', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +90,7 @@ class 라딘이야기01_04(trigger_api.Trigger):
 class 라딘이야기02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4013], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000.0)
         self.add_cinematic_talk(npc_id=11003753, msg='가질, 아무래도 그 자들과 다시 한번 거래를 해야할 것 같으니 연락 좀 해주게.', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -143,7 +144,7 @@ class 화면암전(trigger_api.Trigger):
 class 흑성회입장전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[101])
         self.destroy_monster(spawn_ids=[102])
 
@@ -154,7 +155,7 @@ class 흑성회입장전(trigger_api.Trigger):
 
 class 흑성회등장직전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='잠시 후, 라딘의 막사', arg3=False)
+        self.set_cinematic_ui(type=9, script='잠시 후, 라딘의 막사')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -165,12 +166,12 @@ class 흑성회입장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.spawn_monster(spawn_ids=[116], auto_target=False, delay=0) # 바사라첸
-        self.spawn_monster(spawn_ids=[109], auto_target=False, delay=0) # 브리드민
-        self.spawn_monster(spawn_ids=[104], auto_target=False, delay=0) # 웨이홍
-        self.spawn_monster(spawn_ids=[103], auto_target=False, delay=0) # 연출라딘
-        self.spawn_monster(spawn_ids=[122], auto_target=False, delay=0) # 흑성회 대원1
-        self.spawn_monster(spawn_ids=[123], auto_target=False, delay=0) # 흑성회 대원2
+        self.spawn_monster(spawn_ids=[116], auto_target=False) # 바사라첸
+        self.spawn_monster(spawn_ids=[109], auto_target=False) # 브리드민
+        self.spawn_monster(spawn_ids=[104], auto_target=False) # 웨이홍
+        self.spawn_monster(spawn_ids=[103], auto_target=False) # 연출라딘
+        self.spawn_monster(spawn_ids=[122], auto_target=False) # 흑성회 대원1
+        self.spawn_monster(spawn_ids=[123], auto_target=False) # 흑성회 대원2
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -179,7 +180,7 @@ class 흑성회입장(trigger_api.Trigger):
 
 class 흑성회입장_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[4032], return_view=False) # 흑성회 브리드민, 바라세첸 쪽
         self.add_cinematic_talk(npc_id=11003754, msg='이런곳까지 불러내다니... 다시봤구만, 나으리.', duration=5000)
 
@@ -241,7 +242,7 @@ class 손님맞이_03(trigger_api.Trigger):
 
 class 손님맞이_03_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_rotation(spawn_id=109, rotation=90)
+        self.set_npc_rotation(spawn_id=109, rotation=90.0)
         self.set_npc_emotion_sequence(spawn_id=109, sequence_name='Bore_A')
         self.add_cinematic_talk(npc_id=11003758, msg='형… 알았어요.\\n대신 일이 끝나면 꼭 같이…', duration=3000)
 
@@ -254,7 +255,7 @@ class 흑성회와이야기시작01_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4020], return_view=False)
         self.add_cinematic_talk(npc_id=11003753, msg='하하, 흑성회가 자랑하는 천재 전략가가 이런 어린 소년일줄이야.\\n과연 웨이 홍이 자랑할만하군.', duration=3000)
-        self.set_npc_rotation(spawn_id=109, rotation=-360) # 브리드민 원래대로
+        self.set_npc_rotation(spawn_id=109, rotation=-360.0) # 브리드민 원래대로
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -331,7 +332,7 @@ class 흑성회와이야기시작04(trigger_api.Trigger):
 class 흑성회와이야기시작04_라딘과웨이홍(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4021], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=5000.0)
         self.add_cinematic_talk(npc_id=11003754, msg='장사 한 두 번 하는 것도 아니고, 그런 말에 내가 속아 넘어갈 것으로 보이시나 보지?\\n두 번이나 당할 정도로 이 웨이 홍이 어리석진 않은데 말이야.', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -342,7 +343,7 @@ class 흑성회와이야기시작04_라딘과웨이홍(trigger_api.Trigger):
 class 흑성회와이야기시작04_라딘과웨이홍_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4020], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=18000)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=18000.0)
         self.add_cinematic_talk(npc_id=11003753, msg='자네의 리소스를 활용하여 우리 연구원들의 안전한 자료 수집 및 조사를 지원한다.', duration=4000)
         self.add_cinematic_talk(npc_id=11003753, msg='그리고 이를 통해 나는 사라졌던 크리티아스의 기술력을 손에 넣고\\n자네는 우리가 개발할 최첨단 장비들을 제공받는다.', duration=5000)
         self.add_cinematic_talk(npc_id=11003753, msg='난 이게 우리의 계약이었던 것으로 기억하네만…\\n계약을 어기고 멋대로 이오네 왕녀를 추적한 것은 자네가 먼저였던 것 같은데?', duration=5000)
@@ -356,7 +357,7 @@ class 흑성회와이야기시작04_라딘과웨이홍_02(trigger_api.Trigger):
 class 흑성회와이야기시작04_라딘과웨이홍_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4021], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=10000)
+        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=10000.0)
         self.add_balloon_talk(spawn_id=123, msg='건방진..', duration=3000)
         self.add_balloon_talk(spawn_id=122, msg='감히!', duration=3000)
         self.add_cinematic_talk(npc_id=11003754, msg='흥, 기술력을 손에 넣고나면 순순히 약속을 지킬 정도로\\n당신이 믿음직한 사람인줄 아나?', duration=4000)
@@ -383,7 +384,7 @@ class 흑성회와이야기시작04_라딘과웨이홍_04(trigger_api.Trigger):
 class 흑성회와이야기시작04_라딘과웨이홍_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4021], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=7000)
+        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=7000.0)
         self.add_cinematic_talk(npc_id=11003754, msg='오호~ 그러신가?', duration=2000)
         self.add_cinematic_talk(npc_id=11003754, msg='$MyPCName$ 녀석 하나 제대로 못 막아준 덕분에\\n공들여 키운 장기말을 써먹을 수가 없는 상황이 되었는데?', duration=4000)
 
@@ -407,7 +408,7 @@ class 흑성회와이야기시작04_라딘과웨이홍_06(trigger_api.Trigger):
 class 흑성회와이야기시작04_라딘과웨이홍_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4021], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=8000)
+        self.set_npc_emotion_loop(spawn_id=104, sequence_name='Talk_A', duration=8000.0)
         self.add_cinematic_talk(npc_id=11003754, msg='서로 언제 뒤통수를 칠 지 모르는데도 어쩔 수 없는 동맹이라…\\n크큭. 왕족 나리께서 제법 모험도 하시는군.', duration=4000)
         self.add_cinematic_talk(npc_id=11003754, msg='좋소. 어디 원하는 바를 말해보시지 그래.', duration=3000)
 
@@ -482,7 +483,7 @@ class Skip01(trigger_api.Trigger):
 class 마을로이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.visible_my_pc(is_visible=True)
         self.move_user(map_id=2020014, portal_id=4)
 

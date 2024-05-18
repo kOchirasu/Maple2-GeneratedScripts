@@ -38,7 +38,7 @@ class 화면효과2(trigger_api.Trigger):
 class 화면효과3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=1)
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
         self.set_effect(trigger_ids=[402], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

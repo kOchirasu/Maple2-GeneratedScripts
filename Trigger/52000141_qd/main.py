@@ -26,7 +26,7 @@ class 카메라연출_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_B', duration=100000)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_B', duration=100000.0)
         self.select_camera_path(path_ids=[8001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,8 +36,8 @@ class 카메라연출_01(trigger_api.Trigger):
 
 class 카메라연출_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_0sec.xml')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_0sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.spawn_monster(spawn_ids=[101], auto_target=False)
         self.spawn_monster(spawn_ids=[102], auto_target=False)
 
@@ -221,8 +221,8 @@ class 루아나퇴장_02(trigger_api.Trigger):
 class 루아나퇴장_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[101])
-        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=100000)
-        self.face_emotion(spawn_id=0, emotion_name='Point_A')
+        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=100000.0)
+        self.face_emotion(emotion_name='Point_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -269,7 +269,7 @@ class 우울한PC_02(trigger_api.Trigger):
 class 프레데릭등장_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8008], return_view=False)
-        self.face_emotion(spawn_id=0, emotion_name='Think_A')
+        self.face_emotion(emotion_name='Think_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -329,7 +329,7 @@ class 프레데릭과대화_05(trigger_api.Trigger):
 class 프리스트의독백_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8008,8006], return_view=False)
-        self.face_emotion(spawn_id=0, emotion_name='Sit_Ground_Bore_A')
+        self.face_emotion(emotion_name='Sit_Ground_Bore_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -347,7 +347,7 @@ class 프리스트의독백_02(trigger_api.Trigger):
 
 class 프리스트의독백_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.face_emotion(spawn_id=0)
+        self.face_emotion()
         self.add_cinematic_talk(npc_id=0, msg='$52000141_QD__MAIN__28$', duration=3000)
         self.set_scene_skip() # Missing State: State
 

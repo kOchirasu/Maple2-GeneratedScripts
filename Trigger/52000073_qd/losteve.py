@@ -1,5 +1,6 @@
 """ trigger/52000073_qd/losteve.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 """
@@ -77,7 +78,7 @@ class 대원대사(trigger_api.Trigger):
         self.move_user_path(patrol_name='MS2PatrolData_pcTurn')
         self.select_camera_path(path_ids=[8003,8004], return_view=False)
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_2001')
-        self.add_cinematic_talk(npc_id=11003446, illust_id='0', msg='$52000073_QD__LOSTEVE__0$', duration=4000, align='right') # 호르헤 대사
+        self.add_cinematic_talk(npc_id=11003446, illust_id='0', msg='$52000073_QD__LOSTEVE__0$', duration=4000, align=Align.Right) # 호르헤 대사
         self.face_emotion(spawn_id=101, emotion_name='Upset')
         self.set_scene_skip(state=연출종료, action='exit')
 
@@ -88,7 +89,7 @@ class 대원대사(trigger_api.Trigger):
 
 class 카트반대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11000044, illust_id='0', msg='$52000073_QD__LOSTEVE__1$', duration=4000, align='right') # 호르헤 대사
+        self.add_cinematic_talk(npc_id=11000044, illust_id='0', msg='$52000073_QD__LOSTEVE__1$', duration=4000, align=Align.Right) # 호르헤 대사
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -98,7 +99,7 @@ class 카트반대사(trigger_api.Trigger):
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip() # Missing State: State
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

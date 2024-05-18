@@ -62,7 +62,7 @@ class 돌아가_대기(trigger_api.Trigger):
 class 지하피난처로돌아가(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52020004, portal_id=1)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -153,7 +153,7 @@ class 일어나00(trigger_api.Trigger):
 class 일어나01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11003667, illust_id='Krantz_normal', msg='이봐. 눈을 떠 봐.\\n정신이 드나?', duration=2000)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -163,8 +163,8 @@ class 일어나01(trigger_api.Trigger):
 class 일어나02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11003572, illust_id='Eone_normal', msg='흠, 부상은 크지 않은 것 같은데.', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
-        # self.set_pc_emotion_loop(sequence_name='Emotion_Sleep_Idle_A', duration=12000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000.0)
+        # self.set_pc_emotion_loop(sequence_name='Emotion_Sleep_Idle_A', duration=12000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -173,9 +173,9 @@ class 일어나02(trigger_api.Trigger):
 
 class 일어나03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        # self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11003667, illust_id='Krantz_normal', msg='그렇다면, 빠르게 정신이 들도록…\\n(스르릉, 하고 들려오는 이 소리는… 검을 뽑는 소리…?)', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -185,8 +185,8 @@ class 일어나03(trigger_api.Trigger):
 class 일어나04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11003572, illust_id='Eone_normal', msg='그 검으로 찌르면 정신이 들자마자 저 세상으로 가고 말걸.', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
-        self.set_pc_emotion_loop(sequence_name='Emotion_Sleep_Idle_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000.0)
+        self.set_pc_emotion_loop(sequence_name='Emotion_Sleep_Idle_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -195,9 +195,9 @@ class 일어나04(trigger_api.Trigger):
 
 class 일어나05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11003667, illust_id='Krantz_normal', msg='이 자의 운명이라면 받아들여야 할 터…. \\n그것이 세상의 아름다운 섭리입니다.', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -216,10 +216,10 @@ class 일어나06(trigger_api.Trigger):
 class 일어나07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8000], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11003572, illust_id='Eone_normal', msg='…눈을 떴군.', duration=2000)
-        self.set_pc_emotion_loop(sequence_name='Emotion_Surprise_A', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
+        self.set_pc_emotion_loop(sequence_name='Emotion_Surprise_A', duration=3000.0)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000.0)
         # Missing State: State,  setsceneskip 1 close
         self.set_scene_skip()
         # setsceneskip 1 close
@@ -243,8 +243,8 @@ class 일어나_스킵완료(trigger_api.Trigger):
 
 class 일어나_연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera(interpolation_time=2.0)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -272,7 +272,7 @@ class PC내보내기연출_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8000], return_view=False)
         self.move_user_path(patrol_name='MS2PatrolData_PC_Walkout')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -327,7 +327,7 @@ class 마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8002], return_view=False)
         self.add_cinematic_talk(npc_id=11003572, illust_id='Eone_normal', msg='1월까지 완료될 것이다.', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000.0)
         # Missing State: State,  setsceneskip 2 close
         self.set_scene_skip()
         # setsceneskip 2 close
@@ -351,7 +351,7 @@ class PC퇴장_스킵완료(trigger_api.Trigger):
 
 class PC퇴장_연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
@@ -366,7 +366,7 @@ class 최종맵이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=2020013, portal_id=10) # 블루탄 가도로 자동 이동
         self.visible_my_pc(is_visible=True)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

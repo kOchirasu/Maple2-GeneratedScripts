@@ -5,17 +5,17 @@ import trigger_api
 class 유저감지(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000066], state=1)
-        self.set_effect(trigger_ids=[201,202,211,212,221,222,231,232,241,242], visible=False)
-        self.set_ladder(trigger_ids=[101], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[102], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[111], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[112], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[121], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[122], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[131], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[132], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[141], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[142], visible=False, enable=False)
+        self.set_effect(trigger_ids=[201,202,211,212,221,222,231,232,241,242])
+        self.set_ladder(trigger_ids=[101])
+        self.set_ladder(trigger_ids=[102])
+        self.set_ladder(trigger_ids=[111])
+        self.set_ladder(trigger_ids=[112])
+        self.set_ladder(trigger_ids=[121])
+        self.set_ladder(trigger_ids=[122])
+        self.set_ladder(trigger_ids=[131])
+        self.set_ladder(trigger_ids=[132])
+        self.set_ladder(trigger_ids=[141])
+        self.set_ladder(trigger_ids=[142])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000066], state=0):

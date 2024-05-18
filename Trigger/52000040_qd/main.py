@@ -19,13 +19,13 @@ class ready(trigger_api.Trigger):
             return sb_ready_b_12(self.ctx)
         if self.quest_user_detected(box_ids=[701], quest_ids=[50001444], quest_states=[2]):
             # 소울바인더 퀘스트 진행
-            self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+            self.set_portal(portal_id=1)
             self.hide_guide_summary(entity_id=20020020)
             return sb_ready_b_02(self.ctx)
         if self.quest_user_detected(box_ids=[701], quest_ids=[50001443], quest_states=[3]):
             # 소울바인더 퀘스트 완료
             self.add_buff(box_ids=[701], skill_id=70000096, level=1) # 현기증 없애
-            self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+            self.set_portal(portal_id=1)
             self.hide_guide_summary(entity_id=20020020)
             return sb_ready_04(self.ctx)
         if self.quest_user_detected(box_ids=[701], quest_ids=[50001442], quest_states=[3]):
@@ -38,13 +38,13 @@ class ready(trigger_api.Trigger):
 
 class sb_ready_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[145], auto_target=True)
+        self.spawn_monster(spawn_ids=[145])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[50001443], quest_states=[2]):
             # 소울바인더 퀘스트 진행
             self.add_buff(box_ids=[701], skill_id=70000096, level=1) # 현기증 없애
-            self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+            self.set_portal(portal_id=1)
             self.hide_guide_summary(entity_id=20020020)
             return sb_ready_02(self.ctx)
 
@@ -62,8 +62,8 @@ class sb_ready_02(trigger_api.Trigger):
 
 class sb_ready_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[144], auto_target=True)
-        self.spawn_monster(spawn_ids=[145], auto_target=True)
+        self.spawn_monster(spawn_ids=[144])
+        self.spawn_monster(spawn_ids=[145])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[50001443], quest_states=[3]):
@@ -73,7 +73,7 @@ class sb_ready_03(trigger_api.Trigger):
 
 class sb_ready_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
         self.show_guide_summary(entity_id=40010, text_id=40010) # 모든 몬스터를  처치하세요
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +95,7 @@ class sb_ready_05(trigger_api.Trigger):
 
 class sb_ready_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Push_A', duration=5000)
+        self.set_pc_emotion_loop(sequence_name='Push_A', duration=5000.0)
         self.add_buff(box_ids=[701], skill_id=70000095, level=1) # 현기증 2단계 버프
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -130,7 +130,7 @@ class sb_ready_b_02(trigger_api.Trigger):
 
 class sb_ready_b_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[221,222,223], auto_target=True)
+        self.spawn_monster(spawn_ids=[221,222,223])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[7001,7002,7003], return_view=False)
@@ -156,7 +156,7 @@ class sb_ready_b_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001726, script='$52000040_QD__MAIN__26$', time=4)
         self.set_skip(state=sb_ready_b_07_skip)
-        self.set_npc_emotion_loop(spawn_id=221, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=221, sequence_name='Talk_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -176,7 +176,7 @@ class sb_ready_b_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001728, script='$52000040_QD__MAIN__27$', time=4)
         self.set_skip(state=sb_ready_b_08_skip)
-        self.set_npc_emotion_loop(spawn_id=222, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=222, sequence_name='Talk_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -196,7 +196,7 @@ class sb_ready_b_08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001726, script='$52000040_QD__MAIN__28$', time=4)
         self.set_skip(state=sb_ready_b_09_skip)
-        self.set_npc_emotion_loop(spawn_id=221, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=221, sequence_name='Talk_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -216,7 +216,7 @@ class sb_ready_b_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001724, script='$52000040_QD__MAIN__29$', time=4)
         self.set_skip(state=sb_ready_b_10_skip)
-        self.set_npc_emotion_loop(spawn_id=223, sequence_name='Talk_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=223, sequence_name='Talk_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -234,9 +234,9 @@ class sb_ready_b_10_skip(trigger_api.Trigger):
 
 class sb_ready_b_10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[145], auto_target=True)
+        self.spawn_monster(spawn_ids=[145])
         self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
-        self.select_camera_path(path_ids=[7010], return_view=True)
+        self.select_camera_path(path_ids=[7010])
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -253,8 +253,8 @@ class sb_ready_b_11(trigger_api.Trigger):
 
 class sb_ready_b_12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[145], auto_target=True)
-        self.spawn_monster(spawn_ids=[221,222,223], auto_target=True)
+        self.spawn_monster(spawn_ids=[145])
+        self.spawn_monster(spawn_ids=[221,222,223])
         self.move_npc(spawn_id=221, patrol_name='MS2PatrolData_2101')
         self.move_npc(spawn_id=222, patrol_name='MS2PatrolData_2102')
         self.move_npc(spawn_id=223, patrol_name='MS2PatrolData_2103')
@@ -262,7 +262,7 @@ class sb_ready_b_12(trigger_api.Trigger):
 
 class sb_ready_b_13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[145], auto_target=True)
+        self.spawn_monster(spawn_ids=[145])
 
 
 class sb_end(trigger_api.Trigger):
@@ -272,7 +272,7 @@ class sb_end(trigger_api.Trigger):
 class ready_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_2001')
-        self.spawn_monster(spawn_ids=[101,102], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,102])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[7001,7002,7003], return_view=False)
@@ -286,7 +286,7 @@ class ready_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001545, script='$52000040_QD__MAIN__0$', time=5)
         self.set_skip(state=ready_04_skip)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -306,7 +306,7 @@ class ready_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001545, script='$52000040_QD__MAIN__1$', time=5)
         self.set_skip(state=ready_05_skip)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -325,7 +325,7 @@ class ready_05_skip(trigger_api.Trigger):
 class ready_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001545, script='$52000040_QD__MAIN__2$', time=5)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=5000)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=5000.0)
         self.set_skip(state=ready_06_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -456,7 +456,7 @@ class start_01_ready(trigger_api.Trigger):
 class start_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[7005], return_view=False)
-        self.spawn_monster(spawn_ids=[103], auto_target=True)
+        self.spawn_monster(spawn_ids=[103])
         self.set_dialogue(type=2, spawn_id=11001545, script='$52000040_QD__MAIN__8$', time=5)
         self.set_skip(state=start_02_skip)
 
@@ -776,13 +776,13 @@ class start_19(trigger_api.Trigger):
 
 class start_20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[7010], return_view=True)
+        self.select_camera_path(path_ids=[7010])
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
             self.set_cinematic_ui(type=0)
-            self.spawn_monster(spawn_ids=[104,111,112], auto_target=True)
+            self.spawn_monster(spawn_ids=[104,111,112])
             self.set_cinematic_ui(type=2)
             return start_21(self.ctx)
 
@@ -799,7 +799,7 @@ class start_21(trigger_api.Trigger):
 
 class start_22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[104,111,112], auto_target=True)
+        self.spawn_monster(spawn_ids=[104,111,112])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[40002635], quest_states=[2]):

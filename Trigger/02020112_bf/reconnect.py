@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 class 버프쏴주기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(box_ids=[916], skill_id=70002105, level=1, is_skill_set=False)
-        self.set_timer(timer_id='1', seconds=5, start_delay=0, interval=0)
+        self.set_timer(timer_id='1', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Reconnect') >= 2:

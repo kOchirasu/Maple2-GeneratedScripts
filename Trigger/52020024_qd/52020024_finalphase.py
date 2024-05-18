@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[131,132,133,134,135,136], auto_target=True)
+        self.spawn_monster(spawn_ids=[131,132,133,134,135,136])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):

@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[701,702], visible=False)
+        self.set_mesh(trigger_ids=[701,702])
         self.destroy_monster(spawn_ids=[631,632,633,634,635,636,637,638,639])
 
     def on_tick(self) -> trigger_api.Trigger:

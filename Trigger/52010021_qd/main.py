@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False)
+        self.set_effect(trigger_ids=[7001])
         self.spawn_monster(spawn_ids=[101,102,103])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,13 +27,13 @@ class Event_01_Idle(trigger_api.Trigger):
 
 class Event_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
         self.spawn_monster(spawn_ids=[104])
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_2001')
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_2002')
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_2004')
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_2003')
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,7 +41,7 @@ class Event_01(trigger_api.Trigger):
             return Event_05(self.ctx)
 
     def on_exit(self) -> None:
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
 
 
 class Event_05(trigger_api.Trigger):

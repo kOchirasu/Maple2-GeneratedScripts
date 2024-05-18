@@ -15,7 +15,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.add_buff(box_ids=[199], skill_id=70000095, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -21,8 +21,8 @@ class 열림상태(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=3)
         self.set_effect(trigger_ids=[9000003], visible=True) # Sound EFfect on
-        self.set_mesh(trigger_ids=[6050,6051,6052,6053], visible=False, interval=200, fade=15) # 빨간선 사라지게
-        self.set_mesh(trigger_ids=[6150,6151,6152,6153], visible=True, interval=200, fade=15) # 파란선 나타나게
+        self.set_mesh(trigger_ids=[6050,6051,6052,6053], interval=200, fade=15.0) # 빨간선 사라지게
+        self.set_mesh(trigger_ids=[6150,6151,6152,6153], visible=True, interval=200, fade=15.0) # 파란선 나타나게
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):

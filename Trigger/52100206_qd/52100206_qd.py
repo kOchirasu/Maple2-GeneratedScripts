@@ -7,7 +7,7 @@ class start(trigger_api.Trigger):
         if self.check_user():
             self.visible_my_pc(is_visible=False) # 유저 투명 처리
             self.spawn_monster(spawn_ids=[2003], auto_target=False) # 검은 마법사
-            self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4067,4068,4069,4070,4071], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4067,4068,4069,4070,4071])
             return CameraEffect01(self.ctx)
 
 
@@ -32,7 +32,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[1006,1002,1005], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class CameraEffect03(trigger_api.Trigger):
 
 class CameraEffect04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[1005,1003], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,10 +71,10 @@ class CameraEffect06(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -83,10 +83,10 @@ class Quit(trigger_api.Trigger):
 
 class 버프부여(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
+        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'])
         self.visible_my_pc(is_visible=True) # 유저 투명 처리
         self.destroy_monster(spawn_ids=[2002])
-        self.add_buff(box_ids=[101], skill_id=99910280, level=1, is_player=False, is_skill_set=True) # 벨라 변신
+        self.add_buff(box_ids=[101], skill_id=99910280, level=1, is_player=False) # 벨라 변신
         self.add_buff(box_ids=[101], skill_id=99910280, level=1, is_player=False, is_skill_set=False) # 벨라 변신
         self.show_guide_summary(entity_id=25201503, text_id=25201503, duration=10000)
 
@@ -98,7 +98,7 @@ class 버프부여(trigger_api.Trigger):
 class 마법다리형성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(camera_id=1006, enable=True) # LocalTargetCamera
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4067,4068,4069,4070,4071], visible=True, start_delay=1000, interval=160, fade=0)
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4067,4068,4069,4070,4071], visible=True, start_delay=1000, interval=160)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9020]):
@@ -117,7 +117,7 @@ class 검마걸어나오는연출01(trigger_api.Trigger):
 
 class 검마걸어나오는연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera(trigger_id=1007, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -145,10 +145,10 @@ class 검마걸어나오는연출04(trigger_api.Trigger):
 
 class 검마걸어나오는연출05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_local_camera(camera_id=1005, enable=True) # LocalTargetCamera
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -168,7 +168,7 @@ class 완료연출01(trigger_api.Trigger):
 
 class 완료연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.move_user(map_id=52000087, portal_id=1)
 
 

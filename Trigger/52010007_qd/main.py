@@ -15,7 +15,7 @@ class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[1002,1003,1004], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class NPC이동2(trigger_api.Trigger):
 
 class 말풍선대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1003, script='$52010007_QD__MAIN__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1003, script='$52010007_QD__MAIN__2$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -78,7 +78,7 @@ class 말풍선대사01(trigger_api.Trigger):
 
 class 말풍선대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1003, script='$52010007_QD__MAIN__3$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1003, script='$52010007_QD__MAIN__3$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -87,7 +87,7 @@ class 말풍선대사02(trigger_api.Trigger):
 
 class 말풍선대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1004, script='$52010007_QD__MAIN__4$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1004, script='$52010007_QD__MAIN__4$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -119,7 +119,7 @@ class 타라이동(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawn_id=1004, patrol_name='MS2PatrolData_1004_C')
-        self.set_dialogue(type=1, spawn_id=1004, script='$52010007_QD__MAIN__6$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1004, script='$52010007_QD__MAIN__6$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -130,7 +130,7 @@ class 둔바이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1002])
         self.move_npc(spawn_id=1003, patrol_name='MS2PatrolData_1003_C')
-        self.set_dialogue(type=1, spawn_id=1003, script='$52010007_QD__MAIN__7$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1003, script='$52010007_QD__MAIN__7$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

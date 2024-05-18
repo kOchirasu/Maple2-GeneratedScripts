@@ -4,15 +4,15 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=30, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=31, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[836], visible=False) # light
-        self.set_effect(trigger_ids=[6000], visible=False) # DoorOpen vibrate
-        self.set_effect(trigger_ids=[6001], visible=False) # DoorOpen vibrate
-        self.set_effect(trigger_ids=[6002], visible=False) # DoorOpen vibrate
-        self.set_effect(trigger_ids=[6003], visible=False) # DoorOpen vibrate
-        self.set_mesh(trigger_ids=[1201,1202,1203,1204,1205,1206], visible=True, start_delay=0, interval=0, fade=0) # grating
-        self.set_mesh(trigger_ids=[12001,12002,12003,12004,12005,12006,12007,12008,12009,12010,12011,12012,12013,12014,12015,12016,12017,12018,12019,12020,12021,12022,12023,12024,12025,12026,12027,12028], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=30)
+        self.set_portal(portal_id=31)
+        self.set_effect(trigger_ids=[836]) # light
+        self.set_effect(trigger_ids=[6000]) # DoorOpen vibrate
+        self.set_effect(trigger_ids=[6001]) # DoorOpen vibrate
+        self.set_effect(trigger_ids=[6002]) # DoorOpen vibrate
+        self.set_effect(trigger_ids=[6003]) # DoorOpen vibrate
+        self.set_mesh(trigger_ids=[1201,1202,1203,1204,1205,1206], visible=True) # grating
+        self.set_mesh(trigger_ids=[12001,12002,12003,12004,12005,12006,12007,12008,12009,12010,12011,12012,12013,12014,12015,12016,12017,12018,12019,12020,12021,12022,12023,12024,12025,12026,12027,12028], visible=True)
         self.set_interact_object(trigger_ids=[10000836], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,8 +43,8 @@ class 포털개방01(trigger_api.Trigger):
         self.set_timer(timer_id='10', seconds=1)
         self.set_effect(trigger_ids=[836], visible=True) # light
         self.set_effect(trigger_ids=[6002], visible=True) # vibrate
-        self.set_mesh(trigger_ids=[1201,1202,1203,1204,1205,1206], visible=False, start_delay=0, interval=0, fade=10) # grating
-        self.set_mesh(trigger_ids=[12001,12002,12003,12004,12005,12006,12007,12008,12009,12010,12011,12012,12013,12014,12015,12016,12017,12018,12019,12020,12021,12022,12023,12024,12025,12026,12027,12028], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1201,1202,1203,1204,1205,1206], fade=10.0) # grating
+        self.set_mesh(trigger_ids=[12001,12002,12003,12004,12005,12006,12007,12008,12009,12010,12011,12012,12013,12014,12015,12016,12017,12018,12019,12020,12021,12022,12023,12024,12025,12026,12027,12028])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):
@@ -54,7 +54,7 @@ class 포털개방01(trigger_api.Trigger):
 class 포털개방02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portal_id=30, visible=True, enable=True, minimap_visible=True)
-        self.set_portal(portal_id=31, visible=True, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=31, visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000837], state=0):
@@ -63,10 +63,10 @@ class 포털개방02(trigger_api.Trigger):
 
 class 포털폐쇄(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=30, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=31, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[1201,1202,1203,1204,1205,1206], visible=True, start_delay=0, interval=0, fade=2) # grating
-        self.set_effect(trigger_ids=[6002], visible=False) # vibrate
+        self.set_portal(portal_id=30)
+        self.set_portal(portal_id=31)
+        self.set_mesh(trigger_ids=[1201,1202,1203,1204,1205,1206], visible=True, fade=2.0) # grating
+        self.set_effect(trigger_ids=[6002]) # vibrate
 
 
 initial_state = 대기

@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[712], enable=False)
-        self.set_skill(trigger_ids=[726], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[7701,7702,7703,7704], visible=False)
-        self.set_breakable(trigger_ids=[7701,7702,7703,7704], enable=False)
+        self.set_skill(trigger_ids=[712])
+        self.set_skill(trigger_ids=[726])
+        self.set_visible_breakable_object(trigger_ids=[7701,7702,7703,7704])
+        self.set_breakable(trigger_ids=[7701,7702,7703,7704])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -36,7 +36,7 @@ class 스킬발동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(trigger_ids=[712], enable=True)
         self.set_skill(trigger_ids=[726], enable=True)
-        self.set_breakable(trigger_ids=[7701,7702,7703,7704], enable=False)
+        self.set_breakable(trigger_ids=[7701,7702,7703,7704])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

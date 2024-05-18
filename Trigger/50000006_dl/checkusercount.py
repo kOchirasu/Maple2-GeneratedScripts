@@ -33,7 +33,7 @@ class DungeonStart01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='GuildRaid_Laboratory_DungeonOpen_01')
         self.show_guide_summary(entity_id=25100206, text_id=25100206, duration=3000)
-        self.set_actor(trigger_id=4002, visible=False, initial_sequence='Interaction_vrmachine_A01_on')
+        self.set_actor(trigger_id=4002, initial_sequence='Interaction_vrmachine_A01_on')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='DungeonRoomOpened') >= 1:
@@ -54,8 +54,8 @@ class DungeonStart02(trigger_api.Trigger):
 
 class DungeonStart03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4001, visible=False, initial_sequence='Interaction_vrmachine_A01_on')
-        self.set_actor(trigger_id=4003, visible=False, initial_sequence='Interaction_vrmachine_A01_on')
+        self.set_actor(trigger_id=4001, initial_sequence='Interaction_vrmachine_A01_on')
+        self.set_actor(trigger_id=4003, initial_sequence='Interaction_vrmachine_A01_on')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

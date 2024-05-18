@@ -5,11 +5,11 @@ import trigger_api
 # 포그 이펙트
 class Round_check(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7001], visible=False)
-        self.set_effect(trigger_ids=[7002], visible=False)
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_effect(trigger_ids=[7004], visible=False)
-        self.set_effect(trigger_ids=[7005], visible=False)
+        self.set_effect(trigger_ids=[7001])
+        self.set_effect(trigger_ids=[7002])
+        self.set_effect(trigger_ids=[7003])
+        self.set_effect(trigger_ids=[7004])
+        self.set_effect(trigger_ids=[7005])
         self.set_effect(trigger_ids=[7010], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

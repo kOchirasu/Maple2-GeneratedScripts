@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2000], visible=False)
+        self.set_mesh(trigger_ids=[2000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[20000]):
@@ -22,7 +22,7 @@ class 발판01(trigger_api.Trigger):
 
 class 발판01끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=2, start_delay=0)
+        self.set_timer(timer_id='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):

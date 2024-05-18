@@ -11,7 +11,7 @@ class idle(trigger_api.Trigger):
 
 class portal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[804], auto_target=True) # 포탈
+        self.spawn_monster(spawn_ids=[804]) # 포탈
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[804]):
@@ -20,9 +20,9 @@ class portal(trigger_api.Trigger):
 
 class portal_off(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=104, script='$52000067_QD__PORTAL_04__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=104, script='$52000067_QD__PORTAL_04__0$', time=3)
         self.set_dialogue(type=1, spawn_id=105, script='$52000067_QD__PORTAL_04__1$', time=3, arg5=2)
-        self.set_effect(trigger_ids=[7013], visible=False) # 다크 포탈
+        self.set_effect(trigger_ids=[7013]) # 다크 포탈
         self.set_effect(trigger_ids=[7113], visible=True) # 다크 포탈 폭발
 
 

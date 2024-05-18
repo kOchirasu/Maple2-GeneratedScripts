@@ -5,8 +5,8 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Box32Check', value=10)
-        self.set_mesh(trigger_ids=[532], visible=True, start_delay=0, interval=0, fade=0) # 32 / Ground outter
-        self.set_mesh(trigger_ids=[5320], visible=True, start_delay=0, interval=0, fade=0) # 32 / Ground inner
+        self.set_mesh(trigger_ids=[532], visible=True) # 32 / Ground outter
+        self.set_mesh(trigger_ids=[5320], visible=True) # 32 / Ground inner
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Box32Check') >= 0:
@@ -152,7 +152,7 @@ class NormalPass(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(box_ids=[9320], sound='DDStop_Stage_Pass_01')
         self.set_user_value(trigger_id=7320, key='Color32', value=0) # color reset
-        self.set_mesh(trigger_ids=[532], visible=False, start_delay=0, interval=0, fade=2) # 32 / Ground outter
+        self.set_mesh(trigger_ids=[532], fade=2.0) # 32 / Ground outter
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -165,8 +165,8 @@ class GamblePass(trigger_api.Trigger):
         self.set_user_value(trigger_id=7320, key='Color32', value=0) # color reset
         # Gamble Pass Bonus For Everyone
         self.set_user_value(trigger_id=3, key='GamblePass', value=32)
-        self.set_mesh(trigger_ids=[532], visible=False, start_delay=0, interval=0, fade=2) # 32 / Ground outter
-        self.write_log(log_name='dancedancestop', trigger_id=9320, event='char_event', arg4=4, sub_event='gamble')
+        self.set_mesh(trigger_ids=[532], fade=2.0) # 32 / Ground outter
+        self.write_log(log_name='dancedancestop', trigger_id=9320, event='char_event', level=4, sub_event='gamble')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -179,8 +179,8 @@ class JackpotPass(trigger_api.Trigger):
         self.set_user_value(trigger_id=7320, key='Color32', value=0) # color reset
         # Jackpot Pass Bonus For Everyone
         self.set_user_value(trigger_id=3, key='JackpotPass', value=32)
-        self.set_mesh(trigger_ids=[532], visible=False, start_delay=0, interval=0, fade=2) # 32 / Ground outter
-        self.write_log(log_name='dancedancestop', trigger_id=9320, event='char_event', arg4=4, sub_event='jackpot')
+        self.set_mesh(trigger_ids=[532], fade=2.0) # 32 / Ground outter
+        self.write_log(log_name='dancedancestop', trigger_id=9320, event='char_event', level=4, sub_event='jackpot')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -190,8 +190,8 @@ class JackpotPass(trigger_api.Trigger):
 class Fail(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(box_ids=[9320], sound='DDStop_Stage_Fail_01')
-        self.set_mesh(trigger_ids=[532], visible=False, start_delay=0, interval=0, fade=2) # 32 / Ground outter
-        self.set_mesh(trigger_ids=[5320], visible=False, start_delay=0, interval=0, fade=0) # 32 / Ground inner
+        self.set_mesh(trigger_ids=[532], fade=2.0) # 32 / Ground outter
+        self.set_mesh(trigger_ids=[5320]) # 32 / Ground inner
         self.set_user_value(trigger_id=7320, key='Color32', value=4) # color clear
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -203,7 +203,7 @@ class GambleReset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=9320, type='trigger', achieve='ddstop_gamble')
         # Gamble Pass Bonus For challenger
-        self.mini_game_give_exp(box_id=9320, exp_rate=0.1, is_outside=False)
+        self.mini_game_give_exp(box_id=9320, exp_rate=0.1)
         # self.create_item(spawn_ids=[7300,7301,7302,7302,7303,7304,7305,7306,7307,7308,7309,7310,7311,7312], trigger_id=9320)
         self.set_user_value(key='Box32Check', value=10)
 
@@ -216,7 +216,7 @@ class JackpotReset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=9320, type='trigger', achieve='ddstop_gamble')
         # Jackpot Pass Bonus For challenger
-        self.mini_game_give_exp(box_id=9320, exp_rate=0.3, is_outside=False)
+        self.mini_game_give_exp(box_id=9320, exp_rate=0.3)
         # self.create_item(spawn_ids=[7700,7701,7702,7702,7703,7704,7705,7706,7707,7708,7709,7710,7711,7712], trigger_id=9320)
         self.set_user_value(key='Box32Check', value=10)
 

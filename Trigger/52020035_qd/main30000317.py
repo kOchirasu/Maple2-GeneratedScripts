@@ -1,5 +1,6 @@
 """ trigger/52020035_qd/main30000317.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 # 퀘스트 수락 후 연출 시작
@@ -26,7 +27,7 @@ class 연출시작3(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user(map_id=52020035, portal_id=6001)
-        self.spawn_monster(spawn_ids=[110], auto_target=False, delay=0) # 연출라딘
+        self.spawn_monster(spawn_ids=[110], auto_target=False) # 연출라딘
         self.select_camera_path(path_ids=[4007], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +37,7 @@ class 연출시작3(trigger_api.Trigger):
 
 class 라딘과대화시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=Skip_1, action='exit')
         self.add_cinematic_talk(npc_id=11003753, msg='자네도 알겠지만 수호군이 크리티아스에 쉽게 오지는 못할걸세.', duration=3000)
         self.add_cinematic_talk(npc_id=11003753, msg='지원군을 소집하는데도 시간이 걸리겠지만\\n우리가 포털 수리 및 방어 시스템을 무력화시키지 않는다면\\n결국 또 다른 많은 희생을 치루게 되겠지.', duration=4500)
@@ -91,7 +92,7 @@ class 라딘과대화시작_05(trigger_api.Trigger):
 class 흑성회다같이입장1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4007], return_view=False)
-        self.set_npc_rotation(spawn_id=110, rotation=-45)
+        self.set_npc_rotation(spawn_id=110, rotation=-45.0)
         self.add_cinematic_talk(npc_id=11003753, msg='아. 마침 저기 들어오는군.', duration=3000)
         self.add_cinematic_talk(npc_id=0, msg='<font size=\'40\'>!!! 저 녀석들은?</font>', duration=2000)
 
@@ -103,11 +104,11 @@ class 흑성회다같이입장1(trigger_api.Trigger):
 class 카메라이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.spawn_monster(spawn_ids=[111], auto_target=False, delay=0) # 연출웨이홍
-        self.spawn_monster(spawn_ids=[115], auto_target=False, delay=0) # 연출브리드민
-        self.spawn_monster(spawn_ids=[112], auto_target=False, delay=0) # 연출바사라첸
-        self.spawn_monster(spawn_ids=[113], auto_target=False, delay=0) # 연출하렌
-        self.spawn_monster(spawn_ids=[114], auto_target=False, delay=0) # 연출카일
+        self.spawn_monster(spawn_ids=[111], auto_target=False) # 연출웨이홍
+        self.spawn_monster(spawn_ids=[115], auto_target=False) # 연출브리드민
+        self.spawn_monster(spawn_ids=[112], auto_target=False) # 연출바사라첸
+        self.spawn_monster(spawn_ids=[113], auto_target=False) # 연출하렌
+        self.spawn_monster(spawn_ids=[114], auto_target=False) # 연출카일
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -123,7 +124,7 @@ class 간부얼굴준비(trigger_api.Trigger):
         self.move_npc(spawn_id=113, patrol_name='MS2PatrolData_3003')
         self.move_npc(spawn_id=114, patrol_name='MS2PatrolData_3004')
         self.move_npc(spawn_id=115, patrol_name='MS2PatrolData_3005')
-        self.set_onetime_effect(id=9, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=9, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=0, msg='<font size=\'40\'>흑성회?!</font>', duration=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -136,7 +137,7 @@ class 하렌(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4012], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=113, sequence_name='Bore_A')
-        self.show_caption(type='VerticalCaption', title='하렌', desc='흑성회 제 3 간부', align='centerLeft', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2)
+        self.show_caption(type='VerticalCaption', title='하렌', desc='흑성회 제 3 간부', align=Align.Center | Align.Left, duration=3000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -147,7 +148,7 @@ class 카일(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4024], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=114, sequence_name='Bore_B')
-        self.show_caption(type='VerticalCaption', title='카일', desc='흑성회 제 4 간부', align='centerRight', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2)
+        self.show_caption(type='VerticalCaption', title='카일', desc='흑성회 제 4 간부', align=Align.Center | Align.Right, duration=3000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -158,7 +159,7 @@ class 브리드민(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4008], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=115, sequence_name='Bore_B')
-        self.show_caption(type='VerticalCaption', title='브리드 민', desc='흑성회 제 5 간부', align='centerLeft', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2)
+        self.show_caption(type='VerticalCaption', title='브리드 민', desc='흑성회 제 5 간부', align=Align.Center | Align.Left, duration=3000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -169,7 +170,7 @@ class 바사라첸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4025], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=112, sequence_name='Bore_A')
-        self.show_caption(type='VerticalCaption', title='바사라첸', desc='흑성회 제 2 간부', align='centerRight', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2)
+        self.show_caption(type='VerticalCaption', title='바사라첸', desc='흑성회 제 2 간부', align=Align.Center | Align.Right, duration=3000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -181,7 +182,7 @@ class 웨이홍(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4026], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=111, sequence_name='Bore_A')
         self.add_cinematic_talk(npc_id=11003754, msg='여어~ $MyPCName$, 용케도 살아있었군.\\n정말 그 끈질긴 생명력은 칭찬하지 않을 수 없군 그래.', duration=4000)
-        self.show_caption(type='VerticalCaption', title='웨이홍', desc='흑성회 보스', align='centerLeft', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2)
+        self.show_caption(type='VerticalCaption', title='웨이홍', desc='흑성회 보스', align=Align.Center | Align.Left, duration=3000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -192,8 +193,8 @@ class 웨이홍(trigger_api.Trigger):
 class 흑성회와의동맹에대하여(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4029], return_view=False)
-        self.face_emotion(spawn_id=0, emotion_name='defaultBattle')
-        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=4000)
+        self.face_emotion(emotion_name='defaultBattle')
+        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=4000.0)
         self.add_cinematic_talk(npc_id=0, msg='흑성회 놈들! 이번에야말로…!', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -236,7 +237,7 @@ class 흑성회와의동맹에대하여2(trigger_api.Trigger):
 
 class 흑성회와의동맹에대하여3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=4028, enable=True)
+        self.select_camera(trigger_id=4028)
         self.add_cinematic_talk(npc_id=11003753, msg='$MyPCName$, 자네의 마음은 이해하네.\\n자네 말대로 흑성회는 신뢰할 수없는, 적이나 다름없는 이들이지.', duration=4000)
         self.add_cinematic_talk(npc_id=11003753, msg='그러나 지금은 냉정하게 판단할 때일세.\\n지금 우리는 자원도 부족하고 아무런 지원도 받을 수 없는 상황이네.', duration=4000)
         self.add_cinematic_talk(npc_id=11003753, msg='누군가의 힘을 빌려 수호군이 안전하게 크리티아스에 도착하고\\n어둠의 세력으로부터 이곳을 지켜낼 수만 있다면…', duration=4000)
@@ -249,7 +250,7 @@ class 흑성회와의동맹에대하여3(trigger_api.Trigger):
 
 class 흑성회와의동맹에대하여4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=4029, enable=True)
+        self.select_camera(trigger_id=4029)
         self.add_cinematic_talk(npc_id=0, msg='……네, 알겠습니다.', duration=2000)
         self.add_cinematic_talk(npc_id=0, msg='하지만 언제 우리를 배신할지 모르는 자들이에요.\\n절대 경계를 늦춰서는 안될 겁니다.', duration=4000)
 
@@ -260,7 +261,7 @@ class 흑성회와의동맹에대하여4(trigger_api.Trigger):
 
 class 흑성회와의동맹에대하여5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=4028, enable=True)
+        self.select_camera(trigger_id=4028)
         self.add_cinematic_talk(npc_id=11003753, msg='이해해줘서 고맙군.\\n그럼 웨이 홍, 약속한 정보는 가져왔나?', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -383,7 +384,7 @@ class 정보전달하기4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=7, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_achievement(trigger_id=702, type='trigger', achieve='MeetRadin')
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.destroy_monster(spawn_ids=[111])
@@ -391,11 +392,11 @@ class 정보전달하기4(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[113])
         self.destroy_monster(spawn_ids=[114])
         self.destroy_monster(spawn_ids=[115])
-        self.spawn_monster(spawn_ids=[117], auto_target=False, delay=0) # 연출웨이홍
-        self.spawn_monster(spawn_ids=[118], auto_target=False, delay=0) # 연출브리드민
-        self.spawn_monster(spawn_ids=[119], auto_target=False, delay=0) # 연출바사라첸
-        self.spawn_monster(spawn_ids=[120], auto_target=False, delay=0) # 연출하렌
-        self.spawn_monster(spawn_ids=[121], auto_target=False, delay=0) # 연출카일
+        self.spawn_monster(spawn_ids=[117], auto_target=False) # 연출웨이홍
+        self.spawn_monster(spawn_ids=[118], auto_target=False) # 연출브리드민
+        self.spawn_monster(spawn_ids=[119], auto_target=False) # 연출바사라첸
+        self.spawn_monster(spawn_ids=[120], auto_target=False) # 연출하렌
+        self.spawn_monster(spawn_ids=[121], auto_target=False) # 연출카일
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -409,13 +410,13 @@ class Skip_1(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[113])
         self.destroy_monster(spawn_ids=[114])
         self.destroy_monster(spawn_ids=[115])
-        self.spawn_monster(spawn_ids=[117], auto_target=False, delay=0) # 연출웨이홍
-        self.spawn_monster(spawn_ids=[118], auto_target=False, delay=0) # 연출브리드민
-        self.spawn_monster(spawn_ids=[119], auto_target=False, delay=0) # 연출바사라첸
-        self.spawn_monster(spawn_ids=[120], auto_target=False, delay=0) # 연출하렌
-        self.spawn_monster(spawn_ids=[121], auto_target=False, delay=0) # 연출카일
+        self.spawn_monster(spawn_ids=[117], auto_target=False) # 연출웨이홍
+        self.spawn_monster(spawn_ids=[118], auto_target=False) # 연출브리드민
+        self.spawn_monster(spawn_ids=[119], auto_target=False) # 연출바사라첸
+        self.spawn_monster(spawn_ids=[120], auto_target=False) # 연출하렌
+        self.spawn_monster(spawn_ids=[121], auto_target=False) # 연출카일
         self.set_cinematic_ui(type=4)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_achievement(trigger_id=702, type='trigger', achieve='MeetRadin')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -425,7 +426,7 @@ class Skip_1(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=7, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=7, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.destroy_monster(spawn_ids=[110])

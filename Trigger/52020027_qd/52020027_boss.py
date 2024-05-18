@@ -24,10 +24,10 @@ class 도약(trigger_api.Trigger):
 class 페이즈2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=1, spawn_id=111, script='조심하는 게 좋을걸?', time=4)
-        self.spawn_monster(spawn_ids=[112], auto_target=True)
-        self.spawn_monster(spawn_ids=[113], auto_target=True)
-        self.spawn_monster(spawn_ids=[114], auto_target=True)
-        self.spawn_monster(spawn_ids=[115], auto_target=True)
+        self.spawn_monster(spawn_ids=[112])
+        self.spawn_monster(spawn_ids=[113])
+        self.spawn_monster(spawn_ids=[114])
+        self.spawn_monster(spawn_ids=[115])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -36,8 +36,8 @@ class 페이즈2(trigger_api.Trigger):
 
 class NPC애니세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=114, sequence_name='Attack_01_A', duration=2000)
-        self.set_npc_emotion_loop(spawn_id=115, sequence_name='Attack_01_A', duration=2000)
+        self.set_npc_emotion_loop(spawn_id=114, sequence_name='Attack_01_A', duration=2000.0)
+        self.set_npc_emotion_loop(spawn_id=115, sequence_name='Attack_01_A', duration=2000.0)
 
 
 initial_state = 감지

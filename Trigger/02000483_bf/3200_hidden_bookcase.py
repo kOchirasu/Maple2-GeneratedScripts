@@ -4,16 +4,16 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5002], visible=False) # PortalOn
-        self.set_ladder(trigger_ids=[520], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[521], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[522], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[523], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[524], visible=False, enable=False, fade=0) # Ladder
-        self.set_mesh(trigger_ids=[3200], visible=True, start_delay=0, interval=0, fade=0) # Wall_BehindBookcase
-        self.set_mesh(trigger_ids=[3201], visible=True, start_delay=0, interval=0, fade=0) # BehindBookcaseCover
-        self.set_mesh(trigger_ids=[3202], visible=True, start_delay=0, interval=0, fade=0) # Bookcase
-        self.set_mesh(trigger_ids=[3203], visible=True, start_delay=0, interval=0, fade=0) # BookcaseInvisible
+        self.set_effect(trigger_ids=[5002]) # PortalOn
+        self.set_ladder(trigger_ids=[520]) # Ladder
+        self.set_ladder(trigger_ids=[521]) # Ladder
+        self.set_ladder(trigger_ids=[522]) # Ladder
+        self.set_ladder(trigger_ids=[523]) # Ladder
+        self.set_ladder(trigger_ids=[524]) # Ladder
+        self.set_mesh(trigger_ids=[3200], visible=True) # Wall_BehindBookcase
+        self.set_mesh(trigger_ids=[3201], visible=True) # BehindBookcaseCover
+        self.set_mesh(trigger_ids=[3202], visible=True) # Bookcase
+        self.set_mesh(trigger_ids=[3203], visible=True) # BookcaseInvisible
         self.set_interact_object(trigger_ids=[10002039], state=0) # Bookcase
         self.set_user_value(key='HiddenRouteOpen', value=0)
 
@@ -26,7 +26,7 @@ class Wait(trigger_api.Trigger):
 
 class Opened(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3202], visible=False, start_delay=0, interval=0, fade=0) # Bookcase
+        self.set_mesh(trigger_ids=[3202]) # Bookcase
         self.set_interact_object(trigger_ids=[10002039], state=1) # Bookcase
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,19 +37,19 @@ class Opened(trigger_api.Trigger):
 class LadderOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5002], visible=True) # PortalOn
-        self.set_mesh(trigger_ids=[3203], visible=False, start_delay=0, interval=0, fade=0) # BookcaseInvisible
+        self.set_mesh(trigger_ids=[3203]) # BookcaseInvisible
         self.set_ladder(trigger_ids=[520], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[521], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[522], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[523], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[524], visible=True, enable=True, fade=2) # Ladder
-        self.set_mesh(trigger_ids=[3200], visible=False, start_delay=0, interval=0, fade=3) # Wall_BehindBookcase
-        self.set_mesh(trigger_ids=[3201], visible=False, start_delay=0, interval=0, fade=3) # BehindBookcaseCover
+        self.set_mesh(trigger_ids=[3200], fade=3.0) # Wall_BehindBookcase
+        self.set_mesh(trigger_ids=[3201], fade=3.0) # BehindBookcaseCover
 
 
 class Closed(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3202], visible=False, start_delay=0, interval=0, fade=0) # Bookcase
+        self.set_mesh(trigger_ids=[3202]) # Bookcase
         self.set_interact_object(trigger_ids=[10002039], state=1) # Bookcase
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +59,7 @@ class Closed(trigger_api.Trigger):
 
 class NothingHappened(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3202], visible=True, start_delay=0, interval=0, fade=0) # Bookcase
+        self.set_mesh(trigger_ids=[3202], visible=True) # Bookcase
 
 
 initial_state = Wait

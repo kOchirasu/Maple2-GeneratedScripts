@@ -21,45 +21,45 @@ class Delay01(trigger_api.Trigger):
 
 class KanduraAppRightRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppRight01(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppRight02(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppRight03(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppRight04(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppRight05(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppRight06(self.ctx)
 
 
 class KanduraAppLeftRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppLeft01(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppLeft02(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppLeft03(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppLeft04(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppLeft05(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppLeft06(self.ctx)
 
 
 class KanduraAppCenterRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppCenter01(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppCenter02(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppCenter03(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return KanduraAppCenter04(self.ctx)
 
 

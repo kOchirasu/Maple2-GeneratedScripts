@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=19, visible=False, enable=False, minimap_visible=True)
+        self.set_portal(portal_id=19, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[106]):
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 class 타이머시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='10000', seconds=360, start_delay=1, interval=1, v_offset=0)
+        self.set_timer(timer_id='10000', seconds=360, start_delay=1, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 유저감지_2(self.ctx)
@@ -27,7 +27,7 @@ class 유저감지_2(trigger_api.Trigger):
 
 class 몬스터등장_보스(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[82001], auto_target=True)
+        self.spawn_monster(spawn_ids=[82001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

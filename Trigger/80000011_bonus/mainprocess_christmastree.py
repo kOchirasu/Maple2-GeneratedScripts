@@ -10,10 +10,10 @@ class 대기(trigger_api.Trigger):
 
 class 이벤트대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[201], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[202], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[203], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[204], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[201])
+        self.set_ladder(trigger_ids=[202])
+        self.set_ladder(trigger_ids=[203])
+        self.set_ladder(trigger_ids=[204])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=30000):
@@ -37,7 +37,7 @@ class 사다리나타남(trigger_api.Trigger):
 class 유저이동(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1):
-            self.move_user(map_id=0, portal_id=0)
+            self.move_user()
             return 종료(self.ctx)
 
     def on_exit(self) -> None:

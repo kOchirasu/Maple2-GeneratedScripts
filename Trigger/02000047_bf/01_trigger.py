@@ -6,7 +6,7 @@ class 반응대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000084], state=1)
         self.set_interact_object(trigger_ids=[10000085], state=1)
-        self.set_mesh(trigger_ids=[10,11,12,13,14,15,16,17], visible=False) # 다리안보임
+        self.set_mesh(trigger_ids=[10,11,12,13,14,15,16,17]) # 다리안보임
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000084,10000085], state=0):
@@ -59,7 +59,7 @@ class 다리제거(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='99'):
-            self.set_mesh(trigger_ids=[10,11,12,13,14,15,16,17], visible=False) # 다리사라짐
+            self.set_mesh(trigger_ids=[10,11,12,13,14,15,16,17]) # 다리사라짐
             return 트리거초기화2(self.ctx)
 
 

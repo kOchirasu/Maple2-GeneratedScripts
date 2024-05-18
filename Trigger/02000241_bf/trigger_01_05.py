@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[304], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[304], visible=True)
         self.set_mesh(trigger_ids=[701,702], visible=True)
         self.set_actor(trigger_id=501, visible=True, initial_sequence='Closed')
         self.set_actor(trigger_id=502, visible=True, initial_sequence='Closed')
@@ -21,7 +21,7 @@ class 대기(trigger_api.Trigger):
 
 class 버튼눌림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[304], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[304])
         self.set_actor(trigger_id=505, visible=True, initial_sequence='Opened')
         self.set_actor(trigger_id=506, visible=True, initial_sequence='Opened')
         self.spawn_monster(spawn_ids=[605,606], auto_target=False)

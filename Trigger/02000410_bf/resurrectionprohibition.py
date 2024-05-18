@@ -11,7 +11,7 @@ class Ready(trigger_api.Trigger):
 
 class 전투시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.set_timer(timer_id='1', seconds=1, interval=0)
+        # self.set_timer(timer_id='1', seconds=1)
         pass
 
     def on_tick(self) -> trigger_api.Trigger:

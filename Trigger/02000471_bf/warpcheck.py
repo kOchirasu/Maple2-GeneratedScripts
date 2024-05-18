@@ -31,7 +31,7 @@ class warp_1st(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10002106], state=1)
         self.set_interact_object(trigger_ids=[10002107], state=1)
-        self.set_mesh(trigger_ids=[1207,1208], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1207,1208], visible=True)
         self.set_event_ui(type=1, arg2='$02000471_BF__WARPCHECK__0$', arg3='5000', arg4='0')
         self.add_buff(box_ids=[720], skill_id=70002061, level=1, is_player=False, is_skill_set=False)
 
@@ -50,7 +50,7 @@ class warp_cancel(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10002106], state=0)
         self.set_interact_object(trigger_ids=[10002107], state=0)
-        self.set_mesh(trigger_ids=[1207,1208], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1207,1208])
         self.set_event_ui(type=1, arg2='$02000471_BF__WARPCHECK__1$', arg3='5000', arg4='0')
         self.add_buff(box_ids=[720], skill_id=70002062, level=1, is_player=False, is_skill_set=False)
 
@@ -65,7 +65,7 @@ class warp_go(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10002106], state=0)
         self.set_interact_object(trigger_ids=[10002107], state=0)
-        self.set_mesh(trigger_ids=[1207,1208], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1207,1208])
         self.set_user_value(trigger_id=2040323, key='Warp', value=1)
         self.add_buff(box_ids=[720], skill_id=70002062, level=1, is_player=False, is_skill_set=False)
 
@@ -80,7 +80,7 @@ class warp_2nd(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10002106], state=1)
         self.set_interact_object(trigger_ids=[10002107], state=1)
-        self.set_mesh(trigger_ids=[1207,1208], visible=True, start_delay=0, interval=0, fade=10)
+        self.set_mesh(trigger_ids=[1207,1208], visible=True, fade=10.0)
         self.set_event_ui(type=1, arg2='$02000471_BF__WARPCHECK__0$', arg3='5000', arg4='0')
         self.add_buff(box_ids=[720], skill_id=70002061, level=1, is_player=False, is_skill_set=False)
 
@@ -99,7 +99,7 @@ class warp2_cancel(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10002106], state=0)
         self.set_interact_object(trigger_ids=[10002107], state=0)
-        self.set_mesh(trigger_ids=[1207,1208], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1207,1208])
         self.set_event_ui(type=1, arg2='$02000471_BF__WARPCHECK__1$', arg3='5000', arg4='0')
         self.add_buff(box_ids=[720], skill_id=70002062, level=1, is_player=False, is_skill_set=False)
 
@@ -113,7 +113,7 @@ class warp_go2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10002106], state=0)
         self.set_interact_object(trigger_ids=[10002107], state=0)
-        self.set_mesh(trigger_ids=[1207,1208], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[1207,1208])
         self.set_user_value(trigger_id=2040323, key='Warp', value=2)
         self.add_buff(box_ids=[720], skill_id=70002062, level=1, is_player=False, is_skill_set=False)
 

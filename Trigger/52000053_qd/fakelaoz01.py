@@ -4,30 +4,30 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # CollapseBridge
-        self.set_effect(trigger_ids=[5200], visible=False) # Summon
-        self.set_effect(trigger_ids=[5300], visible=False) # StairsApp
-        self.set_effect(trigger_ids=[5400], visible=False) # ShadowMon
-        self.set_effect(trigger_ids=[5500], visible=False) # LaozAllKill_01
-        self.set_effect(trigger_ids=[5501], visible=False) # LaozAllKill_02
-        self.set_effect(trigger_ids=[5502], visible=False) # LaozAllKill_03
+        self.set_portal(portal_id=10)
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # CollapseBridge
+        self.set_effect(trigger_ids=[5200]) # Summon
+        self.set_effect(trigger_ids=[5300]) # StairsApp
+        self.set_effect(trigger_ids=[5400]) # ShadowMon
+        self.set_effect(trigger_ids=[5500]) # LaozAllKill_01
+        self.set_effect(trigger_ids=[5501]) # LaozAllKill_02
+        self.set_effect(trigger_ids=[5502]) # LaozAllKill_03
         # Voice_LaozBattle_Attack_00001875
-        self.set_effect(trigger_ids=[5600], visible=False)
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=2) # Lamp_A02_OFF
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=2) # Lamp_A03_ON
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=2) # Lamp_A01_Disappear
-        self.set_mesh_animation(trigger_ids=[3000], visible=True, start_delay=0, interval=0) # Lamp_A02_OFF
-        self.set_mesh_animation(trigger_ids=[3001], visible=False, start_delay=0, interval=0) # Lamp_A03_ON
-        self.set_mesh_animation(trigger_ids=[3002], visible=False, start_delay=0, interval=0) # Lamp_A01_Disappear
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Barrier
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207], visible=True, start_delay=0, interval=0, fade=0) # Invisibble_TotemBarrier
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323], visible=False, start_delay=0, interval=0, fade=0) # StairsToLeave
-        self.set_skill(trigger_ids=[2000], enable=False) # 큐브 부수기 스킬 1단계
-        self.set_skill(trigger_ids=[2001], enable=False) # 큐브 부수기 스킬 2단계
-        self.set_skill(trigger_ids=[2002], enable=False) # 큐브 부수기 스킬 3단계
-        self.set_skill(trigger_ids=[2003], enable=False) # 그림자 소멸 스킬
+        self.set_effect(trigger_ids=[5600])
+        self.set_mesh(trigger_ids=[3000], visible=True, fade=2.0) # Lamp_A02_OFF
+        self.set_mesh(trigger_ids=[3001], fade=2.0) # Lamp_A03_ON
+        self.set_mesh(trigger_ids=[3002], fade=2.0) # Lamp_A01_Disappear
+        self.set_mesh_animation(trigger_ids=[3000], visible=True) # Lamp_A02_OFF
+        self.set_mesh_animation(trigger_ids=[3001]) # Lamp_A03_ON
+        self.set_mesh_animation(trigger_ids=[3002]) # Lamp_A01_Disappear
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106], visible=True) # Invisible_Barrier
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207], visible=True) # Invisibble_TotemBarrier
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323]) # StairsToLeave
+        self.set_skill(trigger_ids=[2000]) # 큐브 부수기 스킬 1단계
+        self.set_skill(trigger_ids=[2001]) # 큐브 부수기 스킬 2단계
+        self.set_skill(trigger_ids=[2002]) # 큐브 부수기 스킬 3단계
+        self.set_skill(trigger_ids=[2003]) # 그림자 소멸 스킬
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -59,7 +59,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 class LodingDelay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.spawn_monster(spawn_ids=[101,201], auto_target=False)
         self.spawn_monster(spawn_ids=[910,911,912,920,921,922], auto_target=False)
 
@@ -80,7 +80,7 @@ class LodingDelay03(trigger_api.Trigger):
 
 class ZoomInLamp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -108,7 +108,7 @@ class ZoomInLamp02Skip(trigger_api.Trigger):
 
 class MoveToLamp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=510, enable=True)
+        self.select_camera(trigger_id=510)
         self.move_user_path(patrol_name='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -129,7 +129,7 @@ class MoveToLamp02(trigger_api.Trigger):
 
 class MoveToLamp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
         self.set_dialogue(type=1, spawn_id=201, script='$52000053_QD__FAKELAOZ01__2$', time=3, arg5=1) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +140,7 @@ class MoveToLamp03(trigger_api.Trigger):
 class PCStop01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1001')
-        self.set_dialogue(type=1, spawn_id=0, script='$52000053_QD__FAKELAOZ01__3$', time=3, arg5=0) # PC
+        self.set_dialogue(type=1, script='$52000053_QD__FAKELAOZ01__3$', time=3) # PC
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -149,9 +149,9 @@ class PCStop01(trigger_api.Trigger):
 
 class PCStop02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=511, enable=True)
+        self.select_camera(trigger_id=511)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_111') # 잠시 뒤 돌아서 멈춰 있는 PC를 돌아봄
-        self.set_dialogue(type=1, spawn_id=101, script='$52000053_QD__FAKELAOZ01__4$', time=2, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=101, script='$52000053_QD__FAKELAOZ01__4$', time=2) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -161,7 +161,7 @@ class PCStop02(trigger_api.Trigger):
 class PCStop03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_211') # 잠시 뒤 돌아서 멈춰 있는 PC를 돌아봄
-        self.set_dialogue(type=1, spawn_id=201, script='$52000053_QD__FAKELAOZ01__5$', time=2, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=201, script='$52000053_QD__FAKELAOZ01__5$', time=2) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -198,7 +198,7 @@ class KanduraApp02(trigger_api.Trigger):
 
 class KanduraApp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=512, enable=True)
+        self.select_camera(trigger_id=512)
         self.set_dialogue(type=2, spawn_id=11001559, script='$52000053_QD__FAKELAOZ01__6$', time=3) # 칸두라
         self.set_skip(state=KanduraApp03Skip)
 
@@ -235,7 +235,7 @@ class KanduraApp04Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=520, enable=True)
+        self.select_camera(trigger_id=520)
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_113')
         self.move_npc(spawn_id=204, patrol_name='MS2PatrolData_213')
 
@@ -286,7 +286,7 @@ class KanduraSummon01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -308,7 +308,7 @@ class KanduraSummon03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -335,9 +335,9 @@ class FakeLaozApp02(trigger_api.Trigger):
 
 class FakeLaozApp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=603, enable=True)
+        self.select_camera(trigger_id=603)
         self.move_user_path(patrol_name='MS2PatrolData_1003')
-        self.set_dialogue(type=1, spawn_id=0, script='$52000053_QD__FAKELAOZ01__9$', time=2, arg5=0) # PC
+        self.set_dialogue(type=1, script='$52000053_QD__FAKELAOZ01__9$', time=2) # PC
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -384,7 +384,7 @@ class ReachToLamp02(trigger_api.Trigger):
 
 class ReachToLamp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_101')
@@ -408,18 +408,18 @@ class ReachToLamp04(trigger_api.Trigger):
 
 class BattleStart01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
-        self.set_agent(trigger_ids=[8009], visible=False)
-        self.set_agent(trigger_ids=[8010], visible=False)
-        self.set_agent(trigger_ids=[8011], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
+        self.set_agent(trigger_ids=[8009])
+        self.set_agent(trigger_ids=[8010])
+        self.set_agent(trigger_ids=[8011])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_301')
@@ -452,10 +452,10 @@ class KanduraDisapp02(trigger_api.Trigger):
 
 class FakeLaozDie01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=200, interval=0, fade=5) # Lamp_A02_OFF
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=5) # Lamp_A03_ON
-        self.set_mesh_animation(trigger_ids=[3000], visible=False, start_delay=0, interval=0) # Lamp_A02_OFF
-        self.set_mesh_animation(trigger_ids=[3001], visible=True, start_delay=200, interval=0) # Lamp_A03_ON
+        self.set_mesh(trigger_ids=[3000], start_delay=200, fade=5.0) # Lamp_A02_OFF
+        self.set_mesh(trigger_ids=[3001], visible=True, fade=5.0) # Lamp_A03_ON
+        self.set_mesh_animation(trigger_ids=[3000]) # Lamp_A02_OFF
+        self.set_mesh_animation(trigger_ids=[3001], visible=True, start_delay=200) # Lamp_A03_ON
         self.set_user_value(trigger_id=2, key='SpyKandura', value=2)
         self.destroy_monster(spawn_ids=[102,202])
         self.spawn_monster(spawn_ids=[103,203], auto_target=False)
@@ -469,9 +469,9 @@ class LampLightUp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5300], visible=True) # StairsApp
         self.set_random_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323], visible=True, start_delay=24, interval=100, fade=70) # StairsToLeave
-        self.set_mesh(trigger_ids=[3202,3203,3204], visible=False, start_delay=0, interval=0, fade=0) # Invisibble_TotemBarrier
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106], visible=False, start_delay=0, interval=0, fade=0) # Invisible_Barrier
-        self.select_camera(trigger_id=700, enable=True)
+        self.set_mesh(trigger_ids=[3202,3203,3204]) # Invisibble_TotemBarrier
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106]) # Invisible_Barrier
+        self.select_camera(trigger_id=700)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=LampLightUp02)
@@ -492,7 +492,7 @@ class LampLightUp02(trigger_api.Trigger):
 class LampLightUp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52000053, portal_id=11, box_id=9900)
-        self.set_dialogue(type=1, spawn_id=103, script='$52000053_QD__FAKELAOZ01__12$', time=3, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=103, script='$52000053_QD__FAKELAOZ01__12$', time=3) # 틴차이
         self.set_dialogue(type=1, spawn_id=203, script='$52000053_QD__FAKELAOZ01__13$', time=3, arg5=3) # 준타
         self.set_skip(state=LampLightUp04)
 
@@ -522,10 +522,10 @@ class LampLightUp05(trigger_api.Trigger):
 
 class LampLightUp06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_103')
         self.move_npc(spawn_id=203, patrol_name='MS2PatrolData_203')
-        self.set_dialogue(type=1, spawn_id=203, script='$52000053_QD__FAKELAOZ01__15$', time=3, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=203, script='$52000053_QD__FAKELAOZ01__15$', time=3) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -534,9 +534,9 @@ class LampLightUp06(trigger_api.Trigger):
 
 class NpcWalkDown01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=702, enable=True)
+        self.select_camera(trigger_id=702)
         self.move_user_path(patrol_name='MS2PatrolData_1004')
-        self.set_dialogue(type=1, spawn_id=103, script='$52000053_QD__FAKELAOZ01__16$', time=3, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=103, script='$52000053_QD__FAKELAOZ01__16$', time=3) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -546,8 +546,8 @@ class NpcWalkDown01(trigger_api.Trigger):
 class NpcWalkDown02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[302], auto_target=False) # 칸두라
-        self.set_dialogue(type=1, spawn_id=203, script='$52000053_QD__FAKELAOZ01__17$', time=3, arg5=0) # 준타
-        self.set_dialogue(type=1, spawn_id=0, script='$52000053_QD__FAKELAOZ01__18$', time=3, arg5=3) # PC
+        self.set_dialogue(type=1, spawn_id=203, script='$52000053_QD__FAKELAOZ01__17$', time=3) # 준타
+        self.set_dialogue(type=1, script='$52000053_QD__FAKELAOZ01__18$', time=3, arg5=3) # PC
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -556,10 +556,10 @@ class NpcWalkDown02(trigger_api.Trigger):
 
 class NpcWalkDown03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # Lamp_A03_ON
-        self.set_mesh(trigger_ids=[3002], visible=True, start_delay=0, interval=0, fade=5) # Lamp_A01_Disappear
-        self.set_mesh_animation(trigger_ids=[3001], visible=False, start_delay=0, interval=0) # Lamp_A03_ON
-        self.set_mesh_animation(trigger_ids=[3002], visible=True, start_delay=200, interval=0) # Lamp_A01_Disappear
+        self.set_mesh(trigger_ids=[3001]) # Lamp_A03_ON
+        self.set_mesh(trigger_ids=[3002], visible=True, fade=5.0) # Lamp_A01_Disappear
+        self.set_mesh_animation(trigger_ids=[3001]) # Lamp_A03_ON
+        self.set_mesh_animation(trigger_ids=[3002], visible=True, start_delay=200) # Lamp_A01_Disappear
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -592,7 +592,7 @@ class KanduraAppAgain02(trigger_api.Trigger):
 
 class KanduraAppAgain03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=710, enable=True)
+        self.select_camera(trigger_id=710)
         self.move_npc(spawn_id=302, patrol_name='MS2PatrolData_303')
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
@@ -633,7 +633,7 @@ class NoticeLampDisapp02(trigger_api.Trigger):
 
 class NoticeLampDisapp02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=711, enable=True)
+        self.select_camera(trigger_id=711)
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -687,7 +687,7 @@ class ShadowApp02(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[302])
         self.move_npc(spawn_id=105, patrol_name='MS2PatrolData_105')
         self.move_npc(spawn_id=205, patrol_name='MS2PatrolData_205')
-        self.select_camera(trigger_id=720, enable=True)
+        self.select_camera(trigger_id=720)
         self.move_user_path(patrol_name='MS2PatrolData_1005')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -697,7 +697,7 @@ class ShadowApp02(trigger_api.Trigger):
 
 class NpcTired01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=105, script='$52000053_QD__FAKELAOZ01__23$', time=3, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=105, script='$52000053_QD__FAKELAOZ01__23$', time=3) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -706,7 +706,7 @@ class NpcTired01(trigger_api.Trigger):
 
 class NpcTired02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Down_Idle_A', duration=20000)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Down_Idle_A', duration=20000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -715,7 +715,7 @@ class NpcTired02(trigger_api.Trigger):
 
 class NpcTired03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=205, script='$52000053_QD__FAKELAOZ01__24$', time=2, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=205, script='$52000053_QD__FAKELAOZ01__24$', time=2) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -724,7 +724,7 @@ class NpcTired03(trigger_api.Trigger):
 
 class NpcTired04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=205, sequence_name='Down_Idle_A', duration=20000)
+        self.set_npc_emotion_loop(spawn_id=205, sequence_name='Down_Idle_A', duration=20000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -733,7 +733,7 @@ class NpcTired04(trigger_api.Trigger):
 
 class NpcTired05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=205, script='$52000053_QD__FAKELAOZ01__25$', time=3, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=205, script='$52000053_QD__FAKELAOZ01__25$', time=3) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -742,7 +742,7 @@ class NpcTired05(trigger_api.Trigger):
 
 class NpcTired06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000053_QD__FAKELAOZ01__26$', time=3, arg5=0) # PC
+        self.set_dialogue(type=1, script='$52000053_QD__FAKELAOZ01__26$', time=3) # PC
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -775,9 +775,9 @@ class RealLaozApp02(trigger_api.Trigger):
 
 class RealLaozApp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=721, enable=True)
+        self.select_camera(trigger_id=721)
         self.destroy_monster(spawn_ids=[840,841,842,843,844,845,846,847,848,849,850,851,852,853,854,855,856,857,858,859,860,861,862,863,864,865,866,867,868,869,870,871,872,873,874,875,876,877,878,879,880,881,882,883,884,885,886,887,888,889,890,891,892,893,894,895,896,897,898,899])
-        self.set_dialogue(type=1, spawn_id=400, script='$52000053_QD__FAKELAOZ01__28$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=400, script='$52000053_QD__FAKELAOZ01__28$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -809,7 +809,7 @@ class LaozKillAll02(trigger_api.Trigger):
 
 class LaozKillAll03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5400], visible=False) # ShadowMon
+        self.set_effect(trigger_ids=[5400]) # ShadowMon
         self.destroy_monster(spawn_ids=[940,941,942,943,944,945,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998,999])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -819,7 +819,7 @@ class LaozKillAll03(trigger_api.Trigger):
 
 class MeetRealLaoz01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=730, enable=True)
+        self.select_camera(trigger_id=730)
         self.set_dialogue(type=1, spawn_id=400, script='$52000053_QD__FAKELAOZ01__29$', time=3, arg5=1) # 라오즈
         self.move_npc(spawn_id=400, patrol_name='MS2PatrolData_400')
 
@@ -830,7 +830,7 @@ class MeetRealLaoz01(trigger_api.Trigger):
 
 class MeetRealLaoz02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000053_QD__FAKELAOZ01__30$', time=2, arg5=0) # PC
+        self.set_dialogue(type=1, script='$52000053_QD__FAKELAOZ01__30$', time=2) # PC
         self.move_user_path(patrol_name='MS2PatrolData_1006')
 
     def on_tick(self) -> trigger_api.Trigger:

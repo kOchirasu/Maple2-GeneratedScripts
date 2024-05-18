@@ -7,14 +7,14 @@ from dungeon_common.checkusercount import *
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         self.set_interact_object(trigger_ids=[10000739], state=2)
         self.set_interact_object(trigger_ids=[10000740], state=2)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[611], visible=False)
-        self.set_effect(trigger_ids=[612], visible=False)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[611])
+        self.set_effect(trigger_ids=[612])
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022])
         self.set_interact_object(trigger_ids=[10000752], state=0)
         self.set_interact_object(trigger_ids=[13000009], state=2)
 
@@ -25,7 +25,7 @@ class 대기(trigger_api.Trigger):
 
 class DungeonStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=True, start_delay=0, interval=200, fade=2)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=True, interval=200, fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -80,45 +80,45 @@ class 라운드카운트1(trigger_api.Trigger):
 
 class 라운드1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3001(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3002(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3003(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3004(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3005(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3006(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3007(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3008(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3009(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3010(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3011(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3012(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3013(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3014(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3015(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3016(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3017(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3018(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3019(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3020(self.ctx)
 
 
@@ -326,9 +326,9 @@ class 라운드대기2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000739], state=2)
         self.set_interact_object(trigger_ids=[10000740], state=2)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[611], visible=False)
-        self.set_effect(trigger_ids=[612], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[611])
+        self.set_effect(trigger_ids=[612])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -376,45 +376,45 @@ class 라운드카운트2(trigger_api.Trigger):
 
 class 라운드2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3001(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3002(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3003(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3004(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3005(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3006(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3007(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3008(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3009(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3010(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3011(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3012(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3013(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3014(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3015(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3016(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3017(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3018(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3019(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크3020(self.ctx)
 
 
@@ -780,8 +780,8 @@ class 소환2_3020(trigger_api.Trigger):
 
 class 라운드대기3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[612], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[612])
         self.set_interact_object(trigger_ids=[10000740], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -820,8 +820,8 @@ class 어나운스05_2(trigger_api.Trigger):
 class 라운드카운트3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[602], visible=True)
-        self.set_effect(trigger_ids=[612], visible=False)
-        # self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=False, start_delay=0, interval=200, fade=2)
+        self.set_effect(trigger_ids=[612])
+        # self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], interval=200, fade=2.0)
         self.set_event_ui(type=0, arg2='3,3')
         self.show_count_ui(text='$02000325_BF__MAIN__9$', stage=3, count=3)
 
@@ -832,45 +832,45 @@ class 라운드카운트3(trigger_api.Trigger):
 
 class 라운드3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3001(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3002(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3003(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3004(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3005(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3006(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3007(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3008(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3009(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3010(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3011(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3012(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3013(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3014(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3015(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3016(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3017(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3018(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3019(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환체크2_3020(self.ctx)
 
 
@@ -1237,9 +1237,9 @@ class 소환3_3020(trigger_api.Trigger):
 class 미션성공(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=102, type='trigger', achieve='BraveRace')
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=True, start_delay=0, interval=200, fade=2)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[612], visible=False)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=True, interval=200, fade=2.0)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[612])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

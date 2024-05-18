@@ -4,9 +4,9 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3200], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Barrier
+        self.set_mesh(trigger_ids=[3200], visible=True) # Invisible_Barrier
         self.destroy_monster(spawn_ids=[980,981,982,983,984,985])
-        self.set_skill(trigger_ids=[7000], enable=False) # Push
+        self.set_skill(trigger_ids=[7000]) # Push
         # self.set_user_value(key='PushStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

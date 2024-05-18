@@ -4,11 +4,11 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
         self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
-        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3002], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001])
+        self.set_mesh(trigger_ids=[3002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -39,9 +39,9 @@ class 종료딜레이(trigger_api.Trigger):
         # 계약의 토템에 의해 오른쪽 용암 올라오게 하는 트리거 xml 담당, 999109_Lavaflow.xml
         self.set_user_value(trigger_id=999109, key='BattleEnd2', value=1)
         # 자쿰 몸통 아래쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3002])
         # 자쿰 몸통 위쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -55,9 +55,9 @@ class 던전실패(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[-1])
         self.set_user_value(trigger_id=999103, key='BattleEnd', value=1)
         # 자쿰 몸통 아래쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3002])
         # 자쿰 몸통 위쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -68,7 +68,7 @@ class 던전실패(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(is_enable='0')
+        self.dungeon_enable_give_up()
 
 
 initial_state = 대기

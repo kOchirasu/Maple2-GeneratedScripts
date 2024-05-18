@@ -4,19 +4,19 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[8000], visible=False) # Voice 00001397
-        self.set_effect(trigger_ids=[8001], visible=False) # Voice 00001398
-        self.set_effect(trigger_ids=[8002], visible=False) # Voice 00001399
+        self.set_portal(portal_id=2)
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5200]) # 경로 안내
+        self.set_effect(trigger_ids=[5201]) # 경로 안내
+        self.set_effect(trigger_ids=[5202]) # 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 경로 안내
+        self.set_effect(trigger_ids=[5204]) # 경로 안내
+        self.set_effect(trigger_ids=[5205]) # 경로 안내
+        self.set_effect(trigger_ids=[8000]) # Voice 00001397
+        self.set_effect(trigger_ids=[8001]) # Voice 00001398
+        self.set_effect(trigger_ids=[8002]) # Voice 00001399
         self.spawn_monster(spawn_ids=[101,201,301,401], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,7 +29,7 @@ class LodingDelay01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[90000439], quest_states=[3]):
@@ -108,7 +108,7 @@ class TalkWeiHong03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -264,15 +264,15 @@ class MoveToNextMap02(trigger_api.Trigger):
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=10027010)
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5200]) # 경로 안내
+        self.set_effect(trigger_ids=[5201]) # 경로 안내
+        self.set_effect(trigger_ids=[5202]) # 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 경로 안내
+        self.set_effect(trigger_ids=[5204]) # 경로 안내
+        self.set_effect(trigger_ids=[5205]) # 경로 안내
 
 
 initial_state = Wait

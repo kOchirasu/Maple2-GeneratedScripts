@@ -5,17 +5,17 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 첫번째 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=4)
         # 두번째 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         # 마지막 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=3)
         # 스타팅 부활 지점에서 바로 3페이지 전투판 입구로 가는 순간이동 포탈 최초에는 감추기
-        self.set_portal(portal_id=28, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=28)
         # 몬스터는 밟고 플레이어는 밟지 못하는 트리거메쉬 설정하기
-        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[201,202,203,204,205,206,207], visible=False, start_delay=0, interval=0, fade=0) # 계단 트리거메쉬 초기화 감추기
-        self.set_mesh(trigger_ids=[211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239], visible=False, start_delay=0, interval=0, fade=0) # 계단 트리거메쉬 초기화 감추기
+        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121])
+        self.set_mesh(trigger_ids=[201,202,203,204,205,206,207]) # 계단 트리거메쉬 초기화 감추기
+        self.set_mesh(trigger_ids=[211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239]) # 계단 트리거메쉬 초기화 감추기
         # self.set_user_value(key='DungeonReset', value=0) # 변수
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 계단생성시작중(trigger_api.Trigger):
 class 계단생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 1페이지 끝내고 2페이지 진입하는 투명벽 제거하기
-        self.set_mesh(trigger_ids=[301], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[301])
         self.set_mesh(trigger_ids=[201,202,203,204,205,206,207], visible=True, start_delay=1, interval=120, fade=0.5) # 계단 트리거메쉬 생성
         # 무한 루프 빠지는 것을 막기 위해 이 변수 0 초기화 하기, 이후 이 변수 다시 사용할 일 없음
         self.set_user_value(key='StairsOk', value=0)
@@ -89,7 +89,7 @@ class 계단생성2nd(trigger_api.Trigger):
 class 칸막이제거2nd(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 2페이지 끝내고 3페이지 진입하는 투명벽 제거하기
-        self.set_mesh(trigger_ids=[302], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[302])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

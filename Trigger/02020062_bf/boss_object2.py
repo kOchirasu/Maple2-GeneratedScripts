@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5101], visible=False)
+        self.set_effect(trigger_ids=[5101])
         self.set_user_value(trigger_id=99990023, key='MonsterSpawn', value=0)
         self.destroy_monster(spawn_ids=[712,722])
         self.set_interact_object(trigger_ids=[12000112], state=2)
@@ -79,7 +79,7 @@ class 레버2_재활성_대기(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5101], visible=False)
+        self.set_effect(trigger_ids=[5101])
         self.set_user_value(trigger_id=99990023, key='MonsterSpawn', value=0)
         self.destroy_monster(spawn_ids=[712,722])
         self.set_interact_object(trigger_ids=[12000112], state=2)

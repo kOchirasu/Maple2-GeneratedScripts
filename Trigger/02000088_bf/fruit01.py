@@ -5,7 +5,7 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000138], state=1)
-        self.set_effect(trigger_ids=[201], visible=False)
+        self.set_effect(trigger_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000138], state=0):
@@ -14,8 +14,8 @@ class 대기(trigger_api.Trigger):
 
 class 몬스터리젠(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[201], visible=False)
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.set_effect(trigger_ids=[201])
+        self.spawn_monster(spawn_ids=[101])
         self.set_timer(timer_id='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:

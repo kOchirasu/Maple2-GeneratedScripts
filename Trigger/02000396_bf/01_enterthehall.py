@@ -4,12 +4,12 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5004], visible=False) # DoorOpen
+        self.set_effect(trigger_ids=[5004]) # DoorOpen
         self.set_actor(trigger_id=4004, visible=True, initial_sequence='Closed') # Upstairs
-        self.set_ladder(trigger_ids=[511], visible=False, enable=False, fade=0) # Ladder_Enter
-        self.set_ladder(trigger_ids=[512], visible=False, enable=False, fade=0) # Ladder_Enter
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006], visible=True, start_delay=0, interval=0, fade=0) # Invisible_AlwaysOn
-        self.set_mesh(trigger_ids=[3007], visible=True, start_delay=0, interval=0, fade=0) # Invisible_DoorOpen
+        self.set_ladder(trigger_ids=[511]) # Ladder_Enter
+        self.set_ladder(trigger_ids=[512]) # Ladder_Enter
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006], visible=True) # Invisible_AlwaysOn
+        self.set_mesh(trigger_ids=[3007], visible=True) # Invisible_DoorOpen
         self.destroy_monster(spawn_ids=[101,102]) # Npc
         self.destroy_monster(spawn_ids=[901,902,903]) # Mob_Actor
         self.set_agent(trigger_ids=[8006,8007,8008,8009], visible=True)
@@ -42,7 +42,7 @@ class BlackeyeApp02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_101')
         self.set_dialogue(type=1, spawn_id=101, script='$02000396_BF__01_ENTERTHEHALL__0$', time=3, arg5=1)
         self.set_skip(state=BlackeyeApp02Skip)
@@ -63,7 +63,7 @@ class BlackeyeApp02Skip(trigger_api.Trigger):
 
 class BlackeyeApp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=101, script='$02000396_BF__01_ENTERTHEHALL__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$02000396_BF__01_ENTERTHEHALL__1$', time=3)
         self.set_skip(state=BlackeyeApp03Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +84,7 @@ class EnemyApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.set_user_value(trigger_id=2, key='MobSpawn', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -122,7 +122,7 @@ class EnemyApp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_104')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +148,7 @@ class BlackeyeAction01Skip(trigger_api.Trigger):
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -184,11 +184,11 @@ class BlackeyeAction03(trigger_api.Trigger):
 
 class MoveToUpstairs01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8006,8007,8008,8009], visible=False)
+        self.set_agent(trigger_ids=[8006,8007,8008,8009])
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_102')
         self.set_effect(trigger_ids=[5004], visible=True) # DoorOpen
         self.set_actor(trigger_id=4004, visible=True, initial_sequence='Opened') # Upstairs
-        self.set_mesh(trigger_ids=[3007], visible=False, start_delay=0, interval=0, fade=0) # Invisible_DoorOpen
+        self.set_mesh(trigger_ids=[3007]) # Invisible_DoorOpen
         self.set_user_value(trigger_id=3, key='EnableLadder', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -244,19 +244,19 @@ class Quit(trigger_api.Trigger):
 
 class NpcMonologueRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return NpcMonologue01(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return NpcMonologue02(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return NpcMonologue03(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return NpcMonologue04(self.ctx)
 
 
 class NpcMonologue01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$02000396_BF__01_ENTERTHEHALL__9$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000396_BF__01_ENTERTHEHALL__9$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
@@ -267,7 +267,7 @@ class NpcMonologue01(trigger_api.Trigger):
 
 class NpcMonologue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$02000396_BF__01_ENTERTHEHALL__10$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000396_BF__01_ENTERTHEHALL__10$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
@@ -278,7 +278,7 @@ class NpcMonologue02(trigger_api.Trigger):
 
 class NpcMonologue03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$02000396_BF__01_ENTERTHEHALL__11$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000396_BF__01_ENTERTHEHALL__11$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
@@ -289,7 +289,7 @@ class NpcMonologue03(trigger_api.Trigger):
 
 class NpcMonologue04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$02000396_BF__01_ENTERTHEHALL__12$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000396_BF__01_ENTERTHEHALL__12$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):

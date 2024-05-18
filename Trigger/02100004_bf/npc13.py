@@ -20,7 +20,7 @@ class 소환대기(trigger_api.Trigger):
 class 소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=999992, key='NpcSpawned13', value=1)
-        self.spawn_monster(spawn_ids=[2013], auto_target=True)
+        self.spawn_monster(spawn_ids=[2013])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

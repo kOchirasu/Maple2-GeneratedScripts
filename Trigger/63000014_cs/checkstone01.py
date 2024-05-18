@@ -4,42 +4,42 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         self.set_interact_object(trigger_ids=[10001004], state=2) # Stone
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0) # Stone_Off
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5200], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5206], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5207], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5208], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5209], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5210], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5300], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5301], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5302], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5303], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5304], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5305], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5306], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5307], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5308], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5309], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5310], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5311], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5312], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5313], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5400], visible=False) # 결계석 화살표
+        self.set_mesh(trigger_ids=[3000], visible=True) # Stone_Off
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5101]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5102]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5103]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5200]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5201]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5202]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5204]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5205]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5206]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5207]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5208]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5209]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5210]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5300]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5301]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5302]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5303]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5304]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5305]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5306]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5307]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5308]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5309]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5310]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5311]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5312]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5313]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5400]) # 결계석 화살표
         self.spawn_monster(spawn_ids=[101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -107,7 +107,7 @@ class QuestOnGoing30(trigger_api.Trigger):
 # 최초 입장
 class FirstQuestEnd01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
         # 가이드 : [[icon:questcomplete]] 틴차이와 대화하기
         self.show_guide_summary(entity_id=10030100, text_id=10030100)
         self.set_effect(trigger_ids=[5100], visible=True) # NPC 경로 안내
@@ -123,10 +123,10 @@ class FirstQuestEnd01(trigger_api.Trigger):
 class FirstQuestEnd02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5002], visible=True) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5100]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5101]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5102]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5103]) # NPC 경로 안내
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[90000448], quest_states=[3]):
@@ -151,9 +151,9 @@ class SecondQuestStart01(trigger_api.Trigger):
 class MoveToFindStone01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001004], state=1) # Stone
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=50, interval=0, fade=0) # Stone_Off
+        self.set_mesh(trigger_ids=[3000], start_delay=50) # Stone_Off
         self.hide_guide_summary(entity_id=10030160)
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entity_id=10032010, text_id=10032010) # 가이드 : 연꽃 쉼터의 결계석 찾기
         self.set_effect(trigger_ids=[5400], visible=True) # 결계석 화살표
         self.set_effect(trigger_ids=[5200], visible=True) # 결계석 경로 안내
@@ -188,8 +188,8 @@ class MoveToFindStone02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10032020)
-        self.set_effect(trigger_ids=[5400], visible=False) # 결계석 화살표
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5400]) # 결계석 화살표
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
 
 
 class SecondQuestEnd01(trigger_api.Trigger):
@@ -205,17 +205,17 @@ class SecondQuestEnd01(trigger_api.Trigger):
 
 class SecondQuestEnd02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5200], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5206], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5207], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5208], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5209], visible=False) # 결계석 경로 안내
-        self.set_effect(trigger_ids=[5210], visible=False) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5200]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5201]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5202]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5204]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5205]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5206]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5207]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5208]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5209]) # 결계석 경로 안내
+        self.set_effect(trigger_ids=[5210]) # 결계석 경로 안내
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[90000449], quest_states=[3]):
@@ -243,7 +243,7 @@ class ThirdQuestStart01(trigger_api.Trigger):
 
 class MoveToNextMap01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=True)
+        self.set_portal(portal_id=2, visible=True, minimap_visible=True)
         self.set_effect(trigger_ids=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         # 가이드 : 연꽃 쉼터 북부로 연결되는 포털을 향해 이동하기
         self.show_guide_summary(entity_id=10032030, text_id=10032030)
@@ -284,20 +284,20 @@ class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=1060)
         self.destroy_monster(spawn_ids=[101])
-        self.set_effect(trigger_ids=[5300], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5301], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5302], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5303], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5304], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5305], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5306], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5307], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5308], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5309], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5310], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5311], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5312], visible=False) # 다음 맵 경로 안내
-        self.set_effect(trigger_ids=[5313], visible=False) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5300]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5301]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5302]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5303]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5304]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5305]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5306]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5307]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5308]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5309]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5310]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5311]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5312]) # 다음 맵 경로 안내
+        self.set_effect(trigger_ids=[5313]) # 다음 맵 경로 안내
 
 
 initial_state = Wait

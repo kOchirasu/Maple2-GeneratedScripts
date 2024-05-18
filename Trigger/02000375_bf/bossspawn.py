@@ -5,14 +5,14 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 1페이지 졸구간에 있는 나가기 포탈, 최초에는 감추기
-        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=6)
         # 2페이지에 있는 나가기 포탈, 최초에는 감추기
-        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=7)
         # 3페이지에 있는 나가기 포탈, 최초에는 감추기
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
+        self.set_portal(portal_id=3)
+        self.set_portal(portal_id=4)
+        self.set_portal(portal_id=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -82,7 +82,7 @@ class 나가기포털생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # move.xml  트리거에 BattleEnd = 1 신호 보내기
         self.set_user_value(trigger_id=99999002, key='BattleEnd', value=1)
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235,3236,3237,3238,3239,3240,3241,3242,3243,3244,3245,3246,3247,3248,3249,3250,3251,3252,3253,3254,3255,3256,3257,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3296,3297,3298,3299,3300], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235,3236,3237,3238,3239,3240,3241,3242,3243,3244,3245,3246,3247,3248,3249,3250,3251,3252,3253,3254,3255,3256,3257,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3296,3297,3298,3299,3300], visible=True)
         # 1페이지 왼쪽 전투판에 등장하는 나가기 포탈 생성
         self.set_portal(portal_id=6, visible=True, enable=True, minimap_visible=True)
         # 1페이지 오른쪽 전투판에 등장하는 나가기 포탈 생성

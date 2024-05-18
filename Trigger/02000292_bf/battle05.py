@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[117,118,119,120], visible=False, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[117,118,119,120], fade=2.0)
         self.destroy_monster(spawn_ids=[1020])
         self.destroy_monster(spawn_ids=[1021])
         self.destroy_monster(spawn_ids=[1022])
@@ -15,7 +15,7 @@ class Wait(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[2022])
         self.destroy_monster(spawn_ids=[2023])
         self.destroy_monster(spawn_ids=[2024])
-        self.set_effect(trigger_ids=[5004], visible=False) # Dark_Intro_Chord
+        self.set_effect(trigger_ids=[5004]) # Dark_Intro_Chord
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -44,7 +44,7 @@ class MobBattle01(trigger_api.Trigger):
         self.change_monster(from_spawn_id=1023, to_spawn_id=2018)
         self.change_monster(from_spawn_id=1024, to_spawn_id=2019)
         self.spawn_monster(spawn_ids=[1025], auto_target=False)
-        self.set_mesh(trigger_ids=[117,118,119,120], visible=True, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[117,118,119,120], visible=True, fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -64,7 +64,7 @@ class BlockOn01(trigger_api.Trigger):
 class BlockOff01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=20002923)
-        self.set_mesh(trigger_ids=[117,118,119,120], visible=False, start_delay=0, interval=0, fade=2)
+        self.set_mesh(trigger_ids=[117,118,119,120], fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

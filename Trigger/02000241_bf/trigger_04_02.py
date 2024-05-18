@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[305], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[305], visible=True)
         self.set_mesh(trigger_ids=[707,708], visible=True)
-        self.set_mesh(trigger_ids=[309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324], visible=False)
+        self.set_mesh(trigger_ids=[309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324])
         self.set_actor(trigger_id=507, visible=True, initial_sequence='Closed')
         self.set_actor(trigger_id=508, visible=True, initial_sequence='Closed')
         self.set_actor(trigger_id=509, visible=True, initial_sequence='Closed')
@@ -22,7 +22,7 @@ class 대기(trigger_api.Trigger):
 
 class 버튼눌림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[305], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[305])
         self.set_actor(trigger_id=507, visible=True, initial_sequence='Opened')
         self.set_actor(trigger_id=508, visible=True, initial_sequence='Opened')
         self.set_mesh(trigger_ids=[309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324], visible=True)

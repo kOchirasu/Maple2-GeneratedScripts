@@ -11,7 +11,7 @@ class 체력조건(trigger_api.Trigger):
 class 전투페이즈(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[4000406], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=4000406, script='헤햇..제가 무서운가요?!', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=4000406, script='헤햇..제가 무서운가요?!', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_hp(spawn_id=4000406, is_relative=True) <= 20:

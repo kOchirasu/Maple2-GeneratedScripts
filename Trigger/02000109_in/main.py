@@ -5,7 +5,7 @@ import trigger_api
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[4001,4002,4003,4004], visible=True)
-        self.set_mesh(trigger_ids=[4011], visible=False)
+        self.set_mesh(trigger_ids=[4011])
         self.destroy_monster(spawn_ids=[101,102])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class npc스폰(trigger_api.Trigger):
 
 class 벽삭제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4001,4002,4003,4004], visible=False)
+        self.set_mesh(trigger_ids=[4001,4002,4003,4004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001607], quest_states=[2]):
@@ -91,7 +91,7 @@ class 일기장스폰_대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[102], auto_target=False)
         self.set_mesh(trigger_ids=[4011], visible=True)
-        self.set_mesh(trigger_ids=[4001,4002,4003,4004], visible=False)
+        self.set_mesh(trigger_ids=[4001,4002,4003,4004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001607], quest_states=[3]):
@@ -103,7 +103,7 @@ class 일기장스폰_대기(trigger_api.Trigger):
 class 일기장스폰01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[4011], visible=True)
-        self.set_mesh(trigger_ids=[4001,4002,4003,4004], visible=False)
+        self.set_mesh(trigger_ids=[4001,4002,4003,4004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001607], quest_states=[3]):
@@ -119,7 +119,7 @@ class 일기장스폰01(trigger_api.Trigger):
 class 일기장스폰02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[4011], visible=True)
-        self.set_mesh(trigger_ids=[4001,4002,4003,4004], visible=False)
+        self.set_mesh(trigger_ids=[4001,4002,4003,4004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001607], quest_states=[3]):
@@ -135,8 +135,8 @@ class 일기장스폰02(trigger_api.Trigger):
 class 일기장없어짐(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[102])
-        self.set_mesh(trigger_ids=[4011], visible=False)
-        self.set_mesh(trigger_ids=[4001,4002,4003,4004], visible=False)
+        self.set_mesh(trigger_ids=[4011])
+        self.set_mesh(trigger_ids=[4001,4002,4003,4004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001607], quest_states=[2]):

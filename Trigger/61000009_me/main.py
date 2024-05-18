@@ -4,20 +4,20 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4002, visible=False, initial_sequence='Closed_A')
+        self.set_actor(trigger_id=4002, initial_sequence='Closed_A')
         self.set_event_ui(type=0, arg2='0,3')
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[6001], visible=False)
+        self.set_portal(portal_id=1)
+        self.set_mesh(trigger_ids=[6001])
         self.set_mesh(trigger_ids=[6002], visible=True)
-        self.set_effect(trigger_ids=[7999], visible=False)
-        self.set_effect(trigger_ids=[7001], visible=False)
-        self.set_effect(trigger_ids=[7002], visible=False)
-        self.set_effect(trigger_ids=[7003], visible=False)
-        self.set_effect(trigger_ids=[7999], visible=False)
-        self.set_effect(trigger_ids=[7998], visible=False)
-        self.set_effect(trigger_ids=[7801], visible=False)
-        self.set_effect(trigger_ids=[7802], visible=False)
-        self.set_effect(trigger_ids=[7803], visible=False)
+        self.set_effect(trigger_ids=[7999])
+        self.set_effect(trigger_ids=[7001])
+        self.set_effect(trigger_ids=[7002])
+        self.set_effect(trigger_ids=[7003])
+        self.set_effect(trigger_ids=[7999])
+        self.set_effect(trigger_ids=[7998])
+        self.set_effect(trigger_ids=[7801])
+        self.set_effect(trigger_ids=[7802])
+        self.set_effect(trigger_ids=[7803])
         self.spawn_monster(spawn_ids=[101], auto_target=False) # 기본 배치 될 몬스터 등장
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class Ready(trigger_api.Trigger):
 
 class Ready_Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=1, interval=0)
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -37,7 +37,7 @@ class Ready_Idle(trigger_api.Trigger):
 class Ready_Idle_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
-        self.set_timer(timer_id='30', seconds=30, interval=0)
+        self.set_timer(timer_id='30', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='30'):
@@ -55,7 +55,7 @@ class start_01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.play_system_sound_in_box(sound='System_Dark_Intro_Chord_01')
         self.set_cinematic_ui(type=3, script='$02000374_BF__MAIN__25$') # 오브젝티브
-        self.set_timer(timer_id='5', seconds=5, interval=0)
+        self.set_timer(timer_id='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
@@ -74,9 +74,9 @@ class start_02(trigger_api.Trigger):
         self.set_user_value(trigger_id=2037406, key='timer', value=1) # 타이머 시작 장치
         self.set_event_ui(type=0, arg2='1,3')
         self.set_effect(trigger_ids=[7998], visible=True)
-        self.set_mesh(trigger_ids=[6002], visible=False)
+        self.set_mesh(trigger_ids=[6002])
         self.set_actor(trigger_id=4001, visible=True, initial_sequence='Opened_A')
-        self.set_portal(portal_id=1, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=1, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):
@@ -110,7 +110,7 @@ class Round_Talk_01_1(trigger_api.Trigger):
 class Round_Talk_02_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__1$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__1$', time=3)
         self.move_npc(spawn_id=110, patrol_name='MS2PatrolData_2001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +123,7 @@ class Round_Talk_02_1(trigger_api.Trigger):
 class Round_Talk_03_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__2$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__2$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__2$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -141,7 +141,7 @@ class Round_Talk_04_1(trigger_api.Trigger):
 class Round2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__3$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__3$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -151,7 +151,7 @@ class Round2(trigger_api.Trigger):
 class Round_Talk_00_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__26$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__27$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__27$', time=3)
         self.move_npc(spawn_id=110, patrol_name='MS2PatrolData_2002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -162,12 +162,12 @@ class Round_Talk_00_2(trigger_api.Trigger):
 class Round_Talk_01_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='2,3')
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_effect(trigger_ids=[7801], visible=True)
         self.set_effect(trigger_ids=[7802], visible=True)
         # self.set_effect(trigger_ids=[7803], visible=True)
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__28$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__29$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__29$', time=3)
         # self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__4$', time=3, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -208,7 +208,7 @@ class Round_Talk_02_2(trigger_api.Trigger):
 class Round_Talk_03_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__6$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__6$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__6$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -217,18 +217,18 @@ class Round_Talk_03_2(trigger_api.Trigger):
 
 class Round_Spawn_Random2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return Round_Spawn_A2(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return Round_Spawn_B2(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return Round_Spawn_C2(self.ctx)
 
 
 class Round_Spawn_A2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__7$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__7$', time=3, arg5=0) # 카모칸
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__7$', time=3) # 카모칸
         self.set_user_value(trigger_id=2037402, key='2Round_A', value=1) # 파모칸 소환 장치
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -243,7 +243,7 @@ class Round_Spawn_B2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=110, patrol_name='MS2PatrolData_2004')
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__8$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__8$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__8$', time=3)
         self.set_user_value(trigger_id=2037403, key='2Round_B', value=1) # 캡틴 아구스 소환 장치
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -258,7 +258,7 @@ class Round_Spawn_C2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=110, patrol_name='MS2PatrolData_2005')
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__9$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__9$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__9$', time=3)
         self.set_user_value(trigger_id=2037404, key='2Round_C', value=1) # 데블린 치프  소환 장치
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -301,9 +301,9 @@ class Round_Spawn_C_02_Ready2(trigger_api.Trigger):
 
 class Round_Spawn_A_02_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round_Spawn_A_B_02_2(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round_Spawn_A_C_02_2(self.ctx)
 
 
@@ -355,9 +355,9 @@ class Round_Spawn_A_C_B2(trigger_api.Trigger):
 
 class Round_Spawn_B_02_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round_Spawn_B_A_02_2(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round_Spawn_B_C_02_2(self.ctx)
 
 
@@ -409,9 +409,9 @@ class Round_Spawn_B_C_A2(trigger_api.Trigger):
 
 class Round_Spawn_C_02_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round_Spawn_C_A_02_2(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return Round_Spawn_C_B_02_2(self.ctx)
 
 
@@ -476,7 +476,7 @@ class Round_Ready3(trigger_api.Trigger):
 class Round_Talk01_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__19$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__19$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__19$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -487,7 +487,7 @@ class Round_Talk02_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='3,3')
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__20$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__20$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__20$', time=2)
         self.set_user_value(trigger_id=2037405, key='3Round_Effect', value=1) # 3라운드 연출 장치
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -498,7 +498,7 @@ class Round_Talk02_3(trigger_api.Trigger):
 class Round_Talk03_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__21$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__21$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__21$', time=2)
         self.set_effect(trigger_ids=[7206], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -530,7 +530,7 @@ class Round_Talk05_3(trigger_api.Trigger):
 class Round_Talk06_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__22$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__22$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__22$', time=2)
         self.set_effect(trigger_ids=[7205], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -542,7 +542,7 @@ class Round_Talk06_3(trigger_api.Trigger):
 class Round_Talk07_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__23$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__23$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__23$', time=2)
         self.spawn_monster(spawn_ids=[105], auto_target=False) # 둔둔
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -567,7 +567,7 @@ class End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='Closed_A')
         self.set_event_ui(type=1, arg2='$02000374_BF__MAIN__34$', arg3='3000')
-        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__35$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=110, script='$02000374_BF__MAIN__35$', time=2)
         self.set_effect(trigger_ids=[4102], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -577,7 +577,7 @@ class End(trigger_api.Trigger):
 
 class End_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4002, visible=False, initial_sequence='Closed_A')
+        self.set_actor(trigger_id=4002, initial_sequence='Closed_A')
         self.destroy_monster(spawn_ids=[110])
         self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
 

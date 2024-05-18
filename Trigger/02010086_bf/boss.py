@@ -22,7 +22,7 @@ class 대기(trigger_api.Trigger):
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[995,999,998])
-        self.spawn_monster(spawn_ids=[199], auto_target=True) # (임시) 보스몹 스폰
+        self.spawn_monster(spawn_ids=[199]) # (임시) 보스몹 스폰
         self.set_timer(timer_id='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class 시작(trigger_api.Trigger):
 
 class 소환_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[181,188], auto_target=True) # (임시) 보스몹 스폰
+        self.spawn_monster(spawn_ids=[181,188]) # (임시) 보스몹 스폰
         self.set_timer(timer_id='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class 소환_01(trigger_api.Trigger):
 
 class 소환_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[182,187], auto_target=True) # (임시) 보스몹 스폰
+        self.spawn_monster(spawn_ids=[182,187]) # (임시) 보스몹 스폰
         self.set_timer(timer_id='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 소환_02(trigger_api.Trigger):
 
 class 소환_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[183,186], auto_target=True) # (임시) 보스몹 스폰
+        self.spawn_monster(spawn_ids=[183,186]) # (임시) 보스몹 스폰
         self.set_timer(timer_id='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class 소환_03(trigger_api.Trigger):
 
 class 소환_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[184,185], auto_target=True) # (임시) 보스몹 스폰
+        self.spawn_monster(spawn_ids=[184,185]) # (임시) 보스몹 스폰
         self.set_timer(timer_id='20', seconds=20)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +82,7 @@ class 소환_04(trigger_api.Trigger):
 
 class 소환_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[996], auto_target=True) # (임시) 보스몹 스폰
+        self.spawn_monster(spawn_ids=[996]) # (임시) 보스몹 스폰
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[199]):
@@ -94,7 +94,7 @@ class 포탈_개방(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[181,182,183,184,185,186,187,188,997,996,995])
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entity_id=112, text_id=40009) # 포탈을 타세요
-        self.set_mesh(trigger_ids=[1098], visible=False, interval=0, fade=10) # 벽 해제
+        self.set_mesh(trigger_ids=[1098], fade=10.0) # 벽 해제
         self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True) # 포탈 개방
 
     def on_exit(self) -> None:

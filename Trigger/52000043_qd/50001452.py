@@ -35,7 +35,7 @@ class NPC만배치(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1001,2001])
         self.spawn_monster(spawn_ids=[1003,2003], auto_target=False)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[199], quest_ids=[50001454], quest_states=[2]):
@@ -52,8 +52,8 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1001,2001])
         self.spawn_monster(spawn_ids=[1002,2002], auto_target=False)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017], visible=True, start_delay=0, interval=0, fade=0)
-        self.select_camera(trigger_id=304, enable=True)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017], visible=True)
+        self.select_camera(trigger_id=304)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -93,8 +93,8 @@ class 부서짐연출(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10001017], state=2)
         self.set_interact_object(trigger_ids=[10001018], state=2)
         self.set_interact_object(trigger_ids=[10001020], state=1)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017], visible=False, start_delay=0, interval=200, fade=2)
-        self.select_camera(trigger_id=306, enable=True)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017], interval=200, fade=2.0)
+        self.select_camera(trigger_id=306)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=향로반응대기)

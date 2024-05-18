@@ -4,16 +4,16 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_effect(trigger_ids=[5004], visible=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
-        self.set_effect(trigger_ids=[5006], visible=False)
-        self.set_effect(trigger_ids=[5007], visible=False)
-        self.set_effect(trigger_ids=[5008], visible=False)
-        self.set_effect(trigger_ids=[5100], visible=False) # 커튼 이펙트
-        self.set_effect(trigger_ids=[5101], visible=False) # 입구 사운드
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
+        self.set_effect(trigger_ids=[5003])
+        self.set_effect(trigger_ids=[5004])
+        self.set_effect(trigger_ids=[5005])
+        self.set_effect(trigger_ids=[5006])
+        self.set_effect(trigger_ids=[5007])
+        self.set_effect(trigger_ids=[5008])
+        self.set_effect(trigger_ids=[5100]) # 커튼 이펙트
+        self.set_effect(trigger_ids=[5101]) # 입구 사운드
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[60200095], quest_states=[1]):
@@ -22,14 +22,14 @@ class Idle(trigger_api.Trigger):
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
-        self.spawn_monster(spawn_ids=[102], auto_target=True)
-        self.spawn_monster(spawn_ids=[103], auto_target=True)
-        self.spawn_monster(spawn_ids=[104], auto_target=True)
-        self.spawn_monster(spawn_ids=[105], auto_target=True)
-        self.spawn_monster(spawn_ids=[106], auto_target=True)
-        self.spawn_monster(spawn_ids=[107], auto_target=True)
-        self.spawn_monster(spawn_ids=[108], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
+        self.spawn_monster(spawn_ids=[102])
+        self.spawn_monster(spawn_ids=[103])
+        self.spawn_monster(spawn_ids=[104])
+        self.spawn_monster(spawn_ids=[105])
+        self.spawn_monster(spawn_ids=[106])
+        self.spawn_monster(spawn_ids=[107])
+        self.spawn_monster(spawn_ids=[108])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[60200095], quest_states=[1]):
@@ -96,9 +96,9 @@ class Scene_05(trigger_api.Trigger):
 class Scene_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4201], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Down_Idle_A', duration=10000)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Down_Idle_A', duration=10000)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Down_Idle_A', duration=10000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Down_Idle_A', duration=10000.0)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Down_Idle_A', duration=10000.0)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Down_Idle_A', duration=10000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -151,7 +151,7 @@ class Play(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[2003]):
@@ -188,8 +188,8 @@ class Scene_10(trigger_api.Trigger):
 
 class Scene_11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5100], visible=False) # 입구 이펙트
-        self.set_effect(trigger_ids=[5101], visible=False) # 입구 이펙트
+        self.set_effect(trigger_ids=[5100]) # 입구 이펙트
+        self.set_effect(trigger_ids=[5101]) # 입구 이펙트
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -201,7 +201,7 @@ class End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
 
 initial_state = Idle

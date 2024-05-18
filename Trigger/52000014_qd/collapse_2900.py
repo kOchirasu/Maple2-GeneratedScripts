@@ -4,14 +4,14 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[2900,2901,2902,2903,2904,2905], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[12900], visible=False) # Vibrate Short
-        self.set_effect(trigger_ids=[22900], visible=False) # Vibrate Sound
-        self.set_effect(trigger_ids=[12901], visible=False) # Vibrate Short
-        self.set_effect(trigger_ids=[22901], visible=False) # Vibrate Sound
-        self.set_effect(trigger_ids=[12902], visible=False) # Vibrate Short
-        self.set_effect(trigger_ids=[22902], visible=False) # Vibrate Sound
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[2900,2901,2902,2903,2904,2905], visible=True)
+        self.set_effect(trigger_ids=[12900]) # Vibrate Short
+        self.set_effect(trigger_ids=[22900]) # Vibrate Sound
+        self.set_effect(trigger_ids=[12901]) # Vibrate Short
+        self.set_effect(trigger_ids=[22901]) # Vibrate Sound
+        self.set_effect(trigger_ids=[12902]) # Vibrate Short
+        self.set_effect(trigger_ids=[22902]) # Vibrate Sound
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -34,7 +34,7 @@ class 무너짐01(trigger_api.Trigger):
         self.set_timer(timer_id='2', seconds=2)
         self.set_effect(trigger_ids=[12900], visible=True) # Vibrate Short
         self.set_effect(trigger_ids=[22900], visible=True) # Vibrate Sound
-        self.set_random_mesh(trigger_ids=[2900,2901,2902,2903,2904,2905], visible=False, start_delay=6, interval=100, fade=200)
+        self.set_random_mesh(trigger_ids=[2900,2901,2902,2903,2904,2905], start_delay=6, interval=100, fade=200)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -44,7 +44,7 @@ class 무너짐01(trigger_api.Trigger):
 class 카메라연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=2)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -203,7 +203,7 @@ class 줍기안내01(trigger_api.Trigger):
 
 class 포털생성01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=2, visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 종료(self.ctx)
@@ -211,12 +211,12 @@ class 포털생성01(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[12900], visible=False) # Vibrate Short
-        self.set_effect(trigger_ids=[22900], visible=False) # Vibrate Sound
-        self.set_effect(trigger_ids=[12901], visible=False) # Vibrate Short
-        self.set_effect(trigger_ids=[22901], visible=False) # Vibrate Sound
-        self.set_effect(trigger_ids=[12902], visible=False) # Vibrate Short
-        self.set_effect(trigger_ids=[22902], visible=False) # Vibrate Sound
+        self.set_effect(trigger_ids=[12900]) # Vibrate Short
+        self.set_effect(trigger_ids=[22900]) # Vibrate Sound
+        self.set_effect(trigger_ids=[12901]) # Vibrate Short
+        self.set_effect(trigger_ids=[22901]) # Vibrate Sound
+        self.set_effect(trigger_ids=[12902]) # Vibrate Short
+        self.set_effect(trigger_ids=[22902]) # Vibrate Sound
 
 
 initial_state = 대기

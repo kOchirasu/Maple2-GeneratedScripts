@@ -24,7 +24,7 @@ class Fail(trigger_api.Trigger):
         self.write_log(log_name='ThreeTwoOne_log', trigger_id=9001, event='char_event', sub_event='HyukiThreeTwoOnegameover')
         self.set_timer(timer_id='10', seconds=10, interval=1)
         self.select_camera_path(path_ids=[8011,8010], return_view=False) # 카메라 뒤로 당김
-        self.arcade_three_two_one(type='EndGame')
+        self.arcade_three_two_one_end_game()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):
@@ -33,7 +33,7 @@ class Fail(trigger_api.Trigger):
 
 class End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=0) # 게임에 들어오기 전에 있던 맵으로 강제이동
+        self.move_user() # 게임에 들어오기 전에 있던 맵으로 강제이동
 
 
 initial_state = gameset

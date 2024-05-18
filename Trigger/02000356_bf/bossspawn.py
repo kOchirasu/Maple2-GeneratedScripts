@@ -7,8 +7,8 @@ from dungeon_common.checkusercount import *
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=11)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[102]):
@@ -27,11 +27,11 @@ class DungeonStart(trigger_api.Trigger):
 
 class 카메라이동01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013])
         self.add_buff(box_ids=[102], skill_id=70000107, level=1, is_player=False, is_skill_set=False)
         self.show_guide_summary(entity_id=20003563, text_id=20003563, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -40,7 +40,7 @@ class 카메라이동01(trigger_api.Trigger):
 
 class 카메라이동02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=304, enable=True)
+        self.select_camera(trigger_id=304)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -49,7 +49,7 @@ class 카메라이동02(trigger_api.Trigger):
 
 class 카메라이동03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=305, enable=True)
+        self.select_camera(trigger_id=305)
         self.show_guide_summary(entity_id=20003562, text_id=20003562, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -71,7 +71,7 @@ class 오브젝트반응대기(trigger_api.Trigger):
 class 보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1099])
-        self.select_camera(trigger_id=306, enable=True)
+        self.select_camera(trigger_id=306)
         self.add_buff(box_ids=[102], skill_id=70000107, level=1, is_player=False, is_skill_set=False)
         self.show_guide_summary(entity_id=20003561, text_id=20003561, duration=6000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')

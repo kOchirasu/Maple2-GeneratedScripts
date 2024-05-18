@@ -16,12 +16,12 @@ class 대기(trigger_api.Trigger):
         self.set_agent(trigger_ids=[8204], visible=True)
         self.set_agent(trigger_ids=[8205], visible=True)
         self.spawn_monster(spawn_ids=[901,902,903,911,912], auto_target=False)
-        self.set_ladder(trigger_ids=[4000], visible=False, enable=False, fade=2)
-        self.set_ladder(trigger_ids=[4001], visible=False, enable=False, fade=2)
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[8001], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[8002], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[8003], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_ladder(trigger_ids=[4000], fade=2)
+        self.set_ladder(trigger_ids=[4001], fade=2)
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903], visible=True)
+        self.set_mesh(trigger_ids=[8001], visible=True)
+        self.set_mesh(trigger_ids=[8002], visible=True)
+        self.set_mesh(trigger_ids=[8003], visible=True)
         self.set_actor(trigger_id=7000, visible=True, initial_sequence='Closed') # door
         self.set_actor(trigger_id=7001, visible=True, initial_sequence='Closed') # door
         self.set_actor(trigger_id=7100, visible=True, initial_sequence='Closed') # floor
@@ -32,18 +32,18 @@ class 대기(trigger_api.Trigger):
         self.set_actor(trigger_id=7201, visible=True, initial_sequence='Idle_A') # mafia
         self.set_actor(trigger_id=7202, visible=True, initial_sequence='Idle_A') # mafia
         self.set_actor(trigger_id=7203, visible=True, initial_sequence='Idle_A') # mafia
-        self.set_actor(trigger_id=7204, visible=False, initial_sequence='Down_Idle_B') # runebladerscout
+        self.set_actor(trigger_id=7204, initial_sequence='Down_Idle_B') # runebladerscout
         self.set_actor(trigger_id=7300, visible=True, initial_sequence='Closed') # lever
-        self.set_breakable(trigger_ids=[6201,6202,6203], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[6201,6202,6203], visible=False)
-        self.set_mesh(trigger_ids=[8500], visible=True, start_delay=0, interval=0, fade=0) # goldsafebox
+        self.set_breakable(trigger_ids=[6201,6202,6203])
+        self.set_visible_breakable_object(trigger_ids=[6201,6202,6203])
+        self.set_mesh(trigger_ids=[8500], visible=True) # goldsafebox
         self.set_interact_object(trigger_ids=[10000420], state=0) # goldsafebox
-        self.set_effect(trigger_ids=[6100], visible=False) # LeverHear
-        self.set_effect(trigger_ids=[6200], visible=False) # MetalDoor
-        self.set_effect(trigger_ids=[6300], visible=False) # MetalDoor
-        self.set_effect(trigger_ids=[6400], visible=False) # GroundDoor
-        self.set_effect(trigger_ids=[6401], visible=False) # GroundDoor
-        self.set_effect(trigger_ids=[6500], visible=False) # FallDownScream
+        self.set_effect(trigger_ids=[6100]) # LeverHear
+        self.set_effect(trigger_ids=[6200]) # MetalDoor
+        self.set_effect(trigger_ids=[6300]) # MetalDoor
+        self.set_effect(trigger_ids=[6400]) # GroundDoor
+        self.set_effect(trigger_ids=[6401]) # GroundDoor
+        self.set_effect(trigger_ids=[6500]) # FallDownScream
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[20002243], quest_states=[1], job_code=90):
@@ -80,7 +80,7 @@ class 루키등장01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.spawn_monster(spawn_ids=[101], auto_target=False)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -90,7 +90,7 @@ class 루키등장01(trigger_api.Trigger):
 class 루키등장02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_1011')
-        self.set_dialogue(type=2, spawn_id=11001610, script='$52000027_QD__MEETROOKIE01__0$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001610, script='$52000027_QD__MEETROOKIE01__0$', time=3)
         self.set_skip(state=루키등장03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +103,7 @@ class 루키등장02(trigger_api.Trigger):
 
 class 루키등장03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001584, script='$52000027_QD__MEETROOKIE01__1$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001584, script='$52000027_QD__MEETROOKIE01__1$', time=3)
         self.set_skip(state=사다리생성01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -126,9 +126,9 @@ class 사다리생성01(trigger_api.Trigger):
 
 class 사다리생성02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8001], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[8001])
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_1012')
-        self.select_camera_path(path_ids=[600,601], return_view=True)
+        self.select_camera_path(path_ids=[600,601])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -190,7 +190,7 @@ class 루키이동03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=7000, visible=True, initial_sequence='Opened') # door
         self.set_effect(trigger_ids=[6200], visible=True) # MetalDoor
-        self.set_mesh(trigger_ids=[8002], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[8002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -199,11 +199,11 @@ class 루키이동03(trigger_api.Trigger):
 
 class 루키이동04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8100], visible=False)
-        self.set_agent(trigger_ids=[8101], visible=False)
-        self.set_agent(trigger_ids=[8102], visible=False)
-        self.set_agent(trigger_ids=[8103], visible=False)
-        self.set_agent(trigger_ids=[8104], visible=False)
+        self.set_agent(trigger_ids=[8100])
+        self.set_agent(trigger_ids=[8101])
+        self.set_agent(trigger_ids=[8102])
+        self.set_agent(trigger_ids=[8103])
+        self.set_agent(trigger_ids=[8104])
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_1014')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -237,8 +237,8 @@ class 상황연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_dialogue(type=2, spawn_id=11001610, script='$52000027_QD__MEETROOKIE01__5$', time=3, arg5=0)
-        self.select_camera(trigger_id=700, enable=True)
+        self.set_dialogue(type=2, spawn_id=11001610, script='$52000027_QD__MEETROOKIE01__5$', time=3)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -247,7 +247,7 @@ class 상황연출01(trigger_api.Trigger):
 
 class 상황연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
         self.set_skip(state=상황연출03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -257,7 +257,7 @@ class 상황연출02(trigger_api.Trigger):
 
 class 상황연출03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=702, enable=True)
+        self.select_camera(trigger_id=702)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -275,7 +275,7 @@ class 상황연출04(trigger_api.Trigger):
 
 class 루키경고01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001584, script='$52000027_QD__MEETROOKIE01__6$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001584, script='$52000027_QD__MEETROOKIE01__6$', time=3)
         self.set_skip(state=루키경고02)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -288,7 +288,7 @@ class 루키경고01(trigger_api.Trigger):
 
 class 루키경고02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -297,7 +297,7 @@ class 루키경고02(trigger_api.Trigger):
 
 class 루키경고03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001610, script='$52000027_QD__MEETROOKIE01__7$', time=5, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001610, script='$52000027_QD__MEETROOKIE01__7$', time=5)
         self.set_skip(state=루키경고04)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -343,7 +343,7 @@ class 함정연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_dialogue(type=2, spawn_id=11001610, script='$52000027_QD__MEETROOKIE01__9$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001610, script='$52000027_QD__MEETROOKIE01__9$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -352,7 +352,7 @@ class 함정연출01(trigger_api.Trigger):
 
 class 함정연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=800, enable=True)
+        self.select_camera(trigger_id=800)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -364,14 +364,14 @@ class 함정연출03(trigger_api.Trigger):
         self.set_breakable(trigger_ids=[6201,6202,6203], enable=True)
         self.set_visible_breakable_object(trigger_ids=[6201,6202,6203], visible=True)
         self.set_effect(trigger_ids=[6500], visible=True) # FallDownScream
-        self.set_actor(trigger_id=7201, visible=False, initial_sequence='Idle_A') # mafia
-        self.set_actor(trigger_id=7202, visible=False, initial_sequence='Idle_A') # mafia
-        self.set_actor(trigger_id=7203, visible=False, initial_sequence='Idle_A') # mafia
+        self.set_actor(trigger_id=7201, initial_sequence='Idle_A') # mafia
+        self.set_actor(trigger_id=7202, initial_sequence='Idle_A') # mafia
+        self.set_actor(trigger_id=7203, initial_sequence='Idle_A') # mafia
         self.set_actor(trigger_id=7100, visible=True, initial_sequence='Opened') # floor
         self.set_actor(trigger_id=7101, visible=True, initial_sequence='Opened') # floor
         self.set_actor(trigger_id=7102, visible=True, initial_sequence='Opened') # floor
         self.set_actor(trigger_id=7103, visible=True, initial_sequence='Opened') # floor
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903])
         self.set_effect(trigger_ids=[6400], visible=True) # GroundDoor
         self.set_effect(trigger_ids=[6401], visible=True) # GroundDoor
 
@@ -385,7 +385,7 @@ class 함정연출04(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=800, enable=False)
-        self.set_visible_breakable_object(trigger_ids=[6201,6202,6203], visible=False)
+        self.set_visible_breakable_object(trigger_ids=[6201,6202,6203])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -397,13 +397,13 @@ class 루키이동20(trigger_api.Trigger):
         self.show_guide_summary(entity_id=25200273, text_id=25200273, duration=4000)
         self.set_actor(trigger_id=7001, visible=True, initial_sequence='Opened') # door
         self.set_effect(trigger_ids=[6300], visible=True) # MetalDoor
-        self.set_mesh(trigger_ids=[8003], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_agent(trigger_ids=[8200], visible=False)
-        self.set_agent(trigger_ids=[8201], visible=False)
-        self.set_agent(trigger_ids=[8202], visible=False)
-        self.set_agent(trigger_ids=[8203], visible=False)
-        self.set_agent(trigger_ids=[8204], visible=False)
-        self.set_agent(trigger_ids=[8205], visible=False)
+        self.set_mesh(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8200])
+        self.set_agent(trigger_ids=[8201])
+        self.set_agent(trigger_ids=[8202])
+        self.set_agent(trigger_ids=[8203])
+        self.set_agent(trigger_ids=[8204])
+        self.set_agent(trigger_ids=[8205])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9004]):
@@ -436,7 +436,7 @@ class 루키미션01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=801, enable=True)
+        self.select_camera(trigger_id=801)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 루키미션02(self.ctx)
@@ -444,7 +444,7 @@ class 루키미션01(trigger_api.Trigger):
 
 class 루키미션02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001584, script='$52000027_QD__MEETROOKIE01__11$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001584, script='$52000027_QD__MEETROOKIE01__11$', time=3)
         self.set_skip(state=루키미션03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -457,8 +457,8 @@ class 루키미션02(trigger_api.Trigger):
 
 class 루키미션03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001584, script='$52000027_QD__MEETROOKIE01__12$', time=4, arg5=0)
-        self.set_mesh(trigger_ids=[8500], visible=False, start_delay=100, interval=0, fade=0) # goldsafebox
+        self.set_dialogue(type=2, spawn_id=11001584, script='$52000027_QD__MEETROOKIE01__12$', time=4)
+        self.set_mesh(trigger_ids=[8500], start_delay=100) # goldsafebox
         self.set_interact_object(trigger_ids=[10000420], state=1) # goldsafebox
         self.set_skip(state=루키미션04)
 

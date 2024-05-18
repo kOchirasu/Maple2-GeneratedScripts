@@ -20,9 +20,9 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000529], state=0) # set03_answer
         self.set_interact_object(trigger_ids=[10000530], state=0) # set04_answer
         self.set_interact_object(trigger_ids=[10000531], state=0) # set05_answer
-        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=True)
-        self.set_mesh(trigger_ids=[510000], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=2, visible=True, minimap_visible=True)
+        self.set_mesh(trigger_ids=[510000], visible=True)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -39,7 +39,7 @@ class DungeonStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_skip(state=CameraWalk01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -52,7 +52,7 @@ class CameraWalk01(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=600, enable=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], visible=False, start_delay=0, interval=100, fade=2)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], interval=100, fade=2.0)
         self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,15 +67,15 @@ class 준비(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 번생성1(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 번생성2(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 번생성3(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 번생성4(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 번생성5(self.ctx)
 
 
@@ -236,7 +236,7 @@ class 번아이템5(trigger_api.Trigger):
 
 class 소멸대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[510000], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[510000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

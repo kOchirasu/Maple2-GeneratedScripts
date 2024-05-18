@@ -1,5 +1,6 @@
 """ trigger/52000186_qd/52000186.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Wait(trigger_api.Trigger):
@@ -27,7 +28,7 @@ class 영상재생(trigger_api.Trigger):
 class 묘지전경씬01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[8000,8001,8002,8003], return_view=False)
         self.set_cinematic_ui(type=1)
 
@@ -39,7 +40,7 @@ class 묘지전경씬01(trigger_api.Trigger):
 class 묘지전경씬02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8004,8005], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$52000186_QD__52000186__0$', desc='$52000186_QD__52000186__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=7000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000186_QD__52000186__0$', desc='$52000186_QD__52000186__1$', align=Align.Bottom | Align.Left, duration=7000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -57,7 +58,7 @@ class 묘지전경씬03(trigger_api.Trigger):
 
 class Quit01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,8 +69,8 @@ class Quit01(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -80,8 +81,8 @@ class Quit02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
-        self.add_balloon_talk(spawn_id=0, msg='$52000186_QD__52000186__2$', duration=6000, delay_tick=1000)
+        self.reset_camera()
+        self.add_balloon_talk(msg='$52000186_QD__52000186__2$', duration=6000, delay_tick=1000)
         self.show_guide_summary(entity_id=25201861, text_id=25201861, duration=10000)
         self.spawn_monster(spawn_ids=[4000], auto_target=False)
         self.spawn_monster(spawn_ids=[4001], auto_target=False)
@@ -183,7 +184,7 @@ class 출범연설시작02(trigger_api.Trigger):
 
 class 출범연설시작03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=10, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=10, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -243,7 +244,7 @@ class 연설시퀀스종료02(trigger_api.Trigger):
 
 class 연설시퀀스종료03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=20, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=20, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

@@ -21,7 +21,7 @@ class 연출시작딜레이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=101, enable=True)
+        self.select_camera(trigger_id=101)
         self.set_timer(timer_id='1', seconds=1)
         self.set_scene_skip(state=Skip_1, action='nextState')
 

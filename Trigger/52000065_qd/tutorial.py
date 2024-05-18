@@ -4,17 +4,17 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1000], visible=True, start_delay=0, interval=0, fade=0) # 강철 결계
-        self.set_mesh(trigger_ids=[2000], visible=True, start_delay=0, interval=0, fade=0) # Invisible
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=30, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=40, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=50, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=60, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=70, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=80, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[1000], visible=True) # 강철 결계
+        self.set_mesh(trigger_ids=[2000], visible=True) # Invisible
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=10)
+        self.set_portal(portal_id=20)
+        self.set_portal(portal_id=30)
+        self.set_portal(portal_id=40)
+        self.set_portal(portal_id=50)
+        self.set_portal(portal_id=60)
+        self.set_portal(portal_id=70)
+        self.set_portal(portal_id=80)
         self.create_widget(type='Guide')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,8 +67,8 @@ class 몬스터소환(trigger_api.Trigger):
 
 class 해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1000], visible=False, start_delay=0, interval=0, fade=0) # 강철 결계
-        self.set_mesh(trigger_ids=[2000], visible=False, start_delay=0, interval=0, fade=0) # Invisible
+        self.set_mesh(trigger_ids=[1000]) # 강철 결계
+        self.set_mesh(trigger_ids=[2000]) # Invisible
         self.guide_event(event_id=260)
 
     def on_tick(self) -> trigger_api.Trigger:

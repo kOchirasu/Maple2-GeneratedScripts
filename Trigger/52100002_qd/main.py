@@ -1,12 +1,13 @@
 """ trigger/52100002_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[601])
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -111,15 +112,15 @@ class 암전(trigger_api.Trigger):
 
 class 종료연출대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.move_user(map_id=52100002, portal_id=2)
         self.destroy_monster(spawn_ids=[1001,1002,2001,2002,2101,2102])
         self.spawn_monster(spawn_ids=[1098,1099], auto_target=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_npc_emotion_loop(spawn_id=1098, sequence_name='Dead_B', duration=3000000)
-        self.set_npc_emotion_loop(spawn_id=1099, sequence_name='Dead_B', duration=3000000)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_npc_emotion_loop(spawn_id=1098, sequence_name='Dead_B', duration=3000000.0)
+        self.set_npc_emotion_loop(spawn_id=1099, sequence_name='Dead_B', duration=3000000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -129,8 +130,8 @@ class 종료연출대기(trigger_api.Trigger):
 class 종료연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=연출종료)
-        self.add_cinematic_talk(npc_id=11003889, illust_id='Firis_normal', msg='$02000392_BF__MAIN__0$', align='left', duration=4000)
-        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__1$', align='right', duration=3000)
+        self.add_cinematic_talk(npc_id=11003889, illust_id='Firis_normal', msg='$02000392_BF__MAIN__0$', align=Align.Left, duration=4000)
+        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__1$', align=Align.Right, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
@@ -139,7 +140,7 @@ class 종료연출(trigger_api.Trigger):
 
 class PC대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$02000392_BF__MAIN__2$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$02000392_BF__MAIN__2$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -148,7 +149,7 @@ class PC대사(trigger_api.Trigger):
 
 class PC대사2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$02000392_BF__MAIN__10$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$02000392_BF__MAIN__10$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -167,7 +168,7 @@ class 자매교체(trigger_api.Trigger):
 
 class 자매대화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -176,8 +177,8 @@ class 자매대화(trigger_api.Trigger):
 
 class 자매대화01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003889, illust_id='Firis_normal', msg='$02000392_BF__MAIN__3$', align='left', duration=4000)
-        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__4$', align='right', duration=4000)
+        self.add_cinematic_talk(npc_id=11003889, illust_id='Firis_normal', msg='$02000392_BF__MAIN__3$', align=Align.Left, duration=4000)
+        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__4$', align=Align.Right, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
@@ -186,7 +187,7 @@ class 자매대화01(trigger_api.Trigger):
 
 class 자매대화02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003889, illust_id='Firis_normal', msg='$02000392_BF__MAIN__5$', align='left', duration=5000)
+        self.add_cinematic_talk(npc_id=11003889, illust_id='Firis_normal', msg='$02000392_BF__MAIN__5$', align=Align.Left, duration=5000)
         self.set_dialogue(type=1, spawn_id=1097, script='$02000392_BF__MAIN__6$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -196,7 +197,7 @@ class 자매대화02(trigger_api.Trigger):
 
 class 자매대화03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__11$', align='left', duration=4000)
+        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__11$', align=Align.Left, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -205,7 +206,7 @@ class 자매대화03(trigger_api.Trigger):
 
 class PC대사3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$02000392_BF__MAIN__12$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$02000392_BF__MAIN__12$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -214,7 +215,7 @@ class PC대사3(trigger_api.Trigger):
 
 class 자매대화04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__7$', align='left', duration=3000)
+        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__7$', align=Align.Left, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -223,7 +224,7 @@ class 자매대화04(trigger_api.Trigger):
 
 class 자매대화05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__8$', align='left', duration=3000)
+        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__8$', align=Align.Left, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -232,7 +233,7 @@ class 자매대화05(trigger_api.Trigger):
 
 class 자매대화06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__9$', align='left', duration=3000)
+        self.add_cinematic_talk(npc_id=11003888, illust_id='Celine_normal', msg='$02000392_BF__MAIN__9$', align=Align.Left, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -248,7 +249,7 @@ class 연출종료(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         # self.select_camera(trigger_id=302, enable=False)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

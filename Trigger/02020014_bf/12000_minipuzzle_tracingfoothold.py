@@ -12,12 +12,12 @@ class Wait(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000222], state=2)
         # AntiqueMap / 기믹 시작 오브젝트 / Additional Effect 71001021 부여
         self.set_interact_object(trigger_ids=[12000075], state=2)
-        self.set_mesh(trigger_ids=[12001], visible=False, start_delay=0, interval=0, fade=0) # FootHold01
-        self.set_mesh(trigger_ids=[12002], visible=False, start_delay=0, interval=0, fade=0) # FootHold02
-        self.set_mesh(trigger_ids=[12003], visible=False, start_delay=0, interval=0, fade=0) # FootHold03
-        self.set_actor(trigger_id=12201, visible=False, initial_sequence='Interaction_luminous_A01_on') # Actor_FlowerOn01
-        self.set_actor(trigger_id=12202, visible=False, initial_sequence='Interaction_luminous_A01_on') # Actor_FlowerOn02
-        self.set_effect(trigger_ids=[12100], visible=False) # Success Sound Effect
+        self.set_mesh(trigger_ids=[12001]) # FootHold01
+        self.set_mesh(trigger_ids=[12002]) # FootHold02
+        self.set_mesh(trigger_ids=[12003]) # FootHold03
+        self.set_actor(trigger_id=12201, initial_sequence='Interaction_luminous_A01_on') # Actor_FlowerOn01
+        self.set_actor(trigger_id=12202, initial_sequence='Interaction_luminous_A01_on') # Actor_FlowerOn02
+        self.set_effect(trigger_ids=[12100]) # Success Sound Effect
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimeEventOn') >= 1:
@@ -38,7 +38,7 @@ class Setting(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000075], state=0):
             # UI 표시 안함 / 황금 상자 소유권 Additional Effect 71001021 지속시간 동일
-            self.set_timer(timer_id='1', seconds=120, start_delay=1, interval=0, v_offset=0)
+            self.set_timer(timer_id='1', seconds=120, start_delay=1)
             return TracingFootHold_Start_Delay(self.ctx)
 
 
@@ -50,7 +50,7 @@ class TracingFootHold_Start_Delay(trigger_api.Trigger):
 
 class TracingFootHold_Play01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[12001], visible=True, start_delay=0, interval=0, fade=1) # FootHold01
+        self.set_mesh(trigger_ids=[12001], visible=True, fade=1.0) # FootHold01
         self.set_interact_object(trigger_ids=[12000082], state=1) # Flower01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -74,7 +74,7 @@ class TracingFootHold_Play01_Delay(trigger_api.Trigger):
 
 class TracingFootHold_Play02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[12002], visible=True, start_delay=0, interval=0, fade=1) # FootHold02
+        self.set_mesh(trigger_ids=[12002], visible=True, fade=1.0) # FootHold02
         self.set_interact_object(trigger_ids=[12000083], state=1) # Flower02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,10 +99,10 @@ class TracingFootHold_Success(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(box_ids=[120001], skill_id=71001022, level=1, is_player=False, is_skill_set=False)
         self.set_effect(trigger_ids=[12100], visible=True) # Success Sound Effect
-        self.set_mesh(trigger_ids=[12003], visible=True, start_delay=0, interval=0, fade=1) # FootHold03
+        self.set_mesh(trigger_ids=[12003], visible=True, fade=1.0) # FootHold03
         # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001121 걸어서 71001021 제거
         self.set_interact_object(trigger_ids=[12000222], state=1)
-        self.set_timer(timer_id='2', seconds=60, start_delay=1, interval=0, v_offset=0)
+        self.set_timer(timer_id='2', seconds=60, start_delay=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000222], state=0):
@@ -133,8 +133,8 @@ class TracingFootHold_End(trigger_api.Trigger):
 
 class TracingFootHold_Fail(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=12201, visible=False, initial_sequence='Interaction_luminous_A01_on') # Actor_FlowerOn01
-        self.set_actor(trigger_id=12202, visible=False, initial_sequence='Interaction_luminous_A01_on') # Actor_FlowerOn02
+        self.set_actor(trigger_id=12201, initial_sequence='Interaction_luminous_A01_on') # Actor_FlowerOn01
+        self.set_actor(trigger_id=12202, initial_sequence='Interaction_luminous_A01_on') # Actor_FlowerOn02
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

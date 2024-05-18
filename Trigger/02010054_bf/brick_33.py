@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[34033], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_skill(trigger_ids=[7033], enable=False)
+        self.set_mesh(trigger_ids=[34033], visible=True)
+        self.set_skill(trigger_ids=[7033])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[1133]):
@@ -18,7 +18,7 @@ class 발판(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=200):
-            self.set_mesh(trigger_ids=[34033], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[34033])
             return 종료(self.ctx)
 
 

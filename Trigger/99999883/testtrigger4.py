@@ -10,7 +10,7 @@ class START(trigger_api.Trigger):
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
 
 
 initial_state = START

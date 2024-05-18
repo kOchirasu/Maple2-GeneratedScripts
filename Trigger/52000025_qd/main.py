@@ -5,7 +5,7 @@ import trigger_api
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[202], auto_target=False) # 렌듀비앙
-        self.set_effect(trigger_ids=[7001], visible=False)
+        self.set_effect(trigger_ids=[7001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[20002235], quest_states=[1], job_code=90):

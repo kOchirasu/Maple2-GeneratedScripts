@@ -10,9 +10,9 @@ class 시작대기중(trigger_api.Trigger):
 
 class 기본셋팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False) # 던전맵 나가는 포탈, 시작 지점에 위치
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False) # 던전맵 나가는 포탈, 전투판에 위치
-        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False) # 시작지점에서 전투판으로 가기위한 포탈
+        self.set_portal(portal_id=1) # 던전맵 나가는 포탈, 시작 지점에 위치
+        self.set_portal(portal_id=2) # 던전맵 나가는 포탈, 전투판에 위치
+        self.set_portal(portal_id=3) # 시작지점에서 전투판으로 가기위한 포탈
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[601]):

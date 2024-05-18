@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[450], visible=False)
+        self.set_effect(trigger_ids=[450])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[904]):

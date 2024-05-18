@@ -1,5 +1,6 @@
 """ trigger/02020051_bf/101_main.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 준비(trigger_api.Trigger):
@@ -10,11 +11,11 @@ class 준비(trigger_api.Trigger):
 
 class 포션사용(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=60001, enable=False)
+        self.set_sound(trigger_id=60001)
         self.reset_timer(timer_id='999')
         self.set_user_value(trigger_id=102, key='Timmer', value=2)
-        self.set_ambient_light(primary=[198,255,205])
-        self.set_directional_light(diffuse_color=[255,234,193], specular_color=[255,255,255])
+        self.set_ambient_light(primary=Vector3(198,255,205))
+        self.set_directional_light(diffuse_color=Vector3(255,234,193), specular_color=Vector3(255,255,255))
         self.set_user_value(trigger_id=104, key='End', value=2)
         self.set_user_value(trigger_id=103, key='Main', value=1)
 
@@ -26,7 +27,7 @@ class 포션사용(trigger_api.Trigger):
 class 타이머(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='999', seconds=10, start_delay=1, interval=1)
-        self.side_npc_talk(type='talk', npc_id=11003536, illust='Neirin_surprise', script='$02020051_BF__101_MAIN__0$', duration=5684, voice='ko/Npc/00002201')
+        self.side_npc_talk(npc_id=11003536, illust='Neirin_surprise', script='$02020051_BF__101_MAIN__0$', duration=5684, voice='ko/Npc/00002201')
         self.remove_buff(box_id=11, skill_id=90000900)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,15 +42,15 @@ class 페이드아웃(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.set_ambient_light(primary=[102,86,112])
-            self.set_directional_light(diffuse_color=[255,234,193], specular_color=[127,91,93])
+            self.set_ambient_light(primary=Vector3(102,86,112))
+            self.set_directional_light(diffuse_color=Vector3(255,234,193), specular_color=Vector3(127,91,93))
             return 페이드인(self.ctx)
 
 
 class 페이드인(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.side_npc_talk(type='talk', npc_id=11003536, illust='Neirin_surprise', script='$02020051_BF__101_MAIN__1$', duration=5684, voice='ko/Npc/00002201')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.side_npc_talk(npc_id=11003536, illust='Neirin_surprise', script='$02020051_BF__101_MAIN__1$', duration=5684, voice='ko/Npc/00002201')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -61,17 +62,17 @@ class 기간티카등장_렌덤조건(trigger_api.Trigger):
         self.set_sound(trigger_id=60001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 기간티카등장_1(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 기간티카등장_2(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 기간티카등장_3(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 기간티카등장_4(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 기간티카등장_5(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return 기간티카등장_6(self.ctx)
 
 

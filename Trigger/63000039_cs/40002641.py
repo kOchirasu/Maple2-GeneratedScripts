@@ -6,7 +6,7 @@ class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=201, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_off')
         self.set_mesh(trigger_ids=[3000,3001,3002], visible=True)
-        self.set_mesh(trigger_ids=[3003,3004,3005], visible=False)
+        self.set_mesh(trigger_ids=[3003,3004,3005])
         self.set_interact_object(trigger_ids=[10001025], state=0)
         self.spawn_monster(spawn_ids=[1001,1002,1003,1004,1005], auto_target=False)
 
@@ -20,7 +20,7 @@ class 대기(trigger_api.Trigger):
 class NPC말풍선(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            self.set_dialogue(type=1, spawn_id=1002, script='$63000039_CS__40002641__0$', time=4, arg5=0)
+            self.set_dialogue(type=1, spawn_id=1002, script='$63000039_CS__40002641__0$', time=4)
             self.set_dialogue(type=1, spawn_id=1005, script='$63000039_CS__40002641__1$', time=4, arg5=2)
             return 오브젝트반응대기(self.ctx)
 
@@ -31,7 +31,7 @@ class 오브젝트반응대기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10001025], state=0):
-            self.set_mesh(trigger_ids=[3000,3001,3002], visible=False)
+            self.set_mesh(trigger_ids=[3000,3001,3002])
             self.set_mesh(trigger_ids=[3003,3004,3005], visible=True)
             return NPC를이동(self.ctx)
 
@@ -40,7 +40,7 @@ class NPC를이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1001')
         self.move_npc(spawn_id=1002, patrol_name='MS2PatrolData_1002')
         self.move_npc(spawn_id=1003, patrol_name='MS2PatrolData_1003')
@@ -64,8 +64,8 @@ class PC이동(trigger_api.Trigger):
 
 class PC말풍선(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
-        self.set_dialogue(type=1, spawn_id=0, script='$63000039_CS__40002641__2$', time=4, arg5=0)
+        self.select_camera(trigger_id=302)
+        self.set_dialogue(type=1, script='$63000039_CS__40002641__2$', time=4)
         self.set_achievement(trigger_id=199, type='trigger', achieve='SaveBackstreetPeople')
 
     def on_tick(self) -> trigger_api.Trigger:

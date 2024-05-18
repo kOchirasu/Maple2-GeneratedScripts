@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 class CheckUser10_GuildRaid(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=30, start_delay=1, interval=0, v_offset=0) # 최대 30초 대기
+        self.set_timer(timer_id='1', seconds=30, start_delay=1) # 최대 30초 대기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=101) >= 10:
@@ -47,7 +47,7 @@ class MaxCount10_Start(trigger_api.Trigger):
 
 class DungeonStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=904, enable=True)
+        self.select_camera(trigger_id=904)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -106,11 +106,11 @@ class CloseCaptionSetting(trigger_api.Trigger):
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(box_ids=[101], skill_id=70000133, level=1, is_player=False, is_skill_set=False)
-        self.add_buff(box_ids=[101], skill_id=70000133, level=1, is_player=False, is_skill_set=True)
-        self.set_effect(trigger_ids=[8001], visible=False)
-        self.set_effect(trigger_ids=[8002], visible=False)
-        self.set_effect(trigger_ids=[8003], visible=False)
-        self.set_mesh(trigger_ids=[80000], visible=False, start_delay=0, interval=0, fade=0)
+        self.add_buff(box_ids=[101], skill_id=70000133, level=1, is_player=False)
+        self.set_effect(trigger_ids=[8001])
+        self.set_effect(trigger_ids=[8002])
+        self.set_effect(trigger_ids=[8003])
+        self.set_mesh(trigger_ids=[80000])
         self.set_skill(trigger_ids=[910001], enable=True)
         self.set_skill(trigger_ids=[910002], enable=True)
         self.set_skill(trigger_ids=[910003], enable=True)
@@ -212,7 +212,7 @@ class 바리케이트(trigger_api.Trigger):
 
 class 닫기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
         self.set_effect(trigger_ids=[8001], visible=True)
         self.set_effect(trigger_ids=[8002], visible=True)
         self.set_effect(trigger_ids=[8003], visible=True)

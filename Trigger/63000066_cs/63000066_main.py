@@ -1,23 +1,24 @@
 """ trigger/63000066_cs/63000066_main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
-        self.spawn_monster(spawn_ids=[102], auto_target=True)
-        self.spawn_monster(spawn_ids=[103], auto_target=True)
-        self.spawn_monster(spawn_ids=[104], auto_target=True)
-        self.spawn_monster(spawn_ids=[105], auto_target=True)
-        self.spawn_monster(spawn_ids=[111], auto_target=True)
-        self.spawn_monster(spawn_ids=[112], auto_target=True)
-        self.spawn_monster(spawn_ids=[113], auto_target=True)
-        self.spawn_monster(spawn_ids=[114], auto_target=True)
-        self.spawn_monster(spawn_ids=[115], auto_target=True)
-        self.spawn_monster(spawn_ids=[116], auto_target=True)
-        self.set_effect(trigger_ids=[5001,5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.spawn_monster(spawn_ids=[101])
+        self.spawn_monster(spawn_ids=[102])
+        self.spawn_monster(spawn_ids=[103])
+        self.spawn_monster(spawn_ids=[104])
+        self.spawn_monster(spawn_ids=[105])
+        self.spawn_monster(spawn_ids=[111])
+        self.spawn_monster(spawn_ids=[112])
+        self.spawn_monster(spawn_ids=[113])
+        self.spawn_monster(spawn_ids=[114])
+        self.spawn_monster(spawn_ids=[115])
+        self.spawn_monster(spawn_ids=[116])
+        self.set_effect(trigger_ids=[5001,5002])
+        self.set_effect(trigger_ids=[5003])
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[701], quest_ids=[30000351], quest_states=[1]):
@@ -51,7 +52,7 @@ class 사다리안내(trigger_api.Trigger):
 class 암전_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=26300662)
-        self.set_effect(trigger_ids=[5001,5002], visible=False)
+        self.set_effect(trigger_ids=[5001,5002])
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -73,8 +74,8 @@ class 암전_02(trigger_api.Trigger):
 
 class 마리엔등장_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
-        self.add_cinematic_talk(npc_id=11004293, msg='$63000066_CS__63000066_MAIN__0$', duration=2500, align='right')
+        self.spawn_monster(spawn_ids=[201])
+        self.add_cinematic_talk(npc_id=11004293, msg='$63000066_CS__63000066_MAIN__0$', duration=2500, align=Align.Right)
         self.set_scene_skip(state=스킵종료, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +85,7 @@ class 마리엔등장_01(trigger_api.Trigger):
 
 class 마리엔등장_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=800):
@@ -111,7 +112,7 @@ class 마리엔등장_04(trigger_api.Trigger):
 
 class 마리엔등장_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004293, msg='$63000066_CS__63000066_MAIN__1$', duration=2500, align='right')
+        self.add_cinematic_talk(npc_id=11004293, msg='$63000066_CS__63000066_MAIN__1$', duration=2500, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -129,7 +130,7 @@ class 마리엔등장_06(trigger_api.Trigger):
 
 class 마리엔등장_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004293, msg='$63000066_CS__63000066_MAIN__2$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11004293, msg='$63000066_CS__63000066_MAIN__2$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -147,7 +148,7 @@ class 마리엔등장_08(trigger_api.Trigger):
 
 class 마리엔등장_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.face_emotion(spawn_id=0, emotion_name='Think_A')
+        self.face_emotion(emotion_name='Think_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -165,7 +166,7 @@ class 마리엔등장_10(trigger_api.Trigger):
 
 class 마리엔등장_11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11004293, msg='$63000066_CS__63000066_MAIN__3$', duration=2500, align='right')
+        self.add_cinematic_talk(npc_id=11004293, msg='$63000066_CS__63000066_MAIN__3$', duration=2500, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):
@@ -185,10 +186,10 @@ class 마리엔퇴장_01(trigger_api.Trigger):
 
 class 마리엔퇴장_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.face_emotion(spawn_id=0)
+        self.face_emotion()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         return 종료(self.ctx)
@@ -197,11 +198,11 @@ class 마리엔퇴장_02(trigger_api.Trigger):
 class 스킵종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip() # Missing State: State
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
-        self.face_emotion(spawn_id=0)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.face_emotion()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -211,7 +212,7 @@ class 스킵종료(trigger_api.Trigger):
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip() # Missing State: State
-        self.set_effect(trigger_ids=[5003], visible=False)
+        self.set_effect(trigger_ids=[5003])
         self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
 
 

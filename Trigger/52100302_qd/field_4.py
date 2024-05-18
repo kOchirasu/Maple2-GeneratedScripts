@@ -7,9 +7,9 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000519], state=2)
         self.set_interact_object(trigger_ids=[12000520], state=2)
         self.set_interact_object(trigger_ids=[12000521], state=2)
-        # self.set_visible_breakable_object(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010], visible=False)
-        # self.set_visible_breakable_object(trigger_ids=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020], visible=False)
-        # self.set_visible_breakable_object(trigger_ids=[1021,1022], visible=False)
+        # self.set_visible_breakable_object(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010])
+        # self.set_visible_breakable_object(trigger_ids=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020])
+        # self.set_visible_breakable_object(trigger_ids=[1021,1022])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Block') >= 1:
@@ -42,9 +42,9 @@ class ArriveBlock_Delay_1(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=109, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=110, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=111, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=109)
+            self.enable_spawn_point_pc(spawn_id=110)
+            self.enable_spawn_point_pc(spawn_id=111)
             self.enable_spawn_point_pc(spawn_id=113, is_enable=True)
             return CableOn_19(self.ctx)
 
@@ -62,9 +62,9 @@ class Block_1_01(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=109, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=110, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=111, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=109)
+            self.enable_spawn_point_pc(spawn_id=110)
+            self.enable_spawn_point_pc(spawn_id=111)
             self.enable_spawn_point_pc(spawn_id=113, is_enable=True)
             return CableOn_19(self.ctx)
 
@@ -82,9 +82,9 @@ class Block_1_02(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=109, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=110, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=111, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=109)
+            self.enable_spawn_point_pc(spawn_id=110)
+            self.enable_spawn_point_pc(spawn_id=111)
             self.enable_spawn_point_pc(spawn_id=113, is_enable=True)
             return CableOn_19(self.ctx)
 
@@ -99,9 +99,9 @@ class Block_1(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=109, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=110, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=111, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=109)
+            self.enable_spawn_point_pc(spawn_id=110)
+            self.enable_spawn_point_pc(spawn_id=111)
             self.enable_spawn_point_pc(spawn_id=113, is_enable=True)
             return CableOn_19(self.ctx)
 
@@ -125,8 +125,8 @@ class ArriveBlock_Delay_2(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=110, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=111, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=110)
+            self.enable_spawn_point_pc(spawn_id=111)
             self.enable_spawn_point_pc(spawn_id=114, is_enable=True)
             return CableOn_20(self.ctx)
 
@@ -144,8 +144,8 @@ class Block_2_01(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=110, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=111, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=110)
+            self.enable_spawn_point_pc(spawn_id=111)
             self.enable_spawn_point_pc(spawn_id=114, is_enable=True)
             return CableOn_20(self.ctx)
 
@@ -163,8 +163,8 @@ class Block_2_02(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=110, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=111, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=110)
+            self.enable_spawn_point_pc(spawn_id=111)
             self.enable_spawn_point_pc(spawn_id=114, is_enable=True)
             return CableOn_20(self.ctx)
 
@@ -179,8 +179,8 @@ class Block_2(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=110, is_enable=False)
-            self.enable_spawn_point_pc(spawn_id=111, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=110)
+            self.enable_spawn_point_pc(spawn_id=111)
             self.enable_spawn_point_pc(spawn_id=114, is_enable=True)
             return CableOn_20(self.ctx)
 
@@ -204,7 +204,7 @@ class ArriveBlock_Delay_3(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=112, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=112)
             self.enable_spawn_point_pc(spawn_id=115, is_enable=True)
             return CableOn_21(self.ctx)
 
@@ -222,7 +222,7 @@ class Block_3_01(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=112, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=112)
             self.enable_spawn_point_pc(spawn_id=115, is_enable=True)
             return CableOn_21(self.ctx)
 
@@ -240,7 +240,7 @@ class Block_3_02(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=112, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=112)
             self.enable_spawn_point_pc(spawn_id=115, is_enable=True)
             return CableOn_21(self.ctx)
 
@@ -255,7 +255,7 @@ class Block_3(trigger_api.Trigger):
             self.spawn_monster(spawn_ids=[1117], auto_target=False)
             self.spawn_monster(spawn_ids=[1501,1502,1503,1504,1505,1506,1507,1508,1509,1510], auto_target=False)
             self.spawn_monster(spawn_ids=[1511,1512,1513], auto_target=False)
-            self.enable_spawn_point_pc(spawn_id=112, is_enable=False)
+            self.enable_spawn_point_pc(spawn_id=112)
             self.enable_spawn_point_pc(spawn_id=115, is_enable=True)
             return CableOn_21(self.ctx)
 
@@ -264,7 +264,7 @@ class CableOn_19(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000519], state=0):
             self.set_interact_object(trigger_ids=[12000519], state=0)
-            self.set_mesh(trigger_ids=[1210001,1210002,1210003,1210004,1210005,1210006,1210007,1210008,1210009,1210010], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[1210001,1210002,1210003,1210004,1210005,1210006,1210007,1210008,1210009,1210010])
             return CableDelay_19(self.ctx)
 
 
@@ -272,7 +272,7 @@ class CableOn_20(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000520], state=0):
             self.set_interact_object(trigger_ids=[12000520], state=0)
-            self.set_mesh(trigger_ids=[1310001,1310002,1310003,1310004,1310005,1310006,1310007,1310008,1310009,1310010], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[1310001,1310002,1310003,1310004,1310005,1310006,1310007,1310008,1310009,1310010])
             return CableDelay_20(self.ctx)
 
 
@@ -280,7 +280,7 @@ class CableOn_21(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000521], state=0):
             self.set_interact_object(trigger_ids=[12000521], state=0)
-            self.set_mesh(trigger_ids=[1410001,1410002,1410003,1410004,1410005,1410006,1410007,1410008,1410009,1410010], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[1410001,1410002,1410003,1410004,1410005,1410006,1410007,1410008,1410009,1410010])
             return CableDelay_21(self.ctx)
 
 
@@ -371,7 +371,7 @@ class CableDelay_21_4(trigger_api.Trigger):
 class CableDelay_19_5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.side_npc_talk(type='talk', npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_4__12$', duration=5000)
+            self.side_npc_talk(npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_4__12$', duration=5000)
             self.set_breakable(trigger_ids=[1019], enable=True)
             return CableOff_19(self.ctx)
 
@@ -379,7 +379,7 @@ class CableDelay_19_5(trigger_api.Trigger):
 class CableDelay_20_5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.side_npc_talk(type='talk', npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_4__13$', duration=5000)
+            self.side_npc_talk(npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_4__13$', duration=5000)
             self.set_breakable(trigger_ids=[1020], enable=True)
             return CableOff_20(self.ctx)
 
@@ -387,7 +387,7 @@ class CableDelay_20_5(trigger_api.Trigger):
 class CableDelay_21_5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            self.side_npc_talk(type='talk', npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_4__14$', duration=5000)
+            self.side_npc_talk(npc_id=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_4__14$', duration=5000)
             self.set_breakable(trigger_ids=[1021], enable=True)
             return CableOff_21(self.ctx)
 
@@ -416,7 +416,7 @@ class CableOff_21(trigger_api.Trigger):
 class End_04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
-            # self.set_visible_breakable_object(trigger_ids=[1021], visible=False)
+            # self.set_visible_breakable_object(trigger_ids=[1021])
             return 대기(self.ctx)
 
 

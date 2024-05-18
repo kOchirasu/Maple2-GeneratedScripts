@@ -5,7 +5,7 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1003], auto_target=False)
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[199], quest_ids=[90000611], quest_states=[2]):
@@ -24,7 +24,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[1001], auto_target=False)
         self.set_effect(trigger_ids=[601], visible=True)
 
@@ -41,8 +41,8 @@ class 말풍선대사01(trigger_api.Trigger):
 
 class 시네마틱대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001871, script='$52000057_QD__GUIDESCENE_01__0$', time=2, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11001871, script='$52000057_QD__GUIDESCENE_01__1$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001871, script='$52000057_QD__GUIDESCENE_01__0$', time=2)
+        self.set_dialogue(type=2, spawn_id=11001871, script='$52000057_QD__GUIDESCENE_01__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -79,7 +79,7 @@ class 오필리아대사연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_dialogue(type=2, spawn_id=11001871, script='$52000057_QD__GUIDESCENE_01__2$', time=2, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001871, script='$52000057_QD__GUIDESCENE_01__2$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

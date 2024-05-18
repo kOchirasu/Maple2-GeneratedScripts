@@ -19,7 +19,7 @@ class 알메쉬생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=23300010, illust='ArakiaDark_normal', duration=4000, script='$02000545_BF__EGG__0$')
         self.set_mesh(trigger_ids=[2133,2134], visible=True)
-        self.spawn_monster(spawn_ids=[501,502], auto_target=True)
+        self.spawn_monster(spawn_ids=[501,502])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[501]):
@@ -32,7 +32,7 @@ class 알메쉬생성(trigger_api.Trigger):
 
 class 알파괴1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2133], visible=False)
+        self.set_mesh(trigger_ids=[2133])
         self.set_ai_extra_data(key='phase', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 알파괴1(trigger_api.Trigger):
 
 class 알파괴2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2134], visible=False)
+        self.set_mesh(trigger_ids=[2134])
         self.set_ai_extra_data(key='phase', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class 알파괴2(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2133,2134], visible=False)
+        self.set_mesh(trigger_ids=[2133,2134])
 
 
 initial_state = idle

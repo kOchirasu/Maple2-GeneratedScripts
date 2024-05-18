@@ -23,7 +23,7 @@ class Fail(trigger_api.Trigger):
         self.play_system_sound_in_box(sound='System_Ending_Popup_01')
         self.set_timer(timer_id='10', seconds=10, interval=1)
         self.select_camera_path(path_ids=[8800], return_view=False) # 카메라 뒤로 당김
-        self.arcade_boom_boom_ocean(type='EndGame')
+        self.arcade_boom_boom_ocean_end_game()
         self.set_user_value(trigger_id=991104, key='Reset', value=1) # wave_projectile.xml
         self.set_user_value(trigger_id=991105, key='Reset', value=1) # wave_projectile_02.xml
         self.set_user_value(trigger_id=991106, key='Reset', value=1) # cannon_projectile.xml
@@ -43,7 +43,7 @@ class Fail(trigger_api.Trigger):
 
 class End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=0, box_id=705)
+        self.move_user(box_id=705)
 
 
 initial_state = gameset

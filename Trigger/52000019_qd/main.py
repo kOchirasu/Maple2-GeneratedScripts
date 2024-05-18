@@ -5,9 +5,9 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[2002], auto_target=False)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[100]):
@@ -58,7 +58,7 @@ class 첫번째꿈틀이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=1, spawn_id=2001, script='$52000019_QD__MAIN__3$', time=3)
         self.move_npc(spawn_id=2001, patrol_name='MS2PatrolData_2001B')
-        self.spawn_monster(spawn_ids=[1001], auto_target=True)
+        self.spawn_monster(spawn_ids=[1001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1001]):
@@ -112,7 +112,7 @@ class 두번째꿈틀이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=1, spawn_id=2001, script='$52000019_QD__MAIN__8$', time=3)
         self.move_npc(spawn_id=2001, patrol_name='MS2PatrolData_2001E')
-        self.spawn_monster(spawn_ids=[1002], auto_target=True)
+        self.spawn_monster(spawn_ids=[1002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1002]):
@@ -165,7 +165,7 @@ class 세번째구덩이(trigger_api.Trigger):
 class 세번째꿈틀이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=2001, patrol_name='MS2PatrolData_2001H')
-        self.spawn_monster(spawn_ids=[1003], auto_target=True)
+        self.spawn_monster(spawn_ids=[1003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1003]):

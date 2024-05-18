@@ -75,7 +75,7 @@ class CameraSet01(trigger_api.Trigger):
         self.set_scene_skip(state=TalkEnd01, action='exit')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

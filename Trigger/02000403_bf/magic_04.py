@@ -10,9 +10,9 @@ class idle(trigger_api.Trigger):
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7004], visible=False)
-        self.set_mesh(trigger_ids=[1104], visible=False, start_delay=0, interval=200, fade=15)
-        self.set_mesh(trigger_ids=[1204], visible=True, start_delay=0, interval=200, fade=15)
+        self.set_effect(trigger_ids=[7004])
+        self.set_mesh(trigger_ids=[1104], interval=200, fade=15.0)
+        self.set_mesh(trigger_ids=[1204], visible=True, interval=200, fade=15.0)
         self.spawn_monster(spawn_ids=[204], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

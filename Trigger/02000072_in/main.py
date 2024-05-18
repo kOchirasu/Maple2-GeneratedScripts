@@ -191,7 +191,7 @@ class 오스칼퇴장대기(trigger_api.Trigger):
 class 오스칼퇴장연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_Wayout_102_O')
-        self.add_balloon_talk(spawn_id=102, msg='$02000072_IN__MAIN__0$', duration=2000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='$02000072_IN__MAIN__0$', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -200,7 +200,7 @@ class 오스칼퇴장연출(trigger_api.Trigger):
 
 class 오스칼퇴장연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=3)
+        self.reset_camera(interpolation_time=3.0)
         self.destroy_monster(spawn_ids=[102])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -274,7 +274,7 @@ class 아르마노가출연출(trigger_api.Trigger):
 class 아르마노대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8011], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__1$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__1$', time=4)
         self.set_scene_skip(state=아르마노가출_스킵완료, action='nextState') # setsceneskip 1 set
         # setsceneskip 1 set
         # setsceneskip 1 set
@@ -296,7 +296,7 @@ class 아르마노대사01_skip(trigger_api.Trigger):
 
 class 아르마노대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__2$', time=5, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__2$', time=5)
         # self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_Wayout_104_A')
         self.set_skip(state=아르마노가출_스킵완료)
 
@@ -318,8 +318,8 @@ class 아르마노대사02_skip(trigger_api.Trigger):
 class 오스칼대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8013], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003245, script='$02000072_IN__MAIN__3$', time=4, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11003245, script='$02000072_IN__MAIN__3$', time=4)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=4000.0)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -340,7 +340,7 @@ class 오스칼대사01_skip(trigger_api.Trigger):
 class 아르마노대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8014], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__4$', time=5, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__4$', time=5)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -361,8 +361,8 @@ class 아르마노대사03_skip(trigger_api.Trigger):
 class 오스칼대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8013], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003245, script='$02000072_IN__MAIN__5$', time=8, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=8000)
+        self.set_dialogue(type=2, spawn_id=11003245, script='$02000072_IN__MAIN__5$', time=8)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=8000.0)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -383,8 +383,8 @@ class 오스칼대사02_skip(trigger_api.Trigger):
 class 오스칼대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8013], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003245, script='$02000072_IN__MAIN__6$', time=8, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=8000)
+        self.set_dialogue(type=2, spawn_id=11003245, script='$02000072_IN__MAIN__6$', time=8)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=8000.0)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -404,8 +404,8 @@ class 오스칼대사03_skip(trigger_api.Trigger):
 
 class 오스칼대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003245, script='$02000072_IN__MAIN__7$', time=4, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=8000)
+        self.set_dialogue(type=2, spawn_id=11003245, script='$02000072_IN__MAIN__7$', time=4)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Talk_A', duration=8000.0)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -426,7 +426,7 @@ class 오스칼대사04_skip(trigger_api.Trigger):
 class 아르마노대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8014], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__8$', time=6, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__8$', time=6)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -446,7 +446,7 @@ class 아르마노대사04_skip(trigger_api.Trigger):
 
 class 아르마노대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__9$', time=8, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__9$', time=8)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -467,8 +467,8 @@ class 아르마노대사05_skip(trigger_api.Trigger):
 class 프레이대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8012], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003246, script='$02000072_IN__MAIN__10$', time=7, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=106, sequence_name='Talk_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11003246, script='$02000072_IN__MAIN__10$', time=7)
+        self.set_npc_emotion_loop(spawn_id=106, sequence_name='Talk_A', duration=4000.0)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -489,7 +489,7 @@ class 프레이대사01_skip(trigger_api.Trigger):
 class 아르마노대사06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8014], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__11$', time=8, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__11$', time=8)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -510,8 +510,8 @@ class 아르마노대사06_skip(trigger_api.Trigger):
 class 프레이대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8012], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003246, script='$02000072_IN__MAIN__12$', time=9, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=106, sequence_name='Talk_A', duration=9000)
+        self.set_dialogue(type=2, spawn_id=11003246, script='$02000072_IN__MAIN__12$', time=9)
+        self.set_npc_emotion_loop(spawn_id=106, sequence_name='Talk_A', duration=9000.0)
         self.set_skip(state=아르마노가출_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -532,7 +532,7 @@ class 프레이대사02_skip(trigger_api.Trigger):
 class 아르마노대사07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8014,8015], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__13$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__13$', time=3)
         self.spawn_monster(spawn_ids=[107])
         self.set_skip(state=아르마노가출_스킵완료)
 
@@ -554,7 +554,7 @@ class 아르마노대사07_skip(trigger_api.Trigger):
 class 아르마노대사08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8015], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__14$', time=6, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003244, script='$02000072_IN__MAIN__14$', time=6)
         # Missing State: 아르마노가출_스킵완료_조디제외
         self.set_skip()
 
@@ -589,7 +589,7 @@ class PC멈칫(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[104])
         self.move_user_path(patrol_name='MS2PatrolData_PC_Follow')
         # self.move_npc(spawn_id=107, patrol_name='MS2PatrolData_Walkin_107_J')
-        self.set_dialogue(type=1, spawn_id=0, script='$02000072_IN__MAIN__15$', time=4, arg5=0)
+        self.set_dialogue(type=1, script='$02000072_IN__MAIN__15$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -608,8 +608,8 @@ class 조디등장(trigger_api.Trigger):
 class 조디대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8017], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003247, script='$02000072_IN__MAIN__16$', time=3, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=107, sequence_name='Talk_A', duration=3000)
+        self.set_dialogue(type=2, spawn_id=11003247, script='$02000072_IN__MAIN__16$', time=3)
+        self.set_npc_emotion_loop(spawn_id=107, sequence_name='Talk_A', duration=3000.0)
         # Missing State: 아르마노가출_스킵완료_조디제외
         self.set_skip()
 
@@ -630,8 +630,8 @@ class 조디대사01_skip(trigger_api.Trigger):
 
 class 조디대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003247, script='$02000072_IN__MAIN__17$', time=4, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=107, sequence_name='Talk_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11003247, script='$02000072_IN__MAIN__17$', time=4)
+        self.set_npc_emotion_loop(spawn_id=107, sequence_name='Talk_A', duration=4000.0)
         # Missing State: 아르마노가출_스킵완료_조디제외
         self.set_skip()
 
@@ -661,7 +661,7 @@ class PC안녕(trigger_api.Trigger):
 
 class 조디대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003247, script='$02000072_IN__MAIN__18$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003247, script='$02000072_IN__MAIN__18$', time=3)
         # Missing State: State,  setsceneskip 1 close
         self.set_scene_skip()
         # setsceneskip 1 close
@@ -690,7 +690,7 @@ class 아르마노가출_스킵완료(trigger_api.Trigger):
 
 class 아르마노가출연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=3)
+        self.reset_camera(interpolation_time=3.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

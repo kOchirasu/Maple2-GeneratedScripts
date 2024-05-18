@@ -23,7 +23,7 @@ class NpcSpawn01(trigger_api.Trigger):
 
 class NpcMove01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=5010, script='$02000296_BF__NPC3__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=5010, script='$02000296_BF__NPC3__0$', time=2)
         self.set_dialogue(type=1, spawn_id=50101, script='$02000296_BF__NPC9__0$', time=2, arg5=1)
         self.set_dialogue(type=1, spawn_id=50102, script='$02000296_BF__NPC10__0$', time=2, arg5=2)
         self.move_npc(spawn_id=5010, patrol_name='MS2PatrolData2')

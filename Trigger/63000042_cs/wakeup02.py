@@ -1,5 +1,6 @@
 """ trigger/63000042_cs/wakeup02.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class idle(trigger_api.Trigger):
@@ -18,7 +19,7 @@ class ready(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawn_ids=[102])
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1)
         self.move_user(map_id=63000042, portal_id=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -111,7 +112,7 @@ class talk_09(trigger_api.Trigger):
 
 class sitready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=13000)
+        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=13000.0)
         self.set_sound(trigger_id=7002, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +122,7 @@ class sitready(trigger_api.Trigger):
 
 class fadein(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.spawn_monster(spawn_ids=[103], auto_target=False) # 프레이 스폰
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -132,7 +133,7 @@ class fadein(trigger_api.Trigger):
 class praymove_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_103')
-        self.add_cinematic_talk(npc_id=11003165, illust_id='Fray_normal', msg='$63000042_CS__WAKEUP02__9$', duration=3000, align='Left')
+        self.add_cinematic_talk(npc_id=11003165, illust_id='Fray_normal', msg='$63000042_CS__WAKEUP02__9$', duration=3000, align=Align.Left)
         self.set_scene_skip(state=end, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -152,7 +153,7 @@ class praytalk_02(trigger_api.Trigger):
 
 class pray(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(scale=2.5, type='NameCaption', title='$63000042_CS__WAKEUP02__11$', desc='$63000042_CS__WAKEUP02__12$', align='centerRight', offset_rate_x=0.5, duration=4000)
+        self.show_caption(scale=2.5, type='NameCaption', title='$63000042_CS__WAKEUP02__11$', desc='$63000042_CS__WAKEUP02__12$', align=Align.Center | Align.Right, offset_rate_x=0.5, duration=4000)
         self.select_camera_path(path_ids=[502,503], return_view=False)
         self.set_scene_skip() # Missing State: State
 
@@ -163,9 +164,9 @@ class pray(trigger_api.Trigger):
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=100)
+        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=100.0)
         self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

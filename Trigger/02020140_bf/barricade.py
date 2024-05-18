@@ -10,13 +10,13 @@ class 시작대기중(trigger_api.Trigger):
 
 class 칸막이대기시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_effect(trigger_ids=[604], visible=False)
-        self.set_effect(trigger_ids=[605], visible=False)
-        self.set_mesh(trigger_ids=[608], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[609], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_effect(trigger_ids=[604])
+        self.set_effect(trigger_ids=[605])
+        self.set_mesh(trigger_ids=[608])
+        self.set_mesh(trigger_ids=[609])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -26,7 +26,7 @@ class 칸막이대기시작(trigger_api.Trigger):
 class 칸막이대기알림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02020140_BF__BARRICADE__0$', arg3='3000')
-        self.dungeon_enable_give_up(is_enable='1')
+        self.dungeon_enable_give_up(is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_timeout():
@@ -46,8 +46,8 @@ class 칸막이막기(trigger_api.Trigger):
         self.set_effect(trigger_ids=[603], visible=True)
         self.set_effect(trigger_ids=[604], visible=True)
         self.set_effect(trigger_ids=[605], visible=True)
-        self.set_mesh(trigger_ids=[608], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[609], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[608], visible=True)
+        self.set_mesh(trigger_ids=[609], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_timeout():
@@ -61,13 +61,13 @@ class 칸막이막기(trigger_api.Trigger):
 class 던전실패종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 던전실패로 던전 종료되면 시작지점 막은거 다시 풀기
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_effect(trigger_ids=[604], visible=False)
-        self.set_effect(trigger_ids=[605], visible=False)
-        self.set_mesh(trigger_ids=[608], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[609], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_effect(trigger_ids=[604])
+        self.set_effect(trigger_ids=[605])
+        self.set_mesh(trigger_ids=[608])
+        self.set_mesh(trigger_ids=[609])
 
 
 initial_state = 시작대기중

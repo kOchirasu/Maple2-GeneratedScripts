@@ -69,7 +69,7 @@ class Patrol04(trigger_api.Trigger):
 
 class Patrol05Air(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=201, script='$02000376_BF__10_PATROL__0$', time=2, arg5=0) # 준타
+        self.set_dialogue(type=1, spawn_id=201, script='$02000376_BF__10_PATROL__0$', time=2) # 준타
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_105')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_205')
 

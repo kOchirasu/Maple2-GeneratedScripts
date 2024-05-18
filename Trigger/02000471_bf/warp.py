@@ -10,17 +10,17 @@ class idle(trigger_api.Trigger):
 
 class warp_1st(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return warp_1(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return warp_2(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return warp_3(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return warp_4(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return warp_5(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return warp_6(self.ctx)
 
 
@@ -86,17 +86,17 @@ class warp_6(trigger_api.Trigger):
 
 class warp_2nd(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return warp2_1(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return warp2_2(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return warp2_3(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return warp2_4(self.ctx)
-        if self.random_condition(weight=16):
+        if self.random_condition(weight=16.0):
             return warp2_5(self.ctx)
-        if self.random_condition(weight=17):
+        if self.random_condition(weight=17.0):
             return warp2_6(self.ctx)
 
 

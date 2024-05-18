@@ -8,11 +8,11 @@ from dungeon_common.checkusercount import *
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[11000004], state=2)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3221,3222,3223], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[601])
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True)
+        self.set_mesh(trigger_ids=[3221,3222,3223])
         self.spawn_monster(spawn_ids=[2099], auto_target=False)
-        self.set_npc_emotion_loop(spawn_id=2099, sequence_name='Idle_A', duration=9999999)
+        self.set_npc_emotion_loop(spawn_id=2099, sequence_name='Idle_A', duration=9999999.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[199]):
@@ -33,7 +33,7 @@ class DungeonStart(trigger_api.Trigger):
 class 카메라이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip() # Missing State: State
-        self.select_camera(trigger_id=300, enable=True)
+        self.select_camera(trigger_id=300)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -64,11 +64,11 @@ class NPC이동(trigger_api.Trigger):
 
 class 던전안내01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3221,3222,3223], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3221,3222,3223], visible=True)
         self.set_interact_object(trigger_ids=[10000372], state=1)
         self.show_guide_summary(entity_id=20002980, text_id=20002980, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -77,7 +77,7 @@ class 던전안내01(trigger_api.Trigger):
 
 class 던전안내카메라이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -103,49 +103,49 @@ class 암호발급(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_effect(trigger_ids=[601], visible=True)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=False, start_delay=0, interval=0, fade=5)
-        self.set_mesh(trigger_ids=[3221,3222,3223], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], fade=5.0)
+        self.set_mesh(trigger_ids=[3221,3222,3223], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환1279(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환1238(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환1358(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환1489(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환1567(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환1679(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환2389(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환2347(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환2478(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환2456(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환2569(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환2678(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3458(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3589(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3679(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환3789(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환4567(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환4578(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환4689(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return 소환4789(self.ctx)
 
 

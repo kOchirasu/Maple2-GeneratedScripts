@@ -11,7 +11,7 @@ class 준비(trigger_api.Trigger):
 class 잡담_01_708(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 너도 $npcName:11004372$가 불러서 왔어?
-        self.add_balloon_talk(spawn_id=108, msg='$63000076_CS__63000076_CHAT_708__0$', duration=2500, delay_tick=0)
+        self.add_balloon_talk(spawn_id=108, msg='$63000076_CS__63000076_CHAT_708__0$', duration=2500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -20,7 +20,7 @@ class 잡담_01_708(trigger_api.Trigger):
 
 class 잡담_02_708(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=115, msg='$63000076_CS__63000076_CHAT_708__1$', duration=2500, delay_tick=0) # 아니, 너 따라 왔어
+        self.add_balloon_talk(spawn_id=115, msg='$63000076_CS__63000076_CHAT_708__1$', duration=2500) # 아니, 너 따라 왔어
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -29,7 +29,7 @@ class 잡담_02_708(trigger_api.Trigger):
 
 class 잡담_03_708(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=108, msg='$63000076_CS__63000076_CHAT_708__2$', duration=2500, delay_tick=0) # 아하…
+        self.add_balloon_talk(spawn_id=108, msg='$63000076_CS__63000076_CHAT_708__2$', duration=2500) # 아하…
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):

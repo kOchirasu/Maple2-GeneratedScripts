@@ -4,19 +4,19 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2011,2012,2013,2014], visible=True, start_delay=0, interval=0, fade=0) # DoorMesh_AlwaysOn
-        self.set_effect(trigger_ids=[5001], visible=False) # FrontDoorStep
-        self.set_effect(trigger_ids=[5002], visible=False) # FrontDoorStep
-        self.set_effect(trigger_ids=[5003], visible=False) # FrontDoorStep
-        self.set_effect(trigger_ids=[5004], visible=False) # FrontDoorStep
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=12, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=14, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=22, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=23, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=24, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[2011,2012,2013,2014], visible=True) # DoorMesh_AlwaysOn
+        self.set_effect(trigger_ids=[5001]) # FrontDoorStep
+        self.set_effect(trigger_ids=[5002]) # FrontDoorStep
+        self.set_effect(trigger_ids=[5003]) # FrontDoorStep
+        self.set_effect(trigger_ids=[5004]) # FrontDoorStep
+        self.set_portal(portal_id=11)
+        self.set_portal(portal_id=12)
+        self.set_portal(portal_id=13)
+        self.set_portal(portal_id=14)
+        self.set_portal(portal_id=21)
+        self.set_portal(portal_id=22)
+        self.set_portal(portal_id=23)
+        self.set_portal(portal_id=24)
         self.set_actor(trigger_id=4101, visible=True, initial_sequence='ry_functobj_door_B01_off') # OfficeDoor
         self.set_actor(trigger_id=4102, visible=True, initial_sequence='ry_functobj_door_B01_off') # OfficeDoor
         self.set_actor(trigger_id=4103, visible=True, initial_sequence='ry_functobj_door_B01_off') # OfficeDoor
@@ -106,22 +106,22 @@ class DoorActivate02(trigger_api.Trigger):
 # 4개의 문 중에서 하나만 카운터로
 class PickPortalPattern(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return FirstDoorPick(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return SecondDoorPick(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return ThirdDoorPick(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return rdDoorPick4(self.ctx)
 
 
 class FirstDoorPick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=22, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=23, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=24, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=11, enable=True)
+        self.set_portal(portal_id=22, enable=True)
+        self.set_portal(portal_id=23, enable=True)
+        self.set_portal(portal_id=24, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -130,10 +130,10 @@ class FirstDoorPick(trigger_api.Trigger):
 
 class SecondDoorPick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=12, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=21, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=23, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=24, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=12, enable=True)
+        self.set_portal(portal_id=21, enable=True)
+        self.set_portal(portal_id=23, enable=True)
+        self.set_portal(portal_id=24, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -142,10 +142,10 @@ class SecondDoorPick(trigger_api.Trigger):
 
 class ThirdDoorPick(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=13, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=21, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=22, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=24, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=13, enable=True)
+        self.set_portal(portal_id=21, enable=True)
+        self.set_portal(portal_id=22, enable=True)
+        self.set_portal(portal_id=24, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -154,10 +154,10 @@ class ThirdDoorPick(trigger_api.Trigger):
 
 class rdDoorPick4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=14, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=21, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=22, visible=False, enable=True, minimap_visible=False)
-        self.set_portal(portal_id=23, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=14, enable=True)
+        self.set_portal(portal_id=21, enable=True)
+        self.set_portal(portal_id=22, enable=True)
+        self.set_portal(portal_id=23, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -184,22 +184,22 @@ class GameStart01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=12, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=13, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=14, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=22, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=23, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=24, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=11)
+        self.set_portal(portal_id=12)
+        self.set_portal(portal_id=13)
+        self.set_portal(portal_id=14)
+        self.set_portal(portal_id=21)
+        self.set_portal(portal_id=22)
+        self.set_portal(portal_id=23)
+        self.set_portal(portal_id=24)
         self.set_actor(trigger_id=4101, visible=True, initial_sequence='ry_functobj_door_B01_off') # OfficeDoor
         self.set_actor(trigger_id=4102, visible=True, initial_sequence='ry_functobj_door_B01_off') # OfficeDoor
         self.set_actor(trigger_id=4103, visible=True, initial_sequence='ry_functobj_door_B01_off') # OfficeDoor
         self.set_actor(trigger_id=4104, visible=True, initial_sequence='ry_functobj_door_B01_off') # OfficeDoor
-        self.set_effect(trigger_ids=[5001], visible=False) # FrontDoorStep
-        self.set_effect(trigger_ids=[5002], visible=False) # FrontDoorStep
-        self.set_effect(trigger_ids=[5003], visible=False) # FrontDoorStep
-        self.set_effect(trigger_ids=[5004], visible=False) # FrontDoorStep
+        self.set_effect(trigger_ids=[5001]) # FrontDoorStep
+        self.set_effect(trigger_ids=[5002]) # FrontDoorStep
+        self.set_effect(trigger_ids=[5003]) # FrontDoorStep
+        self.set_effect(trigger_ids=[5004]) # FrontDoorStep
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9005) == 1:
@@ -300,7 +300,7 @@ class FieredNotice02Skip(trigger_api.Trigger):
 
 class PCForceToLeave(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=0)
+        self.move_user()
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[100])

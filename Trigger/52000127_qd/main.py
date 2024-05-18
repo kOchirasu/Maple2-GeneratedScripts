@@ -1,12 +1,13 @@
 """ trigger/52000127_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(is_visible=False)
-        self.set_sound(trigger_id=7001, enable=False)
-        self.set_sound(trigger_id=7002, enable=False)
+        self.set_sound(trigger_id=7001)
+        self.set_sound(trigger_id=7002)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -24,7 +25,7 @@ class ready(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 조디
+        self.spawn_monster(spawn_ids=[101]) # 조디
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -49,7 +50,7 @@ class setting(trigger_api.Trigger):
 # PC 꿈
 class dreamscene_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__0$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -58,7 +59,7 @@ class dreamscene_01(trigger_api.Trigger):
 
 class dreamscene_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__1$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__1$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -67,7 +68,7 @@ class dreamscene_02(trigger_api.Trigger):
 
 class dreamscene_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__2$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__2$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -76,7 +77,7 @@ class dreamscene_03(trigger_api.Trigger):
 
 class dreamscene_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__3$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__3$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -85,7 +86,7 @@ class dreamscene_04(trigger_api.Trigger):
 
 class dreamscene_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__4$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__4$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -94,7 +95,7 @@ class dreamscene_05(trigger_api.Trigger):
 
 class dreamscene_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__5$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__5$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -103,7 +104,7 @@ class dreamscene_06(trigger_api.Trigger):
 
 class dreamscene_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__6$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__6$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -115,11 +116,11 @@ class scene_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_sound(trigger_id=7001, enable=False)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_sound(trigger_id=7001)
         self.set_sound(trigger_id=7002, enable=True)
-        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=21000)
-        self.face_emotion(spawn_id=0, emotion_name='Stun')
+        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=21000.0)
+        self.face_emotion(emotion_name='Stun')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -128,8 +129,8 @@ class scene_01(trigger_api.Trigger):
 
 class scene_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.face_emotion(spawn_id=0, emotion_name='Stun')
-        self.show_caption(type='VerticalCaption', title='$52000127_QD__MAIN__12$', desc='$52000127_QD__MAIN__13$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2)
+        self.face_emotion(emotion_name='Stun')
+        self.show_caption(type='VerticalCaption', title='$52000127_QD__MAIN__12$', desc='$52000127_QD__MAIN__13$', align=Align.Bottom | Align.Left, duration=3000, scale=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -138,8 +139,8 @@ class scene_02(trigger_api.Trigger):
 
 class scene_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.face_emotion(spawn_id=0, emotion_name='Stun')
-        self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__7$', duration=3000, illust_id='Jordy_normal', align='Right')
+        self.face_emotion(emotion_name='Stun')
+        self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__7$', duration=3000, illust_id='Jordy_normal', align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -149,8 +150,8 @@ class scene_03(trigger_api.Trigger):
 class scene_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4001], return_view=False)
-        self.face_emotion(spawn_id=0, emotion_name='Stun')
-        self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__8$', duration=3000, align='Right')
+        self.face_emotion(emotion_name='Stun')
+        self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__8$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -160,7 +161,7 @@ class scene_04(trigger_api.Trigger):
 class scene_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4001], return_view=False)
-        self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__9$', duration=3000, align='Right')
+        self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__9$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -170,8 +171,8 @@ class scene_05(trigger_api.Trigger):
 class scene_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4003], return_view=False)
-        self.face_emotion(spawn_id=0, emotion_name='calm')
-        self.add_cinematic_talk(npc_id=0, msg='$52000127_QD__MAIN__10$', duration=3000, align='Right')
+        self.face_emotion(emotion_name='calm')
+        self.add_cinematic_talk(npc_id=0, msg='$52000127_QD__MAIN__10$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -181,8 +182,8 @@ class scene_06(trigger_api.Trigger):
 class scene_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4004], return_view=False)
-        self.face_emotion(spawn_id=0, emotion_name='Ride_Sp_Run_005')
-        self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__11$', duration=3000, align='Right')
+        self.face_emotion(emotion_name='Ride_Sp_Run_005')
+        self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__11$', duration=3000, align=Align.Right)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -192,10 +193,10 @@ class scene_07(trigger_api.Trigger):
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
 
 class open(trigger_api.Trigger):
@@ -204,7 +205,7 @@ class open(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.visible_my_pc(is_visible=True)
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 조디
+        self.spawn_monster(spawn_ids=[101]) # 조디
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -213,7 +214,7 @@ class open(trigger_api.Trigger):
 
 class open2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

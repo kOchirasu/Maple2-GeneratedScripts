@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2000], visible=True, start_delay=0, interval=0, fade=0) # Invisible
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[2000], visible=True) # Invisible
+        self.set_portal(portal_id=1)
         self.create_widget(type='Guide')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 환영(trigger_api.Trigger):
 
 class 머쉬킹대화1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2000], visible=False, start_delay=0, interval=0, fade=0) # Invisible
+        self.set_mesh(trigger_ids=[2000]) # Invisible
         self.spawn_monster(spawn_ids=[103], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +47,7 @@ class 머쉬킹대화1(trigger_api.Trigger):
 
 class 머쉬킹대화2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2001], visible=False, start_delay=0, interval=0, fade=0) # Invisible
+        self.set_mesh(trigger_ids=[2001]) # Invisible
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[90003]):

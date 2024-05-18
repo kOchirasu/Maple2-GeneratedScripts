@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cube(trigger_ids=[500,501,502,503,504,505,506,507,508,509], random_count=10, is_visible=False)
+        self.set_cube(trigger_ids=[500,501,502,503,504,505,506,507,508,509], random_count=10)
         self.spawn_monster(spawn_ids=[1001,1002,1003,1004,1005,1006], auto_target=False)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):

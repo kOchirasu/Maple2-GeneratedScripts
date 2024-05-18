@@ -8,9 +8,9 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='DungeonQuit', value=0) # 메인 트리거에서 받는 신호
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='Interaction_tankskyblue_A01_100') # Up
         self.set_actor(trigger_id=4102, visible=True, initial_sequence='Interaction_tankskyblue_A01_100') # Down
-        self.set_effect(trigger_ids=[5302], visible=False) # Paint_Add_Sound
-        self.set_effect(trigger_ids=[5402], visible=False) # Tank_Fill_Under_Sound
-        self.set_effect(trigger_ids=[5502], visible=False) # Tank_Fill_Above_Sound
+        self.set_effect(trigger_ids=[5302]) # Paint_Add_Sound
+        self.set_effect(trigger_ids=[5402]) # Tank_Fill_Under_Sound
+        self.set_effect(trigger_ids=[5502]) # Tank_Fill_Above_Sound
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ActivateTank') >= 1:

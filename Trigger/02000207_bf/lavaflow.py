@@ -11,7 +11,7 @@ class 전투체크(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[600], visible=False)
+        self.set_effect(trigger_ids=[600])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LavaflowHigh') >= 1:
@@ -40,10 +40,10 @@ class 칸분기3(trigger_api.Trigger):
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1001A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=52):
+        if self.random_condition(weight=52.0):
             # 용암이 2층까지 올라오는 확률은 약간 더 높게 설정
             return 칸이동3(self.ctx)
-        if self.random_condition(weight=48):
+        if self.random_condition(weight=48.0):
             return 리턴(self.ctx)
         if self.user_value(key='BattleEnd2') >= 1:
             return 종료(self.ctx)
@@ -69,10 +69,10 @@ class 칸분기2(trigger_api.Trigger):
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1001A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=99):
+        if self.random_condition(weight=99.0):
             # 용암이 1층까지 올라오는 확률은 엄청 높게 설정
             return 칸이동2(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return 리턴(self.ctx)
         if self.user_value(key='BattleEnd2') >= 1:
             return 종료(self.ctx)

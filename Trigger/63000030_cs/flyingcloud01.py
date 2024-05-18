@@ -4,31 +4,31 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # DownArrow
-        self.set_effect(trigger_ids=[5200], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5300], visible=False) # FlyingCloud
-        self.set_effect(trigger_ids=[5400], visible=False) # ShadowApp
-        self.set_effect(trigger_ids=[6000], visible=False) # Voice_Tinchai_00001689
-        self.set_effect(trigger_ids=[6001], visible=False) # Voice_Tinchai_00001690
-        self.set_effect(trigger_ids=[6002], visible=False) # Voice_Tinchai_00001691
-        self.set_effect(trigger_ids=[6003], visible=False) # Voice_Tinchai_00001692
-        self.set_effect(trigger_ids=[6004], visible=False) # Voice_Tinchai_00001694
-        self.set_effect(trigger_ids=[6005], visible=False) # Voice_Tinchai_00001695
-        self.set_effect(trigger_ids=[6100], visible=False) # Voice_Junta_00001820
-        self.set_effect(trigger_ids=[6101], visible=False) # Voice_Junta_00001780
-        self.set_effect(trigger_ids=[6102], visible=False) # Voice_Junta_00001781
-        self.set_effect(trigger_ids=[6103], visible=False) # Voice_Junta_00001782
-        self.set_effect(trigger_ids=[6104], visible=False) # Voice_Junta_00001783
-        self.set_effect(trigger_ids=[6105], visible=False) # Voice_Junta_00001792
-        self.set_effect(trigger_ids=[6106], visible=False) # Voice_Junta_00001798
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # DownArrow
+        self.set_effect(trigger_ids=[5200]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5201]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5202]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5204]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5205]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5300]) # FlyingCloud
+        self.set_effect(trigger_ids=[5400]) # ShadowApp
+        self.set_effect(trigger_ids=[6000]) # Voice_Tinchai_00001689
+        self.set_effect(trigger_ids=[6001]) # Voice_Tinchai_00001690
+        self.set_effect(trigger_ids=[6002]) # Voice_Tinchai_00001691
+        self.set_effect(trigger_ids=[6003]) # Voice_Tinchai_00001692
+        self.set_effect(trigger_ids=[6004]) # Voice_Tinchai_00001694
+        self.set_effect(trigger_ids=[6005]) # Voice_Tinchai_00001695
+        self.set_effect(trigger_ids=[6100]) # Voice_Junta_00001820
+        self.set_effect(trigger_ids=[6101]) # Voice_Junta_00001780
+        self.set_effect(trigger_ids=[6102]) # Voice_Junta_00001781
+        self.set_effect(trigger_ids=[6103]) # Voice_Junta_00001782
+        self.set_effect(trigger_ids=[6104]) # Voice_Junta_00001783
+        self.set_effect(trigger_ids=[6105]) # Voice_Junta_00001792
+        self.set_effect(trigger_ids=[6106]) # Voice_Junta_00001798
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -43,9 +43,9 @@ class Wait(trigger_api.Trigger):
         self.set_agent(trigger_ids=[8011], visible=True)
         self.set_agent(trigger_ids=[8012], visible=True)
         self.set_interact_object(trigger_ids=[10001010], state=0) # FlyingCloud
-        self.set_breakable(trigger_ids=[4000], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[4000], visible=False)
-        self.set_mesh(trigger_ids=[3000,3001], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Bounding
+        self.set_breakable(trigger_ids=[4000])
+        self.set_visible_breakable_object(trigger_ids=[4000])
+        self.set_mesh(trigger_ids=[3000,3001], visible=True) # Invisible_Bounding
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -78,19 +78,19 @@ class Enter01(trigger_api.Trigger):
 # 하산 퀘스트 수락한 상태
 class QuestOnGiong21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
-        self.set_agent(trigger_ids=[8009], visible=False)
-        self.set_agent(trigger_ids=[8010], visible=False)
-        self.set_agent(trigger_ids=[8011], visible=False)
-        self.set_agent(trigger_ids=[8012], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
+        self.set_agent(trigger_ids=[8009])
+        self.set_agent(trigger_ids=[8010])
+        self.set_agent(trigger_ids=[8011])
+        self.set_agent(trigger_ids=[8012])
         self.spawn_monster(spawn_ids=[104,204], auto_target=False)
         self.move_user(map_id=63000030, portal_id=11, box_id=9900)
 
@@ -112,19 +112,19 @@ class QuestOnGiong22(trigger_api.Trigger):
 # 여정의 명분 퀘스트 완료 상태
 class QuestOnGiong11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
-        self.set_agent(trigger_ids=[8009], visible=False)
-        self.set_agent(trigger_ids=[8010], visible=False)
-        self.set_agent(trigger_ids=[8011], visible=False)
-        self.set_agent(trigger_ids=[8012], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
+        self.set_agent(trigger_ids=[8009])
+        self.set_agent(trigger_ids=[8010])
+        self.set_agent(trigger_ids=[8011])
+        self.set_agent(trigger_ids=[8012])
         self.spawn_monster(spawn_ids=[103,203], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -145,19 +145,19 @@ class QuestOnGiong12(trigger_api.Trigger):
 # 여정의 명분 퀘스트 완료 가능 상태
 class QuestOnGiong01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
-        self.set_agent(trigger_ids=[8009], visible=False)
-        self.set_agent(trigger_ids=[8010], visible=False)
-        self.set_agent(trigger_ids=[8011], visible=False)
-        self.set_agent(trigger_ids=[8012], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
+        self.set_agent(trigger_ids=[8009])
+        self.set_agent(trigger_ids=[8010])
+        self.set_agent(trigger_ids=[8011])
+        self.set_agent(trigger_ids=[8012])
         self.spawn_monster(spawn_ids=[103,203], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -209,7 +209,7 @@ class LookAround02(trigger_api.Trigger):
 
 class LookAround03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.set_scene_skip(state=LookAround07_CSkip, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -219,7 +219,7 @@ class LookAround03(trigger_api.Trigger):
 
 class LookAround04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=101, script='$63000030_CS__FLYINGCLOUD01__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$63000030_CS__FLYINGCLOUD01__0$', time=2)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_102')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_202')
 
@@ -231,7 +231,7 @@ class LookAround04(trigger_api.Trigger):
 class LookAround05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6100], visible=True) # Voice_Junta_00001820
-        self.set_dialogue(type=1, spawn_id=201, script='$63000030_CS__FLYINGCLOUD01__1$', time=2, arg5=0) # 준타 00001820
+        self.set_dialogue(type=1, spawn_id=201, script='$63000030_CS__FLYINGCLOUD01__1$', time=2) # 준타 00001820
         self.move_npc(spawn_id=920, patrol_name='MS2PatrolData_920')
         self.move_npc(spawn_id=923, patrol_name='MS2PatrolData_923')
         self.move_npc(spawn_id=925, patrol_name='MS2PatrolData_925')
@@ -287,19 +287,19 @@ class LookAround07(trigger_api.Trigger):
         self.select_camera(trigger_id=500, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
-        self.set_agent(trigger_ids=[8009], visible=False)
-        self.set_agent(trigger_ids=[8010], visible=False)
-        self.set_agent(trigger_ids=[8011], visible=False)
-        self.set_agent(trigger_ids=[8012], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
+        self.set_agent(trigger_ids=[8009])
+        self.set_agent(trigger_ids=[8010])
+        self.set_agent(trigger_ids=[8011])
+        self.set_agent(trigger_ids=[8012])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -335,7 +335,7 @@ class BattleEnd02(trigger_api.Trigger):
         self.move_user(map_id=63000030, portal_id=10, box_id=9900)
         self.destroy_monster(spawn_ids=[102,202])
         self.spawn_monster(spawn_ids=[103,203], auto_target=False)
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -641,7 +641,7 @@ class PatrolWhileTalking03(trigger_api.Trigger):
 
 class PatrolWhileTalking04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=204, script='$63000030_CS__FLYINGCLOUD01__12$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=204, script='$63000030_CS__FLYINGCLOUD01__12$', time=2)
         self.set_dialogue(type=1, spawn_id=204, script='$63000030_CS__FLYINGCLOUD01__13$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -651,7 +651,7 @@ class PatrolWhileTalking04(trigger_api.Trigger):
 
 class PatrolWhileTalking05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=104, script='$63000030_CS__FLYINGCLOUD01__14$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=104, script='$63000030_CS__FLYINGCLOUD01__14$', time=2)
         self.set_dialogue(type=1, spawn_id=104, script='$63000030_CS__FLYINGCLOUD01__15$', time=2, arg5=2)
         self.set_dialogue(type=1, spawn_id=104, script='$63000030_CS__FLYINGCLOUD01__16$', time=2, arg5=4)
 
@@ -664,7 +664,7 @@ class ShadowApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5400], visible=True) # ShadowApp
         self.spawn_monster(spawn_ids=[940,941,942,943,944,945,946,947,948,949], auto_target=False)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.move_npc(spawn_id=204, patrol_name='MS2PatrolData_204')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -676,7 +676,7 @@ class ShadowApp02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_104')
         self.set_effect(trigger_ids=[6105], visible=True) # Voice_Junta_00001792
-        self.set_dialogue(type=1, spawn_id=204, script='$63000030_CS__FLYINGCLOUD01__17$', time=2, arg5=0) # 준타 00001792
+        self.set_dialogue(type=1, spawn_id=204, script='$63000030_CS__FLYINGCLOUD01__17$', time=2) # 준타 00001792
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=200):
@@ -694,7 +694,7 @@ class ShadowApp03(trigger_api.Trigger):
 
 class ShadowApp04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=104, script='$63000030_CS__FLYINGCLOUD01__18$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=104, script='$63000030_CS__FLYINGCLOUD01__18$', time=2)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -704,7 +704,7 @@ class ShadowApp04(trigger_api.Trigger):
 
 class ShadowApp05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -749,7 +749,7 @@ class FightBack04(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.set_effect(trigger_ids=[5400], visible=False) # ShadowApp
+        self.set_effect(trigger_ids=[5400]) # ShadowApp
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -763,7 +763,7 @@ class FightBack05(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[910,911,912,913,914,915,916,917,918,919], auto_target=False)
         self.destroy_monster(spawn_ids=[104,204])
         self.spawn_monster(spawn_ids=[105,205], auto_target=False)
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
         self.set_user_value(trigger_id=3, key='SafetyStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -820,14 +820,14 @@ class GotoTria02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10037030)
-        self.set_effect(trigger_ids=[5100], visible=False) # DownArrow
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False) # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5100]) # DownArrow
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5200]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5201]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5202]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5204]) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5205]) # 구름터 경로 안내
 
 
 class TakeOffFlyingCloud01(trigger_api.Trigger):
@@ -847,9 +847,9 @@ class TakeOffFlyingCloud01(trigger_api.Trigger):
 class TakeOffFlyingCloud02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5300], visible=True) # FlyingCloud
-        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0) # Invisible_Bounding
+        self.set_mesh(trigger_ids=[3000,3001]) # Invisible_Bounding
         self.move_user(map_id=63000030, portal_id=30, box_id=9900)
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -860,7 +860,7 @@ class TakeOffFlyingCloud03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

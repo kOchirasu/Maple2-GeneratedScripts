@@ -36,7 +36,7 @@ class 기본(trigger_api.Trigger):
 
 class 진행이후_기본(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4001,4002], visible=False)
+        self.set_mesh(trigger_ids=[4001,4002])
         self.destroy_monster(spawn_ids=[120,121])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +47,7 @@ class 진행이후_기본(trigger_api.Trigger):
 class 제이든보고연출_대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[120], auto_target=False)
-        self.set_mesh(trigger_ids=[4001,4002], visible=False)
+        self.set_mesh(trigger_ids=[4001,4002])
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,9 +82,9 @@ class 연출시작(trigger_api.Trigger):
 class 제이든등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.select_camera_path(path_ids=[8001], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11003540, illust_id='Jaiden_normal', msg='안녕하세요? 제가 나타났습니다.\\n연출은 제작 중이니 기다려 주세요.', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=120, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=120, sequence_name='Talk_A', duration=3000.0)
         self.set_skip(state=skip01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,7 +116,7 @@ class 케이틀린탈주01(trigger_api.Trigger):
 """
 class 케이틀린탈주02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003262, script='$02000035_IN__MAIN__7$', time=2, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003262, script='$02000035_IN__MAIN__7$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -136,7 +136,7 @@ class 케이틀린탈주03(trigger_api.Trigger):
 """
 class PC멈칫(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$02000035_IN__MAIN__11$', time=2, arg5=0)
+        self.set_dialogue(type=1, script='$02000035_IN__MAIN__11$', time=2)
         self.destroy_monster(spawn_ids=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +148,7 @@ class PC멈칫(trigger_api.Trigger):
 class 앤대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8005], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003264, script='$02000035_IN__MAIN__8$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003264, script='$02000035_IN__MAIN__8$', time=3)
         self.set_npc_emotion_sequence(spawn_id=103, sequence_name='ChatUp_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -171,8 +171,8 @@ class 제이든보고_스킵완료(trigger_api.Trigger):
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=9000, type='trigger', achieve='JaidenReportstoRadin')
-        self.reset_camera(interpolation_time=2)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera(interpolation_time=2.0)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.visible_my_pc(is_visible=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -186,8 +186,8 @@ class 제이든보고연출_완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[120])
         self.spawn_monster(spawn_ids=[121], auto_target=False)
-        self.set_mesh(trigger_ids=[4001,4002], visible=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_mesh(trigger_ids=[4001,4002])
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

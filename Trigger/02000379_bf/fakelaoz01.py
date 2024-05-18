@@ -4,23 +4,23 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # CollapseBridge
-        self.set_effect(trigger_ids=[5200], visible=False) # Summon
-        self.set_effect(trigger_ids=[5300], visible=False) # StairsApp
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=2) # Lamp_A02_OFF
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=2) # Lamp_A03_ON
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=2) # Lamp_A01_Disappear
-        self.set_mesh_animation(trigger_ids=[3000], visible=True, start_delay=0, interval=0) # Lamp_A02_OFF
-        self.set_mesh_animation(trigger_ids=[3001], visible=False, start_delay=0, interval=0) # Lamp_A03_ON
-        self.set_mesh_animation(trigger_ids=[3002], visible=False, start_delay=0, interval=0) # Lamp_A01_Disappear
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Barrier
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206], visible=True, start_delay=0, interval=0, fade=0) # Invisibble_TotemBarrier
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323], visible=False, start_delay=0, interval=0, fade=0) # StairsToLeave
-        self.set_skill(trigger_ids=[2000], enable=False) # 큐브 부수기 스킬 1단계
-        self.set_skill(trigger_ids=[2001], enable=False) # 큐브 부수기 스킬 2단계
-        self.set_skill(trigger_ids=[2002], enable=False) # 큐브 부수기 스킬 3단계
+        self.set_portal(portal_id=10)
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # CollapseBridge
+        self.set_effect(trigger_ids=[5200]) # Summon
+        self.set_effect(trigger_ids=[5300]) # StairsApp
+        self.set_mesh(trigger_ids=[3000], visible=True, fade=2.0) # Lamp_A02_OFF
+        self.set_mesh(trigger_ids=[3001], fade=2.0) # Lamp_A03_ON
+        self.set_mesh(trigger_ids=[3002], fade=2.0) # Lamp_A01_Disappear
+        self.set_mesh_animation(trigger_ids=[3000], visible=True) # Lamp_A02_OFF
+        self.set_mesh_animation(trigger_ids=[3001]) # Lamp_A03_ON
+        self.set_mesh_animation(trigger_ids=[3002]) # Lamp_A01_Disappear
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106], visible=True) # Invisible_Barrier
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206], visible=True) # Invisibble_TotemBarrier
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323]) # StairsToLeave
+        self.set_skill(trigger_ids=[2000]) # 큐브 부수기 스킬 1단계
+        self.set_skill(trigger_ids=[2001]) # 큐브 부수기 스킬 2단계
+        self.set_skill(trigger_ids=[2002]) # 큐브 부수기 스킬 3단계
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -74,7 +74,7 @@ class CameraAct01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_dialogue(type=1, spawn_id=101, script='$02000379_BF__FAKELAOZ01__0$', time=3, arg5=1) # 틴차이
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_101')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_201')
@@ -99,8 +99,8 @@ class CameraAct03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
-        self.set_dialogue(type=1, spawn_id=201, script='$02000379_BF__FAKELAOZ01__1$', time=3, arg5=0) # 준타
+        self.select_camera(trigger_id=600)
+        self.set_dialogue(type=1, spawn_id=201, script='$02000379_BF__FAKELAOZ01__1$', time=3) # 준타
         self.set_skip(state=CameraAct04)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -172,7 +172,7 @@ class CameraAct11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.set_skip(state=CameraAct13)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -182,7 +182,7 @@ class CameraAct11(trigger_api.Trigger):
 
 class CameraAct12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=301, script='$02000379_BF__FAKELAOZ01__3$', time=3, arg5=0) # 칸두라
+        self.set_dialogue(type=1, spawn_id=301, script='$02000379_BF__FAKELAOZ01__3$', time=3) # 칸두라
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Event_A')
         self.set_skip(state=CameraAct13)
 
@@ -207,7 +207,7 @@ class FakeLaozApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=602, enable=True)
+        self.select_camera(trigger_id=602)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -236,18 +236,18 @@ class FakeLaozApp03(trigger_api.Trigger):
 
 class FakeLaozApp04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
-        self.set_agent(trigger_ids=[8006], visible=False)
-        self.set_agent(trigger_ids=[8007], visible=False)
-        self.set_agent(trigger_ids=[8008], visible=False)
-        self.set_agent(trigger_ids=[8009], visible=False)
-        self.set_agent(trigger_ids=[8010], visible=False)
-        self.set_agent(trigger_ids=[8011], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
+        self.set_agent(trigger_ids=[8006])
+        self.set_agent(trigger_ids=[8007])
+        self.set_agent(trigger_ids=[8008])
+        self.set_agent(trigger_ids=[8009])
+        self.set_agent(trigger_ids=[8010])
+        self.set_agent(trigger_ids=[8011])
         self.select_camera(trigger_id=602, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -278,10 +278,10 @@ class KanduraDisapp02(trigger_api.Trigger):
 
 class FakeLaozDie01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=200, interval=0, fade=5) # Lamp_A02_OFF
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=5) # Lamp_A03_ON
-        self.set_mesh_animation(trigger_ids=[3000], visible=False, start_delay=0, interval=0) # Lamp_A02_OFF
-        self.set_mesh_animation(trigger_ids=[3001], visible=True, start_delay=200, interval=0) # Lamp_A03_ON
+        self.set_mesh(trigger_ids=[3000], start_delay=200, fade=5.0) # Lamp_A02_OFF
+        self.set_mesh(trigger_ids=[3001], visible=True, fade=5.0) # Lamp_A03_ON
+        self.set_mesh_animation(trigger_ids=[3000]) # Lamp_A02_OFF
+        self.set_mesh_animation(trigger_ids=[3001], visible=True, start_delay=200) # Lamp_A03_ON
         self.set_user_value(trigger_id=2, key='SpyKandura', value=2)
         self.destroy_monster(spawn_ids=[900,910,911,912,920,921,922])
         self.destroy_monster(spawn_ids=[102,202])
@@ -296,9 +296,9 @@ class LampLightUp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5300], visible=True) # StairsApp
         self.set_random_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323], visible=True, start_delay=24, interval=100, fade=70) # StairsToLeave
-        self.set_mesh(trigger_ids=[3202,3203,3204], visible=False, start_delay=0, interval=0, fade=0) # Invisibble_TotemBarrier
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106], visible=False, start_delay=0, interval=0, fade=0) # Invisible_Barrier
-        self.select_camera(trigger_id=700, enable=True)
+        self.set_mesh(trigger_ids=[3202,3203,3204]) # Invisibble_TotemBarrier
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106]) # Invisible_Barrier
+        self.select_camera(trigger_id=700)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=LampLightUp02)
@@ -320,7 +320,7 @@ class LampLightUp02(trigger_api.Trigger):
 
 class LampLightUp03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=103, script='$02000379_BF__FAKELAOZ01__4$', time=3, arg5=0) # 틴차이
+        self.set_dialogue(type=1, spawn_id=103, script='$02000379_BF__FAKELAOZ01__4$', time=3) # 틴차이
         self.set_dialogue(type=1, spawn_id=203, script='$02000379_BF__FAKELAOZ01__5$', time=3, arg5=3) # 준타
         self.set_skip(state=LampLightUp04)
 

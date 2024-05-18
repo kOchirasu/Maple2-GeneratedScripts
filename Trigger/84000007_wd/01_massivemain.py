@@ -4,34 +4,34 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=10000, enable=False) # Intro
-        self.set_sound(trigger_id=20000, enable=False) # Dance
-        self.set_sound(trigger_id=30000, enable=False) # Silence
-        self.set_sound(trigger_id=40000, enable=False) # Puzzle
-        self.set_effect(trigger_ids=[8000], visible=False) # Scratch
-        self.set_effect(trigger_ids=[8002], visible=False) # Fireworks
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=0, interval=0, fade=0) # Dance
-        self.set_mesh(trigger_ids=[511,512,513,514], visible=True, start_delay=0, interval=0, fade=0) # Row1
-        self.set_mesh(trigger_ids=[521,522,523,524], visible=True, start_delay=0, interval=0, fade=0) # Row2
-        self.set_mesh(trigger_ids=[531,532,533,534], visible=True, start_delay=0, interval=0, fade=0) # Row3
-        self.set_mesh(trigger_ids=[541,542,543,544], visible=True, start_delay=0, interval=0, fade=0) # Row4
-        self.set_mesh(trigger_ids=[110,111,112,113,114,115], visible=False, start_delay=0, interval=0, fade=0) # 1,1 / 0 to 5
-        self.set_mesh(trigger_ids=[120,121,122,123,124,125], visible=False, start_delay=0, interval=0, fade=0) # 1,2 / 0 to 5
-        self.set_mesh(trigger_ids=[130,131,132,133,134,135], visible=False, start_delay=0, interval=0, fade=0) # 1,3 / 0 to 5
-        self.set_mesh(trigger_ids=[140,141,142,143,144,145], visible=False, start_delay=0, interval=0, fade=0) # 1,4 / 0 to 5
-        self.set_mesh(trigger_ids=[210,211,212,213,214,215], visible=False, start_delay=0, interval=0, fade=0) # 2,1 / 0 to 5
-        self.set_mesh(trigger_ids=[220,221,222,223,224,225], visible=False, start_delay=0, interval=0, fade=0) # 2,2 / 0 to 5
-        self.set_mesh(trigger_ids=[230,231,232,233,234,235], visible=False, start_delay=0, interval=0, fade=0) # 2,3 / 0 to 5
-        self.set_mesh(trigger_ids=[240,241,242,243,244,245], visible=False, start_delay=0, interval=0, fade=0) # 2,4 / 0 to 5
-        self.set_mesh(trigger_ids=[310,311,312,313,314,315], visible=False, start_delay=0, interval=0, fade=0) # 3,1 / 0 to 5
-        self.set_mesh(trigger_ids=[320,321,322,323,324,325], visible=False, start_delay=0, interval=0, fade=0) # 3,2 / 0 to 5
-        self.set_mesh(trigger_ids=[330,331,332,333,334,335], visible=False, start_delay=0, interval=0, fade=0) # 3,3 / 0 to 5
-        self.set_mesh(trigger_ids=[340,341,342,343,344,345], visible=False, start_delay=0, interval=0, fade=0) # 3,4 / 0 to 5
-        self.set_mesh(trigger_ids=[410,411,412,413,414,415], visible=False, start_delay=0, interval=0, fade=0) # 4,1 / 0 to 5
-        self.set_mesh(trigger_ids=[420,421,422,423,424,425], visible=False, start_delay=0, interval=0, fade=0) # 4,2 / 0 to 5
-        self.set_mesh(trigger_ids=[430,431,432,433,434,435], visible=False, start_delay=0, interval=0, fade=0) # 4,3 / 0 to 5
-        self.set_mesh(trigger_ids=[440,441,442,443,444,445], visible=False, start_delay=0, interval=0, fade=0) # 4,4 / 0 to 5
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, start_delay=0, interval=0, fade=0) # Barrier
+        self.set_sound(trigger_id=10000) # Intro
+        self.set_sound(trigger_id=20000) # Dance
+        self.set_sound(trigger_id=30000) # Silence
+        self.set_sound(trigger_id=40000) # Puzzle
+        self.set_effect(trigger_ids=[8000]) # Scratch
+        self.set_effect(trigger_ids=[8002]) # Fireworks
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True) # Dance
+        self.set_mesh(trigger_ids=[511,512,513,514], visible=True) # Row1
+        self.set_mesh(trigger_ids=[521,522,523,524], visible=True) # Row2
+        self.set_mesh(trigger_ids=[531,532,533,534], visible=True) # Row3
+        self.set_mesh(trigger_ids=[541,542,543,544], visible=True) # Row4
+        self.set_mesh(trigger_ids=[110,111,112,113,114,115]) # 1,1 / 0 to 5
+        self.set_mesh(trigger_ids=[120,121,122,123,124,125]) # 1,2 / 0 to 5
+        self.set_mesh(trigger_ids=[130,131,132,133,134,135]) # 1,3 / 0 to 5
+        self.set_mesh(trigger_ids=[140,141,142,143,144,145]) # 1,4 / 0 to 5
+        self.set_mesh(trigger_ids=[210,211,212,213,214,215]) # 2,1 / 0 to 5
+        self.set_mesh(trigger_ids=[220,221,222,223,224,225]) # 2,2 / 0 to 5
+        self.set_mesh(trigger_ids=[230,231,232,233,234,235]) # 2,3 / 0 to 5
+        self.set_mesh(trigger_ids=[240,241,242,243,244,245]) # 2,4 / 0 to 5
+        self.set_mesh(trigger_ids=[310,311,312,313,314,315]) # 3,1 / 0 to 5
+        self.set_mesh(trigger_ids=[320,321,322,323,324,325]) # 3,2 / 0 to 5
+        self.set_mesh(trigger_ids=[330,331,332,333,334,335]) # 3,3 / 0 to 5
+        self.set_mesh(trigger_ids=[340,341,342,343,344,345]) # 3,4 / 0 to 5
+        self.set_mesh(trigger_ids=[410,411,412,413,414,415]) # 4,1 / 0 to 5
+        self.set_mesh(trigger_ids=[420,421,422,423,424,425]) # 4,2 / 0 to 5
+        self.set_mesh(trigger_ids=[430,431,432,433,434,435]) # 4,3 / 0 to 5
+        self.set_mesh(trigger_ids=[440,441,442,443,444,445]) # 4,4 / 0 to 5
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914]) # Barrier
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
         self.set_interact_object(trigger_ids=[10001438], state=2) # 9000ms
         self.set_interact_object(trigger_ids=[10001439], state=2) # 12000ms
@@ -74,14 +74,14 @@ class MusicChange(trigger_api.Trigger):
 class GameGuide01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='BannerCheckIn', value=1)
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=10000, enable=True) # Intro
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__0$', arg3='3000', arg4='0') # Voice 02000952
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Notice_01')
         # self.set_achievement(trigger_id=9001, type='trigger', achieve='dailyquest_start') # 결혼식 전용 매시브 이벤트로 off처리
         # # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
         self.set_achievement(trigger_id=9001, type='trigger', achieve='ddstop_start')
-        self.give_guild_exp(box_id=0, type=2)
+        self.give_guild_exp(type=2)
         # self.set_mini_game_area_for_hack(box_id=9001) # 해킹 보안용 시작 box 설정
         self.start_mini_game(box_id=9001, round=5, is_show_result_ui=False, game_name='WDdancedancestop')
 
@@ -127,7 +127,7 @@ class R01Start(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__4$', arg3='3000', arg4='0') # Voice 02000953
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancetime_01')
         self.set_event_ui(type=0, arg2='1,5') # Round1
-        self.set_sound(trigger_id=10000, enable=False) # Intro
+        self.set_sound(trigger_id=10000) # Intro
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.start_mini_game_round(box_id=9001, round=1)
@@ -140,23 +140,23 @@ class R01Start(trigger_api.Trigger):
 # R01 DanceTime 패턴 랜덤
 class R01DanceTime(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R01DancePattern01(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R01DancePattern02(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R01DancePattern03(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return R01DancePattern0401(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return R01DancePattern0501(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return R01DancePattern0601(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return R01DancePattern0701(self.ctx)
 
     def on_exit(self) -> None:
@@ -215,7 +215,7 @@ class R01DancePattern0402(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__9$', arg3='1000') # Voice 02000958
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_01')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -238,7 +238,7 @@ class R01DancePattern0403(trigger_api.Trigger):
 
 class R01DancePattern0404(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001438], state=1) # 9000ms
@@ -265,7 +265,7 @@ class R01DancePattern0502(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__11$', arg3='1000') # Voice 02000982
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_02')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001438], state=0) # 9000ms
@@ -288,7 +288,7 @@ class R01DancePattern0503(trigger_api.Trigger):
 
 class R01DancePattern0504(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -315,7 +315,7 @@ class R01DancePattern0602(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__13$', arg3='1000') # Voice 02000983
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_03')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001439], state=0) # 12000ms
@@ -338,7 +338,7 @@ class R01DancePattern0603(trigger_api.Trigger):
 
 class R01DancePattern0604(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -365,7 +365,7 @@ class R01DancePattern0702(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__15$', arg3='1000') # Voice 02000984
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_04')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -388,7 +388,7 @@ class R01DancePattern0703(trigger_api.Trigger):
 
 class R01DancePattern0704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001439], state=1) # 12000ms
@@ -401,7 +401,7 @@ class R01DancePattern0704(trigger_api.Trigger):
 
 class R01_GameStartDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
 
@@ -412,7 +412,7 @@ class R01_GameStartDelay(trigger_api.Trigger):
 
 class R01_GameStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=40000, enable=True) # Game
         self.set_interact_object(trigger_ids=[10001437], state=2) # 7000ms
         self.set_interact_object(trigger_ids=[10001438], state=2) # 9000ms
@@ -460,430 +460,430 @@ R01  인원 체크 끝
 """
 class G05orG04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=80):
+        if self.random_condition(weight=80.0):
             return G05P00_Random(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return G04P00_Random(self.ctx)
 
 
 class G03orG04orG05(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G03P00_Random(self.ctx)
-        if self.random_condition(weight=60):
+        if self.random_condition(weight=60.0):
             return G04P00_Random(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return G05P00_Random(self.ctx)
 
 
 class G02orG03orG04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G02P00_Random(self.ctx)
-        if self.random_condition(weight=60):
+        if self.random_condition(weight=60.0):
             return G03P00_Random(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return G04P00_Random(self.ctx)
 
 
 class G02orG03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=60):
+        if self.random_condition(weight=60.0):
             return G02P00_Random(self.ctx)
-        if self.random_condition(weight=40):
+        if self.random_condition(weight=40.0):
             return G03P00_Random(self.ctx)
 
 
 class G01orG02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=70):
+        if self.random_condition(weight=70.0):
             return G01P00_Random(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return G02P00_Random(self.ctx)
 
 
 # G05 패턴 랜덤
 class G05P00_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P01_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P02_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P03_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P04_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P05_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P06_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P07_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P08_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P09_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P10_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P11_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P12_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P13_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P14_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P15_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P16_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P17_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P18_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P19_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P20_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P21_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P22_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P23_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P24_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P25_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P26_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P27_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P28_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P29_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P30_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P31_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P32_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P33_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P34_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P35_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P36_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P37_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P38_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P39_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P40_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P41_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P42_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P43_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P44_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P45_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P46_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P47_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P48_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P49_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return G05P50_RoundCheckIn(self.ctx)
 
 
 # G04 패턴 랜덤
 class G04P00_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P01_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P02_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P03_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P04_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P05_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P06_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P07_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P08_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P09_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P10_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P11_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P12_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P13_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P14_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P15_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P16_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P17_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P18_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P19_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P20_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P21_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P22_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P23_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P24_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P25_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P26_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P27_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P28_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P29_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P30_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P31_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P32_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P33_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P34_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P35_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P36_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P37_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P38_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P39_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G04P40_RoundCheckIn(self.ctx)
 
 
 # G03 패턴 랜덤
 class G03P00_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P01_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P02_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P03_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P04_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P05_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P06_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P07_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P08_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P09_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P10_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P11_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P12_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P13_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P14_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P15_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P16_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P17_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P18_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P19_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P20_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P21_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P22_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P23_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P24_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P25_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P26_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P27_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P28_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P29_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G03P30_RoundCheckIn(self.ctx)
 
 
 # G02 패턴 랜덤
 class G02P00_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P01_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P02_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P03_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P04_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P05_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P06_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P07_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P08_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P09_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P10_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P11_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P12_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P13_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P14_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P15_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P16_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P17_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P18_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P19_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P20_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P21_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P22_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P23_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P24_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P25_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P26_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P27_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P28_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P29_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G02P30_RoundCheckIn(self.ctx)
 
 
 # G01 패턴 랜덤
 class G01P00_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P01_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P02_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P03_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P04_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P05_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P06_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P07_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P08_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P09_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P10_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P11_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P12_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P13_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P14_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P15_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P16_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P17_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P18_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P19_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P20_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P21_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P22_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P23_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P24_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P25_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P26_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P27_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P28_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P29_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G01P30_RoundCheckIn(self.ctx)
 
 
@@ -906,7 +906,7 @@ class R01EndDelay(trigger_api.Trigger):
         self.set_user_value(trigger_id=7420, key='Color42', value=5) # color reset
         self.set_user_value(trigger_id=7430, key='Color43', value=5) # color reset
         self.set_user_value(trigger_id=7440, key='Color44', value=5) # color reset
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -915,7 +915,7 @@ class R01EndDelay(trigger_api.Trigger):
 
 class R01End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', arg4=1)
+        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', level=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=901, enable=False)
@@ -937,7 +937,7 @@ class R02Ready(trigger_api.Trigger):
         # self.give_exp(box_id=9001, rate=5.7)
         self.end_mini_game_round(winner_box_id=9001, exp_rate=0.02)
         # self.set_achievement(trigger_id=9001, type='trigger', achieve='ddstop_pass') # 결혼식 전용 매시브 이벤트로 off처리
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, start_delay=400, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], start_delay=400) # Barrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -964,7 +964,7 @@ class R02Start(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=10)
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__5$', arg3='3000', arg4='0') # Voice 02000954
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancetime_02')
-        self.set_sound(trigger_id=40000, enable=False) # Intro
+        self.set_sound(trigger_id=40000) # Intro
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_event_ui(type=0, arg2='2,5') # Round2
@@ -978,23 +978,23 @@ class R02Start(trigger_api.Trigger):
 # R02 DanceTime 패턴 랜덤
 class R02DanceTime(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R02DancePattern01(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R02DancePattern02(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R02DancePattern03(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return R02DancePattern0401(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return R02DancePattern0501(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return R02DancePattern0601(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return R02DancePattern0701(self.ctx)
 
 
@@ -1050,7 +1050,7 @@ class R02DancePattern0402(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__9$', arg3='1000') # Voice 02000958
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_01')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -1073,7 +1073,7 @@ class R02DancePattern0403(trigger_api.Trigger):
 
 class R02DancePattern0404(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001438], state=1) # 9000ms
@@ -1100,7 +1100,7 @@ class R02DancePattern0502(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__11$', arg3='1000') # Voice 02000982
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_02')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001438], state=0) # 9000ms
@@ -1123,7 +1123,7 @@ class R02DancePattern0503(trigger_api.Trigger):
 
 class R02DancePattern0504(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -1150,7 +1150,7 @@ class R02DancePattern0602(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__13$', arg3='1000') # Voice 02000983
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_03')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001439], state=0) # 12000ms
@@ -1173,7 +1173,7 @@ class R02DancePattern0603(trigger_api.Trigger):
 
 class R02DancePattern0604(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -1200,7 +1200,7 @@ class R02DancePattern0702(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__15$', arg3='1000') # Voice 02000984
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_04')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -1223,7 +1223,7 @@ class R02DancePattern0703(trigger_api.Trigger):
 
 class R02DancePattern0704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001439], state=1) # 12000ms
@@ -1236,7 +1236,7 @@ class R02DancePattern0704(trigger_api.Trigger):
 
 class R02_GameStartDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
 
@@ -1247,7 +1247,7 @@ class R02_GameStartDelay(trigger_api.Trigger):
 
 class R02_GameStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=40000, enable=True) # Game
         self.set_interact_object(trigger_ids=[10001437], state=2) # 7000ms
         self.set_interact_object(trigger_ids=[10001438], state=2) # 9000ms
@@ -1308,7 +1308,7 @@ class R02EndDelay(trigger_api.Trigger):
         self.set_user_value(trigger_id=7420, key='Color42', value=5) # color reset
         self.set_user_value(trigger_id=7430, key='Color43', value=5) # color reset
         self.set_user_value(trigger_id=7440, key='Color44', value=5) # color reset
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1317,7 +1317,7 @@ class R02EndDelay(trigger_api.Trigger):
 
 class R02End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', arg4=2)
+        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', level=2)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=901, enable=False)
@@ -1339,7 +1339,7 @@ class R03Ready(trigger_api.Trigger):
         # self.give_exp(box_id=9001, rate=5.7)
         self.end_mini_game_round(winner_box_id=9001, exp_rate=0.02)
         # self.set_achievement(trigger_id=9001, type='trigger', achieve='ddstop_pass') # 결혼식 전용 매시브 이벤트로 off처리
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, start_delay=400, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], start_delay=400) # Barrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1366,7 +1366,7 @@ class R03Start(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=10)
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__6$', arg3='3000', arg4='0') # Voice 02000955
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancetime_03')
-        self.set_sound(trigger_id=40000, enable=False) # Intro
+        self.set_sound(trigger_id=40000) # Intro
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_event_ui(type=0, arg2='3,5') # Round3
@@ -1380,23 +1380,23 @@ class R03Start(trigger_api.Trigger):
 # R03 DanceTime 패턴 랜덤
 class R03DanceTime(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R03DancePattern01(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R03DancePattern02(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return R03DancePattern03(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return R03DancePattern0401(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return R03DancePattern0501(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return R03DancePattern0601(self.ctx)
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return R03DancePattern0701(self.ctx)
 
 
@@ -1452,7 +1452,7 @@ class R03DancePattern0402(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__9$', arg3='1000') # Voice 02000958
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_01')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -1475,7 +1475,7 @@ class R03DancePattern0403(trigger_api.Trigger):
 
 class R03DancePattern0404(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001438], state=1) # 9000ms
@@ -1502,7 +1502,7 @@ class R03DancePattern0502(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__11$', arg3='1000') # Voice 02000982
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_02')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001438], state=0) # 9000ms
@@ -1525,7 +1525,7 @@ class R03DancePattern0503(trigger_api.Trigger):
 
 class R03DancePattern0504(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -1552,7 +1552,7 @@ class R03DancePattern0602(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__13$', arg3='1000') # Voice 02000983
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_03')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001439], state=0) # 12000ms
@@ -1575,7 +1575,7 @@ class R03DancePattern0603(trigger_api.Trigger):
 
 class R03DancePattern0604(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -1602,7 +1602,7 @@ class R03DancePattern0702(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__15$', arg3='1000') # Voice 02000984
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_04')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -1625,7 +1625,7 @@ class R03DancePattern0703(trigger_api.Trigger):
 
 class R03DancePattern0704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001439], state=1) # 12000ms
@@ -1638,7 +1638,7 @@ class R03DancePattern0704(trigger_api.Trigger):
 
 class R03_GameStartDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
 
@@ -1649,7 +1649,7 @@ class R03_GameStartDelay(trigger_api.Trigger):
 
 class R03_GameStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=40000, enable=True) # Game
         self.set_interact_object(trigger_ids=[10001437], state=2) # 7000ms
         self.set_interact_object(trigger_ids=[10001438], state=2) # 9000ms
@@ -1710,7 +1710,7 @@ class R03EndDelay(trigger_api.Trigger):
         self.set_user_value(trigger_id=7420, key='Color42', value=5) # color reset
         self.set_user_value(trigger_id=7430, key='Color43', value=5) # color reset
         self.set_user_value(trigger_id=7440, key='Color44', value=5) # color reset
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1719,7 +1719,7 @@ class R03EndDelay(trigger_api.Trigger):
 
 class R03End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', arg4=3)
+        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', level=3)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=901, enable=False)
@@ -1741,7 +1741,7 @@ class R04Ready(trigger_api.Trigger):
         # self.give_exp(box_id=9001, rate=5.7)
         self.end_mini_game_round(winner_box_id=9001, exp_rate=0.02)
         # self.set_achievement(trigger_id=9001, type='trigger', achieve='ddstop_pass') # 결혼식 전용 매시브 이벤트로 off처리
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, start_delay=400, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], start_delay=400) # Barrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1768,7 +1768,7 @@ class R04Start(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=10)
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__7$', arg3='3000', arg4='0') # Voice 02000956
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancetime_04')
-        self.set_sound(trigger_id=40000, enable=False) # Intro
+        self.set_sound(trigger_id=40000) # Intro
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_event_ui(type=0, arg2='4,5') # Round4
@@ -1782,23 +1782,23 @@ class R04Start(trigger_api.Trigger):
 # R04 DanceTime 패턴 랜덤
 class R04DanceTime(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return R04DancePattern01(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return R04DancePattern02(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return R04DancePattern03(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return R04DancePattern0401(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return R04DancePattern0501(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return R04DancePattern0601(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return R04DancePattern0701(self.ctx)
 
 
@@ -1854,7 +1854,7 @@ class R04DancePattern0402(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__9$', arg3='1000') # Voice 02000958
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_01')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -1877,7 +1877,7 @@ class R04DancePattern0403(trigger_api.Trigger):
 
 class R04DancePattern0404(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001438], state=1) # 9000ms
@@ -1904,7 +1904,7 @@ class R04DancePattern0502(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__11$', arg3='1000') # Voice 02000982
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_02')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001438], state=0) # 9000ms
@@ -1927,7 +1927,7 @@ class R04DancePattern0503(trigger_api.Trigger):
 
 class R04DancePattern0504(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -1954,7 +1954,7 @@ class R04DancePattern0602(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__13$', arg3='1000') # Voice 02000983
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_03')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001439], state=0) # 12000ms
@@ -1977,7 +1977,7 @@ class R04DancePattern0603(trigger_api.Trigger):
 
 class R04DancePattern0604(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -2004,7 +2004,7 @@ class R04DancePattern0702(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__15$', arg3='1000') # Voice 02000984
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancerandom_04')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -2027,7 +2027,7 @@ class R04DancePattern0703(trigger_api.Trigger):
 
 class R04DancePattern0704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001439], state=1) # 12000ms
@@ -2040,7 +2040,7 @@ class R04DancePattern0704(trigger_api.Trigger):
 
 class R04_GameStartDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
 
@@ -2068,18 +2068,18 @@ class R04_GambleOrNormal00(trigger_api.Trigger):
 # R04 Gamble Or JackPot
 class R04_GambleOrJackpot(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=75):
+        if self.random_condition(weight=75.0):
             return R04_GambleGuide01(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return R04_JackpotGuide01(self.ctx)
 
 
 # R04 Gamble Or Normal
 class R04_GambleOrNormal(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return R04_GambleGuide01(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return R04_GameStart(self.ctx)
 
 
@@ -2087,7 +2087,7 @@ class R04_GambleOrNormal(trigger_api.Trigger):
 class R04_GambleGuide01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=6) # Gamble Round
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=40000, enable=True) # Game
         self.set_interact_object(trigger_ids=[10001437], state=2) # 7000ms
         self.set_interact_object(trigger_ids=[10001438], state=2) # 9000ms
@@ -2095,7 +2095,7 @@ class R04_GambleGuide01(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10001440], state=2) # 15000ms
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__22$', arg3='3000') # Voice 02000964
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Round_06')
-        self.write_log(log_name='dancedancestop', trigger_id=9001, event='system_event', arg4=4, sub_event='gamble')
+        self.write_log(log_name='dancedancestop', trigger_id=9001, event='system_event', level=4, sub_event='gamble')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -2146,140 +2146,140 @@ G06 Gamble Random Pattern 40
 """
 class G06P400_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P401_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P402_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P403_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P404_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P405_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P406_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P407_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P408_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P409_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P410_RoundCheckIn(self.ctx)
 
 
 # G06 Gamble Random Pattern 30
 class G06P300_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P301_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P302_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P303_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P304_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P305_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P306_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P307_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P308_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P309_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P310_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P311_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P312_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P313_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P314_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P315_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P316_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P317_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P318_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P319_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P320_RoundCheckIn(self.ctx)
 
 
 # G06 Gamble Random Pattern 20
 class G06P200_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P201_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P202_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P203_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P204_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P205_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P206_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P207_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P208_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P209_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P210_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P211_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P212_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P213_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P214_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P215_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P216_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P217_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P218_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P219_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return G06P220_RoundCheckIn(self.ctx)
 
 
 # G06 Gamble Random Pattern 10
 class G06P100_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P101_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P102_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P103_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P104_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P105_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P106_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P107_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P108_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P109_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G06P110_RoundCheckIn(self.ctx)
 
 
@@ -2287,7 +2287,7 @@ class G06P100_Random(trigger_api.Trigger):
 class R04_JackpotGuide01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=6) # Gamble Round
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=40000, enable=True) # Game
         self.set_interact_object(trigger_ids=[10001437], state=2) # 7000ms
         self.set_interact_object(trigger_ids=[10001438], state=2) # 9000ms
@@ -2295,7 +2295,7 @@ class R04_JackpotGuide01(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10001440], state=2) # 15000ms
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__24$', arg3='3000') # Voice 02000964
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Round_06')
-        self.write_log(log_name='dancedancestop', trigger_id=9001, event='system_event', arg4=4, sub_event='jackpot')
+        self.write_log(log_name='dancedancestop', trigger_id=9001, event='system_event', level=4, sub_event='jackpot')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -2344,69 +2344,69 @@ G07 Jackpot Random Pattern 400
 """
 class G07P400_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P401_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P402_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P403_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P404_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P405_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P406_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P407_RoundCheckIn(self.ctx)
 
 
 # G07 Jackpot Random Pattern 300
 class G07P300_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P301_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P302_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P303_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P304_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P305_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P306_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P307_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P308_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P309_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P310_RoundCheckIn(self.ctx)
 
 
 # G07 Jackpot Random Pattern 200
 class G07P200_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P201_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P202_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P203_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P204_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P205_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P206_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P207_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P208_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P209_RoundCheckIn(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return G07P210_RoundCheckIn(self.ctx)
 
 
@@ -2429,7 +2429,7 @@ class R04GambleEndDelay(trigger_api.Trigger):
         self.set_user_value(trigger_id=7420, key='Color42', value=5) # color reset
         self.set_user_value(trigger_id=7430, key='Color43', value=5) # color reset
         self.set_user_value(trigger_id=7440, key='Color44', value=5) # color reset
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -2438,7 +2438,7 @@ class R04GambleEndDelay(trigger_api.Trigger):
 
 class R04GambleEnd(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', arg4=4)
+        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', level=4)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=901, enable=False)
@@ -2457,7 +2457,7 @@ class R05ReadyAfterGamble(trigger_api.Trigger):
         # self.give_exp(box_id=9001, rate=5.7)
         self.end_mini_game_round(winner_box_id=9001, exp_rate=0.02)
         # self.set_achievement(trigger_id=9001, type='trigger', achieve='ddstop_pass') # 결혼식 전용 매시브 이벤트로 off
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, start_delay=400, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], start_delay=400) # Barrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -2531,7 +2531,7 @@ class R05StartGambleFail(trigger_api.Trigger):
 # R04 Normal Game
 class R04_GameStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=40000, enable=True) # Game
         self.set_interact_object(trigger_ids=[10001437], state=2) # 7000ms
         self.set_interact_object(trigger_ids=[10001438], state=2) # 9000ms
@@ -2576,7 +2576,7 @@ class R04G00Check(trigger_api.Trigger):
 # R04 인원 체크 끝
 class R05DanceTimeDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=40000, enable=False) # Intro
+        self.set_sound(trigger_id=40000) # Intro
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__33$', arg3='3000', arg4='0')
@@ -2605,7 +2605,7 @@ class R04EndDelay(trigger_api.Trigger):
         self.set_user_value(trigger_id=7420, key='Color42', value=5) # color reset
         self.set_user_value(trigger_id=7430, key='Color43', value=5) # color reset
         self.set_user_value(trigger_id=7440, key='Color44', value=5) # color reset
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -2614,7 +2614,7 @@ class R04EndDelay(trigger_api.Trigger):
 
 class R04End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', arg4=4)
+        self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', level=4)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=901, enable=False)
@@ -2636,7 +2636,7 @@ class R05Ready(trigger_api.Trigger):
         # self.give_exp(box_id=9001, rate=5.7)
         self.end_mini_game_round(winner_box_id=9001, exp_rate=0.02)
         # self.set_achievement(trigger_id=9001, type='trigger', achieve='ddstop_pass') # 결혼식 전용 매시브 이벤트로 off처리
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, start_delay=400, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], start_delay=400) # Barrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -2663,7 +2663,7 @@ class R05Start(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=10)
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__8$', arg3='3000', arg4='0') # Voice 02000957
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancetime_05')
-        self.set_sound(trigger_id=40000, enable=False) # Intro
+        self.set_sound(trigger_id=40000) # Intro
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_event_ui(type=0, arg2='5,5') # Round5
@@ -2677,23 +2677,23 @@ class R05Start(trigger_api.Trigger):
 # R05 DanceTime 패턴 랜덤
 class R05DanceTime(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=2):
+        if self.random_condition(weight=2.0):
             return R05DancePattern01(self.ctx)
-        if self.random_condition(weight=3):
+        if self.random_condition(weight=3.0):
             return R05DancePattern02(self.ctx)
-        if self.random_condition(weight=5):
+        if self.random_condition(weight=5.0):
             return R05DancePattern03(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return R05DancePattern0401(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return R05DancePattern0501(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return R05DancePattern0601(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return R05DancePattern0701(self.ctx)
 
 
@@ -2748,7 +2748,7 @@ class R05DancePattern0401(trigger_api.Trigger):
 class R05DancePattern0402(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__34$', arg3='1000')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -2772,7 +2772,7 @@ class R05DancePattern0403(trigger_api.Trigger):
 
 class R05DancePattern0404(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001438], state=1) # 9000ms
@@ -2798,7 +2798,7 @@ class R05DancePattern0501(trigger_api.Trigger):
 class R05DancePattern0502(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__36$', arg3='1000')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001438], state=0) # 9000ms
@@ -2822,7 +2822,7 @@ class R05DancePattern0503(trigger_api.Trigger):
 
 class R05DancePattern0504(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -2848,7 +2848,7 @@ class R05DancePattern0601(trigger_api.Trigger):
 class R05DancePattern0602(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__38$', arg3='1000')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001439], state=0) # 12000ms
@@ -2872,7 +2872,7 @@ class R05DancePattern0603(trigger_api.Trigger):
 
 class R05DancePattern0604(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001437], state=1) # 7000ms
@@ -2898,7 +2898,7 @@ class R05DancePattern0701(trigger_api.Trigger):
 class R05DancePattern0702(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000008_ME__01_MASSIVEMAIN__40$', arg3='1000')
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
         self.set_interact_object(trigger_ids=[10001437], state=0) # 7000ms
@@ -2922,7 +2922,7 @@ class R05DancePattern0703(trigger_api.Trigger):
 
 class R05DancePattern0704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=20000, enable=True) # Dance
         self.play_system_sound_in_box(box_ids=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(trigger_ids=[10001439], state=1) # 12000ms
@@ -2935,7 +2935,7 @@ class R05DancePattern0704(trigger_api.Trigger):
 
 class R05_GameStartDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=20000, enable=False) # Dance
+        self.set_sound(trigger_id=20000) # Dance
         self.set_sound(trigger_id=30000, enable=True) # Silence
         self.set_effect(trigger_ids=[8000], visible=True) # Scratch
 
@@ -2946,7 +2946,7 @@ class R05_GameStartDelay(trigger_api.Trigger):
 
 class R05_GameStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=30000, enable=False) # Silence
+        self.set_sound(trigger_id=30000) # Silence
         self.set_sound(trigger_id=40000, enable=True) # Game
         self.set_interact_object(trigger_ids=[10001437], state=2) # 7000ms
         self.set_interact_object(trigger_ids=[10001438], state=2) # 9000ms
@@ -3007,7 +3007,7 @@ class R05EndDelay(trigger_api.Trigger):
         self.set_user_value(trigger_id=7420, key='Color42', value=5) # color reset
         self.set_user_value(trigger_id=7430, key='Color43', value=5) # color reset
         self.set_user_value(trigger_id=7440, key='Color44', value=5) # color reset
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -3016,7 +3016,7 @@ class R05EndDelay(trigger_api.Trigger):
 
 class R05End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', arg4=5)
+        # self.write_log(log_name='dancedancestop', trigger_id=9001, event='round_clear', level=5)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=901, enable=False)
@@ -3031,7 +3031,7 @@ class R05End(trigger_api.Trigger):
 # 불꽃놀이 : 전멸 시. 실제 불꽃놀이 효과는 동일하지만 생존자 유무에 따른 분기 설정
 class Fireworks_Lose(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[902,903], return_view=True)
+        self.select_camera_path(path_ids=[902,903])
         # 센서: Fireworks.xml의 불꽃놀이 연출 시작
         self.set_user_value(trigger_id=9, key='Fireworks', value=1)
 
@@ -3046,7 +3046,7 @@ class GameWrapUp(trigger_api.Trigger):
         # self.give_exp(box_id=9001, rate=5.7)
         self.end_mini_game_round(winner_box_id=9001, exp_rate=0.02) # win
         # self.set_achievement(trigger_id=9001, type='trigger', achieve='ddstop_pass') # 결혼식 전용 매시브 이벤트로 off처리
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, start_delay=400, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], start_delay=400) # Barrier
         self.set_user_value(trigger_id=8110, key='Barrier11', value=10)
         self.set_user_value(trigger_id=8120, key='Barrier12', value=10)
         self.set_user_value(trigger_id=8130, key='Barrier13', value=10)
@@ -3088,7 +3088,7 @@ onExit /
 
 class Fireworks_Win(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[902,903], return_view=True)
+        self.select_camera_path(path_ids=[902,903])
         # 센서: Fireworks.xml의 불꽃놀이 연출 시작
         self.set_user_value(trigger_id=9, key='Fireworks', value=2)
 
@@ -3131,7 +3131,7 @@ class FailAll(trigger_api.Trigger):
         self.set_event_ui(type=0, arg2='0,0')
         self.set_event_ui(type=5, arg2='$61000008_ME__01_MASSIVEMAIN__28$', arg3='5000') # Voice 02000969
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Ending_02')
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, start_delay=400, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], start_delay=400) # Barrier
         self.set_user_value(trigger_id=4, key='BannerCheckIn', value=1)
         self.set_user_value(trigger_id=8110, key='Barrier11', value=10)
         self.set_user_value(trigger_id=8120, key='Barrier12', value=10)
@@ -3165,7 +3165,7 @@ class FailAll(trigger_api.Trigger):
         self.set_user_value(trigger_id=7420, key='Color42', value=5) # color reset
         self.set_user_value(trigger_id=7430, key='Color43', value=5) # color reset
         self.set_user_value(trigger_id=7440, key='Color44', value=5) # color reset
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, start_delay=400, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -3180,14 +3180,14 @@ class LeaveAll(trigger_api.Trigger):
         # 종료 후 펀타임을 위해 전부 스테이지 밖으로 킥
         self.move_user(map_id=84000007, portal_id=3, box_id=9001)
         self.add_buff(box_ids=[9000], skill_id=99940042, level=1, is_player=False, is_skill_set=False) # 도입부부터 폭죽 터트리고 놀 수 있게 변경
-        self.set_local_camera(camera_id=910, enable=False) # LocalTargetCamera
+        self.set_local_camera(camera_id=910) # LocalTargetCamera
         # self.unset_mini_game_area_for_hack() # 해킹 보안 종료
-        self.set_sound(trigger_id=40000, enable=False) # Game
+        self.set_sound(trigger_id=40000) # Game
         self.set_user_value(trigger_id=5, key='BannerNumber', value=0)
         self.set_event_ui(type=1, arg2='$84000007_WD__01_MASSIVEMAIN__0$', arg3='10000') # Voice 02000970
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Ending_03')
-        self.set_sound(trigger_id=10000, enable=False) # Intro
-        self.set_timer(timer_id='8888', seconds=150, start_delay=0, interval=1) # 60초 동안 자유시간
+        self.set_sound(trigger_id=10000) # Intro
+        self.set_timer(timer_id='8888', seconds=150, interval=1) # 60초 동안 자유시간
         self.set_photo_studio(is_enable=True) # 신규개발기능: 사진촬영
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -3220,10 +3220,10 @@ class G01P01_RoundCheckIn(trigger_api.Trigger):
 class G01P01_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3262,10 +3262,10 @@ class G01P02_RoundCheckIn(trigger_api.Trigger):
 class G01P02_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3304,10 +3304,10 @@ class G01P03_RoundCheckIn(trigger_api.Trigger):
 class G01P03_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3346,10 +3346,10 @@ class G01P04_RoundCheckIn(trigger_api.Trigger):
 class G01P04_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3388,10 +3388,10 @@ class G01P05_RoundCheckIn(trigger_api.Trigger):
 class G01P05_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3430,10 +3430,10 @@ class G01P06_RoundCheckIn(trigger_api.Trigger):
 class G01P06_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3472,10 +3472,10 @@ class G01P07_RoundCheckIn(trigger_api.Trigger):
 class G01P07_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3514,10 +3514,10 @@ class G01P08_RoundCheckIn(trigger_api.Trigger):
 class G01P08_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3556,10 +3556,10 @@ class G01P09_RoundCheckIn(trigger_api.Trigger):
 class G01P09_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3598,10 +3598,10 @@ class G01P10_RoundCheckIn(trigger_api.Trigger):
 class G01P10_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3640,10 +3640,10 @@ class G01P11_RoundCheckIn(trigger_api.Trigger):
 class G01P11_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3682,10 +3682,10 @@ class G01P12_RoundCheckIn(trigger_api.Trigger):
 class G01P12_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3724,10 +3724,10 @@ class G01P13_RoundCheckIn(trigger_api.Trigger):
 class G01P13_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3766,10 +3766,10 @@ class G01P14_RoundCheckIn(trigger_api.Trigger):
 class G01P14_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3808,10 +3808,10 @@ class G01P15_RoundCheckIn(trigger_api.Trigger):
 class G01P15_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3850,10 +3850,10 @@ class G01P16_RoundCheckIn(trigger_api.Trigger):
 class G01P16_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3892,10 +3892,10 @@ class G01P17_RoundCheckIn(trigger_api.Trigger):
 class G01P17_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3934,10 +3934,10 @@ class G01P18_RoundCheckIn(trigger_api.Trigger):
 class G01P18_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -3976,10 +3976,10 @@ class G01P19_RoundCheckIn(trigger_api.Trigger):
 class G01P19_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4018,10 +4018,10 @@ class G01P20_RoundCheckIn(trigger_api.Trigger):
 class G01P20_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4060,10 +4060,10 @@ class G01P21_RoundCheckIn(trigger_api.Trigger):
 class G01P21_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4102,10 +4102,10 @@ class G01P22_RoundCheckIn(trigger_api.Trigger):
 class G01P22_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4144,10 +4144,10 @@ class G01P23_RoundCheckIn(trigger_api.Trigger):
 class G01P23_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4186,10 +4186,10 @@ class G01P24_RoundCheckIn(trigger_api.Trigger):
 class G01P24_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4228,10 +4228,10 @@ class G01P25_RoundCheckIn(trigger_api.Trigger):
 class G01P25_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4270,10 +4270,10 @@ class G01P26_RoundCheckIn(trigger_api.Trigger):
 class G01P26_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4312,10 +4312,10 @@ class G01P27_RoundCheckIn(trigger_api.Trigger):
 class G01P27_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4354,10 +4354,10 @@ class G01P28_RoundCheckIn(trigger_api.Trigger):
 class G01P28_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4396,10 +4396,10 @@ class G01P29_RoundCheckIn(trigger_api.Trigger):
 class G01P29_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4438,10 +4438,10 @@ class G01P30_RoundCheckIn(trigger_api.Trigger):
 class G01P30_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4480,10 +4480,10 @@ class G02P01_RoundCheckIn(trigger_api.Trigger):
 class G02P01_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4522,10 +4522,10 @@ class G02P02_RoundCheckIn(trigger_api.Trigger):
 class G02P02_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4564,10 +4564,10 @@ class G02P03_RoundCheckIn(trigger_api.Trigger):
 class G02P03_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4606,10 +4606,10 @@ class G02P04_RoundCheckIn(trigger_api.Trigger):
 class G02P04_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4648,10 +4648,10 @@ class G02P05_RoundCheckIn(trigger_api.Trigger):
 class G02P05_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4690,10 +4690,10 @@ class G02P06_RoundCheckIn(trigger_api.Trigger):
 class G02P06_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4732,10 +4732,10 @@ class G02P07_RoundCheckIn(trigger_api.Trigger):
 class G02P07_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4774,10 +4774,10 @@ class G02P08_RoundCheckIn(trigger_api.Trigger):
 class G02P08_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4816,10 +4816,10 @@ class G02P09_RoundCheckIn(trigger_api.Trigger):
 class G02P09_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4858,10 +4858,10 @@ class G02P10_RoundCheckIn(trigger_api.Trigger):
 class G02P10_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4900,10 +4900,10 @@ class G02P11_RoundCheckIn(trigger_api.Trigger):
 class G02P11_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4942,10 +4942,10 @@ class G02P12_RoundCheckIn(trigger_api.Trigger):
 class G02P12_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -4984,10 +4984,10 @@ class G02P13_RoundCheckIn(trigger_api.Trigger):
 class G02P13_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5026,10 +5026,10 @@ class G02P14_RoundCheckIn(trigger_api.Trigger):
 class G02P14_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5068,10 +5068,10 @@ class G02P15_RoundCheckIn(trigger_api.Trigger):
 class G02P15_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5110,10 +5110,10 @@ class G02P16_RoundCheckIn(trigger_api.Trigger):
 class G02P16_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5152,10 +5152,10 @@ class G02P17_RoundCheckIn(trigger_api.Trigger):
 class G02P17_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5194,10 +5194,10 @@ class G02P18_RoundCheckIn(trigger_api.Trigger):
 class G02P18_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5236,10 +5236,10 @@ class G02P19_RoundCheckIn(trigger_api.Trigger):
 class G02P19_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5278,10 +5278,10 @@ class G02P20_RoundCheckIn(trigger_api.Trigger):
 class G02P20_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5320,10 +5320,10 @@ class G02P21_RoundCheckIn(trigger_api.Trigger):
 class G02P21_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5362,10 +5362,10 @@ class G02P22_RoundCheckIn(trigger_api.Trigger):
 class G02P22_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5404,10 +5404,10 @@ class G02P23_RoundCheckIn(trigger_api.Trigger):
 class G02P23_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5446,10 +5446,10 @@ class G02P24_RoundCheckIn(trigger_api.Trigger):
 class G02P24_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5488,10 +5488,10 @@ class G02P25_RoundCheckIn(trigger_api.Trigger):
 class G02P25_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5530,10 +5530,10 @@ class G02P26_RoundCheckIn(trigger_api.Trigger):
 class G02P26_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5572,10 +5572,10 @@ class G02P27_RoundCheckIn(trigger_api.Trigger):
 class G02P27_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5614,10 +5614,10 @@ class G02P28_RoundCheckIn(trigger_api.Trigger):
 class G02P28_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5656,10 +5656,10 @@ class G02P29_RoundCheckIn(trigger_api.Trigger):
 class G02P29_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5698,10 +5698,10 @@ class G02P30_RoundCheckIn(trigger_api.Trigger):
 class G02P30_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5740,10 +5740,10 @@ class G03P01_RoundCheckIn(trigger_api.Trigger):
 class G03P01_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5782,10 +5782,10 @@ class G03P02_RoundCheckIn(trigger_api.Trigger):
 class G03P02_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5824,10 +5824,10 @@ class G03P03_RoundCheckIn(trigger_api.Trigger):
 class G03P03_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5866,10 +5866,10 @@ class G03P04_RoundCheckIn(trigger_api.Trigger):
 class G03P04_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5908,10 +5908,10 @@ class G03P05_RoundCheckIn(trigger_api.Trigger):
 class G03P05_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5950,10 +5950,10 @@ class G03P06_RoundCheckIn(trigger_api.Trigger):
 class G03P06_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -5992,10 +5992,10 @@ class G03P07_RoundCheckIn(trigger_api.Trigger):
 class G03P07_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6034,10 +6034,10 @@ class G03P08_RoundCheckIn(trigger_api.Trigger):
 class G03P08_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6076,10 +6076,10 @@ class G03P09_RoundCheckIn(trigger_api.Trigger):
 class G03P09_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6118,10 +6118,10 @@ class G03P10_RoundCheckIn(trigger_api.Trigger):
 class G03P10_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6160,10 +6160,10 @@ class G03P11_RoundCheckIn(trigger_api.Trigger):
 class G03P11_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6202,10 +6202,10 @@ class G03P12_RoundCheckIn(trigger_api.Trigger):
 class G03P12_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6244,10 +6244,10 @@ class G03P13_RoundCheckIn(trigger_api.Trigger):
 class G03P13_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6286,10 +6286,10 @@ class G03P14_RoundCheckIn(trigger_api.Trigger):
 class G03P14_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6328,10 +6328,10 @@ class G03P15_RoundCheckIn(trigger_api.Trigger):
 class G03P15_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6370,10 +6370,10 @@ class G03P16_RoundCheckIn(trigger_api.Trigger):
 class G03P16_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6412,10 +6412,10 @@ class G03P17_RoundCheckIn(trigger_api.Trigger):
 class G03P17_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6454,10 +6454,10 @@ class G03P18_RoundCheckIn(trigger_api.Trigger):
 class G03P18_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6496,10 +6496,10 @@ class G03P19_RoundCheckIn(trigger_api.Trigger):
 class G03P19_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6538,10 +6538,10 @@ class G03P20_RoundCheckIn(trigger_api.Trigger):
 class G03P20_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6580,10 +6580,10 @@ class G03P21_RoundCheckIn(trigger_api.Trigger):
 class G03P21_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6622,10 +6622,10 @@ class G03P22_RoundCheckIn(trigger_api.Trigger):
 class G03P22_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6664,10 +6664,10 @@ class G03P23_RoundCheckIn(trigger_api.Trigger):
 class G03P23_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6706,10 +6706,10 @@ class G03P24_RoundCheckIn(trigger_api.Trigger):
 class G03P24_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6748,10 +6748,10 @@ class G03P25_RoundCheckIn(trigger_api.Trigger):
 class G03P25_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6790,10 +6790,10 @@ class G03P26_RoundCheckIn(trigger_api.Trigger):
 class G03P26_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6832,10 +6832,10 @@ class G03P27_RoundCheckIn(trigger_api.Trigger):
 class G03P27_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6874,10 +6874,10 @@ class G03P28_RoundCheckIn(trigger_api.Trigger):
 class G03P28_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6916,10 +6916,10 @@ class G03P29_RoundCheckIn(trigger_api.Trigger):
 class G03P29_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -6958,10 +6958,10 @@ class G03P30_RoundCheckIn(trigger_api.Trigger):
 class G03P30_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7000,10 +7000,10 @@ class G04P01_RoundCheckIn(trigger_api.Trigger):
 class G04P01_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7042,10 +7042,10 @@ class G04P02_RoundCheckIn(trigger_api.Trigger):
 class G04P02_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7084,10 +7084,10 @@ class G04P03_RoundCheckIn(trigger_api.Trigger):
 class G04P03_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7126,10 +7126,10 @@ class G04P04_RoundCheckIn(trigger_api.Trigger):
 class G04P04_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7168,10 +7168,10 @@ class G04P05_RoundCheckIn(trigger_api.Trigger):
 class G04P05_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7210,10 +7210,10 @@ class G04P06_RoundCheckIn(trigger_api.Trigger):
 class G04P06_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7252,10 +7252,10 @@ class G04P07_RoundCheckIn(trigger_api.Trigger):
 class G04P07_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7294,10 +7294,10 @@ class G04P08_RoundCheckIn(trigger_api.Trigger):
 class G04P08_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7336,10 +7336,10 @@ class G04P09_RoundCheckIn(trigger_api.Trigger):
 class G04P09_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7378,10 +7378,10 @@ class G04P10_RoundCheckIn(trigger_api.Trigger):
 class G04P10_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7420,10 +7420,10 @@ class G04P11_RoundCheckIn(trigger_api.Trigger):
 class G04P11_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7462,10 +7462,10 @@ class G04P12_RoundCheckIn(trigger_api.Trigger):
 class G04P12_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7504,10 +7504,10 @@ class G04P13_RoundCheckIn(trigger_api.Trigger):
 class G04P13_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7546,10 +7546,10 @@ class G04P14_RoundCheckIn(trigger_api.Trigger):
 class G04P14_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7588,10 +7588,10 @@ class G04P15_RoundCheckIn(trigger_api.Trigger):
 class G04P15_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7630,10 +7630,10 @@ class G04P16_RoundCheckIn(trigger_api.Trigger):
 class G04P16_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7672,10 +7672,10 @@ class G04P17_RoundCheckIn(trigger_api.Trigger):
 class G04P17_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7714,10 +7714,10 @@ class G04P18_RoundCheckIn(trigger_api.Trigger):
 class G04P18_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7756,10 +7756,10 @@ class G04P19_RoundCheckIn(trigger_api.Trigger):
 class G04P19_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7798,10 +7798,10 @@ class G04P20_RoundCheckIn(trigger_api.Trigger):
 class G04P20_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7840,10 +7840,10 @@ class G04P21_RoundCheckIn(trigger_api.Trigger):
 class G04P21_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7882,10 +7882,10 @@ class G04P22_RoundCheckIn(trigger_api.Trigger):
 class G04P22_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7924,10 +7924,10 @@ class G04P23_RoundCheckIn(trigger_api.Trigger):
 class G04P23_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -7966,10 +7966,10 @@ class G04P24_RoundCheckIn(trigger_api.Trigger):
 class G04P24_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8008,10 +8008,10 @@ class G04P25_RoundCheckIn(trigger_api.Trigger):
 class G04P25_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8050,10 +8050,10 @@ class G04P26_RoundCheckIn(trigger_api.Trigger):
 class G04P26_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8092,10 +8092,10 @@ class G04P27_RoundCheckIn(trigger_api.Trigger):
 class G04P27_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8134,10 +8134,10 @@ class G04P28_RoundCheckIn(trigger_api.Trigger):
 class G04P28_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8176,10 +8176,10 @@ class G04P29_RoundCheckIn(trigger_api.Trigger):
 class G04P29_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8218,10 +8218,10 @@ class G04P30_RoundCheckIn(trigger_api.Trigger):
 class G04P30_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8260,10 +8260,10 @@ class G04P31_RoundCheckIn(trigger_api.Trigger):
 class G04P31_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8302,10 +8302,10 @@ class G04P32_RoundCheckIn(trigger_api.Trigger):
 class G04P32_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8344,10 +8344,10 @@ class G04P33_RoundCheckIn(trigger_api.Trigger):
 class G04P33_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8386,10 +8386,10 @@ class G04P34_RoundCheckIn(trigger_api.Trigger):
 class G04P34_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8428,10 +8428,10 @@ class G04P35_RoundCheckIn(trigger_api.Trigger):
 class G04P35_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8470,10 +8470,10 @@ class G04P36_RoundCheckIn(trigger_api.Trigger):
 class G04P36_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8512,10 +8512,10 @@ class G04P37_RoundCheckIn(trigger_api.Trigger):
 class G04P37_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8554,10 +8554,10 @@ class G04P38_RoundCheckIn(trigger_api.Trigger):
 class G04P38_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8596,10 +8596,10 @@ class G04P39_RoundCheckIn(trigger_api.Trigger):
 class G04P39_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8638,10 +8638,10 @@ class G04P40_RoundCheckIn(trigger_api.Trigger):
 class G04P40_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8680,10 +8680,10 @@ class G05P01_RoundCheckIn(trigger_api.Trigger):
 class G05P01_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8722,10 +8722,10 @@ class G05P02_RoundCheckIn(trigger_api.Trigger):
 class G05P02_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8764,10 +8764,10 @@ class G05P03_RoundCheckIn(trigger_api.Trigger):
 class G05P03_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8806,10 +8806,10 @@ class G05P04_RoundCheckIn(trigger_api.Trigger):
 class G05P04_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8848,10 +8848,10 @@ class G05P05_RoundCheckIn(trigger_api.Trigger):
 class G05P05_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8890,10 +8890,10 @@ class G05P06_RoundCheckIn(trigger_api.Trigger):
 class G05P06_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8932,10 +8932,10 @@ class G05P07_RoundCheckIn(trigger_api.Trigger):
 class G05P07_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -8974,10 +8974,10 @@ class G05P08_RoundCheckIn(trigger_api.Trigger):
 class G05P08_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9016,10 +9016,10 @@ class G05P09_RoundCheckIn(trigger_api.Trigger):
 class G05P09_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9058,10 +9058,10 @@ class G05P10_RoundCheckIn(trigger_api.Trigger):
 class G05P10_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9100,10 +9100,10 @@ class G05P11_RoundCheckIn(trigger_api.Trigger):
 class G05P11_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9142,10 +9142,10 @@ class G05P12_RoundCheckIn(trigger_api.Trigger):
 class G05P12_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9184,10 +9184,10 @@ class G05P13_RoundCheckIn(trigger_api.Trigger):
 class G05P13_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9226,10 +9226,10 @@ class G05P14_RoundCheckIn(trigger_api.Trigger):
 class G05P14_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9268,10 +9268,10 @@ class G05P15_RoundCheckIn(trigger_api.Trigger):
 class G05P15_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9310,10 +9310,10 @@ class G05P16_RoundCheckIn(trigger_api.Trigger):
 class G05P16_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9352,10 +9352,10 @@ class G05P17_RoundCheckIn(trigger_api.Trigger):
 class G05P17_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9394,10 +9394,10 @@ class G05P18_RoundCheckIn(trigger_api.Trigger):
 class G05P18_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9436,10 +9436,10 @@ class G05P19_RoundCheckIn(trigger_api.Trigger):
 class G05P19_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9478,10 +9478,10 @@ class G05P20_RoundCheckIn(trigger_api.Trigger):
 class G05P20_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9520,10 +9520,10 @@ class G05P21_RoundCheckIn(trigger_api.Trigger):
 class G05P21_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9562,10 +9562,10 @@ class G05P22_RoundCheckIn(trigger_api.Trigger):
 class G05P22_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9604,10 +9604,10 @@ class G05P23_RoundCheckIn(trigger_api.Trigger):
 class G05P23_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9646,10 +9646,10 @@ class G05P24_RoundCheckIn(trigger_api.Trigger):
 class G05P24_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9688,10 +9688,10 @@ class G05P25_RoundCheckIn(trigger_api.Trigger):
 class G05P25_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9730,10 +9730,10 @@ class G05P26_RoundCheckIn(trigger_api.Trigger):
 class G05P26_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9772,10 +9772,10 @@ class G05P27_RoundCheckIn(trigger_api.Trigger):
 class G05P27_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9814,10 +9814,10 @@ class G05P28_RoundCheckIn(trigger_api.Trigger):
 class G05P28_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9856,10 +9856,10 @@ class G05P29_RoundCheckIn(trigger_api.Trigger):
 class G05P29_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9898,10 +9898,10 @@ class G05P30_RoundCheckIn(trigger_api.Trigger):
 class G05P30_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9940,10 +9940,10 @@ class G05P31_RoundCheckIn(trigger_api.Trigger):
 class G05P31_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -9982,10 +9982,10 @@ class G05P32_RoundCheckIn(trigger_api.Trigger):
 class G05P32_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10024,10 +10024,10 @@ class G05P33_RoundCheckIn(trigger_api.Trigger):
 class G05P33_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10066,10 +10066,10 @@ class G05P34_RoundCheckIn(trigger_api.Trigger):
 class G05P34_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10108,10 +10108,10 @@ class G05P35_RoundCheckIn(trigger_api.Trigger):
 class G05P35_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10150,10 +10150,10 @@ class G05P36_RoundCheckIn(trigger_api.Trigger):
 class G05P36_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10192,10 +10192,10 @@ class G05P37_RoundCheckIn(trigger_api.Trigger):
 class G05P37_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10234,10 +10234,10 @@ class G05P38_RoundCheckIn(trigger_api.Trigger):
 class G05P38_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10276,10 +10276,10 @@ class G05P39_RoundCheckIn(trigger_api.Trigger):
 class G05P39_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10318,10 +10318,10 @@ class G05P40_RoundCheckIn(trigger_api.Trigger):
 class G05P40_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10360,10 +10360,10 @@ class G05P41_RoundCheckIn(trigger_api.Trigger):
 class G05P41_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10402,10 +10402,10 @@ class G05P42_RoundCheckIn(trigger_api.Trigger):
 class G05P42_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10444,10 +10444,10 @@ class G05P43_RoundCheckIn(trigger_api.Trigger):
 class G05P43_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10486,10 +10486,10 @@ class G05P44_RoundCheckIn(trigger_api.Trigger):
 class G05P44_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10528,10 +10528,10 @@ class G05P45_RoundCheckIn(trigger_api.Trigger):
 class G05P45_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10570,10 +10570,10 @@ class G05P46_RoundCheckIn(trigger_api.Trigger):
 class G05P46_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10612,10 +10612,10 @@ class G05P47_RoundCheckIn(trigger_api.Trigger):
 class G05P47_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10654,10 +10654,10 @@ class G05P48_RoundCheckIn(trigger_api.Trigger):
 class G05P48_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10696,10 +10696,10 @@ class G05P49_RoundCheckIn(trigger_api.Trigger):
 class G05P49_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10738,10 +10738,10 @@ class G05P50_RoundCheckIn(trigger_api.Trigger):
 class G05P50_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10783,10 +10783,10 @@ class G06P101_RoundCheckIn(trigger_api.Trigger):
 class G06P101_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10825,10 +10825,10 @@ class G06P102_RoundCheckIn(trigger_api.Trigger):
 class G06P102_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10867,10 +10867,10 @@ class G06P103_RoundCheckIn(trigger_api.Trigger):
 class G06P103_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10909,10 +10909,10 @@ class G06P104_RoundCheckIn(trigger_api.Trigger):
 class G06P104_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10951,10 +10951,10 @@ class G06P105_RoundCheckIn(trigger_api.Trigger):
 class G06P105_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -10993,10 +10993,10 @@ class G06P106_RoundCheckIn(trigger_api.Trigger):
 class G06P106_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11035,10 +11035,10 @@ class G06P107_RoundCheckIn(trigger_api.Trigger):
 class G06P107_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11077,10 +11077,10 @@ class G06P108_RoundCheckIn(trigger_api.Trigger):
 class G06P108_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11119,10 +11119,10 @@ class G06P109_RoundCheckIn(trigger_api.Trigger):
 class G06P109_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11161,10 +11161,10 @@ class G06P110_RoundCheckIn(trigger_api.Trigger):
 class G06P110_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11203,10 +11203,10 @@ class G06P201_RoundCheckIn(trigger_api.Trigger):
 class G06P201_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11245,10 +11245,10 @@ class G06P202_RoundCheckIn(trigger_api.Trigger):
 class G06P202_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11287,10 +11287,10 @@ class G06P203_RoundCheckIn(trigger_api.Trigger):
 class G06P203_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11329,10 +11329,10 @@ class G06P204_RoundCheckIn(trigger_api.Trigger):
 class G06P204_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11371,10 +11371,10 @@ class G06P205_RoundCheckIn(trigger_api.Trigger):
 class G06P205_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11413,10 +11413,10 @@ class G06P206_RoundCheckIn(trigger_api.Trigger):
 class G06P206_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11455,10 +11455,10 @@ class G06P207_RoundCheckIn(trigger_api.Trigger):
 class G06P207_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11497,10 +11497,10 @@ class G06P208_RoundCheckIn(trigger_api.Trigger):
 class G06P208_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11539,10 +11539,10 @@ class G06P209_RoundCheckIn(trigger_api.Trigger):
 class G06P209_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11581,10 +11581,10 @@ class G06P210_RoundCheckIn(trigger_api.Trigger):
 class G06P210_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11623,10 +11623,10 @@ class G06P211_RoundCheckIn(trigger_api.Trigger):
 class G06P211_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11665,10 +11665,10 @@ class G06P212_RoundCheckIn(trigger_api.Trigger):
 class G06P212_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11707,10 +11707,10 @@ class G06P213_RoundCheckIn(trigger_api.Trigger):
 class G06P213_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11749,10 +11749,10 @@ class G06P214_RoundCheckIn(trigger_api.Trigger):
 class G06P214_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11791,10 +11791,10 @@ class G06P215_RoundCheckIn(trigger_api.Trigger):
 class G06P215_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11833,10 +11833,10 @@ class G06P216_RoundCheckIn(trigger_api.Trigger):
 class G06P216_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11875,10 +11875,10 @@ class G06P217_RoundCheckIn(trigger_api.Trigger):
 class G06P217_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11917,10 +11917,10 @@ class G06P218_RoundCheckIn(trigger_api.Trigger):
 class G06P218_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -11959,10 +11959,10 @@ class G06P219_RoundCheckIn(trigger_api.Trigger):
 class G06P219_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12001,10 +12001,10 @@ class G06P220_RoundCheckIn(trigger_api.Trigger):
 class G06P220_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12043,10 +12043,10 @@ class G06P301_RoundCheckIn(trigger_api.Trigger):
 class G06P301_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12085,10 +12085,10 @@ class G06P302_RoundCheckIn(trigger_api.Trigger):
 class G06P302_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12127,10 +12127,10 @@ class G06P303_RoundCheckIn(trigger_api.Trigger):
 class G06P303_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12169,10 +12169,10 @@ class G06P304_RoundCheckIn(trigger_api.Trigger):
 class G06P304_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12211,10 +12211,10 @@ class G06P305_RoundCheckIn(trigger_api.Trigger):
 class G06P305_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12253,10 +12253,10 @@ class G06P306_RoundCheckIn(trigger_api.Trigger):
 class G06P306_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12295,10 +12295,10 @@ class G06P307_RoundCheckIn(trigger_api.Trigger):
 class G06P307_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12337,10 +12337,10 @@ class G06P308_RoundCheckIn(trigger_api.Trigger):
 class G06P308_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12379,10 +12379,10 @@ class G06P309_RoundCheckIn(trigger_api.Trigger):
 class G06P309_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12421,10 +12421,10 @@ class G06P310_RoundCheckIn(trigger_api.Trigger):
 class G06P310_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12463,10 +12463,10 @@ class G06P311_RoundCheckIn(trigger_api.Trigger):
 class G06P311_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12505,10 +12505,10 @@ class G06P312_RoundCheckIn(trigger_api.Trigger):
 class G06P312_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12547,10 +12547,10 @@ class G06P313_RoundCheckIn(trigger_api.Trigger):
 class G06P313_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12589,10 +12589,10 @@ class G06P314_RoundCheckIn(trigger_api.Trigger):
 class G06P314_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12631,10 +12631,10 @@ class G06P315_RoundCheckIn(trigger_api.Trigger):
 class G06P315_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12673,10 +12673,10 @@ class G06P316_RoundCheckIn(trigger_api.Trigger):
 class G06P316_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12715,10 +12715,10 @@ class G06P317_RoundCheckIn(trigger_api.Trigger):
 class G06P317_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12757,10 +12757,10 @@ class G06P318_RoundCheckIn(trigger_api.Trigger):
 class G06P318_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12799,10 +12799,10 @@ class G06P319_RoundCheckIn(trigger_api.Trigger):
 class G06P319_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12841,10 +12841,10 @@ class G06P320_RoundCheckIn(trigger_api.Trigger):
 class G06P320_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12883,10 +12883,10 @@ class G06P401_RoundCheckIn(trigger_api.Trigger):
 class G06P401_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12925,10 +12925,10 @@ class G06P402_RoundCheckIn(trigger_api.Trigger):
 class G06P402_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -12967,10 +12967,10 @@ class G06P403_RoundCheckIn(trigger_api.Trigger):
 class G06P403_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13009,10 +13009,10 @@ class G06P404_RoundCheckIn(trigger_api.Trigger):
 class G06P404_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13051,10 +13051,10 @@ class G06P405_RoundCheckIn(trigger_api.Trigger):
 class G06P405_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13093,10 +13093,10 @@ class G06P406_RoundCheckIn(trigger_api.Trigger):
 class G06P406_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13135,10 +13135,10 @@ class G06P407_RoundCheckIn(trigger_api.Trigger):
 class G06P407_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13177,10 +13177,10 @@ class G06P408_RoundCheckIn(trigger_api.Trigger):
 class G06P408_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13219,10 +13219,10 @@ class G06P409_RoundCheckIn(trigger_api.Trigger):
 class G06P409_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13261,10 +13261,10 @@ class G06P410_RoundCheckIn(trigger_api.Trigger):
 class G06P410_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13306,10 +13306,10 @@ class G07P201_RoundCheckIn(trigger_api.Trigger):
 class G07P201_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13348,10 +13348,10 @@ class G07P202_RoundCheckIn(trigger_api.Trigger):
 class G07P202_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13390,10 +13390,10 @@ class G07P203_RoundCheckIn(trigger_api.Trigger):
 class G07P203_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13432,10 +13432,10 @@ class G07P204_RoundCheckIn(trigger_api.Trigger):
 class G07P204_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13474,10 +13474,10 @@ class G07P205_RoundCheckIn(trigger_api.Trigger):
 class G07P205_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13516,10 +13516,10 @@ class G07P206_RoundCheckIn(trigger_api.Trigger):
 class G07P206_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13558,10 +13558,10 @@ class G07P207_RoundCheckIn(trigger_api.Trigger):
 class G07P207_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13600,10 +13600,10 @@ class G07P208_RoundCheckIn(trigger_api.Trigger):
 class G07P208_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13642,10 +13642,10 @@ class G07P209_RoundCheckIn(trigger_api.Trigger):
 class G07P209_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13684,10 +13684,10 @@ class G07P210_RoundCheckIn(trigger_api.Trigger):
 class G07P210_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13726,10 +13726,10 @@ class G07P301_RoundCheckIn(trigger_api.Trigger):
 class G07P301_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13768,10 +13768,10 @@ class G07P302_RoundCheckIn(trigger_api.Trigger):
 class G07P302_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13810,10 +13810,10 @@ class G07P303_RoundCheckIn(trigger_api.Trigger):
 class G07P303_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13852,10 +13852,10 @@ class G07P304_RoundCheckIn(trigger_api.Trigger):
 class G07P304_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13894,10 +13894,10 @@ class G07P305_RoundCheckIn(trigger_api.Trigger):
 class G07P305_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13936,10 +13936,10 @@ class G07P306_RoundCheckIn(trigger_api.Trigger):
 class G07P306_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -13978,10 +13978,10 @@ class G07P307_RoundCheckIn(trigger_api.Trigger):
 class G07P307_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14020,10 +14020,10 @@ class G07P308_RoundCheckIn(trigger_api.Trigger):
 class G07P308_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14062,10 +14062,10 @@ class G07P309_RoundCheckIn(trigger_api.Trigger):
 class G07P309_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14104,10 +14104,10 @@ class G07P310_RoundCheckIn(trigger_api.Trigger):
 class G07P310_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14146,10 +14146,10 @@ class G07P401_RoundCheckIn(trigger_api.Trigger):
 class G07P401_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14188,10 +14188,10 @@ class G07P402_RoundCheckIn(trigger_api.Trigger):
 class G07P402_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14230,10 +14230,10 @@ class G07P403_RoundCheckIn(trigger_api.Trigger):
 class G07P403_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14272,10 +14272,10 @@ class G07P404_RoundCheckIn(trigger_api.Trigger):
 class G07P404_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14314,10 +14314,10 @@ class G07P405_RoundCheckIn(trigger_api.Trigger):
 class G07P405_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14356,10 +14356,10 @@ class G07P406_RoundCheckIn(trigger_api.Trigger):
 class G07P406_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14398,10 +14398,10 @@ class G07P407_RoundCheckIn(trigger_api.Trigger):
 class G07P407_CleanUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=901, enable=True)
+        self.select_camera(trigger_id=901)
         self.set_cinematic_ui(type=3, script='$61000008_ME__01_MASSIVEMAIN__32$') # Voice 02000965
         self.play_system_sound_in_box(box_ids=[9000], sound='DJDD_Dancing_01')
-        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, start_delay=2000, interval=0, fade=2) # 스테이지 정리
+        self.set_mesh(trigger_ids=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], start_delay=2000, fade=2.0) # 스테이지 정리
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -14427,7 +14427,7 @@ class G07P407_End(trigger_api.Trigger):
 class RoundCheckOut(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=4, key='BannerCheckIn', value=1)
-        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=True, start_delay=0, interval=0, fade=0) # Barrier
+        self.set_mesh(trigger_ids=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=True) # Barrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

@@ -1,5 +1,6 @@
 """ trigger/84000014_wd/84000014_main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 초기화(trigger_api.Trigger):
@@ -13,7 +14,7 @@ class 초기화(trigger_api.Trigger):
 
 class 결혼식연출시작요청대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.lock_my_pc(is_lock=False) # PC 움직임 풀어줌 (초기화)
+        self.lock_my_pc() # PC 움직임 풀어줌 (초기화)
         # 알수없는오류로결혼식재진행필요하다는안내메시지 삭제 / 스트링 ID 신규발급 필요
         self.hide_guide_summary(entity_id=28400140)
 
@@ -57,7 +58,7 @@ class 연출시작(trigger_api.Trigger):
 
 class 주례줌인01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[8002,8001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,7 +107,7 @@ class UI테스트(trigger_api.Trigger):
 
 class 입장준비01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(path_ids=[8009], return_view=False)
         self.set_cinematic_ui(type=1)
 
@@ -230,7 +231,7 @@ class 탈주로중단선언리셋(trigger_api.Trigger):
         self.set_user_value(trigger_id=4000, key='Weddingceremonyfail', value=1) # 탈주로 인한 초기화를 wait에 쏘는 신호
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         return 결혼식연출시작요청대기(self.ctx)
@@ -270,7 +271,7 @@ class 뒷풀이01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -279,7 +280,7 @@ class 뒷풀이01(trigger_api.Trigger):
 
 class 보상과결혼상태마지막체크(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.lock_my_pc(is_lock=False)
+        self.lock_my_pc()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wedding_hall_state(success=True) == 'weddingComplete':
@@ -364,7 +365,7 @@ class 종료알림(trigger_api.Trigger):
 
 class 끄읏(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=0)
+        self.move_user()
 
 
 initial_state = 초기화

@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 class 강제이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=0, portal_id=11)
+        self.move_user(portal_id=11)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

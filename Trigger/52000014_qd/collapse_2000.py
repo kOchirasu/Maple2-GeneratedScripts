@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2000,2001,2002,2003,2004], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_effect(trigger_ids=[12000], visible=False) # Vibrate Short
-        self.set_effect(trigger_ids=[22000], visible=False) # Vibrate Sound
+        self.set_mesh(trigger_ids=[2000,2001,2002,2003,2004], visible=True)
+        self.set_effect(trigger_ids=[12000]) # Vibrate Short
+        self.set_effect(trigger_ids=[22000]) # Vibrate Sound
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9001]):
@@ -37,7 +37,7 @@ class 무너짐02(trigger_api.Trigger):
         self.set_timer(timer_id='4', seconds=8)
         self.set_effect(trigger_ids=[12000], visible=True) # Vibrate Short
         self.set_effect(trigger_ids=[22000], visible=True) # Vibrate Sound
-        self.set_random_mesh(trigger_ids=[2000,2001,2002,2003,2004], visible=False, start_delay=5, interval=0, fade=200)
+        self.set_random_mesh(trigger_ids=[2000,2001,2002,2003,2004], start_delay=5, fade=200)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='4'):
@@ -46,8 +46,8 @@ class 무너짐02(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[12000], visible=False) # Vibrate Short
-        self.set_effect(trigger_ids=[22000], visible=False) # Vibrate Sound
+        self.set_effect(trigger_ids=[12000]) # Vibrate Short
+        self.set_effect(trigger_ids=[22000]) # Vibrate Sound
 
 
 initial_state = 대기

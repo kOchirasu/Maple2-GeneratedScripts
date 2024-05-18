@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5007], visible=False) # 내려놓을 위치 가이드
+        self.set_effect(trigger_ids=[5007]) # 내려놓을 위치 가이드
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9061]):
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 class Guide(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.debug_string(string='7번 영역에 들어가면 DetectLiftableObject 트리거가 발동됩니다.')
+        self.debug_string(value='7번 영역에 들어가면 DetectLiftableObject 트리거가 발동됩니다.')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9060]):
@@ -22,7 +22,7 @@ class Guide(trigger_api.Trigger):
 
 class Ready01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.debug_string(string='DetectLiftableObject 2초 후에 시작됩니다.')
+        self.debug_string(value='DetectLiftableObject 2초 후에 시작됩니다.')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -43,9 +43,9 @@ class QuizRandom01(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5007], visible=True) # 내려놓을 위치 가이드
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return AnswerIsWood01(self.ctx) # Wooditem : 30000377
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return AnswerIsRock01(self.ctx) # Rockitem : 30000440
 
 
@@ -61,7 +61,7 @@ class AnswerIsWood01(trigger_api.Trigger):
 
 class CheckAnswerWood01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5007], visible=False) # 내려놓을 위치 가이드
+        self.set_effect(trigger_ids=[5007]) # 내려놓을 위치 가이드
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(box_ids=[9062], item_id=30000377):
@@ -102,7 +102,7 @@ class AnswerIsRock01(trigger_api.Trigger):
 
 class CheckAnswerRock01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5007], visible=False) # 내려놓을 위치 가이드
+        self.set_effect(trigger_ids=[5007]) # 내려놓을 위치 가이드
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(box_ids=[9062], item_id=30000440):
@@ -140,7 +140,7 @@ class ClearDetectBox01(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.debug_string(string='3초 후에 트리거가 리셋됩니다. 7번 영역 밖으로 나가세요.')
+        self.debug_string(value='3초 후에 트리거가 리셋됩니다. 7번 영역 밖으로 나가세요.')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

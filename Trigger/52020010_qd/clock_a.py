@@ -4,7 +4,7 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5002], visible=False)
+        self.set_effect(trigger_ids=[5002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[2002]):
@@ -20,9 +20,9 @@ class Ready(trigger_api.Trigger):
 class Event_Start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5002], visible=True)
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 아빠 유령
-        self.spawn_monster(spawn_ids=[102], auto_target=True) # 애기 유령
-        self.spawn_monster(spawn_ids=[103], auto_target=True) # 엄마 유령
+        self.spawn_monster(spawn_ids=[101]) # 아빠 유령
+        self.spawn_monster(spawn_ids=[102]) # 애기 유령
+        self.spawn_monster(spawn_ids=[103]) # 엄마 유령
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -31,7 +31,7 @@ class Event_Start(trigger_api.Trigger):
 
 class Event_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=102, msg='엄마! 나 이 빵 먹어도 돼요?', duration=2500, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='엄마! 나 이 빵 먹어도 돼요?', duration=2500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -40,7 +40,7 @@ class Event_01(trigger_api.Trigger):
 
 class Event_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=103, msg='안돼! 금방 밥먹을거야.', duration=2500, delay_tick=0)
+        self.add_balloon_talk(spawn_id=103, msg='안돼! 금방 밥먹을거야.', duration=2500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -49,7 +49,7 @@ class Event_02(trigger_api.Trigger):
 
 class Event_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=102, msg='힝... 아빠 나 이거 먹으면 안돼요?', duration=2500, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='힝... 아빠 나 이거 먹으면 안돼요?', duration=2500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -58,7 +58,7 @@ class Event_03(trigger_api.Trigger):
 
 class Event_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=101, msg='허허... 녀석 참. 그럼 한개만 먹는거다?', duration=2500, delay_tick=0)
+        self.add_balloon_talk(spawn_id=101, msg='허허... 녀석 참. 그럼 한개만 먹는거다?', duration=2500)
         self.add_balloon_talk(spawn_id=103, msg='여보!', duration=2500, delay_tick=500)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class Event_04(trigger_api.Trigger):
 class Event_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawn_id=103, msg='그보다 요즘 한다는 일은 잘 되가요?', duration=2500, delay_tick=1500)
-        self.add_balloon_talk(spawn_id=102, msg='와! 신난다!', duration=2500, delay_tick=0)
+        self.add_balloon_talk(spawn_id=102, msg='와! 신난다!', duration=2500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -105,7 +105,7 @@ class Event_08(trigger_api.Trigger):
 
 class Event_End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5002], visible=False)
+        self.set_effect(trigger_ids=[5002])
         self.destroy_monster(spawn_ids=[101])
         self.destroy_monster(spawn_ids=[102])
         self.destroy_monster(spawn_ids=[103])

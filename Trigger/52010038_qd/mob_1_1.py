@@ -12,12 +12,12 @@ class 대기(trigger_api.Trigger):
         self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True)
         self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True)
         self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True)
-        self.spawn_monster(spawn_ids=[2011], auto_target=True)
+        self.spawn_monster(spawn_ids=[2011])
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[2011], auto_target=True)
+        self.spawn_monster(spawn_ids=[2011])
         self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True, random_pick_count=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 생성(trigger_api.Trigger):
 
 class 생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[2011], auto_target=True)
+        self.spawn_monster(spawn_ids=[2011])
         self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True, random_pick_count=1)
 
     def on_tick(self) -> trigger_api.Trigger:

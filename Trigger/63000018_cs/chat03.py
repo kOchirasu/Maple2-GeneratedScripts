@@ -19,7 +19,7 @@ class Delay01(trigger_api.Trigger):
 
 class Chat01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=301, script='$63000018_CS__CHAT03__0$', time=4, arg5=0)
+        self.set_dialogue(type=1, spawn_id=301, script='$63000018_CS__CHAT03__0$', time=4)
         self.set_dialogue(type=1, spawn_id=302, script='$63000018_CS__CHAT03__1$', time=4, arg5=4)
         self.set_dialogue(type=1, spawn_id=301, script='$63000018_CS__CHAT03__2$', time=4, arg5=8)
         self.set_dialogue(type=1, spawn_id=302, script='$63000018_CS__CHAT03__3$', time=4, arg5=12)

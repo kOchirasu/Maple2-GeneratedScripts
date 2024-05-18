@@ -27,7 +27,7 @@ class 전투시작01(trigger_api.Trigger):
 class 전투시작02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # duration="0" 은 영상 끝날때까지 계속 출력
-        self.side_npc_talk(type='movie', usm='Common/WorldInvasionScene1.usm', duration=0)
+        self.side_npc_movie(usm='Common/WorldInvasionScene1.usm', duration=0)
         self.side_npc_talk(npc_id=11003536, illust='Neirin_normal', duration=5000, script='$02000410_BF__PopUpCinema__1$', voice='ko/Npc/00002166')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 두번째팝업영상출력(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 두번째 영상출력하기
         # duration="0" 은 영상 끝날때까지 계속 출력
-        self.side_npc_talk(type='movie', usm='Common/WorldInvasionScene2.usm', duration=0)
+        self.side_npc_movie(usm='Common/WorldInvasionScene2.usm', duration=0)
         self.side_npc_talk(npc_id=11003536, illust='Neirin_normal', duration=5000, script='$02000410_BF__PopUpCinema__5$', voice='ko/Npc/00002178')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -91,7 +91,7 @@ class 세번째팝업영상출력(trigger_api.Trigger):
         # 두번째 영상출력하기
         self.side_npc_talk(npc_id=11003536, illust='Neirin_normal', duration=5000, script='$02000410_BF__PopUpCinema__7$', voice='ko/Npc/00002179')
         # duration="0" 은 영상 끝날때까지 계속 출력
-        self.side_npc_talk(type='movie', usm='Common/WorldInvasionScene3.usm', duration=0)
+        self.side_npc_movie(usm='Common/WorldInvasionScene3.usm', duration=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -133,7 +133,7 @@ class 네번째팝업영상출력(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 네번째팝업영상출력
         # duration="0" 은 영상 끝날때까지 계속 출력
-        self.side_npc_talk(type='movie', usm='Common/WorldInvasionScene4.usm', duration=0)
+        self.side_npc_movie(usm='Common/WorldInvasionScene4.usm', duration=0)
         self.side_npc_talk(npc_id=11003536, illust='Neirin_normal', duration=5000, script='$02000410_BF__PopUpCinema__11$', voice='ko/Npc/00002181')
 
     def on_tick(self) -> trigger_api.Trigger:

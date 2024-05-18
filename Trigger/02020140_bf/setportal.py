@@ -15,24 +15,24 @@ class 대기99(trigger_api.Trigger):
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 1스테이지에서 맨 왼쪽 지점으로 진행하는 포탈
-        self.set_portal(portal_id=118, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=128, visible=False, enable=False, minimap_visible=False) # 1스테이지에서 가운데 지점으로 진행하는 포탈
+        self.set_portal(portal_id=118)
+        self.set_portal(portal_id=128) # 1스테이지에서 가운데 지점으로 진행하는 포탈
         # 1스테이지에서 맨 오른쪽 지점으로 진행하는 포탈
-        self.set_portal(portal_id=138, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=138)
         # 맨 왼쪽 지점 2스테이지에서 다음 단계 넘어가는 포탈
-        self.set_portal(portal_id=218, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=218)
         # 가운데 지점 2스테이지에서 다음 단계 넘어가는 포탈
-        self.set_portal(portal_id=228, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=228)
         # 맨 오른쪽 지점 2스테이지에서 다음 단계 넘어가는 포탈
-        self.set_portal(portal_id=238, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=238)
         # 맨 왼쪽 지점에서 보스 전투판으로 넘어가는 포탈
-        self.set_portal(portal_id=318, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=318)
         # 가운데 지점에서 마지막 스테이지로 넘어가는 포탈
-        self.set_portal(portal_id=328, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=328)
         # 맨 오른쪽 지점에서 보스 전투판으로 넘어가는 포탈
-        self.set_portal(portal_id=338, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=338)
         # 가운데 지점 마지막 스테이지에서 보스 전투판으로 넘어가는 포탈
-        self.set_portal(portal_id=428, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=428)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=11000):

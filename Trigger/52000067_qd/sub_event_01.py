@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[751], auto_target=True) # 골두스
+        self.spawn_monster(spawn_ids=[751]) # 골두스
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=703) >= 1:
@@ -13,7 +13,7 @@ class idle(trigger_api.Trigger):
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=751, script='$52000067_QD__SUB_EVENT_01__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=751, script='$52000067_QD__SUB_EVENT_01__0$', time=3)
         self.set_dialogue(type=1, spawn_id=751, script='$52000067_QD__SUB_EVENT_01__1$', time=3, arg5=3)
         self.set_dialogue(type=1, spawn_id=751, script='$52000067_QD__SUB_EVENT_01__2$', time=3, arg5=6)
         self.set_dialogue(type=1, spawn_id=751, script='$52000067_QD__SUB_EVENT_01__3$', time=3, arg5=9)
@@ -31,7 +31,7 @@ class ready(trigger_api.Trigger):
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[757,758,761,762], auto_target=True) # 시민
+        self.spawn_monster(spawn_ids=[757,758,761,762]) # 시민
         self.set_dialogue(type=1, spawn_id=757, script='$52000067_QD__SUB_EVENT_01__10$', time=3, arg5=2)
         self.set_dialogue(type=1, spawn_id=758, script='$52000067_QD__SUB_EVENT_01__11$', time=3, arg5=3)
         self.set_dialogue(type=1, spawn_id=762, script='$52000067_QD__SUB_EVENT_01__12$', time=3, arg5=2)

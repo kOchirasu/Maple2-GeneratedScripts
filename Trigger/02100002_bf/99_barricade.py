@@ -7,10 +7,10 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='PortalOn', value=0)
         self.set_user_value(key='MissionStart', value=0)
         self.set_user_value(key='DungeonClear', value=0)
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=10)
+        self.set_portal(portal_id=11)
+        self.set_portal(portal_id=20)
+        self.set_portal(portal_id=21)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PortalOn') >= 1:
@@ -47,10 +47,10 @@ class CountDown(trigger_api.Trigger):
 # 임시 테스트용 데이터 세팅 가능 지점 포탈 열어놓기
 class ShutDown(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=10)
+        self.set_portal(portal_id=11)
+        self.set_portal(portal_id=20)
+        self.set_portal(portal_id=21)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='DungeonClear') >= 1:
@@ -59,7 +59,7 @@ class ShutDown(trigger_api.Trigger):
 
 class Release(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=10, visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

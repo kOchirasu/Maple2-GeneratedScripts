@@ -58,7 +58,7 @@ class Q3_미카연출03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='22', seconds=4)
         self.move_npc(spawn_id=601, patrol_name='MS2PatrolData_6011')
-        self.select_camera_path(path_ids=[2002,2001], return_view=True)
+        self.select_camera_path(path_ids=[2002,2001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='22'):
@@ -112,7 +112,7 @@ class Q3_시네마틱연출02대기(trigger_api.Trigger):
 
 class Q3_시네마틱연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=4001, enable=True)
+        self.select_camera(trigger_id=4001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 

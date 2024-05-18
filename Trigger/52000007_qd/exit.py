@@ -10,7 +10,7 @@ class 유저감지(trigger_api.Trigger):
 
 class 초5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='2', seconds=2, start_delay=0)
+        self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -21,7 +21,7 @@ class 초5(trigger_api.Trigger):
 
 class 초30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='300', seconds=300, start_delay=0)
+        self.set_timer(timer_id='300', seconds=300)
         self.set_event_ui(type=1, arg2='$52000007_QD__EXIT__0$', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 초30(trigger_api.Trigger):
 
 class 유저이동(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        self.move_user(map_id=2000064, portal_id=800, box_id=0)
+        self.move_user(map_id=2000064, portal_id=800)
         return 유저감지(self.ctx)
 
 

@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5100,5101,5102,5103], visible=False) # DownArrowBomb
-        self.set_effect(trigger_ids=[5200,5201,5202,5203], visible=False) # TargetBoxGuide
+        self.set_effect(trigger_ids=[5100,5101,5102,5103]) # DownArrowBomb
+        self.set_effect(trigger_ids=[5200,5201,5202,5203]) # TargetBoxGuide
         self.destroy_monster(spawn_ids=[910,911]) # Mob
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,8 +38,8 @@ class ArrowGuideOn(trigger_api.Trigger):
 
 class ArrowGuideOff(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5100,5101,5102,5103], visible=False) # DownArrowBomb
-        self.set_effect(trigger_ids=[5200,5201,5202,5203], visible=False) # TargetBoxGuide
+        self.set_effect(trigger_ids=[5100,5101,5102,5103]) # DownArrowBomb
+        self.set_effect(trigger_ids=[5200,5201,5202,5203]) # TargetBoxGuide
 
 
 initial_state = Wait

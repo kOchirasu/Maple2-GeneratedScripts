@@ -11,20 +11,20 @@ class 대기(trigger_api.Trigger):
 
 class 크림슨발록스폰체크(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(feature='FameChallengeBuff_01', box_ids=[241], skill_id=49218001, level=1, is_player=True) # <한국용 공격력 1.2배 강화 버프>
-        self.add_buff(feature='FameChallengeBuff_01', box_ids=[242], skill_id=49218001, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_01', box_ids=[243], skill_id=49218001, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_01', box_ids=[244], skill_id=49218001, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_01', box_ids=[245], skill_id=49218001, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_01', box_ids=[246], skill_id=49218001, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_01', box_ids=[247], skill_id=49218001, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_02', box_ids=[241], skill_id=49218002, level=1, is_player=True) # <중국용 공격력 2배 강화 버프>
-        self.add_buff(feature='FameChallengeBuff_02', box_ids=[242], skill_id=49218002, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_02', box_ids=[243], skill_id=49218002, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_02', box_ids=[244], skill_id=49218002, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_02', box_ids=[245], skill_id=49218002, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_02', box_ids=[246], skill_id=49218002, level=1, is_player=True)
-        self.add_buff(feature='FameChallengeBuff_02', box_ids=[247], skill_id=49218002, level=1, is_player=True)
+        self.add_buff(feature='FameChallengeBuff_01', box_ids=[241], skill_id=49218001, level=1) # <한국용 공격력 1.2배 강화 버프>
+        self.add_buff(feature='FameChallengeBuff_01', box_ids=[242], skill_id=49218001, level=1)
+        self.add_buff(feature='FameChallengeBuff_01', box_ids=[243], skill_id=49218001, level=1)
+        self.add_buff(feature='FameChallengeBuff_01', box_ids=[244], skill_id=49218001, level=1)
+        self.add_buff(feature='FameChallengeBuff_01', box_ids=[245], skill_id=49218001, level=1)
+        self.add_buff(feature='FameChallengeBuff_01', box_ids=[246], skill_id=49218001, level=1)
+        self.add_buff(feature='FameChallengeBuff_01', box_ids=[247], skill_id=49218001, level=1)
+        self.add_buff(feature='FameChallengeBuff_02', box_ids=[241], skill_id=49218002, level=1) # <중국용 공격력 2배 강화 버프>
+        self.add_buff(feature='FameChallengeBuff_02', box_ids=[242], skill_id=49218002, level=1)
+        self.add_buff(feature='FameChallengeBuff_02', box_ids=[243], skill_id=49218002, level=1)
+        self.add_buff(feature='FameChallengeBuff_02', box_ids=[244], skill_id=49218002, level=1)
+        self.add_buff(feature='FameChallengeBuff_02', box_ids=[245], skill_id=49218002, level=1)
+        self.add_buff(feature='FameChallengeBuff_02', box_ids=[246], skill_id=49218002, level=1)
+        self.add_buff(feature='FameChallengeBuff_02', box_ids=[247], skill_id=49218002, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_in_combat(spawn_ids=[242]):

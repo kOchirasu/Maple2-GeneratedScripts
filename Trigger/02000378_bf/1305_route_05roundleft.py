@@ -4,13 +4,13 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[4011], visible=True, start_delay=0, interval=0, fade=0) # PortalBarrier
+        self.set_portal(portal_id=11)
+        self.set_mesh(trigger_ids=[4011], visible=True) # PortalBarrier
         self.set_agent(trigger_ids=[18051], visible=True)
         self.set_agent(trigger_ids=[18052], visible=True)
-        self.set_effect(trigger_ids=[5005], visible=False) # 05Round_BridgeApp
-        self.set_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, start_delay=0, interval=0, fade=0) # Fake
-        self.set_mesh(trigger_ids=[330500,330501,330502,330503,330504,330505,330506,330507,330508,330509,330510,330511,330512,330513,330514,330515,330516,330517,330518,330519], visible=False, start_delay=0, interval=0, fade=0) # Real
+        self.set_effect(trigger_ids=[5005]) # 05Round_BridgeApp
+        self.set_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519]) # Fake
+        self.set_mesh(trigger_ids=[330500,330501,330502,330503,330504,330505,330506,330507,330508,330509,330510,330511,330512,330513,330514,330515,330516,330517,330518,330519]) # Real
         self.set_user_value(key='RouteSelected', value=0)
         self.set_user_value(key='MakeTrue', value=0)
         self.set_user_value(key='MakeFalse', value=0)
@@ -40,7 +40,7 @@ class StartDazzlingRandom01(trigger_api.Trigger):
             return MakeFalse(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_random_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, start_delay=20, interval=0, fade=0) # Fake
+        self.set_random_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], start_delay=20) # Fake
 
 
 class StartDazzlingRandom02(trigger_api.Trigger):
@@ -56,18 +56,18 @@ class StartDazzlingRandom02(trigger_api.Trigger):
             return MakeFalse(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_random_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, start_delay=20, interval=0, fade=0) # Fake
+        self.set_random_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], start_delay=20) # Fake
 
 
 class MakeTrue(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5005], visible=True) # 05Round_BridgeApp
-        self.set_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, start_delay=0, interval=0, fade=5) # Fake
+        self.set_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], fade=5.0) # Fake
         self.set_random_mesh(trigger_ids=[330500,330501,330502,330503,330504,330505,330506,330507,330508,330509,330510,330511,330512,330513,330514,330515,330516,330517,330518,330519], visible=True, start_delay=20, interval=100, fade=50) # Real
-        self.set_agent(trigger_ids=[18051], visible=False)
-        self.set_agent(trigger_ids=[18052], visible=False)
-        self.set_portal(portal_id=11, visible=True, enable=True, minimap_visible=False)
-        self.set_mesh(trigger_ids=[4011], visible=False, start_delay=0, interval=0, fade=0) # PortalBarrier
+        self.set_agent(trigger_ids=[18051])
+        self.set_agent(trigger_ids=[18052])
+        self.set_portal(portal_id=11, visible=True, enable=True)
+        self.set_mesh(trigger_ids=[4011]) # PortalBarrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -76,7 +76,7 @@ class MakeTrue(trigger_api.Trigger):
 
 class MakeFalse(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, start_delay=0, interval=0, fade=5) # Fake
+        self.set_mesh(trigger_ids=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], fade=5.0) # Fake
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

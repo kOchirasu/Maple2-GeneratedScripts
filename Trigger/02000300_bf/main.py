@@ -5,8 +5,8 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000585], state=0)
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[601])
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005])
         self.spawn_monster(spawn_ids=[1001,1002,1003,1004], auto_target=False)
         self.spawn_monster(spawn_ids=[1099], auto_target=False)
 
@@ -28,7 +28,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.set_timer(timer_id='3', seconds=3)
         self.set_skip(state=연출종료)
 
@@ -50,7 +50,7 @@ class 트리스탄01(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[301], return_view=True)
+        self.select_camera_path(path_ids=[301])
 
     def on_tick(self) -> trigger_api.Trigger:
         return 완료체크(self.ctx)

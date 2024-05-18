@@ -4,16 +4,16 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # PlayPiano
-        self.set_effect(trigger_ids=[5001], visible=False) # PlayGuitar
-        self.set_effect(trigger_ids=[5002], visible=False) # PlayClarinet
-        self.set_effect(trigger_ids=[5003], visible=False) # PlayCello
-        self.set_effect(trigger_ids=[5004], visible=False) # PlayViolin
-        self.set_effect(trigger_ids=[5100], visible=False) # SpotLight
-        self.set_effect(trigger_ids=[5200], visible=False) # Applause
-        self.set_sound(trigger_id=10000, enable=False) # PlayMusic
+        self.set_effect(trigger_ids=[5000]) # PlayPiano
+        self.set_effect(trigger_ids=[5001]) # PlayGuitar
+        self.set_effect(trigger_ids=[5002]) # PlayClarinet
+        self.set_effect(trigger_ids=[5003]) # PlayCello
+        self.set_effect(trigger_ids=[5004]) # PlayViolin
+        self.set_effect(trigger_ids=[5100]) # SpotLight
+        self.set_effect(trigger_ids=[5200]) # Applause
+        self.set_sound(trigger_id=10000) # PlayMusic
         self.spawn_monster(spawn_ids=[101,201,202,203,204], auto_target=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[90000550], quest_states=[1]):
@@ -53,7 +53,7 @@ class PCWalkInStage01(trigger_api.Trigger):
 class PCWalkInStage02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1000')
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -62,8 +62,8 @@ class PCWalkInStage02(trigger_api.Trigger):
 
 class PCWalkInStage03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.select_camera_path(path_ids=[601,602], return_view=True)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.select_camera_path(path_ids=[601,602])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -72,7 +72,7 @@ class PCWalkInStage03(trigger_api.Trigger):
 
 class PCWalkInStage04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=603, enable=True)
+        self.select_camera(trigger_id=603)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -99,8 +99,8 @@ class PCBow02(trigger_api.Trigger):
 
 class PCBow03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=1)
-        self.select_camera(trigger_id=610, enable=True)
+        self.reset_camera(interpolation_time=1.0)
+        self.select_camera(trigger_id=610)
         self.move_user(map_id=52000061, portal_id=20)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,7 +110,7 @@ class PCBow03(trigger_api.Trigger):
 
 class PCReadyToPlayThePiano01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Music_Piano_Idle_A', duration=31500)
+        self.set_pc_emotion_loop(sequence_name='Music_Piano_Idle_A', duration=31500.0)
         self.set_effect(trigger_ids=[5100], visible=True) # SpotLight
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -120,7 +120,7 @@ class PCReadyToPlayThePiano01(trigger_api.Trigger):
 
 class PCPlayMusic01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_sound(trigger_id=10000, enable=True) # PlayMusic
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -135,10 +135,10 @@ class PCPlayMusic02(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5002], visible=True) # PlayClarinet
         self.set_effect(trigger_ids=[5003], visible=True) # PlayCello
         self.set_effect(trigger_ids=[5004], visible=True) # PlayViolin
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Play_A', duration=30500)
-        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Play_A', duration=30500)
-        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Play_A', duration=30500)
-        self.set_npc_emotion_loop(spawn_id=204, sequence_name='Play_A', duration=30500)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Play_A', duration=30500.0)
+        self.set_npc_emotion_loop(spawn_id=202, sequence_name='Play_A', duration=30500.0)
+        self.set_npc_emotion_loop(spawn_id=203, sequence_name='Play_A', duration=30500.0)
+        self.set_npc_emotion_loop(spawn_id=204, sequence_name='Play_A', duration=30500.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=30500):
@@ -147,12 +147,12 @@ class PCPlayMusic02(trigger_api.Trigger):
 
 class PCPlayMusic03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(trigger_id=10000, enable=False) # PlayMusic
-        self.set_effect(trigger_ids=[5000], visible=False) # PlayPiano
-        self.set_effect(trigger_ids=[5001], visible=False) # PlayGuitar
-        self.set_effect(trigger_ids=[5002], visible=False) # PlayClarinet
-        self.set_effect(trigger_ids=[5003], visible=False) # PlayCello
-        self.set_effect(trigger_ids=[5004], visible=False) # PlayViolin
+        self.set_sound(trigger_id=10000) # PlayMusic
+        self.set_effect(trigger_ids=[5000]) # PlayPiano
+        self.set_effect(trigger_ids=[5001]) # PlayGuitar
+        self.set_effect(trigger_ids=[5002]) # PlayClarinet
+        self.set_effect(trigger_ids=[5003]) # PlayCello
+        self.set_effect(trigger_ids=[5004]) # PlayViolin
         self.set_effect(trigger_ids=[5200], visible=True) # Applause
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -163,7 +163,7 @@ class PCPlayMusic03(trigger_api.Trigger):
 class PCPlayQuit01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_effect(trigger_ids=[5100], visible=False) # SpotLight
+        self.set_effect(trigger_ids=[5100]) # SpotLight
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -181,10 +181,10 @@ class PCPlayQuit02(trigger_api.Trigger):
 
 class PCPlayQuit03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.set_achievement(trigger_id=9900, type='trigger', achieve='PerformanceWithNPC')
 
     def on_tick(self) -> trigger_api.Trigger:

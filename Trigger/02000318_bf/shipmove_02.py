@@ -5,241 +5,241 @@ import trigger_api
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001046], state=0) # Wheel
-        self.set_skill(trigger_ids=[7000], enable=False)
-        self.set_effect(trigger_ids=[6000], visible=False)
-        self.set_effect(trigger_ids=[6001], visible=False)
-        self.set_breakable(trigger_ids=[4000], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4001], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4002], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4003], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4004], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4005], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4006], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4007], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4008], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4009], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4010], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4011], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4012], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4013], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4014], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4015], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4016], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4017], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4018], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4019], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4020], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4021], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4022], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4023], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4024], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4025], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4026], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4027], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4028], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4029], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4030], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4031], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4032], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4033], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4034], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4035], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4036], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4037], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4038], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4039], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4040], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4041], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4042], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4043], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4044], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4045], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4046], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4047], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4048], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4049], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4050], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4051], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4052], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4053], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4054], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4055], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4056], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4057], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4058], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4059], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4060], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4061], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4062], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4063], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4064], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4065], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4066], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4067], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4068], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4069], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4070], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4071], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4072], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4073], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4074], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4075], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4076], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4077], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4078], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4079], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4080], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4081], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4082], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4083], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4084], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4085], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4086], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4087], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4088], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4089], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4090], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4091], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4092], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4093], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4094], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4095], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4096], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4097], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4098], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4099], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4100], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4101], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4102], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4103], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4104], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4105], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4106], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4107], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4108], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4109], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4110], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4111], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4112], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4113], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4114], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4115], enable=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4000], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4001], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4002], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4003], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4004], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4005], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4006], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4007], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4008], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4009], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4010], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4011], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4012], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4013], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4014], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4015], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4016], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4017], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4018], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4019], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4020], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4021], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4022], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4023], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4024], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4025], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4026], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4027], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4028], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4029], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4030], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4031], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4032], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4033], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4034], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4035], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4036], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4037], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4038], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4039], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4040], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4041], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4042], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4043], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4044], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4045], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4046], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4047], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4048], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4049], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4050], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4051], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4052], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4053], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4054], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4055], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4056], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4057], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4058], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4059], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4060], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4061], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4062], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4063], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4064], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4065], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4066], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4067], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4068], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4069], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4070], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4071], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4072], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4073], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4074], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4075], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4076], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4077], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4078], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4079], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4080], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4081], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4082], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4083], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4084], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4085], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4086], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4087], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4088], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4089], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4090], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4091], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4092], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4093], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4094], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4095], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4096], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4097], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4098], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4099], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4100], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4101], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4102], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4103], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4104], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4105], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4106], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4107], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4108], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4109], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4110], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4111], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4112], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4113], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4114], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4115], visible=False) # Move_Ship
+        self.set_skill(trigger_ids=[7000])
+        self.set_effect(trigger_ids=[6000])
+        self.set_effect(trigger_ids=[6001])
+        self.set_breakable(trigger_ids=[4000]) # Move_Ship
+        self.set_breakable(trigger_ids=[4001]) # Move_Ship
+        self.set_breakable(trigger_ids=[4002]) # Move_Ship
+        self.set_breakable(trigger_ids=[4003]) # Move_Ship
+        self.set_breakable(trigger_ids=[4004]) # Move_Ship
+        self.set_breakable(trigger_ids=[4005]) # Move_Ship
+        self.set_breakable(trigger_ids=[4006]) # Move_Ship
+        self.set_breakable(trigger_ids=[4007]) # Move_Ship
+        self.set_breakable(trigger_ids=[4008]) # Move_Ship
+        self.set_breakable(trigger_ids=[4009]) # Move_Ship
+        self.set_breakable(trigger_ids=[4010]) # Move_Ship
+        self.set_breakable(trigger_ids=[4011]) # Move_Ship
+        self.set_breakable(trigger_ids=[4012]) # Move_Ship
+        self.set_breakable(trigger_ids=[4013]) # Move_Ship
+        self.set_breakable(trigger_ids=[4014]) # Move_Ship
+        self.set_breakable(trigger_ids=[4015]) # Move_Ship
+        self.set_breakable(trigger_ids=[4016]) # Move_Ship
+        self.set_breakable(trigger_ids=[4017]) # Move_Ship
+        self.set_breakable(trigger_ids=[4018]) # Move_Ship
+        self.set_breakable(trigger_ids=[4019]) # Move_Ship
+        self.set_breakable(trigger_ids=[4020]) # Move_Ship
+        self.set_breakable(trigger_ids=[4021]) # Move_Ship
+        self.set_breakable(trigger_ids=[4022]) # Move_Ship
+        self.set_breakable(trigger_ids=[4023]) # Move_Ship
+        self.set_breakable(trigger_ids=[4024]) # Move_Ship
+        self.set_breakable(trigger_ids=[4025]) # Move_Ship
+        self.set_breakable(trigger_ids=[4026]) # Move_Ship
+        self.set_breakable(trigger_ids=[4027]) # Move_Ship
+        self.set_breakable(trigger_ids=[4028]) # Move_Ship
+        self.set_breakable(trigger_ids=[4029]) # Move_Ship
+        self.set_breakable(trigger_ids=[4030]) # Move_Ship
+        self.set_breakable(trigger_ids=[4031]) # Move_Ship
+        self.set_breakable(trigger_ids=[4032]) # Move_Ship
+        self.set_breakable(trigger_ids=[4033]) # Move_Ship
+        self.set_breakable(trigger_ids=[4034]) # Move_Ship
+        self.set_breakable(trigger_ids=[4035]) # Move_Ship
+        self.set_breakable(trigger_ids=[4036]) # Move_Ship
+        self.set_breakable(trigger_ids=[4037]) # Move_Ship
+        self.set_breakable(trigger_ids=[4038]) # Move_Ship
+        self.set_breakable(trigger_ids=[4039]) # Move_Ship
+        self.set_breakable(trigger_ids=[4040]) # Move_Ship
+        self.set_breakable(trigger_ids=[4041]) # Move_Ship
+        self.set_breakable(trigger_ids=[4042]) # Move_Ship
+        self.set_breakable(trigger_ids=[4043]) # Move_Ship
+        self.set_breakable(trigger_ids=[4044]) # Move_Ship
+        self.set_breakable(trigger_ids=[4045]) # Move_Ship
+        self.set_breakable(trigger_ids=[4046]) # Move_Ship
+        self.set_breakable(trigger_ids=[4047]) # Move_Ship
+        self.set_breakable(trigger_ids=[4048]) # Move_Ship
+        self.set_breakable(trigger_ids=[4049]) # Move_Ship
+        self.set_breakable(trigger_ids=[4050]) # Move_Ship
+        self.set_breakable(trigger_ids=[4051]) # Move_Ship
+        self.set_breakable(trigger_ids=[4052]) # Move_Ship
+        self.set_breakable(trigger_ids=[4053]) # Move_Ship
+        self.set_breakable(trigger_ids=[4054]) # Move_Ship
+        self.set_breakable(trigger_ids=[4055]) # Move_Ship
+        self.set_breakable(trigger_ids=[4056]) # Move_Ship
+        self.set_breakable(trigger_ids=[4057]) # Move_Ship
+        self.set_breakable(trigger_ids=[4058]) # Move_Ship
+        self.set_breakable(trigger_ids=[4059]) # Move_Ship
+        self.set_breakable(trigger_ids=[4060]) # Move_Ship
+        self.set_breakable(trigger_ids=[4061]) # Move_Ship
+        self.set_breakable(trigger_ids=[4062]) # Move_Ship
+        self.set_breakable(trigger_ids=[4063]) # Move_Ship
+        self.set_breakable(trigger_ids=[4064]) # Move_Ship
+        self.set_breakable(trigger_ids=[4065]) # Move_Ship
+        self.set_breakable(trigger_ids=[4066]) # Move_Ship
+        self.set_breakable(trigger_ids=[4067]) # Move_Ship
+        self.set_breakable(trigger_ids=[4068]) # Move_Ship
+        self.set_breakable(trigger_ids=[4069]) # Move_Ship
+        self.set_breakable(trigger_ids=[4070]) # Move_Ship
+        self.set_breakable(trigger_ids=[4071]) # Move_Ship
+        self.set_breakable(trigger_ids=[4072]) # Move_Ship
+        self.set_breakable(trigger_ids=[4073]) # Move_Ship
+        self.set_breakable(trigger_ids=[4074]) # Move_Ship
+        self.set_breakable(trigger_ids=[4075]) # Move_Ship
+        self.set_breakable(trigger_ids=[4076]) # Move_Ship
+        self.set_breakable(trigger_ids=[4077]) # Move_Ship
+        self.set_breakable(trigger_ids=[4078]) # Move_Ship
+        self.set_breakable(trigger_ids=[4079]) # Move_Ship
+        self.set_breakable(trigger_ids=[4080]) # Move_Ship
+        self.set_breakable(trigger_ids=[4081]) # Move_Ship
+        self.set_breakable(trigger_ids=[4082]) # Move_Ship
+        self.set_breakable(trigger_ids=[4083]) # Move_Ship
+        self.set_breakable(trigger_ids=[4084]) # Move_Ship
+        self.set_breakable(trigger_ids=[4085]) # Move_Ship
+        self.set_breakable(trigger_ids=[4086]) # Move_Ship
+        self.set_breakable(trigger_ids=[4087]) # Move_Ship
+        self.set_breakable(trigger_ids=[4088]) # Move_Ship
+        self.set_breakable(trigger_ids=[4089]) # Move_Ship
+        self.set_breakable(trigger_ids=[4090]) # Move_Ship
+        self.set_breakable(trigger_ids=[4091]) # Move_Ship
+        self.set_breakable(trigger_ids=[4092]) # Move_Ship
+        self.set_breakable(trigger_ids=[4093]) # Move_Ship
+        self.set_breakable(trigger_ids=[4094]) # Move_Ship
+        self.set_breakable(trigger_ids=[4095]) # Move_Ship
+        self.set_breakable(trigger_ids=[4096]) # Move_Ship
+        self.set_breakable(trigger_ids=[4097]) # Move_Ship
+        self.set_breakable(trigger_ids=[4098]) # Move_Ship
+        self.set_breakable(trigger_ids=[4099]) # Move_Ship
+        self.set_breakable(trigger_ids=[4100]) # Move_Ship
+        self.set_breakable(trigger_ids=[4101]) # Move_Ship
+        self.set_breakable(trigger_ids=[4102]) # Move_Ship
+        self.set_breakable(trigger_ids=[4103]) # Move_Ship
+        self.set_breakable(trigger_ids=[4104]) # Move_Ship
+        self.set_breakable(trigger_ids=[4105]) # Move_Ship
+        self.set_breakable(trigger_ids=[4106]) # Move_Ship
+        self.set_breakable(trigger_ids=[4107]) # Move_Ship
+        self.set_breakable(trigger_ids=[4108]) # Move_Ship
+        self.set_breakable(trigger_ids=[4109]) # Move_Ship
+        self.set_breakable(trigger_ids=[4110]) # Move_Ship
+        self.set_breakable(trigger_ids=[4111]) # Move_Ship
+        self.set_breakable(trigger_ids=[4112]) # Move_Ship
+        self.set_breakable(trigger_ids=[4113]) # Move_Ship
+        self.set_breakable(trigger_ids=[4114]) # Move_Ship
+        self.set_breakable(trigger_ids=[4115]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4000]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4001]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4002]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4003]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4004]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4005]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4006]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4007]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4008]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4009]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4010]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4011]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4012]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4013]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4014]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4015]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4016]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4017]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4018]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4019]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4020]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4021]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4022]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4023]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4024]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4025]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4026]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4027]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4028]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4029]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4030]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4031]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4032]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4033]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4034]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4035]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4036]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4037]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4038]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4039]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4040]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4041]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4042]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4043]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4044]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4045]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4046]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4047]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4048]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4049]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4050]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4051]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4052]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4053]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4054]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4055]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4056]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4057]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4058]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4059]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4060]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4061]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4062]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4063]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4064]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4065]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4066]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4067]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4068]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4069]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4070]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4071]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4072]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4073]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4074]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4075]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4076]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4077]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4078]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4079]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4080]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4081]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4082]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4083]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4084]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4085]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4086]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4087]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4088]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4089]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4090]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4091]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4092]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4093]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4094]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4095]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4096]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4097]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4098]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4099]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4100]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4101]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4102]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4103]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4104]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4105]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4106]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4107]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4108]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4109]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4110]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4111]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4112]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4113]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4114]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4115]) # Move_Ship
         self.set_user_value(key='ShipSet', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -504,7 +504,7 @@ class ShipMove02(trigger_api.Trigger):
 
 class ShipMove03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6001], visible=False)
+        self.set_effect(trigger_ids=[6001])
         self.set_skill(trigger_ids=[7000], enable=True)
         self.set_effect(trigger_ids=[6000], visible=True)
 
@@ -516,238 +516,238 @@ class ShipMove03(trigger_api.Trigger):
 class ResetShip00(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001046], state=0) # Wheel
-        self.set_breakable(trigger_ids=[4000], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4001], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4002], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4003], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4004], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4005], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4006], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4007], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4008], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4009], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4010], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4011], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4012], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4013], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4014], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4015], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4016], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4017], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4018], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4019], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4020], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4021], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4022], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4023], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4024], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4025], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4026], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4027], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4028], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4029], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4030], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4031], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4032], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4033], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4034], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4035], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4036], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4037], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4038], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4039], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4040], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4041], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4042], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4043], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4044], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4045], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4046], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4047], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4048], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4049], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4050], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4051], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4052], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4053], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4054], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4055], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4056], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4057], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4058], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4059], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4060], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4061], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4062], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4063], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4064], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4065], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4066], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4067], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4068], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4069], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4070], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4071], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4072], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4073], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4074], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4075], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4076], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4077], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4078], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4079], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4080], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4081], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4082], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4083], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4084], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4085], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4086], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4087], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4088], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4089], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4090], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4091], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4092], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4093], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4094], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4095], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4096], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4097], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4098], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4099], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4100], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4101], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4102], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4103], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4104], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4105], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4106], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4107], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4108], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4109], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4110], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4111], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4112], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4113], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4114], enable=False) # Move_Ship
-        self.set_breakable(trigger_ids=[4115], enable=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4000], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4001], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4002], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4003], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4004], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4005], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4006], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4007], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4008], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4009], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4010], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4011], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4012], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4013], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4014], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4015], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4016], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4017], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4018], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4019], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4020], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4021], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4022], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4023], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4024], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4025], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4026], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4027], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4028], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4029], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4030], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4031], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4032], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4033], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4034], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4035], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4036], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4037], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4038], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4039], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4040], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4041], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4042], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4043], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4044], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4045], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4046], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4047], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4048], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4049], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4050], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4051], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4052], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4053], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4054], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4055], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4056], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4057], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4058], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4059], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4060], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4061], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4062], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4063], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4064], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4065], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4066], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4067], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4068], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4069], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4070], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4071], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4072], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4073], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4074], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4075], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4076], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4077], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4078], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4079], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4080], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4081], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4082], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4083], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4084], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4085], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4086], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4087], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4088], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4089], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4090], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4091], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4092], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4093], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4094], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4095], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4096], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4097], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4098], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4099], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4100], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4101], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4102], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4103], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4104], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4105], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4106], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4107], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4108], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4109], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4110], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4111], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4112], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4113], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4114], visible=False) # Move_Ship
-        self.set_visible_breakable_object(trigger_ids=[4115], visible=False) # Move_Ship
+        self.set_breakable(trigger_ids=[4000]) # Move_Ship
+        self.set_breakable(trigger_ids=[4001]) # Move_Ship
+        self.set_breakable(trigger_ids=[4002]) # Move_Ship
+        self.set_breakable(trigger_ids=[4003]) # Move_Ship
+        self.set_breakable(trigger_ids=[4004]) # Move_Ship
+        self.set_breakable(trigger_ids=[4005]) # Move_Ship
+        self.set_breakable(trigger_ids=[4006]) # Move_Ship
+        self.set_breakable(trigger_ids=[4007]) # Move_Ship
+        self.set_breakable(trigger_ids=[4008]) # Move_Ship
+        self.set_breakable(trigger_ids=[4009]) # Move_Ship
+        self.set_breakable(trigger_ids=[4010]) # Move_Ship
+        self.set_breakable(trigger_ids=[4011]) # Move_Ship
+        self.set_breakable(trigger_ids=[4012]) # Move_Ship
+        self.set_breakable(trigger_ids=[4013]) # Move_Ship
+        self.set_breakable(trigger_ids=[4014]) # Move_Ship
+        self.set_breakable(trigger_ids=[4015]) # Move_Ship
+        self.set_breakable(trigger_ids=[4016]) # Move_Ship
+        self.set_breakable(trigger_ids=[4017]) # Move_Ship
+        self.set_breakable(trigger_ids=[4018]) # Move_Ship
+        self.set_breakable(trigger_ids=[4019]) # Move_Ship
+        self.set_breakable(trigger_ids=[4020]) # Move_Ship
+        self.set_breakable(trigger_ids=[4021]) # Move_Ship
+        self.set_breakable(trigger_ids=[4022]) # Move_Ship
+        self.set_breakable(trigger_ids=[4023]) # Move_Ship
+        self.set_breakable(trigger_ids=[4024]) # Move_Ship
+        self.set_breakable(trigger_ids=[4025]) # Move_Ship
+        self.set_breakable(trigger_ids=[4026]) # Move_Ship
+        self.set_breakable(trigger_ids=[4027]) # Move_Ship
+        self.set_breakable(trigger_ids=[4028]) # Move_Ship
+        self.set_breakable(trigger_ids=[4029]) # Move_Ship
+        self.set_breakable(trigger_ids=[4030]) # Move_Ship
+        self.set_breakable(trigger_ids=[4031]) # Move_Ship
+        self.set_breakable(trigger_ids=[4032]) # Move_Ship
+        self.set_breakable(trigger_ids=[4033]) # Move_Ship
+        self.set_breakable(trigger_ids=[4034]) # Move_Ship
+        self.set_breakable(trigger_ids=[4035]) # Move_Ship
+        self.set_breakable(trigger_ids=[4036]) # Move_Ship
+        self.set_breakable(trigger_ids=[4037]) # Move_Ship
+        self.set_breakable(trigger_ids=[4038]) # Move_Ship
+        self.set_breakable(trigger_ids=[4039]) # Move_Ship
+        self.set_breakable(trigger_ids=[4040]) # Move_Ship
+        self.set_breakable(trigger_ids=[4041]) # Move_Ship
+        self.set_breakable(trigger_ids=[4042]) # Move_Ship
+        self.set_breakable(trigger_ids=[4043]) # Move_Ship
+        self.set_breakable(trigger_ids=[4044]) # Move_Ship
+        self.set_breakable(trigger_ids=[4045]) # Move_Ship
+        self.set_breakable(trigger_ids=[4046]) # Move_Ship
+        self.set_breakable(trigger_ids=[4047]) # Move_Ship
+        self.set_breakable(trigger_ids=[4048]) # Move_Ship
+        self.set_breakable(trigger_ids=[4049]) # Move_Ship
+        self.set_breakable(trigger_ids=[4050]) # Move_Ship
+        self.set_breakable(trigger_ids=[4051]) # Move_Ship
+        self.set_breakable(trigger_ids=[4052]) # Move_Ship
+        self.set_breakable(trigger_ids=[4053]) # Move_Ship
+        self.set_breakable(trigger_ids=[4054]) # Move_Ship
+        self.set_breakable(trigger_ids=[4055]) # Move_Ship
+        self.set_breakable(trigger_ids=[4056]) # Move_Ship
+        self.set_breakable(trigger_ids=[4057]) # Move_Ship
+        self.set_breakable(trigger_ids=[4058]) # Move_Ship
+        self.set_breakable(trigger_ids=[4059]) # Move_Ship
+        self.set_breakable(trigger_ids=[4060]) # Move_Ship
+        self.set_breakable(trigger_ids=[4061]) # Move_Ship
+        self.set_breakable(trigger_ids=[4062]) # Move_Ship
+        self.set_breakable(trigger_ids=[4063]) # Move_Ship
+        self.set_breakable(trigger_ids=[4064]) # Move_Ship
+        self.set_breakable(trigger_ids=[4065]) # Move_Ship
+        self.set_breakable(trigger_ids=[4066]) # Move_Ship
+        self.set_breakable(trigger_ids=[4067]) # Move_Ship
+        self.set_breakable(trigger_ids=[4068]) # Move_Ship
+        self.set_breakable(trigger_ids=[4069]) # Move_Ship
+        self.set_breakable(trigger_ids=[4070]) # Move_Ship
+        self.set_breakable(trigger_ids=[4071]) # Move_Ship
+        self.set_breakable(trigger_ids=[4072]) # Move_Ship
+        self.set_breakable(trigger_ids=[4073]) # Move_Ship
+        self.set_breakable(trigger_ids=[4074]) # Move_Ship
+        self.set_breakable(trigger_ids=[4075]) # Move_Ship
+        self.set_breakable(trigger_ids=[4076]) # Move_Ship
+        self.set_breakable(trigger_ids=[4077]) # Move_Ship
+        self.set_breakable(trigger_ids=[4078]) # Move_Ship
+        self.set_breakable(trigger_ids=[4079]) # Move_Ship
+        self.set_breakable(trigger_ids=[4080]) # Move_Ship
+        self.set_breakable(trigger_ids=[4081]) # Move_Ship
+        self.set_breakable(trigger_ids=[4082]) # Move_Ship
+        self.set_breakable(trigger_ids=[4083]) # Move_Ship
+        self.set_breakable(trigger_ids=[4084]) # Move_Ship
+        self.set_breakable(trigger_ids=[4085]) # Move_Ship
+        self.set_breakable(trigger_ids=[4086]) # Move_Ship
+        self.set_breakable(trigger_ids=[4087]) # Move_Ship
+        self.set_breakable(trigger_ids=[4088]) # Move_Ship
+        self.set_breakable(trigger_ids=[4089]) # Move_Ship
+        self.set_breakable(trigger_ids=[4090]) # Move_Ship
+        self.set_breakable(trigger_ids=[4091]) # Move_Ship
+        self.set_breakable(trigger_ids=[4092]) # Move_Ship
+        self.set_breakable(trigger_ids=[4093]) # Move_Ship
+        self.set_breakable(trigger_ids=[4094]) # Move_Ship
+        self.set_breakable(trigger_ids=[4095]) # Move_Ship
+        self.set_breakable(trigger_ids=[4096]) # Move_Ship
+        self.set_breakable(trigger_ids=[4097]) # Move_Ship
+        self.set_breakable(trigger_ids=[4098]) # Move_Ship
+        self.set_breakable(trigger_ids=[4099]) # Move_Ship
+        self.set_breakable(trigger_ids=[4100]) # Move_Ship
+        self.set_breakable(trigger_ids=[4101]) # Move_Ship
+        self.set_breakable(trigger_ids=[4102]) # Move_Ship
+        self.set_breakable(trigger_ids=[4103]) # Move_Ship
+        self.set_breakable(trigger_ids=[4104]) # Move_Ship
+        self.set_breakable(trigger_ids=[4105]) # Move_Ship
+        self.set_breakable(trigger_ids=[4106]) # Move_Ship
+        self.set_breakable(trigger_ids=[4107]) # Move_Ship
+        self.set_breakable(trigger_ids=[4108]) # Move_Ship
+        self.set_breakable(trigger_ids=[4109]) # Move_Ship
+        self.set_breakable(trigger_ids=[4110]) # Move_Ship
+        self.set_breakable(trigger_ids=[4111]) # Move_Ship
+        self.set_breakable(trigger_ids=[4112]) # Move_Ship
+        self.set_breakable(trigger_ids=[4113]) # Move_Ship
+        self.set_breakable(trigger_ids=[4114]) # Move_Ship
+        self.set_breakable(trigger_ids=[4115]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4000]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4001]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4002]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4003]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4004]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4005]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4006]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4007]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4008]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4009]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4010]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4011]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4012]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4013]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4014]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4015]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4016]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4017]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4018]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4019]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4020]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4021]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4022]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4023]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4024]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4025]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4026]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4027]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4028]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4029]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4030]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4031]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4032]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4033]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4034]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4035]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4036]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4037]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4038]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4039]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4040]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4041]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4042]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4043]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4044]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4045]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4046]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4047]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4048]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4049]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4050]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4051]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4052]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4053]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4054]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4055]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4056]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4057]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4058]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4059]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4060]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4061]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4062]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4063]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4064]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4065]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4066]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4067]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4068]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4069]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4070]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4071]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4072]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4073]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4074]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4075]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4076]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4077]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4078]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4079]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4080]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4081]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4082]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4083]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4084]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4085]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4086]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4087]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4088]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4089]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4090]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4091]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4092]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4093]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4094]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4095]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4096]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4097]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4098]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4099]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4100]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4101]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4102]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4103]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4104]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4105]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4106]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4107]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4108]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4109]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4110]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4111]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4112]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4113]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4114]) # Move_Ship
+        self.set_visible_breakable_object(trigger_ids=[4115]) # Move_Ship
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

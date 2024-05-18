@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8100], visible=False) # Rage
+        self.set_effect(trigger_ids=[8100]) # Rage
         self.destroy_monster(spawn_ids=[800,801])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class 포효01(trigger_api.Trigger):
 
 class 종료01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8100], visible=False) # Rage
+        self.set_effect(trigger_ids=[8100]) # Rage
 
 
 initial_state = 대기

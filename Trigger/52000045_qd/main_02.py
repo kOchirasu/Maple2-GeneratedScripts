@@ -5,9 +5,9 @@ import trigger_api
 class ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[701], job_code=100):
-            self.set_actor(trigger_id=5001, visible=False, initial_sequence='Idle_A')
-            self.set_actor(trigger_id=5002, visible=False, initial_sequence='Idle_A')
-            self.set_actor(trigger_id=5003, visible=False, initial_sequence='Idle_A')
+            self.set_actor(trigger_id=5001, initial_sequence='Idle_A')
+            self.set_actor(trigger_id=5002, initial_sequence='Idle_A')
+            self.set_actor(trigger_id=5003, initial_sequence='Idle_A')
             return ready_02(self.ctx)
 
 
@@ -46,7 +46,7 @@ class start_02(trigger_api.Trigger):
 
 class setup_userscript01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000045_QD__MAIN_02__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, script='$52000045_QD__MAIN_02__0$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -56,7 +56,7 @@ class setup_userscript01(trigger_api.Trigger):
 class start_A_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8010,8013], return_view=False)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000045_QD__MAIN_02__3$', time=3)
+        self.set_dialogue(type=1, script='$52000045_QD__MAIN_02__3$', time=3)
         self.set_dialogue(type=1, spawn_id=902, script='$52000045_QD__MAIN_02__4$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class start_A_03(trigger_api.Trigger):
 class start_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=1, spawn_id=902, script='$52000045_QD__MAIN_02__1$', time=3, arg5=1)
-        self.set_npc_emotion_loop(spawn_id=902, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=902, sequence_name='Talk_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -88,7 +88,7 @@ class start_04(trigger_api.Trigger):
 class start_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8014], return_view=False)
-        self.set_dialogue(type=1, spawn_id=0, script='$52000045_QD__MAIN_02__6$', time=1)
+        self.set_dialogue(type=1, script='$52000045_QD__MAIN_02__6$', time=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2200):
@@ -111,7 +111,7 @@ class start_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8014,8015], return_view=False)
         self.spawn_monster(spawn_ids=[871,876], auto_target=False)
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=80000)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=80000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=900):
@@ -129,7 +129,7 @@ class start_08(trigger_api.Trigger):
 
 class start_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7005], visible=False)
+        self.set_effect(trigger_ids=[7005])
         self.spawn_monster(spawn_ids=[874,873,872], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

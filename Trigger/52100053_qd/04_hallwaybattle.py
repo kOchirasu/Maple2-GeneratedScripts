@@ -5,8 +5,8 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # InvisibleBarrier_AlwaysOn
-        self.set_mesh(trigger_ids=[3800,3900], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3800,3900], visible=True)
+        self.set_portal(portal_id=20)
         self.set_interact_object(trigger_ids=[10002098], state=0) # Key
         self.destroy_monster(spawn_ids=[901,902,903]) # Mob
 
@@ -27,9 +27,9 @@ class LoadingDelay(trigger_api.Trigger):
 
 class MobTrapOn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=901, script='$52100053_QD__04_HALLWAYBATTLE__0$', time=2, arg5=0)
-        self.set_dialogue(type=1, spawn_id=902, script='$52100053_QD__04_HALLWAYBATTLE__0$', time=2, arg5=0)
-        self.set_dialogue(type=1, spawn_id=903, script='$52100053_QD__04_HALLWAYBATTLE__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=901, script='$52100053_QD__04_HALLWAYBATTLE__0$', time=2)
+        self.set_dialogue(type=1, spawn_id=902, script='$52100053_QD__04_HALLWAYBATTLE__0$', time=2)
+        self.set_dialogue(type=1, spawn_id=903, script='$52100053_QD__04_HALLWAYBATTLE__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -71,7 +71,7 @@ class GuideUseKey(trigger_api.Trigger):
 class PortalOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=20039705)
-        self.set_portal(portal_id=20, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=20, visible=True, enable=True)
 
 
 initial_state = Wait

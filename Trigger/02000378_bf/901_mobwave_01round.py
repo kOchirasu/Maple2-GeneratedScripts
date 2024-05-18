@@ -6,7 +6,7 @@ class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='PenaltyFinish', value=0)
         self.set_user_value(key='WaveTime', value=0) # 웨이브 진행 순서 기억
-        self.set_effect(trigger_ids=[5101], visible=False) # 01Round_ShadowApp
+        self.set_effect(trigger_ids=[5101]) # 01Round_ShadowApp
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobWaveStart') >= 1:
@@ -40,11 +40,11 @@ class FirstWaveDelayRandom(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[90101,90103,90105], auto_target=False) # 90107,90109
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay3000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay4000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay5000(self.ctx)
 
 
@@ -93,11 +93,11 @@ class SecondWaveDelayRandom(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[90111,90113,90115], auto_target=False) # ,90117,90119
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay2000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay3000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay4000(self.ctx)
 
 
@@ -158,11 +158,11 @@ class ThirdWaveDelayRandom(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[90121,90123,90125], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay3000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay4000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay5000(self.ctx)
 """
 
@@ -254,7 +254,7 @@ class DefenceSucess01(trigger_api.Trigger):
 
 class DefenceSucess02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5101], visible=False) # 01Round_ShadowApp
+        self.set_effect(trigger_ids=[5101]) # 01Round_ShadowApp
         self.set_user_value(trigger_id=1, key='01RoundSuccess', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:

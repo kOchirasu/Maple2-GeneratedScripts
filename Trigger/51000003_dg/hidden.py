@@ -9,7 +9,7 @@ class Start(trigger_api.Trigger):
 
 class Hidden_ready_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=99, visible=False, enable=False, minimap_visible=False) # 임시 히든포탈
+        self.set_portal(portal_id=99) # 임시 히든포탈
         self.set_event_ui(type=1, arg2='$51000003_DG__HIDDEN__0$', arg3='4000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,7 +29,7 @@ class Hidden_ready_02(trigger_api.Trigger):
 class Hidden_ready_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='6,6', arg3='0', arg4='0')
-        self.select_camera(trigger_id=8002, enable=True)
+        self.select_camera(trigger_id=8002)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -38,7 +38,7 @@ class Hidden_ready_03(trigger_api.Trigger):
 
 class Hidden_ready_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_count_ui(text='$61000004_ME__TRIGGER_01__1$', stage=0, count=5)
+        self.show_count_ui(text='$61000004_ME__TRIGGER_01__1$', count=5)
         self.set_achievement(trigger_id=710, type='trigger', achieve='boomboombeach_hidden_start')
 
     def on_tick(self) -> trigger_api.Trigger:

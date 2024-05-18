@@ -12,13 +12,13 @@ class 대기(trigger_api.Trigger):
 
 class 랜덤생성조건(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초40(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초35(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초30(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 초45(self.ctx)
 
 
@@ -70,7 +70,7 @@ class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=1, spawn_id=1099, script='$02000300_BF__MOBSPAWN__0$', time=2)
         self.set_dialogue(type=1, spawn_id=1001, script='$02000300_BF__MOBSPAWN__1$', time=3)
-        self.spawn_monster(spawn_ids=[1097,1098], auto_target=True)
+        self.spawn_monster(spawn_ids=[1097,1098])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1097,1098]):

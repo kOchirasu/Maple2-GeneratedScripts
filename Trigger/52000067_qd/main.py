@@ -7,40 +7,40 @@ class idle(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.set_time_scale(enable=False, start_scale=1, end_scale=1, duration=0, interpolator=0)
-        self.reset_camera(interpolation_time=0)
+        self.set_time_scale(start_scale=1.0, end_scale=1.0)
+        self.reset_camera()
         self.set_interact_object(trigger_ids=[10001073], state=2)
-        self.set_effect(trigger_ids=[7005], visible=False) # mask_black
-        self.set_effect(trigger_ids=[7001], visible=False)
+        self.set_effect(trigger_ids=[7005]) # mask_black
+        self.set_effect(trigger_ids=[7001])
         # self.select_camera_path(path_ids=[8001], return_view=False)
-        self.set_effect(trigger_ids=[7010], visible=False) # 다크 포탈
-        self.set_effect(trigger_ids=[7011], visible=False) # 다크 포탈
-        self.set_effect(trigger_ids=[7012], visible=False) # 다크 포탈
-        self.set_effect(trigger_ids=[7013], visible=False) # 다크 포탈
-        self.set_effect(trigger_ids=[7014], visible=False) # 다크 포탈
-        self.set_effect(trigger_ids=[7015], visible=False) # 다크 포탈
-        self.set_effect(trigger_ids=[7016], visible=False) # 다크 포탈
-        self.set_effect(trigger_ids=[7110], visible=False) # 다크 포탈 폭발
-        self.set_effect(trigger_ids=[7111], visible=False) # 다크 포탈 폭발
-        self.set_effect(trigger_ids=[7112], visible=False) # 다크 포탈 폭발
-        self.set_effect(trigger_ids=[7113], visible=False) # 다크 포탈 폭발
-        self.set_effect(trigger_ids=[7114], visible=False) # 다크 포탈 폭발
-        self.set_effect(trigger_ids=[7115], visible=False) # 다크 포탈 폭발
-        self.set_effect(trigger_ids=[7116], visible=False) # 다크 포탈 폭발
-        self.set_effect(trigger_ids=[7301], visible=False) # 다크 포탈 생성음
-        self.set_effect(trigger_ids=[7302], visible=False) # 다크 포탈 생성음
-        self.set_effect(trigger_ids=[7303], visible=False) # 다크 포탈 생성음
-        self.set_effect(trigger_ids=[7304], visible=False) # 다크 포탈 생성음
-        self.set_effect(trigger_ids=[7305], visible=False) # 로봇 랜딩음
-        self.set_effect(trigger_ids=[7306], visible=False) # 데블린 워리어 등장음
-        self.set_effect(trigger_ids=[7307], visible=False) # 수리 음
-        self.set_effect(trigger_ids=[7308], visible=False) # 로봇 스파크 음
-        self.set_effect(trigger_ids=[7309], visible=False) # 로봇 움직임 음
-        self.set_effect(trigger_ids=[7310], visible=False) # 로봇 탑승 음
-        self.set_effect(trigger_ids=[7117], visible=False) # 감전
-        self.set_actor(trigger_id=4999, visible=False, initial_sequence='Regen_A')
-        self.set_actor(trigger_id=4001, visible=False, initial_sequence='Attack_02_H')
-        self.set_actor(trigger_id=4002, visible=False, initial_sequence='Dead_Idle_A')
+        self.set_effect(trigger_ids=[7010]) # 다크 포탈
+        self.set_effect(trigger_ids=[7011]) # 다크 포탈
+        self.set_effect(trigger_ids=[7012]) # 다크 포탈
+        self.set_effect(trigger_ids=[7013]) # 다크 포탈
+        self.set_effect(trigger_ids=[7014]) # 다크 포탈
+        self.set_effect(trigger_ids=[7015]) # 다크 포탈
+        self.set_effect(trigger_ids=[7016]) # 다크 포탈
+        self.set_effect(trigger_ids=[7110]) # 다크 포탈 폭발
+        self.set_effect(trigger_ids=[7111]) # 다크 포탈 폭발
+        self.set_effect(trigger_ids=[7112]) # 다크 포탈 폭발
+        self.set_effect(trigger_ids=[7113]) # 다크 포탈 폭발
+        self.set_effect(trigger_ids=[7114]) # 다크 포탈 폭발
+        self.set_effect(trigger_ids=[7115]) # 다크 포탈 폭발
+        self.set_effect(trigger_ids=[7116]) # 다크 포탈 폭발
+        self.set_effect(trigger_ids=[7301]) # 다크 포탈 생성음
+        self.set_effect(trigger_ids=[7302]) # 다크 포탈 생성음
+        self.set_effect(trigger_ids=[7303]) # 다크 포탈 생성음
+        self.set_effect(trigger_ids=[7304]) # 다크 포탈 생성음
+        self.set_effect(trigger_ids=[7305]) # 로봇 랜딩음
+        self.set_effect(trigger_ids=[7306]) # 데블린 워리어 등장음
+        self.set_effect(trigger_ids=[7307]) # 수리 음
+        self.set_effect(trigger_ids=[7308]) # 로봇 스파크 음
+        self.set_effect(trigger_ids=[7309]) # 로봇 움직임 음
+        self.set_effect(trigger_ids=[7310]) # 로봇 탑승 음
+        self.set_effect(trigger_ids=[7117]) # 감전
+        self.set_actor(trigger_id=4999, initial_sequence='Regen_A')
+        self.set_actor(trigger_id=4001, initial_sequence='Attack_02_H')
+        self.set_actor(trigger_id=4002, initial_sequence='Dead_Idle_A')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(map_id=52000067, portal_id=1)
@@ -59,7 +59,7 @@ class ready(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(trigger_ids=[7005], visible=True) # mask_black
-        self.set_cinematic_ui(type=9, script='$52000067_QD__MAIN__0$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000067_QD__MAIN__0$')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,14 +69,14 @@ class ready(trigger_api.Trigger):
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[7005], visible=False) # mask_black
+        self.set_effect(trigger_ids=[7005]) # mask_black
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.remove_buff(box_id=702, skill_id=99910070)
-        self.spawn_monster(spawn_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119], auto_target=True) # 다크윈드
-        self.spawn_monster(spawn_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514], auto_target=True) # 침략자
-        self.spawn_monster(spawn_ids=[551,552,553,554,555], auto_target=True)
-        self.spawn_monster(spawn_ids=[520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119]) # 다크윈드
+        self.spawn_monster(spawn_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514]) # 침략자
+        self.spawn_monster(spawn_ids=[551,552,553,554,555])
+        self.spawn_monster(spawn_ids=[520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536])
         self.spawn_monster(spawn_ids=[121,121,123], auto_target=False) # 블랙윈드 대원
         self.spawn_monster(spawn_ids=[752,753,754], auto_target=False) # 보디가드
         self.move_user_path(patrol_name='MS2PatrolData_1002')
@@ -148,7 +148,7 @@ class portal_06(trigger_api.Trigger):
 
 class scene_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[201], auto_target=True)
+        self.spawn_monster(spawn_ids=[201])
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_2001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -205,7 +205,7 @@ class scene_03c_02(trigger_api.Trigger):
 
 class scene_03d(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52000067_QD__MAIN__22$', time=2, arg5=0)
+        self.set_dialogue(type=1, script='$52000067_QD__MAIN__22$', time=2)
         self.move_user_path(patrol_name='MS2PatrolData_1004')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,7 +226,7 @@ class scene_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=4001, visible=True, initial_sequence='Regen_A')
         self.set_effect(trigger_ids=[7001], visible=True)
-        self.set_time_scale(enable=True, start_scale=1, end_scale=0.1, duration=2, interpolator=2) # 2초간 느려지기 시작
+        self.set_time_scale(enable=True, start_scale=1.0, end_scale=0.1, duration=2.0, interpolator=2) # 2초간 느려지기 시작
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=700):
@@ -244,7 +244,7 @@ class scene_05_a(trigger_api.Trigger):
 
 class scene_05_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.set_time_scale(enable=True, start_scale=0.1, end_scale=0.1, duration=1, interpolator=0) # 1초 정지
+        # self.set_time_scale(enable=True, start_scale=0.1, end_scale=0.1, duration=1.0) # 1초 정지
         pass
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -254,7 +254,7 @@ class scene_05_b(trigger_api.Trigger):
 
 class scene_05_d(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=True, start_scale=0.1, end_scale=1, duration=1, interpolator=2) # 1초 뒤 복원
+        self.set_time_scale(enable=True, start_scale=0.1, end_scale=1.0, duration=1.0, interpolator=2) # 1초 뒤 복원
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -263,7 +263,7 @@ class scene_05_d(trigger_api.Trigger):
 
 class scene_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=False, start_scale=1, end_scale=1, duration=1, interpolator=0) # 종료
+        self.set_time_scale(start_scale=1.0, end_scale=1.0, duration=1.0) # 종료
         self.select_camera_path(path_ids=[8005,8006], return_view=False)
         self.set_actor(trigger_id=4001, visible=True, initial_sequence='Idle_A')
 
@@ -274,7 +274,7 @@ class scene_06(trigger_api.Trigger):
 
 class scene_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=False, start_scale=0, end_scale=0, duration=0, interpolator=0) # 1초 뒤 복원
+        self.set_time_scale() # 1초 뒤 복원
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_2003')
         self.set_dialogue(type=2, spawn_id=11001897, script='$52000067_QD__MAIN__4$', time=3)
 
@@ -323,10 +323,10 @@ class Skip_1(trigger_api.Trigger):
 class Skip_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[201])
-        self.spawn_monster(spawn_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119], auto_target=True) # 다크윈드
-        self.spawn_monster(spawn_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514], auto_target=True) # 침략자
-        self.spawn_monster(spawn_ids=[551,552,553,554,555], auto_target=True)
-        self.spawn_monster(spawn_ids=[520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119]) # 다크윈드
+        self.spawn_monster(spawn_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514]) # 침략자
+        self.spawn_monster(spawn_ids=[551,552,553,554,555])
+        self.spawn_monster(spawn_ids=[520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536])
         self.spawn_monster(spawn_ids=[121,121,123], auto_target=False) # 블랙윈드 대원
         self.spawn_monster(spawn_ids=[752,753,754], auto_target=False) # 보디가드
         self.move_user_path(patrol_name='MS2PatrolData_1002')
@@ -362,14 +362,14 @@ class fadein(trigger_api.Trigger):
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_2003')
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=25200671, text_id=25200671)
-        self.set_mesh(trigger_ids=[6004,6005], visible=True, start_delay=0, interval=0, fade=10) # 투명 벽
+        self.set_mesh(trigger_ids=[6004,6005], visible=True, fade=10.0) # 투명 벽
         self.set_dialogue(type=1, spawn_id=201, script='$52000067_QD__MAIN__7$', time=3, arg5=2)
         self.set_interact_object(trigger_ids=[10001073], state=1)
-        self.set_actor(trigger_id=4001, visible=False, initial_sequence='Regen_A')
-        self.reset_camera(interpolation_time=0)
+        self.set_actor(trigger_id=4001, initial_sequence='Regen_A')
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_effect(trigger_ids=[7005], visible=False) # mask_black
+        self.set_effect(trigger_ids=[7005]) # mask_black
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10001073], state=0):
@@ -380,8 +380,8 @@ class play(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7310], visible=True) # 로봇 탑승 음
         self.hide_guide_summary(entity_id=25200671)
-        self.set_dialogue(type=1, spawn_id=201, script='$52000067_QD__MAIN__8$', time=3, arg5=0)
-        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005], visible=False, start_delay=0, interval=0, fade=10) # 투명 벽
+        self.set_dialogue(type=1, spawn_id=201, script='$52000067_QD__MAIN__8$', time=3)
+        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005], fade=10.0) # 투명 벽
         self.set_interact_object(trigger_ids=[10001073], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -414,7 +414,7 @@ class boss_event(trigger_api.Trigger):
 class boss_event_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52000067, portal_id=2)
-        self.set_effect(trigger_ids=[7005], visible=False) # mask_black
+        self.set_effect(trigger_ids=[7005]) # mask_black
         self.select_camera_path(path_ids=[8008,8009], return_view=False)
         self.destroy_monster(spawn_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,121,122,123])
         self.destroy_monster(spawn_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514])
@@ -432,9 +432,9 @@ class boss_event_02(trigger_api.Trigger):
 class boss_event_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7306], visible=True) # 데블린 워리어 등장음
-        self.spawn_monster(spawn_ids=[999], auto_target=True, delay=5000)
+        self.spawn_monster(spawn_ids=[999], delay=5000)
         self.set_scene_skip(state=Skip_3, action='nextState')
-        # self.set_actor(trigger_id=4999, visible=False, initial_sequence='Regen_A')
+        # self.set_actor(trigger_id=4999, initial_sequence='Regen_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -473,10 +473,10 @@ class boss_event_05(trigger_api.Trigger):
 
 class boss_event_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_effect(trigger_ids=[7005], visible=False) # mask_black
+        self.set_effect(trigger_ids=[7005]) # mask_black
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -509,11 +509,11 @@ class ending(trigger_api.Trigger):
 
 class ending_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_visible_breakable_object(trigger_ids=[6300,6301,6302,6303,6304,6305,6306,6307,6308,6309,6310], visible=False)
-        self.set_visible_breakable_object(trigger_ids=[6311,6312,6313,6314,6315,6316,6317,6318,6319,6320,6321], visible=False)
-        self.set_visible_breakable_object(trigger_ids=[6322,6323,6324,6325,6326,6327,6328,6329,6330,6331], visible=False)
+        self.set_visible_breakable_object(trigger_ids=[6300,6301,6302,6303,6304,6305,6306,6307,6308,6309,6310])
+        self.set_visible_breakable_object(trigger_ids=[6311,6312,6313,6314,6315,6316,6317,6318,6319,6320,6321])
+        self.set_visible_breakable_object(trigger_ids=[6322,6323,6324,6325,6326,6327,6328,6329,6330,6331])
         self.remove_buff(box_id=702, skill_id=99910070)
-        self.set_cinematic_ui(type=9, script='$52000067_QD__MAIN__10$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000067_QD__MAIN__10$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -522,8 +522,8 @@ class ending_02(trigger_api.Trigger):
 
 class ending_02_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[851,852,853,854,855,856,857,858,859,860], auto_target=True)
-        self.spawn_monster(spawn_ids=[861,862,863,864,865,866,867,868,869,870], auto_target=True)
+        self.spawn_monster(spawn_ids=[851,852,853,854,855,856,857,858,859,860])
+        self.spawn_monster(spawn_ids=[861,862,863,864,865,866,867,868,869,870])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -533,7 +533,7 @@ class ending_02_b(trigger_api.Trigger):
 class ending_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7307], visible=True) # 수리 음
-        self.set_dialogue(type=1, spawn_id=861, script='$52000067_QD__MAIN__11$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=861, script='$52000067_QD__MAIN__11$', time=2)
         self.set_dialogue(type=1, spawn_id=853, script='$52000067_QD__MAIN__12$', time=2, arg5=2)
         self.set_dialogue(type=1, spawn_id=851, script='$52000067_QD__MAIN__13$', time=3, arg5=3)
         self.set_dialogue(type=1, spawn_id=861, script='$52000067_QD__MAIN__14$', time=3, arg5=4)
@@ -541,7 +541,7 @@ class ending_03(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[8014,8015], return_view=False)
-        self.set_effect(trigger_ids=[7005], visible=False)
+        self.set_effect(trigger_ids=[7005])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
@@ -551,7 +551,7 @@ class ending_03(trigger_api.Trigger):
 class ending_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7117], visible=True) # 감전 이펙트
-        # self.spawn_monster(spawn_ids=[201], auto_target=True)
+        # self.spawn_monster(spawn_ids=[201])
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_2003')
         self.move_user(map_id=52000067, portal_id=3)
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='Dead_Idle_A')
@@ -574,7 +574,7 @@ class ending_05(trigger_api.Trigger):
 class ending_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7308], visible=True) # 로봇 스파크 음
-        self.set_effect(trigger_ids=[7005], visible=False) # mask_black
+        self.set_effect(trigger_ids=[7005]) # mask_black
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

@@ -73,10 +73,10 @@ class 종료(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990003, key='Start', value=0)
         self.set_user_value(trigger_id=99990004, key='Start', value=0)
         self.set_user_value(trigger_id=99990005, key='Start', value=0)
-        self.set_interact_object(trigger_ids=[10002179], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002180], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002181], state=0, arg3=False)
-        self.set_interact_object(trigger_ids=[10002182], state=0, arg3=False)
+        self.set_interact_object(trigger_ids=[10002179], state=0)
+        self.set_interact_object(trigger_ids=[10002180], state=0)
+        self.set_interact_object(trigger_ids=[10002181], state=0)
+        self.set_interact_object(trigger_ids=[10002182], state=0)
 
 
 initial_state = 대기

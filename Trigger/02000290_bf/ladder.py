@@ -4,20 +4,20 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310], visible=True, start_delay=0, interval=0, fade=0) # WaterDisApp
-        self.set_ladder(trigger_ids=[511], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[512], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[513], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[514], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[515], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[516], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[517], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[518], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[519], visible=False, enable=False) # LadderTheFall
-        self.set_ladder(trigger_ids=[520], visible=False, enable=False) # LadderTheFall
-        self.set_effect(trigger_ids=[5100], visible=False) # LadderAppear
-        self.set_effect(trigger_ids=[5102], visible=False) # WaterDisApp
-        self.set_effect(trigger_ids=[5200], visible=False) # LeverArrow
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310], visible=True) # WaterDisApp
+        self.set_ladder(trigger_ids=[511]) # LadderTheFall
+        self.set_ladder(trigger_ids=[512]) # LadderTheFall
+        self.set_ladder(trigger_ids=[513]) # LadderTheFall
+        self.set_ladder(trigger_ids=[514]) # LadderTheFall
+        self.set_ladder(trigger_ids=[515]) # LadderTheFall
+        self.set_ladder(trigger_ids=[516]) # LadderTheFall
+        self.set_ladder(trigger_ids=[517]) # LadderTheFall
+        self.set_ladder(trigger_ids=[518]) # LadderTheFall
+        self.set_ladder(trigger_ids=[519]) # LadderTheFall
+        self.set_ladder(trigger_ids=[520]) # LadderTheFall
+        self.set_effect(trigger_ids=[5100]) # LadderAppear
+        self.set_effect(trigger_ids=[5102]) # WaterDisApp
+        self.set_effect(trigger_ids=[5200]) # LeverArrow
         self.set_interact_object(trigger_ids=[10000429], state=0) # Lever
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,8 +41,8 @@ class 폭포갈라짐(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=20002902)
         self.set_effect(trigger_ids=[5102], visible=True) # WaterDisApp
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310], visible=False, start_delay=0, interval=200, fade=2)
-        self.set_effect(trigger_ids=[5200], visible=False) # LeverArrow
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310], interval=200, fade=2.0)
+        self.set_effect(trigger_ids=[5200]) # LeverArrow
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

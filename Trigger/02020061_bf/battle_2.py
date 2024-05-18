@@ -34,7 +34,7 @@ class 오브젝트소환(trigger_api.Trigger):
 
 class 대사용_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020061_BF__BATTLE_2__0$')
+        self.side_npc_talk(npc_id=11001813, illust='Turka_normal', duration=5000, script='$02020061_BF__BATTLE_2__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ObjectPhase') >= 2:
@@ -47,7 +47,7 @@ class 대사용_1(trigger_api.Trigger):
 
 class 대사용_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11003536, illust='Neirin_surprise', duration=5000, script='$02020061_BF__BATTLE_2__1$')
+        self.side_npc_talk(npc_id=11003536, illust='Neirin_surprise', duration=5000, script='$02020061_BF__BATTLE_2__1$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ObjectPhase') >= 2:
@@ -60,7 +60,7 @@ class 대사용_2(trigger_api.Trigger):
 
 class 대사용_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.side_npc_talk(type='talk', npc_id=11003533, illust='Bliche_normal', duration=5000, script='$02020061_BF__BATTLE_2__2$')
+        self.side_npc_talk(npc_id=11003533, illust='Bliche_normal', duration=5000, script='$02020061_BF__BATTLE_2__2$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ObjectPhase') >= 2:

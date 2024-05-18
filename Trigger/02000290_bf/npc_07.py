@@ -4,8 +4,8 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[6001], visible=False) # 요미공주음성01
-        self.set_effect(trigger_ids=[6002], visible=False) # 요미공주음성02
+        self.set_effect(trigger_ids=[6001]) # 요미공주음성01
+        self.set_effect(trigger_ids=[6002]) # 요미공주음성02
         self.set_interact_object(trigger_ids=[10000464], state=1)
         self.set_actor(trigger_id=9007, visible=True, initial_sequence='Down_Idle_A')
 
@@ -14,7 +14,7 @@ class 시작대기중(trigger_api.Trigger):
             return NPC대사(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=9007, visible=False, initial_sequence='Down_Idle_A')
+        self.set_actor(trigger_id=9007, initial_sequence='Down_Idle_A')
         self.set_user_value(trigger_id=9999995, key='dungeonclear', value=1)
 
 

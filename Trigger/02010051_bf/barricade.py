@@ -19,8 +19,8 @@ class 카운트(trigger_api.Trigger):
 
 class 차단(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1501,1502,1503,1504,1505,1506], visible=True, start_delay=0, interval=0, fade=0) # Gate Close grating
-        self.set_mesh(trigger_ids=[1511,1512,1513], visible=False, start_delay=0, interval=0, fade=0) # Gate Open grating
+        self.set_mesh(trigger_ids=[1501,1502,1503,1504,1505,1506], visible=True) # Gate Close grating
+        self.set_mesh(trigger_ids=[1511,1512,1513]) # Gate Open grating
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[99]):
@@ -29,8 +29,8 @@ class 차단(trigger_api.Trigger):
 
 class 차단해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[1501,1502,1503,1504,1505,1506], visible=False, start_delay=0, interval=0, fade=10) # Gate Close grating
-        self.set_mesh(trigger_ids=[1511,1512,1513], visible=True, start_delay=1, interval=0, fade=0) # Gate Open grating
+        self.set_mesh(trigger_ids=[1501,1502,1503,1504,1505,1506], fade=10.0) # Gate Close grating
+        self.set_mesh(trigger_ids=[1511,1512,1513], visible=True, start_delay=1) # Gate Open grating
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

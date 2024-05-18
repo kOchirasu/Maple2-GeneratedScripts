@@ -5,7 +5,7 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000239], state=1)
-        self.spawn_monster(spawn_ids=[107], auto_target=True)
+        self.spawn_monster(spawn_ids=[107])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000239], state=0):
@@ -16,7 +16,7 @@ class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=12)
         self.destroy_monster(spawn_ids=[107])
-        self.spawn_monster(spawn_ids=[207], auto_target=True)
+        self.spawn_monster(spawn_ids=[207])
         self.move_npc(spawn_id=207, patrol_name='MS2PatrolData_207')
         self.set_dialogue(type=1, spawn_id=207, script='$03009023_IN__07__0$', time=4, arg5=1)
 

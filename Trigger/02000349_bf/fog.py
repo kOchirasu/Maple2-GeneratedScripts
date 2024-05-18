@@ -14,8 +14,8 @@ class 준비(trigger_api.Trigger):
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1098])
-        self.set_effect(trigger_ids=[600], visible=False) # fog 500
-        self.set_effect(trigger_ids=[602], visible=False) # fog 1500
+        self.set_effect(trigger_ids=[600]) # fog 500
+        self.set_effect(trigger_ids=[602]) # fog 1500
         self.set_interact_object(trigger_ids=[10000813], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:

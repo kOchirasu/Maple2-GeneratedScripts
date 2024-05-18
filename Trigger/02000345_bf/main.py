@@ -14,9 +14,9 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[2001,2002], visible=True, start_delay=1, interval=1)
         self.remove_buff(box_id=60002, skill_id=99910040)
         self.remove_buff(box_id=60002, skill_id=70000106)
-        self.spawn_monster(spawn_ids=[102], auto_target=True) # 촬영 감독
+        self.spawn_monster(spawn_ids=[102]) # 촬영 감독
         self.set_mesh(trigger_ids=[6010], visible=True) # 벽 생성
-        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=False) # 길 차단
+        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009]) # 길 차단
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=60001) >= 1:
@@ -33,7 +33,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class touchfield(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[2001,2002], visible=False, start_delay=0, interval=200)
+        self.set_mesh(trigger_ids=[2001,2002], interval=200)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=702) >= 1:
@@ -58,7 +58,7 @@ class ready(trigger_api.Trigger):
 class start_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8802,8803], return_view=False)
-        self.set_dialogue(type=1, spawn_id=102, script='$02000345_BF__MAIN__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000345_BF__MAIN__0$', time=2)
         self.set_dialogue(type=2, spawn_id=11001376, script='$02000345_BF__MAIN__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +68,7 @@ class start_01(trigger_api.Trigger):
 
 class start_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$02000345_BF__MAIN__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000345_BF__MAIN__2$', time=2)
         self.set_dialogue(type=2, spawn_id=11001376, script='$02000345_BF__MAIN__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class start_02(trigger_api.Trigger):
 
 class start_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$02000345_BF__MAIN__4$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000345_BF__MAIN__4$', time=2)
         self.set_dialogue(type=2, spawn_id=11001376, script='$02000345_BF__MAIN__5$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,7 +88,7 @@ class start_03(trigger_api.Trigger):
 
 class start_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$02000345_BF__MAIN__6$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000345_BF__MAIN__6$', time=2)
         self.set_dialogue(type=2, spawn_id=11001376, script='$02000345_BF__MAIN__7$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -129,9 +129,9 @@ class start_game(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.select_camera_path(path_ids=[8808], return_view=True)
-        self.show_count_ui(text='$02000345_BF__MAIN__10$', stage=0, count=3)
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.select_camera_path(path_ids=[8808])
+        self.show_count_ui(text='$02000345_BF__MAIN__10$', count=3)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -141,7 +141,7 @@ class start_game(trigger_api.Trigger):
 class start_game_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000345_BF__MAIN__11$', arg3='3000')
-        self.spawn_monster(spawn_ids=[189], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[189])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -161,7 +161,7 @@ class start_game_02(trigger_api.Trigger):
 
 class start_game_02_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=189, script='$02000345_BF__MAIN__12$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=189, script='$02000345_BF__MAIN__12$', time=2)
         self.set_dialogue(type=2, spawn_id=11001890, script='$02000345_BF__MAIN__13$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -171,7 +171,7 @@ class start_game_02_b(trigger_api.Trigger):
 
 class start_game_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=189, script='$02000345_BF__MAIN__14$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=189, script='$02000345_BF__MAIN__14$', time=3)
         self.set_dialogue(type=2, spawn_id=11001890, script='$02000345_BF__MAIN__15$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -181,7 +181,7 @@ class start_game_03(trigger_api.Trigger):
 
 class start_game_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=189, script='$02000345_BF__MAIN__16$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=189, script='$02000345_BF__MAIN__16$', time=3)
         self.set_dialogue(type=2, spawn_id=11001890, script='$02000345_BF__MAIN__17$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -191,13 +191,13 @@ class start_game_04(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.select_camera_path(path_ids=[8808], return_view=True)
+        self.select_camera_path(path_ids=[8808])
 
 
 class start_game_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000345_BF__MAIN__18$', arg3='3000')
-        self.spawn_monster(spawn_ids=[201,202,203,204,205,206,207,208,209,210], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[201,202,203,204,205,206,207,208,209,210])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[201,202,203,204,205,206,207,208,209,210]):
@@ -206,7 +206,7 @@ class start_game_05(trigger_api.Trigger):
 
 class start_game_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[301,302,303,304,305,306,307], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[301,302,303,304,305,306,307])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[301,302,303,304,305,306,307]):
@@ -215,18 +215,18 @@ class start_game_06(trigger_api.Trigger):
 
 class start_game_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[401,402,403,404,405,406], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[401,402,403,404,405,406])
 
 
 class 대기_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False) # 보상으로 연결되는 포탈 제어 (끔)
+        self.set_portal(portal_id=4) # 보상으로 연결되는 포탈 제어 (끔)
         self.set_interact_object(trigger_ids=[10000791], state=0) # 보상 상태 (없음)
         self.set_mesh(trigger_ids=[6001,6010], visible=True) # 벽 생성
-        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=False) # 길 차단
-        self.set_ladder(trigger_ids=[9001], visible=False, enable=False, fade=0) # 사다리 가려
-        self.set_ladder(trigger_ids=[9002], visible=False, enable=False, fade=0)
-        self.set_ladder(trigger_ids=[9003], visible=False, enable=False, fade=0)
+        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009]) # 길 차단
+        self.set_ladder(trigger_ids=[9001]) # 사다리 가려
+        self.set_ladder(trigger_ids=[9002])
+        self.set_ladder(trigger_ids=[9003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=60001) >= 1:
@@ -235,7 +235,7 @@ class 대기_01(trigger_api.Trigger):
 
 class 대기_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='1', seconds=1, interval=0)
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -251,7 +251,7 @@ class 대기_03(trigger_api.Trigger):
 class 오브젝티브_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000345_BF__MAIN1__2$', arg3='10000')
-        self.set_timer(timer_id='10', seconds=10, interval=0)
+        self.set_timer(timer_id='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):
@@ -260,12 +260,12 @@ class 오브젝티브_01(trigger_api.Trigger):
 
 class 오브젝티브_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[8001,8002], return_view=True) # 연출 카메라
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 보스 등장
+        self.select_camera_path(path_ids=[8001,8002]) # 연출 카메라
+        self.spawn_monster(spawn_ids=[101]) # 보스 등장
         self.set_cinematic_ui(type=1)
         # self.move_user(map_id=2000345, portal_id=3)
         self.set_cinematic_ui(type=3, script='$02000345_BF__MAIN1__0$') # 오브젝티브
-        self.set_timer(timer_id='5', seconds=5, interval=0)
+        self.set_timer(timer_id='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
@@ -281,8 +281,8 @@ class 오브젝티브_02(trigger_api.Trigger):
 # 플레이어 감지하면 1초 대기
 class 시작_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_count_ui(text='$02000345_BF__MAIN1__3$', stage=0, count=3)
-        self.set_timer(timer_id='3', seconds=3, interval=0)
+        self.show_count_ui(text='$02000345_BF__MAIN1__3$', count=3)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -291,10 +291,10 @@ class 시작_01(trigger_api.Trigger):
 
 class 시작_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[9001], visible=True, enable=True, fade=0) # 사다리 보여
-        self.set_ladder(trigger_ids=[9002], visible=True, enable=True, fade=0) # 사다리 보여
-        self.set_ladder(trigger_ids=[9003], visible=True, enable=True, fade=0) # 사다리 보여
-        self.set_timer(timer_id='1', seconds=1, interval=0)
+        self.set_ladder(trigger_ids=[9001], visible=True, enable=True) # 사다리 보여
+        self.set_ladder(trigger_ids=[9002], visible=True, enable=True) # 사다리 보여
+        self.set_ladder(trigger_ids=[9003], visible=True, enable=True) # 사다리 보여
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):
@@ -305,8 +305,8 @@ class 클리어(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True) # 보상으로 연결되는 포탈 제어 (on)
         self.set_event_ui(type=7, arg2='$02000345_BF__MAIN1__1$', arg3='3000')
-        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=True, interval=0, fade=10) # 길 생성
-        self.set_mesh(trigger_ids=[6010], visible=False, interval=0, fade=0) # 벽 삭제
+        self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=True, fade=10.0) # 길 생성
+        self.set_mesh(trigger_ids=[6010]) # 벽 삭제
         self.set_interact_object(trigger_ids=[10000791], state=1) # 보상 상태 (없음)
         self.set_timer(timer_id='5', seconds=5)
 

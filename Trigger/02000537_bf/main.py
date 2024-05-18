@@ -15,17 +15,17 @@ class idle(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[8903], visible=True)
         self.set_mesh(trigger_ids=[8904], visible=True)
         self.set_mesh(trigger_ids=[8905], visible=True)
-        self.set_effect(trigger_ids=[8000], visible=False)
-        self.set_effect(trigger_ids=[8001], visible=False)
-        self.set_skill(trigger_ids=[9000], enable=False)
+        self.set_effect(trigger_ids=[8000])
+        self.set_effect(trigger_ids=[8001])
+        self.set_skill(trigger_ids=[9000])
         self.enable_spawn_point_pc(spawn_id=0, is_enable=True)
-        self.enable_spawn_point_pc(spawn_id=1, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=2, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=3, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=4, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=5, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=6, is_enable=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.enable_spawn_point_pc(spawn_id=1)
+        self.enable_spawn_point_pc(spawn_id=2)
+        self.enable_spawn_point_pc(spawn_id=3)
+        self.enable_spawn_point_pc(spawn_id=4)
+        self.enable_spawn_point_pc(spawn_id=5)
+        self.enable_spawn_point_pc(spawn_id=6)
+        self.set_portal(portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[701], job_code=0):
@@ -45,8 +45,8 @@ class ready(trigger_api.Trigger):
 
 class 도마뱀스폰1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8900], visible=False)
-        self.spawn_monster(spawn_ids=[1015,1016], auto_target=True)
+        self.set_mesh(trigger_ids=[8900])
+        self.spawn_monster(spawn_ids=[1015,1016])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[702], job_code=0):
@@ -55,9 +55,9 @@ class 도마뱀스폰1(trigger_api.Trigger):
 
 class 시작702(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=0, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=0)
         self.enable_spawn_point_pc(spawn_id=1, is_enable=True)
-        self.spawn_monster(spawn_ids=[102,1022,1023,1024,1025], auto_target=True)
+        self.spawn_monster(spawn_ids=[102,1022,1023,1024,1025])
         self.side_npc_talk(npc_id=22600006, illust='DesertDragonBigBlue_normal', duration=4000, script='$02000537_BF__MAIN__1$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 시작702(trigger_api.Trigger):
 
 class 마무리1_702(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8901], visible=False)
+        self.set_mesh(trigger_ids=[8901])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -86,7 +86,7 @@ class 마무리2_702(trigger_api.Trigger):
 class 시작703(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1026])
-        self.enable_spawn_point_pc(spawn_id=1, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=1)
         self.enable_spawn_point_pc(spawn_id=2, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,8 +97,8 @@ class 시작703(trigger_api.Trigger):
 class 진행703(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000537_BF__MAIN__3$', arg3='3000')
-        self.spawn_monster(spawn_ids=[109], auto_target=True)
-        self.spawn_monster(spawn_ids=[103,1031,1032,1033,1034], auto_target=True)
+        self.spawn_monster(spawn_ids=[109])
+        self.spawn_monster(spawn_ids=[103,1031,1032,1033,1034])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[103,1031,1032,1033,1034]):
@@ -107,8 +107,8 @@ class 진행703(trigger_api.Trigger):
 
 class 마무리1_703(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8902], visible=False)
-        self.spawn_monster(spawn_ids=[1035], auto_target=True)
+        self.set_mesh(trigger_ids=[8902])
+        self.spawn_monster(spawn_ids=[1035])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -126,7 +126,7 @@ class 마무리2_703(trigger_api.Trigger):
 
 class 시작704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=2, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=2)
         self.enable_spawn_point_pc(spawn_id=3, is_enable=True)
         self.spawn_monster(spawn_ids=[104,1041,1042,1043,1044], auto_target=False)
 
@@ -146,7 +146,7 @@ class 진행704(trigger_api.Trigger):
 
 class 마무리704(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8903], visible=False)
+        self.set_mesh(trigger_ids=[8903])
         self.side_npc_talk(npc_id=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000537_BF__MAIN__6$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -156,7 +156,7 @@ class 마무리704(trigger_api.Trigger):
 
 class 시작705(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=3, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=3)
         self.enable_spawn_point_pc(spawn_id=4, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -166,7 +166,7 @@ class 시작705(trigger_api.Trigger):
 
 class 진행705(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[105,1051,1052,1053,1054], auto_target=True)
+        self.spawn_monster(spawn_ids=[105,1051,1052,1053,1054])
         self.side_npc_talk(npc_id=22600006, illust='DesertDragonBigBlue_normal', duration=4000, script='$02000537_BF__MAIN__7$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,8 +176,8 @@ class 진행705(trigger_api.Trigger):
 
 class 마무리705(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8904], visible=False)
-        self.spawn_monster(spawn_ids=[1036], auto_target=True)
+        self.set_mesh(trigger_ids=[8904])
+        self.spawn_monster(spawn_ids=[1036])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[708], job_code=0):
@@ -197,9 +197,9 @@ class 버프걸어주기(trigger_api.Trigger):
 class 시작706(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000537_BF__MAIN__9$')
-        self.enable_spawn_point_pc(spawn_id=4, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=4)
         self.enable_spawn_point_pc(spawn_id=5, is_enable=True)
-        self.spawn_monster(spawn_ids=[106,1061,1063,1064,1065], auto_target=True)
+        self.spawn_monster(spawn_ids=[106,1061,1063,1064,1065])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[106,1061,1063,1064,1065]):
@@ -208,7 +208,7 @@ class 시작706(trigger_api.Trigger):
 
 class 마무리706(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[8905], visible=False)
+        self.set_mesh(trigger_ids=[8905])
         self.side_npc_talk(npc_id=11004644, illust='SlaveMan3_normal', duration=4000, script='$02000537_BF__MAIN__10$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -218,9 +218,9 @@ class 마무리706(trigger_api.Trigger):
 
 class 시작707(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=5, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=5)
         self.enable_spawn_point_pc(spawn_id=6, is_enable=True)
-        self.spawn_monster(spawn_ids=[108], auto_target=True)
+        self.spawn_monster(spawn_ids=[108])
         self.side_npc_talk(npc_id=22600006, illust='DesertDragonBigBlue_normal', duration=4000, script='$02000537_BF__MAIN__11$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -231,7 +231,7 @@ class 시작707(trigger_api.Trigger):
 class 포털생성전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[109])
-        self.spawn_monster(spawn_ids=[1091], auto_target=True)
+        self.spawn_monster(spawn_ids=[1091])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -241,7 +241,7 @@ class 포털생성전(trigger_api.Trigger):
 class 포털생성전2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[109])
-        self.spawn_monster(spawn_ids=[1091], auto_target=True)
+        self.spawn_monster(spawn_ids=[1091])
         self.side_npc_talk(npc_id=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000537_BF__MAIN__12$')
 
     def on_tick(self) -> trigger_api.Trigger:

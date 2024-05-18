@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[8902], visible=False) # 가이드 화살표
-        self.set_effect(trigger_ids=[605], visible=False) # 벨라 음성
+        self.set_effect(trigger_ids=[8902]) # 가이드 화살표
+        self.set_effect(trigger_ids=[605]) # 벨라 음성
         self.set_mesh(trigger_ids=[2113,2114,2115,2116,2117,2118], visible=True)
-        self.set_mesh(trigger_ids=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145], visible=False)
+        self.set_mesh(trigger_ids=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=904) >= 1:
@@ -17,7 +17,7 @@ class 대기(trigger_api.Trigger):
 class 대기2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[2113,2114,2115,2116,2117,2118], visible=True)
-        self.set_mesh(trigger_ids=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145], visible=False)
+        self.set_mesh(trigger_ids=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=904) >= 1:
@@ -121,7 +121,7 @@ class 이동(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[1108], auto_target=False)
         self.spawn_monster(spawn_ids=[1109], auto_target=False)
         self.spawn_monster(spawn_ids=[1110], auto_target=False)
-        self.set_mesh(trigger_ids=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145], visible=False)
+        self.set_mesh(trigger_ids=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -151,8 +151,8 @@ class 벨라삭제(trigger_api.Trigger):
 class 개봉(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[8902], visible=True) # 가이드 화살표
-        self.set_mesh(trigger_ids=[2113,2114,2115,2116,2117,2118], visible=False)
-        self.set_mesh(trigger_ids=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145], visible=False)
+        self.set_mesh(trigger_ids=[2113,2114,2115,2116,2117,2118])
+        self.set_mesh(trigger_ids=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145])
 
 
 initial_state = 대기

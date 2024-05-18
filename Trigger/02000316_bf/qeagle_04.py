@@ -5,8 +5,8 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000572], state=1)
-        self.set_actor(trigger_id=907, visible=False, initial_sequence='Attack_Idle_A')
-        self.set_effect(trigger_ids=[908], visible=False)
+        self.set_actor(trigger_id=907, initial_sequence='Attack_Idle_A')
+        self.set_effect(trigger_ids=[908])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000572], state=0):
@@ -24,8 +24,8 @@ class 오브젝트반응(trigger_api.Trigger):
             return 그리폰제거(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=907, visible=False, initial_sequence='Attack_Idle_A')
-        self.set_effect(trigger_ids=[908], visible=False)
+        self.set_actor(trigger_id=907, initial_sequence='Attack_Idle_A')
+        self.set_effect(trigger_ids=[908])
 
 
 class 그리폰제거(trigger_api.Trigger):

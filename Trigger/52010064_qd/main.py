@@ -1,5 +1,6 @@
 """ trigger/52010064_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
@@ -43,7 +44,7 @@ class CameraEffect01(trigger_api.Trigger):
 
 class CameraEffect02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(path_ids=[8000], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +55,7 @@ class CameraEffect02(trigger_api.Trigger):
 class 트리스탄대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8010], return_view=False)
-        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__0$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__0$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -63,7 +64,7 @@ class 트리스탄대사01(trigger_api.Trigger):
 
 class 트리스탄대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__1$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__1$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -73,7 +74,7 @@ class 트리스탄대사02(trigger_api.Trigger):
 class 트리스탄대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8001], return_view=False)
-        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__2$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__2$', duration=3000, align=Align.Right)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_Tristan_walking')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -83,7 +84,7 @@ class 트리스탄대사03(trigger_api.Trigger):
 
 class 트리스탄대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__3$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__3$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -93,7 +94,7 @@ class 트리스탄대사04(trigger_api.Trigger):
 class 트리스탄대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8002], return_view=False)
-        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__4$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__4$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -102,7 +103,7 @@ class 트리스탄대사05(trigger_api.Trigger):
 
 class 트리스탄대사06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__5$', duration=3000, align='right')
+        self.add_cinematic_talk(npc_id=11003842, illust_id='Tristan_normal', msg='$52010064_QD__main__5$', duration=3000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -135,8 +136,8 @@ class quit01(trigger_api.Trigger):
 
 class quit03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.reset_camera(interpolation_time=2.0)
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
         self.move_user(map_id=52010052, portal_id=1) # 작전실로 자동 이동
 
     def on_tick(self) -> trigger_api.Trigger:

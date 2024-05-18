@@ -5,55 +5,55 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='Guide')
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5104], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5105], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5200], visible=False) # 점프 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False) # 점프 경로 안내
-        self.set_effect(trigger_ids=[5301], visible=False) # 화살표 안내
-        self.set_effect(trigger_ids=[5400], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5401], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5402], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5403], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5404], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5405], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5406], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5407], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5408], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5409], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5410], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5500], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5501], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5502], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5503], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5504], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[6000], visible=False) # Voice_Tinchai_00001676
-        self.set_effect(trigger_ids=[6001], visible=False) # Voice_Tinchai_00001677
-        self.set_effect(trigger_ids=[6002], visible=False) # Voice_Tinchai_00001678
-        self.set_effect(trigger_ids=[6003], visible=False) # Voice_Tinchai_00001714
-        self.set_effect(trigger_ids=[6004], visible=False) # Voice_Tinchai_00001679
-        self.set_effect(trigger_ids=[6005], visible=False) # Voice_Tinchai_00001680
-        self.set_effect(trigger_ids=[6006], visible=False) # Voice_Tinchai_00001720
-        self.set_effect(trigger_ids=[6100], visible=False) # Voice_Junta_00001760
-        self.set_effect(trigger_ids=[6101], visible=False) # Voice_Junta_00001761
-        self.set_effect(trigger_ids=[6102], visible=False) # Voice_Junta_00001762
-        self.set_effect(trigger_ids=[6103], visible=False) # Voice_Junta_00001763
-        self.set_effect(trigger_ids=[6104], visible=False) # Voice_Junta_00001764
-        self.set_effect(trigger_ids=[6105], visible=False) # Voice_Junta_00001765
-        self.set_effect(trigger_ids=[6106], visible=False) # Voice_Junta_00001766
-        self.set_effect(trigger_ids=[6107], visible=False) # Voice_Junta_00001767
-        self.set_effect(trigger_ids=[6108], visible=False) # Voice_Junta_00001768
-        self.set_effect(trigger_ids=[6109], visible=False) # Voice_Junta_00001769
-        self.set_effect(trigger_ids=[6110], visible=False) # Voice_Junta_00001770
-        self.set_effect(trigger_ids=[6111], visible=False) # Voice_Junta_00001771
-        self.set_effect(trigger_ids=[6112], visible=False) # Voice_Junta_00001772
+        self.set_portal(portal_id=2)
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5101]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5102]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5103]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5104]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5105]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5200]) # 점프 경로 안내
+        self.set_effect(trigger_ids=[5203]) # 점프 경로 안내
+        self.set_effect(trigger_ids=[5301]) # 화살표 안내
+        self.set_effect(trigger_ids=[5400]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5401]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5402]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5403]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5404]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5405]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5406]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5407]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5408]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5409]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5410]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5500]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5501]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5502]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5503]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5504]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[6000]) # Voice_Tinchai_00001676
+        self.set_effect(trigger_ids=[6001]) # Voice_Tinchai_00001677
+        self.set_effect(trigger_ids=[6002]) # Voice_Tinchai_00001678
+        self.set_effect(trigger_ids=[6003]) # Voice_Tinchai_00001714
+        self.set_effect(trigger_ids=[6004]) # Voice_Tinchai_00001679
+        self.set_effect(trigger_ids=[6005]) # Voice_Tinchai_00001680
+        self.set_effect(trigger_ids=[6006]) # Voice_Tinchai_00001720
+        self.set_effect(trigger_ids=[6100]) # Voice_Junta_00001760
+        self.set_effect(trigger_ids=[6101]) # Voice_Junta_00001761
+        self.set_effect(trigger_ids=[6102]) # Voice_Junta_00001762
+        self.set_effect(trigger_ids=[6103]) # Voice_Junta_00001763
+        self.set_effect(trigger_ids=[6104]) # Voice_Junta_00001764
+        self.set_effect(trigger_ids=[6105]) # Voice_Junta_00001765
+        self.set_effect(trigger_ids=[6106]) # Voice_Junta_00001766
+        self.set_effect(trigger_ids=[6107]) # Voice_Junta_00001767
+        self.set_effect(trigger_ids=[6108]) # Voice_Junta_00001768
+        self.set_effect(trigger_ids=[6109]) # Voice_Junta_00001769
+        self.set_effect(trigger_ids=[6110]) # Voice_Junta_00001770
+        self.set_effect(trigger_ids=[6111]) # Voice_Junta_00001771
+        self.set_effect(trigger_ids=[6112]) # Voice_Junta_00001772
         self.set_interact_object(trigger_ids=[10001003], state=0) # Training
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -221,7 +221,7 @@ class QuestOnGoing02(trigger_api.Trigger):
 # 최초 입장
 class Enter02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.set_scene_skip(state=Dialogue10, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -243,7 +243,7 @@ class Enter03(trigger_api.Trigger):
 
 class Enter04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
         self.spawn_monster(spawn_ids=[201], auto_target=False)
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_201')
 
@@ -263,7 +263,7 @@ class Enter05(trigger_api.Trigger):
 
 class Enter06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -425,7 +425,7 @@ class JumpPointGuide01(trigger_api.Trigger):
 class JumpPointGuide02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6103], visible=True) # Voice_Junta_00001763
-        self.set_dialogue(type=1, spawn_id=103, script='$63000025_CS__TRAINING01__5$', time=3, arg5=0) # 준타 00001763
+        self.set_dialogue(type=1, spawn_id=103, script='$63000025_CS__TRAINING01__5$', time=3) # 준타 00001763
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_102')
         self.move_npc(spawn_id=203, patrol_name='MS2PatrolData_202')
 
@@ -455,14 +455,14 @@ class JumpPointGuide04(trigger_api.Trigger):
         # 가이드 : 스페이스 키를 눌러 기둥 위에서 수련하기
         self.show_guide_summary(entity_id=10031032, text_id=10031032)
         self.set_effect(trigger_ids=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5301], visible=False) # 화살표 안내
-        self.set_effect(trigger_ids=[5100], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5104], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5105], visible=False) # 웅덩이 경로 안내
-        self.set_effect(trigger_ids=[5200], visible=False) # 점프 경로 안내
+        self.set_effect(trigger_ids=[5301]) # 화살표 안내
+        self.set_effect(trigger_ids=[5100]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5101]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5102]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5103]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5104]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5105]) # 웅덩이 경로 안내
+        self.set_effect(trigger_ids=[5200]) # 점프 경로 안내
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[90000445], quest_states=[2]):
@@ -477,8 +477,8 @@ class JumpPointGuide04(trigger_api.Trigger):
 
 class SecondQuestEnd01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5203], visible=False) # 점프 경로 안내
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5203]) # 점프 경로 안내
         self.set_effect(trigger_ids=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entity_id=10031050, text_id=10031050) # 가이드 : 준타를 향해 이동하기
         self.set_effect(trigger_ids=[5500], visible=True) # NPC 경로 안내
@@ -494,13 +494,13 @@ class SecondQuestEnd01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10031050)
-        self.set_effect(trigger_ids=[5500], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5501], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5502], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5503], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5504], visible=False) # NPC 경로 안내
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5203], visible=False) # 점프 경로 안내
+        self.set_effect(trigger_ids=[5500]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5501]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5502]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5503]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5504]) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5203]) # 점프 경로 안내
 
 
 class SecondQuestEnd02(trigger_api.Trigger):
@@ -551,7 +551,7 @@ class ReadyToMove01(trigger_api.Trigger):
 
 class ReadyToMove02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.destroy_monster(spawn_ids=[104,204]) # Talk
         self.spawn_monster(spawn_ids=[105,205], auto_target=False) # Actor
         self.move_user(map_id=63000025, portal_id=10, box_id=9900)
@@ -576,7 +576,7 @@ class PatrolWalk01(trigger_api.Trigger):
 class PatrolWalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1001')
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -859,11 +859,11 @@ class TimeToLeave01(trigger_api.Trigger):
 
 class TimeToLeave02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2, visible=True)
         self.move_user(map_id=63000025, portal_id=20, box_id=9900)
         self.destroy_monster(spawn_ids=[106,206]) # Talk
         self.spawn_monster(spawn_ids=[107,207], auto_target=False) # Actor
-        self.select_camera(trigger_id=700, enable=True)
+        self.select_camera(trigger_id=700)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -884,7 +884,7 @@ class TimeToLeave03(trigger_api.Trigger):
 class Monologue01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6110], visible=True) # Voice_Junta_00001770
-        self.set_dialogue(type=1, spawn_id=107, script='$63000025_CS__TRAINING01__15$', time=2, arg5=0) # 준타 00001770
+        self.set_dialogue(type=1, spawn_id=107, script='$63000025_CS__TRAINING01__15$', time=2) # 준타 00001770
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -893,11 +893,11 @@ class Monologue01(trigger_api.Trigger):
 
 class Monologue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=701, enable=True)
+        self.select_camera(trigger_id=701)
         self.move_npc(spawn_id=107, patrol_name='MS2PatrolData_104')
         self.move_npc(spawn_id=207, patrol_name='MS2PatrolData_204')
         self.set_effect(trigger_ids=[6111], visible=True) # Voice_Junta_00001771
-        self.set_dialogue(type=1, spawn_id=107, script='$63000025_CS__TRAINING01__16$', time=3, arg5=0) # 준타 00001771
+        self.set_dialogue(type=1, spawn_id=107, script='$63000025_CS__TRAINING01__16$', time=3) # 준타 00001771
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -907,7 +907,7 @@ class Monologue02(trigger_api.Trigger):
 class Monologue03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6006], visible=True) # Voice_Tinchai_00001720
-        self.set_dialogue(type=1, spawn_id=207, script='$63000025_CS__TRAINING01__17$', time=3, arg5=0) # 틴차이 00001720
+        self.set_dialogue(type=1, spawn_id=207, script='$63000025_CS__TRAINING01__17$', time=3) # 틴차이 00001720
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -916,9 +916,9 @@ class Monologue03(trigger_api.Trigger):
 
 class Monologue04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=702, enable=True)
+        self.select_camera(trigger_id=702)
         self.set_effect(trigger_ids=[6112], visible=True) # Voice_Junta_00001772
-        self.set_dialogue(type=1, spawn_id=107, script='$63000025_CS__TRAINING01__18$', time=2, arg5=0) # 준타 00001772
+        self.set_dialogue(type=1, spawn_id=107, script='$63000025_CS__TRAINING01__18$', time=2) # 준타 00001772
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2200):
@@ -947,7 +947,7 @@ class NpcLeave02(trigger_api.Trigger):
 
 class NpcLeave_CSkip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[107])
         self.destroy_monster(spawn_ids=[207])
 
@@ -1000,17 +1000,17 @@ class Quit(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.hide_guide_summary(entity_id=1060)
-        self.set_effect(trigger_ids=[5400], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5401], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5402], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5403], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5404], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5405], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5406], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5407], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5408], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5409], visible=False) # 포털 경로 안내
-        self.set_effect(trigger_ids=[5410], visible=False) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5400]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5401]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5402]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5403]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5404]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5405]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5406]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5407]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5408]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5409]) # 포털 경로 안내
+        self.set_effect(trigger_ids=[5410]) # 포털 경로 안내
 
 
 initial_state = Wait

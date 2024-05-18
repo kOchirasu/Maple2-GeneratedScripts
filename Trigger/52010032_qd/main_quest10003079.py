@@ -27,9 +27,9 @@ class Ready01(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[4004], return_view=False)
         self.face_emotion(spawn_id=401, emotion_name='Trigger_angry')
-        self.spawn_monster(spawn_ids=[401], auto_target=True) # 나메드
-        self.spawn_monster(spawn_ids=[301], auto_target=True) # 시끄러운 주먹
-        self.spawn_monster(spawn_ids=[302], auto_target=True) # 에바고르
+        self.spawn_monster(spawn_ids=[401]) # 나메드
+        self.spawn_monster(spawn_ids=[301]) # 시끄러운 주먹
+        self.spawn_monster(spawn_ids=[302]) # 에바고르
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_3003')
         self.move_npc(spawn_id=302, patrol_name='MS2PatrolData_3004')
 
@@ -41,7 +41,7 @@ class Ready01(trigger_api.Trigger):
 class 대화시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_npc_emotion_sequence(spawn_id=401, sequence_name='Talk_A')
         self.move_user(map_id=52010032, portal_id=6002)
         self.add_cinematic_talk(npc_id=11003389, msg='$52010032_QD__MAIN_QUEST10003079__0$', duration=3000)
@@ -167,7 +167,7 @@ class Skip_1(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[401])
         self.reset_camera(interpolation_time=0.5)
         self.set_achievement(trigger_id=2001, type='trigger', achieve='Namid')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -176,10 +176,10 @@ class Skip_1(trigger_api.Trigger):
 
 class 나메드에게퀘스트마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[302])
         self.destroy_monster(spawn_ids=[401])
-        self.spawn_monster(spawn_ids=[202], auto_target=True)
+        self.spawn_monster(spawn_ids=[202])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

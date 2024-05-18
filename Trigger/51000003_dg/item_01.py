@@ -28,21 +28,21 @@ class Round_01_Ready(trigger_api.Trigger):
 
 class Round_01_Start(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return item_710(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return item_711(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return item_712(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return item_713(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return item_714(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return item_715(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return item_716(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return item_717(self.ctx)
         if self.user_value(key='Round_01') >= 0:
             # 스위치가 꺼지면 스테이트 초기화

@@ -5,10 +5,10 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10000441], state=0)
-        self.set_skill(trigger_ids=[702], enable=False)
-        self.set_effect(trigger_ids=[444], visible=False)
-        self.set_effect(trigger_ids=[445], visible=False)
-        self.set_effect(trigger_ids=[461], visible=False)
+        self.set_skill(trigger_ids=[702])
+        self.set_effect(trigger_ids=[444])
+        self.set_effect(trigger_ids=[445])
+        self.set_effect(trigger_ids=[461])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=906, spawn_ids=[104]):
@@ -41,7 +41,7 @@ class 스턴(trigger_api.Trigger):
 
 class 스턴2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[702], enable=False)
+        self.set_skill(trigger_ids=[702])
         self.set_timer(timer_id='1', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:

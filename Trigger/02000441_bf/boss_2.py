@@ -14,7 +14,7 @@ class 몬스터체력_75(trigger_api.Trigger):
             return 몬스터체력_35(self.ctx)
 
     def on_exit(self) -> None:
-        self.spawn_monster(spawn_ids=[210,211,212,213], auto_target=True)
+        self.spawn_monster(spawn_ids=[210,211,212,213])
 
 
 class 몬스터체력_35(trigger_api.Trigger):
@@ -25,7 +25,7 @@ class 몬스터체력_35(trigger_api.Trigger):
 
 class 몬스터_마지막_리스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[214,215,216,217], auto_target=True)
+        self.spawn_monster(spawn_ids=[214,215,216,217])
 
     def on_tick(self) -> trigger_api.Trigger:
         pass

@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[3001], visible=False)
-        self.set_effect(trigger_ids=[3002], visible=False)
-        self.set_effect(trigger_ids=[3003], visible=False)
+        self.set_effect(trigger_ids=[3001])
+        self.set_effect(trigger_ids=[3002])
+        self.set_effect(trigger_ids=[3003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[202]):

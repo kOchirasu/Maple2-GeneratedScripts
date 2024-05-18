@@ -14,8 +14,8 @@ class 대기(trigger_api.Trigger):
         self.set_actor(trigger_id=297, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=298, visible=True, initial_sequence='sf_quest_light_A01_Off')
         self.set_actor(trigger_id=299, visible=True, initial_sequence='sf_quest_light_A01_Off')
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=False, start_delay=0, interval=0, fade=0)
-        self.spawn_monster(spawn_ids=[1010,1011,1012,1013], auto_target=True)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005])
+        self.spawn_monster(spawn_ids=[1010,1011,1012,1013])
         self.set_actor(trigger_id=201, visible=True, initial_sequence='Closed_A')
         self.set_interact_object(trigger_ids=[10000494,10000495,10000496,10000497,10000498,10000499], state=0)
 
@@ -26,18 +26,18 @@ class 대기(trigger_api.Trigger):
 
 class 클리어체크(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False) # Eff_dungeon_allert_01
+        self.set_effect(trigger_ids=[601]) # Eff_dungeon_allert_01
         # 진동
         # Eff_Sound_Dungeon_Object_Scifi_Door_Open
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[602])
         # Eff_Sound_Dungeon_Object_Scifi_Door_Open
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_effect(trigger_ids=[604], visible=False) # Eff_UI_Sound_notice_01
+        self.set_effect(trigger_ids=[603])
+        self.set_effect(trigger_ids=[604]) # Eff_UI_Sound_notice_01
         # Eff_sf_fi_prop_incubator_B02_wfx_Big
-        self.set_effect(trigger_ids=[605], visible=False)
-        self.set_effect(trigger_ids=[606], visible=False) # Eff_electricity
-        self.set_effect(trigger_ids=[607], visible=False) # Eff_electricity
-        self.set_effect(trigger_ids=[610], visible=False) # Eff_Sound_RedAllert
+        self.set_effect(trigger_ids=[605])
+        self.set_effect(trigger_ids=[606]) # Eff_electricity
+        self.set_effect(trigger_ids=[607]) # Eff_electricity
+        self.set_effect(trigger_ids=[610]) # Eff_Sound_RedAllert
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[102]):
@@ -46,7 +46,7 @@ class 클리어체크(trigger_api.Trigger):
 
 class 클리어체크2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=False, start_delay=0, interval=0, fade=5)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], fade=5.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1010]):
@@ -197,8 +197,8 @@ class 미래엘리니아이동(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[1010])
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, start_delay=0, interval=0, fade=5)
+        self.set_effect(trigger_ids=[603])
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, fade=5.0)
 
 
 class 미래커닝시티(trigger_api.Trigger):
@@ -264,8 +264,8 @@ class 미래커닝시티이동(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[1011])
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, start_delay=0, interval=0, fade=5)
+        self.set_effect(trigger_ids=[603])
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, fade=5.0)
 
 
 class 과거헤네니스(trigger_api.Trigger):
@@ -331,8 +331,8 @@ class 과거헤네니스이동(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[1012])
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, start_delay=0, interval=0, fade=5)
+        self.set_effect(trigger_ids=[603])
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, fade=5.0)
 
 
 class 과거페리온(trigger_api.Trigger):
@@ -398,8 +398,8 @@ class 과거페리온이동(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[1013])
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, start_delay=0, interval=0, fade=5)
+        self.set_effect(trigger_ids=[603])
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005], visible=True, fade=5.0)
 
 
 class 그런거없음(trigger_api.Trigger):
@@ -417,8 +417,8 @@ class 그런거없음(trigger_api.Trigger):
 
 class 그런거없음2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[606], visible=False)
-        self.set_effect(trigger_ids=[607], visible=False)
+        self.set_effect(trigger_ids=[606])
+        self.set_effect(trigger_ids=[607])
         self.set_effect(trigger_ids=[601], visible=True)
         self.set_timer(timer_id='4', seconds=4)
         self.show_guide_summary(entity_id=20002994, text_id=20002994)
@@ -446,12 +446,12 @@ class 방어모드(trigger_api.Trigger):
         self.set_actor(trigger_id=299, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.show_guide_summary(entity_id=20002995, text_id=20002995)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.spawn_monster(spawn_ids=[1001,1002,1003,1004], auto_target=True)
+        self.spawn_monster(spawn_ids=[1001,1002,1003,1004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1001,1002,1003,1004]):
             self.hide_guide_summary(entity_id=20002995)
-            self.set_effect(trigger_ids=[610], visible=False)
+            self.set_effect(trigger_ids=[610])
             self.set_actor(trigger_id=290, visible=True, initial_sequence='sf_quest_light_A01_Off')
             self.set_actor(trigger_id=291, visible=True, initial_sequence='sf_quest_light_A01_Off')
             self.set_actor(trigger_id=292, visible=True, initial_sequence='sf_quest_light_A01_Off')

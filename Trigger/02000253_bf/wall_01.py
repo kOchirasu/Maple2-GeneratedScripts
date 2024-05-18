@@ -17,10 +17,10 @@ class 대기(trigger_api.Trigger):
 
 class 열기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[9001], visible=False)
-        self.set_agent(trigger_ids=[9002], visible=False)
-        self.set_mesh(trigger_ids=[501,502], visible=False)
-        self.set_mesh(trigger_ids=[601,602,603], visible=False)
+        self.set_agent(trigger_ids=[9001])
+        self.set_agent(trigger_ids=[9002])
+        self.set_mesh(trigger_ids=[501,502])
+        self.set_mesh(trigger_ids=[601,602,603])
 
 
 initial_state = 대기

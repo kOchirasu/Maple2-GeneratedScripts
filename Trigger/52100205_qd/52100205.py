@@ -1,5 +1,6 @@
 """ trigger/52100205_qd/52100205.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
@@ -41,7 +42,7 @@ class CameraEffect02_02(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=1)
@@ -63,7 +64,7 @@ class CameraEffect03_2(trigger_api.Trigger):
 class CameraEffect03_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4004], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$52100205_QD__52100205__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52100205_QD__52100205__1$', align=Align.Bottom | Align.Left, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -81,11 +82,11 @@ class CameraEffect03_4(trigger_api.Trigger):
 
 class CameraEffect03_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[201])
         self.visible_my_pc(is_visible=True) # 유저 투명 처리 품
-        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        self.add_buff(box_ids=[2001], skill_id=99910400, level=1, is_player=False, is_skill_set=True) # 클라디아 변신
+        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'])
+        self.add_buff(box_ids=[2001], skill_id=99910400, level=1, is_player=False) # 클라디아 변신
         self.add_buff(box_ids=[2001], skill_id=99910400, level=1, is_player=False, is_skill_set=False) # 클라디아 변신
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +96,7 @@ class CameraEffect03_5(trigger_api.Trigger):
 
 class CameraEffect03_6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -105,7 +106,7 @@ class CameraEffect03_6(trigger_api.Trigger):
 class CameraEffect03_7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
-        self.add_cinematic_talk(npc_id=11004612, msg='$52100205_QD__52100205__2$', align='left', illust_id='cladia_normal', duration=4000)
+        self.add_cinematic_talk(npc_id=11004612, msg='$52100205_QD__52100205__2$', align=Align.Left, illust_id='cladia_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -144,7 +145,7 @@ class 제시카_02(trigger_api.Trigger):
 
 class 제시카_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -163,7 +164,7 @@ class 제시카_04(trigger_api.Trigger):
 class 제시카_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
-        self.add_cinematic_talk(npc_id=11004575, msg='$52100205_QD__52100205__3$', align='left', illust_id='Jessica_normal', duration=4000)
+        self.add_cinematic_talk(npc_id=11004575, msg='$52100205_QD__52100205__3$', align=Align.Left, illust_id='Jessica_normal', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -181,10 +182,10 @@ class 제시카_06(trigger_api.Trigger):
 
 class 제시카_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
 
 initial_state = start

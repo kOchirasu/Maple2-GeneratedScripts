@@ -7,19 +7,19 @@ from dungeon_common.checkusercount import *
 
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # UI
-        self.set_ladder(trigger_ids=[510], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[511], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[512], visible=False, enable=False) # LadderEnterance
-        self.set_ladder(trigger_ids=[513], visible=False, enable=False) # LadderEnterance
-        self.set_mesh(trigger_ids=[3000,3001], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Barrier
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109], visible=False, start_delay=0, interval=0, fade=0) # 1stBridge
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=False, start_delay=0, interval=0, fade=0) # 2ndBridge
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309], visible=False, start_delay=0, interval=0, fade=0) # 3rdBridge
-        self.set_mesh(trigger_ids=[3110], visible=True, start_delay=0, interval=0, fade=0) # 1stBridgeBarrier
-        self.set_mesh(trigger_ids=[3210], visible=True, start_delay=0, interval=0, fade=0) # 2ndBridgeBarrier
-        self.set_mesh(trigger_ids=[3310], visible=True, start_delay=0, interval=0, fade=0) # 3rdBridgeBarrier
+        self.set_portal(portal_id=2)
+        self.set_effect(trigger_ids=[5000]) # UI
+        self.set_ladder(trigger_ids=[510]) # LadderEnterance
+        self.set_ladder(trigger_ids=[511]) # LadderEnterance
+        self.set_ladder(trigger_ids=[512]) # LadderEnterance
+        self.set_ladder(trigger_ids=[513]) # LadderEnterance
+        self.set_mesh(trigger_ids=[3000,3001], visible=True) # Invisible_Barrier
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109]) # 1stBridge
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209]) # 2ndBridge
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309]) # 3rdBridge
+        self.set_mesh(trigger_ids=[3110], visible=True) # 1stBridgeBarrier
+        self.set_mesh(trigger_ids=[3210], visible=True) # 2ndBridgeBarrier
+        self.set_mesh(trigger_ids=[3310], visible=True) # 3rdBridgeBarrier
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -30,9 +30,9 @@ class Setting(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10001044], state=1) # 2ndBridge
         self.set_interact_object(trigger_ids=[10001035], state=1) # 3rdBridge
         self.enable_spawn_point_pc(spawn_id=0, is_enable=True)
-        self.enable_spawn_point_pc(spawn_id=991, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=992, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=993, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=991)
+        self.enable_spawn_point_pc(spawn_id=992)
+        self.enable_spawn_point_pc(spawn_id=993)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -64,7 +64,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class CameraWalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[601,600], return_view=True)
+        self.select_camera_path(path_ids=[601,600])
         self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class CameraWalk01(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[511], visible=True, enable=True) # LadderEnterance
         self.set_ladder(trigger_ids=[512], visible=True, enable=True) # LadderEnterance
         self.set_ladder(trigger_ids=[513], visible=True, enable=True) # LadderEnterance
-        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0) # Invisible_Barrier
+        self.set_mesh(trigger_ids=[3000,3001]) # Invisible_Barrier
 
 
 class FirstBattle(trigger_api.Trigger):
@@ -93,11 +93,11 @@ class FirstBattle(trigger_api.Trigger):
 
 class FirstBridgeOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
         self.destroy_monster(spawn_ids=[901,902,903])
-        self.set_mesh(trigger_ids=[3110], visible=False, start_delay=0, interval=0, fade=0) # 1stBridgeBarrier
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109], visible=True, start_delay=0, interval=100, fade=10) # 1stBridge
+        self.set_mesh(trigger_ids=[3110]) # 1stBridgeBarrier
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109], visible=True, interval=100, fade=10.0) # 1stBridge
         self.set_user_value(trigger_id=101, key='BridgeOpen', value=1)
         self.set_user_value(trigger_id=102, key='BridgeOpen', value=1)
 
@@ -109,7 +109,7 @@ class FirstBridgeOn(trigger_api.Trigger):
 
 class SecondBattle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=0, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=0)
         self.enable_spawn_point_pc(spawn_id=991, is_enable=True)
         self.spawn_monster(spawn_ids=[904,905,906], auto_target=False)
 
@@ -120,11 +120,11 @@ class SecondBattle(trigger_api.Trigger):
 
 class SecondBridgeOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
         self.destroy_monster(spawn_ids=[904,905,906])
-        self.set_mesh(trigger_ids=[3210], visible=False, start_delay=0, interval=0, fade=0) # 2ndBridgeBarrier
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=True, start_delay=0, interval=100, fade=10) # 2ndBridge
+        self.set_mesh(trigger_ids=[3210]) # 2ndBridgeBarrier
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=True, interval=100, fade=10.0) # 2ndBridge
         self.set_user_value(trigger_id=101, key='BridgeOpen', value=2)
         self.set_user_value(trigger_id=102, key='BridgeOpen', value=2)
         self.set_user_value(trigger_id=103, key='BridgeOpen', value=2)
@@ -139,7 +139,7 @@ class SecondBridgeOn(trigger_api.Trigger):
 
 class ThirdBattle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=991, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=991)
         self.enable_spawn_point_pc(spawn_id=993, is_enable=True)
         self.spawn_monster(spawn_ids=[907,908,909], auto_target=False)
 
@@ -150,11 +150,11 @@ class ThirdBattle(trigger_api.Trigger):
 
 class ThirdBridgeOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_agent(trigger_ids=[8004], visible=False)
-        self.set_agent(trigger_ids=[8005], visible=False)
+        self.set_agent(trigger_ids=[8004])
+        self.set_agent(trigger_ids=[8005])
         self.destroy_monster(spawn_ids=[907,908,909])
-        self.set_mesh(trigger_ids=[3310], visible=False, start_delay=0, interval=0, fade=0) # 3rdBridgeBarrier
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309], visible=True, start_delay=0, interval=100, fade=10) # 3rdBridge
+        self.set_mesh(trigger_ids=[3310]) # 3rdBridgeBarrier
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309], visible=True, interval=100, fade=10.0) # 3rdBridge
         self.set_user_value(trigger_id=101, key='BridgeOpen', value=3)
         self.set_user_value(trigger_id=102, key='BridgeOpen', value=3)
         self.set_user_value(trigger_id=103, key='BridgeOpen', value=3)
@@ -170,7 +170,7 @@ class ThirdBridgeOn(trigger_api.Trigger):
 
 class BossBattle01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=993, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=993)
         self.enable_spawn_point_pc(spawn_id=992, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

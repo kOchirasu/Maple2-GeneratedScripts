@@ -1,11 +1,12 @@
 """ trigger/52000117_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 # 트라이아 청사 : 60100015
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True) # 조디
+        self.spawn_monster(spawn_ids=[101]) # 조디
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[60100015], quest_states=[1]):
@@ -39,7 +40,7 @@ class fadein(trigger_api.Trigger):
 class jordyidle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Bore_A')
-        self.add_cinematic_talk(npc_id=11003166, msg='$52000117_QD__MAIN__0$', duration=3000, illust_id='Jordy_normal', align='Left')
+        self.add_cinematic_talk(npc_id=11003166, msg='$52000117_QD__MAIN__0$', duration=3000, illust_id='Jordy_normal', align=Align.Left)
         self.add_cinematic_talk(npc_id=11003166, msg='$52000117_QD__MAIN__1$', duration=3000)
         self.set_scene_skip(state=end, action='exit')
 
@@ -64,8 +65,8 @@ class wow(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Emotion_Angry_A'])
         self.add_cinematic_talk(npc_id=0, msg='$52000117_QD__MAIN__15$', duration=2000)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=3000)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=3000.0)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=3000.0)
         self.add_balloon_talk(spawn_id=101, msg='$52000117_QD__MAIN__5$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,7 +89,7 @@ class scene_02(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4001], return_view=False) # 대화 모습
         self.add_cinematic_talk(npc_id=11003166, msg='$52000117_QD__MAIN__7$', duration=3000)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Talk_A')
-        self.set_pc_emotion_loop(sequence_name='Emotion_Dance_S', duration=3000)
+        self.set_pc_emotion_loop(sequence_name='Emotion_Dance_S', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -194,7 +195,7 @@ class endmessage(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$52000117_QD__MAIN__14$', arg3='3000', arg4='0')
-        self.move_user(map_id=52000118, portal_id=0)
+        self.move_user(map_id=52000118)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

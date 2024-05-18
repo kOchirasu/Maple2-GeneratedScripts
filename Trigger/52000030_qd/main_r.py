@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[601])
+        self.set_effect(trigger_ids=[602])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101], job_code=50):
@@ -17,7 +17,7 @@ class 연출시작(trigger_api.Trigger):
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(file_name='Nutaman_intro.swf', movie_id=1)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014], auto_target=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -29,8 +29,8 @@ class 연출시작(trigger_api.Trigger):
 
 class 이슈라대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11001230, script='$52000030_QD__MAIN_R__0$', time=3, arg5=0)
-        self.set_dialogue(type=2, spawn_id=11000015, script='$52000030_QD__MAIN_R__1$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001230, script='$52000030_QD__MAIN_R__0$', time=3)
+        self.set_dialogue(type=2, spawn_id=11000015, script='$52000030_QD__MAIN_R__1$', time=3)
         self.set_skip(state=NPC_단체_이동)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +95,7 @@ class 이슈라대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_dialogue(type=2, spawn_id=11000015, script='$52000030_QD__MAIN_R__2$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000015, script='$52000030_QD__MAIN_R__2$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -119,11 +119,11 @@ class 이슈라대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_dialogue(type=2, spawn_id=11001244, script='$52000030_QD__MAIN_R__3$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11001244, script='$52000030_QD__MAIN_R__3$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
-            self.move_user(map_id=52000031, portal_id=0)
+            self.move_user(map_id=52000031)
             return 종료(self.ctx)
 
     def on_exit(self) -> None:

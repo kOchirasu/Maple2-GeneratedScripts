@@ -1,5 +1,6 @@
 """ trigger/51000006_dg/51000006_main.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class 입장(trigger_api.Trigger):
@@ -8,19 +9,19 @@ class 입장(trigger_api.Trigger):
         # 101: 게임상대 - 11004827 NPC 시간여행자 블랙빈
         self.spawn_monster(spawn_ids=[101], auto_target=False)
         # 이펙트 601: 게임상대 - 11004718 블랙빈 머리 위 스포트라이트 이펙트
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         # 이펙트 602: PC 머리 위 스포트라이트 이펙트
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[602])
         # 이펙트 603: 게임상대 - 11004718 블랙빈 머리 위 불꽃놀이 이펙트
-        self.set_effect(trigger_ids=[603], visible=False)
+        self.set_effect(trigger_ids=[603])
         # 이펙트 604: PC 머리 위 불꽃놀이 이펙트
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[604])
         # 이펙트 610: PC 머리 위 내리는 비 이펙트
-        self.set_effect(trigger_ids=[610], visible=False)
-        self.set_actor(trigger_id=611, visible=False, initial_sequence='0', arg4=False, arg5=False) # 미니빈01끄기
-        self.set_actor(trigger_id=612, visible=False, initial_sequence='0', arg4=False, arg5=False) # 미니빈02끄기
-        self.set_actor(trigger_id=613, visible=False, initial_sequence='0', arg4=False, arg5=False) # 미니빈03끄기
-        self.set_actor(trigger_id=614, visible=False, initial_sequence='0', arg4=False, arg5=False) # 미니빈04끄기
+        self.set_effect(trigger_ids=[610])
+        self.set_actor(trigger_id=611, initial_sequence='0') # 미니빈01끄기
+        self.set_actor(trigger_id=612, initial_sequence='0') # 미니빈02끄기
+        self.set_actor(trigger_id=613, initial_sequence='0') # 미니빈03끄기
+        self.set_actor(trigger_id=614, initial_sequence='0') # 미니빈04끄기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -35,7 +36,7 @@ class 인트로(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8000], return_view=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=1000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=1000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -74,7 +75,7 @@ class 인트로02(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         # 대사내용03 : 네가 다섯 번 지면 놀이는 끝!\n오래 버틸수록 높은 점수를 받지!
         self.set_cinematic_ui(type=3, script='$51000006_DG__51000006_MAIN__2$')
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Event_Eat_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Event_Eat_A', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3100):
@@ -122,11 +123,11 @@ class 게임시작_대기(trigger_api.Trigger):
         # 로그를 남기기 위한 행 : arg5가 트리거 전체에서 유니크한 값이 들어가야 하며, arg1은 코드에 남고 있지 않음(서바이벌일 때만 서바이벌 로그 불러옴)
         self.write_log(log_name='ThreeTwoOne_log', trigger_id=9000, event='char_event', sub_event='BlackbeanThreeTwoOnegamestart')
         # lifeCount : 최대 사망 횟수
-        self.arcade_three_two_one3(type='StartGame', life_count=5, init_score=10000)
+        self.arcade_three_two_one3_start_game(life_count=5, init_score=10000)
         # # 셋둘하나는 1라운드 내에서 무한루핑이므로 라운드 ui를 표시하지 않아 이 행을 넣지 않음
         self.set_event_ui(type=0, arg2='1,1', arg4='120')
         self.set_user_value(trigger_id=4001, key='Fail', value=1) # Fail Event on
-        self.add_balloon_talk(spawn_id=0, msg='$51000006_DG__51000006_MAIN__4$', duration=3000) # PC : 너한텐 안 져!
+        self.add_balloon_talk(msg='$51000006_DG__51000006_MAIN__4$', duration=3000) # PC : 너한텐 안 져!
         # 시작 효과음 / 레디-고! 들어간 버전 02100323
         self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_GetReadyGo_01')
 
@@ -138,20 +139,20 @@ class 게임시작_대기(trigger_api.Trigger):
 class 라운드준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 이펙트 601: 게임상대 - 11004718 블랙빈 머리 위 스포트라이트 이펙트 끄기
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         # 이펙트 602: PC 머리 위 스포트라이트 이펙트 끄기
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[602])
         # 이펙트 603: 게임상대 - 11004718 블랙빈 머리 위 불꽃놀이 이펙트
-        self.set_effect(trigger_ids=[603], visible=False)
+        self.set_effect(trigger_ids=[603])
         # 이펙트 604: PC 머리 위 불꽃놀이 이펙트
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[604])
         # 이펙트 610: PC 머리 위 내리는 비 이펙트
-        self.set_effect(trigger_ids=[610], visible=False)
-        self.set_actor(trigger_id=611, visible=False, initial_sequence='0', arg4=False, arg5=False) # 미니빈01끄기
-        self.set_actor(trigger_id=612, visible=False, initial_sequence='0', arg4=False, arg5=False) # 미니빈02끄기
-        self.set_actor(trigger_id=613, visible=False, initial_sequence='0', arg4=False, arg5=False) # 미니빈03끄기
-        self.set_actor(trigger_id=614, visible=False, initial_sequence='0', arg4=False, arg5=False) # 미니빈04끄기
-        self.set_pc_rotation(rotation=[0,0,0])
+        self.set_effect(trigger_ids=[610])
+        self.set_actor(trigger_id=611, initial_sequence='0') # 미니빈01끄기
+        self.set_actor(trigger_id=612, initial_sequence='0') # 미니빈02끄기
+        self.set_actor(trigger_id=613, initial_sequence='0') # 미니빈03끄기
+        self.set_actor(trigger_id=614, initial_sequence='0') # 미니빈04끄기
+        self.set_pc_rotation(rotation=Vector3(0,0,0))
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[9000]):
@@ -165,7 +166,7 @@ class 라운드시작(trigger_api.Trigger):
         # 26300736 가이드 텍스트 ON : [[icon:click]] 방향을 선택하세요.
         self.show_guide_summary(entity_id=1, text_id=26300736, duration=3000)
         # uiDuration : 게임 UI (화살표) 노출 시간
-        self.arcade_three_two_one3(type='StartRound', ui_duration=4, round=1)
+        self.arcade_three_two_one3_start_round(ui_duration=4, round=1)
         self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_ArrowPopup_01') # 화살표 Ui 팝업 효과음 02100325
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,19 +181,19 @@ class 라운드진행(trigger_api.Trigger):
         self.add_balloon_talk(spawn_id=101, msg='$51000006_DG__51000006_MAIN__5$', duration=1800) # 블랙빈 대사 : 빙글빙글~!
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return 좌로돌아01(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return 뒤로돌아02(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return 우로돌아03(self.ctx)
 
 
 class 좌로돌아01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.arcade_three_two_one3(type='ResultRound', result_direction=1)
+        self.arcade_three_two_one3_result_round(result_direction=1)
         # 블랙빈 왼쪽으로 돔 : 270도 = resultDirection 1
-        self.set_npc_rotation(spawn_id=101, rotation=270)
+        self.set_npc_rotation(spawn_id=101, rotation=270.0)
         # 블랙빈 도는 효과음 2500밀리초 02100326
         self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01')
 
@@ -203,9 +204,9 @@ class 좌로돌아01(trigger_api.Trigger):
 
 class 뒤로돌아02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.arcade_three_two_one3(type='ResultRound', result_direction=2)
+        self.arcade_three_two_one3_result_round(result_direction=2)
         # 블랙빈 뒤쪽으로 돔 : 180도 = resultDirection 2
-        self.set_npc_rotation(spawn_id=101, rotation=180)
+        self.set_npc_rotation(spawn_id=101, rotation=180.0)
         # 블랙빈 도는 효과음 2500밀리초 02100326
         self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01')
 
@@ -216,9 +217,9 @@ class 뒤로돌아02(trigger_api.Trigger):
 
 class 우로돌아03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.arcade_three_two_one3(type='ResultRound', result_direction=3)
+        self.arcade_three_two_one3_result_round(result_direction=3)
         # 블랙빈 오른쪽으로 돔 : 90도 = resultDirection 3
-        self.set_npc_rotation(spawn_id=101, rotation=90)
+        self.set_npc_rotation(spawn_id=101, rotation=90.0)
         # 블랙빈 도는 효과음 2500밀리초 02100326
         self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01')
 
@@ -230,15 +231,15 @@ class 우로돌아03(trigger_api.Trigger):
 class 결과연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.init_npc_rotation(spawn_ids=[101])
-        self.set_pc_rotation(rotation=[0,0,0])
+        self.set_pc_rotation(rotation=Vector3(0,0,0))
         # 이펙트 601: 게임상대 - 11004718 블랙빈 머리 위 스포트라이트 이펙트 끄기
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
         # 이펙트 602: PC 머리 위 스포트라이트 이펙트 끄기
-        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[602])
         # 이펙트 603: 게임상대 - 11004718 블랙빈 머리 위 불꽃놀이 이펙트
-        self.set_effect(trigger_ids=[603], visible=False)
+        self.set_effect(trigger_ids=[603])
         # 이펙트 604: PC 머리 위 불꽃놀이 이펙트
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[604])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ThreeTwoOneResult') >= 1:
@@ -246,7 +247,7 @@ class 결과연출(trigger_api.Trigger):
             # # 26300737 가이드 텍스트 ON : 승리
             self.show_guide_summary(entity_id=2, text_id=26300737, duration=3000)
             self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Dance_C_Ride', duration_tick=3300) # 블랙빈 돌아서서 고개숙이고 씩씩 3300
-            self.set_pc_emotion_loop(sequence_name='Emotion_Dance_E', duration=3300) # PC 신나서 댄스
+            self.set_pc_emotion_loop(sequence_name='Emotion_Dance_E', duration=3300.0) # PC 신나서 댄스
             self.set_effect(trigger_ids=[602], visible=True) # PC 머리 위 스포트라이트 이펙트
             # 이펙트 604: PC 머리 위 불꽃놀이 이펙트
             self.set_effect(trigger_ids=[604], visible=True)
@@ -276,7 +277,7 @@ class 결과연출(trigger_api.Trigger):
 
 class 결과정산(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.arcade_three_two_one3(type='ResultRound2', round=1)
+        self.arcade_three_two_one3_result_round2(round=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2300):
@@ -285,7 +286,7 @@ class 결과정산(trigger_api.Trigger):
 
 class 라운드결과(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.arcade_three_two_one3(type='ClearRound', round=1)
+        self.arcade_three_two_one3_clear_round(round=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -294,7 +295,7 @@ class 라운드결과(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.arcade_three_two_one3(type='EndGame')
+        self.arcade_three_two_one3_end_game()
         self.move_user(map_id=51000006, portal_id=44)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -304,7 +305,7 @@ class 연출종료(trigger_api.Trigger):
 
 class 진짜끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=8010, enable=True)
+        self.select_camera(trigger_id=8010)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Result_01') # 끝나는 효과음 02100329 셋둘하나 전용

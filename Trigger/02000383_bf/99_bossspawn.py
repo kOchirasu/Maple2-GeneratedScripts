@@ -11,13 +11,13 @@ class 시작대기중(trigger_api.Trigger):
 class 기본셋팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[999])
-        self.set_portal(portal_id=40, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3160,3161,3162,3163,3164], visible=True, start_delay=0, interval=0, fade=0) # Barrier
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212], visible=False, start_delay=0, interval=0, fade=0) # Bridge
-        self.set_mesh(trigger_ids=[5610,5611,5612], visible=True, start_delay=0, interval=0, fade=0) # BlueLight_BossStage
-        self.set_mesh_animation(trigger_ids=[5610,5611,5612], visible=True, start_delay=0, interval=0) # BlueLight_BossStage
-        self.set_effect(trigger_ids=[5010], visible=False) # Sound_PortalOn
-        self.set_effect(trigger_ids=[5600], visible=False) # Sound_IceMelt_BossStage
+        self.set_portal(portal_id=40)
+        self.set_mesh(trigger_ids=[3160,3161,3162,3163,3164], visible=True) # Barrier
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212]) # Bridge
+        self.set_mesh(trigger_ids=[5610,5611,5612], visible=True) # BlueLight_BossStage
+        self.set_mesh_animation(trigger_ids=[5610,5611,5612], visible=True) # BlueLight_BossStage
+        self.set_effect(trigger_ids=[5010]) # Sound_PortalOn
+        self.set_effect(trigger_ids=[5600]) # Sound_IceMelt_BossStage
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=170):
@@ -38,8 +38,8 @@ class BossDead(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[999])
         self.set_effect(trigger_ids=[5600], visible=True) # Sound_IceMelt_BossStage
-        self.set_mesh(trigger_ids=[5610,5611,5612], visible=False, start_delay=500, interval=0, fade=5) # BlueLight_BossStage
-        self.set_mesh_animation(trigger_ids=[5610,5611,5612], visible=False, start_delay=0, interval=0) # BlueLight_BossStage
+        self.set_mesh(trigger_ids=[5610,5611,5612], start_delay=500, fade=5.0) # BlueLight_BossStage
+        self.set_mesh_animation(trigger_ids=[5610,5611,5612]) # BlueLight_BossStage
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -48,8 +48,8 @@ class BossDead(trigger_api.Trigger):
 
 class BridgeApp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3160,3161,3162,3163,3164], visible=False, start_delay=0, interval=0, fade=0) # Barrier
-        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212], visible=True, start_delay=0, interval=100, fade=2) # Bridge
+        self.set_mesh(trigger_ids=[3160,3161,3162,3163,3164]) # Barrier
+        self.set_mesh(trigger_ids=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212], visible=True, interval=100, fade=2.0) # Bridge
         self.set_effect(trigger_ids=[5010], visible=True) # Sound_PortalOn
 
     def on_tick(self) -> trigger_api.Trigger:

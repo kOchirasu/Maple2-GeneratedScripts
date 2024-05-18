@@ -19,9 +19,9 @@ class 대기(trigger_api.Trigger):
 class 말준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(box_ids=[199], skill_id=70000107, level=1, is_player=False, is_skill_set=False)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[1101,1102,1103,1104,1104], auto_target=False)
-        self.set_dialogue(type=1, spawn_id=1101, script='$02000401_BF__FACTION_02__0$', time=5, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1101, script='$02000401_BF__FACTION_02__0$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -68,7 +68,7 @@ class 종료체크(trigger_api.Trigger):
         self.remove_buff(box_id=199, skill_id=70000107)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

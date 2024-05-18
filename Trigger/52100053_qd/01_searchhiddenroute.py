@@ -4,9 +4,9 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # PortalOn
+        self.set_effect(trigger_ids=[5000]) # PortalOn
         self.set_user_value(key='PortalOn', value=0)
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=10)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -26,15 +26,15 @@ class PickRandomRoute(trigger_api.Trigger):
         self.show_guide_summary(entity_id=20039701, text_id=20039701, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return BehindFireplace(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return BehindBookcase(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FindKeyFromFabricbox(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FindKeyFromCandle(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FindKeyFromDocument(self.ctx)
 
 
@@ -98,7 +98,7 @@ class FindKeyFromDocument(trigger_api.Trigger):
 class PortalOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5000], visible=True) # PortalOn
-        self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=10, visible=True, enable=True)
 
 
 initial_state = Wait

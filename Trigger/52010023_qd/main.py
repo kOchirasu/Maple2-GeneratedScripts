@@ -5,7 +5,7 @@ import trigger_api
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
-        self.set_effect(trigger_ids=[7001], visible=False)
+        self.set_effect(trigger_ids=[7001])
         self.spawn_monster(spawn_ids=[101])
 
     def on_tick(self) -> trigger_api.Trigger:

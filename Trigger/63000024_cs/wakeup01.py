@@ -5,28 +5,28 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='Guide')
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5002], visible=False) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # 목표 바닥 지점01 NPC
-        self.set_effect(trigger_ids=[5102], visible=False) # 목표 바닥 지점03 포탈
-        self.set_effect(trigger_ids=[5200], visible=False) # 화살표01 NPC
-        self.set_effect(trigger_ids=[5300], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5301], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5302], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5303], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5304], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5500], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5501], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5502], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5503], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5504], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5505], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5506], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[6000], visible=False) # Voice_Tinchai_00001674
-        self.set_effect(trigger_ids=[6001], visible=False) # Voice_Tinchai_00001714
-        self.set_effect(trigger_ids=[6002], visible=False) # Voice_Tinchai_00001675
+        self.set_portal(portal_id=1)
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5002]) # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5100]) # 목표 바닥 지점01 NPC
+        self.set_effect(trigger_ids=[5102]) # 목표 바닥 지점03 포탈
+        self.set_effect(trigger_ids=[5200]) # 화살표01 NPC
+        self.set_effect(trigger_ids=[5300]) # 경로 안내
+        self.set_effect(trigger_ids=[5301]) # 경로 안내
+        self.set_effect(trigger_ids=[5302]) # 경로 안내
+        self.set_effect(trigger_ids=[5303]) # 경로 안내
+        self.set_effect(trigger_ids=[5304]) # 경로 안내
+        self.set_effect(trigger_ids=[5500]) # 경로 안내
+        self.set_effect(trigger_ids=[5501]) # 경로 안내
+        self.set_effect(trigger_ids=[5502]) # 경로 안내
+        self.set_effect(trigger_ids=[5503]) # 경로 안내
+        self.set_effect(trigger_ids=[5504]) # 경로 안내
+        self.set_effect(trigger_ids=[5505]) # 경로 안내
+        self.set_effect(trigger_ids=[5506]) # 경로 안내
+        self.set_effect(trigger_ids=[6000]) # Voice_Tinchai_00001674
+        self.set_effect(trigger_ids=[6001]) # Voice_Tinchai_00001714
+        self.set_effect(trigger_ids=[6002]) # Voice_Tinchai_00001675
         self.spawn_monster(spawn_ids=[101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -107,7 +107,7 @@ class QuestOnGoing04(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
         self.destroy_monster(spawn_ids=[101])
         self.spawn_monster(spawn_ids=[103], auto_target=False)
-        self.set_portal(portal_id=1, visible=True, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1, visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -117,7 +117,7 @@ class QuestOnGoing04(trigger_api.Trigger):
 # 최초 입장
 class LodingDelay01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=500, enable=True)
+        self.select_camera(trigger_id=500)
         self.set_scene_skip(state=TinChaiTalk04_CSkip, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -127,7 +127,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 class PCDownIdle01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Down_Idle_D', duration=9000)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_D', duration=9000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -156,7 +156,7 @@ class LookAround01(trigger_api.Trigger):
 
 class LookAround02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=18000)
+        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=18000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -176,7 +176,7 @@ class LookAround03(trigger_api.Trigger):
 
 class LookAround04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=510, enable=True)
+        self.select_camera(trigger_id=510)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_105')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -196,7 +196,7 @@ class LookAround05(trigger_api.Trigger):
 
 class LookAround06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=511, enable=True)
+        self.select_camera(trigger_id=511)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -205,7 +205,7 @@ class LookAround06(trigger_api.Trigger):
 
 class LookAround07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_102')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -299,16 +299,16 @@ class MeetTinChai01(trigger_api.Trigger):
 
 class MeetTinChai02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5000]) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5001]) # 화살표 안내 사운드 이펙트
         self.set_effect(trigger_ids=[5002], visible=True) # 미션 완료 사운드 이펙트
-        self.set_effect(trigger_ids=[5100], visible=False) # 목표 바닥 지점01 NPC
-        self.set_effect(trigger_ids=[5200], visible=False) # 화살표01 NPC
-        self.set_effect(trigger_ids=[5300], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5301], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5302], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5303], visible=False) # 경로 안내
-        self.set_effect(trigger_ids=[5304], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5100]) # 목표 바닥 지점01 NPC
+        self.set_effect(trigger_ids=[5200]) # 화살표01 NPC
+        self.set_effect(trigger_ids=[5300]) # 경로 안내
+        self.set_effect(trigger_ids=[5301]) # 경로 안내
+        self.set_effect(trigger_ids=[5302]) # 경로 안내
+        self.set_effect(trigger_ids=[5303]) # 경로 안내
+        self.set_effect(trigger_ids=[5304]) # 경로 안내
         self.hide_guide_summary(entity_id=10030010)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -402,7 +402,7 @@ class QuestStart03(trigger_api.Trigger):
 
 class QuestStart04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=1, visible=True, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=1, visible=True)
         self.destroy_monster(spawn_ids=[102])
         self.spawn_monster(spawn_ids=[103], auto_target=False)
 
@@ -414,7 +414,7 @@ class QuestStart04(trigger_api.Trigger):
 class TimeToLeave01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_103')
-        self.set_dialogue(type=1, spawn_id=103, script='$63000024_CS__WAKEUP01__4$', time=4, arg5=0)
+        self.set_dialogue(type=1, spawn_id=103, script='$63000024_CS__WAKEUP01__4$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):

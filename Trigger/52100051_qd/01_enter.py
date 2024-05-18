@@ -7,20 +7,20 @@ from dungeon_common.checkusercount import *
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0) # Invisible_TireSpawn
-        self.set_mesh(trigger_ids=[3002,3003,3004,3006,3007,3008], visible=False, start_delay=0, interval=0, fade=0) # Invisible_MobSpawn
-        self.set_mesh(trigger_ids=[3005,3008], visible=True, start_delay=0, interval=0, fade=0) # Invisible_BehindBarrier
+        self.set_mesh(trigger_ids=[3000,3001]) # Invisible_TireSpawn
+        self.set_mesh(trigger_ids=[3002,3003,3004,3006,3007,3008]) # Invisible_MobSpawn
+        self.set_mesh(trigger_ids=[3005,3008], visible=True) # Invisible_BehindBarrier
         # Invisible_BarrierGrating
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3100], visible=True)
         self.destroy_monster(spawn_ids=[102,202]) # Npc_Battle
         self.destroy_monster(spawn_ids=[300,301]) # TirePendulum
         self.destroy_monster(spawn_ids=[900,901,910,911,912,913,920,921,922]) # TirePendulum
         self.spawn_monster(spawn_ids=[101,201], auto_target=False) # Npc_Actor
-        self.set_mesh(trigger_ids=[3202,3203], visible=True, start_delay=0, interval=0, fade=0) # Grating_Top
-        self.set_mesh(trigger_ids=[3200,3201], visible=False, start_delay=0, interval=0, fade=0) # Grating_Opened
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303], visible=True, start_delay=0, interval=0, fade=0) # Grating_Closed
-        self.set_breakable(trigger_ids=[4000,4001,4002,4003], enable=False) # Grating
-        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003], visible=False) # Grating
+        self.set_mesh(trigger_ids=[3202,3203], visible=True) # Grating_Top
+        self.set_mesh(trigger_ids=[3200,3201]) # Grating_Opened
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303], visible=True) # Grating_Closed
+        self.set_breakable(trigger_ids=[4000,4001,4002,4003]) # Grating
+        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003]) # Grating
         self.set_interact_object(trigger_ids=[10002078], state=0) # Lever
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class Wait(trigger_api.Trigger):
 
 class LoadingDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[300,301], auto_target=True) # TirePendulum
+        self.spawn_monster(spawn_ids=[300,301]) # TirePendulum
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -48,7 +48,7 @@ class NpcTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000.0)
         self.set_dialogue(type=2, spawn_id=11001592, script='$52100051_QD__01_ENTER__0$', time=4) # 렌듀비앙
         self.set_skip(state=NpcTalk01Skip)
 
@@ -68,7 +68,7 @@ class NpcTalk01Skip(trigger_api.Trigger):
 
 class NpcTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Talk_A', duration=3000)
+        self.set_npc_emotion_loop(spawn_id=201, sequence_name='Talk_A', duration=3000.0)
         self.set_dialogue(type=2, spawn_id=11001597, script='$52100051_QD__01_ENTER__1$', time=5) # 유페리아
         self.set_skip(state=NpcTalk02Skip)
 
@@ -90,8 +90,8 @@ class NpcTalk02Skip(trigger_api.Trigger):
 
 class NpcMonologue01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=101, script='$52100051_QD__01_ENTER__2$', time=2, arg5=0) # 렌듀비앙
-        self.set_dialogue(type=1, spawn_id=201, script='$52100051_QD__01_ENTER__3$', time=2, arg5=0) # 유페리아
+        self.set_dialogue(type=1, spawn_id=101, script='$52100051_QD__01_ENTER__2$', time=2) # 렌듀비앙
+        self.set_dialogue(type=1, spawn_id=201, script='$52100051_QD__01_ENTER__3$', time=2) # 유페리아
         self.set_user_value(trigger_id=2, key='MobSpawn', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,7 +113,7 @@ class NpcChange01(trigger_api.Trigger):
 
 class NpcMonologue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=102, script='$52100051_QD__01_ENTER__4$', time=3, arg5=0) # 렌듀비앙
+        self.set_dialogue(type=1, spawn_id=102, script='$52100051_QD__01_ENTER__4$', time=3) # 렌듀비앙
         self.set_dialogue(type=1, spawn_id=202, script='$52100051_QD__01_ENTER__5$', time=2, arg5=1) # 유페리아
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=20039501, text_id=20039501, duration=4000) # 가이드 : 레버 당기기
@@ -128,7 +128,7 @@ class GratingOpen01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=20039502, text_id=20039502, duration=4000) # 가이드 : 지하도 안쪽으로 이동하기
-        self.set_mesh(trigger_ids=[3300,3301,3302,3303], visible=False, start_delay=500, interval=0, fade=0) # Grating_Closed
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303], start_delay=500) # Grating_Closed
         self.set_breakable(trigger_ids=[4000,4001,4002,4003], enable=True) # Grating
         self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003], visible=True) # Grating
 
@@ -141,8 +141,8 @@ class GratingOpen02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[910], auto_target=False)
         # Invisible_BarrierGrating
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3200,3201], visible=True, start_delay=0, interval=0, fade=0) # Grating_Opened
+        self.set_mesh(trigger_ids=[3100])
+        self.set_mesh(trigger_ids=[3200,3201], visible=True) # Grating_Opened
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -151,8 +151,8 @@ class GratingOpen02(trigger_api.Trigger):
 
 class GratingOpen03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4000,4001,4002,4003], enable=False) # Grating
-        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003], visible=False) # Grating
+        self.set_breakable(trigger_ids=[4000,4001,4002,4003]) # Grating
+        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003]) # Grating
         self.spawn_monster(spawn_ids=[911,912,913], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

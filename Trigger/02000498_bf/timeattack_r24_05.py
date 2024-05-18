@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 class 몹스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dark_stream(type='SpawnMonster', spawn_ids=[124005], score=32000)
+        self.dark_stream_spawn_monster(spawn_ids=[124005], score=32000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[124099]):

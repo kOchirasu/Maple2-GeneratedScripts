@@ -1,5 +1,6 @@
 """ trigger/52000193_qd/52000193.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
@@ -51,7 +52,7 @@ class CameraEffect02_02(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=1)
@@ -64,7 +65,7 @@ class CameraEffect03(trigger_api.Trigger):
 class CameraEffect03_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4001,4002], return_view=False)
-        self.show_caption(type='VerticalCaption', title='$52000193_QD__52000193__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000193_QD__52000193__1$', align=Align.Bottom | Align.Left, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -82,11 +83,11 @@ class CameraEffect03_4(trigger_api.Trigger):
 
 class 변신_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[201])
         self.visible_my_pc(is_visible=True) # 유저 투명 처리 품
-        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False, is_skill_set=True) # 에레브 변신
+        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'])
+        self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False) # 에레브 변신
         self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False, is_skill_set=False) # 에레브 변신
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,11 +98,11 @@ class 변신_01(trigger_api.Trigger):
 class 변신_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52000193, portal_id=5002)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.destroy_monster(spawn_ids=[201])
         self.visible_my_pc(is_visible=True) # 유저 투명 처리 품
-        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False, is_skill_set=True) # 에레브 변신
+        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'])
+        self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False) # 에레브 변신
         self.add_buff(box_ids=[2001], skill_id=99910402, level=1, is_player=False, is_skill_set=False) # 에레브 변신
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -111,8 +112,8 @@ class 변신_02(trigger_api.Trigger):
 
 class CameraEffect03_6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -131,7 +132,7 @@ class CameraEffect03_8(trigger_api.Trigger):
 
 class 이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=2000065, portal_id=0)
+        self.move_user(map_id=2000065)
 
 
 initial_state = start

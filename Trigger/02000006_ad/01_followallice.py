@@ -5,15 +5,15 @@ import trigger_api
 class 대기00(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[51,52,53,54])
-        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118], visible=False)
-        self.set_effect(trigger_ids=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218], visible=False)
-        self.set_ladder(trigger_ids=[151], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[152], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[153], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[154], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[155], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[156], visible=False, enable=False)
-        self.set_effect(trigger_ids=[219,220,221,222,223,224], visible=False)
+        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118])
+        self.set_effect(trigger_ids=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218])
+        self.set_ladder(trigger_ids=[151])
+        self.set_ladder(trigger_ids=[152])
+        self.set_ladder(trigger_ids=[153])
+        self.set_ladder(trigger_ids=[154])
+        self.set_ladder(trigger_ids=[155])
+        self.set_ladder(trigger_ids=[156])
+        self.set_effect(trigger_ids=[219,220,221,222,223,224])
         self.set_interact_object(trigger_ids=[10000449], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +23,7 @@ class 대기00(trigger_api.Trigger):
 
 class 대기01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[51], auto_target=True)
+        self.spawn_monster(spawn_ids=[51])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[51]):
@@ -96,9 +96,9 @@ class 발판생성05(trigger_api.Trigger):
 
 class 대기02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[52], auto_target=True)
-        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118], visible=False)
-        self.set_effect(trigger_ids=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218], visible=False)
+        self.spawn_monster(spawn_ids=[52])
+        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118])
+        self.set_effect(trigger_ids=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218])
         self.set_timer(timer_id='2', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -198,9 +198,9 @@ class 발판생성13(trigger_api.Trigger):
 
 class 대기03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[53], auto_target=True)
-        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118], visible=False)
-        self.set_effect(trigger_ids=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218], visible=False)
+        self.spawn_monster(spawn_ids=[53])
+        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118])
+        self.set_effect(trigger_ids=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218])
         self.set_timer(timer_id='2', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -267,9 +267,9 @@ class 발판생성18(trigger_api.Trigger):
 
 class 대기04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[54], auto_target=True)
-        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118], visible=False)
-        self.set_effect(trigger_ids=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218], visible=False)
+        self.spawn_monster(spawn_ids=[54])
+        self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118])
+        self.set_effect(trigger_ids=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218])
         self.set_timer(timer_id='2', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:

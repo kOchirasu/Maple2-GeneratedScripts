@@ -8,7 +8,7 @@ import trigger_api
 """
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5004], visible=False)
+        self.set_effect(trigger_ids=[5004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[10003102], quest_states=[1]):
@@ -27,8 +27,8 @@ class Ready(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user(map_id=52010027, portal_id=6007)
-        self.spawn_monster(spawn_ids=[803], auto_target=True)
-        self.set_npc_emotion_loop(spawn_id=803, sequence_name='Stun_A', duration=160000000)
+        self.spawn_monster(spawn_ids=[803])
+        self.set_npc_emotion_loop(spawn_id=803, sequence_name='Stun_A', duration=160000000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -46,7 +46,7 @@ class 엔피씨와말을걸면(trigger_api.Trigger):
 
 class 보스몬스터는소멸준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=완료조건, action='exit')
         self.add_cinematic_talk(npc_id=11003469, msg='$52010027_QD__MAIN_QUEST10003102__0$', duration=4000)
         self.add_cinematic_talk(npc_id=11003469, msg='$52010027_QD__MAIN_QUEST10003102__1$', duration=3000)
@@ -61,7 +61,7 @@ class 보스몬스터는소멸준비01(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4014], return_view=False)
         self.add_cinematic_talk(npc_id=0, msg='$52010027_QD__MAIN_QUEST10003102__2$', duration=3000)
         self.add_cinematic_talk(npc_id=0, msg='$52010027_QD__MAIN_QUEST10003102__3$', duration=3000)
-        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=10000)
+        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=10000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -114,7 +114,7 @@ class 전투종료01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

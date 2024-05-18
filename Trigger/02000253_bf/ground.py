@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[701], visible=False) # 벨라 음성
-        self.set_effect(trigger_ids=[702], visible=False) # 벨라 음성
+        self.set_effect(trigger_ids=[701]) # 벨라 음성
+        self.set_effect(trigger_ids=[702]) # 벨라 음성
         self.set_mesh(trigger_ids=[107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

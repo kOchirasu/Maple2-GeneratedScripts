@@ -21,7 +21,7 @@ class 카메라연출01(trigger_api.Trigger):
 
 class 카메라연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[3000,3001,3002,3003], return_view=True)
+        self.select_camera_path(path_ids=[3000,3001,3002,3003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=15000):

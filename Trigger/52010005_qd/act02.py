@@ -28,7 +28,7 @@ class Q2_미카등장01(trigger_api.Trigger):
 class Q2_딜레이01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='11', seconds=2)
-        self.select_camera(trigger_id=3001, enable=True)
+        self.select_camera(trigger_id=3001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 

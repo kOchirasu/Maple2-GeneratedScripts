@@ -8,9 +8,9 @@ import trigger_api
 """
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
-        self.set_effect(trigger_ids=[5003], visible=False)
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
+        self.set_effect(trigger_ids=[5003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[30000334], quest_states=[1]):
@@ -34,7 +34,7 @@ class 연출시작(trigger_api.Trigger):
 
 class 유저걸어감(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user_path(patrol_name='MS2PatrolData_3001')
         self.add_cinematic_talk(npc_id=0, msg='천공의 심장을 손에 넣었으니 티어스 코어를 완벽히 다시 만들 순 없을거야.', duration=3000)
         self.add_cinematic_talk(npc_id=0, msg='지금쯤 수호군은 도착했을까...', duration=3000)
@@ -97,7 +97,7 @@ class 잠시암전(trigger_api.Trigger):
 
 class 크란츠습격전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=5, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -129,11 +129,11 @@ class 크란츠습격01(trigger_api.Trigger):
 
 class 크란츠습격02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=300, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=300, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_effect(trigger_ids=[5006], visible=True)
         self.select_camera_path(path_ids=[4005], return_view=False)
-        self.set_pc_emotion_loop(sequence_name='Stun_A', duration=20000)
+        self.set_pc_emotion_loop(sequence_name='Stun_A', duration=20000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -193,7 +193,7 @@ class 크란츠습격03_03(trigger_api.Trigger):
 class 크란츠습격04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_effect(trigger_ids=[5006], visible=False)
+        self.set_effect(trigger_ids=[5006])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -211,7 +211,7 @@ class 크란츠습격04_01(trigger_api.Trigger):
 
 class 크란츠습격05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolation_time=0.5)
         self.destroy_monster(spawn_ids=[106])
         self.set_achievement(trigger_id=2001, type='trigger', achieve='AttackSomeone')

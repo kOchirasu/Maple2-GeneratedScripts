@@ -9,7 +9,7 @@ class DungeonStart(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[101], auto_target=False)
         self.spawn_monster(spawn_ids=[221,222,223,224,225,226,227,228], auto_target=False)
         self.spawn_monster(spawn_ids=[230,231,232,233], auto_target=False)
-        self.set_mesh(trigger_ids=[301], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[301])
         self.move_npc(spawn_id=230, patrol_name='MS2PatrolData0')
         self.move_npc(spawn_id=231, patrol_name='MS2PatrolData1')
         self.move_npc(spawn_id=232, patrol_name='MS2PatrolData11')
@@ -59,11 +59,11 @@ class Dialogue01Skip(trigger_api.Trigger):
 
 class SwitchRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return switch01(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return switch02(self.ctx)
-        if self.random_condition(weight=33):
+        if self.random_condition(weight=33.0):
             return switch03(self.ctx)
 
 

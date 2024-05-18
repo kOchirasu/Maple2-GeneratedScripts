@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[601])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -19,13 +19,13 @@ class 몬스터체크(trigger_api.Trigger):
 
 class 카운트랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 이동대기01(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 이동대기02(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 이동대기03(self.ctx)
-        if self.random_condition(weight=25):
+        if self.random_condition(weight=25.0):
             return 이동대기04(self.ctx)
 
 

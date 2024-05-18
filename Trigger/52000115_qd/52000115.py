@@ -1,5 +1,6 @@
 """ trigger/52000115_qd/52000115.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class START(trigger_api.Trigger):
@@ -9,10 +10,10 @@ class START(trigger_api.Trigger):
 
 class 대기01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[9001], visible=False)
+        self.set_effect(trigger_ids=[9001])
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=True, start_delay=0, interval=0, fade=0) # 큐브하나씩부셔지는연출
-        self.set_breakable(trigger_ids=[3000], enable=False)
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=True) # 큐브하나씩부셔지는연출
+        self.set_breakable(trigger_ids=[3000])
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +24,7 @@ class 대기01(trigger_api.Trigger):
 class 대기02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='exit')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.spawn_monster(spawn_ids=[200], auto_target=False) # 검은마법사등장
         self.select_camera_path(path_ids=[2000,2001], return_view=False)
@@ -166,10 +167,10 @@ class camera12(trigger_api.Trigger):
 
 class camera13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
         self.select_camera_path(path_ids=[2024,2025], return_view=False)
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], visible=False, start_delay=0, interval=500, fade=1000) # 큐브하나씩부셔지는연출
-        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=False, start_delay=0, interval=800, fade=1000) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], interval=500, fade=1000.0) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], interval=800, fade=1000.0) # 큐브하나씩부셔지는연출
         self.set_breakable(trigger_ids=[3000], enable=True)
         self.spawn_monster(spawn_ids=[204], auto_target=False) # 검은마법사등장
 
@@ -180,8 +181,8 @@ class camera13(trigger_api.Trigger):
 
 class camera14b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], visible=True, start_delay=0, interval=500, fade=1000) # 큐브하나씩부셔지는연출
-        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=True, start_delay=0, interval=800, fade=1000) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], visible=True, interval=500, fade=1000.0) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=True, interval=800, fade=1000.0) # 큐브하나씩부셔지는연출
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -190,8 +191,8 @@ class camera14b(trigger_api.Trigger):
 
 class camera14c(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], visible=False, start_delay=0, interval=500, fade=1000) # 큐브하나씩부셔지는연출
-        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=False, start_delay=0, interval=800, fade=1000) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], interval=500, fade=1000.0) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], interval=800, fade=1000.0) # 큐브하나씩부셔지는연출
         self.select_camera_path(path_ids=[2026,2027], return_view=False)
         self.destroy_monster(spawn_ids=[204])
         self.spawn_monster(spawn_ids=[205], auto_target=False) # 검은마법사등장
@@ -203,8 +204,8 @@ class camera14c(trigger_api.Trigger):
 
 class camera15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], visible=True, start_delay=0, interval=500, fade=1000) # 큐브하나씩부셔지는연출
-        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=True, start_delay=0, interval=800, fade=1000) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], visible=True, interval=500, fade=1000.0) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=True, interval=800, fade=1000.0) # 큐브하나씩부셔지는연출
         self.select_camera_path(path_ids=[2028,2029,2030,2031], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -214,8 +215,8 @@ class camera15(trigger_api.Trigger):
 
 class camera16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], visible=False, start_delay=0, interval=500, fade=1000) # 큐브하나씩부셔지는연출
-        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], visible=False, start_delay=0, interval=800, fade=1000) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025], interval=500, fade=1000.0) # 큐브하나씩부셔지는연출
+        self.set_mesh(trigger_ids=[4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052], interval=800, fade=1000.0) # 큐브하나씩부셔지는연출
         self.select_camera_path(path_ids=[2032,2033], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -234,7 +235,7 @@ class camera17(trigger_api.Trigger):
 
 class camera18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11001811, msg='$52000115_QD__52000115__0$', duration=6000, align='center')
+        self.add_cinematic_talk(npc_id=11001811, msg='$52000115_QD__52000115__0$', duration=6000, align=Align.Center)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
@@ -292,7 +293,7 @@ class Quit01(trigger_api.Trigger):
 
 class 트라이아도서관01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52000115_QD__52000115__1$', desc='$52000115_QD__52000115__2$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=10000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000115_QD__52000115__1$', desc='$52000115_QD__52000115__2$', align=Align.Bottom | Align.Left, duration=10000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -306,7 +307,7 @@ class 트라이아도서관02(trigger_api.Trigger):
 
 class 버서커리스항구01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52000115_QD__52000115__3$', desc='$52000115_QD__52000115__4$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=10000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000115_QD__52000115__3$', desc='$52000115_QD__52000115__4$', align=Align.Bottom | Align.Left, duration=10000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

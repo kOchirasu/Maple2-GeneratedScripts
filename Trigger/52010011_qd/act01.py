@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
-        self.set_effect(trigger_ids=[5000], visible=False) # 이펙트
+        self.spawn_monster(spawn_ids=[101])
+        self.set_effect(trigger_ids=[5000]) # 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -41,8 +41,8 @@ class 시작(trigger_api.Trigger):
 
 class 진행(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(map_id=52010011, portal_id=2, box_id=0)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.move_user(map_id=52010011, portal_id=2)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -89,7 +89,7 @@ class 대사_02_테모로skip(trigger_api.Trigger):
 
 class 대사_03_PC(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52010011_QD__ACT01__2$', time=4)
+        self.set_dialogue(type=1, script='$52010011_QD__ACT01__2$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -136,7 +136,7 @@ class 대사_05_테모로skip(trigger_api.Trigger):
 
 class 대사_06_PC(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52010011_QD__ACT01__5$', time=4)
+        self.set_dialogue(type=1, script='$52010011_QD__ACT01__5$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -183,7 +183,7 @@ class 대사_08_테모로skip(trigger_api.Trigger):
 
 class 대사_09_PC(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52010011_QD__ACT01__8$', time=4)
+        self.set_dialogue(type=1, script='$52010011_QD__ACT01__8$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -230,7 +230,7 @@ class 대사_11_테모로skip(trigger_api.Trigger):
 
 class 대사_12_PC(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52010011_QD__ACT01__11$', time=5)
+        self.set_dialogue(type=1, script='$52010011_QD__ACT01__11$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -283,7 +283,7 @@ class 대사_14_PC(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_dialogue(type=1, spawn_id=0, script='$52010011_QD__ACT01__13$', time=3)
+        self.set_dialogue(type=1, script='$52010011_QD__ACT01__13$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -322,7 +322,7 @@ class 대사_16_테모로(trigger_api.Trigger):
 class 대사_16_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.spawn_monster(spawn_ids=[1001], auto_target=True)
+        self.spawn_monster(spawn_ids=[1001])
         self.set_skip(state=대사_17_덴덴)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -351,7 +351,7 @@ class 대사_17_덴덴skip(trigger_api.Trigger):
 
 class 대사_18_PC(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52010011_QD__ACT01__17$', time=3)
+        self.set_dialogue(type=1, script='$52010011_QD__ACT01__17$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -379,7 +379,7 @@ class 대사_19_덴덴skip(trigger_api.Trigger):
 
 class 대사_20_PC(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='$52010011_QD__ACT01__19$', time=4)
+        self.set_dialogue(type=1, script='$52010011_QD__ACT01__19$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

@@ -12,7 +12,7 @@ class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
         self.spawn_monster(spawn_ids=[1002,1003,1004,1006], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

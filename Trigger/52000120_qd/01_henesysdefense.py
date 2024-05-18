@@ -1,10 +1,11 @@
 """ trigger/52000120_qd/01_henesysdefense.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.destroy_monster(spawn_ids=[101,102,201,202,203,204,290,210,211,212,213,214,215,220,221,222,223,224,225,240,241,242,243,244,245]) # NPC
         self.destroy_monster(spawn_ids=[300,301,302,303,304,305,306,307,308,309,310,401,402,403,404,405,406,407,408,409,410,500,501,502,503,504,505,506,507,508,509,510,601,602,603,604]) # Archer
         self.destroy_monster(spawn_ids=[901,902,903,904,905,906,907,908,909,910,911,912,913,914,921,922,923,924,925,926,927,928]) # Battle_Mob
@@ -12,21 +13,21 @@ class Wait(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[701,702,703,704]) # Cannon
         self.destroy_monster(spawn_ids=[710,711,712,713]) # CannonForPC
         self.spawn_monster(spawn_ids=[110,111,112,120,121,122,123,124,125,126,130,131,132,133,134,135,136,140,141,142,143,144,145,146,147,150,151,152,153,154,155,156,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,185,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,113,114,115,116,117,118], auto_target=False) # MobActor
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True, start_delay=0, interval=0, fade=0) # GratingDown
-        # self.set_mesh(trigger_ids=[3110,3111,3112], visible=False, start_delay=0, interval=0, fade=0) # GratingUp 사용 안함
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0) # BridgeMesh_forTOK
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # BridgeBarrier_Invisible
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True) # GratingDown
+        # self.set_mesh(trigger_ids=[3110,3111,3112]) # GratingUp 사용 안함
+        self.set_mesh(trigger_ids=[3000], visible=True) # BridgeMesh_forTOK
+        self.set_mesh(trigger_ids=[3001], visible=True) # BridgeBarrier_Invisible
         self.set_actor(trigger_id=4500, visible=True, initial_sequence='Interaction_bridge_A01_on') # Bridge
-        self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005], visible=False)
-        self.set_cube(trigger_ids=[6000,6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], is_visible=False) # LiftUp_Bomb
-        self.set_local_camera(camera_id=10000, enable=False)
-        self.set_local_camera(camera_id=10001, enable=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
-        self.set_effect(trigger_ids=[5000], visible=False) # DarkCloud
-        self.set_effect(trigger_ids=[5001], visible=False) # DarkCloud
+        self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005])
+        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005])
+        self.set_cube(trigger_ids=[6000,6001,6002,6003,6004,6005,6006,6007,6008,6009,6010]) # LiftUp_Bomb
+        self.set_local_camera(camera_id=10000)
+        self.set_local_camera(camera_id=10001)
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
+        self.set_effect(trigger_ids=[5000]) # DarkCloud
+        self.set_effect(trigger_ids=[5001]) # DarkCloud
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001551], quest_states=[1]):
@@ -49,7 +50,7 @@ class LoadingDelay01(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[501,502,507,508], auto_target=False) # Archer_3rd
         self.spawn_monster(spawn_ids=[401,402,403,404,405,406,407,408,409,410], auto_target=False) # Archer_2nd
         self.spawn_monster(spawn_ids=[710,711,712,713], auto_target=False) # CannonForPC
-        self.select_camera(trigger_id=10, enable=True)
+        self.select_camera(trigger_id=10)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -62,7 +63,7 @@ class LoadingDelay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -73,7 +74,7 @@ class LeadersTalk_Manovich01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Talk_A')
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__0$', duration=5000, align='center', illust_id='Manovich_normal')
+        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__0$', duration=5000, align=Align.Center, illust_id='Manovich_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         # 씬스킵으로 바로 전투 시작
         # self.set_scene_skip(state=OskhalTalk04Skip, action='exit')
@@ -100,7 +101,7 @@ class LeadersTalk_Osckal01(trigger_api.Trigger):
         self.move_user_path(patrol_name='MS2PatrolData_1000')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_201')
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__1$', duration=4000, align='center', illust_id='Oskhal_normal')
+        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__1$', duration=4000, align=Align.Center, illust_id='Oskhal_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -111,8 +112,8 @@ class LeadersTalk_Osckal01(trigger_api.Trigger):
 class LeadersTalk_Osckal01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.select_camera(trigger_id=11, enable=True)
-        self.add_balloon_talk(spawn_id=0, msg='$52000120_QD__01_HENESYSDEFENSE__2$', duration=2000, delay_tick=1000)
+        self.select_camera(trigger_id=11)
+        self.add_balloon_talk(msg='$52000120_QD__01_HENESYSDEFENSE__2$', duration=2000, delay_tick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -150,7 +151,7 @@ class CameraChange01(trigger_api.Trigger):
 
 class CameraChange02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=12, enable=True) # PC 등뒤에서
+        self.select_camera(trigger_id=12) # PC 등뒤에서
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -159,7 +160,7 @@ class CameraChange02(trigger_api.Trigger):
 
 class CameraChange03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -168,7 +169,7 @@ class CameraChange03(trigger_api.Trigger):
 
 class PCTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=0, msg='$52000120_QD__01_HENESYSDEFENSE__3$', duration=4000, align='center', illust_id='0')
+        self.add_cinematic_talk(npc_id=0, msg='$52000120_QD__01_HENESYSDEFENSE__3$', duration=4000, align=Align.Center, illust_id='0')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -188,7 +189,7 @@ class ManovichTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Talk_A')
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__4$', duration=5000, align='center', illust_id='Manovich_normal')
+        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__4$', duration=5000, align=Align.Center, illust_id='Manovich_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -208,8 +209,8 @@ class ManovichTalk01Skip(trigger_api.Trigger):
 
 class PCTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=4000)
-        self.add_cinematic_talk(npc_id=0, msg='$52000120_QD__01_HENESYSDEFENSE__5$', duration=4000, align='center', illust_id='0')
+        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=4000.0)
+        self.add_cinematic_talk(npc_id=0, msg='$52000120_QD__01_HENESYSDEFENSE__5$', duration=4000, align=Align.Center, illust_id='0')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -229,7 +230,7 @@ class ManovichTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Bore_A')
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__6$', duration=4000, align='center', illust_id='Manovich_normal')
+        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__6$', duration=4000, align=Align.Center, illust_id='Manovich_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -249,7 +250,7 @@ class OskhalTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Talk_A')
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__7$', duration=5000, align='center', illust_id='Oskhal_normal')
+        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__7$', duration=5000, align=Align.Center, illust_id='Oskhal_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -271,7 +272,7 @@ class OskhalTalk02Skip(trigger_api.Trigger):
 
 class CameraChange05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=13, enable=True) # PC 등뒤에서
+        self.select_camera(trigger_id=13) # PC 등뒤에서
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -280,7 +281,7 @@ class CameraChange05(trigger_api.Trigger):
 
 class CameraChange06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=14, enable=True) # PC 등뒤에서
+        self.select_camera(trigger_id=14) # PC 등뒤에서
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -290,7 +291,7 @@ class CameraChange06(trigger_api.Trigger):
 class OskhalTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__8$', duration=4000, align='center', illust_id='Oskhal_serious')
+        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__8$', duration=4000, align=Align.Center, illust_id='Oskhal_serious')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -309,7 +310,7 @@ class OskhalTalk03Skip(trigger_api.Trigger):
 class OskhalTalk04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__9$', duration=5000, align='center', illust_id='Oskhal_normal')
+        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__9$', duration=5000, align=Align.Center, illust_id='Oskhal_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -340,7 +341,7 @@ class CameraChange12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip() # Missing State: State
         self.move_user(map_id=52000120, portal_id=10, box_id=9900)
-        self.select_camera(trigger_id=15, enable=True)
+        self.select_camera(trigger_id=15)
         self.destroy_monster(spawn_ids=[101,201]) # Actor_Unique
         self.spawn_monster(spawn_ids=[102,202,210,211,212,213,214,215], auto_target=False)
 
@@ -353,8 +354,8 @@ class CameraChange13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=False, start_delay=500, interval=0, fade=2) # GratingDown
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], start_delay=500, fade=2.0) # GratingDown
         self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005], enable=True)
         self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005], visible=True)
 
@@ -366,7 +367,7 @@ class CameraChange13(trigger_api.Trigger):
 class CameraChange14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=4500, visible=True, initial_sequence='Interaction_bridge_A01_off') # Bridge
-        self.select_camera(trigger_id=16, enable=True)
+        self.select_camera(trigger_id=16)
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_102')
         self.move_npc(spawn_id=210, patrol_name='MS2PatrolData_210')
         self.move_npc(spawn_id=211, patrol_name='MS2PatrolData_211')
@@ -389,9 +390,9 @@ class CameraChange15(trigger_api.Trigger):
 
 class SetLocalTargetCamera01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005], visible=False)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True, start_delay=500, interval=0, fade=2) # GratingDown
+        self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005])
+        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005])
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True, start_delay=500, fade=2.0) # GratingDown
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
@@ -406,9 +407,9 @@ class SetLocalTargetCamera01cskip(trigger_api.Trigger):
         self.set_user_value(trigger_id=10, key='DefencePhase', value=1)
         self.move_user(map_id=52000120, portal_id=10, box_id=9900)
         self.spawn_monster(spawn_ids=[102], auto_target=False)
-        self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005], visible=False)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True, start_delay=500, interval=0, fade=2) # GratingDown
+        self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005])
+        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005])
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True, start_delay=500, fade=2.0) # GratingDown
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
@@ -423,7 +424,7 @@ class SetLocalTargetCamera02(trigger_api.Trigger):
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
         self.set_agent(trigger_ids=[8003], visible=True)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -442,7 +443,7 @@ class SetLocalTargetCamera03(trigger_api.Trigger):
 
 class SetLocalTargetCamera04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.spawn_monster(spawn_ids=[901,902], auto_target=False) # Battle_Mob
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -455,7 +456,7 @@ class BattleOnTheWallGuide01(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[202,210,211,212,213,214,215])
         self.spawn_monster(spawn_ids=[203,220,221,222,223,224,225], auto_target=False)
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__10$', duration=5000, align='center', illust_id='Oskhal_normal')
+        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__10$', duration=5000, align=Align.Center, illust_id='Oskhal_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_scene_skip(state=BattleOnTheWallGuide01Skip)
 
@@ -475,12 +476,12 @@ class BattleOnTheWallGuide01Skip(trigger_api.Trigger):
 class BattleOnTheWallGuide02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip() # Missing State: State
-        self.set_effect(trigger_ids=[5000], visible=False) # DarkCloud
-        self.set_effect(trigger_ids=[5001], visible=False) # DarkCloud
+        self.set_effect(trigger_ids=[5000]) # DarkCloud
+        self.set_effect(trigger_ids=[5001]) # DarkCloud
         self.spawn_monster(spawn_ids=[903,904], auto_target=False) # Battle_Mob
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Talk_A')
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__11$', duration=4000, align='center', illust_id='Manovich_normal')
+        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__11$', duration=4000, align=Align.Center, illust_id='Manovich_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_scene_skip(state=BattleOnTheWallGuide02Skip)
 
@@ -550,7 +551,7 @@ class CallingBackUp01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__12$', duration=5000, align='center', illust_id='Oskhal_normal')
+        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__12$', duration=5000, align=Align.Center, illust_id='Oskhal_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         # 씬스킵으로 바로 전투 시작
         self.set_scene_skip(state=PCVolunteer05CSkip, action='nextState')
@@ -574,7 +575,7 @@ class PCVolunteer01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
-        self.set_local_camera(camera_id=10000, enable=False)
+        self.set_local_camera(camera_id=10000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -584,7 +585,7 @@ class PCVolunteer01(trigger_api.Trigger):
 class PCVolunteer02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52000120, portal_id=20, box_id=9900)
-        self.select_camera(trigger_id=20, enable=True)
+        self.select_camera(trigger_id=20)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -595,7 +596,7 @@ class PCVolunteer03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -613,8 +614,8 @@ class PCVolunteer04(trigger_api.Trigger):
 
 class PCVolunteer05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=4000)
-        self.add_cinematic_talk(npc_id=0, msg='$52000120_QD__01_HENESYSDEFENSE__13$', duration=4000, align='center', illust_id='0')
+        self.set_pc_emotion_loop(sequence_name='Talk_A', duration=4000.0)
+        self.add_cinematic_talk(npc_id=0, msg='$52000120_QD__01_HENESYSDEFENSE__13$', duration=4000, align=Align.Center, illust_id='0')
         # self.set_scene_skip(state=Battle01End01Skip, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -639,7 +640,7 @@ class PCVolunteer05CSkip(trigger_api.Trigger):
         self.set_pc_emotion_sequence(sequence_names=['Idle_A'])
         self.remove_cinematic_talk()
         self.destroy_monster(spawn_ids=[901,902,903,904,905,906,907,908,909,910]) # Battle01_Mob
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         return Battle01Start01(self.ctx)
@@ -659,7 +660,7 @@ class Battle01Start01(trigger_api.Trigger):
 
 class Battle01Start02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cube(trigger_ids=[6000,6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], is_visible=False) # LiftUp_Bomb
+        self.set_cube(trigger_ids=[6000,6001,6002,6003,6004,6005,6006,6007,6008,6009,6010]) # LiftUp_Bomb
         self.destroy_monster(spawn_ids=[701,702,703,704]) # Cannon
         self.destroy_monster(spawn_ids=[710,711,712,713]) # CannonForPC
         self.spawn_monster(spawn_ids=[300,301,302,303,304,305,306,307,308,309,310], auto_target=False) # Archer_1st
@@ -668,10 +669,10 @@ class Battle01Start02(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[701,702,703,704], auto_target=False) # Cannon
         self.move_user(map_id=52000120, portal_id=30, box_id=9900)
         self.spawn_monster(spawn_ids=[240,241,242,243,244,245], auto_target=False)
-        self.select_camera(trigger_id=30, enable=True)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
-        self.set_agent(trigger_ids=[8003], visible=False)
+        self.select_camera(trigger_id=30)
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
+        self.set_agent(trigger_ids=[8003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -682,9 +683,9 @@ class Battle01Start03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # BridgeBarrier_Invisible
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=False, start_delay=500, interval=0, fade=2) # GratingDown
+        self.set_mesh(trigger_ids=[3001]) # BridgeBarrier_Invisible
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], start_delay=500, fade=2.0) # GratingDown
         self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005], enable=True)
         self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005], visible=True)
 
@@ -711,7 +712,7 @@ class Battle01Start04(trigger_api.Trigger):
 
 class Battle01Start05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=31, enable=True)
+        self.select_camera(trigger_id=31)
         self.set_user_value(trigger_id=10, key='DefencePhase', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -721,11 +722,11 @@ class Battle01Start05(trigger_api.Trigger):
 
 class Battle01Start06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005], enable=False)
-        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005], visible=False)
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True, start_delay=500, interval=0, fade=2) # GratingDown
+        self.set_breakable(trigger_ids=[4000,4001,4002,4003,4004,4005])
+        self.set_visible_breakable_object(trigger_ids=[4000,4001,4002,4003,4004,4005])
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True, start_delay=500, fade=2.0) # GratingDown
         self.set_actor(trigger_id=4500, visible=True, initial_sequence='Interaction_bridge_A01_on') # Bridge
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # BridgeBarrier_Invisible
+        self.set_mesh(trigger_ids=[3001], visible=True) # BridgeBarrier_Invisible
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -744,7 +745,7 @@ class Battle01Start07(trigger_api.Trigger):
         self.change_monster(from_spawn_id=243, to_spawn_id=253)
         self.change_monster(from_spawn_id=244, to_spawn_id=254)
         self.change_monster(from_spawn_id=245, to_spawn_id=255)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.play_system_sound_in_box(box_ids=[102], sound='System_ShowGuideSummary_01')
@@ -761,7 +762,7 @@ class Battle01End01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__14$', duration=5000, align='center', illust_id='Oskhal_normal')
+        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__14$', duration=5000, align=Align.Center, illust_id='Oskhal_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_scene_skip(state=Battle01End01Skip)
 
@@ -832,7 +833,7 @@ class Battle02End01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__15$', duration=5000, align='center', illust_id='Oskhal_normal')
+        self.add_cinematic_talk(npc_id=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__15$', duration=5000, align=Align.Center, illust_id='Oskhal_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_scene_skip(state=Battle02End01Skip)
 
@@ -909,7 +910,7 @@ class Battle03End01(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[921,922,923,924,925,926,927,928]) # Battle03_Mob
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=40, enable=True)
+        self.select_camera(trigger_id=40)
         self.move_user_path(patrol_name='MS2PatrolData_1003')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -940,7 +941,7 @@ class TurkaWalkIn01(trigger_api.Trigger):
         self.set_user_value(trigger_id=9, key='BattleEnd', value=1)
         self.move_npc(spawn_id=290, patrol_name='MS2PatrolData_301')
         self.destroy_monster(spawn_ids=[204])
-        self.spawn_monster(spawn_ids=[205], auto_target=True)
+        self.spawn_monster(spawn_ids=[205])
         self.move_user_path(patrol_name='MS2PatrolData_1004')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -965,7 +966,7 @@ class TurkaTalk01(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5000], visible=True) # DarkCloud
         self.set_effect(trigger_ids=[5001], visible=True) # DarkCloud
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003226, msg='$52000120_QD__01_HENESYSDEFENSE__16$', duration=5000, align='center', illust_id='0')
+        self.add_cinematic_talk(npc_id=11003226, msg='$52000120_QD__01_HENESYSDEFENSE__16$', duration=5000, align=Align.Center, illust_id='0')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_scene_skip(state=ManovichTalk03_CSkip, action='exit')
 
@@ -995,7 +996,7 @@ class ChangeView01(trigger_api.Trigger):
 
 class ChangeView02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=42, enable=True)
+        self.select_camera(trigger_id=42)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -1004,7 +1005,7 @@ class ChangeView02(trigger_api.Trigger):
 
 class ChangeView03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -1016,7 +1017,7 @@ class TurkaTalk02(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003226, msg='$52000120_QD__01_HENESYSDEFENSE__17$', duration=4000, align='center', illust_id='Turka_normal')
+        self.add_cinematic_talk(npc_id=11003226, msg='$52000120_QD__01_HENESYSDEFENSE__17$', duration=4000, align=Align.Center, illust_id='Turka_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1038,7 +1039,7 @@ class TurkaTalk02Skip(trigger_api.Trigger):
 
 class EnemyRetreat01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=43, enable=True) # 퇴각 연출
+        self.select_camera(trigger_id=43) # 퇴각 연출
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -1235,7 +1236,7 @@ class EnemyRetreat11(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[990,991,992,993,994,995]) # Left Group6
         self.destroy_monster(spawn_ids=[980,981,982,983,984,985]) # Right Group7
         self.destroy_monster(spawn_ids=[290]) # Turka
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1244,7 +1245,7 @@ class EnemyRetreat11(trigger_api.Trigger):
 
 class Ending01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=44, enable=True)
+        self.select_camera(trigger_id=44)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -1253,7 +1254,7 @@ class Ending01(trigger_api.Trigger):
 
 class Ending02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1264,7 +1265,7 @@ class ManovichTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Bore_A')
         # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
-        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__18$', duration=4000, align='center', illust_id='Manovich_normal')
+        self.add_cinematic_talk(npc_id=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__18$', duration=4000, align=Align.Center, illust_id='Manovich_normal')
         # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1275,7 +1276,7 @@ class ManovichTalk03(trigger_api.Trigger):
 class ManovichTalk03_CSkip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[-1]) # Turka
-        self.select_camera(trigger_id=44, enable=True)
+        self.select_camera(trigger_id=44)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -1285,7 +1286,7 @@ class ManovichTalk03_CSkip(trigger_api.Trigger):
 class ManovichTalk03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_achievement(trigger_id=9900, type='trigger', achieve='henesysinvasion')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1295,7 +1296,7 @@ class ManovichTalk03Skip(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(map_id=2000072, portal_id=1)

@@ -10,9 +10,9 @@ class 시작대기중(trigger_api.Trigger):
 class 보스등장대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 최초에는 우호적NPC 3인방이 스카이포트리스 함교 안에 있다는 설정에 맞추어, 유리로 둘러싸인 함교 안에 해당 NPC를 배치함
-        self.spawn_monster(spawn_ids=[111], auto_target=True)
-        self.spawn_monster(spawn_ids=[121], auto_target=True)
-        self.spawn_monster(spawn_ids=[131], auto_target=True)
+        self.spawn_monster(spawn_ids=[111])
+        self.spawn_monster(spawn_ids=[121])
+        self.spawn_monster(spawn_ids=[131])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EventNpcAppearance') >= 1:
@@ -23,14 +23,14 @@ class 보스등장대기(trigger_api.Trigger):
 class 우호적NPC등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 보스가 출몰해 전투가 시작되면, 함교 안에 있는 우호적 NPC 3인방 제거하고
-        self.destroy_monster(spawn_ids=[111], arg2=True)
-        self.destroy_monster(spawn_ids=[121], arg2=True)
+        self.destroy_monster(spawn_ids=[111])
+        self.destroy_monster(spawn_ids=[121])
         # 함교 안에 있었던  우호적 NPC 3인방이 전투판으로 나와 전투를 진행한다는 설정에 맞추어 전투판에 우호적 NPC 3인방을 등장시킴
-        self.destroy_monster(spawn_ids=[131], arg2=True)
-        self.spawn_monster(spawn_ids=[11], auto_target=True)
-        self.spawn_monster(spawn_ids=[21], auto_target=True)
+        self.destroy_monster(spawn_ids=[131])
+        self.spawn_monster(spawn_ids=[11])
+        self.spawn_monster(spawn_ids=[21])
         # 참고로 이 우호적 NPC 3인방 제거는 보스 몬스터가 죽을 때 AI 에서 신호 보내서 제거하는 방식을 사용함
-        self.spawn_monster(spawn_ids=[31], auto_target=True)
+        self.spawn_monster(spawn_ids=[31])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):

@@ -1,5 +1,6 @@
 """ trigger/52020036_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 딜레이(trigger_api.Trigger):
@@ -17,9 +18,9 @@ class 준비(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[7002])
         self.spawn_monster(spawn_ids=[7003])
         self.spawn_monster(spawn_ids=[7004])
-        # self.set_mesh(trigger_ids=[4000], visible=False) # 공습용 공중 발판 끄기1
-        # self.set_mesh(trigger_ids=[4001], visible=False) # 공습용 공중 발판 끄기1
-        self.set_mesh(trigger_ids=[4002], visible=False) # 공습용 공중 발판 끄기1
+        # self.set_mesh(trigger_ids=[4000]) # 공습용 공중 발판 끄기1
+        # self.set_mesh(trigger_ids=[4001]) # 공습용 공중 발판 끄기1
+        self.set_mesh(trigger_ids=[4002]) # 공습용 공중 발판 끄기1
         self.spawn_monster(spawn_ids=[201], auto_target=False) # 구르는 천둥
         self.spawn_monster(spawn_ids=[901], auto_target=False) # 시끄러운 주먹
         self.spawn_monster(spawn_ids=[400], auto_target=False) # 티나
@@ -108,8 +109,8 @@ class 준비(trigger_api.Trigger):
 class 피그밍그부족의제단원경신1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_quest_accept(quest_id=91000047)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.show_caption(type='VerticalCaption', title='$52020036_QD__MAIN__0$', desc='$52020036_QD__MAIN__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=7000, scale=2.5)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.show_caption(type='VerticalCaption', title='$52020036_QD__MAIN__0$', desc='$52020036_QD__MAIN__1$', align=Align.Bottom | Align.Left, duration=7000, scale=2.5)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[3000,3001], return_view=False)
@@ -132,9 +133,9 @@ class 피그밍그부족의제단원경신2(trigger_api.Trigger):
 
 class 전투상황비추기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
-        self.select_camera(trigger_id=3003, enable=True)
+        self.select_camera(trigger_id=3003)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -152,7 +153,7 @@ class 유저발록보이게위치옮김(trigger_api.Trigger):
 
 class 오프닝크림슨발록비추기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3015, enable=True)
+        self.select_camera(trigger_id=3015)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -161,7 +162,7 @@ class 오프닝크림슨발록비추기(trigger_api.Trigger):
 
 class 크림슨발록오프닝대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003781, msg='$52020036_QD__MAIN__2$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003781, msg='$52020036_QD__MAIN__2$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -171,7 +172,7 @@ class 크림슨발록오프닝대사(trigger_api.Trigger):
 # 콘대르 등장
 class 콘대르등장카메라(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3002, enable=True)
+        self.select_camera(trigger_id=3002)
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -200,7 +201,7 @@ class 유저를경로이동시킨다(trigger_api.Trigger):
 
 class 콘대르등장대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003776, illust_id='Conder_normal', msg='$52020036_QD__MAIN__3$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11003776, illust_id='Conder_normal', msg='$52020036_QD__MAIN__3$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -218,12 +219,12 @@ class 콘대르이동(trigger_api.Trigger):
 
 class 오프닝연출끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.destroy_monster(spawn_ids=[100])
         self.spawn_monster(spawn_ids=[101], auto_target=False) # 콘대르
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -258,12 +259,12 @@ class 침략자소탕퀘스트완료체크(trigger_api.Trigger):
 
 class 침략자소탕퀘스트완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_quest_complete(quest_id=91000047)
         self.set_quest_accept(quest_id=91000048)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera_path(path_ids=[3005,3006], return_view=True)
+        self.select_camera_path(path_ids=[3005,3006])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -273,8 +274,8 @@ class 침략자소탕퀘스트완료(trigger_api.Trigger):
 # 티나비추기
 class 티나비추기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.select_camera(trigger_id=3004, enable=True)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.select_camera(trigger_id=3004)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=0):
@@ -283,8 +284,8 @@ class 티나비추기(trigger_api.Trigger):
 
 class 티나대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.add_cinematic_talk(npc_id=11000136, illust_id='Tina_normal', msg='$52020036_QD__MAIN__4$', duration=5000, align='Right')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.add_cinematic_talk(npc_id=11000136, illust_id='Tina_normal', msg='$52020036_QD__MAIN__4$', duration=5000, align=Align.Right)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -352,7 +353,7 @@ class 부상자구하기시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -368,7 +369,7 @@ class 부상자구출퀘스트완료체크(trigger_api.Trigger):
 # 티나 팝업 대사 UI_1
 class 부상자옮기기대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_quest_complete(quest_id=91000048)
         self.set_quest_accept(quest_id=91000049)
         self.side_npc_talk(npc_id=11003780, illust='WhitewolfGirl_normal', duration=5648, script='$52020036_QD__main__14$', voice='ko/Npc/00002151')
@@ -381,7 +382,7 @@ class 부상자옮기기대사(trigger_api.Trigger):
 # 네이린팝업1
 class 네이린팝업1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.side_npc_talk(npc_id=11003536, illust='Neirin_normal', duration=7000, script='$52020036_QD__main__15$', voice='ko/Npc/00002126')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -436,7 +437,7 @@ class 석궁비추기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=3007, enable=True)
+        self.select_camera(trigger_id=3007)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -447,7 +448,7 @@ class 석궁비추기끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=0):
@@ -683,7 +684,7 @@ class 공중지원퀘스트완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[12000043], state=0)
         self.visible_my_pc(is_visible=False) # 캐릭터 숨김
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.destroy_monster(spawn_ids=[-1])
         self.set_quest_complete(quest_id=91000049)
 
@@ -703,10 +704,10 @@ class 엔딩크림슨발록보이는위치로유저이동(trigger_api.Trigger):
 
 class 엔딩크림슨발록비추기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=3015, enable=True)
+        self.select_camera(trigger_id=3015)
         self.spawn_monster(spawn_ids=[7000], auto_target=False)
         self.spawn_monster(spawn_ids=[7001], auto_target=False)
         self.spawn_monster(spawn_ids=[7002], auto_target=False)
@@ -721,7 +722,7 @@ class 엔딩크림슨발록비추기(trigger_api.Trigger):
 class 크림슨발록엔딩닝대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(box_id=9000, skill_id=99910150)
-        self.add_cinematic_talk(npc_id=11003781, msg='$52020036_QD__MAIN__5$', duration=5000, align='left')
+        self.add_cinematic_talk(npc_id=11003781, msg='$52020036_QD__MAIN__5$', duration=5000, align=Align.Left)
         self.set_npc_emotion_sequence(spawn_id=7000, sequence_name='Attack_01_A', duration_tick=1900)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -736,7 +737,7 @@ class 엔딩연출준비(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[7002])
         self.destroy_monster(spawn_ids=[7003])
         self.destroy_monster(spawn_ids=[7004])
-        self.set_mesh(trigger_ids=[9999], visible=False, fade=0) # 발록 함선 지우기
+        self.set_mesh(trigger_ids=[9999]) # 발록 함선 지우기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=0):
@@ -758,7 +759,7 @@ class 엔딩연출1(trigger_api.Trigger):
 
 class 엔딩카메라1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3008, enable=True)
+        self.select_camera(trigger_id=3008)
         self.move_user(map_id=52020036, portal_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -768,7 +769,7 @@ class 엔딩카메라1(trigger_api.Trigger):
 
 class 콘대르엔딩대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003776, illust_id='Conder_normal', msg='$52020036_QD__MAIN__6$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=11003776, illust_id='Conder_normal', msg='$52020036_QD__MAIN__6$', duration=4000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -777,7 +778,7 @@ class 콘대르엔딩대사1(trigger_api.Trigger):
 
 class 구르는천둥엔딩대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003779, illust_id='LoudFist_normal', msg='$52020036_QD__MAIN__7$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=11003779, illust_id='LoudFist_normal', msg='$52020036_QD__MAIN__7$', duration=4000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -796,7 +797,7 @@ class 트리스탄생성1(trigger_api.Trigger):
 
 class 트리스탄등장카메라1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3009, enable=True)
+        self.select_camera(trigger_id=3009)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -805,7 +806,7 @@ class 트리스탄등장카메라1(trigger_api.Trigger):
 
 class 트리스탄대사1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11001975, illust_id='Tristan_normal', msg='$52020036_QD__MAIN__8$', duration=3000, align='left')
+        self.add_cinematic_talk(npc_id=11001975, illust_id='Tristan_normal', msg='$52020036_QD__MAIN__8$', duration=3000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -814,7 +815,7 @@ class 트리스탄대사1(trigger_api.Trigger):
 
 class 콘대르엔딩카메라1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3010, enable=True)
+        self.select_camera(trigger_id=3010)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -823,7 +824,7 @@ class 콘대르엔딩카메라1(trigger_api.Trigger):
 
 class 콘대르엔딩카메라2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3010, enable=True)
+        self.select_camera(trigger_id=3010)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=0):
@@ -832,7 +833,7 @@ class 콘대르엔딩카메라2(trigger_api.Trigger):
 
 class 콘대르엔딩대사2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003776, illust_id='Conder_normal', msg='$52020036_QD__MAIN__9$', duration=1000, align='left')
+        self.add_cinematic_talk(npc_id=11003776, illust_id='Conder_normal', msg='$52020036_QD__MAIN__9$', duration=1000, align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -841,7 +842,7 @@ class 콘대르엔딩대사2(trigger_api.Trigger):
 
 class 콘대르엔딩카메라3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3012, enable=True)
+        self.select_camera(trigger_id=3012)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=0):
@@ -850,7 +851,7 @@ class 콘대르엔딩카메라3(trigger_api.Trigger):
 
 class 콘대르엔딩대사3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003776, illust_id='Conder_normal', msg='$52020036_QD__MAIN__10$', duration=2000, align='left')
+        self.add_cinematic_talk(npc_id=11003776, illust_id='Conder_normal', msg='$52020036_QD__MAIN__10$', duration=2000, align=Align.Left)
         self.set_npc_emotion_sequence(spawn_id=3500, sequence_name='Bore_A', duration_tick=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -860,7 +861,7 @@ class 콘대르엔딩대사3(trigger_api.Trigger):
 
 class 트리스탄엔딩카메라2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=3009, enable=True)
+        self.select_camera(trigger_id=3009)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -869,7 +870,7 @@ class 트리스탄엔딩카메라2(trigger_api.Trigger):
 
 class 트리스탄엔딩대사2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npc_id=11003777, illust_id='Tristan_normal', msg='$52020036_QD__MAIN__11$', duration=4000, align='left')
+        self.add_cinematic_talk(npc_id=11003777, illust_id='Tristan_normal', msg='$52020036_QD__MAIN__11$', duration=4000, align=Align.Left)
         self.set_npc_emotion_sequence(spawn_id=6500, sequence_name='Talk_A', duration_tick=7000)
 
     def on_tick(self) -> trigger_api.Trigger:

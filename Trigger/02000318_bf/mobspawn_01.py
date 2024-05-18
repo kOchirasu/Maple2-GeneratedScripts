@@ -7,10 +7,10 @@ from dungeon_common.checkusercount import *
 
 class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0) # EnteranceBarrier
-        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # 1stBarrier
-        self.set_mesh(trigger_ids=[3002], visible=True, start_delay=0, interval=0, fade=0) # 2ndBarrier
-        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128], visible=True, start_delay=0, interval=0, fade=0) # EnteranceBarrier
+        self.set_mesh(trigger_ids=[3000], visible=True) # EnteranceBarrier
+        self.set_mesh(trigger_ids=[3001], visible=True) # 1stBarrier
+        self.set_mesh(trigger_ids=[3002], visible=True) # 2ndBarrier
+        self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128], visible=True) # EnteranceBarrier
         self.set_user_value(key='ShipMove', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class DungeonStart(trigger_api.Trigger):
         self.play_system_sound_in_box(box_ids=[102], sound='System_ShowGuideSummary_01')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_skip(state=CameraWalk01)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,8 +57,8 @@ class CameraWalk02(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
         self.play_system_sound_in_box(box_ids=[102], sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$02000318_BF__MOBSPAWN_01__0$', arg3='3000', arg4='0')
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=0) # EnteranceBarrier
-        self.set_random_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128], visible=False, start_delay=29, interval=500, fade=30) # EnteranceBarrier
+        self.set_mesh(trigger_ids=[3000]) # EnteranceBarrier
+        self.set_random_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128], start_delay=29, interval=500, fade=30) # EnteranceBarrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -106,7 +106,7 @@ class MoveShip01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=20031802)
         self.set_user_value(trigger_id=2, key='ShipSet', value=1)
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # 1stBarrier
+        self.set_mesh(trigger_ids=[3001]) # 1stBarrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ShipMove') >= 1:
@@ -170,7 +170,7 @@ class CannonSpawn02(trigger_api.Trigger):
         self.hide_guide_summary(entity_id=20031802)
         self.play_system_sound_in_box(box_ids=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=20031804, text_id=20031804) # 대포를 이용해 다음 지역으로 이동하세요
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0) # 2ndBarrier
+        self.set_mesh(trigger_ids=[3002]) # 2ndBarrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[104]):

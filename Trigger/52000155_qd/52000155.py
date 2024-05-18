@@ -4,7 +4,7 @@ import trigger_api
 
 class wait_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001,5002], visible=False)
+        self.set_effect(trigger_ids=[5001,5002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[40002728], quest_states=[3]):
@@ -41,7 +41,7 @@ class wait_03(trigger_api.Trigger):
 
 class 빅스제시_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -59,7 +59,7 @@ class 정리_01(trigger_api.Trigger):
 
 class 정리_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,8 +70,8 @@ class 정리_02(trigger_api.Trigger):
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -82,7 +82,7 @@ class 밝아짐(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[40002725], quest_states=[2]):
@@ -91,7 +91,7 @@ class 밝아짐(trigger_api.Trigger):
 
 class 만취상태(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000155_QD__52000155__0$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000155_QD__52000155__0$')
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,8 +106,8 @@ class 만취상태_01(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[106], auto_target=False)
         self.destroy_monster(spawn_ids=[108])
         self.destroy_monster(spawn_ids=[109])
-        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Down_Idle_A', duration=90000000)
-        self.set_npc_emotion_loop(spawn_id=106, sequence_name='Down_Idle_A', duration=90000000)
+        self.set_npc_emotion_loop(spawn_id=105, sequence_name='Down_Idle_A', duration=90000000.0)
+        self.set_npc_emotion_loop(spawn_id=106, sequence_name='Down_Idle_A', duration=90000000.0)
         self.move_user(map_id=52000155, portal_id=6002)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -117,7 +117,7 @@ class 만취상태_01(trigger_api.Trigger):
 
 class 정리2_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -126,7 +126,7 @@ class 정리2_02(trigger_api.Trigger):
 
 class 정리2_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -149,7 +149,7 @@ class 가이드_01(trigger_api.Trigger):
 
 class 가이드_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001,5002], visible=False)
+        self.set_effect(trigger_ids=[5001,5002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[40002728], quest_states=[2]):

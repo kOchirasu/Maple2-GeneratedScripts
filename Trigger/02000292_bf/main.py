@@ -8,8 +8,8 @@ from dungeon_common.checkusercount import *
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=101, visible=True, initial_sequence='Closed') # Door
-        self.set_mesh(trigger_ids=[102,103,104], visible=True, start_delay=0, interval=0, fade=0) # InvisibleBarrier
-        self.set_mesh(trigger_ids=[105,106,107,108], visible=True, start_delay=0, interval=0, fade=0) # EnterBarrierCube
+        self.set_mesh(trigger_ids=[102,103,104], visible=True) # InvisibleBarrier
+        self.set_mesh(trigger_ids=[105,106,107,108], visible=True) # EnterBarrierCube
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -26,7 +26,7 @@ class DungeonStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_skip(state=CameraWalk03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,7 +38,7 @@ class CameraWalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1110], auto_target=False)
         self.move_npc(spawn_id=1110, patrol_name='MS2PatrolData_1110')
-        self.select_camera(trigger_id=601, enable=True)
+        self.select_camera(trigger_id=601)
         self.set_skip(state=CameraWalk03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,7 @@ class CameraWalk01(trigger_api.Trigger):
 
 class CameraWalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=1110, script='$02000292_BF__MAIN__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1110, script='$02000292_BF__MAIN__0$', time=3)
         self.set_skip(state=CameraWalk03)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,7 +75,7 @@ class CameraWalk03(trigger_api.Trigger):
 class DungeonOpen(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=101, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[102,103,104], visible=False, start_delay=100, interval=100, fade=2) # InvisibleBarrier
+        self.set_mesh(trigger_ids=[102,103,104], start_delay=100, interval=100, fade=2.0) # InvisibleBarrier
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -86,8 +86,8 @@ class DungeonPlay01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(box_ids=[9001], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=20002922, text_id=20002922, duration=5000)
-        self.set_actor(trigger_id=101, visible=False, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[105,106,107,108], visible=False, start_delay=0, interval=0, fade=0) # EnterBarrierCube
+        self.set_actor(trigger_id=101, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[105,106,107,108]) # EnterBarrierCube
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9002]):

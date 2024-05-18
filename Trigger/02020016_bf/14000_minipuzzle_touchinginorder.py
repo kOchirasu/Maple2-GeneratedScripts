@@ -15,24 +15,24 @@ class Wait(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000090], state=0) # CheckPosition_Tree03
         self.set_interact_object(trigger_ids=[12000091], state=0) # CheckPosition_Tree04
         self.set_interact_object(trigger_ids=[12000092], state=0) # CheckPosition_Tree05
-        self.set_actor(trigger_id=14011, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree01
-        self.set_actor(trigger_id=14021, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree02
-        self.set_actor(trigger_id=14022, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree02
-        self.set_actor(trigger_id=14031, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree03
-        self.set_actor(trigger_id=14032, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree03
-        self.set_actor(trigger_id=14033, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree03
-        self.set_actor(trigger_id=14041, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree04
-        self.set_actor(trigger_id=14042, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree04
-        self.set_actor(trigger_id=14043, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree04
-        self.set_actor(trigger_id=14044, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree04
-        self.set_actor(trigger_id=14051, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree05
-        self.set_actor(trigger_id=14052, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree05
-        self.set_actor(trigger_id=14053, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree05
-        self.set_actor(trigger_id=14054, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower04_Of_Tree05
-        self.set_actor(trigger_id=14055, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower05_Of_Tree05
-        self.set_effect(trigger_ids=[14200], visible=False) # Success Sound Effect
-        self.set_effect(trigger_ids=[14201], visible=False) # Right Sound Effect
-        self.set_effect(trigger_ids=[14202], visible=False) # Wrong Sound Effect
+        self.set_actor(trigger_id=14011, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree01
+        self.set_actor(trigger_id=14021, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree02
+        self.set_actor(trigger_id=14022, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree02
+        self.set_actor(trigger_id=14031, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree03
+        self.set_actor(trigger_id=14032, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree03
+        self.set_actor(trigger_id=14033, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree03
+        self.set_actor(trigger_id=14041, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree04
+        self.set_actor(trigger_id=14042, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree04
+        self.set_actor(trigger_id=14043, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree04
+        self.set_actor(trigger_id=14044, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree04
+        self.set_actor(trigger_id=14051, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree05
+        self.set_actor(trigger_id=14052, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree05
+        self.set_actor(trigger_id=14053, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree05
+        self.set_actor(trigger_id=14054, initial_sequence='Interaction_luminous_A02_off') # Flower04_Of_Tree05
+        self.set_actor(trigger_id=14055, initial_sequence='Interaction_luminous_A02_off') # Flower05_Of_Tree05
+        self.set_effect(trigger_ids=[14200]) # Success Sound Effect
+        self.set_effect(trigger_ids=[14201]) # Right Sound Effect
+        self.set_effect(trigger_ids=[14202]) # Wrong Sound Effect
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimeEventOn') >= 1:
@@ -55,7 +55,7 @@ class Setting(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[12000077], state=0):
             # UI 표시 안함 / 황금 상자 소유권 Additional Effect 71001041 지속시간 동일
-            self.set_timer(timer_id='1', seconds=120, start_delay=1, interval=0, v_offset=0)
+            self.set_timer(timer_id='1', seconds=120, start_delay=1)
             return TouchingInNumericalOrder_Start_Delay(self.ctx)
         if self.user_value(key='TimeEventOn') >= 0:
             return Wait(self.ctx)
@@ -194,7 +194,7 @@ class TouchingInNumericalOrder_End(trigger_api.Trigger):
 # 퍼즐 성공 후 종료
 class TouchingInNumericalOrder_Success(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='10', seconds=61, start_delay=1, interval=0, v_offset=0)
+        self.set_timer(timer_id='10', seconds=61, start_delay=1)
         self.add_buff(box_ids=[140001], skill_id=71001042, level=1, is_player=False, is_skill_set=False)
         self.set_effect(trigger_ids=[14200], visible=True) # Success Sound Effect
         # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001141 걸어서 71001041 제거
@@ -245,21 +245,21 @@ class TouchingInNumericalOrder_Fail(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000090], state=0) # CheckPosition_Tree03
         self.set_interact_object(trigger_ids=[12000091], state=0) # CheckPosition_Tree04
         self.set_interact_object(trigger_ids=[12000092], state=0) # CheckPosition_Tree05
-        self.set_actor(trigger_id=14011, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree01
-        self.set_actor(trigger_id=14021, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree02
-        self.set_actor(trigger_id=14022, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree02
-        self.set_actor(trigger_id=14031, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree03
-        self.set_actor(trigger_id=14032, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree03
-        self.set_actor(trigger_id=14033, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree03
-        self.set_actor(trigger_id=14041, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree04
-        self.set_actor(trigger_id=14042, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree04
-        self.set_actor(trigger_id=14043, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree04
-        self.set_actor(trigger_id=14044, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree04
-        self.set_actor(trigger_id=14051, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree05
-        self.set_actor(trigger_id=14052, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree05
-        self.set_actor(trigger_id=14053, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree05
-        self.set_actor(trigger_id=14054, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower04_Of_Tree05
-        self.set_actor(trigger_id=14055, visible=False, initial_sequence='Interaction_luminous_A02_off') # Flower05_Of_Tree05
+        self.set_actor(trigger_id=14011, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree01
+        self.set_actor(trigger_id=14021, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree02
+        self.set_actor(trigger_id=14022, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree02
+        self.set_actor(trigger_id=14031, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree03
+        self.set_actor(trigger_id=14032, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree03
+        self.set_actor(trigger_id=14033, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree03
+        self.set_actor(trigger_id=14041, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree04
+        self.set_actor(trigger_id=14042, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree04
+        self.set_actor(trigger_id=14043, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree04
+        self.set_actor(trigger_id=14044, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree04
+        self.set_actor(trigger_id=14051, initial_sequence='Interaction_luminous_A02_off') # Flower01_Of_Tree05
+        self.set_actor(trigger_id=14052, initial_sequence='Interaction_luminous_A02_off') # Flower02_Of_Tree05
+        self.set_actor(trigger_id=14053, initial_sequence='Interaction_luminous_A02_off') # Flower03_Of_Tree05
+        self.set_actor(trigger_id=14054, initial_sequence='Interaction_luminous_A02_off') # Flower04_Of_Tree05
+        self.set_actor(trigger_id=14055, initial_sequence='Interaction_luminous_A02_off') # Flower05_Of_Tree05
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

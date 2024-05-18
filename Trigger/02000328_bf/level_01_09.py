@@ -10,16 +10,16 @@ class 시작(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cube(trigger_ids=[5109], is_visible=False)
-        # self.spawn_monster(spawn_ids=[10009], auto_target=True)
-        self.set_mesh(trigger_ids=[31901,31902,31903,31904,31905,31906,31907,31908,31909,31910,31911,31912,31913,31914,31915,31916,31917,31918,31919,31920,31921,31922], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[41901], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_cube(trigger_ids=[5109])
+        # self.spawn_monster(spawn_ids=[10009])
+        self.set_mesh(trigger_ids=[31901,31902,31903,31904,31905,31906,31907,31908,31909,31910,31911,31912,31913,31914,31915,31916,31917,31918,31919,31920,31921,31922])
+        self.set_mesh(trigger_ids=[41901], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[10006]):
             # self.set_cube(trigger_ids=[5109], is_visible=True)
-            self.set_mesh(trigger_ids=[31901,31902,31903,31904,31905,31906,31907,31908,31909,31910,31911,31912,31913,31914,31915,31916,31917,31918,31919,31920,31921,31922], visible=True, start_delay=0, interval=200, fade=2)
-            self.set_mesh(trigger_ids=[41901], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_mesh(trigger_ids=[31901,31902,31903,31904,31905,31906,31907,31908,31909,31910,31911,31912,31913,31914,31915,31916,31917,31918,31919,31920,31921,31922], visible=True, interval=200, fade=2.0)
+            self.set_mesh(trigger_ids=[41901])
             return 종료(self.ctx)
 
 

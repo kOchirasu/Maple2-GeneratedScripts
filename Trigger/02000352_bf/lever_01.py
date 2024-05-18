@@ -4,8 +4,8 @@ import trigger_api
 
 class 닫힘상태(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6111], visible=True, interval=0, fade=0) # 벽
-        self.set_mesh(trigger_ids=[6101], visible=False, interval=0, fade=0) # 벽
+        self.set_mesh(trigger_ids=[6111], visible=True) # 벽
+        self.set_mesh(trigger_ids=[6101]) # 벽
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000822], state=1):
@@ -29,12 +29,12 @@ class 열림상태(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_cinematic_ui(type=1)
         # self.set_cinematic_ui(type=3)
-        # self.select_camera(trigger_id=8001, enable=True)
+        # self.select_camera(trigger_id=8001)
         # self.set_skip(state=열림)
         self.set_timer(timer_id='1', seconds=1)
         self.set_effect(trigger_ids=[9000002], visible=True) # Sound EFfect on
-        self.set_mesh(trigger_ids=[6111], visible=False, interval=200, fade=15) # 벽 해제
-        self.set_mesh(trigger_ids=[6101], visible=True, interval=200, fade=15) # 벽 해제
+        self.set_mesh(trigger_ids=[6111], interval=200, fade=15.0) # 벽 해제
+        self.set_mesh(trigger_ids=[6101], visible=True, interval=200, fade=15.0) # 벽 해제
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
@@ -43,7 +43,7 @@ class 열림상태(trigger_api.Trigger):
 
 class 열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6002], visible=False, interval=0, fade=10) # 벽 해제
+        self.set_mesh(trigger_ids=[6002], fade=10.0) # 벽 해제
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:

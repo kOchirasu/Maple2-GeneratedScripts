@@ -1,5 +1,6 @@
 """ trigger/52000202_qd/52000202.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
@@ -34,7 +35,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 class CameraEffect03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +47,7 @@ class CameraEffect03_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4002], return_view=False)
         self.move_user_path(patrol_name='MS2PatrolData_3001')
-        self.show_caption(type='VerticalCaption', title='$52000202_QD__52000202__0$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000202_QD__52000202__0$', align=Align.Bottom | Align.Left, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -69,7 +70,7 @@ class 시공의균열(trigger_api.Trigger):
 class 시공의균열_02_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_long.xml')
-        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=11000)
+        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=11000.0)
         self.add_cinematic_talk(npc_id=0, msg='$52000202_QD__52000202__4$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +80,7 @@ class 시공의균열_02_01(trigger_api.Trigger):
 
 class 시공의균열_02_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.add_cinematic_talk(npc_id=0, msg='$52000202_QD__52000202__5$', duration=4000)
         self.add_cinematic_talk(npc_id=0, msg='$52000202_QD__52000202__6$', duration=4000)
 
@@ -90,12 +91,12 @@ class 시공의균열_02_02(trigger_api.Trigger):
 
 class 시공의균열_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_long.xml')
+        self.set_onetime_effect(id=101, path='BG/Common/Eff_Com_Vibrate_long.xml')
         self.select_camera_path(path_ids=[4005], return_view=False)
         self.spawn_monster(spawn_ids=[201])
         self.spawn_monster(spawn_ids=[202])
-        self.set_portal(portal_id=8001, visible=False, enable=False)
-        self.set_portal(portal_id=8002, visible=False, enable=False)
+        self.set_portal(portal_id=8001)
+        self.set_portal(portal_id=8002)
         self.move_user(map_id=52000202, portal_id=5002)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -108,8 +109,8 @@ class 시공의균열_03_02(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4006], return_view=False)
         self.spawn_monster(spawn_ids=[203])
         self.spawn_monster(spawn_ids=[204])
-        self.set_portal(portal_id=8003, visible=False, enable=False)
-        self.set_portal(portal_id=8004, visible=False, enable=False)
+        self.set_portal(portal_id=8003)
+        self.set_portal(portal_id=8004)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -129,7 +130,7 @@ class 시공의균열_04(trigger_api.Trigger):
 
 class 전투준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=4500)
+        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=4500.0)
         self.select_camera_path(path_ids=[4009], return_view=False)
         self.add_cinematic_talk(npc_id=0, msg='$52000202_QD__52000202__9$', duration=4500)
         self.destroy_monster(spawn_ids=[201])
@@ -173,7 +174,7 @@ class 몰려온다(trigger_api.Trigger):
 
 class 몰려온다_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=True, start_scale=0.1, end_scale=0.5, duration=5, interpolator=1)
+        self.set_time_scale(enable=True, start_scale=0.1, end_scale=0.5, duration=5.0, interpolator=1)
         self.set_onetime_effect(id=30, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -195,7 +196,7 @@ class 몰려온다_03(trigger_api.Trigger):
 
 class 고마해(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
+        self.set_onetime_effect(id=30, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
         self.set_cinematic_ui(type=1)
         self.select_camera_path(path_ids=[4011], return_view=False)
 
@@ -218,7 +219,7 @@ class 고마해_02(trigger_api.Trigger):
 
 class 고마해_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=9000)
+        self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=9000.0)
         self.set_onetime_effect(id=102, enable=True, path='BG/Common/Eff_Com_Vibrate_long.xml')
         self.add_cinematic_talk(npc_id=0, msg='$52000202_QD__52000202__13$', duration=4500)
         self.add_cinematic_talk(npc_id=0, msg='$52000202_QD__52000202__14$', duration=4000)

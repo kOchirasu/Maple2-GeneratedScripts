@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='2', seconds=2, start_delay=0)
-        self.set_breakable(trigger_ids=[7000], enable=False)
+        self.set_timer(timer_id='2', seconds=2)
+        self.set_breakable(trigger_ids=[7000])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -23,7 +23,7 @@ class 반응대기(trigger_api.Trigger):
 
 class 이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timer_id='6', seconds=6, start_delay=0)
+        self.set_timer(timer_id='6', seconds=6)
         self.set_breakable(trigger_ids=[7000], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

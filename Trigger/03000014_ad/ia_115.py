@@ -17,7 +17,7 @@ class 오브젝트반응(trigger_api.Trigger):
             return NPC이동(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=115, visible=False, initial_sequence='Dead_A')
+        self.set_actor(trigger_id=115, initial_sequence='Dead_A')
         self.spawn_monster(spawn_ids=[93], auto_target=False)
 
 

@@ -4,31 +4,31 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_effect(trigger_ids=[5100,5101,5102,5103,5104,5105,5106], visible=False) # ArrowGuide01
-        self.set_effect(trigger_ids=[5200,5201,5202,5203], visible=False) # DownArrowBomb
-        self.set_effect(trigger_ids=[5300,5301,5302,5303,5304], visible=False) # ArrowGuide02
-        self.set_effect(trigger_ids=[5400,5401,5402], visible=False) # ArrowGuide03
-        self.set_effect(trigger_ids=[5500,5501,5502,5503,5504], visible=False) # ArrowGuide04
-        self.set_ladder(trigger_ids=[510], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[511], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[512], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[513], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[514], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[515], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[516], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[517], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[518], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[519], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[520], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[521], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[522], visible=False, enable=False, fade=0) # Ladder01
-        self.set_ladder(trigger_ids=[530], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[531], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[532], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[533], visible=False, enable=False, fade=0) # Ladder02
-        self.set_ladder(trigger_ids=[534], visible=False, enable=False, fade=0) # Ladder02
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008], visible=True, start_delay=0, interval=0, fade=0) # Invisible_AlwaysOn
+        self.set_portal(portal_id=2)
+        self.set_effect(trigger_ids=[5100,5101,5102,5103,5104,5105,5106]) # ArrowGuide01
+        self.set_effect(trigger_ids=[5200,5201,5202,5203]) # DownArrowBomb
+        self.set_effect(trigger_ids=[5300,5301,5302,5303,5304]) # ArrowGuide02
+        self.set_effect(trigger_ids=[5400,5401,5402]) # ArrowGuide03
+        self.set_effect(trigger_ids=[5500,5501,5502,5503,5504]) # ArrowGuide04
+        self.set_ladder(trigger_ids=[510]) # Ladder01
+        self.set_ladder(trigger_ids=[511]) # Ladder01
+        self.set_ladder(trigger_ids=[512]) # Ladder01
+        self.set_ladder(trigger_ids=[513]) # Ladder01
+        self.set_ladder(trigger_ids=[514]) # Ladder01
+        self.set_ladder(trigger_ids=[515]) # Ladder01
+        self.set_ladder(trigger_ids=[516]) # Ladder01
+        self.set_ladder(trigger_ids=[517]) # Ladder01
+        self.set_ladder(trigger_ids=[518]) # Ladder01
+        self.set_ladder(trigger_ids=[519]) # Ladder01
+        self.set_ladder(trigger_ids=[520]) # Ladder01
+        self.set_ladder(trigger_ids=[521]) # Ladder01
+        self.set_ladder(trigger_ids=[522]) # Ladder01
+        self.set_ladder(trigger_ids=[530]) # Ladder02
+        self.set_ladder(trigger_ids=[531]) # Ladder02
+        self.set_ladder(trigger_ids=[532]) # Ladder02
+        self.set_ladder(trigger_ids=[533]) # Ladder02
+        self.set_ladder(trigger_ids=[534]) # Ladder02
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008], visible=True) # Invisible_AlwaysOn
         self.set_interact_object(trigger_ids=[10002030], state=0) # Lever
         self.set_interact_object(trigger_ids=[10002031], state=0) # Lever
         self.destroy_monster(spawn_ids=[901,902,903,910,911,912,913,920,921,922,923,930,931,932,933,934]) # Mob
@@ -93,7 +93,7 @@ class LiftUpBombGuide01(trigger_api.Trigger):
 
 class SecondArrowGuide01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5500,5501,5502,5503,5504], visible=False) # ArrowGuide04
+        self.set_effect(trigger_ids=[5500,5501,5502,5503,5504]) # ArrowGuide04
         self.set_effect(trigger_ids=[5300,5301,5302,5303,5304], visible=True) # ArrowGuide02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -189,7 +189,7 @@ class GuidePullTheLever01(trigger_api.Trigger):
 
 class LadderOnToNextMap01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=2, enable=True)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=20039804, text_id=20039804, duration=3000) # 가이드 : 사다리를 타고 위로 올라가기
         self.set_ladder(trigger_ids=[530], visible=True, enable=True, fade=1) # Ladder02

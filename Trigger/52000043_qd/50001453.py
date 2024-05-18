@@ -5,17 +5,17 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1003,2003])
-        self.set_agent(trigger_ids=[9000], visible=False)
-        self.set_agent(trigger_ids=[9001], visible=False)
-        self.set_agent(trigger_ids=[9002], visible=False)
-        self.set_agent(trigger_ids=[9003], visible=False)
-        self.set_agent(trigger_ids=[9004], visible=False)
-        self.set_agent(trigger_ids=[9005], visible=False)
-        self.set_agent(trigger_ids=[9006], visible=False)
-        self.set_agent(trigger_ids=[9007], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_effect(trigger_ids=[604], visible=False)
-        self.set_effect(trigger_ids=[605], visible=False)
+        self.set_agent(trigger_ids=[9000])
+        self.set_agent(trigger_ids=[9001])
+        self.set_agent(trigger_ids=[9002])
+        self.set_agent(trigger_ids=[9003])
+        self.set_agent(trigger_ids=[9004])
+        self.set_agent(trigger_ids=[9005])
+        self.set_agent(trigger_ids=[9006])
+        self.set_agent(trigger_ids=[9007])
+        self.set_effect(trigger_ids=[603])
+        self.set_effect(trigger_ids=[604])
+        self.set_effect(trigger_ids=[605])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[199], quest_ids=[50001453], quest_states=[1]):
@@ -26,7 +26,7 @@ class 대기(trigger_api.Trigger):
 class 시작조건(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[1003,2003], auto_target=False)
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017])
         self.set_interact_object(trigger_ids=[10001020], state=2)
         self.set_interact_object(trigger_ids=[10001021], state=1)
 
@@ -48,7 +48,7 @@ class 연출시작(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.spawn_monster(spawn_ids=[2100,2101], auto_target=False)
-        self.select_camera(trigger_id=303, enable=True)
+        self.select_camera(trigger_id=303)
         self.move_npc(spawn_id=1003, patrol_name='MS2PatrolData_1004A')
         self.move_npc(spawn_id=2003, patrol_name='MS2PatrolData_2004A')
 
@@ -70,7 +70,7 @@ class NPC대사01(trigger_api.Trigger):
 
 class NPC대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[603], visible=False)
+        self.set_effect(trigger_ids=[603])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -91,7 +91,7 @@ class 준타대사01(trigger_api.Trigger):
 
 class 준타대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[604])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -131,7 +131,7 @@ class 틴차이대사01(trigger_api.Trigger):
 
 class 틴차이대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[605], visible=False)
+        self.set_effect(trigger_ids=[605])
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -143,14 +143,14 @@ class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1003,2003])
         self.spawn_monster(spawn_ids=[1004,2004], auto_target=False)
-        self.set_agent(trigger_ids=[9000], visible=False)
-        self.set_agent(trigger_ids=[9001], visible=False)
-        self.set_agent(trigger_ids=[9002], visible=False)
-        self.set_agent(trigger_ids=[9003], visible=False)
-        self.set_agent(trigger_ids=[9004], visible=False)
-        self.set_agent(trigger_ids=[9005], visible=False)
-        self.set_agent(trigger_ids=[9006], visible=False)
-        self.set_agent(trigger_ids=[9007], visible=False)
+        self.set_agent(trigger_ids=[9000])
+        self.set_agent(trigger_ids=[9001])
+        self.set_agent(trigger_ids=[9002])
+        self.set_agent(trigger_ids=[9003])
+        self.set_agent(trigger_ids=[9004])
+        self.set_agent(trigger_ids=[9005])
+        self.set_agent(trigger_ids=[9006])
+        self.set_agent(trigger_ids=[9007])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=303, enable=False)

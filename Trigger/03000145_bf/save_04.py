@@ -5,7 +5,7 @@ import trigger_api
 class 트리거초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='10', seconds=1)
-        self.set_mesh(trigger_ids=[4001], visible=False, fade=1)
+        self.set_mesh(trigger_ids=[4001], fade=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):
@@ -26,7 +26,7 @@ class 대기(trigger_api.Trigger):
 class 문열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=1)
-        self.set_mesh(trigger_ids=[4001], visible=True, fade=1)
+        self.set_mesh(trigger_ids=[4001], visible=True, fade=1.0)
         self.destroy_monster(spawn_ids=[401])
         self.destroy_monster(spawn_ids=[402])
         self.spawn_monster(spawn_ids=[411], auto_target=False)
@@ -40,7 +40,7 @@ class 문열림(trigger_api.Trigger):
 class 도망갈준비1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='2', seconds=2)
-        self.set_dialogue(type=1, spawn_id=411, script='$03000145_BF__SAVE_04__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=411, script='$03000145_BF__SAVE_04__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
@@ -50,7 +50,7 @@ class 도망갈준비1(trigger_api.Trigger):
 class 도망갈준비2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=3)
-        self.set_dialogue(type=1, spawn_id=412, script='$03000145_BF__SAVE_04__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=412, script='$03000145_BF__SAVE_04__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
@@ -69,7 +69,7 @@ class 도망시작(trigger_api.Trigger):
 class 도망중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='6', seconds=3)
-        self.set_dialogue(type=1, spawn_id=411, script='$03000145_BF__SAVE_04__2$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=411, script='$03000145_BF__SAVE_04__2$', time=2)
         self.set_dialogue(type=1, spawn_id=412, script='$03000145_BF__SAVE_04__3$', time=2, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:

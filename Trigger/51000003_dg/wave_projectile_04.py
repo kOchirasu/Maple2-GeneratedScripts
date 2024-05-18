@@ -20,21 +20,21 @@ class Round_01_Ready(trigger_api.Trigger):
 
 class Round_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Round_01_Random_01(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Round_01_Random_02(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Round_01_Random_03(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Round_01_Random_04(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return Round_01_Random_05(self.ctx)
 
 
 class Round_01_Random_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[216], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[216])
         self.set_timer(timer_id='9', seconds=9)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,7 @@ class Round_01_Random_01(trigger_api.Trigger):
 
 class Round_01_Random_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[217], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[217])
         self.set_timer(timer_id='9', seconds=9)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +62,7 @@ class Round_01_Random_02(trigger_api.Trigger):
 
 class Round_01_Random_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[218], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[218])
         self.set_timer(timer_id='9', seconds=9)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +76,7 @@ class Round_01_Random_03(trigger_api.Trigger):
 
 class Round_01_Random_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[219], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[219])
         self.set_timer(timer_id='9', seconds=9)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +90,7 @@ class Round_01_Random_04(trigger_api.Trigger):
 
 class Round_01_Random_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[220], auto_target=True, delay=0)
+        self.spawn_monster(spawn_ids=[220])
         self.set_timer(timer_id='9', seconds=9)
 
     def on_tick(self) -> trigger_api.Trigger:

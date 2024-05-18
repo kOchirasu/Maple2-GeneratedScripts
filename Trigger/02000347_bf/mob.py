@@ -21,25 +21,25 @@ class 시작(trigger_api.Trigger):
 
 class 랜덤몬스터소환(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환1(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환2(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환3(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환4(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환5(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환6(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환7(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환8(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환9(self.ctx)
-        if self.random_condition(weight=10):
+        if self.random_condition(weight=10.0):
             return 번소환10(self.ctx)
         if self.object_interacted(interact_ids=[10000804], state=1):
             return 시작(self.ctx)

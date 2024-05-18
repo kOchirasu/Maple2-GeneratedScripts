@@ -4,17 +4,17 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False) # PortalOn
+        self.set_effect(trigger_ids=[5001]) # PortalOn
         self.set_actor(trigger_id=4000, visible=True, initial_sequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
-        self.set_ladder(trigger_ids=[510], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[511], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[512], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[513], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[514], visible=False, enable=False, fade=0) # Ladder
-        self.set_ladder(trigger_ids=[515], visible=False, enable=False, fade=0) # Ladder
-        self.set_mesh(trigger_ids=[3100], visible=True, start_delay=0, interval=0, fade=0) # Wall_BehindFirePlace
-        self.set_mesh(trigger_ids=[3101], visible=True, start_delay=0, interval=0, fade=0) # BehindFirePlaceCover
-        self.set_mesh(trigger_ids=[3102], visible=True, start_delay=0, interval=0, fade=0) # FireplaceInvisible
+        self.set_ladder(trigger_ids=[510]) # Ladder
+        self.set_ladder(trigger_ids=[511]) # Ladder
+        self.set_ladder(trigger_ids=[512]) # Ladder
+        self.set_ladder(trigger_ids=[513]) # Ladder
+        self.set_ladder(trigger_ids=[514]) # Ladder
+        self.set_ladder(trigger_ids=[515]) # Ladder
+        self.set_mesh(trigger_ids=[3100], visible=True) # Wall_BehindFirePlace
+        self.set_mesh(trigger_ids=[3101], visible=True) # BehindFirePlaceCover
+        self.set_mesh(trigger_ids=[3102], visible=True) # FireplaceInvisible
         self.set_interact_object(trigger_ids=[10002038], state=0) # Fireplace
         self.set_user_value(key='HiddenRouteOpen', value=0)
 
@@ -27,7 +27,7 @@ class Wait(trigger_api.Trigger):
 
 class Opened(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4000, visible=False, initial_sequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
+        self.set_actor(trigger_id=4000, initial_sequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
         self.set_interact_object(trigger_ids=[10002038], state=1) # Fireplace
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,20 +38,20 @@ class Opened(trigger_api.Trigger):
 class LadderOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5001], visible=True) # PortalOn
-        self.set_mesh(trigger_ids=[3102], visible=False, start_delay=0, interval=0, fade=0) # FireplaceInvisible
+        self.set_mesh(trigger_ids=[3102]) # FireplaceInvisible
         self.set_ladder(trigger_ids=[510], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[511], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[512], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[513], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[514], visible=True, enable=True, fade=2) # Ladder
         self.set_ladder(trigger_ids=[515], visible=True, enable=True, fade=2) # Ladder
-        self.set_mesh(trigger_ids=[3100], visible=False, start_delay=0, interval=0, fade=3) # Wall_BehindFirePlace
-        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=3) # BehindFirePlaceCover
+        self.set_mesh(trigger_ids=[3100], fade=3.0) # Wall_BehindFirePlace
+        self.set_mesh(trigger_ids=[3101], fade=3.0) # BehindFirePlaceCover
 
 
 class Closed(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=4000, visible=False, initial_sequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
+        self.set_actor(trigger_id=4000, initial_sequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
         self.set_interact_object(trigger_ids=[10002038], state=1) # Fireplace
 
     def on_tick(self) -> trigger_api.Trigger:

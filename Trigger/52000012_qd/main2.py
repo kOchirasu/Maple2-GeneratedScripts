@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=2)
         self.set_actor(trigger_id=10001, visible=True, initial_sequence='Closed')
         self.set_actor(trigger_id=10002, visible=True, initial_sequence='Closed')
         self.set_mesh(trigger_ids=[10011], visible=True)
@@ -28,7 +28,7 @@ class 문열림1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='19', seconds=1)
         self.set_actor(trigger_id=10001, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[10011], visible=False)
+        self.set_mesh(trigger_ids=[10011])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='19'):
@@ -38,7 +38,7 @@ class 문열림1(trigger_api.Trigger):
 class 문열림2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=10002, visible=True, initial_sequence='Opened')
-        self.set_mesh(trigger_ids=[10012], visible=False)
+        self.set_mesh(trigger_ids=[10012])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9001], quest_ids=[10002611], quest_states=[2]):

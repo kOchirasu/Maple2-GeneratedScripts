@@ -5,9 +5,9 @@ import trigger_api
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[705,706], visible=True)
-        self.set_mesh(trigger_ids=[711,712], visible=False)
+        self.set_mesh(trigger_ids=[711,712])
         self.destroy_monster(spawn_ids=[601,602,603,604])
-        self.set_effect(trigger_ids=[3004], visible=False)
+        self.set_effect(trigger_ids=[3004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=201) >= 1:
@@ -31,8 +31,8 @@ class 통과딜레이(trigger_api.Trigger):
         self.set_achievement(trigger_id=1000, type='trigger', achieve='goldenTower')
         # self.create_item(spawn_ids=[9001], trigger_id=998)
         self.dungeon_clear()
-        self.set_mesh(trigger_ids=[705,706], visible=False)
-        self.set_mesh(trigger_ids=[711,712], visible=False)
+        self.set_mesh(trigger_ids=[705,706])
+        self.set_mesh(trigger_ids=[711,712])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):

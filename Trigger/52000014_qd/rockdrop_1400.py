@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(trigger_ids=[1400], enable=False)
-        self.set_effect(trigger_ids=[1401], visible=False) # RockDrop
+        self.set_skill(trigger_ids=[1400])
+        self.set_effect(trigger_ids=[1401]) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
@@ -43,8 +43,8 @@ class 낙하01완료(trigger_api.Trigger):
 class 초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='3', seconds=1)
-        self.set_skill(trigger_ids=[1400], enable=False)
-        self.set_effect(trigger_ids=[1401], visible=False) # RockDrop
+        self.set_skill(trigger_ids=[1400])
+        self.set_effect(trigger_ids=[1401]) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):

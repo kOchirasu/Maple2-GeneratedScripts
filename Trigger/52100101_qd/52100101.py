@@ -10,7 +10,7 @@ class wait_01(trigger_api.Trigger):
 
 class wait_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False) # 정리
+        self.set_effect(trigger_ids=[5001]) # 정리
         self.destroy_monster(spawn_ids=[101])
         self.destroy_monster(spawn_ids=[102])
         self.destroy_monster(spawn_ids=[103])
@@ -42,7 +42,7 @@ class wait_02(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[108], auto_target=False)
         self.set_npc_emotion_sequence(spawn_id=108, sequence_name='Dead_A')
         self.spawn_monster(spawn_ids=[114], auto_target=False) # 클라디아
-        self.set_npc_emotion_loop(spawn_id=114, sequence_name='Sit_Down_A', duration=1E+10) # 클라디아
+        self.set_npc_emotion_loop(spawn_id=114, sequence_name='Sit_Down_A', duration=10000000000.0) # 클라디아
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[50100860], quest_states=[2]):
@@ -72,7 +72,7 @@ class wait_01_02_003(trigger_api.Trigger):
 
 class 구릉도착(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -140,7 +140,7 @@ class 정리_01(trigger_api.Trigger):
 
 class 정리_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=0)
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_scene_skip() # Missing State: State
@@ -152,8 +152,8 @@ class 정리_02(trigger_api.Trigger):
 
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.reset_camera(interpolation_time=0)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -164,7 +164,7 @@ class Skip_1(trigger_api.Trigger):
 
 class 밝아짐(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2002], quest_ids=[50100870], quest_states=[3]):
@@ -198,7 +198,7 @@ class wait_01_04(trigger_api.Trigger):
 
 class 클라디아바라봄(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=3, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -317,7 +317,7 @@ class 잠시후_3(trigger_api.Trigger):
 
 class 잠시후_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=4, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

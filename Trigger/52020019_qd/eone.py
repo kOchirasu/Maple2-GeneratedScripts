@@ -10,7 +10,7 @@ class Idle(trigger_api.Trigger):
 
 class Talk(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawn_id=101, msg='무엄하군요! 저리 가세요!', duration=3000, delay_tick=0)
+        self.add_balloon_talk(spawn_id=101, msg='무엄하군요! 저리 가세요!', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=12000):

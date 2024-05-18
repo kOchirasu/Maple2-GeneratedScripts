@@ -89,9 +89,9 @@ class 연출준비(trigger_api.Trigger):
 class 티니에등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8001], return_view=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_dialogue(type=2, spawn_id=11003243, script='$npcName:11003242$!!', time=3, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Bore_C', duration=3000)
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_dialogue(type=2, spawn_id=11003243, script='$npcName:11003242$!!', time=3)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Bore_C', duration=3000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -103,7 +103,7 @@ class 티니에이동01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8000], return_view=False)
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_girl01')
-        self.set_dialogue(type=2, spawn_id=11003243, script='$02000224_BF__MAIN__0$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003243, script='$02000224_BF__MAIN__0$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -114,8 +114,8 @@ class 티니에이동01(trigger_api.Trigger):
 class 아르마노대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8003], return_view=False)
-        self.set_dialogue(type=2, spawn_id=11003242, script='$02000224_BF__MAIN__1$', time=4, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11003242, script='$02000224_BF__MAIN__1$', time=4)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000.0)
         # Missing State: 아르마노대사01_skip
         self.set_skip()
 
@@ -137,8 +137,8 @@ class 아르마노대사01_skip(trigger_api.Trigger):
 """
 class 티니에대사09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003243, script='$02000224_BF__MAIN__17$', time=5, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=5000)
+        self.set_dialogue(type=2, spawn_id=11003243, script='$02000224_BF__MAIN__17$', time=5)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=5000.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -148,7 +148,7 @@ class 티니에대사09(trigger_api.Trigger):
 """
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=3)
+        self.reset_camera(interpolation_time=3.0)
         self.set_achievement(trigger_id=9000, type='trigger', achieve='foolishson')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

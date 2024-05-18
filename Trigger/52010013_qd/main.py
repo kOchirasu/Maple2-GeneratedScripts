@@ -13,7 +13,7 @@ class idle(trigger_api.Trigger):
 
 class Event_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=8001, enable=True)
+        self.select_camera(trigger_id=8001)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.spawn_monster(spawn_ids=[104])
@@ -36,7 +36,7 @@ class Event_02_IDLE(trigger_api.Trigger):
 
 class Event_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=8002, enable=True)
+        self.select_camera(trigger_id=8002)
         self.set_dialogue(type=2, spawn_id=11001292, script='$52010013_QD__MAIN__1$', time=5)
         self.set_skip(state=Event_03_IDLE)
         self.set_timer(timer_id='5', seconds=5)

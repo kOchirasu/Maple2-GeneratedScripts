@@ -1,11 +1,12 @@
 """ trigger/52010068_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5001], visible=False)
-        self.set_effect(trigger_ids=[5002], visible=False)
+        self.set_effect(trigger_ids=[5001])
+        self.set_effect(trigger_ids=[5002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.quest_user_detected(box_ids=[2001], quest_ids=[20002391], quest_states=[3]):
@@ -27,8 +28,8 @@ class Ready(trigger_api.Trigger):
 
 class 틴차이_준타_스폰01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[102], auto_target=True)
-        self.spawn_monster(spawn_ids=[103], auto_target=True)
+        self.spawn_monster(spawn_ids=[102])
+        self.spawn_monster(spawn_ids=[103])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[3]):
@@ -58,7 +59,7 @@ class Orde_In_Effect(trigger_api.Trigger):
 
 class Orde_In(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -67,10 +68,10 @@ class Orde_In(trigger_api.Trigger):
 
 class Orde_In_Turn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=600, enable=True)
+        self.select_camera(trigger_id=600)
         self.set_effect(trigger_ids=[5001], visible=True)
-        self.set_npc_rotation(spawn_id=101, rotation=-45)
-        self.add_cinematic_talk(npc_id=11004033, illust_id='Orde_normal', msg='$52010068_QD__MAIN__0$', align='left')
+        self.set_npc_rotation(spawn_id=101, rotation=-45.0)
+        self.add_cinematic_talk(npc_id=11004033, illust_id='Orde_normal', msg='$52010068_QD__MAIN__0$', align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -80,7 +81,7 @@ class Orde_In_Turn(trigger_api.Trigger):
 class Orde_In_Talk(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='IceSphere_A')
-        self.add_cinematic_talk(npc_id=11004033, illust_id='Orde_normal', msg='$52010068_QD__MAIN__1$', align='left')
+        self.add_cinematic_talk(npc_id=11004033, illust_id='Orde_normal', msg='$52010068_QD__MAIN__1$', align=Align.Left)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -100,7 +101,7 @@ class Orde_In_Talk_End(trigger_api.Trigger):
 
 class Orde_In_ReTurn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_rotation(spawn_id=101, rotation=360)
+        self.set_npc_rotation(spawn_id=101, rotation=360.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[3]):
@@ -114,7 +115,7 @@ class Orde_In_ReTurn(trigger_api.Trigger):
 class Orde_Out_Effect(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Wizard_Teleport_A')
-        self.add_balloon_talk(spawn_id=101, msg='$52010068_QD__MAIN__2$', duration=2800, delay_tick=0)
+        self.add_balloon_talk(spawn_id=101, msg='$52010068_QD__MAIN__2$', duration=2800)
         self.set_effect(trigger_ids=[5002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +126,7 @@ class Orde_Out_Effect(trigger_api.Trigger):
 class Orde_Out(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[101])
-        self.set_effect(trigger_ids=[5002], visible=False)
+        self.set_effect(trigger_ids=[5002])
 
 
 class 챕터10에필로그연출01(trigger_api.Trigger):
@@ -548,7 +549,7 @@ class 챕터10에필로그연출21(trigger_api.Trigger):
 
 class 챕터10에필로그연출22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -558,7 +559,7 @@ class 챕터10에필로그연출22(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=10, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=10, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(map_id=52010068, portal_id=2)

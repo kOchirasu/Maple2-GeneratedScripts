@@ -6,61 +6,61 @@ class Setting(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(trigger_ids=[10001153], state=0) # Lever_BlockStart
         self.set_interact_object(trigger_ids=[10001154], state=0) # Lever_BlockOff
-        self.set_mesh(trigger_ids=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211], visible=False, start_delay=0, interval=0, fade=0) # GratingDown
-        self.set_mesh(trigger_ids=[6300,6301,6302,6303,6304,6305], visible=True, start_delay=0, interval=0, fade=0) # GratingUp
+        self.set_mesh(trigger_ids=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211]) # GratingDown
+        self.set_mesh(trigger_ids=[6300,6301,6302,6303,6304,6305], visible=True) # GratingUp
         # InvisibleBarrier_TOKfalse
-        self.set_mesh(trigger_ids=[3901], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_breakable(trigger_ids=[6000], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6001], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6002], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6003], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6004], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6005], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6006], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6007], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6008], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6009], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6010], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6011], enable=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6000], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6001], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6002], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6003], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6004], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6005], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6006], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6007], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6008], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6009], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6010], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6011], visible=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6100], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6101], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6102], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6103], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6104], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6105], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6106], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6107], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6108], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6109], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6110], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6111], enable=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6100], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6101], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6102], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6103], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6104], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6105], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6106], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6107], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6108], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6109], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6110], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6111], visible=False) # Grating_Off
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
+        self.set_mesh(trigger_ids=[3901])
+        self.set_breakable(trigger_ids=[6000]) # Grating_Start
+        self.set_breakable(trigger_ids=[6001]) # Grating_Start
+        self.set_breakable(trigger_ids=[6002]) # Grating_Start
+        self.set_breakable(trigger_ids=[6003]) # Grating_Start
+        self.set_breakable(trigger_ids=[6004]) # Grating_Start
+        self.set_breakable(trigger_ids=[6005]) # Grating_Start
+        self.set_breakable(trigger_ids=[6006]) # Grating_Start
+        self.set_breakable(trigger_ids=[6007]) # Grating_Start
+        self.set_breakable(trigger_ids=[6008]) # Grating_Start
+        self.set_breakable(trigger_ids=[6009]) # Grating_Start
+        self.set_breakable(trigger_ids=[6010]) # Grating_Start
+        self.set_breakable(trigger_ids=[6011]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6000]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6001]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6002]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6003]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6004]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6005]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6006]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6007]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6008]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6009]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6010]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6011]) # Grating_Start
+        self.set_breakable(trigger_ids=[6100]) # Grating_Off
+        self.set_breakable(trigger_ids=[6101]) # Grating_Off
+        self.set_breakable(trigger_ids=[6102]) # Grating_Off
+        self.set_breakable(trigger_ids=[6103]) # Grating_Off
+        self.set_breakable(trigger_ids=[6104]) # Grating_Off
+        self.set_breakable(trigger_ids=[6105]) # Grating_Off
+        self.set_breakable(trigger_ids=[6106]) # Grating_Off
+        self.set_breakable(trigger_ids=[6107]) # Grating_Off
+        self.set_breakable(trigger_ids=[6108]) # Grating_Off
+        self.set_breakable(trigger_ids=[6109]) # Grating_Off
+        self.set_breakable(trigger_ids=[6110]) # Grating_Off
+        self.set_breakable(trigger_ids=[6111]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6100]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6101]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6102]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6103]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6104]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6105]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6106]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6107]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6108]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6109]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6110]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6111]) # Grating_Off
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
         self.set_user_value(key='BlockEnable', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class BlockEnable(trigger_api.Trigger):
 
 class BlockStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6300,6301,6302,6303,6304,6305], visible=False, start_delay=100, interval=0, fade=2) # GratingUp
+        self.set_mesh(trigger_ids=[6300,6301,6302,6303,6304,6305], start_delay=100, fade=2.0) # GratingUp
         self.set_breakable(trigger_ids=[6000], enable=True) # Grating_Start
         self.set_breakable(trigger_ids=[6001], enable=True) # Grating_Start
         self.set_breakable(trigger_ids=[6002], enable=True) # Grating_Start
@@ -113,7 +113,7 @@ class BlockStart(trigger_api.Trigger):
 class BlockIng(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # InvisibleBarrier_TOKfalse
-        self.set_mesh(trigger_ids=[3901], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3901], visible=True)
         self.set_agent(trigger_ids=[8000], visible=True)
         self.set_agent(trigger_ids=[8001], visible=True)
         self.set_agent(trigger_ids=[8002], visible=True)
@@ -125,31 +125,31 @@ class BlockIng(trigger_api.Trigger):
 
 class BlockEnd(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211], visible=True, start_delay=0, interval=0, fade=0) # GratingDown
-        self.set_breakable(trigger_ids=[6000], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6001], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6002], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6003], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6004], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6005], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6006], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6007], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6008], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6009], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6010], enable=False) # Grating_Start
-        self.set_breakable(trigger_ids=[6011], enable=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6000], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6001], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6002], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6003], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6004], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6005], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6006], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6007], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6008], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6009], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6010], visible=False) # Grating_Start
-        self.set_visible_breakable_object(trigger_ids=[6011], visible=False) # Grating_Start
+        self.set_mesh(trigger_ids=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211], visible=True) # GratingDown
+        self.set_breakable(trigger_ids=[6000]) # Grating_Start
+        self.set_breakable(trigger_ids=[6001]) # Grating_Start
+        self.set_breakable(trigger_ids=[6002]) # Grating_Start
+        self.set_breakable(trigger_ids=[6003]) # Grating_Start
+        self.set_breakable(trigger_ids=[6004]) # Grating_Start
+        self.set_breakable(trigger_ids=[6005]) # Grating_Start
+        self.set_breakable(trigger_ids=[6006]) # Grating_Start
+        self.set_breakable(trigger_ids=[6007]) # Grating_Start
+        self.set_breakable(trigger_ids=[6008]) # Grating_Start
+        self.set_breakable(trigger_ids=[6009]) # Grating_Start
+        self.set_breakable(trigger_ids=[6010]) # Grating_Start
+        self.set_breakable(trigger_ids=[6011]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6000]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6001]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6002]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6003]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6004]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6005]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6006]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6007]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6008]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6009]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6010]) # Grating_Start
+        self.set_visible_breakable_object(trigger_ids=[6011]) # Grating_Start
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -167,7 +167,7 @@ class BlockDisable(trigger_api.Trigger):
 
 class BlockOffStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211], visible=False, start_delay=100, interval=0, fade=2) # GratingDown
+        self.set_mesh(trigger_ids=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211], start_delay=100, fade=2.0) # GratingDown
         self.set_breakable(trigger_ids=[6100], enable=True) # Grating_Off
         self.set_breakable(trigger_ids=[6101], enable=True) # Grating_Off
         self.set_breakable(trigger_ids=[6102], enable=True) # Grating_Off
@@ -201,10 +201,10 @@ class BlockOffStart(trigger_api.Trigger):
 class BlockOffIng(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # InvisibleBarrier_TOKfalse
-        self.set_mesh(trigger_ids=[3901], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_agent(trigger_ids=[8000], visible=False)
-        self.set_agent(trigger_ids=[8001], visible=False)
-        self.set_agent(trigger_ids=[8002], visible=False)
+        self.set_mesh(trigger_ids=[3901])
+        self.set_agent(trigger_ids=[8000])
+        self.set_agent(trigger_ids=[8001])
+        self.set_agent(trigger_ids=[8002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -213,31 +213,31 @@ class BlockOffIng(trigger_api.Trigger):
 
 class BlockOffEnd(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[6300,6301,6302,6303,6304,6305], visible=True, start_delay=0, interval=0, fade=0) # GratingUp
-        self.set_breakable(trigger_ids=[6100], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6101], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6102], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6103], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6104], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6105], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6106], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6107], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6108], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6109], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6110], enable=False) # Grating_Off
-        self.set_breakable(trigger_ids=[6111], enable=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6100], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6101], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6102], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6103], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6104], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6105], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6106], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6107], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6108], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6109], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6110], visible=False) # Grating_Off
-        self.set_visible_breakable_object(trigger_ids=[6111], visible=False) # Grating_Off
+        self.set_mesh(trigger_ids=[6300,6301,6302,6303,6304,6305], visible=True) # GratingUp
+        self.set_breakable(trigger_ids=[6100]) # Grating_Off
+        self.set_breakable(trigger_ids=[6101]) # Grating_Off
+        self.set_breakable(trigger_ids=[6102]) # Grating_Off
+        self.set_breakable(trigger_ids=[6103]) # Grating_Off
+        self.set_breakable(trigger_ids=[6104]) # Grating_Off
+        self.set_breakable(trigger_ids=[6105]) # Grating_Off
+        self.set_breakable(trigger_ids=[6106]) # Grating_Off
+        self.set_breakable(trigger_ids=[6107]) # Grating_Off
+        self.set_breakable(trigger_ids=[6108]) # Grating_Off
+        self.set_breakable(trigger_ids=[6109]) # Grating_Off
+        self.set_breakable(trigger_ids=[6110]) # Grating_Off
+        self.set_breakable(trigger_ids=[6111]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6100]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6101]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6102]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6103]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6104]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6105]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6106]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6107]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6108]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6109]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6110]) # Grating_Off
+        self.set_visible_breakable_object(trigger_ids=[6111]) # Grating_Off
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

@@ -19,7 +19,7 @@ class Wait(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[2017])
         self.destroy_monster(spawn_ids=[2018])
         self.destroy_monster(spawn_ids=[2019])
-        self.set_effect(trigger_ids=[5003], visible=False) # Dark_Intro_Chord
+        self.set_effect(trigger_ids=[5003]) # Dark_Intro_Chord
         self.set_interact_object(trigger_ids=[10001063], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,11 +48,11 @@ class MobBattle01(trigger_api.Trigger):
         self.change_monster(from_spawn_id=1017, to_spawn_id=2017)
         self.change_monster(from_spawn_id=1018, to_spawn_id=2018)
         self.change_monster(from_spawn_id=1019, to_spawn_id=2019)
-        self.set_ladder(trigger_ids=[521], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[522], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[523], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[524], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[525], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[521])
+        self.set_ladder(trigger_ids=[522])
+        self.set_ladder(trigger_ids=[523])
+        self.set_ladder(trigger_ids=[524])
+        self.set_ladder(trigger_ids=[525])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

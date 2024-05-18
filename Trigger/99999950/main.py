@@ -20,7 +20,7 @@ class 시작대기(trigger_api.Trigger):
 
 class 라운드1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101001], auto_target=True)
+        self.spawn_monster(spawn_ids=[101001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101001]):
@@ -29,7 +29,7 @@ class 라운드1(trigger_api.Trigger):
 
 class 라운드02_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101001], auto_target=True)
+        self.spawn_monster(spawn_ids=[101001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101001]):
@@ -48,7 +48,7 @@ class 라운드대기2(trigger_api.Trigger):
 
 class 라운드2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101002], auto_target=True)
+        self.spawn_monster(spawn_ids=[101002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101002]):
@@ -57,7 +57,7 @@ class 라운드2(trigger_api.Trigger):
 
 class 라운드02_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101002], auto_target=True)
+        self.spawn_monster(spawn_ids=[101002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101002]):
@@ -76,7 +76,7 @@ class 라운드대기3(trigger_api.Trigger):
 
 class 라운드3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101003], auto_target=True)
+        self.spawn_monster(spawn_ids=[101003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101003]):
@@ -85,7 +85,7 @@ class 라운드3(trigger_api.Trigger):
 
 class 라운드02_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101003], auto_target=True)
+        self.spawn_monster(spawn_ids=[101003])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101003]):
@@ -104,7 +104,7 @@ class 라운드대기4(trigger_api.Trigger):
 
 class 라운드4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101004], auto_target=True)
+        self.spawn_monster(spawn_ids=[101004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101004]):
@@ -113,7 +113,7 @@ class 라운드4(trigger_api.Trigger):
 
 class 라운드02_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101004], auto_target=True)
+        self.spawn_monster(spawn_ids=[101004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101004]):
@@ -122,7 +122,7 @@ class 라운드02_4(trigger_api.Trigger):
 
 class 라운드03_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101004], auto_target=True)
+        self.spawn_monster(spawn_ids=[101004])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101004]):
@@ -141,7 +141,7 @@ class 라운드대기5(trigger_api.Trigger):
 
 class 라운드5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101005], auto_target=True)
+        self.spawn_monster(spawn_ids=[101005])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101005]):

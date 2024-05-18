@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0) # 미니맵용_Invisible
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3002]) # 미니맵용_Invisible
+        self.set_portal(portal_id=10)
         self.set_interact_object(trigger_ids=[10001105], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:

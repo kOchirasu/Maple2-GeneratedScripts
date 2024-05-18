@@ -184,7 +184,7 @@ class CameraEffectA0(trigger_api.Trigger):
 
 class CameraEffectA1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cinematic_ui(type=9, script='$52000035_QD__EPILOGUE4MOVIE__3$', arg3=False)
+        self.set_cinematic_ui(type=9, script='$52000035_QD__EPILOGUE4MOVIE__3$')
         self.select_camera_path(path_ids=[1000,1001,1002,1003,1004,1005,1006,1007,1008,1009], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -194,7 +194,7 @@ class CameraEffectA1(trigger_api.Trigger):
 
 class CameraEffectA2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml') # 페이드 끈다
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml') # 페이드 끈다
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -214,7 +214,7 @@ class CameraEffect1100(trigger_api.Trigger):
 
 class CameraEffect1101(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2100276, enable=True, path='BG/Common/Sound/Eff_System_Chapter4_ZoomIn_01.xml')
         self.select_camera_path(path_ids=[1100,1101,1104], return_view=False)
 
@@ -234,7 +234,7 @@ class CameraEffect_1103(trigger_api.Trigger):
 
 class CameraEffect_1104(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_onetime_effect(id=2100277, enable=True, path='BG/Common/Sound/Eff_System_Chapter4_DarkWizard_Appear_01.xml')
         self.select_camera_path(path_ids=[1103,1102,1105], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=900, sequence_name='Bore_A')
@@ -246,7 +246,7 @@ class CameraEffect_1104(trigger_api.Trigger):
 
 class CameraEffect_1105(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=True, start_scale=1, end_scale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
+        self.set_time_scale(enable=True, start_scale=1.0, end_scale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -264,7 +264,7 @@ class CameraEffect_1106(trigger_api.Trigger):
 
 class CameraEffectA3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.select_camera_path(path_ids=[1200,1201], return_view=False)
         self.set_dialogue(type=2, spawn_id=11001957, script='$52000035_QD__EPILOGUE4MOVIE__4$', time=7)
         self.set_skip(state=Epilogue4Talk1)
@@ -438,7 +438,7 @@ class DM_AttScene01(trigger_api.Trigger):
 
 class DM_AttScene02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_time_scale(enable=True, start_scale=1, end_scale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
+        self.set_time_scale(enable=True, start_scale=1.0, end_scale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
         self.set_onetime_effect(id=1917, enable=True, path='BG/Common/Sound/Eff_Sound_52000035_Turka_00001917.xml')
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_darkReturn') # 11001957,투르카 원복
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_TurkaReturn') # 11001957,투르카 원복
@@ -461,7 +461,7 @@ class DM_AttScene03(trigger_api.Trigger):
 class DM_AttScene04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[2002,2003], return_view=False)
-        self.set_time_scale(enable=True, start_scale=1, end_scale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
+        self.set_time_scale(enable=True, start_scale=1.0, end_scale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):

@@ -30,17 +30,17 @@ class Wait(trigger_api.Trigger):
 
 class DanceGuideP1_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return DanceGuideP11_01(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return DanceGuideP12_01(self.ctx)
 
 
 class DanceGuideP2_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return DanceGuideP21_01(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return DanceGuideP22_01(self.ctx)
 
 

@@ -1,5 +1,6 @@
 """ trigger/02000026_in/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class start(trigger_api.Trigger):
@@ -55,7 +56,7 @@ class 기본상태(trigger_api.Trigger):
 class 아노스있음01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[102], auto_target=False)
-        self.set_mesh(trigger_ids=[4001,4002], visible=False)
+        self.set_mesh(trigger_ids=[4001,4002])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
@@ -65,7 +66,7 @@ class 아노스있음01(trigger_api.Trigger):
 class 아노스만남연출대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[101], auto_target=False)
-        self.set_mesh(trigger_ids=[4001,4002], visible=False)
+        self.set_mesh(trigger_ids=[4001,4002])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -89,7 +90,7 @@ class 아노스만남연출시작(trigger_api.Trigger):
 class 아노스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_Anos_00')
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__0$', time=4, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__0$', time=4)
         self.set_scene_skip(state=아노스만남_스킵완료, action='nextState') # setsceneskip 1 set
         # setsceneskip 1 set
         # setsceneskip 1 set
@@ -103,7 +104,7 @@ class 아노스이동01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8001], return_view=False)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_Anos_01')
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__1$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__1$', time=3)
         # self.set_skip(state=아노스만남_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +124,7 @@ class 아노스이동02(trigger_api.Trigger):
 
 class 아노스이동03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__2$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__2$', time=3)
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='ChatUp_A')
         # self.set_skip(state=아노스만남_스킵완료)
 
@@ -134,8 +135,8 @@ class 아노스이동03(trigger_api.Trigger):
 
 class 아노스대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__3$', time=4, arg5=0)
-        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__3$', time=4)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000.0)
         self.set_skip(state=아노스대사01_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -165,7 +166,7 @@ class 카메라이동_라딘01(trigger_api.Trigger):
 
 class 라딘대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__4$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__4$', time=3)
         self.set_npc_emotion_sequence(spawn_id=103, sequence_name='Bore_A')
         self.set_skip(state=라딘대사01_skip)
 
@@ -186,8 +187,8 @@ class 라딘대사01_skip(trigger_api.Trigger):
 class 아노스대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8002], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=4000)
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__5$', time=4, arg5=0)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=4000.0)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__5$', time=4)
         self.set_skip(state=아노스대사02_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -207,8 +208,8 @@ class 아노스대사02_skip(trigger_api.Trigger):
 class 라딘대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=103, sequence_name='ChatUP_A')
-        # self.set_npc_emotion_loop(spawn_id=103, sequence_name='ChatUP_A', duration=4000)
-        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__6$', time=4, arg5=0)
+        # self.set_npc_emotion_loop(spawn_id=103, sequence_name='ChatUP_A', duration=4000.0)
+        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__6$', time=4)
         self.set_skip(state=라딘대사02_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -237,8 +238,8 @@ class 카메라이동_아노스01(trigger_api.Trigger):
 class 아노스대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='ChatUp_A')
-        # self.set_npc_emotion_loop(spawn_id=102, sequence_name='ChatUp_A', duration=3000)
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__7$', time=3, arg5=0)
+        # self.set_npc_emotion_loop(spawn_id=102, sequence_name='ChatUp_A', duration=3000.0)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__7$', time=3)
         self.set_skip(state=아노스대사03_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -257,7 +258,7 @@ class 아노스대사03_skip(trigger_api.Trigger):
 
 class 아노스대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__8$', time=3, arg5=0)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__8$', time=3)
         self.move_user_path(patrol_name='MS2PatrolData_PC_01')
         self.set_skip(state=아노스대사04_skip)
 
@@ -278,8 +279,8 @@ class 아노스대사04_skip(trigger_api.Trigger):
 class 라딘대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8004], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=4000)
-        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__9$', time=4, arg5=0)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=4000.0)
+        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__9$', time=4)
         self.set_skip(state=라딘대사03_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -308,8 +309,8 @@ class PC안녕(trigger_api.Trigger):
 class 아노스대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8001], return_view=False)
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000)
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__10$', time=3, arg5=0)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000.0)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__10$', time=3)
         self.set_skip(state=아노스대사05_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -328,9 +329,9 @@ class 아노스대사05_skip(trigger_api.Trigger):
 
 class 아노스대사06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=3000)
-        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__11$', time=3, arg5=0)
-        self.show_caption(type='NameCaption', title='$02000026_IN__MAIN__12$', desc='$02000026_IN__MAIN__13$', align='centerLeft', offset_rate_x=0.05, offset_rate_y=0.15, duration=5000, scale=2)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=3000.0)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__11$', time=3)
+        self.show_caption(type='NameCaption', title='$02000026_IN__MAIN__12$', desc='$02000026_IN__MAIN__13$', align=Align.Center | Align.Left, offset_rate_x=0.05, offset_rate_y=0.15, duration=5000, scale=2.0)
         # Missing State: State,  setsceneskip 1 close
         self.set_scene_skip()
         # setsceneskip 1 close
@@ -343,7 +344,7 @@ class 아노스대사06(trigger_api.Trigger):
 
 class 아노스만남_스킵완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
         self.destroy_monster(spawn_ids=[101,102])
@@ -356,7 +357,7 @@ class 아노스만남_스킵완료(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_achievement(trigger_id=9000, type='trigger', achieve='MeetAnos')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

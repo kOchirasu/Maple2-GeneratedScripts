@@ -51,7 +51,7 @@ class 튜브대미지필드_1단계진행(trigger_api.Trigger):
 class 단계_튜브대미지필드_생성1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 1단계 튜브대미지필드 발동 , arg1 은 등장 몬스터의 스폰ID, arg2은 애디셔널 코드,  arg3은 애디셔널 레벨,   arg4 = 1 이면 플레이어가 아닌 NPC에게 적용,    arg5 = 1 하면 트리거 박스 영역 외의 모든 지점 체크
-        self.add_buff(box_ids=[102], skill_id=50004566, level=1, is_player=True, is_skill_set=True)
+        self.add_buff(box_ids=[102], skill_id=50004566, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='2PhaseTubeStep') >= 2:
@@ -99,7 +99,7 @@ class 단계_튜브대미지필드_처음단계2(trigger_api.Trigger):
 class 단계_튜브대미지필드_1Lv생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 튜브대미지필드 1Lv 발동 , arg1 은 등장 몬스터의 스폰ID, arg2은 애디셔널 코드,  arg3은 애디셔널 레벨,   arg4 = 1 이면 플레이어가 아닌 NPC에게 적용,    arg5 = 1 하면 트리거 박스 영역 외의 모든 지점 체크
-        self.add_buff(box_ids=[102], skill_id=50004563, level=1, is_player=True, is_skill_set=True)
+        self.add_buff(box_ids=[102], skill_id=50004563, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -110,7 +110,7 @@ class 단계_튜브대미지필드_2Lv생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.npc_remove_additional_effect(spawn_id=102, additional_effect_id=50004563) # 2단계 튜브대미지필드 1Lv  제거
         # 튜브대미지필드 2Lv 발동 , arg1 은 등장 몬스터의 스폰ID, arg2은 애디셔널 코드,  arg3은 애디셔널 레벨,   arg4 = 1 이면 플레이어가 아닌 NPC에게 적용,    arg5 = 1 하면 트리거 박스 영역 외의 모든 지점 체크
-        self.add_buff(box_ids=[102], skill_id=50004564, level=1, is_player=True, is_skill_set=True)
+        self.add_buff(box_ids=[102], skill_id=50004564, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -121,7 +121,7 @@ class 단계_튜브대미지필드_3Lv생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.npc_remove_additional_effect(spawn_id=102, additional_effect_id=50004564) # 2단계 튜브대미지필드 2Lv 제거
         # 튜브대미지필드 3Lv 발동 , arg1 은 등장 몬스터의 스폰ID, arg2은 애디셔널 코드,  arg3은 애디셔널 레벨,   arg4 = 1 이면 플레이어가 아닌 NPC에게 적용,    arg5 = 1 하면 트리거 박스 영역 외의 모든 지점 체크
-        self.add_buff(box_ids=[102], skill_id=50004565, level=1, is_player=True, is_skill_set=True)
+        self.add_buff(box_ids=[102], skill_id=50004565, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

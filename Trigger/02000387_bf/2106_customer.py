@@ -102,13 +102,13 @@ class WaitGreeting(trigger_api.Trigger):
 # 고객 주문 랜덤
 class OrderRandomPick(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000703(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000704(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000705(self.ctx)
-        if self.random_condition(weight=1):
+        if self.random_condition(weight=1.0):
             return PickItem_30000715(self.ctx)
 
 
@@ -203,10 +203,10 @@ class DetectItem_30000715(trigger_api.Trigger):
 # 미션 성공
 class RightItem(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5102], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5102]) # DownArrow
         self.play_system_sound_in_box(box_ids=[9900], sound='System_PartTimeJob_Right_01')
         self.remove_effect_nif(spawn_id=2106)
-        self.set_dialogue(type=1, spawn_id=2106, script='$02000387_BF__2106_CUSTOMER__0$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=2106, script='$02000387_BF__2106_CUSTOMER__0$', time=3)
         self.add_buff(box_ids=[9900], skill_id=70000112, level=1, is_player=False, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -235,10 +235,10 @@ class Quit(trigger_api.Trigger):
 # 잘못된 아이템을 내려놓으면
 class WrongItem(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5102], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5102]) # DownArrow
         self.play_system_sound_in_box(box_ids=[9900], sound='System_PartTimeJob_Wrong_01')
         self.remove_effect_nif(spawn_id=2106)
-        self.set_dialogue(type=1, spawn_id=2106, script='$02000387_BF__2106_CUSTOMER__1$', time=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=2106, script='$02000387_BF__2106_CUSTOMER__1$', time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):

@@ -6,7 +6,7 @@ class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='PenaltyFinish', value=0)
         self.set_user_value(key='WaveTime', value=0) # 웨이브 진행 순서 기억
-        self.set_effect(trigger_ids=[5102], visible=False) # 02Round_ShadowApp
+        self.set_effect(trigger_ids=[5102]) # 02Round_ShadowApp
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobWaveStart') >= 1:
@@ -40,11 +40,11 @@ class FirstWaveDelayRandom(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[90205,90207,90209], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay3000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay4000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FirstWaveDelay5000(self.ctx)
 
 
@@ -93,11 +93,11 @@ class SecondWaveDelayRandom(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[90213,90215,90217], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay3000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay4000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return SecondWaveDelay5000(self.ctx)
 
 
@@ -140,17 +140,17 @@ class ThirdWaveStart(trigger_api.Trigger):
 
 class ThirdWaveDirectionRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection10(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection20(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection30(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection40(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection50(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return ThirdWaveDirection60(self.ctx)
 
 
@@ -306,11 +306,11 @@ class ThirdWaveDirection61(trigger_api.Trigger):
 
 class ThirdWaveDelayRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay3000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay4000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return ThirdWaveDelay5000(self.ctx)
 
 
@@ -351,17 +351,17 @@ class FourthWaveStart(trigger_api.Trigger):
 
 class FourthWaveDirectionRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection10(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection20(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection30(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection40(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection50(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FourthWaveDirection60(self.ctx)
 
 
@@ -517,11 +517,11 @@ class FourthWaveDirection61(trigger_api.Trigger):
 
 class FourthWaveDelayRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FourthWaveDelay3000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FourthWaveDelay4000(self.ctx)
-        if self.random_condition(weight=30):
+        if self.random_condition(weight=30.0):
             return FourthWaveDelay2000(self.ctx)
 
 
@@ -562,17 +562,17 @@ class FifthWaveStart(trigger_api.Trigger):
 
 class FifthWaveDirectionRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FifthWaveDirection10(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FifthWaveDirection20(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FifthWaveDirection30(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FifthWaveDirection40(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FifthWaveDirection50(self.ctx)
-        if self.random_condition(weight=20):
+        if self.random_condition(weight=20.0):
             return FifthWaveDirection60(self.ctx)
 
 
@@ -762,7 +762,7 @@ class DefenceSucess01(trigger_api.Trigger):
 
 class DefenceSucess02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(trigger_ids=[5102], visible=False) # 02Round_ShadowApp
+        self.set_effect(trigger_ids=[5102]) # 02Round_ShadowApp
         self.set_user_value(trigger_id=2, key='02RoundSuccess', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -45,7 +45,7 @@ class 버프제거(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 어떤 버프가 걸려있는지 잘 모르겠으니 그냥 3개 버프 다 제거함 (트리거 박스 ID 안에 있는 대상 ) ,  참고로 버프 부여는 보스AI인 AI_SandstoneGiantBlueShine.xml 에서 진행함
         # 물방업, 마방업, 공업 버프 제거 하는 기능이 있는 버프 부여하기 ,   arg1="900" 보스 스폰 ID ,  arg3="1" 은 애디셔널 레벨
-        self.add_buff(box_ids=[900], skill_id=50001098, level=1, is_player=True)
+        self.add_buff(box_ids=[900], skill_id=50001098, level=1)
         # 몬스터에게 애디셔널 거는 경우:  arg4 = "타겟이 몬스터로 하려면 1 인 경우  ->    arg1 = "몬스터스폰ID", arg2 = "애디셔널코드", arg3 = "애디셔널레벨", arg4 = "타겟이 몬스터로 하려면 1설정"
         # 이 변수 0 초기화 시켜, 보스가 졸몹 소환때까지 다시 대기 상태가 되도록 함
         self.set_user_value(key='BuffDeleteOk', value=0)

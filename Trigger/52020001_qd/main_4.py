@@ -32,7 +32,7 @@ class 카메리이동(trigger_api.Trigger):
 
 class 탈것등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[7001], auto_target=True)
+        self.spawn_monster(spawn_ids=[7001])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -78,7 +78,7 @@ class 맵폭발연출(trigger_api.Trigger):
 
 class 연출끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[2000010], return_view=True)
+        self.select_camera_path(path_ids=[2000010])
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=0)
 
@@ -92,7 +92,7 @@ class 연출끝(trigger_api.Trigger):
 
 class 오브젝트반응(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=0, script='좋아! 이 녀석을 타고 돌격해야겠어!!', time=3, arg5=0)
+        self.set_dialogue(type=1, script='좋아! 이 녀석을 타고 돌격해야겠어!!', time=3)
         self.set_interact_object(trigger_ids=[10002010], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -184,15 +184,15 @@ class 몬스터전멸(trigger_api.Trigger):
 
 class 실패(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[2000009], return_view=True)
+        self.select_camera_path(path_ids=[2000009])
         self.set_effect(trigger_ids=[10090], visible=True)
         self.set_effect(trigger_ids=[10091], visible=True)
         self.set_effect(trigger_ids=[10092], visible=True)
-        self.set_mesh(trigger_ids=[80000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[80000], visible=True)
         self.destroy_monster(spawn_ids=[-1])
         self.set_event_ui(type=1, arg2='미션에 실패하였습니다. 다시 재도전 해보세요.', arg3='4000')
         self.move_user(map_id=52020001, portal_id=99)
-        self.set_portal(portal_id=14, visible=True, enable=True, minimap_visible=False)
+        self.set_portal(portal_id=14, visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

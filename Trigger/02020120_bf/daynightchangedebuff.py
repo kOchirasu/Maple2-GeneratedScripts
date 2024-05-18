@@ -1,5 +1,6 @@
 """ trigger/02020120_bf/daynightchangedebuff.xml """
 import trigger_api
+from System.Numerics import Vector3
 
 
 class Ready(trigger_api.Trigger):
@@ -7,7 +8,7 @@ class Ready(trigger_api.Trigger):
         # 맵 스킬 초기화 셋팅, 태양빛의 저주 디버프 스킬 On으로 초기 셋팅하기, 이 맵은 낮으로 시작하기 때문에
         self.set_skill(trigger_ids=[2222], enable=True)
         # 맵 스킬 초기화 셋팅, 달빛의 저주 디버프 스킬 Off으로 초기 셋팅하기
-        self.set_skill(trigger_ids=[1212], enable=False)
+        self.set_skill(trigger_ids=[1212])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=199) >= 1:
@@ -43,11 +44,11 @@ class 낮시간으로변화하기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.change_background(dds='BG_RedLapenta_A.dds')
         # arg1 = ambient color RGB값
-        self.set_ambient_light(primary=[226,197,211])
+        self.set_ambient_light(primary=Vector3(226,197,211))
         # arg1 = diffuse color RGB값,  arg2 = specular color RGB값
-        self.set_directional_light(diffuse_color=[224,246,249], specular_color=[170,170,170])
+        self.set_directional_light(diffuse_color=Vector3(224,246,249), specular_color=Vector3(170,170,170))
         self.set_skill(trigger_ids=[2222], enable=True) # 태양빛의 저주 디버프 스킬 On
-        self.set_skill(trigger_ids=[1212], enable=False) # 달빛의 저주 디버프 스킬 Off
+        self.set_skill(trigger_ids=[1212]) # 달빛의 저주 디버프 스킬 Off
         # DayNightChange 변수 0으로 초기하 하여 위쪽 단계 "낮밤변환신호대기" 에서 대기 상태가 되도록 하기
         self.set_user_value(key='DayNightChange', value=0)
 
@@ -66,11 +67,11 @@ class 낮시간으로변화하기_맵초기화(trigger_api.Trigger):
         self.set_user_value(key='DayNightChange', value=0)
         self.change_background(dds='BG_RedLapenta_A.dds')
         # arg1 = ambient color RGB값
-        self.set_ambient_light(primary=[226,197,211])
+        self.set_ambient_light(primary=Vector3(226,197,211))
         # arg1 = diffuse color RGB값,  arg2 = specular color RGB값
-        self.set_directional_light(diffuse_color=[224,246,249], specular_color=[170,170,170])
+        self.set_directional_light(diffuse_color=Vector3(224,246,249), specular_color=Vector3(170,170,170))
         self.set_skill(trigger_ids=[2222], enable=True) # 태양빛의 저주 디버프 스킬 On
-        self.set_skill(trigger_ids=[1212], enable=False) # 달빛의 저주 디버프 스킬 Off
+        self.set_skill(trigger_ids=[1212]) # 달빛의 저주 디버프 스킬 Off
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -89,10 +90,10 @@ class 밤시간으로변화하기(trigger_api.Trigger):
         # 이슈라 보스 낮밤 변화 마법 동작에 맞추어 타이밍 맞게 트리거 신호 변화를 하기 위해, 여기  waitTick 시간 조절을 넣음
         self.change_background(dds='BG_RedLapenta_B.dds')
         # arg1 = ambient color RGB값
-        self.set_ambient_light(primary=[120,119,183])
+        self.set_ambient_light(primary=Vector3(120,119,183))
         # arg1 = diffuse color RGB값,  arg2 = specular color RGB값
-        self.set_directional_light(diffuse_color=[193,100,119], specular_color=[170,170,170])
-        self.set_skill(trigger_ids=[2222], enable=False) # 태양빛의 저주 디버프 스킬 Off
+        self.set_directional_light(diffuse_color=Vector3(193,100,119), specular_color=Vector3(170,170,170))
+        self.set_skill(trigger_ids=[2222]) # 태양빛의 저주 디버프 스킬 Off
         self.set_skill(trigger_ids=[1212], enable=True) # 달빛의 저주 디버프 스킬 On
         # DayNightChange 변수 0으로 초기하 하여 위쪽 단계 "낮밤변환신호대기" 에서 대기 상태가 되도록 하기
         self.set_user_value(key='DayNightChange', value=0)

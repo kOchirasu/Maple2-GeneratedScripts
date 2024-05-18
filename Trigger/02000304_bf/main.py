@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=201, visible=False, initial_sequence='Closed_A')
-        self.set_actor(trigger_id=202, visible=False, initial_sequence='Closed_A')
+        self.set_actor(trigger_id=201, initial_sequence='Closed_A')
+        self.set_actor(trigger_id=202, initial_sequence='Closed_A')
         self.set_actor(trigger_id=203, visible=True, initial_sequence='sf_functobj_monitor_C01_On')
-        self.set_effect(trigger_ids=[602], visible=False)
-        self.set_effect(trigger_ids=[603], visible=False)
-        self.set_portal(portal_id=98, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=99, visible=False, enable=False, minimap_visible=False)
+        self.set_effect(trigger_ids=[602])
+        self.set_effect(trigger_ids=[603])
+        self.set_portal(portal_id=98)
+        self.set_portal(portal_id=99)
         self.set_interact_object(trigger_ids=[10000646], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 연출시작(trigger_api.Trigger):
 
 class 카메라이동대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=301, enable=True)
+        self.select_camera(trigger_id=301)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4500):
@@ -57,7 +57,7 @@ class 전투시작(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2001]):
-            self.set_actor(trigger_id=203, visible=False, initial_sequence='sf_functobj_monitor_C01_On')
+            self.set_actor(trigger_id=203, initial_sequence='sf_functobj_monitor_C01_On')
             self.set_interact_object(trigger_ids=[10000646], state=1)
             return 반응대기(self.ctx)
 
@@ -71,7 +71,7 @@ class 반응대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000646], state=0):
             self.hide_guide_summary(entity_id=20003003)
-            self.set_effect(trigger_ids=[603], visible=False)
+            self.set_effect(trigger_ids=[603])
             self.set_effect(trigger_ids=[602], visible=True)
             self.set_achievement(trigger_id=999, type='trigger', achieve='ClearTimehole')
             return 미션성공(self.ctx)
@@ -92,8 +92,8 @@ class 종료(trigger_api.Trigger):
         # self.show_guide_summary(entity_id=20003004, text_id=20003004)
         self.set_actor(trigger_id=201, visible=True, initial_sequence='Closed_A')
         self.set_actor(trigger_id=202, visible=True, initial_sequence='Closed_A')
-        self.set_portal(portal_id=99, visible=False, enable=True, minimap_visible=True)
-        self.set_portal(portal_id=98, visible=False, enable=True, minimap_visible=True)
+        self.set_portal(portal_id=99, enable=True, minimap_visible=True)
+        self.set_portal(portal_id=98, enable=True, minimap_visible=True)
         self.set_timer(timer_id='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:

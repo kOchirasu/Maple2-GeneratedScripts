@@ -4,9 +4,9 @@ import trigger_api
 
 class 시작대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010], visible=True)
+        self.set_portal(portal_id=1)
+        self.set_portal(portal_id=2)
         self.spawn_monster(spawn_ids=[1001,1002,1003], auto_target=False)
         self.spawn_monster(spawn_ids=[1101,1102,1103], auto_target=False)
 
@@ -26,7 +26,7 @@ class 아이템생성(trigger_api.Trigger):
 
 class 완료대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[102]):

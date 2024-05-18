@@ -5,12 +5,12 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[901,902,903])
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False) # ExitTop
-        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False) # ExitUnder
+        self.set_portal(portal_id=10) # ExitTop
+        self.set_portal(portal_id=11) # ExitUnder
         self.enable_spawn_point_pc(spawn_id=10000, is_enable=True) # PC스포너 제어
-        self.enable_spawn_point_pc(spawn_id=10001, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=10002, is_enable=False)
-        self.enable_spawn_point_pc(spawn_id=10003, is_enable=False)
+        self.enable_spawn_point_pc(spawn_id=10001)
+        self.enable_spawn_point_pc(spawn_id=10002)
+        self.enable_spawn_point_pc(spawn_id=10003)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9001]):
@@ -24,7 +24,7 @@ class Wait(trigger_api.Trigger):
 # 오른쪽
 class Boss01SpawnDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=10000, is_enable=False) # 기본 스포너
+        self.enable_spawn_point_pc(spawn_id=10000) # 기본 스포너
         self.enable_spawn_point_pc(spawn_id=10001, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,7 +38,7 @@ class Boss01Spawn(trigger_api.Trigger):
         self.set_user_value(trigger_id=1122330, key='AgentOff', value=1)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=501, enable=True)
+        self.select_camera(trigger_id=501)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -57,7 +57,7 @@ class Boss01Talk01(trigger_api.Trigger):
 
 class Boss01Talk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=502, enable=True)
+        self.select_camera(trigger_id=502)
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -82,7 +82,7 @@ class Boss01Talk02Skip(trigger_api.Trigger):
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[901]):
@@ -92,7 +92,7 @@ class Boss01Talk02Skip(trigger_api.Trigger):
 # 중앙
 class Boss02SpawnDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=10000, is_enable=False) # 기본 스포너
+        self.enable_spawn_point_pc(spawn_id=10000) # 기본 스포너
         self.enable_spawn_point_pc(spawn_id=10002, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,7 +113,7 @@ class Boss02CameraSet(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=511, enable=True)
+        self.select_camera(trigger_id=511)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -132,7 +132,7 @@ class Boss02Talk01(trigger_api.Trigger):
 
 class Boss02Talk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=512, enable=True)
+        self.select_camera(trigger_id=512)
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -157,7 +157,7 @@ class Boss02Talk02Skip(trigger_api.Trigger):
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[902]):
@@ -167,7 +167,7 @@ class Boss02Talk02Skip(trigger_api.Trigger):
 # 왼쪽
 class Boss03SpawnDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=10000, is_enable=False) # 기본 스포너
+        self.enable_spawn_point_pc(spawn_id=10000) # 기본 스포너
         self.enable_spawn_point_pc(spawn_id=10003, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -181,7 +181,7 @@ class Boss03Spawn(trigger_api.Trigger):
         self.set_user_value(trigger_id=1122330, key='AgentOff', value=1)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=521, enable=True)
+        self.select_camera(trigger_id=521)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -200,7 +200,7 @@ class Boss03Talk01(trigger_api.Trigger):
 
 class Boss03Talk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(trigger_id=522, enable=True)
+        self.select_camera(trigger_id=522)
         self.remove_cinematic_talk()
         self.set_skip() # Missing State: State
 
@@ -225,7 +225,7 @@ class Boss03Talk02Skip(trigger_api.Trigger):
         self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolation_time=1)
+        self.reset_camera(interpolation_time=1.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[903]):

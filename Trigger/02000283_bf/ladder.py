@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(trigger_ids=[511], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[512], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[513], visible=False, enable=False)
-        self.set_ladder(trigger_ids=[514], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[511])
+        self.set_ladder(trigger_ids=[512])
+        self.set_ladder(trigger_ids=[513])
+        self.set_ladder(trigger_ids=[514])
         self.set_interact_object(trigger_ids=[10000429], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class 사다리생성(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[512], visible=True, enable=True)
         self.set_ladder(trigger_ids=[513], visible=True, enable=True)
         self.set_ladder(trigger_ids=[514], visible=True, enable=True)
-        self.set_timer(timer_id='10', seconds=10, start_delay=0, interval=0)
+        self.set_timer(timer_id='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):

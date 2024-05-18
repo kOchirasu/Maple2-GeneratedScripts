@@ -19,7 +19,7 @@ class 대기(trigger_api.Trigger):
 class 전투_1라운드(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_reset_time(seconds=300)
-        self.set_npc_duel_hp_bar(is_open=True, spawn_id=[201], duration_tick=300000, npc_hp_step=100)
+        self.set_npc_duel_hp_bar(is_open=True, spawn_id=201, duration_tick=300000, npc_hp_step=100)
         self.set_ai_extra_data(key='Phase', value=1) # <샤텐 AI 제어>
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,9 +110,9 @@ class 전투_종료(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[-1])
         # self.add_buff(box_ids=[901], skill_id=72000050, level=1)
         # self.destroy_monster(spawn_ids=[301,302,303])
-        # self.set_npc_emotion_loop(spawn_id=201, sequence_name='Attack_Idle_A', duration=60000)
+        # self.set_npc_emotion_loop(spawn_id=201, sequence_name='Attack_Idle_A', duration=60000.0)
         # self.set_user_value(trigger_id=99990003, key='TimerReset', value=1)
-        self.set_npc_duel_hp_bar(is_open=False, spawn_id=[201])
+        self.set_npc_duel_hp_bar(spawn_id=201)
         self.side_npc_talk(npc_id=23200085, illust='Schatten_normal', duration=4000, script='$02020021_BF__battle__3$', voice='ko/Npc/00002244')
 
     def on_tick(self) -> trigger_api.Trigger:

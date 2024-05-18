@@ -8,12 +8,12 @@ class 대기(trigger_api.Trigger):
             return 생성(self.ctx)
 
     def on_exit(self) -> None:
-        self.spawn_monster(spawn_ids=[101,102], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,102])
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_monster(spawn_ids=[101,102], auto_target=True)
+        self.spawn_monster(spawn_ids=[101,102])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):

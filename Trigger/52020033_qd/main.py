@@ -1,5 +1,6 @@
 """ trigger/52020033_qd/main.xml """
 import trigger_api
+from Maple2.Server.Game.Scripting.Trigger import Align
 
 
 class 대기(trigger_api.Trigger):
@@ -77,7 +78,7 @@ class 가버려_대기(trigger_api.Trigger):
 class 부유도로가버려(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52020001, portal_id=1)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -99,7 +100,7 @@ class 소개_준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -109,7 +110,7 @@ class 소개_준비(trigger_api.Trigger):
 class 소개_세로줌인01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8000,8001], return_view=False)
-        self.show_caption(type='NameCaption', title='$map:52020033$', desc='크리티아스 정찰 임무 지원 중', align='centerLeft', offset_rate_x=-0.05, offset_rate_y=0.15, duration=12000, scale=2)
+        self.show_caption(type='NameCaption', title='$map:52020033$', desc='크리티아스 정찰 임무 지원 중', align=Align.Center | Align.Left, offset_rate_x=-0.05, offset_rate_y=0.15, duration=12000, scale=2.0)
         self.set_scene_skip(state=소개_스킵완료, action='nextState') # setsceneskip 1 set
         # setsceneskip set
         # setsceneskip set
@@ -123,7 +124,7 @@ class 소개_가로줌인01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8002,8003], return_view=False)
         self.move_user_path(patrol_name='MS2PatrolData_PC_Walking')
-        self.add_balloon_talk(spawn_id=0, msg='흠…', duration=2000, delay_tick=0)
+        self.add_balloon_talk(msg='흠…', duration=2000)
         self.add_balloon_talk(spawn_id=101, msg='…네, 현재까지 이상 없습니다.', duration=2000, delay_tick=5)
         # Missing State: State,  setsceneskip 2 close
         self.set_scene_skip()
@@ -149,7 +150,7 @@ class 소개_스킵완료(trigger_api.Trigger):
 
 class 소개_완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -172,7 +173,7 @@ class 부유도_준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -262,7 +263,7 @@ class 자막구간_00(trigger_api.Trigger):
 class 자막구간_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='나는 작은 낙하산 하나에 몸을 의지한 채\\n짙은 안개 속으로 몸을 던졌다.')
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -304,7 +305,7 @@ class 부유도_스킵완료(trigger_api.Trigger):
 
 class 부유도_종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolation_time=2)
+        self.reset_camera(interpolation_time=2.0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
@@ -317,7 +318,7 @@ class 부유도_종료(trigger_api.Trigger):
 class 최종맵이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=52020001, portal_id=1) # 안개 속 부유도로 자동 이동
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.set_onetime_effect(id=1, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

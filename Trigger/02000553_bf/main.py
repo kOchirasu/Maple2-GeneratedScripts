@@ -10,7 +10,7 @@ class 시작대기중(trigger_api.Trigger):
 
 class 기본셋팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False) # 나가기 포탈 최초에는 감추기
+        self.set_portal(portal_id=10) # 나가기 포탈 최초에는 감추기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):

@@ -27,10 +27,10 @@ class 스킬동작(trigger_api.Trigger):
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='2', seconds=10) # arg2는 시간 (초)
-        self.set_skill(trigger_ids=[2009], enable=False)
-        self.set_skill(trigger_ids=[2010], enable=False)
-        self.set_skill(trigger_ids=[2011], enable=False)
-        self.set_skill(trigger_ids=[2012], enable=False)
+        self.set_skill(trigger_ids=[2009])
+        self.set_skill(trigger_ids=[2010])
+        self.set_skill(trigger_ids=[2011])
+        self.set_skill(trigger_ids=[2012])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):

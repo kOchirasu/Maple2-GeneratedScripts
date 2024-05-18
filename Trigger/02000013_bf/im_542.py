@@ -35,7 +35,7 @@ class 시간텀(trigger_api.Trigger):
 class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=1101, patrol_name='MS2PatrolData_542')
-        self.set_dialogue(type=1, spawn_id=1101, script='$02000013_BF__IM_542__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=1101, script='$02000013_BF__IM_542__0$', time=2)
         self.set_dialogue(type=1, spawn_id=1101, script='$02000013_BF__IM_542__1$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -8,10 +8,10 @@ class idle(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[106], auto_target=False)
         self.spawn_monster(spawn_ids=[107], auto_target=False)
         self.spawn_monster(spawn_ids=[108], auto_target=False)
-        self.set_effect(trigger_ids=[5005], visible=False)
-        self.set_effect(trigger_ids=[5006], visible=False)
-        self.set_effect(trigger_ids=[5007], visible=False)
-        self.set_effect(trigger_ids=[5008], visible=False)
+        self.set_effect(trigger_ids=[5005])
+        self.set_effect(trigger_ids=[5006])
+        self.set_effect(trigger_ids=[5007])
+        self.set_effect(trigger_ids=[5008])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

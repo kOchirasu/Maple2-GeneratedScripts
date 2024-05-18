@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(trigger_id=109, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=109, initial_sequence='Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         return 오브젝트반응(self.ctx)
@@ -25,7 +25,7 @@ class 개구리보이기(trigger_api.Trigger):
             return 시작대기중(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=109, visible=False, initial_sequence='Idle_A')
+        self.set_actor(trigger_id=109, initial_sequence='Idle_A')
 
 
 initial_state = 시작대기중

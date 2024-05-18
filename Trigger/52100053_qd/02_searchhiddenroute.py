@@ -27,9 +27,9 @@ class PickRandomRoute(trigger_api.Trigger):
         self.show_guide_summary(entity_id=20039702, text_id=20039702, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return BehindWoodbox(self.ctx)
-        if self.random_condition(weight=50):
+        if self.random_condition(weight=50.0):
             return BehindWardrope(self.ctx)
 
 

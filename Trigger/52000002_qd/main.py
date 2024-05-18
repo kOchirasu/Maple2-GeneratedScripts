@@ -6,10 +6,10 @@ class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010])
         self.destroy_monster(spawn_ids=[2099])
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3007,3008,3009,3010,3011,3012,3013], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3000], visible=True)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006])
+        self.set_mesh(trigger_ids=[3007,3008,3009,3010,3011,3012,3013], visible=True)
         self.set_interact_object(trigger_ids=[10000606], state=2)
         self.set_interact_object(trigger_ids=[10000607,10000608,10000609,10000610,10000611], state=2)
         self.set_interact_object(trigger_ids=[10000612,10000613,10000614,10000615,10000616], state=2)
@@ -89,8 +89,8 @@ class 레버대기(trigger_api.Trigger):
 
 class 다리생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=0)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], visible=True, start_delay=0, interval=300, fade=3)
+        self.set_mesh(trigger_ids=[3000])
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], visible=True, interval=300, fade=3.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[104]):
@@ -144,7 +144,7 @@ class 단계준비3(trigger_api.Trigger):
 class 단계대기3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entity_id=25200202)
-        self.set_mesh(trigger_ids=[3007,3008,3009,3010,3011,3012,3013], visible=False, start_delay=0, interval=200, fade=2)
+        self.set_mesh(trigger_ids=[3007,3008,3009,3010,3011,3012,3013], interval=200, fade=2.0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[106]):
@@ -232,8 +232,8 @@ class 종료(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1099])
         self.destroy_monster(spawn_ids=[1101])
         self.destroy_monster(spawn_ids=[1102])
-        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=2)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006])
         self.set_interact_object(trigger_ids=[10000606], state=2)
         self.set_interact_object(trigger_ids=[10000607,10000608,10000609,10000610,10000611], state=2)
         self.set_interact_object(trigger_ids=[10000612,10000613,10000614,10000615,10000616], state=2)

@@ -52,7 +52,7 @@ class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(trigger_id=302, enable=True)
+        self.select_camera(trigger_id=302)
         self.spawn_monster(spawn_ids=[1002,1003,1004], auto_target=False)
         self.set_skip(state=NPC이동)
 

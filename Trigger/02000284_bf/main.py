@@ -9,8 +9,8 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000431], state=2)
         self.set_interact_object(trigger_ids=[10000432], state=2)
         self.set_interact_object(trigger_ids=[10000433], state=2)
-        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
-        self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=1)
+        self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
@@ -22,7 +22,7 @@ class 보스연출(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.spawn_monster(spawn_ids=[2001], auto_target=False)
-        self.select_camera(trigger_id=3001, enable=True)
+        self.select_camera(trigger_id=3001)
         self.set_skip(state=준비)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +66,7 @@ class 반응체크(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[10000428], state=0):
             self.hide_guide_summary(entity_id=20002814)
             self.dungeon_clear()
-            self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308], visible=True, start_delay=0, interval=100, fade=0)
+            self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308], visible=True, interval=100)
             self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
             return 소멸대기(self.ctx)
 

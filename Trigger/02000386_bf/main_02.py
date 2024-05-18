@@ -10,7 +10,7 @@ class idle(trigger_api.Trigger):
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_dialogue(type=1, spawn_id=901, script='$02000386_BF__MAIN_02__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=901, script='$02000386_BF__MAIN_02__0$', time=2)
         self.move_npc(spawn_id=901, patrol_name='MS2PatrolData_2002')
 
     def on_tick(self) -> trigger_api.Trigger:
